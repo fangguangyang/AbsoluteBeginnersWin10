@@ -1,0 +1,68 @@
+Hi, I am Bob Tabor with www.learnvisualstudio.net.
+In this lesson we will begin learning about the XAML syntax.
+Honestly it's pretty easy to figure out the absolute basis of XAML just by looking at it.
+I mean I can imagine that whatever you saw in the previous lesson you were able to at least figure out the correlation between the tags, the properties and what you saw in the visual designer, right?
+Well what I want to accomplish is to talk about some of the features and functions that may not be so obvious at the first glance.
+So we will take a couple of passes at this short videos that when combined together will give a pretty throughout understanding of XAML and how it all works .
+In this first lesson we are gonna talk about the purpose and the nature of XAML, especially in comparison to C#. Then the next few lessons we are going to talk about the special features in XAML.
+Little hidden features of the language that, again, may not be obvious when you first start looking at it.
+So my aim is that by the end of the first several lessons you're going to have enough knowledge that you can look at the XAML that we write together and in the remainder of this series you are going to be able to make a pretty good guess of what it's trying to do before I even explain what it does.
+Alright, so first of all let's talk about what XAML is.
+In the previous lesson I made a passing remark about how XAML looks similar to HTML and that's no accidents.
+XAML is really just XML, the eXtensible Markup Language.
+I will explained that relationship in just a moment, but at a higher level XML looks a lot like HTML and so much that they share a common ancestry.
+Where as HTML is specific to structuring a web page document, XML a little bit more generic in nature, and by generic I mean that you can use it for any purpose that you decide, and you can define the names and the elements of the attributes to suit your needs.
+Now the past developers have used XML for things like storing application settings or using it as a means of transferring data between two systems that were never intend to work together.
+And to use XML you start off by defining what's called the schema, which declares the proper names of the elements and their attributes, and so schema is kind of like a contract that two parties agreed to.
+Everybody agrees. Both the producer of XML and the consumer of XML to write and read the ******** to conform to those rules set forth in the contract, I mean, the schema.
+And now that they both agree that they're working in the same rule of the same contract and communicate with each other.
+So, a schema is a really important part of XML and just keep in mind 'cuz we will come back to that in just a moment.
+XAML is a special usage of XML.
+Obviously we see, at least in this case then we'll have something to do with defining a user interface for our application so that it feels a lot like HTML but there's a big difference.
+XAML is actually used to create instances of classes and set values of their properties.
+So for example in the previous lesson we created a little hello world application I kind of expanded on that here just get it a little more design.
+I added a button and notice that I put all the attributes on separate lines and now we can see hopefully the definition will look a bit better.
+I'm actually getting more room here.
+We are going to rely less and less on the visual designer.
+In fact we may start to get rid of it completely but you can see here that I created a red button called "click me" and there's also a MessageTextBlock that will appear below.
+So it's very much like what we did before.
+I am just starting over from scratch.
+And what I want to do is well first of all let's go let's go ahead and take a look at the code behind, and we'll set the TextBlock equal to "What is XAML?", the topic of this lesson, whenever you click the button.
+Let's run the application briefly just to show that there is nothing up my sleeve.
+And click it and we get the result.
+Great, okay now what I want to do, just to demonstrate how XMAL works, is actually commenting out this button control and I'll use the syntax that you would use if you're familiar with HTML at how to comment out things.
+It's just this angle bracket, exclaimation mark, dash, dash, to start the comment section.
+And then to end the comment section you just do dash, dash, closing angle bracket like so and you can see that in Visual Studio code editor that it appears green by default.
+Okay, so now that we've got rid of it, what I'm gonna do is actually, come back over here, well actually a couple of things.
+I already gave this a name but by default whenever you create a new projects the grid does not have a name.
+I gave it the name LayoutGrid Because that is what it is actually doing for us.
+And then the other thing I want to do is whenever the page loads, so I'm going to find the Loaded event.
+I'm gonna create a new event handler call Page_Loaded, and use the F12 key on my keyboard to pop that open and the code behind.
+And so now I'm gonna write code that will execute whenever the page has loaded in the memory.
+And this's going to take me a little bit and hopefully you'll see why and it'll prove what I'm trying to explain here.
+So I might even just kind of start this out and fast forward near the end of this typing exercise.
+I don't recommend that you do this.
+Okay so it took me about two mins to type all this out.
+I am not the slowest typist in the world, but this is ****** typing and tell us how to not make a few mistakes along the way.
+but the point of this is if we actually run the application I wanna show you what it does.
+Hey it created a red button almost identical in fact is identical to the one that we defined in XAML, and if we click it it gives me the same results.
+So the point I'm making here is that it took all of this C# code to do what I was able to do in basically just one line of code.
+Now I spaced it out over several lines, but you can see that the C# version of this is much more verbose.
+And then secondly what we are really doing when we are defining elements and attribute in XAML is that we're creating new instances of classes in the Universal Windows Platform API, and defining and setting their attributes and properties just like we're doing here in this code, alright.
+By the way, before I forget, if you want to follow along and do this exercise yourself, I already have the Before where we started out and I'll add this code that I just typed in the After, so you'll be able to get in this project "WhatIsXAML".
+So the important take away is this that XAML is simply a way to create instances of classes and set those objects properties in a much more simplified succinct syntax.
+(It) took us 12 lines of code, 13 lines of code C#, only took one line of XAML.
+Even if I did separated it out, it's still until much shorter than would have been had I use C# to create all of my object.
+Furthermore whenever I do use XAML, I get this automatic feedback here in the visual designer in the preview pane.
+So I can see the impact of my changes instantly if I choose to work like that.
+So in the case of the procedure C# that I wrote I have to run the application each time that I wanted to see how my tweets to the code actually work.
+So okay that's it, that's the point of this lesson.
+Two fold, one that XAML is just a specific flavor of XML.
+It follows all the rules of XML.
+Somebody defines the schema, a contract, and then both the producer and consumer of the XML agree to the contract and then they can begin to work together, konwing that they are pretty much on the same page.
+Now in this case, the contract is XAML and it was defined by Microsoft.
+the producer of the XML is you, me and visual studio, and then the consumer of the XML is the compiler which will turn our code into an executable that will run in Windows 10.
+And so that's the first point.
+The second point of this lesson was that XAML is an easy way to create instances of classes and set the properties, and sure you can do this all in C#, but it's much more verbose and you would lose the design time tooling that we've become accustom to in here, two or three short videos.
+Okay so actually this example that we just created has a few other little interesting features of XAML that I want to explain a little bit further, and so I'll start that process in the very next lesson.
+Thank you.
