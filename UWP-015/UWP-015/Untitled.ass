@@ -16,9 +16,9 @@ Video File: C:/Users/thinkpad/OneDrive/Win10 Translation/UWP-015/Video 15/uwp15L
 Video AR Mode: 4
 Video AR Value: 1.748603
 Video Zoom Percent: 0.375000
-Scroll Position: 6
-Active Line: 13
-Video Position: 1618
+Scroll Position: 27
+Active Line: 27
+Video Position: 3119
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -39,4 +39,18 @@ Dialogue: 0,0:00:39.28,0:00:41.28,yahei!,,0,0,0,,在每段文字内容的下方\
 Dialogue: 0,0:00:41.28,0:00:45.80,yahei!,,0,0,0,,有不同颜色的三个长方形\Nthere's a little flag like area with three rectangle with different colors
 Dialogue: 0,0:00:45.80,0:00:48.06,yahei!,,0,0,0,,还有一点需要我想提醒大家的是\I guess the last thing I want to point out is that
 Dialogue: 0,0:00:48.08,0:00:53.96,yahei!,,0,0,0,,界面左侧和每个部分间都留有空白\Nthere's some margin space on the left and here between each of the title area
-Dialogue: 0,0:00:53.96,0:00:55.96,yahei!,,0,0,0,,
+Dialogue: 0,0:00:53.96,0:00:57.26,yahei!,,0,0,0,,所以我们一起来看看题目要求吧( •̀ ω •́ )✧\Nso let's take a look the rules for this challenge
+Dialogue: 0,0:00:57.26,0:01:00.74,yahei!,,0,0,0,,首先，要记得把Girds和StackPanels都用上哟\Nfirst of all, u have to use both Grids and StackPanels
+Dialogue: 0,0:01:00.74,0:01:03.50,yahei!,,0,0,0,,就算你觉得自己厉害的可以只有两个中的一个\Neven if u think u can just use the StackPanels or Grids
+Dialogue: 0,0:01:03.50,0:01:09.54,yahei!,,0,0,0,,其实我让你两个一起用就是为了证明---其实一起用是不行的╮(╯-╰)╭\Nno, i'm forcing u to use both together just to \Nprove that point--- u can't use together
+Dialogue: 0,0:01:09.54,0:01:13.96,yahei!,,0,0,0,,接下来， 我又一次把界面设置成了\Nsecondly, here again, I set the designer 
+Dialogue: 0,0:01:13.96,0:01:19.24,yahei!,,0,0,0,,电脑桌面大小而不是手机桌面，这样我就有了更多的横向空间\Nat the desktop not the phone size, just so I get more horizontal space
+Dialogue: 0,0:01:19.24,0:01:21.60,yahei!,,0,0,0,,下一个要求就是\Nthe next requirement
+Dialogue: 0,0:01:21.68,0:01:24.38,yahei!,,0,0,0,,整个界面的宽度应该是500个像素点\Nthe width of the entire layout should be 500 pixels
+Dialogue: 0,0:01:24.40,0:01:28.12,yahei!,,0,0,0,,所以从左侧到右侧\Nso from this side hereon the left to this side here on the right
+Dialogue: 0,0:01:28.12,0:01:31.46,yahei!,,0,0,0,,不要担心右侧的空白部分（大丈夫！）\Nu will notice that they give us a lot of extra space on the right ,that's ok
+Dialogue: 0,0:01:31.46,0:01:34.30,yahei!,,0,0,0,,反正就是道练习题嘛\Nthis is just a challenge, is not real life.
+Dialogue: 0,0:01:34.30,0:01:39.10,yahei!,,0,0,0,,第四点，这个任务来自LoremIpsum.txt file\NNo.4, the task comes from the LoremIpsum.txt file
+Dialogue: 0,0:01:39.10,0:01:41.92,yahei!,,0,0,0,,我觉得你需要的只是其中开头部分\Ni think all u need is the very first line of LoremIpsum.txt file
+Dialogue: 0,0:01:42.00,0:01:44.06,yahei!,,0,0,0,,不需要看整篇\Nthere's like a 5 lines paragraph rather
+Dialogue: 0,0:01:44.06,0:01:46.06,yahei!,,0,0,0,,只要看第一段就好咯\Nu just need the first paragraph
