@@ -16,9 +16,9 @@ Video File: video 022/uwp22CheatSheet_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.823183
 Video Zoom Percent: 0.500000
-Scroll Position: 30
-Active Line: 38
-Video Position: 9624
+Scroll Position: 40
+Active Line: 44
+Video Position: 11460
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -64,5 +64,11 @@ Dialogue: 0,0:04:44.24,0:04:55.36,yahei,,0,0,0,,你可以加载新页面到根�
 Dialogue: 0,0:04:55.36,0:05:03.00,yahei,,0,0,0,,而我们通过在MainPage中添加新框架，然后在框架中加载不同的界面
 Dialogue: 0,0:05:03.00,0:05:10.96,yahei,,0,0,0,,在界面上有Frame Property（框架性质）\N可以让我们进入到母框架从而进行导航
 Dialogue: 0,0:05:10.96,0:05:17.00,yahei,,0,0,0,,这就是导航的方法，你进入你想创建的内容的类型
-Dialogue: 0,0:05:17.00,0:05:21.12,yahei,,0,0,0,,还有附加参数
-Dialogue: 0,0:05:21.12,0:05:23.12,yahei,,0,0,0,,
+Dialogue: 0,0:05:17.00,0:05:21.12,yahei,,0,0,0,,还有附加参数（这句翻得不准 求校对(●'◡'●)
+Dialogue: 0,0:05:21.12,0:05:30.68,yahei,,0,0,0,,接下来你要做的就是检索先前页面键入的东西，\N利用这个特定的方法：OnNavigatedTo
+Dialogue: 0,0:05:30.68,0:05:43.84,yahei,,0,0,0,,我们可以检索键入参数的值，利用NavigationEventArgs e \N.Parameter，并表明参数的类型
+Dialogue: 0,0:05:43.84,0:05:46.52,yahei,,0,0,0,,你可以随便选自己喜欢的名字呀
+Dialogue: 0,0:05:46.52,0:05:55.64,yahei,,0,0,0,,我们还讨论过Back Stack；还有当你前进，后退\N或是重复的时候它怎样保留导航事件
+Dialogue: 0,0:05:55.64,0:06:09.64,yahei,,0,0,0,,你可以检查框架前进后退发可能性来检索Back Stack，\N如果可能，就可以利用前进后退方法
+Dialogue: 0,0:06:09.64,0:06:22.36,yahei,,0,0,0,,最后，我也强调过，希望你通过表明程序等级定义中的静态内电场来创建一个全程变量
+Dialogue: 0,0:06:22.36,0:06:24.36,yahei,,0,0,0,,
