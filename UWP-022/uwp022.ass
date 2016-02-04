@@ -16,9 +16,9 @@ Video File: video 022/uwp22CheatSheet_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.823183
 Video Zoom Percent: 0.500000
-Scroll Position: 40
-Active Line: 44
-Video Position: 11460
+Scroll Position: 75
+Active Line: 84
+Video Position: 22542
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -71,4 +71,44 @@ Dialogue: 0,0:05:43.84,0:05:46.52,yahei,,0,0,0,,你可以随便选自己喜欢�
 Dialogue: 0,0:05:46.52,0:05:55.64,yahei,,0,0,0,,我们还讨论过Back Stack；还有当你前进，后退\N或是重复的时候它怎样保留导航事件
 Dialogue: 0,0:05:55.64,0:06:09.64,yahei,,0,0,0,,你可以检查框架前进后退发可能性来检索Back Stack，\N如果可能，就可以利用前进后退方法
 Dialogue: 0,0:06:09.64,0:06:22.36,yahei,,0,0,0,,最后，我也强调过，希望你通过表明程序等级定义中的静态内电场来创建一个全程变量
-Dialogue: 0,0:06:22.36,0:06:24.36,yahei,,0,0,0,,
+Dialogue: 0,0:06:22.36,0:06:33.88,yahei,,0,0,0,,让你应对当你重复back stack的检索的时候，\N你得不到想要的值并且不能保持原有状态的这种情况
+Dialogue: 0,0:06:33.88,0:06:43.28,yahei,,0,0,0,,不论输入到已知输入框的是什么（后半句省略）
+Dialogue: 0,0:06:43.28,0:06:55.68,yahei,,0,0,0,,我们还讲过基础XAMLcontrol（控制）， 这部分比较繁杂，\N我不会花很长时间复习，毕竟我们之前讲的已经很详细了
+Dialogue: 0,0:07:03.80,0:07:13.36,yahei,,0,0,0,,要做的就是去掉每个控制的中心部分\N希望这部分对你有所帮助，让我先把第一部分粘上去啦啦噜
+Dialogue: 0,0:07:13.36,0:07:18.72,yahei,,0,0,0,,UWP20-基础 XAML control-第一部分\N我们关注的是CheckBox
+Dialogue: 0,0:07:18.72,0:07:28.76,yahei,,0,0,0,,这里有一个Checked特性\N虽然我们在这里看不到， 但是在C#这行代码中我们可以系统性的看到
+Dialogue: 0,0:07:28.76,0:07:34.76,yahei,,0,0,0,,并且它支持tab event，这样我们就可以\N处理这种事件，然后将结果显示出来
+Dialogue: 0,0:07:34.76,0:07:43.88,yahei,,0,0,0,,与CheckBox 相似, Yes or No/ True or False CheckBox \N都有一个RadioButton 能让我们向用户提供各种不同的选项
+Dialogue: 0,0:07:43.88,0:07:51.20,yahei,,0,0,0,,在这里你需要用一个GroupName来将\N所有同属一个Group的RadioButton归在一起
+Dialogue: 0,0:07:51.20,0:07:57.36,yahei,,0,0,0,,你可以看到在这里，我可以处理这个Checked event
+Dialogue: 0,0:07:57.36,0:08:10.56,yahei,,0,0,0,,在这个Checked event，我加入了xx 处理器，这样就可以检测RadioButton是否checked\N如果Checked了，就print Yes；如果没有，就print No（你可能还需要调整一下）
+Dialogue: 0,0:08:10.56,0:08:14.72,yahei,,0,0,0,,我之前没有提过，这个checked是可知的xxx
+Dialogue: 0,0:08:14.72,0:08:20.76,yahei,,0,0,0,,你应该通过xxx来让这个处理器工作
+Dialogue: 0,0:08:20.76,0:08:30.20,yahei,,0,0,0,,我也是刚刚想起来(●'◡'●) 接下来我们要回顾的是ComboBox，\N让你能够在DropDown List下拉框中添加一些ComboBoxItem
+Dialogue: 0,0:08:30.40,0:08:34.64,yahei,,0,0,0,,当别人点击error的时候，他们可以看到列表中的所有内容
+Dialogue: 0,0:08:34.64,0:08:45.24,yahei,,0,0,0,,你可以给IsSelected设置一个默认值，在这道例题中，\N当我们打开XAML页面的时候，六个选项就被显示在了一个ComboBox中
+Dialogue: 0,0:08:45.48,0:08:58.32,yahei,,0,0,0,,当选择ComboBox中的一个Item的时候，\N我们从SelectionChanged事件中得到一个值
+Dialogue: 0,0:08:58.44,0:09:02.32,yahei,,0,0,0,,欸不对，这里还需要有一个sender和event xxx
+Dialogue: 0,0:09:02.32,0:09:11.20,yahei,,0,0,0,,我们要用将这个sender添加到ComboBox，不管是谁发起了这个SelectionChanged 事件
+Dialogue: 0,0:09:11.20,0:09:22.44,yahei,,0,0,0,,接下来我们要找到ComBox中Selected的部分变成ComboBox条目，\N当我们有了这个ComboBoxItem的时候，就可以提取内容并显示（？）在屏幕上
+Dialogue: 0,0:09:22.44,0:09:35.80,yahei,,0,0,0,,接下来将是很重要的一部分：ListBox\N因为我们在下一习题中也会用到它，需要用这部分知识里创建一个更完整的汉堡菜单
+Dialogue: 0,0:09:35.80,0:09:40.16,yahei,,0,0,0,,在这里我们创建了几个包含其他内容的ListBoxItem
+Dialogue: 0,0:09:40.16,0:09:49.40,yahei,,0,0,0,,这里将SelectionMode同时设为了Multiple和Single；\N你可以在Multiple模式中选择多个selectedItems，而Single中只能选择一个
+Dialogue: 0,0:09:49.40,0:09:57.60,yahei,,0,0,0,,因为你可以选择多个，我在这里放了一部分说明\N让我们能够找到所有Selected的ListBoxItem
+Dialogue: 0,0:09:57.60,0:10:07.60,yahei,,0,0,0,,把所有内容提取出来，把它们放进Array，接着参照\N这个Array利用string.Join，你可以用逗号来分割它们
+Dialogue: 0,0:10:07.60,0:10:22.52,yahei,,0,0,0,,接下来我们讲了Image control（图片控制），你需要设置其中的source 和stretch 属性\N而这其中还分为non，fill，UniformToFill和stretch四种stretch选项
+Dialogue: 0,0:10:22.52,0:10:28.28,yahei,,0,0,0,,然后是ToggleButton的部分，还有怎样检索它的值
+Dialogue: 0,0:10:28.28,0:10:41.72,yahei,,0,0,0,,ToggleButton有历史状态（history state）\N记住三个状态分别是：clicked, unclicked, selected（当开启的时候）
+Dialogue: 0,0:10:42.00,0:10:50.24,yahei,,0,0,0,,当被点击的时候，我们可以评估这个IsChecked的值，给出True/False或者No
+Dialogue: 0,0:10:50.24,0:10:59.60,yahei,,0,0,0,,最后我们讲了ToggleSwitch，它能帮助\N我们找到 OffContent，OnContent中的内容
+Dialogue: 0,0:10:59.60,0:11:14.04,yahei,,0,0,0,,当开关打开，你可以显示这部分的内容（在这个例子里我们只放了一个TextBlock）\N当用户关上开关时，其他ToggleSwitch.OffContent下面部分的内容将被显示
+Dialogue: 0,0:11:14.04,0:11:21.96,yahei,,0,0,0,,啊 真是一个宏大的复习课程，但是我们还要继续！（握拳
+Dialogue: 0,0:11:21.96,0:11:27.72,yahei,,0,0,0,,接下来我们讲了怎样创建一个简单的汉堡菜单
+Dialogue: 0,0:11:27.72,0:11:32.68,yahei,,0,0,0,,我还提到了Jerry Nixon写的更完善是例子作为你们的补充教程
+Dialogue: 0,0:11:32.68,0:11:40.76,yahei,,0,0,0,,而我的乞丐版汉堡菜单主要运用了SplitView和ListBox Control
+Dialogue: 0,0:11:40.76,0:11:49.92,yahei,,0,0,0,,而其中一件重要的事就是我们要从Segoe MDL5 Assets字体中选择需要的图标
+Dialogue: 0,0:11:49.92,0:11:54.48,yahei,,0,0,0,,我还讲了怎样用Character Map找到你要用的字体
+Dialogue: 0,0:11:54.48,0:12:05.56,yahei,,0,0,0,,并且当你输入的时候，一定要记得输入&#x在前面，分号（；）在后面
+Dialogue: 0,0:12:05.56,0:12:15.88,yahei,,0,0,0,,最后的最后，我不会写的很全，你可以随时找到示例来自学；\N可以运用ListBox和ListBoxItem来设置SplitView中的导航链接
+Dialogue: 0,0:12:15.88,0:12:31.64,yahei,,0,0,0,,我们在之前的教程中也是这么做哒！而这部分的知识在下一个作业题里也十分重要，\N因为你需要做一个更加完善和复杂的，还包含搜索栏的汉堡导航菜单
+Dialogue: 0,0:12:32.12,0:12:35.32,yahei,,0,0,0,,就在下一个视频哟，拜拜么么哒\(•ω•`)o
