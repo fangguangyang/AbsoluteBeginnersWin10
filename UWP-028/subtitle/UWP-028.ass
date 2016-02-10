@@ -15,10 +15,10 @@ Audio File: ../video/uwp28XamlStyles_high.mp4
 Video File: ../video/uwp28XamlStyles_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
-Video Zoom Percent: 0.450000
-Scroll Position: 47
-Active Line: 49
-Video Position: 9808
+Video Zoom Percent: 0.250000
+Scroll Position: 110
+Active Line: 116
+Video Position: 25940
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -40,12 +40,12 @@ Dialogue: 0,0:00:53.82,0:00:59.62,yahei,,0,0,0,,就算是在这些教程中，�
 Dialogue: 0,0:00:59.62,0:01:08.91,yahei,,0,0,0,,比如说，你要设计的公司app也许会需要\N加入特殊的代表商标，颜色以及字号
 Dialogue: 0,0:01:08.91,0:01:15.62,yahei,,0,0,0,,所以你不光要知道这些设计的规则，\N还要理解它并修改成自己需要的
 Dialogue: 0,0:01:15.62,0:01:21.14,yahei,,0,0,0,,在这节课中，我要讲到用XAML来设计及美化app的技巧
-Dialogue: 0,0:01:21.14,0:01:33.34,yahei,,0,0,0,,最先要说明的是在可分享至不同elements的资源中创建可重用的风格，\N并且这一资源可以分享至单页面，多页面，整个app
+Dialogue: 0,0:01:21.14,0:01:33.34,yahei,,0,0,0,,最先要说明的是在可分享至不同elements的资源中创建可重用的style（风格），\N并且这一资源可以分享至单页面，多页面，整个app
 Dialogue: 0,0:01:33.34,0:01:36.08,yahei,,0,0,0,,甚至跨越不同的app
-Dialogue: 0,0:01:36.08,0:01:49.00,yahei,,0,0,0,,下一节课我们将要讲解能让不同app保持一致风格的\Npre-build theme （预建主题） ，在指定的用户设备上
+Dialogue: 0,0:01:36.08,0:01:49.00,yahei,,0,0,0,,下一节课我们将要讲解能让不同app保持一致style的\Npre-build theme （预建主题） ，在指定的用户设备上
 Dialogue: 0,0:01:49.00,0:02:01.57,yahei,,0,0,0,,假设你有一个特定颜色或设置需要应用在整个页面或者整个app中
 Dialogue: 0,0:02:01.71,0:02:06.51,yahei,,0,0,0,,或者一个偶尔需要更改的颜色或设置
-Dialogue: 0,0:02:06.68,0:02:15.80,yahei,,0,0,0,,你想在一个地方更改设置然后自动将这一固定风格应用到其他地方，类似于（xxx）
+Dialogue: 0,0:02:06.68,0:02:15.80,yahei,,0,0,0,,你想在一个地方更改设置然后自动将这一固定style应用到其他地方，类似于（xxx）
 Dialogue: 0,0:02:15.80,0:02:19.71,yahei,,0,0,0,,在这种情况下，你需要创建一个resource
 Dialogue: 0,0:02:19.71,0:02:22.60,yahei,,0,0,0,,接着将这个resource和其他结合
 Dialogue: 0,0:02:22.60,0:02:26.94,yahei,,0,0,0,,这里我创建了一个叫XAMLResource的新项目
@@ -73,6 +73,73 @@ Dialogue: 0,0:04:59.67,0:05:05.07,yahei,,0,0,0,,我们先来看一下完成的�
 Dialogue: 0,0:05:05.22,0:05:09.10,yahei,,0,0,0,,希望能够显示棕色的HelloWorld
 Dialogue: 0,0:05:09.10,0:05:11.10,yahei,,0,0,0,,啊哈！成功了o(*￣▽￣*)ブ
 Dialogue: 0,0:05:11.10,0:05:14.95,yahei,,0,0,0,,再强调一下，这只是一个初始的简单例子
-Dialogue: 0,0:05:14.95,0:05:25.60,yahei,,0,0,0,,不仅是简单的resource，我们可以通过风格来重复利用\N一个或多个设置，不管是单个页面还是整个app
-Dialogue: 0,0:05:25.80,0:05:27.25,yahei,,0,0,0,,
-Dialogue: 0,0:05:27.25,0:05:29.25,yahei,,0,0,0,,
+Dialogue: 0,0:05:14.95,0:05:27.57,yahei,,0,0,0,,不仅是简单的resource，我们可以通过style来重复利用\N一个或多个特定设置，不管是单个页面还是整个app
+Dialogue: 0,0:05:27.70,0:05:33.62,yahei,,0,0,0,,当你想重复利用这个style时，你可以设计一个特定的control style特性
+Dialogue: 0,0:05:33.80,0:05:37.07,yahei,,0,0,0,,然后将它与已知的style相连接
+Dialogue: 0,0:05:37.07,0:05:44.37,yahei,,0,0,0,,视觉上来看，每一个control，甚至是page都拥有可以自定义的外观特点
+Dialogue: 0,0:05:44.57,0:05:50.05,yahei,,0,0,0,,比如可以是font（字号）， 颜色，边框以及长和宽
+Dialogue: 0,0:05:50.05,0:05:51.40,yahei,,0,0,0,,只要你开心｡◕‿◕｡
+Dialogue: 0,0:05:51.40,0:06:03.60,yahei,,0,0,0,,所有这些性质都可以在XAML control的独立bases中设置，\N也许这样会让你的XAML变得，视觉上也更加
+Dialogue: 0,0:06:03.60,0:06:13.45,yahei,,0,0,0,,这是一个缺点，而另一个缺点是如果你忽视了其中一个设置，比如你忘记设置font了
+Dialogue: 0,0:06:13.60,0:06:21.55,yahei,,0,0,0,,或者颜色，你可以只定义一次这个风格\N后重复使用来保持整体风格的一致
+Dialogue: 0,0:06:21.55,0:06:29.82,yahei,,0,0,0,,我在这里就把特定的风格粘贴过来节省一点时间(´∀｀)♡
+Dialogue: 0,0:06:29.82,0:06:44.17,yahei,,0,0,0,,我们首先从名为style的open tab开始，\N然后我们将style的类型设置好，在这里面是Button control
+Dialogue: 0,0:06:44.42,0:06:49.62,yahei,,0,0,0,,然后我们设置一个key以便于在XAML中引用
+Dialogue: 0,0:06:49.62,0:06:54.75,yahei,,0,0,0,,在这里我们用到了好几个setter element
+Dialogue: 0,0:06:54.87,0:07:06.05,yahei,,0,0,0,,每一个setter都有我们想改变和设置的property，\N还有改变后新的取值，所以这就是一系列的名称数值匹配
+Dialogue: 0,0:07:06.37,0:07:16.40,yahei,,0,0,0,,在这个例子中，每一次我们应用这个叫做MyButtonStyle的style，\N我们将会设置背景为蓝色，FontFamily为ArialBlack，字号为36
+Dialogue: 0,0:07:16.40,0:07:21.52,yahei,,0,0,0,,好哒，那让我们来实际应用一下吧
+Dialogue: 0,0:07:24.80,0:07:34.82,yahei,,0,0,0,,首先将Content="My Button Style Example
+Dialogue: 0,0:07:35.22,0:08:01.60,yahei,,0,0,0,,height=100, style="StaticResource MyButtonStyle"\N需要注意的是这些style等等是已经定义了的
+Dialogue: 0,0:08:01.97,0:08:11.20,yahei,,0,0,0,,以防万一，我在这里加一个StackPanel
+Dialogue: 0,0:08:11.90,0:08:15.50,yahei,,0,0,0,,我们先run一下试试
+Dialogue: 0,0:08:15.50,0:08:33.45,yahei,,0,0,0,,你可以看到一个巨大的蓝色button，大字号，通过binding\N已知的StaticResource， 所有之前的设置都在这里轻松应用了
+Dialogue: 0,0:08:33.45,0:08:42.40,yahei,,0,0,0,,再一次声明，这只是用来讲解的极简例子，也许它也不显而易见去阐释
+Dialogue: 0,0:08:42.52,0:08:49.92,yahei,,0,0,0,,设置和运用style和resource的原因
+Dialogue: 0,0:08:49.92,0:08:55.50,yahei,,0,0,0,,当你的app越来越丰富，包含了很多page和control的时候
+Dialogue: 0,0:08:55.50,0:09:08.72,yahei,,0,0,0,,你可能就会发现这一部分是很有用的，因为当每一次button\N出现的时候，它都会将这三个property添加上去
+Dialogue: 0,0:09:08.72,0:09:18.12,yahei,,0,0,0,,所以，style和resource的利用能让你的app变得更加简洁明了，也更容易管理
+Dialogue: 0,0:09:18.12,0:09:26.02,yahei,,0,0,0,,就算你需要做一些改动，也只要在style里改一次就可以了
+Dialogue: 0,0:09:26.02,0:09:39.82,yahei,,0,0,0,,这个localresource是在正在使用的这个page上创建的，\N 所以它是专属于MainPage.XAML的
+Dialogue: 0,0:09:39.82,0:09:46.10,yahei,,0,0,0,,但如果我想在app中所有的page上运用呢？
+Dialogue: 0,0:09:46.10,0:10:02.72,yahei,,0,0,0,,我需要将Page.Resources这一部分删掉，然后将他们\N创建在App.XAML中的Application.Resources元素上 
+Dialogue: 0,0:10:02.72,0:10:07.97,yahei,,0,0,0,,选择，用control删掉这一部分并跳转到App.xaml
+Dialogue: 0,0:10:07.97,0:10:14.07,yahei,,0,0,0,,在这里写Application.Resources
+Dialogue: 0,0:10:14.07,0:10:22.20,yahei,,0,0,0,,然后把刚才的部分粘贴过来\N而我的app中应该没有任何新的改变
+Dialogue: 0,0:10:22.20,0:10:24.20,yahei,,0,0,0,,我们再来run一次看看
+Dialogue: 0,0:10:24.20,0:10:28.77,yahei,,0,0,0,,因为我们将这些设置运用到了整个app中
+Dialogue: 0,0:10:28.77,0:10:33.42,yahei,,0,0,0,,（通过将它们放进Application.XAML中），\N我们得到了相同的结果
+Dialogue: 0,0:10:33.42,0:10:39.37,yahei,,0,0,0,,唯一的不同就是Main.XAML 变得更简短了
+Dialogue: 0,0:10:39.37,0:10:43.80,yahei,,0,0,0,,还有一点，你可以看到这里
+Dialogue: 0,0:10:43.80,0:10:50.42,yahei,,0,0,0,,这个我们在Application.Resources中设定的resource dictionary（资源字典）
+Dialogue: 0,0:10:50.42,0:10:58.80,yahei,,0,0,0,,我们只它设置Resources, SolidColorBrush，Strings和styles
+Dialogue: 0,0:10:58.80,0:11:06.70,yahei,,0,0,0,,但其实它还包含了StaticRresource, \NControl Tamplets, Animation和更多哦(/≥▽≤/)
+Dialogue: 0,0:11:06.70,0:11:11.42,yahei,,0,0,0,,这个技术能让我们非常方便的在整个app中重复利用某些设置
+Dialogue: 0,0:11:11.42,0:11:17.80,yahei,,0,0,0,,不光是我们在page和application中设定的简单resource dictionary
+Dialogue: 0,0:11:17.80,0:11:25.60,yahei,,0,0,0,,你还可以创建名为“merged (合并) resource dictionary”，\N能让你在多个文档中找到resource dictionary
+Dialogue: 0,0:11:25.60,0:11:27.60,yahei,,0,0,0,,然后将它们结合在一起
+Dialogue: 0,0:11:27.60,0:11:35.92,yahei,,0,0,0,,你可以通过这个来保持程序的复杂性，\N并在不同的项目中重复使用dictionary文档
+Dialogue: 0,0:11:36.35,0:11:41.80,yahei,,0,0,0,,我们现在要在XAML.Resources的右键菜单中做...\N啊我还是这么弄好了
+Dialogue: 0,0:11:41.80,0:11:48.27,yahei,,0,0,0,,Project>Add New Item 
+Dialogue: 0,0:11:48.27,0:11:55.30,yahei,,0,0,0,,接着选择Resource Dictionary, 将名字留为Dictionary1.xmal不变并点击add
+Dialogue: 0,0:11:55.30,0:12:05.45,yahei,,0,0,0,,我只在这里加入一点非常简单的SolidColorBrush部分，\N就命名为brush，颜色为红\N
+Dialogue: 0,0:12:05.45,0:12:06.87,yahei,,0,0,0,,没什么厉害的东西啦ヘ(￣ω￣ヘ)
+Dialogue: 0,0:12:06.87,0:12:16.22,yahei,,0,0,0,,而接下来我们需要做的呢，就是将resource dictionary\N融合进pages的recourse dictionary
+Dialogue: 0,0:12:16.30,0:12:22.12,yahei,,0,0,0,,首先我们要回到page.resources
+Dialogue: 0,0:12:23.70,0:12:26.87,yahei,,0,0,0,,创建一个resource dictionary元素
+Dialogue: 0,0:12:26.87,0:12:36.07,yahei,,0,0,0,,接着添加 ResourceDictionary.MergeDictionaries性质
+Dialogue: 0,0:12:36.50,0:12:45.52,yahei,,0,0,0,,在这里我们要创建一个resource dictionary，并设置source
+Dialogue: 0,0:12:45.75,0:12:50.72,yahei,,0,0,0,,为了证明这些都是可用的，我要将Foreground中
+Dialogue: 0,0:12:50.72,0:13:03.10,yahei,,0,0,0,,MyBrush换为之前在dictionary1.xaml中定义过了的brush，\N现在我们将会在app顶部看到红色文本
+Dialogue: 0,0:13:03.10,0:13:05.10,yahei,,0,0,0,,哈哈哈看到了吧▼ω▼
+Dialogue: 0,0:13:07.10,0:13:13.60,yahei,,0,0,0,,我们还可以合并多个resource dictionary，\N比如在这里我进入这个项目
+Dialogue: 0,0:13:13.60,0:13:19.65,yahei,,0,0,0,,Add New Item>Resource dictionary，命名为\Ndictionary2.xaml就可以啦，然后点击add
+Dialogue: 0,0:13:19.65,0:13:28.50,yahei,,0,0,0,,在这里我要把greeting剪切掉，然后添加至dictionary2.xaml 中
+Dialogue: 0,0:13:28.50,0:13:35.27,yahei,,0,0,0,, 然后将它合并至MainPage.xaml
+Dialogue: 0,0:13:35.27,0:13:46.52,yahei,,0,0,0,,虽然我找不到那个greeting了，但是我们只要\N复制粘贴就好了，然后把source改成dictionary2
+Dialogue: 0,0:13:46.52,0:13:50.92,yahei,,0,0,0,,应该找到它，而且你会发现这部分和以前显示的一样
+Dialogue: 0,0:13:51.17,0:13:59.10,yahei,,0,0,0,,所以我们可以创建多个resource dictionary，并把他们合并
+Dialogue: 0,0:13:59.22,0:14:03.47,yahei,,0,0,0,,在其他app中运用
+Dialogue: 0,0:14:03.55,0:14:15.90,yahei,,0,0,0,,或者将已定义的style分散在多个resource dictionary文档中以便管理和查找 
+Dialogue: 0,0:14:15.90,0:14:25.50,yahei,,0,0,0,,希望这些能帮到你，来让你的app更统一并更好管理
+Dialogue: 0,0:14:25.50,0:14:29.05,yahei,,0,0,0,,下一节课我们将会讨论theme(主题)\N拜拜\(•ω•`)o
