@@ -1,0 +1,1992 @@
+1
+00:00:05,232 --> 00:00:07,551
+<v ->All right, so in this video, we're going talk about</v>
+
+2
+00:00:07,552 --> 00:00:12,551
+adding an option so that a user can purchase
+
+3
+00:00:12,552 --> 00:00:15,491
+the ability to remove ads from the application.
+
+4
+00:00:15,492 --> 00:00:18,011
+And we're going talk about that in just a moment
+
+5
+00:00:18,012 --> 00:00:21,311
+but if you recall at the very end of the previous video,
+
+6
+00:00:21,312 --> 00:00:24,631
+I was a little flustered because
+
+7
+00:00:24,632 --> 00:00:26,810
+we lost some functionality in our application.
+
+8
+00:00:26,811 --> 00:00:31,351
+We added the ad control and then our application
+
+9
+00:00:31,352 --> 00:00:34,151
+no longer showed album art
+
+10
+00:00:34,152 --> 00:00:37,229
+and you can't play without the album art.
+
+11
+00:00:37,230 --> 00:00:42,229
+So, what I discovered apparently is unique to my machine.
+
+12
+00:00:42,650 --> 00:00:44,527
+When I dragged and dropped
+
+13
+00:00:44,528 --> 00:00:49,527
+the Ad Mediator Control onto the designer surface,
+
+14
+00:00:49,917 --> 00:00:54,496
+somehow, someway, it removed all of the binding expressions
+
+15
+00:00:54,497 --> 00:00:57,256
+in the DataTemplate, here in the source,
+
+16
+00:00:57,257 --> 00:00:59,304
+here in the item source for the GridView.
+
+17
+00:00:59,305 --> 00:01:00,563
+Everything else was there, just anything
+
+18
+00:01:00,564 --> 00:01:03,604
+that had to do with data binding was stripped out.
+
+19
+00:01:03,605 --> 00:01:07,164
+So I merely just pasted that in from a previous
+
+20
+00:01:07,165 --> 00:01:09,404
+older version of the example and it works again.
+
+21
+00:01:09,405 --> 00:01:11,943
+So I talked to Microsoft about this.
+
+22
+00:01:11,944 --> 00:01:14,503
+Apparently this is something specific to my machine,
+
+23
+00:01:14,504 --> 00:01:17,004
+but just be forewarned, if you hit the same thing
+
+24
+00:01:17,005 --> 00:01:20,624
+then at least now you know what's going on.
+
+25
+00:01:20,625 --> 00:01:24,744
+That took a few hours out of my life I'll never get back.
+
+26
+00:01:24,745 --> 00:01:27,124
+All right, but what we want to talk about
+
+27
+00:01:27,125 --> 00:01:31,744
+is actually how do we add the ability
+
+28
+00:01:31,745 --> 00:01:36,744
+to allow the user to make purchases inside of our apps?
+
+29
+00:01:38,145 --> 00:01:42,373
+And there's a great starting point
+
+30
+00:01:42,374 --> 00:01:45,450
+for learning about this at the following URL.
+
+31
+00:01:45,451 --> 00:01:48,379
+Let me navigate there, actually.
+
+32
+00:01:49,491 --> 00:01:53,189
+All right and the instructions are pretty good here.
+
+33
+00:01:53,190 --> 00:01:55,910
+You should be forewarned that there are
+
+34
+00:01:55,911 --> 00:01:57,530
+a few things that you're going to have to do
+
+35
+00:01:57,531 --> 00:02:00,390
+during development time that you're going to have to change
+
+36
+00:02:00,391 --> 00:02:03,590
+right before you submit your application
+
+37
+00:02:03,591 --> 00:02:05,349
+to the Microsoft Store.
+
+38
+00:02:05,350 --> 00:02:08,429
+So one of the things that we're going do is
+
+39
+00:02:08,430 --> 00:02:11,619
+work with something called a Current App Simulator.
+
+40
+00:02:11,620 --> 00:02:14,619
+Once we have finished debugging
+
+41
+00:02:14,620 --> 00:02:16,879
+our application and our application
+
+42
+00:02:16,880 --> 00:02:18,419
+is feature complete, then we're going
+
+43
+00:02:18,420 --> 00:02:21,799
+to change all references to the Current App Simulator
+
+44
+00:02:21,800 --> 00:02:24,939
+to simply Current App.
+
+45
+00:02:24,940 --> 00:02:27,719
+Further more, whenever we're in the store
+
+46
+00:02:27,720 --> 00:02:29,413
+and we're ready to publish our application,
+
+47
+00:02:29,414 --> 00:02:31,313
+there will be an opportunity there
+
+48
+00:02:31,314 --> 00:02:36,313
+to list out each of the options
+
+49
+00:02:36,794 --> 00:02:38,833
+that can be purchased from with
+
+50
+00:02:38,834 --> 00:02:39,916
+inside of our application.
+
+51
+00:02:39,917 --> 00:02:43,296
+So we create what's called an in-app offer token.
+
+52
+00:02:43,297 --> 00:02:44,936
+We just have to make sure that
+
+53
+00:02:44,937 --> 00:02:46,597
+we remember what these are
+
+54
+00:02:46,598 --> 00:02:49,416
+and enter them as well as the price,
+
+55
+00:02:49,417 --> 00:02:50,176
+how much we're going to charge
+
+56
+00:02:50,177 --> 00:02:53,473
+for each of these options and so on.
+
+57
+00:02:53,474 --> 00:02:56,733
+We'll see a little bit of this in just a bit.
+
+58
+00:02:56,734 --> 00:03:00,233
+Here I have an extremely simple application
+
+59
+00:03:00,234 --> 00:03:02,133
+that will demonstrate just the bare bones
+
+60
+00:03:02,134 --> 00:03:07,133
+functionality for enabling or disabling a feature
+
+61
+00:03:07,414 --> 00:03:09,373
+based on whether the user has made
+
+62
+00:03:09,374 --> 00:03:10,373
+a purchase or not.
+
+63
+00:03:10,374 --> 00:03:13,163
+So let's go and run the application.
+
+64
+00:03:14,495 --> 00:03:16,013
+And you can see, at this point
+
+65
+00:03:16,014 --> 00:03:19,613
+I've determined that the feature
+
+66
+00:03:19,614 --> 00:03:22,352
+in question, a rectangle.
+
+67
+00:03:22,353 --> 00:03:25,372
+The user has not purchased the rectangle yet.
+
+68
+00:03:25,373 --> 00:03:27,892
+So they see the Purchase Rectangle button.
+
+69
+00:03:27,893 --> 00:03:28,887
+Now you don't have to use a button,
+
+70
+00:03:28,888 --> 00:03:30,289
+you can use a link, you can use anything
+
+71
+00:03:30,290 --> 00:03:31,648
+that you want that can just trigger
+
+72
+00:03:31,649 --> 00:03:36,648
+the process of displaying the purchase option
+
+73
+00:03:36,650 --> 00:03:38,128
+to the end user.
+
+74
+00:03:38,129 --> 00:03:39,327
+So I'm going to go ahead and say,
+
+75
+00:03:39,328 --> 00:03:41,848
+let's go ahead and purchase the rectangle.
+
+76
+00:03:41,849 --> 00:03:44,808
+Now we see this simulation of
+
+77
+00:03:44,809 --> 00:03:46,928
+the purchase process pop-up.
+
+78
+00:03:46,929 --> 00:03:49,947
+This is the current app's simulator's user interface.
+
+79
+00:03:49,948 --> 00:03:51,628
+We'll show you the code where we actually
+
+80
+00:03:51,629 --> 00:03:55,203
+call in to pop this up.
+
+81
+00:03:55,204 --> 00:03:57,476
+You can see the in-app offer token
+
+82
+00:03:57,477 --> 00:04:00,998
+is called, MyInappOfferToken.
+
+83
+00:04:00,999 --> 00:04:03,078
+The return code, we can say whether
+
+84
+00:04:03,079 --> 00:04:06,356
+this succeeds, whether it fails,
+
+85
+00:04:06,357 --> 00:04:08,775
+whether there's invalid arguments
+
+86
+00:04:08,776 --> 00:04:10,216
+that have been sent in.
+
+87
+00:04:10,217 --> 00:04:12,537
+So we can test a lot of different conditions
+
+88
+00:04:12,538 --> 00:04:14,556
+that we would expect to receive back
+
+89
+00:04:14,557 --> 00:04:15,996
+from the store whenever our app
+
+90
+00:04:15,997 --> 00:04:20,243
+is live and available for purchase online.
+
+91
+00:04:20,244 --> 00:04:22,384
+But this time I'm going to go ahead and say
+
+92
+00:04:22,385 --> 00:04:25,185
+the code to return is okay.
+
+93
+00:04:25,186 --> 00:04:26,568
+So I hit continue and you'll notice
+
+94
+00:04:26,569 --> 00:04:29,028
+that the Purchase button went away
+
+95
+00:04:29,029 --> 00:04:32,297
+and I displayed...
+
+96
+00:04:35,288 --> 00:04:39,023
+the red rectangle that the user purchased.
+
+97
+00:04:39,836 --> 00:04:42,461
+Now let me show you how this works.
+
+98
+00:04:42,462 --> 00:04:46,471
+First of all, what you need to do is...
+
+99
+00:04:55,602 --> 00:04:59,281
+understand that there is a local file
+
+100
+00:04:59,282 --> 00:05:02,441
+that keeps track of all of the in-app purchases
+
+101
+00:05:02,442 --> 00:05:05,161
+and whether an app is in trial mode or not
+
+102
+00:05:05,162 --> 00:05:10,161
+and it's called the WindowsStoreProxy.xml file
+
+103
+00:05:10,222 --> 00:05:12,401
+and if you take a look back on that web page,
+
+104
+00:05:12,402 --> 00:05:14,840
+it talks about the location for this
+
+105
+00:05:14,841 --> 00:05:16,381
+on the local user's hard drive.
+
+106
+00:05:16,382 --> 00:05:18,601
+So you can actually go to your own
+
+107
+00:05:18,602 --> 00:05:20,861
+local hard drive and if you've purchased
+
+108
+00:05:20,862 --> 00:05:24,641
+applications or you've added in-app
+
+109
+00:05:24,642 --> 00:05:26,761
+purchases to specific applications,
+
+110
+00:05:26,762 --> 00:05:28,061
+you can go look for this file.
+
+111
+00:05:28,062 --> 00:05:31,271
+I'm not sure if it will show it to you or not.
+
+112
+00:05:34,362 --> 00:05:35,830
+I haven't actually taken the time to look
+
+113
+00:05:35,831 --> 00:05:40,250
+for these files for other applications
+
+114
+00:05:40,251 --> 00:05:42,309
+but if you look at your
+
+115
+00:05:42,310 --> 00:05:45,690
+userprofile/appdata/local/packages
+
+116
+00:05:45,691 --> 00:05:46,770
+then whatever the package name is
+
+117
+00:05:46,771 --> 00:05:48,850
+and it's going to be a big, long GUID
+
+118
+00:05:48,851 --> 00:05:52,704
+/localstate/microsoft/windowsstore/apidata
+
+119
+00:05:52,705 --> 00:05:57,163
+/windowsstoreproxy.xml.
+
+120
+00:05:57,164 --> 00:05:58,524
+Then you're going to see a file
+
+121
+00:05:58,525 --> 00:06:01,064
+that looks something like this.
+
+122
+00:06:01,065 --> 00:06:03,664
+Let me go ahead and open it up here in notepad.
+
+123
+00:06:03,665 --> 00:06:06,944
+And again, this is just the sample
+
+124
+00:06:06,945 --> 00:06:11,764
+that was created for a sample application
+
+125
+00:06:11,765 --> 00:06:14,184
+that I created and what I did was,
+
+126
+00:06:14,185 --> 00:06:16,403
+I took this, edited it and then
+
+127
+00:06:16,404 --> 00:06:20,479
+added a version of this
+
+128
+00:06:20,480 --> 00:06:23,420
+to the Assets directory of my project
+
+129
+00:06:23,421 --> 00:06:25,339
+and we'll come back to that in just a moment.
+
+130
+00:06:25,340 --> 00:06:28,080
+Essentially, this is going to contain
+
+131
+00:06:28,081 --> 00:06:30,660
+listing information, the name of the app,
+
+132
+00:06:30,661 --> 00:06:34,380
+the description of the app, the price of the app
+
+133
+00:06:34,381 --> 00:06:36,860
+and for the various markets where
+
+134
+00:06:36,861 --> 00:06:38,260
+the app is sold.
+
+135
+00:06:38,261 --> 00:06:41,701
+Then there are individual products
+
+136
+00:06:41,702 --> 00:06:45,560
+that can be purchased within the application itself.
+
+137
+00:06:45,561 --> 00:06:47,701
+So you can see there's two different product types.
+
+138
+00:06:47,702 --> 00:06:49,221
+There's a durable product type,
+
+139
+00:06:49,222 --> 00:06:51,420
+this obviously would last for the duration
+
+140
+00:06:51,421 --> 00:06:52,880
+of your ownership and then there are
+
+141
+00:06:52,881 --> 00:06:55,061
+consumable product types, so this might be
+
+142
+00:06:55,062 --> 00:06:58,281
+credits or tokens towards something
+
+143
+00:06:58,282 --> 00:07:01,381
+in the game or I'm sorry, in the app.
+
+144
+00:07:01,382 --> 00:07:03,301
+Like in a game situation, you might purchase
+
+145
+00:07:03,302 --> 00:07:05,521
+gold and you might use that gold
+
+146
+00:07:05,522 --> 00:07:07,120
+and use it up essentially.
+
+147
+00:07:07,121 --> 00:07:10,221
+That's a consumable in-app purchase
+
+148
+00:07:10,222 --> 00:07:12,260
+but if I were to turn on a feature
+
+149
+00:07:12,261 --> 00:07:15,701
+by paying an extra $2, $5, that would be
+
+150
+00:07:15,702 --> 00:07:18,761
+a durable product type.
+
+151
+00:07:18,762 --> 00:07:21,916
+I have to use the name of that in-app
+
+152
+00:07:21,917 --> 00:07:25,216
+purchase token, the feature token
+
+153
+00:07:25,217 --> 00:07:28,636
+and then the price and obviously
+
+154
+00:07:28,637 --> 00:07:32,657
+it's in dollars USD in this particular market data.
+
+155
+00:07:32,658 --> 00:07:35,316
+You can see that this is for the English US.
+
+156
+00:07:35,317 --> 00:07:37,177
+So I can define multiple of these
+
+157
+00:07:37,178 --> 00:07:40,077
+for different regions and languages around the world.
+
+158
+00:07:40,078 --> 00:07:43,612
+And then, each of these have a product ID,
+
+159
+00:07:43,613 --> 00:07:46,269
+as you can see and those are referenced
+
+160
+00:07:46,270 --> 00:07:50,054
+down here in the license information.
+
+161
+00:07:50,055 --> 00:07:52,374
+So you have the listing information on top
+
+162
+00:07:52,375 --> 00:07:55,594
+which lists the app itself as well as
+
+163
+00:07:55,595 --> 00:07:58,155
+any in-app purchases and then the licensing
+
+164
+00:07:58,156 --> 00:08:00,134
+information is really what we're most
+
+165
+00:08:00,135 --> 00:08:03,255
+concerned about especially in our case
+
+166
+00:08:03,256 --> 00:08:05,795
+since we're worried about a durable product
+
+167
+00:08:05,796 --> 00:08:07,114
+that we're going to enable.
+
+168
+00:08:07,115 --> 00:08:10,154
+So first of all, the app itself is the app active?
+
+169
+00:08:10,155 --> 00:08:13,270
+Has the user purchased the app?
+
+170
+00:08:13,271 --> 00:08:16,779
+If IsActive is True then they can use the app.
+
+171
+00:08:16,780 --> 00:08:18,976
+If it's False then they won't be able to.
+
+172
+00:08:18,977 --> 00:08:20,837
+You can also have a trial mode
+
+173
+00:08:20,838 --> 00:08:23,736
+for a certain period of time as defined
+
+174
+00:08:23,737 --> 00:08:26,857
+up here but we don't have a trial mode.
+
+175
+00:08:26,858 --> 00:08:29,890
+We can turn that off and set it to False.
+
+176
+00:08:29,891 --> 00:08:32,131
+Here's the key for the purpose of this video
+
+177
+00:08:32,132 --> 00:08:36,031
+is the product ID and whether this particular
+
+178
+00:08:36,032 --> 00:08:39,231
+in-app purchase is active or not.
+
+179
+00:08:39,232 --> 00:08:44,011
+Let's take a look now, I took this general
+
+180
+00:08:44,012 --> 00:08:48,410
+template and I created a template
+
+181
+00:08:48,411 --> 00:08:52,307
+or I'm sorry, a file called test.xml
+
+182
+00:08:52,308 --> 00:08:54,487
+that's specific to this application.
+
+183
+00:08:54,488 --> 00:08:57,087
+I left some of the things like the market data off.
+
+184
+00:08:57,088 --> 00:08:58,768
+I really don't care about that so much.
+
+185
+00:08:58,769 --> 00:09:01,968
+What I really focused on was this
+
+186
+00:09:01,969 --> 00:09:06,148
+MyInappOfferToken product ID.
+
+187
+00:09:06,149 --> 00:09:11,148
+For the English US market, I also used the name.
+
+188
+00:09:12,388 --> 00:09:14,707
+I could give this a more friendly name I suppose.
+
+189
+00:09:14,708 --> 00:09:18,338
+Then finally here at the bottom
+
+190
+00:09:19,939 --> 00:09:24,890
+for that given in-app offer, the license information.
+
+191
+00:09:24,891 --> 00:09:27,870
+I've got the IsActive set to False.
+
+192
+00:09:27,871 --> 00:09:29,850
+Now, when I run the application,
+
+193
+00:09:29,851 --> 00:09:31,750
+it's going to read in that file,
+
+194
+00:09:31,751 --> 00:09:35,271
+it's going to know the different products
+
+195
+00:09:35,272 --> 00:09:38,910
+that are available in-app and it will
+
+196
+00:09:38,911 --> 00:09:41,738
+then determine that I do not currently have
+
+197
+00:09:41,739 --> 00:09:44,817
+that feature so show the Purchase button
+
+198
+00:09:44,818 --> 00:09:46,498
+for that feature, then after I make
+
+199
+00:09:46,499 --> 00:09:50,857
+the purchase, then it will change the value
+
+200
+00:09:50,858 --> 00:09:53,969
+to IsActive is True.
+
+201
+00:09:53,970 --> 00:09:56,467
+It's important to know that in debug time
+
+202
+00:09:56,468 --> 00:09:58,386
+with these files that we're loading here
+
+203
+00:09:58,387 --> 00:10:03,386
+locally into the current app simulator,
+
+204
+00:10:04,088 --> 00:10:07,506
+it will not write to these files.
+
+205
+00:10:07,507 --> 00:10:09,747
+So if I want to test the condition
+
+206
+00:10:09,748 --> 00:10:11,983
+where the purchase was all ready made
+
+207
+00:10:11,984 --> 00:10:14,684
+prior to running the application,
+
+208
+00:10:14,685 --> 00:10:16,303
+a second or subsequent time,
+
+209
+00:10:16,304 --> 00:10:18,504
+then I can change that value from False to True
+
+210
+00:10:18,505 --> 00:10:19,723
+and re-run the application.
+
+211
+00:10:19,724 --> 00:10:21,451
+You can see now, it just defaults to,
+
+212
+00:10:21,452 --> 00:10:22,456
+hey you've all ready purchased
+
+213
+00:10:22,457 --> 00:10:25,127
+the red rectangle, here it is.
+
+214
+00:10:25,377 --> 00:10:28,236
+So some important things to consider
+
+215
+00:10:28,237 --> 00:10:29,996
+when you're going to use this.
+
+216
+00:10:29,997 --> 00:10:31,796
+Let's take a look at the code itself
+
+217
+00:10:31,797 --> 00:10:32,856
+and what we did.
+
+218
+00:10:32,857 --> 00:10:35,336
+I kept everything in the MainPage.xaml.cs
+
+219
+00:10:35,337 --> 00:10:37,976
+but obviously if you're working with something
+
+220
+00:10:37,977 --> 00:10:42,035
+that is a little bit more global in nature
+
+221
+00:10:42,036 --> 00:10:43,776
+then you're going to want to put this
+
+222
+00:10:43,777 --> 00:10:46,515
+in the App.xaml.cs file instead
+
+223
+00:10:46,516 --> 00:10:50,004
+and then reference it from the rest of the application.
+
+224
+00:10:51,015 --> 00:10:53,951
+In the page load, you can see that I've got
+
+225
+00:10:53,952 --> 00:10:57,252
+some important little bits here where I put
+
+226
+00:10:57,253 --> 00:11:01,551
+a flower box comment around it and some explanation.
+
+227
+00:11:01,552 --> 00:11:05,390
+Here is where I load up that test.xml file
+
+228
+00:11:05,391 --> 00:11:07,231
+that we looked at just a moment ago
+
+229
+00:11:07,232 --> 00:11:10,632
+and then I give it to the current app simulator
+
+230
+00:11:10,633 --> 00:11:12,691
+and say, hey reload the simulator
+
+231
+00:11:12,692 --> 00:11:16,612
+and use that test file that I created.
+
+232
+00:11:18,812 --> 00:11:23,811
+Once I am about to submit this application
+
+233
+00:11:23,931 --> 00:11:26,490
+to the store, I would want to comment
+
+234
+00:11:26,491 --> 00:11:28,290
+all of this out or delete it completely.
+
+235
+00:11:28,291 --> 00:11:29,389
+Probably just comment it out because
+
+236
+00:11:29,390 --> 00:11:31,870
+I want to continue to test this even after
+
+237
+00:11:31,871 --> 00:11:34,210
+I release the application.
+
+238
+00:11:34,211 --> 00:11:35,810
+Furthermore, I would want to change
+
+239
+00:11:35,811 --> 00:11:39,810
+all of these references to current app simulator
+
+240
+00:11:39,811 --> 00:11:44,123
+to just CurrentApp.LicenseInformation and so on.
+
+241
+00:11:44,124 --> 00:11:46,644
+At any rate, first of all I want to get
+
+242
+00:11:46,645 --> 00:11:50,924
+a reference to the app license information
+
+243
+00:11:50,925 --> 00:11:53,636
+and then I can look at the various product
+
+244
+00:11:53,637 --> 00:11:57,276
+licenses and say hey, I have a product
+
+245
+00:11:57,277 --> 00:12:01,056
+with this token name, MyInappOfferToken,
+
+246
+00:12:01,057 --> 00:12:02,176
+is it active or not?
+
+247
+00:12:02,177 --> 00:12:04,776
+If it is active then we'll change the visibility
+
+248
+00:12:04,777 --> 00:12:09,136
+both of the rectangle and the purchase button accordingly.
+
+249
+00:12:09,137 --> 00:12:13,476
+So that's what I do in these lines of code here.
+
+250
+00:12:13,477 --> 00:12:17,056
+Then, whenever the Purchase button is clicked,
+
+251
+00:12:17,057 --> 00:12:18,857
+here again we're going to insure
+
+252
+00:12:18,858 --> 00:12:23,857
+that that particular In-app offer token is not active.
+
+253
+00:12:26,317 --> 00:12:28,416
+If it is active, then there's a problem
+
+254
+00:12:28,417 --> 00:12:30,335
+with the logic in my application because
+
+255
+00:12:30,336 --> 00:12:31,777
+it shouldn't be right?
+
+256
+00:12:31,778 --> 00:12:34,516
+So we would just bail out of this.
+
+257
+00:12:34,517 --> 00:12:37,056
+However, assuming that we have not
+
+258
+00:12:37,057 --> 00:12:38,556
+all ready purchased this once,
+
+259
+00:12:38,557 --> 00:12:41,332
+then we want to and this is the key,
+
+260
+00:12:41,333 --> 00:12:45,871
+make a call into RequestProductPurchaseAsync()
+
+261
+00:12:45,872 --> 00:12:50,492
+and pass in that token for the product
+
+262
+00:12:50,493 --> 00:12:53,572
+that we're going to allow the user to purchase, so we call,
+
+263
+00:12:53,573 --> 00:12:57,252
+CurrentAppSimulator.RequestProductPurchaseAsync()
+
+264
+00:12:57,253 --> 00:12:59,492
+and that's what pops up that little dialog
+
+265
+00:12:59,493 --> 00:13:01,371
+and what would pop up,
+
+266
+00:13:01,372 --> 00:13:04,212
+a common dialogue in the phone
+
+267
+00:13:04,213 --> 00:13:07,111
+or on the desktop to allow the user
+
+268
+00:13:07,112 --> 00:13:09,711
+to decide whether their going to pay
+
+269
+00:13:09,712 --> 00:13:12,633
+$2, $5, for the in-app purchase.
+
+270
+00:13:13,305 --> 00:13:15,044
+Once it's complete, we're going
+
+271
+00:13:15,045 --> 00:13:17,517
+to get back a purchase results.
+
+272
+00:13:17,518 --> 00:13:19,451
+This is what's going to give us that
+
+273
+00:13:19,452 --> 00:13:22,991
+the purchase succeeded or the order
+
+274
+00:13:22,992 --> 00:13:25,391
+wasn't fulfilled, it wasn't purchased,
+
+275
+00:13:25,392 --> 00:13:27,752
+it's all ready been purchased.
+
+276
+00:13:27,753 --> 00:13:30,791
+If it succeeds, then what we want to do
+
+277
+00:13:30,792 --> 00:13:33,231
+is adjust the state of the application
+
+278
+00:13:33,232 --> 00:13:36,812
+accordingly and then, in this case,
+
+279
+00:13:36,813 --> 00:13:38,684
+just change the visibility of the rectangle
+
+280
+00:13:38,685 --> 00:13:40,184
+on the button and then move on.
+
+281
+00:13:40,185 --> 00:13:42,024
+That's all there is to it.
+
+282
+00:13:42,025 --> 00:13:43,684
+I know it sounds like a lot but it's really
+
+283
+00:13:43,685 --> 00:13:46,345
+not that hard to add this in into your app.
+
+284
+00:13:46,346 --> 00:13:49,924
+Obviously in-app purchases are the best way
+
+285
+00:13:49,925 --> 00:13:53,130
+to monetize an application because you give
+
+286
+00:13:53,131 --> 00:13:54,610
+people a reason to download the app
+
+287
+00:13:54,611 --> 00:13:57,071
+in the first place and then you only
+
+288
+00:13:57,072 --> 00:13:59,310
+monetize it for those hyper responders
+
+289
+00:13:59,311 --> 00:14:01,830
+who want the extra features that you're
+
+290
+00:14:01,831 --> 00:14:04,690
+willing to sell them.
+
+291
+00:14:05,011 --> 00:14:07,088
+Now what we want to do is apply
+
+292
+00:14:07,089 --> 00:14:11,688
+everything we learned here into our app.
+
+293
+00:14:11,689 --> 00:14:16,688
+I'm going to move this out of the way, off screen
+
+294
+00:14:18,489 --> 00:14:20,628
+and I'm going to pop back over
+
+295
+00:14:20,629 --> 00:14:24,334
+to the AlbumCoverMatchGame.
+
+296
+00:14:24,335 --> 00:14:28,444
+What I'm going to do is set the visibility
+
+297
+00:14:28,445 --> 00:14:30,667
+of the Ad Mediator Control.
+
+298
+00:14:30,668 --> 00:14:35,270
+So visibility equals collapsed to begin with.
+
+299
+00:14:35,271 --> 00:14:38,270
+And then what I'm also going to do here
+
+300
+00:14:38,271 --> 00:14:41,930
+is add, no I'll keep it simple.
+
+301
+00:14:41,931 --> 00:14:43,062
+It's not going to be pretty but I'm going
+
+302
+00:14:43,063 --> 00:14:45,602
+to add a button instead and just
+
+303
+00:14:45,603 --> 00:14:48,622
+put it here and let's call this,
+
+304
+00:14:48,623 --> 00:14:52,523
+the Name equals PurchaseButton.
+
+305
+00:14:52,524 --> 00:14:56,252
+And the click event will be,
+
+306
+00:14:56,644 --> 00:14:58,442
+PurchaseButton_Click.
+
+307
+00:14:58,443 --> 00:15:03,442
+And the Content equals "Remove Ads"
+
+308
+00:15:06,903 --> 00:15:08,562
+We'll worry about how it looks
+
+309
+00:15:08,563 --> 00:15:10,049
+and where it's positioned in just a moment.
+
+310
+00:15:10,050 --> 00:15:12,169
+I'm not going to worry about that just yet.
+
+311
+00:15:12,170 --> 00:15:17,009
+But I probably should put it in the same
+
+312
+00:15:17,010 --> 00:15:19,820
+grid cell for now.
+
+313
+00:15:21,230 --> 00:15:26,229
+Let's separate this out on the separate lines, like so.
+
+314
+00:15:27,951 --> 00:15:32,950
+Now let's go into the PurchaseButton click event.
+
+315
+00:15:33,625 --> 00:15:35,605
+Next up what I want to do is go ahead
+
+316
+00:15:35,606 --> 00:15:39,524
+and I'm going to add a new item.
+
+317
+00:15:39,525 --> 00:15:41,624
+Sorry that's off to the right hand side.
+
+318
+00:15:41,625 --> 00:15:44,484
+I'm going to create a New XML File.
+
+319
+00:15:44,485 --> 00:15:46,545
+I can call this anything.
+
+320
+00:15:46,546 --> 00:15:51,334
+I'm just going to call it "Test" for now.
+
+321
+00:15:51,625 --> 00:15:53,204
+This is where I'm going to go
+
+322
+00:15:53,205 --> 00:15:57,545
+to the test.xml file that I created
+
+323
+00:15:57,546 --> 00:16:00,305
+a moment ago that we looked at
+
+324
+00:16:00,306 --> 00:16:03,104
+in that in-app purchase example
+
+325
+00:16:03,105 --> 00:16:05,165
+and I'm just going to copy and paste it here,
+
+326
+00:16:05,166 --> 00:16:10,165
+the body of it, into this Test.xml.
+
+327
+00:16:10,274 --> 00:16:11,466
+I'm going to probably need
+
+328
+00:16:11,467 --> 00:16:12,986
+to change things like the app name.
+
+329
+00:16:12,987 --> 00:16:17,986
+So, AlbumCoverMatchGame.
+
+330
+00:16:18,807 --> 00:16:23,806
+The description, Have fun guessing songs
+
+331
+00:16:24,807 --> 00:16:29,806
+and album art from your music collection.
+
+332
+00:16:34,627 --> 00:16:36,253
+The price of this is going to be free right?
+
+333
+00:16:36,254 --> 00:16:41,253
+So, probably just leave that at zero.
+
+334
+00:16:43,166 --> 00:16:46,129
+Here we come to the MyInappOfferToken.
+
+335
+00:16:46,130 --> 00:16:48,989
+I'm actually going to call this something different.
+
+336
+00:16:48,990 --> 00:16:53,989
+The "RemoveAdsOffer", maybe that's something
+
+337
+00:16:54,870 --> 00:16:58,539
+we can call it and we'll say,
+
+338
+00:16:58,540 --> 00:17:03,539
+"Remove Ads from the App".
+
+339
+00:17:05,680 --> 00:17:09,459
+And the price will be $1 and then we'll
+
+340
+00:17:09,460 --> 00:17:12,808
+make sure to paste in that product ID here
+
+341
+00:17:12,809 --> 00:17:17,108
+and set the IsActive to False.
+
+342
+00:17:18,690 --> 00:17:22,549
+That should be all we need to do in that file.
+
+343
+00:17:23,300 --> 00:17:25,079
+I'm going to close it for now
+
+344
+00:17:25,080 --> 00:17:29,659
+and I literally am just going to copy
+
+345
+00:17:29,660 --> 00:17:31,299
+code that we've all ready written
+
+346
+00:17:31,300 --> 00:17:34,799
+in that in-app purchase example
+
+347
+00:17:34,800 --> 00:17:37,269
+that we looked at a little bit earlier.
+
+348
+00:17:38,260 --> 00:17:40,119
+What I'll do to begin with here,
+
+349
+00:17:40,120 --> 00:17:43,680
+is in the Page_Loaded event.
+
+350
+00:17:43,681 --> 00:17:45,319
+I'm really just going to copy all this stuff
+
+351
+00:17:45,320 --> 00:17:47,549
+and paste it in there.
+
+352
+00:17:48,100 --> 00:17:50,200
+Because there's not much that needs to change
+
+353
+00:17:50,201 --> 00:17:55,200
+except I'm going to need to paste in, oops.
+
+354
+00:17:57,779 --> 00:18:01,716
+I'm going to need to get that, whatever I called that
+
+355
+00:18:01,938 --> 00:18:04,247
+Remove ads offer.
+
+356
+00:18:05,524 --> 00:18:10,016
+I'll need to re-paste it in here and I think
+
+357
+00:18:10,017 --> 00:18:11,375
+that's it for now.
+
+358
+00:18:11,376 --> 00:18:13,455
+You can see that we got some red squiglies.
+
+359
+00:18:13,456 --> 00:18:15,601
+Let me get my face off here so you can
+
+360
+00:18:15,602 --> 00:18:17,307
+see the whole screen.
+
+361
+00:18:17,308 --> 00:18:19,828
+Now we're going to hit control period
+
+362
+00:18:19,829 --> 00:18:24,137
+to start adding using statements.
+
+363
+00:18:26,535 --> 00:18:28,773
+For an app simulator, let's hit control period.
+
+364
+00:18:28,774 --> 00:18:33,120
+It's in Windows.ApplicationModel.Store with that.
+
+365
+00:18:33,121 --> 00:18:36,410
+That should resolve a bunch of stuff for us.
+
+366
+00:18:37,601 --> 00:18:41,300
+Oh yeah and this app license information,
+
+367
+00:18:41,301 --> 00:18:46,122
+I actually created that as a public property
+
+368
+00:18:46,893 --> 00:18:51,892
+of the MainPage.XAML.
+
+369
+00:18:53,373 --> 00:18:56,332
+So up here at the top, above private,
+
+370
+00:18:56,333 --> 00:18:58,939
+I'm going to paste in that, I just did
+
+371
+00:18:58,940 --> 00:19:03,939
+prop, tab, tab, license information object, it's of type,
+
+372
+00:19:04,752 --> 00:19:08,671
+Windows.ApplicationModel.Store.LicenseInformation
+
+373
+00:19:08,672 --> 00:19:10,911
+and I named it AppLicenseInformation
+
+374
+00:19:10,912 --> 00:19:14,072
+and just let the default getters and setters,
+
+375
+00:19:14,073 --> 00:19:15,552
+leave them where they are.
+
+376
+00:19:15,553 --> 00:19:17,371
+Now you can see that I'm getting
+
+377
+00:19:17,372 --> 00:19:20,312
+red squiggy's because of the fact
+
+378
+00:19:20,313 --> 00:19:24,691
+that this should have an async keyword
+
+379
+00:19:24,692 --> 00:19:29,691
+there in the method signature.
+
+380
+00:19:32,252 --> 00:19:36,671
+Then, obviously, this isn't what we want here.
+
+381
+00:19:36,672 --> 00:19:39,771
+We're going to have to rethink that as well.
+
+382
+00:19:39,772 --> 00:19:41,631
+And that actually should be pretty easy right?
+
+383
+00:19:41,632 --> 00:19:44,911
+What we'll do is, we got the name
+
+384
+00:19:44,912 --> 00:19:49,672
+of the Ad Mediator Control so let's
+
+385
+00:19:50,272 --> 00:19:55,271
+set the Visibility equals Visibility.Collapsed
+
+386
+00:19:57,634 --> 00:20:00,800
+if they've purchased the feature
+
+387
+00:20:00,801 --> 00:20:05,399
+and if they can't, then we'll set
+
+388
+00:20:05,400 --> 00:20:10,399
+the Visibility equals Visable and then the same
+
+389
+00:20:12,601 --> 00:20:13,852
+is true for the button.
+
+390
+00:20:13,853 --> 00:20:16,072
+What did I name that button?
+
+391
+00:20:16,073 --> 00:20:18,472
+We named it PurchaseButton, great.
+
+392
+00:20:18,473 --> 00:20:19,653
+So the reverse will be true on
+
+393
+00:20:19,654 --> 00:20:20,952
+the visibility of the purchase button.
+
+394
+00:20:20,953 --> 00:20:25,952
+So PurchaseButton.Visability equals Visibility.Visible
+
+395
+00:20:26,013 --> 00:20:31,012
+and then the reverse is true here.
+
+396
+00:20:37,308 --> 00:20:39,320
+All right, so far so good.
+
+397
+00:20:39,851 --> 00:20:41,390
+The last thing that we need to do
+
+398
+00:20:41,391 --> 00:20:46,390
+is just find the purchase button click event
+
+399
+00:20:47,231 --> 00:20:52,230
+and here what we want to do is actually pop-up...
+
+400
+00:21:01,171 --> 00:21:04,090
+the purchase dialog, so I'm going to past that in.
+
+401
+00:21:04,091 --> 00:21:07,991
+Here again, this is going to be async
+
+402
+00:21:07,992 --> 00:21:12,991
+and I need the name of my offer.
+
+403
+00:21:13,512 --> 00:21:16,790
+I probably should make this a constant frankly
+
+404
+00:21:16,791 --> 00:21:18,011
+instead of using these magic strings
+
+405
+00:21:18,012 --> 00:21:20,360
+all over the place.
+
+406
+00:21:23,538 --> 00:21:26,757
+And then we'll obviously want to change this,
+
+407
+00:21:26,758 --> 00:21:29,657
+If succeeded so then that means
+
+408
+00:21:29,658 --> 00:21:34,217
+we want to get rid of the ad mediator.
+
+409
+00:21:34,218 --> 00:21:36,963
+So let me copy those two lines of code
+
+410
+00:21:36,964 --> 00:21:39,523
+and replace them with this.
+
+411
+00:21:39,524 --> 00:21:42,293
+You see how easy that was?
+
+412
+00:21:43,884 --> 00:21:46,023
+I am concerned about the placement
+
+413
+00:21:46,024 --> 00:21:49,003
+of this button, where it's actually going to show up.
+
+414
+00:21:49,004 --> 00:21:50,003
+The way it stands right now,
+
+415
+00:21:50,004 --> 00:21:52,944
+the button will actually sit on top of the control.
+
+416
+00:21:52,945 --> 00:21:54,063
+Let's see how it looks and then we can
+
+417
+00:21:54,064 --> 00:21:57,434
+make some hard decisions about that.
+
+418
+00:22:05,804 --> 00:22:07,793
+I don't see my button.
+
+419
+00:22:13,784 --> 00:22:16,393
+All right button, where'd you go?
+
+420
+00:22:17,484 --> 00:22:18,683
+I just noticed something here.
+
+421
+00:22:18,684 --> 00:22:20,943
+When we dragged and dropped that control,
+
+422
+00:22:20,944 --> 00:22:23,143
+we put a huge negative margin there.
+
+423
+00:22:23,144 --> 00:22:26,810
+I'm not sure that I needed to do that.
+
+424
+00:22:26,811 --> 00:22:29,419
+Maybe we'll try this.
+
+425
+00:22:32,270 --> 00:22:34,432
+VerticalAlignment equals "Top".
+
+426
+00:22:34,433 --> 00:22:38,909
+and HorizontalAlignment equals "Right".
+
+427
+00:22:38,910 --> 00:22:41,179
+Let's see what that gives us.
+
+428
+00:22:48,111 --> 00:22:51,099
+Still not seeing my button. Where are you?
+
+429
+00:22:56,090 --> 00:22:58,239
+What am I missing here?
+
+430
+00:22:58,350 --> 00:22:59,349
+Oh you know what?
+
+431
+00:22:59,350 --> 00:23:02,029
+I'm a complete and utter knucklehead.
+
+432
+00:23:02,030 --> 00:23:02,949
+Here's the problem.
+
+433
+00:23:02,950 --> 00:23:05,029
+It's not exactly like the previous scenario.
+
+434
+00:23:05,030 --> 00:23:07,149
+You're probably sitting there and saying,
+
+435
+00:23:07,150 --> 00:23:11,179
+"Bob, you're missing the point of this."
+
+436
+00:23:12,791 --> 00:23:16,249
+If you purchase this, it should go away.
+
+437
+00:23:16,250 --> 00:23:21,249
+So unlike our example where we show something
+
+438
+00:23:21,310 --> 00:23:23,129
+when you purchase it, now we want
+
+439
+00:23:23,130 --> 00:23:26,869
+to hide something when you purchase it.
+
+440
+00:23:26,870 --> 00:23:29,589
+We want to hide both the button
+
+441
+00:23:29,590 --> 00:23:32,069
+and the ad mediator control.
+
+442
+00:23:32,070 --> 00:23:34,009
+I'm a little embarrassed. Sorry about that.
+
+443
+00:23:34,010 --> 00:23:36,669
+That's what you get whenever you code
+
+444
+00:23:36,670 --> 00:23:39,179
+in front of a live audience.
+
+445
+00:23:45,420 --> 00:23:47,695
+Probably would want to add a little bit of margin there,
+
+446
+00:23:47,696 --> 00:23:49,075
+clean things up, make it look a little better
+
+447
+00:23:49,076 --> 00:23:52,095
+but let's go ahead and click the Remove Ads
+
+448
+00:23:52,096 --> 00:23:52,975
+and I'm going to go ahead and say,
+
+449
+00:23:52,976 --> 00:23:57,975
+"Hey, let's remove them." And it works, awesome.
+
+450
+00:23:59,236 --> 00:24:02,725
+We'll just pick one, got to learn those songs.
+
+451
+00:24:04,557 --> 00:24:05,955
+We're pretty much done with the app.
+
+452
+00:24:05,956 --> 00:24:08,135
+Like I said, I would really, really, like
+
+453
+00:24:08,136 --> 00:24:10,375
+to get a graphic designer involved in this
+
+454
+00:24:10,376 --> 00:24:13,155
+and add some better aesthetic,
+
+455
+00:24:13,156 --> 00:24:18,155
+maybe some better placement of things and so on.
+
+456
+00:24:19,696 --> 00:24:22,556
+One thing I am going to do here is just
+
+457
+00:24:22,557 --> 00:24:27,556
+add a little margin around the mediator control
+
+458
+00:24:27,876 --> 00:24:32,055
+and around the button itself.
+
+459
+00:24:32,056 --> 00:24:33,415
+Let me think about this for a moment
+
+460
+00:24:33,416 --> 00:24:38,415
+What I want to do is just set a margin here...
+
+461
+00:24:40,036 --> 00:24:45,035
+of 10 on the left, 10 on the top
+
+462
+00:24:46,136 --> 00:24:46,841
+and I think I may need to make
+
+463
+00:24:46,842 --> 00:24:48,862
+some more room here actually.
+
+464
+00:24:48,863 --> 00:24:53,862
+This is, I think this is a 100, yeah,
+
+465
+00:24:55,162 --> 00:24:56,440
+row definition I want to make 110
+
+466
+00:24:56,441 --> 00:25:01,440
+because 90 plus 10 plus 10.
+
+467
+00:25:01,822 --> 00:25:05,531
+In fact, let's just be brief about this.
+
+468
+00:25:07,683 --> 00:25:09,842
+I'm going to do the same thing here as well.
+
+469
+00:25:09,843 --> 00:25:14,842
+So margin 10 and let's see what that gives us.
+
+470
+00:25:24,763 --> 00:25:26,581
+I might move that to the lower right hand corner
+
+471
+00:25:26,582 --> 00:25:30,851
+but at this point, it's kind of academic.
+
+472
+00:25:32,722 --> 00:25:35,511
+Probably need a good logo.
+
+473
+00:25:35,983 --> 00:25:38,571
+Obviously need better art work.
+
+474
+00:25:39,622 --> 00:25:42,813
+Really the focus here on this particular project
+
+475
+00:25:42,814 --> 00:25:47,813
+was being able to access all of the files
+
+476
+00:25:50,753 --> 00:25:53,972
+from a library, being able to iterate through
+
+477
+00:25:53,973 --> 00:25:56,032
+and grab them all.
+
+478
+00:25:56,033 --> 00:25:59,693
+We were working with the KnownFolders.Library
+
+479
+00:25:59,694 --> 00:26:02,512
+collection of files to get all of the music files
+
+480
+00:26:02,513 --> 00:26:04,451
+on your local computer.
+
+481
+00:26:04,452 --> 00:26:06,966
+I think the other thing that we wanted
+
+482
+00:26:06,967 --> 00:26:11,186
+to demonstrate in this was adding ads
+
+483
+00:26:11,187 --> 00:26:12,706
+to monetize the application
+
+484
+00:26:12,707 --> 00:26:14,226
+and then adding the in-app purchase
+
+485
+00:26:14,227 --> 00:26:16,006
+like we did in this video.
+
+486
+00:26:16,007 --> 00:26:18,346
+I can't seem to think of what else
+
+487
+00:26:18,347 --> 00:26:20,266
+we wanted to demonstrate.
+
+488
+00:26:20,267 --> 00:26:24,546
+Oh, playing media, retrieving a file
+
+489
+00:26:24,547 --> 00:26:29,546
+and playing it and just a ton of logic here
+
+490
+00:26:29,567 --> 00:26:32,145
+to decide what to play and how to play it
+
+491
+00:26:32,146 --> 00:26:36,086
+and to keep score and all those sorts of things.
+
+492
+00:26:36,087 --> 00:26:40,206
+Hopefully it was a helpful project in that regard.
+
+493
+00:26:40,207 --> 00:26:42,386
+The great news is that we have
+
+494
+00:26:42,387 --> 00:26:43,906
+one more project left and it's going
+
+495
+00:26:43,907 --> 00:26:45,446
+to be a fun project because we're
+
+496
+00:26:45,447 --> 00:26:46,945
+going to get with the Marvel API
+
+497
+00:26:46,946 --> 00:26:48,745
+and I'm really excited about this.
+
+498
+00:26:48,746 --> 00:26:52,715
+So we'll see you in that lesson, thanks.  
+

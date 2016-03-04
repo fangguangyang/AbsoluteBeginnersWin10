@@ -1,0 +1,632 @@
+1
+00:00:05,786 --> 00:00:09,445
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net,</v>      
+
+2
+00:00:09,446 --> 00:00:11,124
+and in this lesson we're going to talk about      
+
+3
+00:00:11,125 --> 00:00:14,585
+keeping your DataBoundControls updated      
+
+4
+00:00:14,586 --> 00:00:16,844
+whenever the underlying collection      
+
+5
+00:00:16,845 --> 00:00:20,201
+of poco objects changes out from under you.      
+
+6
+00:00:20,202 --> 00:00:22,321
+So previously, up to this point,      
+
+7
+00:00:22,322 --> 00:00:24,081
+whenever we were binding to data,      
+
+8
+00:00:24,082 --> 00:00:25,616
+the only scenario I showed you      
+
+9
+00:00:25,617 --> 00:00:30,616
+was binding to kind of a static set of items.      
+
+10
+00:00:30,967 --> 00:00:33,844
+And so we would bind once whenever the Page      
+
+11
+00:00:33,845 --> 00:00:36,204
+first loads or whenever the App first loads.      
+
+12
+00:00:36,205 --> 00:00:39,185
+However, we need to discuss another scenario,      
+
+13
+00:00:39,186 --> 00:00:42,904
+and that's in what happens whenever we update      
+
+14
+00:00:42,905 --> 00:00:46,684
+that collection of data out from under      
+
+15
+00:00:46,685 --> 00:00:49,484
+our DataBoundControls.      
+
+16
+00:00:49,485 --> 00:00:52,123
+So what happens when I need to programmatically      
+
+17
+00:00:52,124 --> 00:00:54,386
+add new items to the List      
+
+18
+00:00:54,387 --> 00:00:56,905
+or remove items from the list?      
+
+19
+00:00:56,906 --> 00:00:59,364
+Well I want you to take a look at this example.      
+
+20
+00:00:59,365 --> 00:01:02,284
+It's the simplest possible contact manager      
+
+21
+00:01:02,285 --> 00:01:03,984
+application you can build.      
+
+22
+00:01:03,985 --> 00:01:06,524
+Here I'm just going to add my first name, my last name,      
+
+23
+00:01:06,525 --> 00:01:09,284
+and then choose an avatar from a list and click Add.      
+
+24
+00:01:09,285 --> 00:01:12,384
+Now my intent here is to create a new instance      
+
+25
+00:01:12,385 --> 00:01:15,605
+of Contact, add it to a collection,      
+
+26
+00:01:15,606 --> 00:01:18,725
+a list of Contact called Contacts,      
+
+27
+00:01:18,726 --> 00:01:22,244
+and then I'm hoping that my GridView control      
+
+28
+00:01:22,245 --> 00:01:25,264
+in that large white area below my form      
+
+29
+00:01:25,265 --> 00:01:28,407
+will actually then display the new contact.      
+
+30
+00:01:28,408 --> 00:01:29,947
+But as you can see, it doesn't do that,      
+
+31
+00:01:29,948 --> 00:01:31,747
+and I'm left to scratch my head here      
+
+32
+00:01:31,748 --> 00:01:34,187
+and wonder why isn't that working?      
+
+33
+00:01:34,188 --> 00:01:35,667
+Well the reason why that's not working      
+
+34
+00:01:35,668 --> 00:01:38,007
+is because nobody told the GridView      
+
+35
+00:01:38,008 --> 00:01:40,047
+that something changed.      
+
+36
+00:01:40,048 --> 00:01:44,008
+You have to let it know that there      
+
+37
+00:01:44,009 --> 00:01:47,248
+is new information to bind to.      
+
+38
+00:01:47,249 --> 00:01:48,727
+The way you do that is to use      
+
+39
+00:01:48,728 --> 00:01:50,807
+a different type of collection.      
+
+40
+00:01:50,808 --> 00:01:52,447
+So here you can see that I've created      
+
+41
+00:01:52,448 --> 00:01:55,347
+a collection, a List<Contact>.      
+
+42
+00:01:55,348 --> 00:01:57,607
+And we've done that up to this point,      
+
+43
+00:01:57,608 --> 00:02:00,307
+but it's not going to work for us anymore.      
+
+44
+00:02:00,308 --> 00:02:02,947
+What we need to use is a different type of collection      
+
+45
+00:02:02,948 --> 00:02:06,067
+called ObservableCollection<Contact>.      
+
+46
+00:02:06,068 --> 00:02:08,914
+Alright, so let me comment out some things      
+
+47
+00:02:09,225 --> 00:02:10,643
+and un-comment out some things.      
+
+48
+00:02:10,644 --> 00:02:12,603
+So now you can see that I've changed      
+
+49
+00:02:12,604 --> 00:02:14,921
+from my List<Contact> to an ObservableCollection<Contact>      
+
+50
+00:02:14,922 --> 00:02:16,019
+ObservableCollection<Contact>.      
+
+51
+00:02:16,020 --> 00:02:18,019
+So whenever you see the term "Observable"      
+
+52
+00:02:18,020 --> 00:02:20,339
+in the .NET Framework Class Library,      
+
+53
+00:02:20,340 --> 00:02:22,280
+that means that your DataBoundControl,      
+
+54
+00:02:22,281 --> 00:02:23,540
+whether it's a GridView, ListView,      
+
+55
+00:02:23,541 --> 00:02:25,741
+whatever the case might be,      
+
+56
+00:02:25,742 --> 00:02:28,720
+will be listening or watching      
+
+57
+00:02:28,721 --> 00:02:31,040
+the collection for changes.      
+
+58
+00:02:31,041 --> 00:02:32,600
+Whenever a change happens,      
+
+59
+00:02:32,601 --> 00:02:35,580
+the collection, the ObservableCollection<Contact>,      
+
+60
+00:02:35,581 --> 00:02:38,720
+will say, "Hey, anybody who's watching me right now,      
+
+61
+00:02:38,721 --> 00:02:41,160
+I have a change so you might want to go      
+
+62
+00:02:41,161 --> 00:02:44,400
+off and re-bind yourself to me." Alright.      
+
+63
+00:02:44,401 --> 00:02:46,240
+And so let's take a look now.      
+
+64
+00:02:46,241 --> 00:02:49,160
+Let's build the application, and uh-oh,      
+
+65
+00:02:49,161 --> 00:02:50,820
+we get an error.      
+
+66
+00:02:50,821 --> 00:02:54,221
+Why do we get an error that we cannot convert      
+
+67
+00:02:54,222 --> 00:02:57,320
+from ObservableCollection<Contact>      
+
+68
+00:02:57,321 --> 00:03:02,321
+to a List<Contact>?      
+
+69
+00:03:02,561 --> 00:03:05,620
+Well the reason is because of the way      
+
+70
+00:03:05,621 --> 00:03:09,060
+that we're binding to our data.      
+
+71
+00:03:09,061 --> 00:03:11,160
+You can see that we're using x:Bind statements.      
+
+72
+00:03:11,161 --> 00:03:13,200
+I didn't really say much about x:Bind      
+
+73
+00:03:13,201 --> 00:03:15,060
+when we actually started using it.      
+
+74
+00:03:15,061 --> 00:03:17,460
+It's actually the newest binding statement      
+
+75
+00:03:17,461 --> 00:03:18,300
+that's available.      
+
+76
+00:03:18,301 --> 00:03:20,400
+It was just introduced with the Universal      
+
+77
+00:03:20,401 --> 00:03:22,540
+Windows Platform, and what it does is it      
+
+78
+00:03:22,541 --> 00:03:25,180
+pre-compiles the bindings before      
+
+79
+00:03:25,181 --> 00:03:27,640
+your application runs even the first time,      
+
+80
+00:03:27,641 --> 00:03:30,681
+whereas in the old style just the binding syntax      
+
+81
+00:03:30,682 --> 00:03:33,120
+that was available previously before the Universal      
+
+82
+00:03:33,121 --> 00:03:35,760
+Windows Platform, it would do this all at runtime.      
+
+83
+00:03:35,761 --> 00:03:37,572
+Now why would you pre-compile?      
+
+84
+00:03:37,573 --> 00:03:40,112
+You pre-compile to improve the performance      
+
+85
+00:03:40,113 --> 00:03:41,730
+of the application.      
+
+86
+00:03:41,731 --> 00:03:44,230
+So what's happening here is when I first wrote      
+
+87
+00:03:44,231 --> 00:03:47,590
+this application against a List<Contact>,      
+
+88
+00:03:47,591 --> 00:03:49,530
+Visual Studio went out and generated      
+
+89
+00:03:49,531 --> 00:03:51,509
+some source code for me behind the scenes      
+
+90
+00:03:51,510 --> 00:03:56,390
+that I can't easily get to from the Solution Explorer.      
+
+91
+00:03:56,391 --> 00:03:58,568
+I can get to it, it's just not easy to get to.      
+
+92
+00:03:58,569 --> 00:04:01,527
+Now the way to fix this is to tell Visual Studio,      
+
+93
+00:04:01,528 --> 00:04:04,268
+"Hey, go off and re-generate that code."      
+
+94
+00:04:04,269 --> 00:04:05,528
+And the way you do that is you go      
+
+95
+00:04:05,529 --> 00:04:07,928
+inside of your data template      
+
+96
+00:04:07,929 --> 00:04:09,608
+and you just hit, you select everything      
+
+97
+00:04:09,609 --> 00:04:12,628
+inside the data template, you hit Control+X,      
+
+98
+00:04:12,629 --> 00:04:15,088
+you give Visual Studio half a second to think      
+
+99
+00:04:15,089 --> 00:04:17,108
+about it, and then you go Control+V      
+
+100
+00:04:17,109 --> 00:04:18,609
+to paste it back in.      
+
+101
+00:04:18,610 --> 00:04:21,649
+When you do that, it should now re-generate      
+
+102
+00:04:21,650 --> 00:04:24,308
+what we're binding to.      
+
+103
+00:04:24,309 --> 00:04:25,448
+In this case, we're going to bind      
+
+104
+00:04:25,449 --> 00:04:28,248
+to an ObservableCollection instead of a List Collection.      
+
+105
+00:04:28,249 --> 00:04:29,589
+That code should be generated now      
+
+106
+00:04:29,590 --> 00:04:31,959
+when I go to build the solution again.      
+
+107
+00:04:31,960 --> 00:04:32,943
+Bam, it works.      
+
+108
+00:04:32,944 --> 00:04:34,451
+Okay, so let's go ahead and run the application now      
+
+109
+00:04:34,452 --> 00:04:36,771
+and see the app actually working this time      
+
+110
+00:04:36,772 --> 00:04:39,830
+as I type in my name and I choose an avatar.      
+
+111
+00:04:39,831 --> 00:04:41,630
+And there you go.      
+
+112
+00:04:41,631 --> 00:04:45,209
+Our ObservableCollection<Contact> said, "Hey,      
+
+113
+00:04:45,210 --> 00:04:47,509
+I've got a new contact,      
+
+114
+00:04:47,510 --> 00:04:50,849
+Bob Tabor with the bearded guy icon.      
+
+115
+00:04:50,850 --> 00:04:52,729
+So if you're binding to me,      
+
+116
+00:04:52,730 --> 00:04:54,089
+anybody who's binding to me,      
+
+117
+00:04:54,090 --> 00:04:56,689
+you need to know that I've changed."      
+
+118
+00:04:56,690 --> 00:04:58,489
+And so the grid view says, "Hmmm,      
+
+119
+00:04:58,490 --> 00:05:00,709
+well yeah, I was watching you and I see      
+
+120
+00:05:00,710 --> 00:05:01,689
+that you changed, let me go ahead      
+
+121
+00:05:01,690 --> 00:05:04,029
+and update what I'm displaying on-screen here."      
+
+122
+00:05:04,030 --> 00:05:05,210
+And so there you go.      
+
+123
+00:05:05,211 --> 00:05:08,229
+If you like anthropomorphic explanations of code,      
+
+124
+00:05:08,230 --> 00:05:10,549
+then hey, this was right in your wheel house.      
+
+125
+00:05:10,550 --> 00:05:12,529
+Okay, so one last thing that I want to say      
+
+126
+00:05:12,530 --> 00:05:14,685
+before we move on off this topic,      
+
+127
+00:05:14,686 --> 00:05:17,946
+and that is whenever you're reading articles      
+
+128
+00:05:17,947 --> 00:05:19,626
+online or watching videos, you might come      
+
+129
+00:05:19,627 --> 00:05:23,446
+across a term called MVVM related to binding      
+
+130
+00:05:23,447 --> 00:05:26,845
+to data with your Universal Windows Platform app,      
+
+131
+00:05:26,846 --> 00:05:30,385
+your Windows 8.1, or Windows Phone 8.1 app,      
+
+132
+00:05:30,386 --> 00:05:33,946
+or even the Windows Presentation Foundation app,      
+
+133
+00:05:33,947 --> 00:05:38,947
+all of these XAML-based platforms.      
+
+134
+00:05:40,562 --> 00:05:44,035
+So MVVM stands for Model View View Model.      
+
+135
+00:05:44,036 --> 00:05:47,475
+It is a designed pattern for writing code      
+
+136
+00:05:47,476 --> 00:05:49,876
+on the user interface that binds to data.      
+
+137
+00:05:49,877 --> 00:05:52,436
+Now what I'm showing you in this example      
+
+138
+00:05:52,437 --> 00:05:54,376
+with the ObservableCollection is really      
+
+139
+00:05:54,377 --> 00:05:58,635
+a building block, a first step foundational concept      
+
+140
+00:05:58,636 --> 00:06:01,295
+towards learning more about MVVM,      
+
+141
+00:06:01,296 --> 00:06:03,795
+and I actually cover that topic in depth      
+
+142
+00:06:03,796 --> 00:06:05,796
+in the previous version of this series,      
+
+143
+00:06:05,797 --> 00:06:08,376
+the Windows Phone 8.1 Development      
+
+144
+00:06:08,377 --> 00:06:10,776
+for Absolute Beginners series on channel 9.      
+
+145
+00:06:10,777 --> 00:06:12,676
+So if you want to learn more about MVVM,      
+
+146
+00:06:12,677 --> 00:06:16,295
+you'll want to take a look at all of those lessons      
+
+147
+00:06:16,296 --> 00:06:19,415
+that have something to do with ObservableCollection,      
+
+148
+00:06:19,416 --> 00:06:22,727
+or MVVM, or this interface called      
+
+149
+00:06:22,728 --> 00:06:24,467
+I Notify Property Changed.      
+
+150
+00:06:24,468 --> 00:06:27,287
+Okay, look in the descriptions for the videos      
+
+151
+00:06:27,288 --> 00:06:30,588
+or the titles to see that.      
+
+152
+00:06:30,589 --> 00:06:34,027
+And like I said, this apply that MVVM concept applies      
+
+153
+00:06:34,028 --> 00:06:37,887
+to all XAML-based user interface technologies.      
+
+154
+00:06:37,888 --> 00:06:40,127
+Okay, so that's all that I want to say about that,      
+
+155
+00:06:40,128 --> 00:06:43,207
+but we're going to revisit our little simple      
+
+156
+00:06:43,208 --> 00:06:46,008
+contact manager application in the next couple      
+
+157
+00:06:46,009 --> 00:06:49,487
+of lessons, so we will see you there.      
+
+158
+00:06:49,488 --> 00:06:50,735
+Thanks.      
+

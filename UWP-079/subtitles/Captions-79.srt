@@ -1,0 +1,1316 @@
+1
+00:00:06,176 --> 00:00:10,199
+Okay, the goal in this finallesson is to demonstrate how to      
+
+2
+00:00:10,200 --> 00:00:13,100
+integrate Cortanainto our application.      
+
+3
+00:00:13,101 --> 00:00:18,740
+And I created a small examplecalled Cortana Example.      
+
+4
+00:00:18,741 --> 00:00:24,780
+And it's meant to illustrate, inthe most simplest way possible,      
+
+5
+00:00:24,781 --> 00:00:27,400
+how to integrate Cortanainto your application.      
+
+6
+00:00:27,401 --> 00:00:31,770
+I don't think you'll finda simpler example out there.      
+
+7
+00:00:31,771 --> 00:00:32,920
+So watch what it can do.      
+
+8
+00:00:32,921 --> 00:00:34,929
+Hey, Cortana.      
+
+9
+00:00:34,930 --> 00:00:40,547
+[SOUND] In example appadd a red rectangle.      
+
+10
+00:00:40,548 --> 00:00:45,226
+>> All right,adding a rectangle.      
+
+11
+00:00:45,227 --> 00:00:47,097
+>> Hey, Cortana.      
+
+12
+00:00:47,098 --> 00:00:52,838
+[SOUND] In example app,add a blue circle.      
+
+13
+00:00:52,839 --> 00:00:56,304
+>> Sure, adding a circle.      
+
+14
+00:00:56,305 --> 00:00:57,550
+>> Hey, Cortana.      
+
+15
+00:00:57,551 --> 00:01:02,511
+[SOUND] In example app,add a rectangle.      
+
+16
+00:01:02,512 --> 00:01:07,051
+[SOUND]>> Sure, adding a rectangle.      
+
+17
+00:01:07,052 --> 00:01:07,891
+>> Okay so hopefully      
+
+18
+00:01:07,892 --> 00:01:10,350
+you'll see that there werethree scenarios here.      
+
+19
+00:01:10,351 --> 00:01:13,900
+In the first scenario, I gaveboth the color and the shape.      
+
+20
+00:01:13,901 --> 00:01:17,610
+And the second example, I gavea color and a different shape.      
+
+21
+00:01:17,611 --> 00:01:20,430
+And then the third example,I gave only the shape and      
+
+22
+00:01:20,431 --> 00:01:23,190
+let Cortana decide whatthe color should be.      
+
+23
+00:01:24,670 --> 00:01:27,690
+Except Cortana's notquite that smart.      
+
+24
+00:01:27,691 --> 00:01:30,790
+You have to give it a littlebit more information than that.      
+
+25
+00:01:30,791 --> 00:01:32,370
+And I'll demonstratethat in this video.      
+
+26
+00:01:33,562 --> 00:01:36,900
+All right, so let me show youhow I created this application.      
+
+27
+00:01:36,901 --> 00:01:39,550
+It all starts with somethingcalled a voice command      
+
+28
+00:01:39,551 --> 00:01:40,910
+dictionary.      
+
+29
+00:01:40,911 --> 00:01:44,340
+This allows you to createa series of voice commands that      
+
+30
+00:01:44,341 --> 00:01:47,300
+Cortana will respond to foryour application.      
+
+31
+00:01:47,301 --> 00:01:51,806
+And so in this case you can seethat I've created this XML file.      
+
+32
+00:02:20,514 --> 00:02:22,601
+It follows a veryspecific schema,      
+
+33
+00:02:22,602 --> 00:02:24,860
+as laid out here inthe XML namespace.      
+
+34
+00:02:24,861 --> 00:02:27,820
+We'll talk about where tofind that in just a moment.      
+
+35
+00:02:27,821 --> 00:02:33,380
+You create a set of commandscalled CommandSet for      
+
+36
+00:02:33,381 --> 00:02:38,700
+every language and region thatyour application will support.      
+
+37
+00:02:38,701 --> 00:02:40,960
+So in our case,this is the English-US version.      
+
+38
+00:02:40,961 --> 00:02:44,810
+And it's also important to notethat Cortana's not available      
+
+39
+00:02:44,811 --> 00:02:47,340
+in every region andevery language just yet.      
+
+40
+00:02:48,550 --> 00:02:54,077
+So, the next thing that I dois create a command prefix and      
+
+41
+00:02:54,078 --> 00:03:00,430
+this is why I said hey, hmm,in example app whatever, okay.      
+
+42
+00:03:00,431 --> 00:03:03,540
+So this means thatshe's listening for      
+
+43
+00:03:03,541 --> 00:03:08,570
+this specific command prefix sothat she can identify your      
+
+44
+00:03:08,571 --> 00:03:13,130
+application and send the commandto your application as opposed      
+
+45
+00:03:13,131 --> 00:03:16,410
+to other applications thatmight be running at that time.      
+
+46
+00:03:16,411 --> 00:03:18,500
+You see here that Ihave two commands.      
+
+47
+00:03:18,501 --> 00:03:21,920
+One is addRectangle andthe other is addCircle.      
+
+48
+00:03:21,921 --> 00:03:24,680
+These names are importantbecause I'm gonna utilize them      
+
+49
+00:03:24,681 --> 00:03:27,640
+from within our codein just a moment.      
+
+50
+00:03:28,860 --> 00:03:32,620
+Here I have a seriesof ListenFor elements.      
+
+51
+00:03:32,621 --> 00:03:37,880
+And this will allow me togive variations on a command      
+
+52
+00:03:37,881 --> 00:03:39,480
+that she can stillrespond to and      
+
+53
+00:03:39,481 --> 00:03:44,360
+it still all triggerthe add rectangle command.      
+
+54
+00:03:44,361 --> 00:03:46,050
+So in this first caseshe's listening for      
+
+55
+00:03:46,051 --> 00:03:49,520
+add a rectangle, in the secondcase she's listening for      
+
+56
+00:03:49,521 --> 00:03:52,290
+add a color rectangle.      
+
+57
+00:03:52,291 --> 00:03:57,430
+Now, the little brackets arounda in this case are important,      
+
+58
+00:03:57,431 --> 00:03:59,530
+because thoseare optional words.      
+
+59
+00:03:59,531 --> 00:04:03,270
+So you could say addrectangle or add a rectangle.      
+
+60
+00:04:03,271 --> 00:04:07,518
+Furthermore, if you already usethe color you would have to say      
+
+61
+00:04:07,519 --> 00:04:09,134
+add a color rectangle.      
+
+62
+00:04:09,135 --> 00:04:14,200
+So I didn't use the squarebrackets around the word a.      
+
+63
+00:04:14,201 --> 00:04:16,100
+Now as far asthe color is concerned,      
+
+64
+00:04:16,101 --> 00:04:20,200
+you can see that it'susing curly braces.      
+
+65
+00:04:20,201 --> 00:04:21,230
+And if you look below,      
+
+66
+00:04:21,231 --> 00:04:25,550
+there's a phrase list that goesalong with that label color.      
+
+67
+00:04:25,551 --> 00:04:28,930
+Here we can listen to colorsred, blue, yellow and green.      
+
+68
+00:04:31,650 --> 00:04:34,280
+Any of those colors will be      
+
+69
+00:04:34,281 --> 00:04:37,040
+recognized by Cortanain this command.      
+
+70
+00:04:38,280 --> 00:04:41,230
+Then finally, you can see thatthere is a feedback command, and      
+
+71
+00:04:41,231 --> 00:04:43,950
+this is what she actuallysays back to the user.      
+
+72
+00:04:43,951 --> 00:04:45,030
+So, it says,      
+
+73
+00:04:45,031 --> 00:04:48,450
+okay, adding a rectangle,or okay, adding a circle.      
+
+74
+00:04:48,451 --> 00:04:50,830
+Now these are identicalexcept for      
+
+75
+00:04:50,831 --> 00:04:53,920
+the fact that I'm usingcircle versus a rectangle.      
+
+76
+00:04:53,921 --> 00:04:55,190
+And they triggerdifferent commands.      
+
+77
+00:04:56,535 --> 00:04:58,430
+Notice that there are othercommands that I'm not really      
+
+78
+00:04:58,431 --> 00:05:00,300
+using like thisnavigate command.      
+
+79
+00:05:00,301 --> 00:05:03,010
+That might be useful if I wannanavigate to a different page      
+
+80
+00:05:03,011 --> 00:05:03,960
+in an application.      
+
+81
+00:05:03,961 --> 00:05:06,740
+Not really gonnademonstrate that in this.      
+
+82
+00:05:06,741 --> 00:05:08,170
+This also is an example,      
+
+83
+00:05:08,171 --> 00:05:11,800
+think more just forreference than anything else.      
+
+84
+00:05:11,801 --> 00:05:14,924
+So that you can rememberwhat this is used for.      
+
+85
+00:05:14,925 --> 00:05:19,686
+There are also additionalelements that can be used inside      
+
+86
+00:05:19,687 --> 00:05:21,990
+of a command set.      
+
+87
+00:05:21,991 --> 00:05:23,730
+If you wanna learn moreabout command sets,      
+
+88
+00:05:23,731 --> 00:05:25,420
+here's what you need to do.      
+
+89
+00:05:25,421 --> 00:05:26,422
+Pop open your web browser.      
+
+90
+00:05:30,042 --> 00:05:33,007
+Go to dev.windows.com/cortana.      
+
+91
+00:05:37,171 --> 00:05:40,480
+Then scroll down andgo to Cortana Interactions,      
+
+92
+00:05:40,481 --> 00:05:42,380
+under the Get started area.      
+
+93
+00:05:43,990 --> 00:05:46,140
+And then if you take a lookat any of the articles      
+
+94
+00:05:46,141 --> 00:05:50,390
+that are inside of thisCortana integration section,      
+
+95
+00:05:50,391 --> 00:05:52,920
+you'll find example XML files.      
+
+96
+00:05:54,610 --> 00:05:57,081
+So, for example,in this first article,      
+
+97
+00:05:57,082 --> 00:06:00,385
+launch a foreground app withvoice commands in Cortana.      
+
+98
+00:06:00,386 --> 00:06:02,119
+It talks about the VCD,      
+
+99
+00:06:02,120 --> 00:06:05,417
+or rather the VoiceCommand Dictionary, and      
+
+100
+00:06:05,418 --> 00:06:07,690
+it gives you some example XML.      
+
+101
+00:06:07,691 --> 00:06:12,960
+In fact, I just copied thisXML and paste it into my own      
+
+102
+00:06:12,961 --> 00:06:17,260
+file that I called,CortanaExampleCommands.xml.      
+
+103
+00:06:17,261 --> 00:06:19,725
+So, you wanna referencethat page, again,      
+
+104
+00:06:19,726 --> 00:06:23,640
+dev.windows.com/cortana andthen navigate to      
+
+105
+00:06:24,670 --> 00:06:27,670
+Cortana integrations, andlook at the new articles there.      
+
+106
+00:06:27,671 --> 00:06:31,550
+It'll also give you additionalcommands that you can use for      
+
+107
+00:06:31,551 --> 00:06:32,800
+different scenarios.      
+
+108
+00:06:34,220 --> 00:06:40,584
+Okay so, after Cortanarecognizes the command      
+
+109
+00:06:40,585 --> 00:06:45,331
+prefix and the command itselfby using one of these listen for      
+
+110
+00:06:45,332 --> 00:06:50,820
+items to identify a specificcommand then what we wanna do      
+
+111
+00:06:50,821 --> 00:06:56,480
+is actually receive input forthe application.      
+
+112
+00:06:56,481 --> 00:06:59,930
+Now what I had todo was override      
+
+113
+00:06:59,931 --> 00:07:06,330
+a method called on activated.      
+
+114
+00:07:10,140 --> 00:07:11,040
+And specifically,      
+
+115
+00:07:11,041 --> 00:07:13,910
+I want to know how thisapplication was activated.      
+
+116
+00:07:13,911 --> 00:07:17,040
+Was it activated as a resultof a voice command?      
+
+117
+00:07:18,860 --> 00:07:20,720
+If it wasn't,then I wanna return.      
+
+118
+00:07:20,721 --> 00:07:25,352
+But if it was, then I'mgonna grab out the command      
+
+119
+00:07:25,353 --> 00:07:28,342
+arguments that were passed in-      
+
+120
+00:07:32,559 --> 00:07:35,633
+As I activated event args.      
+
+121
+00:07:35,634 --> 00:07:38,991
+And so we're casting themessentially to a specific      
+
+122
+00:07:38,992 --> 00:07:43,200
+type of event arg, called aVoiceCommandActivatedEventArgs.      
+
+123
+00:07:43,201 --> 00:07:47,835
+And then once we havethe command args for voice,      
+
+124
+00:07:47,836 --> 00:07:49,428
+we can grab off.      
+
+125
+00:07:52,891 --> 00:07:55,834
+The result propertyinto a variable      
+
+126
+00:07:55,835 --> 00:07:58,975
+called speechRecognitionResultand      
+
+127
+00:07:58,976 --> 00:08:03,782
+here I can determine whichcommand was spoken, in which,      
+
+128
+00:08:03,783 --> 00:08:08,920
+the entire text, if I wantto parse through it myself.      
+
+129
+00:08:08,921 --> 00:08:13,470
+Additionally, I can use thatspeech recognition result to      
+
+130
+00:08:13,471 --> 00:08:18,038
+get at, which color inthe phrase list was      
+
+131
+00:08:18,039 --> 00:08:23,475
+selected, was spoken.      
+
+132
+00:08:23,476 --> 00:08:26,670
+And notice here that I'm justindexing N in both cases to      
+
+133
+00:08:26,671 --> 00:08:30,340
+the first item.      
+
+134
+00:08:30,341 --> 00:08:33,450
+It's possible that thereare multiple commands and      
+
+135
+00:08:33,451 --> 00:08:35,780
+multiple phrase liststhat were cast in.      
+
+136
+00:08:35,781 --> 00:08:37,390
+So we're describingthe first one,      
+
+137
+00:08:37,391 --> 00:08:41,290
+and then the rest is reallyjust logic in my application.      
+
+138
+00:08:41,291 --> 00:08:45,570
+In this case, I'm going tocompare the spokenColor that we      
+
+139
+00:08:45,571 --> 00:08:51,150
+grabbed off from the semanticinterpretation of properties      
+
+140
+00:08:51,151 --> 00:08:54,770
+indexing into the color label.      
+
+141
+00:08:54,771 --> 00:09:02,400
+And then I just make sure thatwe return a windows.ui.color and      
+
+142
+00:09:02,401 --> 00:09:05,920
+now what I want to do is geta reference to the main page.      
+
+143
+00:09:05,921 --> 00:09:09,160
+And I'm gonna determineby the voice command.      
+
+144
+00:09:09,161 --> 00:09:12,400
+Was it addRectangle oraddCircle.      
+
+145
+00:09:12,401 --> 00:09:16,330
+And either way,I'm gonna call a method on      
+
+146
+00:09:16,331 --> 00:09:17,990
+the page that I just gota reference to here.      
+
+147
+00:09:19,470 --> 00:09:22,400
+And I pass in the colorthat was selected.      
+
+148
+00:09:22,401 --> 00:09:24,710
+So back in the MainPage.xaml,      
+
+149
+00:09:24,711 --> 00:09:30,530
+I just made a two publicmethods, here's a public      
+
+150
+00:09:30,531 --> 00:09:34,005
+void create rectangle and here'sa public void create circle.      
+
+151
+00:09:34,006 --> 00:09:37,340
+They're pretty much identicalasking the color and      
+
+152
+00:09:37,341 --> 00:09:39,990
+just printing the randomleft and top.      
+
+153
+00:09:41,380 --> 00:09:46,890
+And then creating a new instanceof that particular object.      
+
+154
+00:09:46,891 --> 00:09:47,990
+In this case an Ellipse.      
+
+155
+00:09:49,170 --> 00:09:49,730
+Giving it a width and      
+
+156
+00:09:49,731 --> 00:09:53,940
+height and a margin and then Iuse the fill, I use the color to      
+
+157
+00:09:53,941 --> 00:09:57,360
+create a solid color brush thatI apply to the fill property.      
+
+158
+00:09:57,361 --> 00:09:59,100
+And then I just make it a child      
+
+159
+00:10:00,510 --> 00:10:03,530
+by adding it to the layoutgrid that I have.      
+
+160
+00:10:03,531 --> 00:10:04,592
+So, pretty simple right?      
+
+161
+00:10:04,593 --> 00:10:09,190
+All right, so let's use the whatwe learned in this example to      
+
+162
+00:10:09,191 --> 00:10:11,380
+add Cortana integrationinto our application.      
+
+163
+00:10:13,602 --> 00:10:14,900
+So what I'm goingto do actually is,      
+
+164
+00:10:14,901 --> 00:10:17,410
+kind of put this overto the side here.      
+
+165
+00:10:17,411 --> 00:10:24,530
+And then, I'm going toopen up our application.      
+
+166
+00:10:26,400 --> 00:10:30,620
+The first thing I want to do tomy application is add new item.      
+
+167
+00:10:30,621 --> 00:10:33,390
+I'm gonna add a voicecommand dictionary.      
+
+168
+00:10:33,391 --> 00:10:36,390
+So I'm gonna scroll down tilI find the XML file, and      
+
+169
+00:10:36,391 --> 00:10:40,770
+I'll call thisVoiceCommandDictionary.      
+
+170
+00:10:44,770 --> 00:10:46,980
+Oh there is one last thingI need to show you as well.      
+
+171
+00:10:48,100 --> 00:10:49,070
+From that previous project.      
+
+172
+00:10:49,071 --> 00:10:50,490
+Let me drag it backinto view here.      
+
+173
+00:10:52,230 --> 00:10:56,380
+One thing I didn't show you waswe need to load up that voice      
+
+174
+00:10:56,381 --> 00:10:59,050
+command dictionary and I do thathere in the Page_Loaded event.      
+
+175
+00:11:00,140 --> 00:11:04,550
+So I'm gonna go out andsay hey I wanna grab      
+
+176
+00:11:04,551 --> 00:11:07,750
+this Cortana examplecommand set xml file and      
+
+177
+00:11:07,751 --> 00:11:12,560
+I wanna load it into my commanddefinition manager by calling      
+
+178
+00:11:12,561 --> 00:11:17,170
+the install command definitionfrom storage file a sync method,      
+
+179
+00:11:17,171 --> 00:11:20,310
+passing in the storage file Icreate a reference to here.      
+
+180
+00:11:20,311 --> 00:11:24,930
+All right, sohopefully that makes sense.      
+
+181
+00:11:24,931 --> 00:11:29,100
+So now what I'm gonna do isactually open up that previous      
+
+182
+00:11:29,101 --> 00:11:30,250
+voice command dictionary.      
+
+183
+00:11:31,460 --> 00:11:33,870
+And I'm going to paste it in      
+
+184
+00:11:33,871 --> 00:11:36,740
+to my newVoiceCommandDictionary.xml.      
+
+185
+00:11:36,741 --> 00:11:38,802
+And of course I'm gonnachange everything up.      
+
+186
+00:11:38,803 --> 00:11:45,343
+I'm gonna call this commandprefix Hero Explorer.      
+
+187
+00:11:45,344 --> 00:11:52,722
+And the example will berefresh the character list.      
+
+188
+00:11:55,421 --> 00:11:57,127
+So I'm only gonnahave one command and      
+
+189
+00:11:57,128 --> 00:11:59,620
+it's not gonna have a phraselist associated with it.      
+
+190
+00:11:59,621 --> 00:12:02,010
+So we'll just go ahead andget rid of all that.      
+
+191
+00:12:02,011 --> 00:12:03,800
+This is gonna be a verysimple implementation.      
+
+192
+00:12:05,440 --> 00:12:07,718
+I'm gonna call thiscommand refresh and      
+
+193
+00:12:07,719 --> 00:12:11,337
+the example will be somethinglike refresh the character list.      
+
+194
+00:12:17,763 --> 00:12:24,453
+And we'll give a coupleof variations on this so      
+
+195
+00:12:24,454 --> 00:12:29,320
+Refresh [the] character list.      
+
+196
+00:12:29,321 --> 00:12:36,787
+Or even just refresh      
+
+197
+00:12:36,788 --> 00:12:43,390
+the characters.      
+
+198
+00:12:43,391 --> 00:12:46,500
+And I might even just makethis character also optional.      
+
+199
+00:12:46,501 --> 00:12:48,860
+I don't know if I can do that,we'll just throw that in there.      
+
+200
+00:12:48,861 --> 00:12:50,970
+So, you can just sayrefresh list, or      
+
+201
+00:12:50,971 --> 00:12:53,730
+refresh characters,or refresh the list,      
+
+202
+00:12:53,731 --> 00:12:56,900
+or refresh the character list,refresh the characters.      
+
+203
+00:12:56,901 --> 00:12:58,820
+A lot of differentways to get that is.      
+
+204
+00:12:58,821 --> 00:13:02,230
+And the feedback we want,is refreshing.      
+
+205
+00:13:04,600 --> 00:13:05,220
+Character list.      
+
+206
+00:13:05,221 --> 00:13:09,550
+All right, so that part's done.      
+
+207
+00:13:09,551 --> 00:13:12,110
+The next thing that I wanna dois go to the app.zamzar file.      
+
+208
+00:13:12,111 --> 00:13:17,150
+Let's open it up here, and I'mgonna override a method that you      
+
+209
+00:13:17,151 --> 00:13:21,170
+cannot see, and I'm actuallyjust gonna copy, and      
+
+210
+00:13:21,171 --> 00:13:25,800
+paste it from thisCortana example And      
+
+211
+00:13:25,801 --> 00:13:27,470
+then we'll strip out the thingswe don't need from it.      
+
+212
+00:13:30,160 --> 00:13:31,480
+So I definitelywon't need colors.      
+
+213
+00:13:31,481 --> 00:13:34,860
+It doesn't like that anywaycuz I don't have the proper      
+
+214
+00:13:34,861 --> 00:13:35,880
+namespaces added.      
+
+215
+00:13:35,881 --> 00:13:37,470
+That's fine.      
+
+216
+00:13:37,471 --> 00:13:39,040
+Get rid of that.      
+
+217
+00:13:39,041 --> 00:13:41,300
+And there are other thingswe need like spokenColor.      
+
+218
+00:13:41,301 --> 00:13:43,160
+We don't need to graboff anything like that.      
+
+219
+00:13:43,161 --> 00:13:44,630
+We can just remove all of that.      
+
+220
+00:13:44,631 --> 00:13:47,620
+I don't need the textthat was actually spoken.      
+
+221
+00:13:47,621 --> 00:13:50,700
+All I really need to do is makesure that the voice command is      
+
+222
+00:13:50,701 --> 00:13:54,640
+indeed the commandthat we're looking for.      
+
+223
+00:13:54,641 --> 00:13:57,640
+So I can actually get ridof most of this as well.      
+
+224
+00:13:58,670 --> 00:14:01,735
+And I just want to make surethat the voiceCommandName      
+
+225
+00:14:01,736 --> 00:14:03,030
+= "refresh".      
+
+226
+00:14:04,320 --> 00:14:05,370
+That's what she passed in.      
+
+227
+00:14:05,371 --> 00:14:10,475
+And if it is then we'll      
+
+228
+00:14:10,476 --> 00:14:16,130
+call into our publicmethod on our main page.      
+
+229
+00:14:16,131 --> 00:14:18,530
+We'll print that injust a little bit.      
+
+230
+00:14:18,531 --> 00:14:20,120
+But I'll get rid of all of here.      
+
+231
+00:14:20,121 --> 00:14:20,840
+All of this rather.      
+
+232
+00:14:22,350 --> 00:14:25,490
+So, and this greatlysimplifies the application.      
+
+233
+00:14:25,491 --> 00:14:27,970
+Everything else thatneeds to be there,      
+
+234
+00:14:27,971 --> 00:14:32,120
+we've eliminated allthe fluff that we don't need.      
+
+235
+00:14:32,121 --> 00:14:32,850
+Okay, great.      
+
+236
+00:14:35,220 --> 00:14:38,398
+Now in the mainpage.xml.cswhat I want to do.      
+
+237
+00:14:38,399 --> 00:14:43,625
+In the Page_Loaded eventis actually load up at      
+
+238
+00:14:43,626 --> 00:14:50,441
+that VoiceCommandDictionaryfile.      
+
+239
+00:14:51,710 --> 00:14:55,020
+So I think I'll actually do thatfirst before we go off into      
+
+240
+00:14:58,120 --> 00:15:01,210
+populating the mobilecharacters so that we can place      
+
+241
+00:15:02,480 --> 00:15:07,300
+in this third record, and we'llchange the name of the file      
+
+242
+00:15:07,301 --> 00:15:10,290
+cuz I need this one voiceCommandDictionary.xml.      
+
+243
+00:15:10,291 --> 00:15:14,550
+Otherwise, everythingcan stay the same.      
+
+244
+00:15:16,730 --> 00:15:20,836
+But I do need to createsomething that we can call from      
+
+245
+00:15:20,837 --> 00:15:25,210
+the app.xml.cs fromthat OnActivated event.      
+
+246
+00:15:25,211 --> 00:15:29,500
+So, here's where I needto make some decisions.      
+
+247
+00:15:29,501 --> 00:15:33,726
+I think I could really just take      
+
+248
+00:15:33,727 --> 00:15:39,100
+virtually everythinginside of this.      
+
+249
+00:15:39,101 --> 00:15:40,680
+In fact, let me just go aheadand grab everything up here.      
+
+250
+00:15:41,890 --> 00:15:46,410
+Take all this andI'll put it in a method.      
+
+251
+00:15:46,411 --> 00:15:47,270
+Called refresh.      
+
+252
+00:15:49,200 --> 00:15:49,775
+So we do that.      
+
+253
+00:15:49,776 --> 00:15:53,930
+Go public async      
+
+254
+00:15:53,931 --> 00:15:58,720
+void Refresh().      
+
+255
+00:15:58,721 --> 00:16:01,150
+And its only job willbe to do all that.      
+
+256
+00:16:02,480 --> 00:16:04,881
+And then we'll callRefresh from here.      
+
+257
+00:16:09,219 --> 00:16:12,189
+And this also sets us up tocreate some user interface      
+
+258
+00:16:12,190 --> 00:16:14,753
+element that you canclick on to refresh, but      
+
+259
+00:16:14,754 --> 00:16:17,870
+we're not gonna dothat in this video.      
+
+260
+00:16:17,871 --> 00:16:20,700
+Or in this series of videos,for that matter.      
+
+261
+00:16:20,701 --> 00:16:22,520
+Okay, so that looks good.      
+
+262
+00:16:22,521 --> 00:16:25,433
+Let's make sure itall compiles here.      
+
+263
+00:16:30,381 --> 00:16:32,210
+All right hopefully Ididn't forget a step.      
+
+264
+00:16:32,211 --> 00:16:34,870
+I think we're in good shape,let's make sure.      
+
+265
+00:16:34,871 --> 00:16:38,700
+Oh, I need to go back here tothe app.xaml.cs, that's right.      
+
+266
+00:16:38,701 --> 00:16:42,393
+And here I need togo page.Refresh.      
+
+267
+00:16:42,394 --> 00:16:44,592
+Yeah, yeah.      
+
+268
+00:16:44,593 --> 00:16:45,763
+We'll just get rid of that.      
+
+269
+00:16:45,764 --> 00:16:47,713
+And that as well.      
+
+270
+00:16:47,714 --> 00:16:48,589
+All right,      
+
+271
+00:16:48,590 --> 00:16:52,892
+in fact for that matter, I canget rid of that and that too.      
+
+272
+00:16:52,893 --> 00:16:55,389
+Okay, great.      
+
+273
+00:16:55,390 --> 00:16:59,175
+So let me go ahead and give it awhirl and see what happens here.      
+
+274
+00:16:59,176 --> 00:17:01,222
+Let me go back toour local machine.      
+
+275
+00:17:04,514 --> 00:17:05,559
+Run the application.      
+
+276
+00:17:09,754 --> 00:17:12,841
+Okay, so it looks like westart with New Warriors.      
+
+277
+00:17:12,842 --> 00:17:14,683
+Go on from there.      
+
+278
+00:17:14,684 --> 00:17:15,962
+So, here we go.      
+
+279
+00:17:15,963 --> 00:17:16,640
+Hey, Cortana.      
+
+280
+00:17:20,220 --> 00:17:22,580
+In Hero Explorer,refresh the characters.      
+
+281
+00:17:24,850 --> 00:17:26,056
+>> Refreshingthe character list.      
+
+282
+00:17:30,642 --> 00:17:32,423
+>> All right, sothat didn't work.      
+
+283
+00:17:32,424 --> 00:17:34,540
+Let's put a break point here,and      
+
+284
+00:17:34,541 --> 00:17:37,320
+see if we ever get tothis inactivated event.      
+
+285
+00:17:37,321 --> 00:17:41,910
+We'll stick this right there,and let's run it again.      
+
+286
+00:17:43,570 --> 00:17:44,570
+Oh I see what the problem is.      
+
+287
+00:17:44,571 --> 00:17:47,542
+We were already at tencharacters [LAUGH].      
+
+288
+00:17:47,543 --> 00:17:48,710
+All right soa little bug in the logic.      
+
+289
+00:17:48,711 --> 00:17:50,205
+That's not a problem.      
+
+290
+00:17:50,206 --> 00:17:55,360
+So let's goMarvelCharacters.Clear[ ].      
+
+291
+00:17:55,361 --> 00:17:57,750
+And that should fixthe problem now.      
+
+292
+00:17:57,751 --> 00:17:59,060
+Let's go ahead andget rid of that.      
+
+293
+00:18:01,250 --> 00:18:03,800
+And we'll go ahead andgo to that and      
+
+294
+00:18:03,801 --> 00:18:05,675
+it should work this time.      
+
+295
+00:18:09,931 --> 00:18:12,974
+Hey Cortana.      
+
+296
+00:18:12,975 --> 00:18:17,470
+In hero explorer,refresh the character list.      
+
+297
+00:18:17,471 --> 00:18:18,570
+>> Sure thing.      
+
+298
+00:18:18,571 --> 00:18:19,710
+Refreshing the character list.      
+
+299
+00:18:19,711 --> 00:18:21,940
+>> All right, sowe started out with death bird.      
+
+300
+00:18:21,941 --> 00:18:22,900
+Everything went away.      
+
+301
+00:18:24,340 --> 00:18:25,132
+Now we'll start adding new ones.      
+
+302
+00:18:29,303 --> 00:18:30,847
+All right, andyou can see it's working.      
+
+303
+00:18:30,848 --> 00:18:32,016
+All right, great.      
+
+304
+00:18:32,017 --> 00:18:34,006
+So Cortana integration was easy,      
+
+305
+00:18:34,007 --> 00:18:37,195
+especially once you figureout all your logic issues.      
+
+306
+00:18:37,196 --> 00:18:41,270
+[LAUGH] Butyou obviously can expand this.      
+
+307
+00:18:41,271 --> 00:18:43,430
+I only showed youa simple scenario.      
+
+308
+00:18:43,431 --> 00:18:45,310
+The application wasalready running.      
+
+309
+00:18:45,311 --> 00:18:48,320
+There's also another scenariowhere you can create      
+
+310
+00:18:48,321 --> 00:18:50,780
+a background task that'sconstantly listening,      
+
+311
+00:18:50,781 --> 00:18:52,780
+even when yourapplication's not running.      
+
+312
+00:18:52,781 --> 00:18:54,860
+And it can launchyour application and      
+
+313
+00:18:54,861 --> 00:18:59,720
+then give it the Cortana commandthat the user spoke to Cortana.      
+
+314
+00:19:00,820 --> 00:19:02,840
+Again, an advanced example.      
+
+315
+00:19:02,841 --> 00:19:06,470
+You can find that inthe universal Windows apps      
+
+316
+00:19:07,610 --> 00:19:08,610
+examples on GitHub,      
+
+317
+00:19:08,611 --> 00:19:10,580
+which I'm gonna give you thelink to in the very next video.      
+
+318
+00:19:10,581 --> 00:19:13,540
+In fact, that's a good segue tothe next video because we're      
+
+319
+00:19:13,541 --> 00:19:14,690
+gonna wrap up this series.      
+
+320
+00:19:14,691 --> 00:19:16,160
+I'm gonna give yousome places to look for      
+
+321
+00:19:16,161 --> 00:19:20,870
+other great, great resources andthat's one of them.      
+
+322
+00:19:20,871 --> 00:19:23,210
+But, see how easy it wasto integrate Cortana?      
+
+323
+00:19:23,211 --> 00:19:25,690
+So, you're gonna find that      
+
+324
+00:19:25,691 --> 00:19:27,490
+people will want thislevel of integration.      
+
+325
+00:19:27,491 --> 00:19:29,300
+This is one ofthe coolest new features      
+
+326
+00:19:29,301 --> 00:19:31,590
+to come out ofMicrosoft in a while.      
+
+327
+00:19:31,591 --> 00:19:33,260
+All right, so let's wrapit up in the next video.      
+
+328
+00:19:33,261 --> 00:19:34,400
+We'll see you there.      
+
+329
+00:19:34,401 --> 00:19:34,900
+Thanks.      
+

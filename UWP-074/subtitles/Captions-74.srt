@@ -1,0 +1,1632 @@
+1
+00:00:04,610 --> 00:00:08,258
+My goal in this video isto display characters in      
+
+2
+00:00:08,259 --> 00:00:11,540
+a list view, and so,to get to that point,      
+
+3
+00:00:11,541 --> 00:00:14,110
+there's gonna be a lot of steps.      
+
+4
+00:00:14,111 --> 00:00:18,510
+Honestly, we're not really allthat close, even though we have      
+
+5
+00:00:18,511 --> 00:00:22,040
+data from the Marvel API andwe deserialized it.      
+
+6
+00:00:22,041 --> 00:00:23,710
+But let's go ahead andget started.      
+
+7
+00:00:23,711 --> 00:00:26,880
+I wanna start by talking aboutthis method we were working with      
+
+8
+00:00:26,881 --> 00:00:30,100
+in a previous video,this GetCharacterList.      
+
+9
+00:00:30,101 --> 00:00:31,328
+There's a couple ofproblems with it.      
+
+10
+00:00:31,329 --> 00:00:34,040
+The first problem is thatthe name doesn't really describe      
+
+11
+00:00:34,041 --> 00:00:35,695
+what the what it does.      
+
+12
+00:00:35,696 --> 00:00:38,370
+GetCharacterList should begiving me a list of characters.      
+
+13
+00:00:38,371 --> 00:00:41,220
+But really what it'sdoing is returning back      
+
+14
+00:00:41,221 --> 00:00:44,850
+the root object forthe entire object graph.      
+
+15
+00:00:44,851 --> 00:00:47,240
+So it's giving me thatcharacter data wrapper.      
+
+16
+00:00:47,241 --> 00:00:48,300
+And that would have to go in and      
+
+17
+00:00:48,301 --> 00:00:52,100
+find the charactersthat are associated      
+
+18
+00:00:52,101 --> 00:00:56,950
+with the character datacontainer, all right?      
+
+19
+00:00:56,951 --> 00:00:59,115
+And sothere's a lot of traversal.      
+
+20
+00:00:59,116 --> 00:01:01,820
+Furthermore, some ofthe characters that will be      
+
+21
+00:01:01,821 --> 00:01:04,920
+brought back won'thave image data.      
+
+22
+00:01:04,921 --> 00:01:06,120
+And soI want to filter those out.      
+
+23
+00:01:06,121 --> 00:01:08,120
+And there's a couple of othersteps too that I need to take in      
+
+24
+00:01:08,121 --> 00:01:08,680
+between there.      
+
+25
+00:01:08,681 --> 00:01:11,673
+What I really wanna dois be able to go from      
+
+26
+00:01:11,674 --> 00:01:14,940
+the mainpage.xaml tothis Marvel facade.      
+
+27
+00:01:14,941 --> 00:01:18,140
+And I want to pass inan instance of an observable      
+
+28
+00:01:18,141 --> 00:01:19,980
+collection of character.      
+
+29
+00:01:19,981 --> 00:01:22,791
+So I have an observablecollection of character that I      
+
+30
+00:01:22,792 --> 00:01:24,900
+can bind to on my main page.      
+
+31
+00:01:24,901 --> 00:01:27,650
+And I want to pass thatobservable collection into      
+
+32
+00:01:27,651 --> 00:01:29,920
+a method here on myMarvel facade and      
+
+33
+00:01:29,921 --> 00:01:34,880
+let it add characters to it andso as we're adding characters      
+
+34
+00:01:34,881 --> 00:01:38,830
+to it, then the listwill grow and grow.      
+
+35
+00:01:38,831 --> 00:01:42,420
+So to accomplish that,what I'm wanna do is change,      
+
+36
+00:01:42,421 --> 00:01:46,240
+first of all, the name of thismethod from GetCharacterList to      
+
+37
+00:01:46,241 --> 00:01:50,600
+GetCharacterDataWrapper and      
+
+38
+00:01:50,601 --> 00:01:54,050
+then I'm gonna make thisa private helper method.      
+
+39
+00:01:55,280 --> 00:02:00,968
+Then I'm gonna call into that      
+
+40
+00:02:00,969 --> 00:02:05,973
+from a public static async      
+
+41
+00:02:05,974 --> 00:02:14,180
+Task calledPopulateMarvelCharacters.      
+
+42
+00:02:14,181 --> 00:02:18,362
+And then you're gonna passin an observable collection.      
+
+43
+00:02:21,382 --> 00:02:25,326
+A character, called      
+
+44
+00:02:25,327 --> 00:02:31,902
+marvelCharacters, so like that.      
+
+45
+00:02:35,882 --> 00:02:38,979
+All right, I'm gonna need toadd a using statement for      
+
+46
+00:02:38,980 --> 00:02:41,480
+the benefit ofthe ObservableCollection.      
+
+47
+00:02:43,310 --> 00:02:48,977
+And then what I want todo is make a call into,      
+
+48
+00:02:48,978 --> 00:02:53,112
+so var characters = actually,      
+
+49
+00:02:53,113 --> 00:02:56,950
+let me start back over again.      
+
+50
+00:02:56,951 --> 00:03:03,490
+Getcharacterdatawrapper =Getcharacterdatawrapper, okay.      
+
+51
+00:03:03,491 --> 00:03:08,189
+Then what I wanna dois var characters      
+
+52
+00:03:08,190 --> 00:03:12,290
+= characterdatawrapper dot.      
+
+53
+00:03:12,291 --> 00:03:15,789
+And so I'm gonna have totraverse through the character      
+
+54
+00:03:15,790 --> 00:03:16,910
+data container.      
+
+55
+00:03:16,911 --> 00:03:19,046
+And it has a propertycalled results,      
+
+56
+00:03:19,047 --> 00:03:20,790
+which is a list of characters.      
+
+57
+00:03:20,791 --> 00:03:23,050
+So let's go data.      
+
+58
+00:03:23,051 --> 00:03:26,090
+So characterwrapper.data.      
+
+59
+00:03:29,110 --> 00:03:30,960
+And then I seewhere the issue is.      
+
+60
+00:03:30,961 --> 00:03:35,318
+It's not giving me what Iexpect in IntelliSense because      
+
+61
+00:03:35,319 --> 00:03:37,870
+I didn't add the await keyword.      
+
+62
+00:03:37,871 --> 00:03:39,950
+And now, I should be ableto use IntelliSense and      
+
+63
+00:03:39,951 --> 00:03:41,180
+find what I'm looking for.      
+
+64
+00:03:41,181 --> 00:03:43,013
+Get data.results and      
+
+65
+00:03:43,014 --> 00:03:46,780
+that should give me backa list of characters.      
+
+66
+00:03:46,781 --> 00:03:53,655
+Now what I want to do is iteratethrough the list of characters,      
+
+67
+00:03:53,656 --> 00:03:58,340
+so foreach var character andcharacters.      
+
+68
+00:03:58,341 --> 00:04:03,338
+And I'm gonna add each characterto the marvelcharacters      
+
+69
+00:04:03,339 --> 00:04:07,418
+that I passed in,the observable collection of      
+
+70
+00:04:07,419 --> 00:04:12,420
+character, Like so.      
+
+71
+00:04:13,900 --> 00:04:17,040
+Whoops, character.      
+
+72
+00:04:17,041 --> 00:04:17,560
+There we go.      
+
+73
+00:04:18,660 --> 00:04:25,140
+Now in between here, I need tofilter out, so fIlter characters      
+
+74
+00:04:25,141 --> 00:04:30,360
+that are missingthumbnail images.      
+
+75
+00:04:31,760 --> 00:04:34,420
+And so what we'll do is this.      
+
+76
+00:04:34,421 --> 00:04:42,920
+If the character.thumbnailis not equal to null.      
+
+77
+00:04:44,138 --> 00:04:53,120
+And the character.thumbnail.pathis not equal to an empty string.      
+
+78
+00:04:53,121 --> 00:04:57,570
+And then from experience, I knowthere's one more situation.      
+
+79
+00:04:57,571 --> 00:05:00,920
+It's possible that a character'sthumbnail doesn't exist.      
+
+80
+00:05:00,921 --> 00:05:03,480
+It's possible thata character thumbnail,      
+
+81
+00:05:03,481 --> 00:05:04,680
+the path is empty string.      
+
+82
+00:05:04,681 --> 00:05:10,030
+But it's also possible thatthey return back this long URL      
+
+83
+00:05:10,031 --> 00:05:13,340
+that will actuallydisplay an image.      
+
+84
+00:05:13,341 --> 00:05:15,770
+But it's an imagenot available image.      
+
+85
+00:05:15,771 --> 00:05:21,470
+It has a little outline ofa character with not available.      
+
+86
+00:05:21,471 --> 00:05:24,150
+The text inside of it sothis what we'll do.      
+
+87
+00:05:24,151 --> 00:05:29,881
+character.thumbnail.path isnot equal      
+
+88
+00:05:29,882 --> 00:05:36,730
+to this magic string,this URL that I have, okay?      
+
+89
+00:05:36,731 --> 00:05:39,270
+Now, before we go any further.      
+
+90
+00:05:39,271 --> 00:05:43,128
+I'm gonna take this magicstring, I'm gonna cut it out and      
+
+91
+00:05:43,129 --> 00:05:44,910
+I'll put it in a constant.      
+
+92
+00:05:44,911 --> 00:05:51,028
+private constant stringimagenotavailablepath =,      
+
+93
+00:05:51,029 --> 00:05:55,949
+and then we'll pastethat string in there,      
+
+94
+00:05:55,950 --> 00:06:00,860
+and I'll copy andpaste that here.      
+
+95
+00:06:00,861 --> 00:06:03,850
+So now we're pretty sure thatthe character has an image and      
+
+96
+00:06:03,851 --> 00:06:07,550
+we can use them in ourapplication, so at that point.      
+
+97
+00:06:07,551 --> 00:06:10,440
+Then we're gonna addthem to the application.      
+
+98
+00:06:10,441 --> 00:06:13,740
+Now, let's take a lookat the documentation.      
+
+99
+00:06:13,741 --> 00:06:17,510
+Go to the How-Tos section andlook at Images.      
+
+100
+00:06:18,600 --> 00:06:22,600
+If you take a look atthe thumbnail JSON,      
+
+101
+00:06:22,601 --> 00:06:25,890
+notice that there's a path andan extension property.      
+
+102
+00:06:25,891 --> 00:06:27,210
+That's not everything you need.      
+
+103
+00:06:27,211 --> 00:06:29,080
+There's missinginformation here, and      
+
+104
+00:06:29,081 --> 00:06:31,660
+you fill in the type of image or      
+
+105
+00:06:31,661 --> 00:06:34,240
+the size and the orientationof the image that you want.      
+
+106
+00:06:34,241 --> 00:06:37,820
+So if you scroll down, there'sthis Image Variants area here.      
+
+107
+00:06:37,821 --> 00:06:42,350
+And you can see that there'sa Portrait Aspect Ratio      
+
+108
+00:06:42,351 --> 00:06:46,370
+where you have a portrait,square or standard, and      
+
+109
+00:06:46,371 --> 00:06:48,610
+then the landscape right?      
+
+110
+00:06:48,611 --> 00:06:52,620
+And so then and even within thatyou had different sized images.      
+
+111
+00:06:52,621 --> 00:06:55,475
+So for our purposes, we'regonna use a portrait small,      
+
+112
+00:06:55,476 --> 00:06:59,360
+that'll be a little image nextto the name of the character      
+
+113
+00:06:59,361 --> 00:07:02,560
+in the list of characters thatwe're working on right now.      
+
+114
+00:07:02,561 --> 00:07:04,200
+And then, once you clickon a character and      
+
+115
+00:07:04,201 --> 00:07:06,360
+you see all the detailsof that character,      
+
+116
+00:07:06,361 --> 00:07:09,740
+then we're going to displaythe standard extra large.      
+
+117
+00:07:09,741 --> 00:07:14,110
+So what we're gonna needto do then is to go      
+
+118
+00:07:14,111 --> 00:07:17,690
+over to our Model's Folder, openup the CharacterDataWrapper,      
+
+119
+00:07:17,691 --> 00:07:19,210
+and look at the Thumbnail class.      
+
+120
+00:07:19,211 --> 00:07:22,890
+And what I want to do is add twoadditional properties that will      
+
+121
+00:07:22,891 --> 00:07:26,340
+be ignored while we'redeserializing into the object      
+
+122
+00:07:26,341 --> 00:07:32,570
+graph but will be useful now aswe're populating a observable      
+
+123
+00:07:32,571 --> 00:07:35,390
+collection of charactersthat we intend to bind to.      
+
+124
+00:07:35,391 --> 00:07:39,400
+So I'm gonna go prop, prop,prop tab, tab, string tab tab.      
+
+125
+00:07:39,401 --> 00:07:44,368
+Small enter, enter, prop,tab, tab, string tab,      
+
+126
+00:07:44,369 --> 00:07:46,960
+tab, large enter, enter.      
+
+127
+00:07:46,961 --> 00:07:50,695
+So we have two new properties,and I'm gonna populate those      
+
+128
+00:07:50,696 --> 00:07:53,340
+properties here insidethe if statement.      
+
+129
+00:07:53,341 --> 00:07:58,412
+So, we'll gocharacter.thumbnail.small      
+
+130
+00:07:58,413 --> 00:08:01,143
+= string.format, and      
+
+131
+00:08:01,144 --> 00:08:06,740
+then I'm gonna need tokinda follow that pattern.      
+
+132
+00:08:06,741 --> 00:08:12,503
+Where we had the path/ then theimage that we wanted to use and      
+
+133
+00:08:12,504 --> 00:08:15,554
+that's gonna be a standard, so      
+
+134
+00:08:15,555 --> 00:08:20,413
+a square,small size dot andthen whatever the file      
+
+135
+00:08:20,414 --> 00:08:25,160
+extension is that theygive us passed in, right?      
+
+136
+00:08:25,161 --> 00:08:29,726
+And sothen we'll just enter those      
+
+137
+00:08:29,727 --> 00:08:35,400
+replaceable values,giving it the path.      
+
+138
+00:08:35,401 --> 00:08:42,000
+And then also the extension,      
+
+139
+00:08:42,001 --> 00:08:44,640
+like that.      
+
+140
+00:08:44,641 --> 00:08:47,520
+And we're gonna dothe exact same thing for      
+
+141
+00:08:47,521 --> 00:08:49,840
+the large version.      
+
+142
+00:08:49,841 --> 00:08:53,930
+So, character.thumbnail.small,let's go large.      
+
+143
+00:08:53,931 --> 00:08:57,600
+Equals, andhere we want to go the portrait.      
+
+144
+00:09:00,780 --> 00:09:02,760
+And then, we want to change,they don't have a large,      
+
+145
+00:09:02,761 --> 00:09:04,290
+they have an extra large.      
+
+146
+00:09:04,291 --> 00:09:06,930
+That should be aboutthe right size for us.      
+
+147
+00:09:06,931 --> 00:09:10,210
+All right, great.      
+
+148
+00:09:10,211 --> 00:09:13,500
+Very good.      
+
+149
+00:09:13,501 --> 00:09:16,559
+Now that we haveall this in place,      
+
+150
+00:09:16,560 --> 00:09:21,130
+I think we're ready toopen up the MainPage.xml.      
+
+151
+00:09:21,131 --> 00:09:23,750
+And let me get ridof my webcam here so      
+
+152
+00:09:23,751 --> 00:09:24,990
+you can see the entire screen.      
+
+153
+00:09:24,991 --> 00:09:25,850
+Let me go back so      
+
+154
+00:09:25,851 --> 00:09:28,910
+you can look at the righthand side of the code here.      
+
+155
+00:09:28,911 --> 00:09:31,230
+You can pause it andcatch up with me.      
+
+156
+00:09:31,231 --> 00:09:35,048
+And then also, you can pause ithere and take a look at this      
+
+157
+00:09:35,049 --> 00:09:39,346
+URL, or you can just look at thesource code associated with this      
+
+158
+00:09:39,347 --> 00:09:42,550
+snapshot, this snapshot in time,all right?      
+
+159
+00:09:42,551 --> 00:09:44,297
+Back to the MainPage.xml.      
+
+160
+00:09:44,298 --> 00:09:48,792
+Let me rid of that,and let's open up      
+
+161
+00:09:48,793 --> 00:09:54,014
+the MainPage.xml.cs andwhat I'm gonna      
+
+162
+00:09:54,015 --> 00:10:00,265
+want to do is to createa property so prop tab, tab.      
+
+163
+00:10:00,266 --> 00:10:06,822
+This is gonna bean ObservableCollectionCharacter      
+
+164
+00:10:06,823 --> 00:10:10,418
+called MarvelCharacters.      
+
+165
+00:10:10,419 --> 00:10:13,300
+And I'm gonna need to adda using statement for      
+
+166
+00:10:13,301 --> 00:10:17,500
+the ObservableCollection,and a using statement for      
+
+167
+00:10:17,501 --> 00:10:22,140
+the character,all right very good.      
+
+168
+00:10:22,141 --> 00:10:24,900
+Then I'm gonna want to, in theinitializer for the main page,      
+
+169
+00:10:24,901 --> 00:10:28,370
+I'm gonna create a newinstance of Marvel character.      
+
+170
+00:10:28,371 --> 00:10:33,729
+So MarvelCharacters = new ObservableCollection(Character-      
+
+171
+00:10:33,730 --> 00:10:34,200
+>().      
+
+172
+00:10:34,201 --> 00:10:34,970
+So far so good.      
+
+173
+00:10:35,970 --> 00:10:38,180
+Now, we're not gonna havea button click event, and      
+
+174
+00:10:38,181 --> 00:10:39,790
+we really don't need anyof this stuff anymore.      
+
+175
+00:10:39,791 --> 00:10:40,867
+So, I'm gonna stripall that out, and      
+
+176
+00:10:40,868 --> 00:10:41,692
+we'll come back to it later.      
+
+177
+00:10:41,693 --> 00:10:46,855
+In the main pages on XAML I'mgoing to get rid of the button,      
+
+178
+00:10:46,856 --> 00:10:50,277
+and I'm gonna removethe background.      
+
+179
+00:10:50,278 --> 00:10:56,065
+And inside of here, what Iwanna do is use that technique      
+
+180
+00:10:56,066 --> 00:11:00,870
+that we learned aboutearlier in this series,      
+
+181
+00:11:00,871 --> 00:11:04,565
+where we have contenton the left and      
+
+182
+00:11:04,566 --> 00:11:08,840
+content on the rightin a wide layout.      
+
+183
+00:11:08,841 --> 00:11:10,650
+But when the layoutbecomes smaller,      
+
+184
+00:11:10,651 --> 00:11:13,310
+we're gonna take the contenton the right and      
+
+185
+00:11:13,311 --> 00:11:19,580
+move it beneath the maincontent on the left.      
+
+186
+00:11:19,581 --> 00:11:22,550
+And so to accomplishthat what we'll do is,      
+
+187
+00:11:22,551 --> 00:11:25,930
+we're gonna createa four by four grid.      
+
+188
+00:11:25,931 --> 00:11:28,802
+So we'll go Grid.RowDefinitions,and      
+
+189
+00:11:28,803 --> 00:11:31,350
+we'll create tworow definitions.      
+
+190
+00:11:32,870 --> 00:11:38,630
+And we'll set the heightof the first one to *,      
+
+191
+00:11:38,631 --> 00:11:43,530
+and the height ofthe second one to Auto.      
+
+192
+00:11:46,440 --> 00:11:50,194
+And we'll modify some ofthis information, especially      
+
+193
+00:11:50,195 --> 00:11:54,584
+the column information, wheneverwe add the adaptive triggers.      
+
+194
+00:11:54,585 --> 00:11:57,892
+So, ColumnDefinitions.      
+
+195
+00:12:03,571 --> 00:12:08,314
+And we're gonna make the firstcolumn definition Auto, and      
+
+196
+00:12:08,315 --> 00:12:12,040
+then the second columndefinition width = *.      
+
+197
+00:12:13,840 --> 00:12:19,170
+Now, there's one last thing thatI wanna do, and that's add a row      
+
+198
+00:12:19,171 --> 00:12:23,430
+definition that willcontain attribution text.      
+
+199
+00:12:23,431 --> 00:12:25,270
+We'll talk about thatin just a little bit.      
+
+200
+00:12:25,271 --> 00:12:30,900
+But I'm gonna set the heightof this last row = 30 for now.      
+
+201
+00:12:30,901 --> 00:12:31,678
+We can adjust that later.      
+
+202
+00:12:31,679 --> 00:12:33,895
+All right, so, to begin with,      
+
+203
+00:12:33,896 --> 00:12:37,603
+on the left-hand side we'regonna have a ListView.      
+
+204
+00:12:37,604 --> 00:12:39,203
+On the right-hand side,      
+
+205
+00:12:39,204 --> 00:12:42,852
+we're gonna have a grid thatwill contain all the details.      
+
+206
+00:12:42,853 --> 00:12:46,020
+So we're gonna follow thisdesign pattern called master      
+
+207
+00:12:46,021 --> 00:12:48,726
+detail where you have a listof items on the left,      
+
+208
+00:12:48,727 --> 00:12:50,640
+you select an item on the left,and      
+
+209
+00:12:50,641 --> 00:12:53,445
+it shows the details aboutthat item on the right.      
+
+210
+00:12:53,446 --> 00:12:57,790
+So we're going to give this thename, MasterListView, and we'll      
+
+211
+00:12:57,791 --> 00:13:01,440
+refer to it like that throughoutthe remainder of the series.      
+
+212
+00:13:01,441 --> 00:13:01,940
+And then,      
+
+213
+00:13:01,941 --> 00:13:06,150
+we're gonna call this grid'sname DetailGrid, and there will      
+
+214
+00:13:06,151 --> 00:13:08,858
+be a bunch of other stuff thatwill goes inside of this.      
+
+215
+00:13:08,859 --> 00:13:10,980
+Finally, I'm gonnaadd a text block and      
+
+216
+00:13:10,981 --> 00:13:15,250
+I'm gonna set the name of thatto, well I don't even know if I      
+
+217
+00:13:15,251 --> 00:13:18,590
+need to set a name, let me justset the text to = Attribution,      
+
+218
+00:13:18,591 --> 00:13:21,910
+we'll come back to thatin just a little while.      
+
+219
+00:13:21,911 --> 00:13:26,825
+And I'll makethe VerticalAlignment = Center,      
+
+220
+00:13:26,826 --> 00:13:30,928
+and the HorizontalAlignment= Center.      
+
+221
+00:13:34,308 --> 00:13:36,080
+All right,let's get that up here, and      
+
+222
+00:13:36,081 --> 00:13:38,530
+move these guys downtheir own level.      
+
+223
+00:13:38,531 --> 00:13:42,430
+And finally what I want todo is add a ProgressRing.      
+
+224
+00:13:42,431 --> 00:13:46,080
+And that ProgressRing, we'regoing to initialize it whenever      
+
+225
+00:13:46,081 --> 00:13:48,560
+we're making a callinto the Marvel API.      
+
+226
+00:13:48,561 --> 00:13:52,660
+Because it could take a while,and then we will hide it      
+
+227
+00:13:52,661 --> 00:13:57,150
+whenever we've gottenthe information that we need.      
+
+228
+00:13:57,151 --> 00:14:02,353
+So what I'll do is, I'm gonnagive it a name cuz I need      
+
+229
+00:14:02,354 --> 00:14:07,455
+to access it programmatically,MyProgressRing.      
+
+230
+00:14:07,456 --> 00:14:09,603
+And I'll make the width 100,and the height 100.      
+
+231
+00:14:09,604 --> 00:14:14,653
+And then I'm gonna setthe Foreground = Gray.      
+
+232
+00:14:14,654 --> 00:14:21,464
+And we're gonna makethe ColumnSpan=2,      
+
+233
+00:14:21,465 --> 00:14:26,840
+and the RowSpan=3, like so.      
+
+234
+00:14:26,841 --> 00:14:28,482
+So it's gonna bedead-center no matter what.      
+
+235
+00:14:28,483 --> 00:14:30,345
+In fact, I'm gonna go ahead and      
+
+236
+00:14:30,346 --> 00:14:32,833
+set theVerticalAlignment=Center, and      
+
+237
+00:14:32,834 --> 00:14:35,470
+the HorizontalAlignment=Centeras well.      
+
+238
+00:14:35,471 --> 00:14:36,074
+Nice.      
+
+239
+00:14:36,075 --> 00:14:42,090
+Okay, so we should be able touse that whenever we start up.      
+
+240
+00:14:42,091 --> 00:14:46,512
+In fact, when we startup let's go ahead and      
+
+241
+00:14:46,513 --> 00:14:49,627
+add a loaded event to our page.      
+
+242
+00:14:49,628 --> 00:14:53,417
+So we're gonna handle itin a Page_Loaded even,      
+
+243
+00:14:53,418 --> 00:14:55,681
+in our MainPage.xaml.cs.      
+
+244
+00:14:55,682 --> 00:15:02,140
+And here's where we'llwind up calling into our MarvelFacade.PopulateMarvelChar-      
+
+245
+00:15:02,141 --> 00:15:03,050
+acters, and      
+
+246
+00:15:03,051 --> 00:15:05,953
+we'll pass inthe MarvelCharacters,      
+
+247
+00:15:09,091 --> 00:15:12,270
+All right, like so.      
+
+248
+00:15:12,271 --> 00:15:16,930
+Now this is awaitable, andthere's one thing that I wanna      
+
+249
+00:15:16,931 --> 00:15:19,110
+do to this while I'mthinking about it right now.      
+
+250
+00:15:19,111 --> 00:15:23,760
+The pattern forcreating your own awaitable      
+
+251
+00:15:23,761 --> 00:15:28,260
+methods is to addthe suffix async.      
+
+252
+00:15:28,261 --> 00:15:33,790
+So for example, here we have ourGetCharacterDataWrapper, and      
+
+253
+00:15:33,791 --> 00:15:39,940
+it's an async method returninga task of CharacterDataWrapper.      
+
+254
+00:15:39,941 --> 00:15:44,221
+It's a pattern to add thatsuffix so people know that      
+
+255
+00:15:44,222 --> 00:15:47,890
+this is intended tobe an awaitable task.      
+
+256
+00:15:47,891 --> 00:15:52,120
+So, we're changing the name toGetCharacterDataWrapperAsync and      
+
+257
+00:15:52,121 --> 00:15:54,640
+I'm gonna hit controlperiod on my keyboard to      
+
+258
+00:15:56,660 --> 00:15:59,930
+open up the refactoringmenu in IntelliSense and      
+
+259
+00:15:59,931 --> 00:16:01,490
+it's going to then remain.      
+
+260
+00:16:01,491 --> 00:16:04,367
+Everywhere I called in toGetCharacterDataWrapper,      
+
+261
+00:16:04,368 --> 00:16:07,500
+it's gonna rename it toGetCharacterDataWrapperAsync.      
+
+262
+00:16:09,230 --> 00:16:13,110
+And notice that now every callto it, which we made the call      
+
+263
+00:16:13,111 --> 00:16:19,750
+right here, in our code, noticethat it has renamed it for us.      
+
+264
+00:16:19,751 --> 00:16:22,340
+And we'll do the same thingwith PopulateMarvelCharacters.      
+
+265
+00:16:22,341 --> 00:16:25,590
+I'm gonna add the Asynckeyword on the end and      
+
+266
+00:16:25,591 --> 00:16:27,795
+then hit Ctrl+ on my keyboard,and      
+
+267
+00:16:27,796 --> 00:16:30,655
+I'm gonna choose the refactoringto rename that as well.      
+
+268
+00:16:30,656 --> 00:16:33,785
+And so now,in our MainPage.xaml.cs,      
+
+269
+00:16:33,786 --> 00:16:37,015
+it should have the new name andit does.      
+
+270
+00:16:37,016 --> 00:16:40,045
+Of course now it's awaitable,so we're gonna have to call      
+
+271
+00:16:41,880 --> 00:16:45,820
+awaits, that means thatwe're no longer void.      
+
+272
+00:16:45,821 --> 00:16:51,060
+Or actually, let's just do this,async, like that, great.      
+
+273
+00:16:51,061 --> 00:16:55,260
+And the next thing that we'regonna do is, let's go ahead      
+
+274
+00:16:55,261 --> 00:16:58,750
+while I'm thinking aboutthis and go MyProgressRing,      
+
+275
+00:16:58,751 --> 00:17:04,570
+we're going to setthe IsActive = true.      
+
+276
+00:17:04,571 --> 00:17:08,840
+As we're loading,MyProgressRing.Visibility will      
+
+277
+00:17:08,841 --> 00:17:11,910
+also equal Visibility.Visible.      
+
+278
+00:17:11,911 --> 00:17:14,420
+And then the oppositewill be true once we've      
+
+279
+00:17:14,421 --> 00:17:17,540
+successfully populatedthe Marvel characters and      
+
+280
+00:17:17,541 --> 00:17:20,010
+called into ourPopulateMarvelCharacterAsync.      
+
+281
+00:17:20,011 --> 00:17:26,703
+So we'll set IsActive = falseand then Visibility.Collapsed.      
+
+282
+00:17:26,704 --> 00:17:29,930
+All right, so that should work.      
+
+283
+00:17:29,931 --> 00:17:31,500
+Now, in the MainPage.xaml,      
+
+284
+00:17:31,501 --> 00:17:34,350
+I want to work primarilywith the ListView.      
+
+285
+00:17:34,351 --> 00:17:38,919
+And I'm going to DataBind,to that Marvel characters.      
+
+286
+00:17:38,920 --> 00:17:46,930
+Let's set the ItemsSource=x:Bind      
+
+287
+00:17:46,931 --> 00:17:53,941
+MarvelCharacters, like that?      
+
+288
+00:17:53,942 --> 00:18:01,070
+And then we're gonna need toadd a ListView.ItemTemplate and      
+
+289
+00:18:01,071 --> 00:18:04,836
+inside of thata DataTemplate and      
+
+290
+00:18:04,837 --> 00:18:09,690
+I'm gonna need to adda DataType, right?      
+
+291
+00:18:09,691 --> 00:18:13,560
+And so at this point I need tocome back up to the top, and      
+
+292
+00:18:13,561 --> 00:18:16,605
+I need to add a name space so      
+
+293
+00:18:16,606 --> 00:18:24,983
+xmlns:data=using:HeroExplorer.M-      
+
+294
+00:18:24,984 --> 00:18:26,710
+odels.      
+
+295
+00:18:26,711 --> 00:18:30,710
+So now, I can use the DataTypeCharacter, like that.      
+
+296
+00:18:32,810 --> 00:18:39,610
+And inside of my DataTemplate,I want to use a StackPanel and      
+
+297
+00:18:39,611 --> 00:18:43,880
+orient the items horizontally,and      
+
+298
+00:18:43,881 --> 00:18:47,534
+the items will be an Image anda TextBlock, and      
+
+299
+00:18:47,535 --> 00:18:50,770
+the TextBlock will containthe name of the character.      
+
+300
+00:18:52,000 --> 00:18:57,190
+So I'm going to go ahead andset the text attribute      
+
+301
+00:18:57,191 --> 00:19:01,370
+equal to an x:Bind statement,and we'll use the name.      
+
+302
+00:19:01,371 --> 00:19:03,810
+And the Image,we're gonna use a Source.      
+
+303
+00:19:05,340 --> 00:19:08,877
+And we'll setthe x:Bind equal to      
+
+304
+00:19:08,878 --> 00:19:14,360
+the thumbnail.small, like that.      
+
+305
+00:19:14,361 --> 00:19:17,170
+All right, let me build it.      
+
+306
+00:19:17,171 --> 00:19:18,064
+And we're gonna give it a whirl.      
+
+307
+00:19:21,537 --> 00:19:24,320
+Okay, great we've gotdata in a data bound.      
+
+308
+00:19:24,321 --> 00:19:26,110
+Now, I'm not really crazyabout where it stuck      
+
+309
+00:19:26,111 --> 00:19:27,210
+the attribution there.      
+
+310
+00:19:27,211 --> 00:19:28,580
+I think I missed something.      
+
+311
+00:19:28,581 --> 00:19:30,606
+In fact,I know I missed something.      
+
+312
+00:19:30,607 --> 00:19:34,881
+Let's set the details grid,      
+
+313
+00:19:34,882 --> 00:19:41,038
+Grid.Column = 1,and Grid.Row = 0.      
+
+314
+00:19:41,039 --> 00:19:46,462
+And we're gonnadynamically modify these      
+
+315
+00:19:46,463 --> 00:19:53,280
+whenever we add adaptivelayout to the application.      
+
+316
+00:19:53,281 --> 00:19:56,015
+We have to do this tothe TextBlock as well.      
+
+317
+00:19:56,016 --> 00:19:58,234
+That's why it wound up kindof in the middle there.      
+
+318
+00:19:58,235 --> 00:20:03,601
+So Grid.ColumnSpan = 2 andthe Grid.Row.      
+
+319
+00:20:06,178 --> 00:20:07,687
+Will equal two.      
+
+320
+00:20:11,550 --> 00:20:14,450
+Now let's save that and run it.      
+
+321
+00:20:19,850 --> 00:20:22,200
+Okay, now a couple of things.      
+
+322
+00:20:22,201 --> 00:20:24,771
+I'm not crazy aboutthe frame counter [LAUGH].      
+
+323
+00:20:24,772 --> 00:20:26,380
+We'll get rid of that.      
+
+324
+00:20:26,381 --> 00:20:27,940
+Not crazy about theselittle squares.      
+
+325
+00:20:27,941 --> 00:20:29,220
+They're just not inspiring.      
+
+326
+00:20:29,221 --> 00:20:31,050
+I've got a better idea there and      
+
+327
+00:20:31,051 --> 00:20:33,700
+then let's tackleattribution as well.      
+
+328
+00:20:33,701 --> 00:20:35,950
+If you take a look atthe Marvel API and      
+
+329
+00:20:35,951 --> 00:20:38,500
+you go up to the top intothe How-To section and      
+
+330
+00:20:38,501 --> 00:20:41,510
+you select Attribution& Rate Limits,      
+
+331
+00:20:41,511 --> 00:20:44,160
+we're gonna learn two importantpieces of information.      
+
+332
+00:20:44,161 --> 00:20:46,360
+Let's scroll down andlook at attribution.      
+
+333
+00:20:46,361 --> 00:20:49,950
+It says that every time youdisplay any information from      
+
+334
+00:20:49,951 --> 00:20:50,850
+the Marvel Comics API,      
+
+335
+00:20:50,851 --> 00:20:55,440
+you need to use the texton every screen or webpage.      
+
+336
+00:20:55,441 --> 00:20:59,230
+So it's this data providedby Marvel, copyright.      
+
+337
+00:20:59,231 --> 00:21:01,700
+Now they didn't update this for2015 but      
+
+338
+00:21:01,701 --> 00:21:03,760
+I know that that's their intent.      
+
+339
+00:21:03,761 --> 00:21:06,670
+If you take a look at I'm justgonna copy this to my clipboard      
+
+340
+00:21:06,671 --> 00:21:08,020
+and we'll come back toyou just a moment here.      
+
+341
+00:21:08,021 --> 00:21:13,020
+If we take a look at theinteractive documentation and      
+
+342
+00:21:13,021 --> 00:21:16,780
+making sure I'm loggedin here and I am.      
+
+343
+00:21:18,160 --> 00:21:19,950
+Let's open up characters and      
+
+344
+00:21:19,951 --> 00:21:24,720
+let me just bring back likea two characters and try it out.      
+
+345
+00:21:24,721 --> 00:21:27,890
+If you take a look atwhat's brought back,      
+
+346
+00:21:27,891 --> 00:21:29,890
+there is attributiontext that's provided.      
+
+347
+00:21:29,891 --> 00:21:31,850
+It's almost identical,it's just 2015.      
+
+348
+00:21:31,851 --> 00:21:35,360
+So, I'm going to hard codein it in my application but      
+
+349
+00:21:35,361 --> 00:21:41,310
+ideally you would pull that fromthat top level root object,      
+
+350
+00:21:41,311 --> 00:21:45,040
+the data character wrapper,okay?      
+
+351
+00:21:45,041 --> 00:21:46,830
+So I'm gonna go back here and      
+
+352
+00:21:46,831 --> 00:21:51,870
+just hard code this text andchange 2014 to 2015.      
+
+353
+00:21:51,871 --> 00:21:57,410
+So textblock text equals dataprovided by Marvel period and      
+
+354
+00:21:57,411 --> 00:22:03,283
+then the copyright symbol 2015Marvel and we might address      
+
+355
+00:22:03,284 --> 00:22:09,020
+the date later or just pullfrom our call-out to Marvel.      
+
+356
+00:22:09,021 --> 00:22:09,870
+All right, so far so good.      
+
+357
+00:22:11,170 --> 00:22:13,390
+Now, I said that I hadan idea for the image.      
+
+358
+00:22:13,391 --> 00:22:17,030
+I wasn't really crazy abouthow we went about it.      
+
+359
+00:22:17,031 --> 00:22:19,540
+What I'm gonna do isactually put every image      
+
+360
+00:22:19,541 --> 00:22:20,650
+inside an ellipse.      
+
+361
+00:22:20,651 --> 00:22:24,310
+So I'm gonna use the ellipse tokind of define the boundaries      
+
+362
+00:22:24,311 --> 00:22:27,710
+and inside of that I'm gonnause a different brush.      
+
+363
+00:22:27,711 --> 00:22:29,500
+Not a solid colored brush.      
+
+364
+00:22:29,501 --> 00:22:33,630
+Not a gradient color brush,but rather an image brush and      
+
+365
+00:22:33,631 --> 00:22:36,020
+the image brushwill have the image      
+
+366
+00:22:36,021 --> 00:22:38,900
+that will bind to fromthe character object.      
+
+367
+00:22:38,901 --> 00:22:41,880
+So we'll just start off withan ellipse, easy enough, right.      
+
+368
+00:22:41,881 --> 00:22:46,221
+Width equals 45 andheight equals 45 and      
+
+369
+00:22:46,222 --> 00:22:51,854
+then inside of that I'mgonna use <ellipse.fill> and      
+
+370
+00:22:51,855 --> 00:22:55,390
+I'm gonna put an <imagebrush>.      
+
+371
+00:22:55,391 --> 00:22:59,872
+I'm gonna set the ImageSource      
+
+372
+00:22:59,873 --> 00:23:04,353
+equal to a binding statement so      
+
+373
+00:23:04,354 --> 00:23:08,670
+x:Bind thumbnail.small.      
+
+374
+00:23:08,671 --> 00:23:11,610
+Spell it right.      
+
+375
+00:23:11,611 --> 00:23:18,370
+Like that andI missed a quote mark there.      
+
+376
+00:23:18,371 --> 00:23:19,230
+What am I missing?      
+
+377
+00:23:19,231 --> 00:23:20,256
+And I missed a quote mark there.      
+
+378
+00:23:20,257 --> 00:23:23,802
+Wow, I'm slipping.      
+
+379
+00:23:23,803 --> 00:23:25,520
+Okay, let's try this again.      
+
+380
+00:23:28,330 --> 00:23:30,067
+Attribution text looks good,      
+
+381
+00:23:30,068 --> 00:23:32,480
+still gotta get rid ofthat frame counter.      
+
+382
+00:23:36,080 --> 00:23:39,120
+Okay, so now look atthe effect that we get here.      
+
+383
+00:23:39,121 --> 00:23:40,080
+There's a a circle.      
+
+384
+00:23:40,081 --> 00:23:41,420
+Very nice.      
+
+385
+00:23:41,421 --> 00:23:43,910
+The next thing that I wanna do,well,      
+
+386
+00:23:43,911 --> 00:23:45,020
+let's do a couple of things.      
+
+387
+00:23:45,021 --> 00:23:51,150
+I'm gonna add a little bit of,let's put like,      
+
+388
+00:23:51,151 --> 00:23:56,150
+for example, the verticalalignment here equals center.      
+
+389
+00:23:56,151 --> 00:24:00,930
+I'm gonna use font size equalssomething a little bit larger      
+
+390
+00:24:00,931 --> 00:24:06,750
+like 18 and then I'm alsogonna add a margin equal to      
+
+391
+00:24:07,780 --> 00:24:13,910
+ten pixels, well yeah, ten,no, ten pixels to the left      
+
+392
+00:24:15,610 --> 00:24:20,130
+and overall I wannaadd a little margin.      
+
+393
+00:24:22,630 --> 00:24:27,360
+Ten from the left, the five fromthe top, zero from the right,      
+
+394
+00:24:27,361 --> 00:24:30,670
+and five from the bottombetween each item.      
+
+395
+00:24:30,671 --> 00:24:32,150
+We'll see what that gives us.      
+
+396
+00:24:37,650 --> 00:24:41,050
+All right,I like that a lot better.      
+
+397
+00:24:41,051 --> 00:24:42,610
+Very nice.All right and      
+
+398
+00:24:42,611 --> 00:24:46,140
+then the last thing I'm gonnado for this video is actually      
+
+399
+00:24:46,141 --> 00:24:50,470
+once and for all vanquish mynemesis, the frame counter.      
+
+400
+00:24:52,230 --> 00:24:52,730
+Bam.      
+
+401
+00:24:54,260 --> 00:24:56,990
+Okay, all right solet's stop right there.      
+
+402
+00:24:56,991 --> 00:24:58,590
+I think we madeplenty of progress.      
+
+403
+00:24:58,591 --> 00:25:03,390
+Let's, in the next lesson we'regoing to display the details for      
+
+404
+00:25:03,391 --> 00:25:07,390
+the character by selecting oneof the characters in the list      
+
+405
+00:25:07,391 --> 00:25:08,270
+view, okay?      
+
+406
+00:25:08,271 --> 00:25:09,850
+We'll start back therein the next video.      
+
+407
+00:25:09,851 --> 00:25:10,430
+See you there.      
+
+408
+00:25:10,431 --> 00:25:11,210
+Thanks.      
+

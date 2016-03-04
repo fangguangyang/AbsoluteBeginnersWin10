@@ -6,6 +6,12 @@
 *.exe
 *.dmg
 
+# ignore the python capture file
+PythonGetEnglishCaptions/
+
+# ignore the proposal file
+*.docx
+
 # User-specific files
 *.suo
 *.user

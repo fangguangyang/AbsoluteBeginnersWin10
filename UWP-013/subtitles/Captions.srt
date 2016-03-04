@@ -1,0 +1,312 @@
+1
+00:00:04,320 --> 00:00:07,754
+<v ->Hi. I'm Bob Tabor with www.LearnVisualStudio.NET</v>
+
+2
+00:00:07,755 --> 00:00:09,154
+and I'm here with another challenge,
+
+3
+00:00:09,155 --> 00:00:12,694
+what I'm calling the "Legendary Layout Challenge".
+
+4
+00:00:12,695 --> 00:00:15,694
+And in this layout challenge, you can only use StackPanel,
+
+5
+00:00:15,695 --> 00:00:17,714
+so let's take a review of what we got here.
+
+6
+00:00:17,715 --> 00:00:21,144
+We have a large title here at the top
+
+7
+00:00:21,145 --> 00:00:23,154
+and then we have two columns.
+
+8
+00:00:23,155 --> 00:00:27,874
+This column is about half the size of this second column.
+
+9
+00:00:27,875 --> 00:00:32,414
+It has Lorem Ipsum text, which is just dummy text,
+
+10
+00:00:32,415 --> 00:00:34,134
+fake Latin text,
+
+11
+00:00:34,135 --> 00:00:35,274
+has no meaning.
+
+12
+00:00:35,275 --> 00:00:37,174
+If it does, I don't know what it means.
+
+13
+00:00:37,175 --> 00:00:38,614
+And then in this third column,
+
+14
+00:00:38,615 --> 00:00:43,514
+we have a series of squares that almost resemble a flag.
+
+15
+00:00:43,515 --> 00:00:45,854
+And you can only use StackPanels.
+
+16
+00:00:45,855 --> 00:00:48,184
+You're going to need multiple StackPanels to pull this off.
+
+17
+00:00:48,185 --> 00:00:50,574
+Let's take a look at the instruction file.
+
+18
+00:00:50,575 --> 00:00:53,034
+Let's see what I got here.
+
+19
+00:00:53,035 --> 00:00:54,924
+All right, again, Legendary Layout Challenge,
+
+20
+00:00:54,925 --> 00:00:57,214
+only use StackPanel controls.
+
+21
+00:00:57,215 --> 00:01:01,985
+The designer I set to 13.3 Desktop (1280 x 720) 100% Scale.
+
+22
+00:01:01,986 --> 00:01:04,055
+That might help you as you're building this.
+
+23
+00:01:04,056 --> 00:01:05,635
+You're going to need a little bit more
+
+24
+00:01:05,636 --> 00:01:07,435
+horizontal space to work with.
+
+25
+00:01:07,436 --> 00:01:10,535
+This TextBlock at the very top is 48 pixels.
+
+26
+00:01:10,536 --> 00:01:14,675
+The left-most TextBlock will be 250 pixels wide.
+
+27
+00:01:14,676 --> 00:01:17,945
+And then the next one will be 500 pixels wide,
+
+28
+00:01:17,946 --> 00:01:19,455
+according to these instructions.
+
+29
+00:01:19,456 --> 00:01:22,015
+And I also want to say, yes, I know
+
+30
+00:01:22,016 --> 00:01:25,465
+that I said don't use absolute pixel values,
+
+31
+00:01:25,466 --> 00:01:27,515
+use relatives whenever you're working
+
+32
+00:01:27,516 --> 00:01:30,135
+with Universal Windows Platform apps.
+
+33
+00:01:30,136 --> 00:01:31,555
+However, this is just an exercise
+
+34
+00:01:31,556 --> 00:01:34,245
+just to flex your layout muscles,
+
+35
+00:01:34,246 --> 00:01:37,845
+so don't use this in the real world, okay?
+
+36
+00:01:37,846 --> 00:01:42,845
+You should get the text for these Lorem Ipsum columns
+
+37
+00:01:44,496 --> 00:01:47,845
+from this file that I'm supplying called loremipsum.txt.
+
+38
+00:01:47,846 --> 00:01:50,015
+Just copy and paste what you need in there.
+
+39
+00:01:50,016 --> 00:01:51,905
+The first one, I think, only needs these two lines.
+
+40
+00:01:51,906 --> 00:01:55,695
+The second one that's larger, wider, needs these three lines
+
+41
+00:01:55,696 --> 00:01:59,365
+in order to flesh them all out, okay?
+
+42
+00:01:59,366 --> 00:02:00,695
+Let's go back here
+
+43
+00:02:00,696 --> 00:02:04,815
+and then take a look at the next instruction
+
+44
+00:02:04,816 --> 00:02:08,695
+which is most of the margins are either 10 or 20 pixels.
+
+45
+00:02:08,696 --> 00:02:11,575
+Oh wait, this third area is 300 pixels wide.
+
+46
+00:02:11,576 --> 00:02:15,955
+It looks like it's split 200 pixels for this large blue box
+
+47
+00:02:15,956 --> 00:02:18,295
+and then 100 pixels for each of these,
+
+48
+00:02:18,296 --> 00:02:20,795
+the red and the yellow boxes, okay?
+
+49
+00:02:20,796 --> 00:02:22,815
+Most of the margins that you'll see used here
+
+50
+00:02:22,816 --> 00:02:26,685
+between the various columns are either 10 or 20 pixels.
+
+51
+00:02:26,686 --> 00:02:30,195
+You're going to need to use the TextWrapping property
+
+52
+00:02:30,196 --> 00:02:32,845
+of the TextBlock in order to get this effect.
+
+53
+00:02:32,846 --> 00:02:36,785
+If you don't set the TextWrapping property equal to Wrap
+
+54
+00:02:36,786 --> 00:02:39,715
+then you're only going to see the first line
+
+55
+00:02:39,716 --> 00:02:43,995
+of the Lorem Ipsum in each of your TextBlocks
+
+56
+00:02:43,996 --> 00:02:46,175
+and that would not be good.
+
+57
+00:02:46,176 --> 00:02:48,155
+So I gave you that little freebie.
+
+58
+00:02:48,156 --> 00:02:51,485
+You can use the image that I'm supplying here,
+
+59
+00:02:51,486 --> 00:02:56,485
+this UWP-013-Screenshot.png
+
+60
+00:02:56,696 --> 00:02:59,555
+to reference while you're building the application.
+
+61
+00:02:59,556 --> 00:03:00,995
+And just like I said before,
+
+62
+00:03:00,996 --> 00:03:03,925
+try to go through this challenge without my help,
+
+63
+00:03:03,926 --> 00:03:06,295
+without peeking at the solution video.
+
+64
+00:03:06,296 --> 00:03:07,745
+Struggle a little bit.
+
+65
+00:03:07,746 --> 00:03:08,675
+Don't get frustrated.
+
+66
+00:03:08,676 --> 00:03:09,535
+If you get to the point
+
+67
+00:03:09,536 --> 00:03:11,275
+where you don't know what you need to do next
+
+68
+00:03:11,276 --> 00:03:15,675
+then watch just enough of the solution video to get unstuck
+
+69
+00:03:15,676 --> 00:03:18,785
+and then finally, if you do solve it without my help
+
+70
+00:03:18,786 --> 00:03:20,895
+or once you solve this on your own
+
+71
+00:03:20,896 --> 00:03:25,875
+and you're curious as to how I would solve it,
+
+72
+00:03:25,876 --> 00:03:27,675
+if I took different techniques or whatever,
+
+73
+00:03:27,676 --> 00:03:30,355
+then absolutely watch the entire solution video,
+
+74
+00:03:30,356 --> 00:03:33,786
+maybe there's something different about how I did it
+
+75
+00:03:33,787 --> 00:03:35,096
+from how you did it.
+
+76
+00:03:35,097 --> 00:03:38,086
+Okay, so we'll see you in the next video.
+
+77
+00:03:38,087 --> 00:03:38,856
+Good luck.
+
+78
+00:03:38,857 --> 00:03:40,807
+I know you can do this.  
+

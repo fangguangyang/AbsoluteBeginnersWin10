@@ -1,0 +1,816 @@
+1
+00:00:04,405 --> 00:00:07,945
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net,</v>      
+
+2
+00:00:07,946 --> 00:00:10,120
+and in this lesson, I want to talk about a challenge      
+
+3
+00:00:10,121 --> 00:00:13,410
+you're going to run in into if you attempt to      
+
+4
+00:00:15,036 --> 00:00:18,064
+use VisualStateManager and AdaptiveTriggers to      
+
+5
+00:00:18,065 --> 00:00:22,586
+resize items inside of your DataTemplate for      
+
+6
+00:00:22,587 --> 00:00:24,260
+your GridView, List View Control,      
+
+7
+00:00:24,261 --> 00:00:27,260
+anything that needs an item template.      
+
+8
+00:00:27,261 --> 00:00:29,128
+So, you can see here that I have another version      
+
+9
+00:00:29,129 --> 00:00:33,375
+of my little contact manager application.      
+
+10
+00:00:33,376 --> 00:00:35,198
+And, ideally, what would happen is whenever      
+
+11
+00:00:35,199 --> 00:00:37,851
+we have more screen real estate, those avatar      
+
+12
+00:00:37,852 --> 00:00:42,117
+images would grow larger, and I tried a few things,      
+
+13
+00:00:42,118 --> 00:00:44,466
+but I can't quite get it to work right now.      
+
+14
+00:00:44,467 --> 00:00:48,070
+You see, they stay the same size no matter what.      
+
+15
+00:00:48,071 --> 00:00:49,640
+Now, if you take a look at the code that I've      
+
+16
+00:00:49,641 --> 00:00:52,000
+actually written here, you can see that I've added      
+
+17
+00:00:52,001 --> 00:00:54,602
+a VisualStateManager with VisualStateGroups.      
+
+18
+00:00:54,603 --> 00:00:57,770
+I've got two VisualStates, a Narrow and a WideLayout.      
+
+19
+00:00:57,771 --> 00:01:00,661
+When we're in the NarrowLayout, I want the      
+
+20
+00:01:00,662 --> 00:01:03,476
+AvatarImage's Width and Height to be 100, and      
+
+21
+00:01:03,477 --> 00:01:05,738
+when we're in the WideLayout, I want the Width      
+
+22
+00:01:05,739 --> 00:01:07,337
+and Height to be 200.      
+
+23
+00:01:07,338 --> 00:01:08,841
+So, why isn't this working?      
+
+24
+00:01:08,842 --> 00:01:12,875
+Well, unfortunately, this will not work using      
+
+25
+00:01:12,876 --> 00:01:16,061
+the technique that we've used here where      
+
+26
+00:01:16,062 --> 00:01:20,124
+we're defining that DataTemplate here inline.      
+
+27
+00:01:20,125 --> 00:01:22,781
+What I'm going to need to do is actually breakout      
+
+28
+00:01:22,782 --> 00:01:25,223
+this StackPanel that forms the body of my      
+
+29
+00:01:25,224 --> 00:01:28,988
+DataTemplate into its own code file, and then      
+
+30
+00:01:28,989 --> 00:01:32,732
+I can inside of that code file, I can use a      
+
+31
+00:01:32,733 --> 00:01:35,107
+VisualStateManager and AdaptiveTriggers, and      
+
+32
+00:01:35,108 --> 00:01:39,375
+all that good stuff to re-size on demand.      
+
+33
+00:01:39,388 --> 00:01:43,145
+So, that's what I'm going to attempt to do in this lesson.      
+
+34
+00:01:43,146 --> 00:01:46,105
+So, to begin with I'm going to add a new SserControl to      
+
+35
+00:01:46,106 --> 00:01:46,723
+my Project.      
+
+36
+00:01:46,724 --> 00:01:48,333
+A UserControl, it's just like a Page.      
+
+37
+00:01:48,334 --> 00:01:49,346
+It's just smaller.      
+
+38
+00:01:49,347 --> 00:01:51,368
+It can be reused multiple times.      
+
+39
+00:01:51,369 --> 00:01:53,527
+Usually it just has a snippet, as opposed to an      
+
+40
+00:01:53,528 --> 00:01:55,888
+entire Page Layout.      
+
+41
+00:01:56,193 --> 00:01:58,483
+In this case I'm going to add a New Item, and      
+
+42
+00:01:58,484 --> 00:02:00,820
+in the Add New Item dialogue, I'm going to make sure      
+
+43
+00:02:00,821 --> 00:02:02,602
+to choose User Control, and I'm going to give it      
+
+44
+00:02:02,603 --> 00:02:06,303
+the name ContactTemplate, because that's what      
+
+45
+00:02:06,304 --> 00:02:10,327
+I'm using it for, a template for individual contacts.      
+
+46
+00:02:11,758 --> 00:02:12,793
+Great.      
+
+47
+00:02:12,794 --> 00:02:16,408
+Let me go ahead and just get to that point right there.      
+
+48
+00:02:16,745 --> 00:02:18,400
+And now what I want to do is come back over here,      
+
+49
+00:02:18,401 --> 00:02:21,565
+and in my main MainPage.xaml, I'm going to just      
+
+50
+00:02:21,566 --> 00:02:25,117
+rip out everything right there, between the open      
+
+51
+00:02:25,118 --> 00:02:27,356
+and close DataTemplate, and I go to the      
+
+52
+00:02:27,357 --> 00:02:29,671
+new ContactTemplate Page, and then get rid of      
+
+53
+00:02:29,672 --> 00:02:33,760
+the Grid and just paste in that same StackPanel there.      
+
+54
+00:02:33,761 --> 00:02:34,740
+Okay?      
+
+55
+00:02:34,741 --> 00:02:37,350
+So, we're off to a great start.      
+
+56
+00:02:37,351 --> 00:02:39,801
+What I'm going to need to do to reference that      
+
+57
+00:02:39,802 --> 00:02:42,649
+UserControl now is, inside of my DataTemplate,      
+
+58
+00:02:42,650 --> 00:02:46,345
+I'm going to need to reference the local namespace.      
+
+59
+00:02:46,346 --> 00:02:50,443
+Local, as defined earlier, will just be the local      
+
+60
+00:02:50,444 --> 00:02:52,556
+namespace, whatever the Project name is,      
+
+61
+00:02:52,557 --> 00:02:54,397
+UserControlDataTemplate, as long as your      
+
+62
+00:02:54,398 --> 00:02:58,467
+UserControl is in the same root directory as      
+
+63
+00:02:58,468 --> 00:03:00,754
+everything else in your Project, you'll be just fine.      
+
+64
+00:03:00,755 --> 00:03:02,298
+If you want to put it in a sub-folder, you're going to      
+
+65
+00:03:02,299 --> 00:03:04,905
+need to reference a different namespace up in      
+
+66
+00:03:04,906 --> 00:03:06,722
+your XAML header.      
+
+67
+00:03:06,723 --> 00:03:08,091
+Alright, so here we go.      
+
+68
+00:03:08,092 --> 00:03:12,049
+ContactTemplate, and I'm not sure that I need      
+
+69
+00:03:12,050 --> 00:03:14,470
+to do this, but I am going to just set HorizontalAlignment      
+
+70
+00:03:14,471 --> 00:03:16,505
+HorizontalAlignment="Stretch" and VerticalAlignment      
+
+71
+00:03:16,506 --> 00:03:17,645
+VerticalAlignment="Stretch".      
+
+72
+00:03:17,646 --> 00:03:20,120
+Just say, hey, take up everything you give me as      
+
+73
+00:03:20,121 --> 00:03:23,035
+far as the space is concerned.      
+
+74
+00:03:23,036 --> 00:03:27,326
+And that's all that I should need to do there.      
+
+75
+00:03:27,330 --> 00:03:28,212
+Great.      
+
+76
+00:03:28,213 --> 00:03:30,558
+Now, back in the ContactTemplate, if we were to      
+
+77
+00:03:30,559 --> 00:03:32,670
+try to run the application now, it wouldn't work.      
+
+78
+00:03:32,671 --> 00:03:33,812
+It might even give us errors.      
+
+79
+00:03:33,813 --> 00:03:34,882
+There's a couple of changes that we're going to      
+
+80
+00:03:34,883 --> 00:03:36,219
+need to make first.      
+
+81
+00:03:36,220 --> 00:03:38,352
+First of all, let's try to get this all running,      
+
+82
+00:03:38,353 --> 00:03:40,016
+and then we'll come back and add the      
+
+83
+00:03:40,017 --> 00:03:44,325
+VisualStateManager and the different AdaptiveTriggers.      
+
+84
+00:03:44,326 --> 00:03:48,126
+So, the first thing that I want to do is actually      
+
+85
+00:03:49,256 --> 00:03:51,230
+use the name of the object that we're going to      
+
+86
+00:03:51,231 --> 00:03:51,981
+be binding to.      
+
+87
+00:03:51,982 --> 00:03:55,069
+So, in this case we're going to do Contact.AvatarPath      
+
+88
+00:03:55,070 --> 00:03:59,551
+Contact.AvatarPath, Contact.FirstName      
+
+89
+00:03:59,552 --> 00:04:01,871
+Contact.LastName.      
+
+90
+00:04:01,872 --> 00:04:03,096
+Okay.      
+
+91
+00:04:03,097 --> 00:04:07,271
+And then in the code behind for this ContactTemplate,      
+
+92
+00:04:08,004 --> 00:04:10,360
+I'm going to need to add two different things.      
+
+93
+00:04:10,361 --> 00:04:12,632
+The first thing that I'm going to need to add is      
+
+94
+00:04:12,633 --> 00:04:15,904
+I'm going to need to make a...      
+
+95
+00:04:17,344 --> 00:04:20,148
+property, so I'm going to go Models.Contact,      
+
+96
+00:04:20,149 --> 00:04:22,463
+just the Models.      
+
+97
+00:04:22,464 --> 00:04:25,788
+I could define that in a "Using" statement, but      
+
+98
+00:04:25,789 --> 00:04:29,424
+essentially, I'm just going to reference it like this,      
+
+99
+00:04:29,425 --> 00:04:32,986
+Models.Contact, and then...      
+
+100
+00:04:33,252 --> 00:04:37,408
+we want to expose a new property called Contact      
+
+101
+00:04:39,118 --> 00:04:43,709
+for our UserControl, and we're just going to add a getter.      
+
+102
+00:04:43,710 --> 00:04:45,761
+So, this is just a getter of a full-blown      
+
+103
+00:04:45,762 --> 00:04:48,556
+property definition.      
+
+104
+00:04:48,557 --> 00:04:50,725
+So, we're going to return...      
+
+105
+00:04:51,116 --> 00:04:55,686
+this.DataContext as Models.Contact.      
+
+106
+00:04:56,233 --> 00:04:59,840
+So, essentially what this is going to do is, whenever you are,      
+
+107
+00:05:01,610 --> 00:05:04,455
+whenever one of the Controls on the      
+
+108
+00:05:04,456 --> 00:05:08,574
+ContactTemplate.xaml Page, whenever it needs to      
+
+109
+00:05:08,575 --> 00:05:13,107
+get data, it's going to get data of type Contact,      
+
+110
+00:05:14,007 --> 00:05:16,526
+and it's going to get that data from the data      
+
+111
+00:05:16,527 --> 00:05:18,910
+context for this UserControl.      
+
+112
+00:05:18,911 --> 00:05:21,069
+The DataContext for the UserControl will be      
+
+113
+00:05:21,070 --> 00:05:24,056
+passed in from the MainPage.xaml.      
+
+114
+00:05:24,057 --> 00:05:27,853
+It will be whatever gets, basically, passed in      
+
+115
+00:05:27,854 --> 00:05:29,648
+in the DataTemplate.      
+
+116
+00:05:29,649 --> 00:05:31,282
+So, for the most part, what you can do with this      
+
+117
+00:05:31,283 --> 00:05:34,538
+is just treat this as templated code, copy and paste it.      
+
+118
+00:05:34,539 --> 00:05:36,266
+We're going to add it to our cheat sheet.      
+
+119
+00:05:36,267 --> 00:05:37,824
+You don't need to really understand too much      
+
+120
+00:05:37,825 --> 00:05:38,901
+about what it's doing.      
+
+121
+00:05:38,902 --> 00:05:41,343
+Just understand that you have to have this      
+
+122
+00:05:41,344 --> 00:05:45,098
+line of code and then also in this constructor      
+
+123
+00:05:45,099 --> 00:05:47,050
+for our UserControl, you're going to have to      
+
+124
+00:05:47,051 --> 00:05:50,152
+do one more thing, and that is whenever the      
+
+125
+00:05:50,153 --> 00:05:52,712
+DataContext is changed, there will be a      
+
+126
+00:05:52,713 --> 00:05:55,271
+DataContextChanged event, and what we want      
+
+127
+00:05:55,272 --> 00:05:59,723
+to happen is write this landis expression      
+
+128
+00:06:02,229 --> 00:06:05,834
+that will call the Bindings.Update().      
+
+129
+00:06:05,835 --> 00:06:07,965
+Now this Update is actually being generated      
+
+130
+00:06:07,966 --> 00:06:11,475
+for us again inside.      
+
+131
+00:06:11,476 --> 00:06:13,670
+Because we use the x:Bind statement, like we      
+
+132
+00:06:13,671 --> 00:06:16,507
+talked about previously, this will essentially      
+
+133
+00:06:16,508 --> 00:06:19,162
+say, "Hey, go off and update the data that you're      
+
+134
+00:06:19,163 --> 00:06:20,857
+being bound to."      
+
+135
+00:06:20,858 --> 00:06:23,940
+Again, this can be treated as boiler plate code, as well.      
+
+136
+00:06:23,941 --> 00:06:25,732
+We're going to add it to our cheat sheet.      
+
+137
+00:06:25,733 --> 00:06:27,438
+You don't have to understand too much about how      
+
+138
+00:06:27,439 --> 00:06:28,963
+it works in order to use it.      
+
+139
+00:06:28,964 --> 00:06:30,479
+I think that's the key idea here.      
+
+140
+00:06:30,480 --> 00:06:34,257
+But now that we've added these two lines of code,      
+
+141
+00:06:34,258 --> 00:06:37,587
+and we've made the modification to our      
+
+142
+00:06:37,588 --> 00:06:40,217
+x:Bind statement for each of the items that      
+
+143
+00:06:40,218 --> 00:06:42,965
+we're binding to here by adding the actual      
+
+144
+00:06:42,966 --> 00:06:46,037
+data type for the given property, now we should      
+
+145
+00:06:46,038 --> 00:06:48,262
+be able to, at least, see it working again,      
+
+146
+00:06:48,263 --> 00:06:50,548
+even though we've made no significant changes      
+
+147
+00:06:50,549 --> 00:06:52,057
+to the functionality.      
+
+148
+00:06:52,058 --> 00:06:53,779
+We'll get to that next.      
+
+149
+00:06:53,780 --> 00:06:55,356
+Okay, so it still works.      
+
+150
+00:06:55,357 --> 00:06:59,135
+We're still binding to our same ObservableCollection.      
+
+151
+00:06:59,136 --> 00:07:02,696
+We're just defining that DataTemplate here      
+
+152
+00:07:02,697 --> 00:07:03,912
+in the UserControl.      
+
+153
+00:07:03,913 --> 00:07:05,523
+Now we want to take it to the next step, and that is      
+
+154
+00:07:05,524 --> 00:07:08,807
+to define a VisualStateManager, so that whenever      
+
+155
+00:07:08,808 --> 00:07:13,597
+we re-size the window, that the Image,      
+
+156
+00:07:16,451 --> 00:07:18,201
+that Avatar Image, will grow from      
+
+157
+00:07:18,202 --> 00:07:21,414
+100, 100 to 200, 200.      
+
+158
+00:07:21,836 --> 00:07:24,086
+So, I'm just going to actually paste in a bunch      
+
+159
+00:07:24,087 --> 00:07:24,928
+of code here.      
+
+160
+00:07:24,929 --> 00:07:28,165
+It's pretty much the same code that we had that I,      
+
+161
+00:07:28,166 --> 00:07:30,446
+well let me look here.      
+
+162
+00:07:31,468 --> 00:07:34,145
+Yeah, let me just actually do this.      
+
+163
+00:07:34,146 --> 00:07:35,664
+I'll just grab it from here.      
+
+164
+00:07:35,665 --> 00:07:37,537
+Grab all that.      
+
+165
+00:07:39,100 --> 00:07:40,698
+And then hit Control+X to get it out of my      
+
+166
+00:07:40,699 --> 00:07:42,309
+MainPage.xaml, and then I'm going to take it      
+
+167
+00:07:42,310 --> 00:07:44,805
+over here to the ContactTemplate.xaml,      
+
+168
+00:07:44,806 --> 00:07:48,496
+and put it right here underneath the StackPanel,      
+
+169
+00:07:48,497 --> 00:07:49,523
+like so.      
+
+170
+00:07:49,524 --> 00:07:52,400
+Alright, let's see if that works.      
+
+171
+00:07:59,798 --> 00:08:01,301
+Alright, so this should be pretty small.      
+
+172
+00:08:01,302 --> 00:08:02,474
+What happens when we make it larger?      
+
+173
+00:08:02,475 --> 00:08:06,196
+Oh, hey, it doubled the size of      
+
+174
+00:08:06,197 --> 00:08:08,788
+our avatar icon.      
+
+175
+00:08:08,789 --> 00:08:10,356
+Alright, very proud of this.      
+
+176
+00:08:10,357 --> 00:08:13,033
+So, we're going to use this technique for      
+
+177
+00:08:13,034 --> 00:08:14,846
+our upcoming challenge.      
+
+178
+00:08:14,847 --> 00:08:17,342
+Whenever we want to re-size the window,      
+
+179
+00:08:17,343 --> 00:08:20,392
+not only are we going to re-size, or change      
+
+180
+00:08:20,393 --> 00:08:22,141
+the layout, but we may want to re-size      
+
+181
+00:08:22,142 --> 00:08:26,781
+the actual DataTemplate for our GridView Control.      
+
+182
+00:08:26,782 --> 00:08:28,820
+Since we'll be working in a larger form factor,      
+
+183
+00:08:28,821 --> 00:08:32,439
+we would want to make it possible for the Fonts      
+
+184
+00:08:32,440 --> 00:08:35,461
+and the Images to be larger on a larger screen.      
+
+185
+00:08:35,462 --> 00:08:36,221
+Okay?      
+
+186
+00:08:36,222 --> 00:08:38,151
+So, that's all I wanted to say about this.      
+
+187
+00:08:38,152 --> 00:08:42,787
+This addresses the issue of how do I use      
+
+188
+00:08:42,788 --> 00:08:45,223
+the VisualStateManager and AdaptiveTriggers      
+
+189
+00:08:45,224 --> 00:08:46,727
+inside of a DataTemplate?      
+
+190
+00:08:46,728 --> 00:08:49,020
+Well, you add a UserControl, you make a few      
+
+191
+00:08:49,021 --> 00:08:51,528
+tiny modifications in the code behind, and then      
+
+192
+00:08:51,529 --> 00:08:53,713
+you go ahead and you add your VisualStateManager,      
+
+193
+00:08:53,714 --> 00:08:57,286
+State Triggers, and your setters, and they'll      
+
+194
+00:08:57,287 --> 00:08:59,578
+be applied to each item in your collection.      
+
+195
+00:08:59,579 --> 00:09:02,873
+So, just to prove that this works, let's go ahead      
+
+196
+00:09:02,874 --> 00:09:06,083
+and add Beth, as well, and you can see      
+
+197
+00:09:06,084 --> 00:09:09,293
+she's large and now she is small.      
+
+198
+00:09:09,294 --> 00:09:09,870
+Great.      
+
+199
+00:09:09,871 --> 00:09:11,182
+Okay?      
+
+200
+00:09:11,183 --> 00:09:13,131
+So, I think that's pretty much all we're going to      
+
+201
+00:09:13,132 --> 00:09:15,809
+cover in this little round, and now it's time for      
+
+202
+00:09:15,810 --> 00:09:18,560
+a cheat sheet review and to move on to our next challenge.      
+
+203
+00:09:18,561 --> 00:09:19,390
+See you there.      
+
+204
+00:09:19,391 --> 00:09:20,851
+Thanks.      
+

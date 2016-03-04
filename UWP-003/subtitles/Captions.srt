@@ -1,0 +1,1536 @@
+1
+00:00:04,255 --> 00:00:05,217
+<v ->Hi, I'm Bob Tabor</v>
+
+2
+00:00:05,218 --> 00:00:08,457
+with http://www.LearnVisualStudio.NET.
+
+3
+00:00:08,458 --> 00:00:10,477
+I really don't want to rush through this.
+
+4
+00:00:10,478 --> 00:00:12,357
+I mean, there were some key takeaways
+
+5
+00:00:12,358 --> 00:00:14,691
+from that previous lesson that are important enough
+
+6
+00:00:14,692 --> 00:00:18,348
+to elaborate on as we're getting started here.
+
+7
+00:00:18,349 --> 00:00:20,183
+So, let's take a few moments
+
+8
+00:00:20,184 --> 00:00:22,923
+and chat about what we just did in the previous lesson.
+
+9
+00:00:22,924 --> 00:00:25,186
+First of all, I hope you realize that
+
+10
+00:00:25,187 --> 00:00:27,892
+you're going to be able to leverage your existing knowledge
+
+11
+00:00:27,893 --> 00:00:29,320
+of creating user interfaces
+
+12
+00:00:29,321 --> 00:00:31,351
+and doing so in Visual Studio,
+
+13
+00:00:31,352 --> 00:00:33,952
+and apply that towards creating
+
+14
+00:00:33,953 --> 00:00:36,553
+Universal Windows Platform apps.
+
+15
+00:00:36,554 --> 00:00:38,492
+Did you notice how similar it was
+
+16
+00:00:38,493 --> 00:00:41,086
+to creating WPF and ASP.Net Web Forms?
+
+17
+00:00:41,087 --> 00:00:42,549
+That was no accident.
+
+18
+00:00:42,550 --> 00:00:44,360
+Its a very similar experience
+
+19
+00:00:44,361 --> 00:00:45,986
+and a very similar workflow.
+
+20
+00:00:45,987 --> 00:00:49,109
+And as a result, its just as fun,
+
+21
+00:00:49,110 --> 00:00:50,955
+and its just as easy,
+
+22
+00:00:50,956 --> 00:00:53,045
+and you know, certainly there's a lot to learn here
+
+23
+00:00:53,046 --> 00:00:55,518
+but its really nothing to be intimidated about.
+
+24
+00:00:55,519 --> 00:00:58,188
+So, as we pointed out,
+
+25
+00:00:58,189 --> 00:01:00,359
+we have a couple of different options
+
+26
+00:01:00,360 --> 00:01:02,251
+for laying out our application,
+
+27
+00:01:02,252 --> 00:01:04,550
+at least here at the very beginning.
+
+28
+00:01:04,551 --> 00:01:07,682
+We were able to make changes to the user interface
+
+29
+00:01:07,683 --> 00:01:09,252
+in the most visual of ways,
+
+30
+00:01:09,253 --> 00:01:10,622
+by dragging and dropping controls
+
+31
+00:01:10,623 --> 00:01:13,281
+from the Toolbox onto the design surface
+
+32
+00:01:13,282 --> 00:01:15,893
+and we could even resize things and move them around.
+
+33
+00:01:15,894 --> 00:01:20,383
+And we also can make changes in the Properties window,
+
+34
+00:01:20,384 --> 00:01:24,252
+to modify the various attributes of the controls
+
+35
+00:01:24,253 --> 00:01:26,075
+that we see on screen.
+
+36
+00:01:26,076 --> 00:01:28,118
+However, I think you're going to find that,
+
+37
+00:01:28,119 --> 00:01:30,394
+just like HTML,
+
+38
+00:01:30,395 --> 00:01:33,320
+a visual designer won't give you the level
+
+39
+00:01:33,321 --> 00:01:34,919
+of control that you're really going to want
+
+40
+00:01:34,920 --> 00:01:37,787
+over the various properties
+
+41
+00:01:37,788 --> 00:01:39,516
+and how they relate to each other.
+
+42
+00:01:39,517 --> 00:01:41,479
+So, there's really no way around
+
+43
+00:01:41,480 --> 00:01:44,149
+learning the actual XAML syntax itself.
+
+44
+00:01:44,150 --> 00:01:45,791
+And we'll being learning about that in earnest
+
+45
+00:01:45,792 --> 00:01:47,237
+in the next lesson.
+
+46
+00:01:48,010 --> 00:01:50,412
+Furthermore, just like ASP.NET Web Forms
+
+47
+00:01:50,413 --> 00:01:53,059
+and WPF applications that we created,
+
+48
+00:01:53,060 --> 00:01:56,623
+every screen, or rather every page
+
+49
+00:01:56,624 --> 00:02:01,520
+has a code behind file that's associated with it,
+
+50
+00:02:01,521 --> 00:02:04,782
+where we can write event handler code in C#,
+
+51
+00:02:04,783 --> 00:02:07,209
+that perform operations whenever
+
+52
+00:02:07,210 --> 00:02:10,123
+the user interacts with our application in a given way.
+
+53
+00:02:10,124 --> 00:02:13,757
+So, we can also see that there's that same relationship here
+
+54
+00:02:13,758 --> 00:02:16,613
+between, as we noted in the previous lesson,
+
+55
+00:02:16,614 --> 00:02:20,026
+the MainPage.xaml and the MainPage.xaml.cs.
+
+56
+00:02:20,027 --> 00:02:23,974
+In fact, what I want you to notice is here,
+
+57
+00:02:23,975 --> 00:02:25,750
+in the MainPage.xaml.cs,
+
+58
+00:02:25,751 --> 00:02:28,385
+you can see that we're in the namespace: HelloWorld
+
+59
+00:02:28,386 --> 00:02:30,591
+and we're creating a class called MainPage,
+
+60
+00:02:30,592 --> 00:02:32,124
+notice that it says "partial class".
+
+61
+00:02:32,125 --> 00:02:33,575
+Now, I'm not sure that we talked about this
+
+62
+00:02:33,576 --> 00:02:36,350
+in that fundamentals series in C#,
+
+63
+00:02:36,351 --> 00:02:39,786
+but essentially, we can create multiple files
+
+64
+00:02:39,787 --> 00:02:44,024
+and all have them be partial definitions of a single class,
+
+65
+00:02:44,025 --> 00:02:46,718
+stored in different files, whatever the case might be.
+
+66
+00:02:46,719 --> 00:02:47,983
+But as long as that
+
+67
+00:02:47,984 --> 00:02:51,025
+file has the same class name,
+
+68
+00:02:51,026 --> 00:02:52,116
+its in the same name space,
+
+69
+00:02:52,117 --> 00:02:54,125
+and it has the keyword "partial",
+
+70
+00:02:54,126 --> 00:02:57,550
+we can create many different files to represent a class.
+
+71
+00:02:57,551 --> 00:02:58,722
+Same thing is true here.
+
+72
+00:02:58,723 --> 00:03:03,088
+So notice that this MainPage derives from
+
+73
+00:03:03,089 --> 00:03:04,625
+an object called Page.
+
+74
+00:03:04,626 --> 00:03:05,554
+If we were to hover over,
+
+75
+00:03:05,555 --> 00:03:07,551
+you can see that this is a class called
+
+76
+00:03:07,552 --> 00:03:10,523
+Windows.UI.XAML.Controls.Page.
+
+77
+00:03:10,524 --> 00:03:12,787
+Now, if you go to the MainPage.xaml,
+
+78
+00:03:12,788 --> 00:03:13,721
+and look here at the very top,
+
+79
+00:03:13,722 --> 00:03:16,890
+notice here that we're working with a Page object
+
+80
+00:03:16,891 --> 00:03:18,922
+and notice that the class name
+
+81
+00:03:18,923 --> 00:03:21,523
+is also HelloWorld, namespace,
+
+82
+00:03:21,524 --> 00:03:23,450
+MainPage, class.
+
+83
+00:03:23,451 --> 00:03:25,888
+Alright, so that's when I said that these were two parts
+
+84
+00:03:25,889 --> 00:03:27,293
+of the same puzzle,
+
+85
+00:03:27,294 --> 00:03:29,719
+two puzzle pieces that go together.
+
+86
+00:03:29,720 --> 00:03:31,254
+What I really meant to say
+
+87
+00:03:31,255 --> 00:03:33,249
+is that these are two different files
+
+88
+00:03:33,250 --> 00:03:34,888
+that represent the same class.
+
+89
+00:03:34,889 --> 00:03:38,557
+One of these files represents the class
+
+90
+00:03:38,558 --> 00:03:40,249
+from a visual perspective
+
+91
+00:03:40,250 --> 00:03:43,453
+and the other represents it from a behavioral aspect.
+
+92
+00:03:43,454 --> 00:03:45,381
+Okay, and we'll talk about this more a little bit later.
+
+93
+00:03:45,382 --> 00:03:49,793
+And then, after we kind of built our whole application
+
+94
+00:03:49,794 --> 00:03:52,290
+and we were able to run it in debug mode,
+
+95
+00:03:52,291 --> 00:03:53,985
+and I didn't demonstrate this at the time.
+
+96
+00:03:53,986 --> 00:03:55,448
+But, you know, we can do,
+
+97
+00:03:55,449 --> 00:03:56,326
+and you can see I've already done this
+
+98
+00:03:56,327 --> 00:03:57,418
+once or twice here.
+
+99
+00:03:57,419 --> 00:04:01,559
+You can use break point, you can for example,
+
+100
+00:04:01,560 --> 00:04:03,684
+if we set this back to local machine
+
+101
+00:04:03,685 --> 00:04:05,518
+and actually run the application,
+
+102
+00:04:05,519 --> 00:04:08,723
+we can then click the button
+
+103
+00:04:08,724 --> 00:04:11,277
+and we'll be in debug mode at that point.
+
+104
+00:04:11,278 --> 00:04:15,422
+We can evaluate different property values,
+
+105
+00:04:15,423 --> 00:04:17,094
+variables, whatever the case might be.
+
+106
+00:04:17,095 --> 00:04:18,858
+We can use all the same little tools
+
+107
+00:04:18,859 --> 00:04:20,251
+that are available to us
+
+108
+00:04:20,252 --> 00:04:24,315
+when building any other style of application.
+
+109
+00:04:24,316 --> 00:04:28,193
+The one thing that I noticed, or that I pointed out
+
+110
+00:04:28,194 --> 00:04:30,782
+but I didn't really talk about at length was: why?
+
+111
+00:04:30,783 --> 00:04:33,556
+Why there are so many different emulators available
+
+112
+00:04:33,557 --> 00:04:35,553
+here in debug mode.
+
+113
+00:04:35,554 --> 00:04:38,607
+And they're really there to emulate
+
+114
+00:04:38,608 --> 00:04:41,324
+the different screen sizes and resolutions,
+
+115
+00:04:41,325 --> 00:04:43,518
+but then also, the different memory constraints
+
+116
+00:04:43,519 --> 00:04:47,187
+for the different hardware,
+
+117
+00:04:47,188 --> 00:04:50,658
+phone hardware that we'll find out in the market today.
+
+118
+00:04:50,659 --> 00:04:53,793
+So we can test our application in a low memory environment
+
+119
+00:04:53,794 --> 00:04:55,186
+or test our application
+
+120
+00:04:55,187 --> 00:04:56,451
+in a high memory environment,
+
+121
+00:04:56,452 --> 00:05:00,027
+as well as screen resolutions and sizes, as well.
+
+122
+00:05:00,028 --> 00:05:02,988
+And also, what I didn't talk about
+
+123
+00:05:02,989 --> 00:05:05,008
+whenever we were talking about emulators,
+
+124
+00:05:05,009 --> 00:05:08,015
+and let's just go ahead and launch the emulator.
+
+125
+00:05:11,220 --> 00:05:13,483
+And what I didn't talk about at the time were these little,
+
+126
+00:05:13,484 --> 00:05:17,593
+these actions on the toolbar
+
+127
+00:05:17,594 --> 00:05:19,215
+and some of them are pretty obvious as to what they do.
+
+128
+00:05:19,216 --> 00:05:21,259
+You know, like rotation and so on,
+
+129
+00:05:21,260 --> 00:05:22,722
+and just to see how our app looks
+
+130
+00:05:22,723 --> 00:05:24,823
+whenever we rotate our phone around,
+
+131
+00:05:24,824 --> 00:05:27,783
+how to do multi-touch input,
+
+132
+00:05:27,784 --> 00:05:31,290
+and then also just to zoom the application.
+
+133
+00:05:31,291 --> 00:05:32,787
+But, then there are also
+
+134
+00:05:32,788 --> 00:05:35,826
+tools that we can access through this
+
+135
+00:05:35,827 --> 00:05:37,927
+double chevron icon at the bottom.
+
+136
+00:05:37,928 --> 00:05:40,191
+And this opens up a whole dialogue
+
+137
+00:05:40,192 --> 00:05:41,190
+of additional tools.
+
+138
+00:05:41,191 --> 00:05:42,653
+So for example, if we want to test
+
+139
+00:05:42,654 --> 00:05:45,091
+our application's accelerometer feature,
+
+140
+00:05:45,092 --> 00:05:48,190
+we can record a shaking motion,
+
+141
+00:05:48,191 --> 00:05:53,020
+or some sort of gesture on the phone
+
+142
+00:05:53,021 --> 00:05:56,643
+and then test it and see how our application responds to it
+
+143
+00:05:56,644 --> 00:05:59,986
+if we are actually handling events
+
+144
+00:05:59,987 --> 00:06:02,389
+for those type of gestures.
+
+145
+00:06:02,390 --> 00:06:04,561
+And we can also do the same thing with GPS
+
+146
+00:06:04,562 --> 00:06:07,417
+and we'll talk about both location services
+
+147
+00:06:07,418 --> 00:06:10,516
+and how to test them using the phone emulator.
+
+148
+00:06:10,517 --> 00:06:12,374
+We'll actually use the phone emulator
+
+149
+00:06:12,375 --> 00:06:14,592
+to tell our application that we're in a different
+
+150
+00:06:14,593 --> 00:06:16,083
+physical location then we really are.
+
+151
+00:06:16,084 --> 00:06:17,842
+Its a great feature.
+
+152
+00:06:18,418 --> 00:06:20,541
+We also, back here on the main page,
+
+153
+00:06:20,542 --> 00:06:25,541
+we also built our app utilizing various XAML controls
+
+154
+00:06:27,288 --> 00:06:28,622
+from the Toolbox,
+
+155
+00:06:28,623 --> 00:06:30,189
+we use the Button Control,
+
+156
+00:06:30,190 --> 00:06:31,884
+and then also, you can't see it right now,
+
+157
+00:06:31,885 --> 00:06:33,454
+but the resultTextBlock.
+
+158
+00:06:33,455 --> 00:06:34,720
+Down there a little bit further,
+
+159
+00:06:34,721 --> 00:06:36,751
+there we go, just a little sliver.
+
+160
+00:06:36,752 --> 00:06:37,657
+(laughing)
+
+161
+00:06:37,658 --> 00:06:41,860
+And a control has both a visual quality
+
+162
+00:06:41,861 --> 00:06:43,125
+and a behavior,
+
+163
+00:06:43,126 --> 00:06:47,282
+and both of these can be modified by you and I as developers
+
+164
+00:06:47,283 --> 00:06:50,149
+by either changing properties of the control,
+
+165
+00:06:50,150 --> 00:06:53,249
+like we did whenever we modified the XAML
+
+166
+00:06:53,250 --> 00:06:54,654
+or the Properties window,
+
+167
+00:06:54,655 --> 00:06:57,847
+or by writing code in response to certain key events,
+
+168
+00:06:57,848 --> 00:07:00,912
+at key moments in time in the application's life.
+
+169
+00:07:00,913 --> 00:07:02,920
+Like we did whenever we clicked the little
+
+170
+00:07:02,921 --> 00:07:05,324
+lightening bolt icon,
+
+171
+00:07:05,325 --> 00:07:07,286
+and we said, hey we want to handle
+
+172
+00:07:07,287 --> 00:07:09,526
+a particular event for the button in this case,
+
+173
+00:07:09,527 --> 00:07:11,953
+the click event, kay?
+
+174
+00:07:11,954 --> 00:07:16,051
+Now, as obviously, the toolbox has dozens of other controls,
+
+175
+00:07:16,052 --> 00:07:18,826
+there are simple controls, input controls
+
+176
+00:07:18,827 --> 00:07:22,054
+like the Button and like a TextBox,
+
+177
+00:07:22,055 --> 00:07:24,190
+there are display controls like the TextBlock
+
+178
+00:07:24,191 --> 00:07:25,293
+that we used,
+
+179
+00:07:25,294 --> 00:07:27,824
+there are input selection controls
+
+180
+00:07:27,825 --> 00:07:29,554
+like DropDownListBoxes,
+
+181
+00:07:29,555 --> 00:07:32,317
+or like the Date Control where we can select
+
+182
+00:07:32,318 --> 00:07:33,954
+dates and times,
+
+183
+00:07:33,955 --> 00:07:38,122
+there are grids that can be used to display data,
+
+184
+00:07:38,123 --> 00:07:40,084
+there are grids and other layout controls
+
+185
+00:07:40,085 --> 00:07:44,020
+that can be used to help us to position controls
+
+186
+00:07:44,021 --> 00:07:45,517
+in our application.
+
+187
+00:07:45,518 --> 00:07:46,823
+You can see that there's actually a Grid
+
+188
+00:07:46,824 --> 00:07:49,412
+that came automatically out of the box,
+
+189
+00:07:49,413 --> 00:07:51,885
+whenever we start building our user interface.
+
+190
+00:07:51,886 --> 00:07:53,452
+We'll talk about these a little bit more in depth,
+
+191
+00:07:53,453 --> 00:07:54,555
+a little bit later.
+
+192
+00:07:54,556 --> 00:07:57,818
+But, the funny thing is that we'll actually
+
+193
+00:07:57,819 --> 00:07:59,919
+spend a lot more time than you might think
+
+194
+00:07:59,920 --> 00:08:02,288
+learning about layout controls,
+
+195
+00:08:02,289 --> 00:08:05,422
+they're very important to the adaptive story
+
+196
+00:08:05,423 --> 00:08:08,220
+of Universal Windows Platform apps.
+
+197
+00:08:08,221 --> 00:08:11,657
+Layout controls allow a single code base
+
+198
+00:08:11,658 --> 00:08:14,490
+to be utilized across many different
+
+199
+00:08:14,491 --> 00:08:18,124
+devices of device form factors.
+
+200
+00:08:19,987 --> 00:08:22,981
+And so, the Universal Windows Platform API
+
+201
+00:08:22,982 --> 00:08:26,486
+provides this rich collection of visual controls
+
+202
+00:08:26,487 --> 00:08:28,725
+that work across all Windows devices.
+
+203
+00:08:28,726 --> 00:08:31,616
+They allow input via mouse in some cases,
+
+204
+00:08:31,617 --> 00:08:34,019
+or via finger in other cases.
+
+205
+00:08:34,020 --> 00:08:39,019
+But that same API also provides us with thousands of methods
+
+206
+00:08:39,384 --> 00:08:42,250
+across hundreds of classes of namespaces
+
+207
+00:08:42,251 --> 00:08:44,085
+that allow you to do really cool stuff
+
+208
+00:08:44,086 --> 00:08:45,316
+with your application.
+
+209
+00:08:45,317 --> 00:08:47,417
+For example, if you need to access the Internet
+
+210
+00:08:47,418 --> 00:08:49,716
+to go retrieve some sort of resource,
+
+211
+00:08:49,717 --> 00:08:52,589
+or if you want to work with a file on the file system,
+
+212
+00:08:52,590 --> 00:08:54,888
+whether it be on a phone, or a tablet,
+
+213
+00:08:54,889 --> 00:08:57,117
+or a desktop, or even the Xbox.
+
+214
+00:08:57,118 --> 00:08:59,212
+Or if you want to play a media file,
+
+215
+00:08:59,213 --> 00:09:00,454
+like a song or a video,
+
+216
+00:09:00,455 --> 00:09:03,960
+there are methods in the UWP API,
+
+217
+00:09:03,961 --> 00:09:06,317
+that make all of those things possible and a lot more,
+
+218
+00:09:06,318 --> 00:09:08,117
+as you're going to learn throughout this lesson,
+
+219
+00:09:08,118 --> 00:09:09,487
+a series of lessons.
+
+220
+00:09:09,488 --> 00:09:13,121
+Additionally, we can harness capabilities available
+
+221
+00:09:13,122 --> 00:09:15,489
+to specific device families
+
+222
+00:09:15,490 --> 00:09:19,053
+using what are called extension SDKs
+
+223
+00:09:19,054 --> 00:09:22,293
+or rather, Software Development Kits.
+
+224
+00:09:22,294 --> 00:09:26,008
+These extension SDKs contain additional classes
+
+225
+00:09:26,009 --> 00:09:27,958
+and methods that allow you to harness features
+
+226
+00:09:27,959 --> 00:09:32,359
+only available on that particular device family.
+
+227
+00:09:32,360 --> 00:09:34,785
+So for example, if I create an application
+
+228
+00:09:34,786 --> 00:09:38,878
+that I intend to run across all Windows 10 devices, great.
+
+229
+00:09:38,879 --> 00:09:42,919
+However, I might decide at some point to add features
+
+230
+00:09:42,920 --> 00:09:44,347
+that only light up,
+
+231
+00:09:44,348 --> 00:09:47,516
+which is secret code for become available,
+
+232
+00:09:47,517 --> 00:09:49,826
+whenever I'm running that app
+
+233
+00:09:49,827 --> 00:09:52,659
+specifically on a phone device.
+
+234
+00:09:52,660 --> 00:09:56,851
+So, I can use the Mobile Extension SDK
+
+235
+00:09:56,852 --> 00:09:59,289
+and gain access to classes and methods
+
+236
+00:09:59,290 --> 00:10:02,087
+that deal with things like accelerometers, and GPS,
+
+237
+00:10:02,088 --> 00:10:05,060
+and the camera, and things like that.
+
+238
+00:10:05,061 --> 00:10:07,986
+So, whenever I choose to light up features
+
+239
+00:10:07,987 --> 00:10:09,554
+based on a device family,
+
+240
+00:10:09,555 --> 00:10:12,084
+then I'm writing adaptive code
+
+241
+00:10:12,085 --> 00:10:13,559
+and you'll hear that term used a lot.
+
+242
+00:10:13,560 --> 00:10:15,393
+Especially just the term "adaptive".
+
+243
+00:10:15,394 --> 00:10:18,850
+Now alternatively, I can decide that my app
+
+244
+00:10:18,851 --> 00:10:20,975
+only really makes sense whenever its running
+
+245
+00:10:20,976 --> 00:10:22,983
+on a specific device family.
+
+246
+00:10:22,984 --> 00:10:25,793
+So, here again I might choose to only allow
+
+247
+00:10:25,794 --> 00:10:27,418
+the app to run on phones
+
+248
+00:10:27,419 --> 00:10:30,216
+because the nature of the application
+
+249
+00:10:30,217 --> 00:10:34,245
+relies so heavily on the Mobile Extension SDK's features.
+
+250
+00:10:34,246 --> 00:10:38,285
+And this would be called a "mobile only app", in that case.
+
+251
+00:10:38,286 --> 00:10:41,385
+But the point of this is that we as developers
+
+252
+00:10:41,386 --> 00:10:44,659
+get to decide what device families to target
+
+253
+00:10:44,660 --> 00:10:46,192
+and which ones to exclude.
+
+254
+00:10:46,193 --> 00:10:48,920
+And we'll learn more about adaptive
+
+255
+00:10:48,921 --> 00:10:52,517
+and device specific consideration throughout the series
+
+256
+00:10:52,518 --> 00:10:54,423
+because its one of the most important
+
+257
+00:10:54,424 --> 00:10:57,790
+new features available in the Universal Windows Platform.
+
+258
+00:10:57,791 --> 00:11:00,925
+Furthermore, not only could our application's
+
+259
+00:11:00,926 --> 00:11:04,524
+core functionality change based on the device family,
+
+260
+00:11:04,525 --> 00:11:07,844
+but also it's layout and visual qualities.
+
+261
+00:11:07,845 --> 00:11:10,387
+As well as its navigation.
+
+262
+00:11:10,388 --> 00:11:13,951
+They may need to change based on the screen size.
+
+263
+00:11:13,952 --> 00:11:17,156
+So, I can create adaptive triggers
+
+264
+00:11:17,157 --> 00:11:20,650
+that will modify the layout and the scale
+
+265
+00:11:20,651 --> 00:11:24,307
+of items in our application based on the size of the screen.
+
+266
+00:11:24,308 --> 00:11:25,921
+Again, this will be another topic
+
+267
+00:11:25,922 --> 00:11:28,487
+that I'll be demonstrating often throughout this series
+
+268
+00:11:28,488 --> 00:11:31,250
+because it too, is one of the most important new features
+
+269
+00:11:31,251 --> 00:11:33,688
+available in the Universal Windows Platform.
+
+270
+00:11:33,689 --> 00:11:36,450
+So, just backing up a little bit here,
+
+271
+00:11:36,451 --> 00:11:38,588
+whenever I sit down to learn something new,
+
+272
+00:11:38,589 --> 00:11:40,120
+a new technology, new API,
+
+273
+00:11:40,121 --> 00:11:43,789
+I spend a lot of time just trying to
+
+274
+00:11:43,790 --> 00:11:45,287
+organize things in my mind,
+
+275
+00:11:45,288 --> 00:11:46,924
+making key distinctions,
+
+276
+00:11:46,925 --> 00:11:49,222
+putting things in buckets, I guess you could say.
+
+277
+00:11:49,223 --> 00:11:53,483
+And learning UWP for me, was no different.
+
+278
+00:11:53,484 --> 00:11:56,583
+And so, here's what I kind of came up with,
+
+279
+00:11:56,584 --> 00:11:59,184
+I categorized all the topics that
+
+280
+00:11:59,185 --> 00:12:01,111
+we really need to understand,
+
+281
+00:12:01,112 --> 00:12:02,284
+you and I as developers.
+
+282
+00:12:02,285 --> 00:12:06,184
+And so then, using those categorizations,
+
+283
+00:12:06,185 --> 00:12:08,483
+we'll go through and we'll learn these things
+
+284
+00:12:08,484 --> 00:12:10,445
+and it'll hopefully be clear how
+
+285
+00:12:10,446 --> 00:12:12,082
+they all relate to each other.
+
+286
+00:12:12,083 --> 00:12:13,626
+So, first of all
+
+287
+00:12:13,627 --> 00:12:17,017
+we're going to need to learn XAML, as I said earlier,
+
+288
+00:12:17,018 --> 00:12:19,039
+we talked about how its a language
+
+289
+00:12:19,040 --> 00:12:21,152
+that allows us to layout our forms
+
+290
+00:12:21,153 --> 00:12:23,184
+or our applications.
+
+291
+00:12:23,185 --> 00:12:26,919
+XAML is not specific to the Universal Windows Platform,
+
+292
+00:12:26,920 --> 00:12:28,823
+its been around for about a decade now.
+
+293
+00:12:28,824 --> 00:12:31,853
+But building a Universal Windows Platform app
+
+294
+00:12:31,854 --> 00:12:34,256
+really all starts with the fundamental understanding
+
+295
+00:12:34,257 --> 00:12:35,522
+of the XAML language
+
+296
+00:12:35,523 --> 00:12:36,819
+and how to mold it and shape it
+
+297
+00:12:36,820 --> 00:12:41,451
+to do what we want it to do for our application.
+
+298
+00:12:41,452 --> 00:12:43,146
+So, learning XAML is number one
+
+299
+00:12:43,147 --> 00:12:44,888
+and we'll start that in the very next lesson.
+
+300
+00:12:44,889 --> 00:12:47,082
+Then secondly, we're going to need to learn
+
+301
+00:12:47,083 --> 00:12:49,683
+how to use C# to call methods of classes
+
+302
+00:12:49,684 --> 00:12:53,293
+in the Universal Windows Platform API itself.
+
+303
+00:12:53,294 --> 00:12:56,312
+So, there is the language, the programing languages
+
+304
+00:12:56,313 --> 00:12:57,485
+XAML and C#,
+
+305
+00:12:57,486 --> 00:12:59,923
+but then there's also then an API,
+
+306
+00:12:59,924 --> 00:13:03,057
+a library of functionality that Microsoft created,
+
+307
+00:13:03,058 --> 00:13:06,320
+that we can tap into and utilize for our applications.
+
+308
+00:13:06,321 --> 00:13:09,594
+And so you call UWP API methods
+
+309
+00:13:09,595 --> 00:13:12,090
+to do meaningful things in your application
+
+310
+00:13:12,091 --> 00:13:14,760
+like load, and save data in a file,
+
+311
+00:13:14,761 --> 00:13:17,419
+or access the network, things of that nature.
+
+312
+00:13:17,420 --> 00:13:22,419
+And then third, you know if you only learned C#
+
+313
+00:13:23,422 --> 00:13:25,987
+from my C# Fundamentals for Absolute Beginners series,
+
+314
+00:13:25,988 --> 00:13:27,821
+and that's all the C# that you know,
+
+315
+00:13:27,822 --> 00:13:30,155
+then there's going to be some new C# features
+
+316
+00:13:30,156 --> 00:13:32,082
+that you're going to need to learn.
+
+317
+00:13:32,083 --> 00:13:36,424
+Especially like, async, await, and task,
+
+318
+00:13:36,425 --> 00:13:38,526
+these keywords and what they represent.
+
+319
+00:13:38,527 --> 00:13:43,216
+And they're used extensively whenever you're working
+
+320
+00:13:43,217 --> 00:13:44,885
+with the Universal Windows Platform API
+
+321
+00:13:44,886 --> 00:13:47,021
+and I'll explain why when we get to that point.
+
+322
+00:13:47,022 --> 00:13:50,353
+But you're also going to need to learn about data formats
+
+323
+00:13:50,354 --> 00:13:55,353
+like XML, which is kind of the basis for XAML.
+
+324
+00:13:55,358 --> 00:13:57,447
+Also, we'll cover JSON,
+
+325
+00:13:57,448 --> 00:13:59,583
+which is JavaScript Object Notation,
+
+326
+00:13:59,584 --> 00:14:01,813
+because we're going to call web-based APIs
+
+327
+00:14:01,814 --> 00:14:05,145
+to get current weather from the open weather map API,
+
+328
+00:14:05,146 --> 00:14:08,488
+or to get comic book character data from Marvel comics
+
+329
+00:14:08,489 --> 00:14:12,282
+and they'll deliver back their data in JSON,
+
+330
+00:14:12,283 --> 00:14:15,150
+so we'll need to learn how to de-serialize JSON
+
+331
+00:14:15,151 --> 00:14:19,747
+into a format that we can work with in C#.
+
+332
+00:14:19,748 --> 00:14:21,184
+The fourth thing that we're going to learn about
+
+333
+00:14:21,185 --> 00:14:23,248
+is the tooling that helps us build
+
+334
+00:14:23,249 --> 00:14:26,455
+Universal Windows Platform apps.
+
+335
+00:14:26,456 --> 00:14:27,686
+So, we're talking about things like
+
+336
+00:14:27,687 --> 00:14:30,121
+Visual Studios Designers, and it's wizards,
+
+337
+00:14:30,122 --> 00:14:31,955
+and the project template itself,
+
+338
+00:14:31,956 --> 00:14:33,917
+we'll learn about the emulators.
+
+339
+00:14:33,918 --> 00:14:36,193
+So, many times you're going to learn about
+
+340
+00:14:36,194 --> 00:14:37,690
+tooling at the same time
+
+341
+00:14:37,691 --> 00:14:40,419
+as you learn about some specific UWP feature,
+
+342
+00:14:40,420 --> 00:14:41,951
+just like we did in the last lesson.
+
+343
+00:14:41,952 --> 00:14:44,250
+So, we probably won't spend entire lessons
+
+344
+00:14:44,251 --> 00:14:45,724
+on how to use Blend,
+
+345
+00:14:45,725 --> 00:14:48,149
+or how to use some designer surface, right?
+
+346
+00:14:48,150 --> 00:14:49,683
+It'll just kind of come natural to us
+
+347
+00:14:49,684 --> 00:14:51,221
+as we're learning.
+
+348
+00:14:51,222 --> 00:14:52,591
+And then sixth, and finally,
+
+349
+00:14:52,592 --> 00:14:53,949
+we're going to have to learn about,
+
+350
+00:14:53,950 --> 00:14:55,946
+at a higher level, as we step back,
+
+351
+00:14:55,947 --> 00:14:59,452
+patterns that we should follow
+
+352
+00:14:59,453 --> 00:15:01,484
+whenever we're building our applications.
+
+353
+00:15:01,485 --> 00:15:04,259
+So, patterns are guidance,
+
+354
+00:15:04,260 --> 00:15:07,976
+they're good solutions to common problems.
+
+355
+00:15:07,977 --> 00:15:10,342
+There are patterns that help us
+
+356
+00:15:10,343 --> 00:15:13,187
+design our application's user interface,
+
+357
+00:15:13,188 --> 00:15:14,649
+so that it looks and it behaves
+
+358
+00:15:14,650 --> 00:15:17,517
+like other Windows 10 applications.
+
+359
+00:15:17,518 --> 00:15:19,723
+Then there are patterns that apply to navigation,
+
+360
+00:15:19,724 --> 00:15:23,415
+so that users who have used other Windows 10 applications
+
+361
+00:15:23,416 --> 00:15:26,120
+feel comfortable navigating through the various pages
+
+362
+00:15:26,121 --> 00:15:27,687
+in our application.
+
+363
+00:15:27,688 --> 00:15:29,777
+And then there's also coding patterns,
+
+364
+00:15:29,778 --> 00:15:32,227
+especially when working with data in C#
+
+365
+00:15:32,228 --> 00:15:34,886
+and displaying updates to that data,
+
+366
+00:15:34,887 --> 00:15:37,324
+back to the user.
+
+367
+00:15:37,325 --> 00:15:40,319
+So, hopefully we took a few moments here
+
+368
+00:15:40,320 --> 00:15:43,419
+and talked about all these topics that are very high level
+
+369
+00:15:43,420 --> 00:15:46,321
+and my intent was to orient you in the right direction.
+
+370
+00:15:46,322 --> 00:15:49,421
+Now, believe it or not we've already conquered
+
+371
+00:15:49,422 --> 00:15:51,523
+some of the biggest conceptual hurdles
+
+372
+00:15:51,524 --> 00:15:52,881
+that we'll actually face
+
+373
+00:15:52,882 --> 00:15:55,784
+when learning how to build Universal Windows Platform apps,
+
+374
+00:15:55,785 --> 00:15:57,293
+its really not that hard.
+
+375
+00:15:57,294 --> 00:16:00,625
+Now, all we need to do is just incrementally
+
+376
+00:16:00,626 --> 00:16:01,809
+add the details,
+
+377
+00:16:01,810 --> 00:16:03,725
+how do I do this, how do I do that?
+
+378
+00:16:03,726 --> 00:16:05,513
+Its not really that hard,
+
+379
+00:16:05,514 --> 00:16:08,427
+its just takes some time to cover the details.
+
+380
+00:16:08,428 --> 00:16:10,145
+But we can work our way through it
+
+381
+00:16:10,146 --> 00:16:12,560
+and you'll be building your own apps in no time.
+
+382
+00:16:12,561 --> 00:16:14,592
+So, we're going to start filling in those details
+
+383
+00:16:14,593 --> 00:16:15,521
+in the very next lesson.
+
+384
+00:16:15,522 --> 00:16:17,169
+We'll see you there, thanks.  
+

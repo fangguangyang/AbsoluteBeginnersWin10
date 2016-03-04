@@ -1,0 +1,464 @@
+1
+00:00:05,001 --> 00:00:07,230
+<v ->So we've kind of finished with the first half</v>      
+
+2
+00:00:07,231 --> 00:00:08,168
+of the series.      
+
+3
+00:00:08,169 --> 00:00:11,000
+Now we're going to move on and we're going to change the format up      
+
+4
+00:00:11,001 --> 00:00:12,132
+just a little bit.      
+
+5
+00:00:12,133 --> 00:00:14,616
+Up to this point we would cover some topics      
+
+6
+00:00:14,617 --> 00:00:16,280
+that were loosely related,      
+
+7
+00:00:16,281 --> 00:00:18,146
+then we would have a cheat sheet session,      
+
+8
+00:00:18,147 --> 00:00:19,586
+then I would assign a challenge,      
+
+9
+00:00:19,587 --> 00:00:22,125
+in order to reinforce those ideas.      
+
+10
+00:00:22,126 --> 00:00:24,482
+Now we're going to kind of move past that,      
+
+11
+00:00:24,483 --> 00:00:27,554
+move on to a new format where we're going to build      
+
+12
+00:00:27,555 --> 00:00:31,372
+four entire applications from scratch.      
+
+13
+00:00:31,373 --> 00:00:34,785
+So a lot of times the developers that I've spoken to      
+
+14
+00:00:34,786 --> 00:00:38,892
+through the years, they understand C#      
+
+15
+00:00:38,893 --> 00:00:43,254
+they understand Object-Oriented Programming.      
+
+16
+00:00:43,255 --> 00:00:46,464
+But they don't understand how to decompose something      
+
+17
+00:00:46,465 --> 00:00:49,398
+in their head and make a full application out of it.      
+
+18
+00:00:49,399 --> 00:00:52,768
+So hopefully this process will illustrate how to do that.      
+
+19
+00:00:52,769 --> 00:00:56,501
+Secondly we're going to move into other areas      
+
+20
+00:00:56,502 --> 00:00:58,858
+of the Universal Windows Platform      
+
+21
+00:00:58,859 --> 00:01:00,672
+that we haven't talked about yet.      
+
+22
+00:01:00,673 --> 00:01:02,250
+Learn some new techniques,      
+
+23
+00:01:02,251 --> 00:01:05,204
+some new features of Visual Studio.      
+
+24
+00:01:05,205 --> 00:01:09,428
+So there'll be a lot to learn taking this other tact      
+
+25
+00:01:09,429 --> 00:01:11,583
+as we approach this material.      
+
+26
+00:01:11,584 --> 00:01:15,252
+So feel free to follow along, that would be great.      
+
+27
+00:01:15,253 --> 00:01:17,310
+I'm going to move fast, I'll warn you right up front.      
+
+28
+00:01:17,311 --> 00:01:22,078
+Make sure that you reference the snapshots      
+
+29
+00:01:22,079 --> 00:01:24,275
+for each video.      
+
+30
+00:01:24,276 --> 00:01:26,143
+So at the end of each video I'd copy off      
+
+31
+00:01:26,144 --> 00:01:28,563
+the current state of the code into its own .zip file.      
+
+32
+00:01:28,564 --> 00:01:31,262
+So make sure you download that .zip file      
+
+33
+00:01:31,263 --> 00:01:34,600
+and you take a look at the code that I typed in there.      
+
+34
+00:01:34,601 --> 00:01:38,258
+Or you're going to be pausing or rewinding a lot,      
+
+35
+00:01:38,259 --> 00:01:39,314
+which is fine too.      
+
+36
+00:01:39,315 --> 00:01:42,397
+But you might find more satisfaction at looking at      
+
+37
+00:01:42,398 --> 00:01:44,391
+that actual code that I typed in.      
+
+38
+00:01:44,392 --> 00:01:46,161
+So what are we going to learn?      
+
+39
+00:01:46,162 --> 00:01:48,071
+Well let's go ahead and run the application      
+
+40
+00:01:48,072 --> 00:01:50,866
+and first of all I wanted to point out that you see that      
+
+41
+00:01:50,867 --> 00:01:52,337
+red splash screen.      
+
+42
+00:01:52,338 --> 00:01:53,805
+We'll talk about that.      
+
+43
+00:01:53,806 --> 00:01:55,778
+How we were able to achieve that      
+
+44
+00:01:55,779 --> 00:01:59,863
+by modifying the Package.appxmanifest file.      
+
+45
+00:01:59,864 --> 00:02:02,508
+And that will be near the end of our development effort      
+
+46
+00:02:02,509 --> 00:02:04,897
+on this application.      
+
+47
+00:02:04,898 --> 00:02:08,737
+But we can add resources that'll be utilized in the store,      
+
+48
+00:02:08,738 --> 00:02:13,643
+on the start bar, and the splash page, things like that.      
+
+49
+00:02:13,644 --> 00:02:14,977
+Alright so you can see that I had      
+
+50
+00:02:14,978 --> 00:02:17,238
+this simple soundboard application.      
+
+51
+00:02:17,239 --> 00:02:20,097
+The idea here is that there is an icon for each sound.      
+
+52
+00:02:20,098 --> 00:02:21,910
+I've only included a handful of sounds.      
+
+53
+00:02:21,911 --> 00:02:25,728
+Feel free to flush this out, add as many sounds      
+
+54
+00:02:25,729 --> 00:02:28,245
+and more functionality if you want.      
+
+55
+00:02:28,246 --> 00:02:31,392
+But the idea here is that you can find a category      
+
+56
+00:02:31,393 --> 00:02:35,093
+of sounds using the hamburger navigation.      
+
+57
+00:02:35,094 --> 00:02:38,794
+And then we find one that you want to play,      
+
+58
+00:02:38,795 --> 00:02:40,191
+you just tap on it,(sound effect)      
+
+59
+00:02:40,192 --> 00:02:42,079
+click on it and it will play that sound.      
+
+60
+00:02:42,080 --> 00:02:45,823
+Okay so clearly hamburger navigation,      
+
+61
+00:02:45,824 --> 00:02:48,340
+using the back buttons, State Management,      
+
+62
+00:02:48,341 --> 00:02:51,999
+looking at the AutoSuggestBox we are able      
+
+63
+00:02:52,000 --> 00:02:56,474
+to find one specific sound,      
+
+64
+00:02:56,475 --> 00:02:58,288
+play that,(cow mooing)      
+
+65
+00:02:58,289 --> 00:03:00,986
+and then clear out that sound and have      
+
+66
+00:03:00,987 --> 00:03:05,316
+the state of the application return back to normal.      
+
+67
+00:03:05,317 --> 00:03:09,316
+There's also clearly we're using media here      
+
+68
+00:03:09,317 --> 00:03:11,610
+we're using sound so we're going to demonstrate      
+
+69
+00:03:11,611 --> 00:03:12,836
+the use of the Media element,      
+
+70
+00:03:12,837 --> 00:03:14,660
+which allows you to play video and sounds      
+
+71
+00:03:14,661 --> 00:03:19,661
+and various functionality around that new User Control.      
+
+72
+00:03:21,327 --> 00:03:24,131
+We're also going to demonstrate drag-and-drop      
+
+73
+00:03:24,132 --> 00:03:26,339
+so here's a .mp3 file that i have on my desktop      
+
+74
+00:03:26,340 --> 00:03:29,773
+and I was going to drag it and drop it.      
+
+75
+00:03:29,774 --> 00:03:31,544
+Alright and this is a little song      
+
+76
+00:03:31,545 --> 00:03:33,368
+that was played by a friend.      
+
+77
+00:03:33,369 --> 00:03:36,748
+It's actually kinda long so,(sound effect)      
+
+78
+00:03:36,749 --> 00:03:40,013
+if you play another sound it will cancel that one out.      
+
+79
+00:03:40,014 --> 00:03:43,798
+That was purely accidental but a cool feature none the less.      
+
+80
+00:03:43,799 --> 00:03:45,826
+Okay we've already talking about      
+
+81
+00:03:45,827 --> 00:03:46,743
+the Package.appxmanifest.      
+
+82
+00:03:46,744 --> 00:03:48,002
+And then finally what we're going to do      
+
+83
+00:03:48,003 --> 00:03:50,412
+after we build this application,      
+
+84
+00:03:50,413 --> 00:03:51,820
+is we're going to submit it to the store,      
+
+85
+00:03:51,821 --> 00:03:53,548
+walk through that entire process      
+
+86
+00:03:53,549 --> 00:03:58,177
+and then just to kind of restate this,      
+
+87
+00:03:58,178 --> 00:04:00,737
+I've already built this application.      
+
+88
+00:04:00,738 --> 00:04:03,115
+I'm coming back to record this video      
+
+89
+00:04:03,116 --> 00:04:04,438
+after I've finished.      
+
+90
+00:04:04,439 --> 00:04:06,144
+And at the very end,      
+
+91
+00:04:06,145 --> 00:04:08,502
+I left you with a cliffhanger.      
+
+92
+00:04:08,503 --> 00:04:11,605
+You know, is this actually going to pass?      
+
+93
+00:04:11,606 --> 00:04:14,069
+Am I going to be able to get this thing into the Window Store?      
+
+94
+00:04:14,070 --> 00:04:19,070
+And so just this morning I got this notification      
+
+95
+00:04:19,840 --> 00:04:22,965
+that your submission for UWP SoundBoard passed certification      
+
+96
+00:04:22,966 --> 00:04:24,736
+Alright, so it's in the store      
+
+97
+00:04:24,737 --> 00:04:26,559
+it will be published within 24 hours.      
+
+98
+00:04:26,560 --> 00:04:27,742
+Alright so that's pretty cool.      
+
+99
+00:04:27,743 --> 00:04:29,482
+So it actually worked.      
+
+100
+00:04:29,483 --> 00:04:31,434
+So the cliffhanger I leave you at the end      
+
+101
+00:04:31,435 --> 00:04:32,692
+of the last video with,      
+
+102
+00:04:32,693 --> 00:04:35,295
+I've already, it's going to be anti-climactic      
+
+103
+00:04:35,296 --> 00:04:37,588
+because you already know that it will pass.      
+
+104
+00:04:37,589 --> 00:04:39,401
+And I didn't do anything off-camera.      
+
+105
+00:04:39,402 --> 00:04:42,185
+Everything you saw was what I did here on camera.      
+
+106
+00:04:42,186 --> 00:04:44,702
+Alright so hopefully this will be      
+
+107
+00:04:44,703 --> 00:04:46,590
+a great learning exercise for you.      
+
+108
+00:04:46,591 --> 00:04:50,067
+Again, different format, so don't let that throw you.      
+
+109
+00:04:50,068 --> 00:04:53,970
+Please follow along, if not by writing code      
+
+110
+00:04:53,971 --> 00:04:55,976
+at least stay engaged as I write it.      
+
+111
+00:04:55,977 --> 00:04:57,481
+It'll be a little bit dryer      
+
+112
+00:04:57,482 --> 00:04:59,752
+because I'll be talking to myself a lot      
+
+113
+00:04:59,753 --> 00:05:01,000
+instead of talking to you.      
+
+114
+00:05:01,001 --> 00:05:03,794
+But hopefully you'll get some value out of it.      
+
+115
+00:05:03,795 --> 00:05:05,895
+Okay, let's start up in the next lesson.      
+
+116
+00:05:05,896 --> 00:05:06,994
+Thanks.      
+

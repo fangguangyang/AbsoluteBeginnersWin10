@@ -1,0 +1,1344 @@
+1
+00:00:04,408 --> 00:00:06,548
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net
+
+2
+00:00:06,549 --> 00:00:08,447
+www.learnvisualstudio.net
+
+3
+00:00:08,448 --> 00:00:10,868
+We're not done with Layout quite yet.
+
+4
+00:00:10,869 --> 00:00:12,852
+Next we're going to talk about new Layout controls
+
+5
+00:00:12,853 --> 00:00:14,414
+that were introduced with the Universal
+
+6
+00:00:14,415 --> 00:00:16,040
+Windows Platform API.
+
+7
+00:00:16,041 --> 00:00:19,632
+Now you might wonder why are there new Layout controls?
+
+8
+00:00:19,633 --> 00:00:22,453
+What has changed from previous APIs that we used
+
+9
+00:00:22,454 --> 00:00:25,594
+to build apps for the Windows 8.1 store
+
+10
+00:00:25,595 --> 00:00:28,312
+and the Windows Phone 8.1 store.
+
+11
+00:00:28,313 --> 00:00:30,314
+Well there's two reasons why we need
+
+12
+00:00:30,315 --> 00:00:31,424
+new Layout controls.
+
+13
+00:00:31,425 --> 00:00:33,684
+First of all, to help us build apps
+
+14
+00:00:33,685 --> 00:00:36,794
+that look like they belong in Windows 10.
+
+15
+00:00:36,795 --> 00:00:38,444
+We'll talk about that more in just a moment.
+
+16
+00:00:38,445 --> 00:00:40,924
+And then secondly to help us build applications
+
+17
+00:00:40,925 --> 00:00:44,464
+that adapt to different device family and screen sizes
+
+18
+00:00:44,465 --> 00:00:47,084
+and we'll talk about that in an upcoming lesson.
+
+19
+00:00:47,085 --> 00:00:49,274
+So as you can see I have loaded up
+
+20
+00:00:49,275 --> 00:00:51,304
+in my recording area here,
+
+21
+00:00:51,305 --> 00:00:54,163
+one of the stock applications that come preinstalled
+
+22
+00:00:54,164 --> 00:00:56,623
+with Windows 10, the Money app.
+
+23
+00:00:56,624 --> 00:00:58,223
+Now there's also News, Weather, Sports,
+
+24
+00:00:58,224 --> 00:01:00,303
+and a few others.
+
+25
+00:01:00,304 --> 00:01:03,084
+But they all kind of share some similar characteristics
+
+26
+00:01:03,085 --> 00:01:07,613
+that aesthetic and functionality
+
+27
+00:01:07,614 --> 00:01:10,583
+that really identify themselves
+
+28
+00:01:10,584 --> 00:01:13,043
+as Windows 10 applications uniquely.
+
+29
+00:01:13,044 --> 00:01:15,763
+So I wanted to point those out, those features out,
+
+30
+00:01:15,764 --> 00:01:18,085
+and then I want to show eventually over the course
+
+31
+00:01:18,086 --> 00:01:21,586
+of the next few lessons how we can duplicate this ourselves
+
+32
+00:01:21,587 --> 00:01:25,283
+with the built in controls that are now available
+
+33
+00:01:25,284 --> 00:01:27,844
+in the Universal Windows Platform.
+
+34
+00:01:27,845 --> 00:01:29,363
+So when I talk about the chrome,
+
+35
+00:01:29,364 --> 00:01:33,725
+I'm talking about the top area and the leftmost area here
+
+36
+00:01:33,726 --> 00:01:36,275
+that provides navigation and other services
+
+37
+00:01:36,276 --> 00:01:37,672
+to your application.
+
+38
+00:01:37,673 --> 00:01:40,973
+And so this style of navigation, this style of application
+
+39
+00:01:40,974 --> 00:01:43,593
+is known as "hamburger navigation"
+
+40
+00:01:43,594 --> 00:01:48,373
+and the hamburger is a term that's used to indicate
+
+41
+00:01:48,374 --> 00:01:52,065
+that there's an icon with three vertical lines
+
+42
+00:01:52,066 --> 00:01:54,636
+or horizontal lines stacked vertically
+
+43
+00:01:54,637 --> 00:01:59,636
+and when you click that button in the upper left-hand corner
+
+44
+00:01:59,885 --> 00:02:04,884
+it will show a split panel that will display navigation
+
+45
+00:02:05,016 --> 00:02:08,304
+to the various areas or functionality of your application.
+
+46
+00:02:08,305 --> 00:02:11,686
+So in this case, we can see that in expanded mode
+
+47
+00:02:11,687 --> 00:02:15,174
+both an icon and a title for the given area
+
+48
+00:02:15,175 --> 00:02:18,387
+of our application and we can navigate around
+
+49
+00:02:18,388 --> 00:02:22,291
+using the expanded view or the compacted view.
+
+50
+00:02:22,292 --> 00:02:26,057
+When we're in compacted mode, you can only see the icons
+
+51
+00:02:26,058 --> 00:02:28,520
+on the left, but you can always see the item
+
+52
+00:02:28,521 --> 00:02:29,439
+that was selected.
+
+53
+00:02:29,440 --> 00:02:33,319
+It's kind of highlighted in one of the primary accent colors
+
+54
+00:02:33,320 --> 00:02:34,939
+for the application.
+
+55
+00:02:34,940 --> 00:02:38,239
+Alright, next up if you look over here
+
+56
+00:02:38,240 --> 00:02:40,039
+at the very top of the application
+
+57
+00:02:40,040 --> 00:02:42,919
+you'll see that there's kind of this bar of functionality.
+
+58
+00:02:42,920 --> 00:02:44,219
+Now this might change over time,
+
+59
+00:02:44,220 --> 00:02:46,639
+but there are some constants that are in
+
+60
+00:02:46,640 --> 00:02:48,599
+almost every app like a search bar
+
+61
+00:02:48,600 --> 00:02:49,899
+in the upper right hand corner.
+
+62
+00:02:49,900 --> 00:02:52,251
+In this case, we're searching for
+
+63
+00:02:54,012 --> 00:02:57,649
+the current stock price for a given company.
+
+64
+00:02:57,650 --> 00:03:00,059
+We can search for it here.
+
+65
+00:03:00,060 --> 00:03:03,179
+Also then to the left of that, docked over
+
+66
+00:03:03,180 --> 00:03:08,179
+to the left-hand side is the title of the area
+
+67
+00:03:08,202 --> 00:03:10,961
+that we're currently in and then to the left of that
+
+68
+00:03:10,962 --> 00:03:13,900
+a navigation button that allows us to go back
+
+69
+00:03:13,901 --> 00:03:17,721
+through the navigation history to get back to the homepage.
+
+70
+00:03:18,622 --> 00:03:21,041
+There's also some other features of these applications
+
+71
+00:03:21,042 --> 00:03:23,441
+like the card layout, the card-based layout,
+
+72
+00:03:23,442 --> 00:03:26,953
+where you have all of these little panels of cards
+
+73
+00:03:26,954 --> 00:03:31,563
+that will dynamically resize themselves
+
+74
+00:03:31,564 --> 00:03:34,342
+and then depending on the view port,
+
+75
+00:03:34,343 --> 00:03:36,371
+the size of the window
+
+76
+00:03:36,372 --> 00:03:39,991
+that has been resized by the user,
+
+77
+00:03:39,992 --> 00:03:43,941
+they will either shift down, wrap down to the next line
+
+78
+00:03:43,942 --> 00:03:46,461
+or they will expand and contract, alright.
+
+79
+00:03:46,462 --> 00:03:48,141
+We'll talk about that later on
+
+80
+00:03:48,142 --> 00:03:49,762
+and there are controls that will help us achieve
+
+81
+00:03:49,763 --> 00:03:51,421
+that effect as well.
+
+82
+00:03:51,422 --> 00:03:52,881
+Alright, so let me shut this down
+
+83
+00:03:52,882 --> 00:03:54,323
+and the next thing that I want to do
+
+84
+00:03:54,324 --> 00:03:56,721
+is talk about two Layout controls that'll
+
+85
+00:03:56,722 --> 00:03:59,060
+help us achieve the effect that we saw there.
+
+86
+00:03:59,061 --> 00:04:00,461
+The relative panel is the first one
+
+87
+00:04:00,462 --> 00:04:03,041
+and it's a control, a Layout container
+
+88
+00:04:03,042 --> 00:04:06,040
+that is useful for creating user interfaces
+
+89
+00:04:06,041 --> 00:04:07,943
+that don't have a clear linear pattern.
+
+90
+00:04:07,944 --> 00:04:10,951
+When I say linear pattern what I mean
+
+91
+00:04:10,952 --> 00:04:14,341
+is that it's for layouts that are not fundamentally
+
+92
+00:04:14,342 --> 00:04:17,740
+stacked or wrapped like that card layout
+
+93
+00:04:17,741 --> 00:04:20,140
+or even tabular like in a grid.
+
+94
+00:04:20,141 --> 00:04:22,901
+So these are layouts that you may not find
+
+95
+00:04:22,902 --> 00:04:26,731
+as easy to reproduce using a stack panel or a grid.
+
+96
+00:04:26,732 --> 00:04:29,560
+Now certainly, what we saw in the Windows 10 application
+
+97
+00:04:29,561 --> 00:04:32,601
+we probably could achieve that using a StackPanel
+
+98
+00:04:32,602 --> 00:04:35,163
+and grid combination, however, I think you're going to find
+
+99
+00:04:35,164 --> 00:04:37,121
+that these two new controls will help you achieve
+
+100
+00:04:37,122 --> 00:04:39,500
+this a little bit more elegantly.
+
+101
+00:04:39,501 --> 00:04:44,461
+So the relative panel basically defines an area
+
+102
+00:04:45,142 --> 00:04:47,801
+where you position and align child objects,
+
+103
+00:04:47,802 --> 00:04:51,701
+so other controls either in relation to each other
+
+104
+00:04:51,702 --> 00:04:55,221
+or in relation to the parent panel itself.
+
+105
+00:04:55,222 --> 00:04:58,776
+And there's three basic categories of attach properties
+
+106
+00:04:58,777 --> 00:05:02,383
+that allow you to position the controls inside of the panel.
+
+107
+00:05:02,384 --> 00:05:05,181
+There are panel alignment relationships
+
+108
+00:05:05,182 --> 00:05:09,121
+so these are attached properties like align top
+
+109
+00:05:09,122 --> 00:05:10,397
+of my control with the panel.
+
+110
+00:05:10,398 --> 00:05:14,261
+So align top with panel, align the left with panel
+
+111
+00:05:14,262 --> 00:05:15,341
+and so on.
+
+112
+00:05:15,342 --> 00:05:18,061
+Then there are sibling alignment relationships.
+
+113
+00:05:18,062 --> 00:05:21,383
+So align top with and then you give the name of the control
+
+114
+00:05:21,384 --> 00:05:24,483
+that you want to be aligned top with.
+
+115
+00:05:24,484 --> 00:05:25,781
+There's another control here and you say
+
+116
+00:05:25,782 --> 00:05:28,560
+I want my top to be aligned with the same top
+
+117
+00:05:28,561 --> 00:05:30,720
+as this sibling.
+
+118
+00:05:30,721 --> 00:05:33,376
+And then there's sibling positional relationships,
+
+119
+00:05:33,377 --> 00:05:36,181
+the third type of attached property
+
+120
+00:05:36,182 --> 00:05:40,421
+and so this is, I want to be above my sibling,
+
+121
+00:05:40,422 --> 00:05:42,021
+I want to be below my sibling,
+
+122
+00:05:42,022 --> 00:05:45,620
+I want to be to the right and the left of my sibling, okay.
+
+123
+00:05:45,621 --> 00:05:47,921
+So what you see here, I've got the beginnings
+
+124
+00:05:47,922 --> 00:05:49,822
+of an application and you can pause the video
+
+125
+00:05:49,823 --> 00:05:50,841
+and catch up with me.
+
+126
+00:05:50,842 --> 00:05:53,271
+It's just called relative panel example
+
+127
+00:05:53,272 --> 00:05:56,661
+and what I'm going to do is add in some code here
+
+128
+00:05:56,662 --> 00:06:01,303
+to really exercise the relative panel.
+
+129
+00:06:01,304 --> 00:06:02,182
+So the first thing I'm going to do
+
+130
+00:06:02,183 --> 00:06:05,581
+is get some row definitions here so we can do
+
+131
+00:06:05,582 --> 00:06:06,991
+some interesting things.
+
+132
+00:06:06,992 --> 00:06:10,241
+And what I want to do is put a RelativePanel
+
+133
+00:06:13,072 --> 00:06:18,071
+in the first row, or actually the second row,
+
+134
+00:06:19,712 --> 00:06:22,340
+Grid.Row="1", alright.
+
+135
+00:06:22,922 --> 00:06:26,911
+And also I'm going to set a minimum height,
+
+136
+00:06:26,912 --> 00:06:29,762
+so no matter what I never want the height
+
+137
+00:06:29,763 --> 00:06:32,722
+of this RelativePanel to be less than 300 pixels.
+
+138
+00:06:32,723 --> 00:06:35,541
+I'm going to start adding a number of rectangles.
+
+139
+00:06:35,542 --> 00:06:39,322
+In fact, I'm going to add this first rectangle.
+
+140
+00:06:39,323 --> 00:06:40,582
+So it's going to be a red rectangle,
+
+141
+00:06:40,583 --> 00:06:42,783
+but notice I've set the relative panel dot
+
+142
+00:06:42,784 --> 00:06:45,742
+aligned right with panel equal true.
+
+143
+00:06:45,743 --> 00:06:46,804
+Let me bring this down a little bit
+
+144
+00:06:46,805 --> 00:06:49,842
+so you can kind of see this in effect.
+
+145
+00:06:49,843 --> 00:06:52,502
+So here again, we've got three rows.
+
+146
+00:06:52,503 --> 00:06:54,911
+One row, two rows, three rows in our grid
+
+147
+00:06:54,912 --> 00:06:58,782
+and in the middle row I have my RelativePanel
+
+148
+00:06:58,783 --> 00:07:02,802
+and I said for this rectangle I wanted the right side
+
+149
+00:07:02,803 --> 00:07:05,851
+to be aligned with the panel so I set that
+
+150
+00:07:05,852 --> 00:07:09,231
+attached property equal to true and you can see now
+
+151
+00:07:09,232 --> 00:07:13,202
+that red box aligns itself to the right hand side.
+
+152
+00:07:13,203 --> 00:07:17,242
+We can then do something in relation to that sibling
+
+153
+00:07:17,243 --> 00:07:20,525
+adding another rectangle, a blue rectangle
+
+154
+00:07:20,526 --> 00:07:24,522
+that says, "Hey I want to be to the left of that red rectangle"
+
+155
+00:07:24,523 --> 00:07:25,982
+and you can see that no matter what,
+
+156
+00:07:25,983 --> 00:07:29,871
+even as we resize this application,
+
+157
+00:07:29,872 --> 00:07:31,783
+let's run the app.
+
+158
+00:07:34,263 --> 00:07:37,912
+Alright, even as we resize the application,
+
+159
+00:07:38,476 --> 00:07:41,742
+the blue rectangle will always be to the left
+
+160
+00:07:41,743 --> 00:07:43,002
+of the red rectangle.
+
+161
+00:07:43,003 --> 00:07:43,884
+See that?
+
+162
+00:07:43,885 --> 00:07:46,141
+And the red rectangle will always be aligned
+
+163
+00:07:46,142 --> 00:07:47,354
+to the right-hand side.
+
+164
+00:07:47,355 --> 00:07:48,902
+Very neat.
+
+165
+00:07:48,903 --> 00:07:51,062
+Alright, next up what I want to do
+
+166
+00:07:51,063 --> 00:07:55,782
+is show that we can also set multiple
+
+167
+00:07:55,783 --> 00:07:58,232
+attached properties.
+
+168
+00:07:59,345 --> 00:08:01,242
+Here I'm going to paste in a green rectangle
+
+169
+00:08:01,243 --> 00:08:04,284
+and I've set the AlignVerticalCenterWith
+
+170
+00:08:04,285 --> 00:08:07,422
+AlignVerticalCenterWith="RedRectangle".
+
+171
+00:08:07,423 --> 00:08:09,322
+So now the center of the red rectangle
+
+172
+00:08:09,323 --> 00:08:11,722
+and the center of the green rectangle will be the same.
+
+173
+00:08:11,723 --> 00:08:15,162
+Furthermore, I want to align the horizontal center
+
+174
+00:08:15,163 --> 00:08:16,802
+with the panel.
+
+175
+00:08:16,803 --> 00:08:21,512
+So show me where the center is of the
+
+176
+00:08:21,513 --> 00:08:25,803
+horizontal size of the app and I want to be right there
+
+177
+00:08:25,804 --> 00:08:26,583
+in the middle.
+
+178
+00:08:26,584 --> 00:08:29,084
+So now let's see what effect that achieves.
+
+179
+00:08:29,085 --> 00:08:33,552
+We'll see how running the app with different
+
+180
+00:08:34,733 --> 00:08:38,501
+screen sizes or by resizing the app
+
+181
+00:08:38,502 --> 00:08:41,959
+we're always going to have that green rectangle
+
+182
+00:08:41,960 --> 00:08:45,160
+with its center aligned vertically to the red rectangle
+
+183
+00:08:45,161 --> 00:08:49,159
+and its horizontal alignment centered to the center
+
+184
+00:08:49,160 --> 00:08:51,389
+of the application, cool.
+
+185
+00:08:51,390 --> 00:08:52,899
+And just to kind of speed up this process
+
+186
+00:08:52,900 --> 00:08:56,191
+I'm going to paste in two more here at the same time
+
+187
+00:08:56,192 --> 00:08:59,399
+a yellow and a purple rectangle to look
+
+188
+00:08:59,400 --> 00:09:00,639
+at the properties there.
+
+189
+00:09:00,640 --> 00:09:02,479
+So let's view
+
+190
+00:09:02,480 --> 00:09:05,919
+the yellow rectangle.
+
+191
+00:09:05,920 --> 00:09:09,041
+You can see that we set
+
+192
+00:09:09,042 --> 00:09:11,371
+the minimum width to 50
+
+193
+00:09:11,372 --> 00:09:13,719
+and the minimum height to 50.
+
+194
+00:09:13,720 --> 00:09:16,081
+And why this is important is because
+
+195
+00:09:16,082 --> 00:09:20,129
+we want to align the bottom of our rectangle
+
+196
+00:09:20,130 --> 00:09:21,699
+with the bottom of the panel
+
+197
+00:09:21,700 --> 00:09:25,421
+and we want to align the top with the purple rectangle.
+
+198
+00:09:25,422 --> 00:09:27,840
+And so the purple rectangle is above it
+
+199
+00:09:28,581 --> 00:09:32,843
+and it's defined here where we wanted
+
+200
+00:09:32,844 --> 00:09:35,021
+to be positioned below the red rectangle,
+
+201
+00:09:35,022 --> 00:09:37,520
+we wanted the right of it aligned with the
+
+202
+00:09:37,521 --> 00:09:40,975
+right of the red rectangle, and we want the left
+
+203
+00:09:40,976 --> 00:09:42,521
+aligned with the green rectangle.
+
+204
+00:09:42,522 --> 00:09:45,440
+So now we're going to, as we reposition
+
+205
+00:09:45,441 --> 00:09:48,022
+the actual size of the control will change.
+
+206
+00:09:48,023 --> 00:09:49,220
+So let's go ahead and run it.
+
+207
+00:09:49,221 --> 00:09:50,700
+In both these cases you'll see
+
+208
+00:09:50,701 --> 00:09:54,179
+that by resizing, we will get
+
+209
+00:09:54,180 --> 00:09:59,120
+a larger width or height,
+
+210
+00:09:59,121 --> 00:10:01,560
+a larger rectangle.
+
+211
+00:10:01,561 --> 00:10:04,702
+Okay, you see that how the yellow rectangle grows
+
+212
+00:10:04,703 --> 00:10:07,770
+and how the purple rectangle grows?
+
+213
+00:10:07,771 --> 00:10:10,695
+So this is why you can do some interesting positional things
+
+214
+00:10:10,696 --> 00:10:14,281
+with the relative panel because you can set things relative
+
+215
+00:10:14,282 --> 00:10:16,924
+to other controls or relative to the panel itself
+
+216
+00:10:16,925 --> 00:10:19,844
+and things can automatically resize themselves.
+
+217
+00:10:19,845 --> 00:10:21,485
+Alright, so what to all this?
+
+218
+00:10:21,486 --> 00:10:22,884
+Why is this important?
+
+219
+00:10:22,885 --> 00:10:27,564
+Well, the reason is because, and let me just save this,
+
+220
+00:10:27,565 --> 00:10:30,204
+and let's take a look at another project
+
+221
+00:10:30,205 --> 00:10:33,754
+that I currently have open and this will be
+
+222
+00:10:33,755 --> 00:10:34,925
+the search bar.
+
+223
+00:10:34,926 --> 00:10:36,354
+So RelativePanelSearchBar.
+
+224
+00:10:36,355 --> 00:10:37,564
+You can load it up.
+
+225
+00:10:37,565 --> 00:10:40,464
+It's available wherever you downloaded the code
+
+226
+00:10:40,465 --> 00:10:45,178
+or the video for this lesson.
+
+227
+00:10:47,308 --> 00:10:49,966
+And we see the beginnings
+
+228
+00:10:49,967 --> 00:10:54,556
+of a Windows 10 application
+
+229
+00:10:54,557 --> 00:10:57,646
+where we have a search bar over here on the right-hand side
+
+230
+00:10:57,647 --> 00:10:58,746
+and we've got to clean it up some.
+
+231
+00:10:58,747 --> 00:11:00,746
+It doesn't look finished yet, but you can see how
+
+232
+00:11:00,747 --> 00:11:04,226
+no matter what, over on the left-hand side,
+
+233
+00:11:04,227 --> 00:11:05,826
+or on the right-hand side rather,
+
+234
+00:11:05,827 --> 00:11:08,726
+we have it always docked to the right
+
+235
+00:11:08,727 --> 00:11:10,419
+and we have the title to the left.
+
+236
+00:11:10,420 --> 00:11:12,106
+Furthermore, I wanted to show that
+
+237
+00:11:12,107 --> 00:11:13,466
+we can create a little status bar
+
+238
+00:11:13,467 --> 00:11:15,606
+that's always docked to the bottom here.
+
+239
+00:11:15,607 --> 00:11:19,826
+Furthermore, depending on the information,
+
+240
+00:11:19,827 --> 00:11:22,549
+it's either aligned to the left, aligned to the right,
+
+241
+00:11:22,550 --> 00:11:24,226
+or aligned center.
+
+242
+00:11:24,227 --> 00:11:27,869
+So let's see how we achieve this effect in our XAML.
+
+243
+00:11:28,930 --> 00:11:30,639
+Let's open up our MainPage.xaml
+
+244
+00:11:30,640 --> 00:11:32,889
+and then get rid of this output window.
+
+245
+00:11:35,260 --> 00:11:38,022
+Alright, so we have three rows.
+
+246
+00:11:38,023 --> 00:11:40,790
+The top and the bottom rows are Auto
+
+247
+00:11:40,791 --> 00:11:43,259
+so just take up enough room, just what you need,
+
+248
+00:11:43,260 --> 00:11:46,772
+and then the middle area will be star sizing
+
+249
+00:11:46,773 --> 00:11:49,199
+and so we didn't do anything in there.
+
+250
+00:11:49,200 --> 00:11:52,281
+So the first item that we created was a RelativePanel
+
+251
+00:11:52,282 --> 00:11:56,199
+that sat in that top row and you can see that we have
+
+252
+00:11:56,200 --> 00:11:59,939
+that Button and that TextBox, the SearchButton
+
+253
+00:11:59,940 --> 00:12:02,179
+will be aligned right with the panel,
+
+254
+00:12:02,180 --> 00:12:04,320
+so it's on the rightmost side and then
+
+255
+00:12:04,321 --> 00:12:07,919
+we say to the SearchTextBox,
+
+256
+00:12:07,920 --> 00:12:10,139
+align yourself with the left of that SearchButton
+
+257
+00:12:10,140 --> 00:12:13,788
+so that you'll always be to the left of that SearchButton
+
+258
+00:12:13,789 --> 00:12:15,159
+no matter what.
+
+259
+00:12:15,160 --> 00:12:18,319
+And we do the same thing with the text itself
+
+260
+00:12:18,320 --> 00:12:20,329
+that's next to it that has the word search.
+
+261
+00:12:20,330 --> 00:12:23,279
+It's just a TextBlock and it has it's left
+
+262
+00:12:23,280 --> 00:12:26,687
+positioned to the left of the SearchTextBox.
+
+263
+00:12:26,688 --> 00:12:28,039
+Then you can see that the other TextBlock
+
+264
+00:12:28,040 --> 00:12:30,291
+is just aligned to the left-hand side
+
+265
+00:12:30,292 --> 00:12:33,611
+because we didn't tell it relative of anything,
+
+266
+00:12:33,612 --> 00:12:37,344
+it just defaults to the upper left-hand corner.
+
+267
+00:12:37,872 --> 00:12:40,273
+Alright next up, you can see that we have
+
+268
+00:12:40,274 --> 00:12:43,591
+at the very bottom here that status bar
+
+269
+00:12:43,592 --> 00:12:45,731
+and I used an object called a Border
+
+270
+00:12:45,732 --> 00:12:49,433
+and a Border just creates a little layout control
+
+271
+00:12:49,434 --> 00:12:53,811
+that provides us the ability to style the background color
+
+272
+00:12:53,812 --> 00:12:56,651
+and the stroke around the background color.
+
+273
+00:12:56,652 --> 00:12:58,531
+So we're just putting our RelativePanel
+
+274
+00:12:58,532 --> 00:13:00,931
+inside of this Border and the Border, all it does
+
+275
+00:13:00,932 --> 00:13:02,971
+is going to give us some color
+
+276
+00:13:02,972 --> 00:13:04,411
+and then we're going to do our work
+
+277
+00:13:04,412 --> 00:13:06,291
+inside of the StackPanel itself.
+
+278
+00:13:06,292 --> 00:13:10,211
+And so there's three sections to that RelativePanel.
+
+279
+00:13:10,212 --> 00:13:13,971
+The RelativePanel on the left-hand side
+
+280
+00:13:13,972 --> 00:13:16,131
+will just contain the number of items
+
+281
+00:13:16,132 --> 00:13:18,371
+like maybe items that need to be addressed
+
+282
+00:13:18,372 --> 00:13:22,651
+and so it uses all the positional attached properties
+
+283
+00:13:22,652 --> 00:13:25,171
+that you would expect AlignLeftWithPanel
+
+284
+00:13:25,172 --> 00:13:29,161
+and then the next item, the next TextBlock
+
+285
+00:13:29,162 --> 00:13:32,591
+align yourself to the right of that first TextBlock.
+
+286
+00:13:32,592 --> 00:13:33,971
+So that's the left hand side.
+
+287
+00:13:33,972 --> 00:13:35,991
+The right-hand side works the same way
+
+288
+00:13:35,992 --> 00:13:38,273
+except to the opposite.
+
+289
+00:13:38,274 --> 00:13:41,031
+And then the third case, I actually create a StackPanel
+
+290
+00:13:41,032 --> 00:13:45,444
+because if you were to set one of the
+
+291
+00:13:45,445 --> 00:13:47,152
+AlignedHorizontalCenterWithPanel,
+
+292
+00:13:47,153 --> 00:13:49,351
+if you were to set one of the TextBlocks
+
+293
+00:13:49,352 --> 00:13:52,311
+equal with that setting, then it will be
+
+294
+00:13:52,312 --> 00:13:53,722
+in the absolute center and anything else
+
+295
+00:13:53,723 --> 00:13:56,431
+that you need to the left of it or to the right of it
+
+296
+00:13:56,432 --> 00:13:58,931
+would then be off center and it wouldn't look quite right
+
+297
+00:13:58,932 --> 00:14:01,111
+so you put them all in a StackPanel and you can make sure
+
+298
+00:14:01,112 --> 00:14:03,391
+that the StackPanel is centered no matter what
+
+299
+00:14:03,392 --> 00:14:05,833
+it's width is and then you can put whatever you want
+
+300
+00:14:05,834 --> 00:14:08,966
+inside of there and know that it's gonna always be centered.
+
+301
+00:14:08,967 --> 00:14:12,044
+Alright, so the last thing that I would say about
+
+302
+00:14:12,045 --> 00:14:15,386
+the RelativePanel is that you could potentially
+
+303
+00:14:15,387 --> 00:14:18,706
+get yourself in a little trouble by creating, you know,
+
+304
+00:14:18,707 --> 00:14:20,108
+a circular reference.
+
+305
+00:14:21,319 --> 00:14:23,448
+I want number one to the left of number two,
+
+306
+00:14:23,449 --> 00:14:26,148
+number three to the left of number two,
+
+307
+00:14:26,149 --> 00:14:27,998
+number four to the left of number three,
+
+308
+00:14:27,999 --> 00:14:31,698
+number one to the left of number four, okay.
+
+309
+00:14:31,699 --> 00:14:35,748
+So obviously, you can set multiple relationships
+
+310
+00:14:35,749 --> 00:14:38,568
+that target the same edge of the element
+
+311
+00:14:38,569 --> 00:14:41,128
+and when you do that, you might have
+
+312
+00:14:41,129 --> 00:14:43,749
+conflicting relationships in your layout as a result.
+
+313
+00:14:43,750 --> 00:14:45,408
+So whenever this happens, there's actually
+
+314
+00:14:45,409 --> 00:14:48,218
+an order of events just like whenever you are
+
+315
+00:14:48,219 --> 00:14:51,068
+working in a math problem or even in code
+
+316
+00:14:51,069 --> 00:14:55,110
+that parentheses can dictate the order of operation.
+
+317
+00:14:55,111 --> 00:14:57,530
+There is an order of operation with how
+
+318
+00:14:57,531 --> 00:15:01,516
+these relationships are deciphered in this order.
+
+319
+00:15:01,517 --> 00:15:04,830
+So first priority will be panel alignment,
+
+320
+00:15:04,831 --> 00:15:07,070
+so align me to the left or the right of the panel.
+
+321
+00:15:07,071 --> 00:15:10,260
+Then the second one will be Sibling Alignment relationship,
+
+322
+00:15:10,261 --> 00:15:14,330
+so align me with the top of this control,
+
+323
+00:15:14,331 --> 00:15:16,270
+align me with the left of that control,
+
+324
+00:15:16,271 --> 00:15:18,573
+and then the third and the lowest priority
+
+325
+00:15:18,574 --> 00:15:20,790
+would be Sibling Positional relationships.
+
+326
+00:15:20,791 --> 00:15:22,771
+Set me above this control, below this control,
+
+327
+00:15:22,772 --> 00:15:25,261
+to the left of this control, okay.
+
+328
+00:15:25,262 --> 00:15:28,530
+So any rate, we're going to utilize the RelativePanel
+
+329
+00:15:28,531 --> 00:15:30,550
+several times in the remainder of the series.
+
+330
+00:15:30,551 --> 00:15:34,910
+It's a valuable tool to elegantly, simply align items
+
+331
+00:15:34,911 --> 00:15:39,120
+relative of either the panel or other controls on our form
+
+332
+00:15:39,121 --> 00:15:42,170
+and we'll need that when building Windows 10 apps.
+
+333
+00:15:42,171 --> 00:15:44,120
+Alright, let's continue on and talk about
+
+334
+00:15:44,121 --> 00:15:45,880
+the other layout control that's new
+
+335
+00:15:45,881 --> 00:15:48,690
+to the Universal Windows Platform API.
+
+336
+00:15:48,691 --> 00:15:50,600
+We'll see you there, thanks.  
+

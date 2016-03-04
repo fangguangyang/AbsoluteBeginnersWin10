@@ -1,0 +1,596 @@
+1
+00:00:05,961 --> 00:00:07,011
+<v ->Hi, I'm Bob Tabor with</v>
+
+2
+00:00:07,012 --> 00:00:09,525
+www.learnvisualstudio.net,
+
+3
+00:00:09,526 --> 00:00:11,324
+and it's time for another challenge.
+
+4
+00:00:11,325 --> 00:00:14,784
+We're going to work on the Hamburger Heaven Challenge.
+
+5
+00:00:14,785 --> 00:00:17,791
+This will force you to create
+
+6
+00:00:17,792 --> 00:00:20,926
+a hamburger-style navigation for a Windows 10 application,
+
+7
+00:00:20,927 --> 00:00:22,748
+a fictitious application.
+
+8
+00:00:22,749 --> 00:00:23,793
+Let me walk you through it,
+
+9
+00:00:23,794 --> 00:00:25,674
+and then we'll go through each of the requirements
+
+10
+00:00:25,675 --> 00:00:27,787
+just like we did in the previous challenges.
+
+11
+00:00:27,788 --> 00:00:29,854
+So as you can see here, I've got two main
+
+12
+00:00:29,855 --> 00:00:32,257
+navigation areas across the top.
+
+13
+00:00:32,258 --> 00:00:34,322
+To the right, you see the search area.
+
+14
+00:00:34,323 --> 00:00:37,615
+To the left, you see the actual hamburger button.
+
+15
+00:00:37,616 --> 00:00:41,344
+When I click it, it opens up the SplitView panel,
+
+16
+00:00:41,345 --> 00:00:42,424
+or the split panel, rather.
+
+17
+00:00:42,425 --> 00:00:45,384
+And I can select one of two
+
+18
+00:00:45,385 --> 00:00:48,375
+primary sections of my application.
+
+19
+00:00:48,376 --> 00:00:50,574
+When I go to the Financial page, you see that
+
+20
+00:00:50,575 --> 00:00:53,326
+that's kind of the Homepage for the application.
+
+21
+00:00:53,327 --> 00:00:55,822
+When I change over to the Food page,
+
+22
+00:00:55,823 --> 00:00:58,231
+notice that not only does the title change,
+
+23
+00:00:58,232 --> 00:01:00,485
+but also I get this little icon
+
+24
+00:01:00,486 --> 00:01:02,916
+that allows me to go back to the Financial page,
+
+25
+00:01:02,917 --> 00:01:04,425
+the Homepage.
+
+26
+00:01:04,426 --> 00:01:05,824
+Alright, so you might be thinking,
+
+27
+00:01:05,825 --> 00:01:07,789
+"How am I gonna do this center area?"
+
+28
+00:01:07,790 --> 00:01:09,158
+Don't worry, it's all an image.
+
+29
+00:01:09,159 --> 00:01:12,028
+I just wanted it to look finished, you know?
+
+30
+00:01:12,029 --> 00:01:14,651
+So, we'll talk about that in just a moment.
+
+31
+00:01:14,652 --> 00:01:16,857
+But, as you select one of these options,
+
+32
+00:01:16,858 --> 00:01:19,422
+you're going to load a,
+
+33
+00:01:19,423 --> 00:01:23,521
+one of two XAML Pages into the Frame,
+
+34
+00:01:23,522 --> 00:01:25,156
+just like we talked about.
+
+35
+00:01:25,157 --> 00:01:27,015
+This doesn't do anything inside of here.
+
+36
+00:01:27,016 --> 00:01:29,853
+It's just an image on that page.
+
+37
+00:01:29,854 --> 00:01:32,419
+There's going to be a Financial.xaml,
+
+38
+00:01:32,420 --> 00:01:33,824
+and a Food.xaml.
+
+39
+00:01:33,825 --> 00:01:36,216
+Each of them hosts a single Image control,
+
+40
+00:01:36,217 --> 00:01:38,758
+and I'll give you those images here.
+
+41
+00:01:38,759 --> 00:01:42,218
+Okay, so let's walk through all the requirements for this.
+
+42
+00:01:42,219 --> 00:01:45,585
+I'm just gonna leave this running so we can reference it.
+
+43
+00:01:45,586 --> 00:01:47,884
+You can see that I have quite a few resources
+
+44
+00:01:47,885 --> 00:01:49,219
+for you to consider.
+
+45
+00:01:49,220 --> 00:01:51,518
+Here are the Food and the Financial PNGs.
+
+46
+00:01:51,519 --> 00:01:54,856
+These are what you see in those main areas there.
+
+47
+00:01:54,857 --> 00:01:58,588
+Also, I have this Instructions.txt,
+
+48
+00:01:58,589 --> 00:02:01,456
+we're going to look at that in the rest of this video.
+
+49
+00:02:01,457 --> 00:02:05,048
+And then, here are some screenshots that will give you
+
+50
+00:02:05,049 --> 00:02:07,447
+some guidance on what it should look like,
+
+51
+00:02:07,448 --> 00:02:09,153
+so that you don't have to rerun the video,
+
+52
+00:02:09,154 --> 00:02:11,823
+and pause it, and all that stuff, okay?
+
+53
+00:02:11,824 --> 00:02:15,319
+And I'll mention that in here.
+
+54
+00:02:15,320 --> 00:02:19,033
+Alright, let me drag this into the recording area here.
+
+55
+00:02:20,297 --> 00:02:22,757
+Alright, looks like I have two number 9 instructions.
+
+56
+00:02:22,758 --> 00:02:26,010
+Let me fix that while I see it here, great.
+
+57
+00:02:26,011 --> 00:02:27,786
+Alright, going up to the top here,
+
+58
+00:02:27,787 --> 00:02:29,993
+you're gonna need the two images available
+
+59
+00:02:29,994 --> 00:02:31,956
+with the code for this lesson,
+
+60
+00:02:31,957 --> 00:02:36,505
+the Food.png and the Financial.png.
+
+61
+00:02:36,506 --> 00:02:38,817
+And you're gonna add them to the Assets folder
+
+62
+00:02:38,818 --> 00:02:40,373
+in your project.
+
+63
+00:02:40,374 --> 00:02:43,345
+Then you have to add two Pages to your app,
+
+64
+00:02:43,346 --> 00:02:45,530
+a Food.xaml and a Financial.xaml.
+
+65
+00:02:45,531 --> 00:02:49,753
+And each of these pages will host a single Image control
+
+66
+00:02:49,754 --> 00:02:52,559
+set to Food.png or Financial.png.
+
+67
+00:02:52,560 --> 00:02:56,019
+So again, this is an entire Page,
+
+68
+00:02:56,020 --> 00:02:58,849
+and it just has one Image on it.
+
+69
+00:02:58,850 --> 00:03:03,156
+We're gonna create a Frame inside of this outermost
+
+70
+00:03:03,157 --> 00:03:05,922
+MainPage.xaml, alright?
+
+71
+00:03:05,923 --> 00:03:08,164
+Number 3, you have to create
+
+72
+00:03:08,165 --> 00:03:10,293
+an app featuring the hamburger style navigation
+
+73
+00:03:10,294 --> 00:03:11,866
+using a SplitView.
+
+74
+00:03:11,867 --> 00:03:13,962
+It must display a Search bar in the upper right-hand corner,
+
+75
+00:03:13,963 --> 00:03:15,451
+a hamburger button,
+
+76
+00:03:15,452 --> 00:03:18,918
+button on the upper left-hand corner,
+
+77
+00:03:18,919 --> 00:03:21,080
+and a back button next to that,
+
+78
+00:03:21,081 --> 00:03:22,285
+and the title of the Page.
+
+79
+00:03:22,286 --> 00:03:26,463
+So this, we're talking about the Search area here.
+
+80
+00:03:26,464 --> 00:03:28,856
+It doesn't do anything, don't worry about that.
+
+81
+00:03:28,857 --> 00:03:31,689
+it has the hamburger button, and,
+
+82
+00:03:31,690 --> 00:03:35,523
+if we move to the Food, it opens up this back arrow,
+
+83
+00:03:35,524 --> 00:03:38,677
+and we can see the title here at the very top.
+
+84
+00:03:38,678 --> 00:03:40,673
+Great.
+
+85
+00:03:40,674 --> 00:03:42,524
+You have to create two navigation options,
+
+86
+00:03:42,525 --> 00:03:43,786
+Financial and Food.
+
+87
+00:03:43,787 --> 00:03:47,910
+So that's what I'm talking about here, okay?
+
+88
+00:03:47,911 --> 00:03:50,091
+And whenever,
+
+89
+00:03:50,092 --> 00:03:52,459
+each navigation option will have both,
+
+90
+00:03:52,460 --> 00:03:54,723
+an icon and text.
+
+91
+00:03:54,724 --> 00:03:57,936
+And the icon doesn't seem to match Financial and Food.
+
+92
+00:03:57,937 --> 00:03:59,216
+Pick any icon you want.
+
+93
+00:03:59,217 --> 00:04:01,654
+Try to match up a Financial and a Food icon.
+
+94
+00:04:01,655 --> 00:04:02,850
+That would be great.
+
+95
+00:04:02,851 --> 00:04:04,127
+Just go through the character map
+
+96
+00:04:04,128 --> 00:04:06,786
+to find something that looks like it might fit.
+
+97
+00:04:06,787 --> 00:04:09,460
+Number 5, in the main area, you're gonna use a Frame.
+
+98
+00:04:09,461 --> 00:04:13,046
+Okay, we already talked about that, this main area here.
+
+99
+00:04:13,047 --> 00:04:14,956
+And when the application starts,
+
+100
+00:04:14,957 --> 00:04:19,043
+the Financial.xaml page will be loaded into the Frame.
+
+101
+00:04:20,130 --> 00:04:22,418
+The back arrow should be only displayed
+
+102
+00:04:22,419 --> 00:04:24,087
+when you're not viewing
+
+103
+00:04:24,088 --> 00:04:26,618
+the homepage, the Financial page.
+
+104
+00:04:26,619 --> 00:04:28,888
+So again, only should show that arrow
+
+105
+00:04:28,889 --> 00:04:30,472
+when I'm on that second page.
+
+106
+00:04:30,473 --> 00:04:31,720
+And the arrow should actually work,
+
+107
+00:04:31,721 --> 00:04:34,315
+so when I click it, we should be able to go back
+
+108
+00:04:34,316 --> 00:04:37,119
+to the Financial page, the homepage.
+
+109
+00:04:37,120 --> 00:04:38,675
+So the search button and the text box
+
+110
+00:04:38,676 --> 00:04:41,591
+have to be aligned to the right, like you see here.
+
+111
+00:04:41,592 --> 00:04:44,114
+And the button has to have the search icon.
+
+112
+00:04:44,115 --> 00:04:45,314
+So you're gonna need to find that one
+
+113
+00:04:45,315 --> 00:04:47,153
+in order to complete the challenge.
+
+114
+00:04:47,154 --> 00:04:49,351
+Try to figure out how to set the placeholder text
+
+115
+00:04:49,352 --> 00:04:50,554
+in this text box as well.
+
+116
+00:04:50,555 --> 00:04:52,354
+We didn't talk about this, but there's a special property
+
+117
+00:04:52,355 --> 00:04:55,139
+that allows you to set that word "search" in there.
+
+118
+00:04:55,140 --> 00:04:58,252
+But as soon as they start typing, that word will go away.
+
+119
+00:04:58,253 --> 00:05:01,073
+Try to figure out how to set that placeholder.
+
+120
+00:05:01,074 --> 00:05:04,993
+Number 9, the back button must use a back arrow icon.
+
+121
+00:05:04,994 --> 00:05:09,320
+We already talked about that, right?
+
+122
+00:05:10,881 --> 00:05:15,556
+Font sizes that I used include 24, 28, and 36.
+
+123
+00:05:15,557 --> 00:05:19,482
+The colors that I use will include LightGrays,
+
+124
+00:05:19,483 --> 00:05:22,957
+alright, and maybe a MediumGray.
+
+125
+00:05:22,958 --> 00:05:26,706
+And you should use these images as your guide.
+
+126
+00:05:27,539 --> 00:05:30,654
+So here's the A, and the B, and the C image, right?
+
+127
+00:05:30,655 --> 00:05:33,184
+And that will help you out.
+
+128
+00:05:33,185 --> 00:05:34,555
+And so, just like all challenges,
+
+129
+00:05:34,556 --> 00:05:36,250
+try to solve this without my help.
+
+130
+00:05:36,251 --> 00:05:40,510
+Also only watch enough of the solution video to get unstuck.
+
+131
+00:05:40,511 --> 00:05:43,940
+So, I'm going to supply the solution video,
+
+132
+00:05:43,941 --> 00:05:46,284
+please feel free to watch it, but struggle a little bit
+
+133
+00:05:46,285 --> 00:05:49,035
+before you just jump in and watch that video.
+
+134
+00:05:49,036 --> 00:05:50,990
+I don't want you to just
+
+135
+00:05:50,991 --> 00:05:52,884
+go right from this video into the next one,
+
+136
+00:05:52,885 --> 00:05:54,858
+and not actually try these things.
+
+137
+00:05:54,859 --> 00:05:56,800
+So, if you actually do solve it,
+
+138
+00:05:56,801 --> 00:05:59,060
+then that would be also a great chance to go
+
+139
+00:05:59,061 --> 00:06:01,236
+to the solution video and see
+
+140
+00:06:01,237 --> 00:06:05,216
+how I solved it versus how you would solve it, okay?
+
+141
+00:06:05,217 --> 00:06:06,618
+Maybe you'll learn a technique.
+
+142
+00:06:06,619 --> 00:06:08,626
+Maybe you took a different route.
+
+143
+00:06:08,627 --> 00:06:10,485
+That's great.
+
+144
+00:06:10,486 --> 00:06:13,259
+There's many different ways to solve this, I'm sure.
+
+145
+00:06:13,260 --> 00:06:15,117
+Alright, so we'll see what you come up with.
+
+146
+00:06:15,118 --> 00:06:17,218
+Struggle, that's how you learn.
+
+147
+00:06:17,219 --> 00:06:19,526
+And this is gonna be a valuable exercise because it
+
+148
+00:06:19,527 --> 00:06:22,033
+is going to be helpful throughout the remainder of the series.
+
+149
+00:06:22,034 --> 00:06:24,997
+Alright, so we'll see you in the solution video. Thanks.  
+

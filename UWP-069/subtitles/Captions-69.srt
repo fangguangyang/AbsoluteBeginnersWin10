@@ -1,0 +1,1244 @@
+1
+00:00:04,911 --> 00:00:06,480
+<v ->Alright, so next step, we're going to think about ways</v>
+
+2
+00:00:06,481 --> 00:00:07,842
+that we can monetize our app,
+
+3
+00:00:07,843 --> 00:00:09,862
+and there's two obvious ways to do this,
+
+4
+00:00:09,863 --> 00:00:13,922
+very low-friction ways to get our app into people's hands
+
+5
+00:00:13,923 --> 00:00:15,702
+and make money every time that they use it
+
+6
+00:00:15,703 --> 00:00:17,142
+even if they don't pay for it,
+
+7
+00:00:17,143 --> 00:00:18,262
+but then also for those people
+
+8
+00:00:18,263 --> 00:00:20,462
+that really hate advertisements,
+
+9
+00:00:20,463 --> 00:00:22,722
+we're going to allow them to upgrade to a "pro" version,
+
+10
+00:00:22,723 --> 00:00:25,562
+(chuckles) I guess you could say, and remove the ads.
+
+11
+00:00:27,153 --> 00:00:29,134
+In order to get started with this, take a look
+
+12
+00:00:29,135 --> 00:00:32,234
+at this URL that you see on screen right now.
+
+13
+00:00:32,235 --> 00:00:36,044
+That'll take you to the,
+
+14
+00:00:36,396 --> 00:00:39,126
+let's see here, to this page,
+
+15
+00:00:39,816 --> 00:00:42,716
+where you can learn more about how to add
+
+16
+00:00:42,717 --> 00:00:45,861
+ads in your apps, and you can get the SDK
+
+17
+00:00:45,862 --> 00:00:49,722
+for Windows 10, it also works for the other versions, too,
+
+18
+00:00:49,723 --> 00:00:52,682
+but we're basically just going to click Install the SDK,
+
+19
+00:00:52,683 --> 00:00:55,162
+that'll take us to the Visual Studio Gallery
+
+20
+00:00:55,163 --> 00:00:59,542
+where we can download the Windows Ad Mediation Extension.
+
+21
+00:00:59,543 --> 00:01:02,142
+Now I've already downloaded this onto my desktop,
+
+22
+00:01:02,143 --> 00:01:04,302
+and you can see it right here.
+
+23
+00:01:04,303 --> 00:01:06,902
+And the first thing you should do before running this
+
+24
+00:01:06,903 --> 00:01:11,562
+is actually close down all of your Visual Studio instances,
+
+25
+00:01:11,563 --> 00:01:14,582
+then run this, and then you can open up Visual Studio again.
+
+26
+00:01:14,583 --> 00:01:17,335
+Because it is an extension to Visual Studio.
+
+27
+00:01:17,336 --> 00:01:18,835
+So I've already gone through that.
+
+28
+00:01:18,836 --> 00:01:22,015
+It's a very simple, just a normal Windows installer,
+
+29
+00:01:22,016 --> 00:01:23,601
+nothing really all that fancy there.
+
+30
+00:01:23,602 --> 00:01:24,561
+I'm not going to walk through it.
+
+31
+00:01:24,562 --> 00:01:26,773
+It's pretty simple, not a lot of options.
+
+32
+00:01:27,413 --> 00:01:30,533
+And then I'm going to create, just to demonstrate
+
+33
+00:01:30,534 --> 00:01:32,513
+how it works, I'm going to create
+
+34
+00:01:32,514 --> 00:01:34,033
+a new project called AdExample.
+
+35
+00:01:34,034 --> 00:01:36,473
+I've done absolutely nothing to this.
+
+36
+00:01:36,474 --> 00:01:38,884
+So I'm going to go ahead and remove the frame counter,
+
+37
+00:01:39,835 --> 00:01:41,854
+cause I like to get rid of that, as you know,
+
+38
+00:01:41,855 --> 00:01:43,734
+and the first thing that I'm going to do, and let me
+
+39
+00:01:43,735 --> 00:01:46,214
+pull this way over to the side here so you can see this.
+
+40
+00:01:46,215 --> 00:01:48,634
+I'm going to right-click on the project,
+
+41
+00:01:48,635 --> 00:01:53,024
+and, unfortunately, it pops up off the top of the screen.
+
+42
+00:01:55,615 --> 00:01:59,165
+But I'm going to select Add, Connected Service.
+
+43
+00:01:59,938 --> 00:02:01,505
+Here, let me see if I can get this.
+
+44
+00:02:02,516 --> 00:02:03,780
+Let me try to pull this off
+
+45
+00:02:03,781 --> 00:02:06,550
+right around here, and right-click.
+
+46
+00:02:08,181 --> 00:02:09,630
+Pull it down here.
+
+47
+00:02:10,141 --> 00:02:15,090
+Right-click, select Add, Connected Service, like so.
+
+48
+00:02:16,321 --> 00:02:18,214
+And you should see the Ad Mediator
+
+49
+00:02:18,215 --> 00:02:20,014
+in this list of Connected Services.
+
+50
+00:02:20,015 --> 00:02:23,974
+If you don't, then try shutting down Visual Studio,
+
+51
+00:02:23,975 --> 00:02:27,194
+re-opening, try re-booting, try re-installing
+
+52
+00:02:27,195 --> 00:02:29,434
+that MSI that you just downloaded.
+
+53
+00:02:29,435 --> 00:02:32,344
+I'm going to go ahead and click Configure, and
+
+54
+00:02:32,795 --> 00:02:34,880
+it says "this extension enables plug and play
+
+55
+00:02:34,881 --> 00:02:37,060
+"of third-party ad network solutions."
+
+56
+00:02:37,061 --> 00:02:38,301
+We can Select ad networks.
+
+57
+00:02:38,302 --> 00:02:40,621
+We only have one set up for ourselves.
+
+58
+00:02:40,622 --> 00:02:43,272
+We'll talk about ad networks in just a little bit.
+
+59
+00:02:45,603 --> 00:02:47,474
+If you click OK you're going to get this little message
+
+60
+00:02:47,475 --> 00:02:49,934
+that you couldn't add all the required references,
+
+61
+00:02:49,935 --> 00:02:52,134
+that's just fine, let's not worry about that.
+
+62
+00:02:52,135 --> 00:02:54,735
+But I am going to hit the Add
+
+63
+00:02:54,736 --> 00:02:57,855
+and there won't be a lot that happens
+
+64
+00:02:57,856 --> 00:02:59,435
+that you can see in the project,
+
+65
+00:02:59,436 --> 00:03:02,395
+but I'll show you what really does happen here
+
+66
+00:03:02,396 --> 00:03:05,925
+in just a moment as we move this back.
+
+67
+00:03:08,116 --> 00:03:11,435
+What we really accomplished with that was
+
+68
+00:03:11,436 --> 00:03:14,185
+whenever we open up the MainPage.xaml,
+
+69
+00:03:15,896 --> 00:03:18,535
+and then we go, once the designer loads,
+
+70
+00:03:18,536 --> 00:03:20,275
+we go to the Toolbox, you'll see
+
+71
+00:03:20,276 --> 00:03:23,495
+that there are two new sections in the Toolbox,
+
+72
+00:03:23,496 --> 00:03:26,595
+one called AdMediator, and then AdMediator Universal.
+
+73
+00:03:26,596 --> 00:03:29,195
+This is the one that you want, just forget the first one.
+
+74
+00:03:29,196 --> 00:03:31,695
+You want the one with the Universal name.
+
+75
+00:03:31,696 --> 00:03:33,915
+And there's an AdMediatorControl
+
+76
+00:03:33,916 --> 00:03:37,035
+in that section called AdMediator Universal.
+
+77
+00:03:37,036 --> 00:03:39,575
+You're going to drag and drop that onto your designer surface.
+
+78
+00:03:39,576 --> 00:03:42,717
+You have to drag and drop onto the designer surface,
+
+79
+00:03:42,718 --> 00:03:45,578
+not directly into your XAML like I've done in the past.
+
+80
+00:03:45,579 --> 00:03:47,338
+You'll get this message that this reference
+
+81
+00:03:47,339 --> 00:03:49,299
+has been added to the project.
+
+82
+00:03:49,300 --> 00:03:52,319
+"In order to use types from this new reference,
+
+83
+00:03:52,320 --> 00:03:54,519
+"press OK to restart the XAML Designer,"
+
+84
+00:03:54,520 --> 00:03:56,020
+then "re-create the control on the artboard."
+
+85
+00:03:56,021 --> 00:03:58,540
+So we'll do that, and then I'm going to
+
+86
+00:03:58,541 --> 00:04:01,071
+go ahead and click Build Solution,
+
+87
+00:04:02,022 --> 00:04:03,711
+make sure it still builds.
+
+88
+00:04:08,062 --> 00:04:09,201
+Alright, and it does.
+
+89
+00:04:09,202 --> 00:04:10,821
+And now I'm going to go back to the Toolbox
+
+90
+00:04:10,822 --> 00:04:14,861
+and I'm going to re-add that same AdMediatorControl
+
+91
+00:04:14,862 --> 00:04:18,241
+by dragging and dropping it from the AdMediator Universal
+
+92
+00:04:18,242 --> 00:04:21,721
+section of the Toolbox onto my designer surface.
+
+93
+00:04:21,722 --> 00:04:24,141
+And this time you'll see that it adds
+
+94
+00:04:24,142 --> 00:04:27,061
+a couple of things here, let me go ahead and go up here.
+
+95
+00:04:27,062 --> 00:04:30,161
+It adds a new namespace, and it adds a control
+
+96
+00:04:30,162 --> 00:04:32,001
+that accesses that namespace.
+
+97
+00:04:32,002 --> 00:04:34,221
+And let me go ahead and just separate these
+
+98
+00:04:34,222 --> 00:04:36,143
+on individual lines here.
+
+99
+00:04:41,494 --> 00:04:42,733
+Alright, there we go.
+
+100
+00:04:42,734 --> 00:04:45,653
+So what we have is a control with a special name,
+
+101
+00:04:46,174 --> 00:04:47,695
+undoubtedly the name of your control
+
+102
+00:04:47,696 --> 00:04:49,375
+will be different than mine.
+
+103
+00:04:49,376 --> 00:04:50,845
+You're going to have an ID and undoubtedly
+
+104
+00:04:50,846 --> 00:04:53,805
+this ID will be different than mine, as well.
+
+105
+00:04:53,806 --> 00:04:55,725
+These are just randomly generated,
+
+106
+00:04:55,726 --> 00:04:59,885
+and these are going to be just for development purposes anyway.
+
+107
+00:04:59,886 --> 00:05:03,045
+When you go and register your app with the store,
+
+108
+00:05:03,046 --> 00:05:04,425
+as we'll show in just a moment,
+
+109
+00:05:04,426 --> 00:05:07,805
+you're going to get a permanent one and it will
+
+110
+00:05:07,806 --> 00:05:09,705
+actually replace all of this for you,
+
+111
+00:05:09,706 --> 00:05:11,925
+you won't have to worry about that process.
+
+112
+00:05:11,926 --> 00:05:15,712
+Now that we've done that, let's go ahead and
+
+113
+00:05:15,713 --> 00:05:18,532
+go back to what we did before by right-clicking
+
+114
+00:05:18,533 --> 00:05:21,792
+and selecting Add, Connected Service,
+
+115
+00:05:21,793 --> 00:05:23,129
+you could see it barely off in the
+
+116
+00:05:23,130 --> 00:05:24,729
+upper right-hand corner when I did that.
+
+117
+00:05:24,730 --> 00:05:27,109
+So we're back to the screen, and we're going to click
+
+118
+00:05:27,110 --> 00:05:31,647
+Configure this time, and you'll see this message that
+
+119
+00:05:31,648 --> 00:05:34,423
+"your project changed and AdMediator.config will be updated.
+
+120
+00:05:34,424 --> 00:05:38,483
+"For more information, see the ad mediation documentation."
+
+121
+00:05:38,484 --> 00:05:42,343
+And it shows what will be added to that
+
+122
+00:05:43,114 --> 00:05:45,360
+AdMediator.config file, that's great.
+
+123
+00:05:45,361 --> 00:05:48,448
+Now you should see references are fetched,
+
+124
+00:05:49,139 --> 00:05:51,158
+and you can click Add to that,
+
+125
+00:05:51,159 --> 00:05:54,028
+and, again, I'm going to go ahead and build a solution.
+
+126
+00:05:54,599 --> 00:05:55,898
+You have to take those exact steps
+
+127
+00:05:55,899 --> 00:05:57,748
+or you're not going to get it to work,
+
+128
+00:05:58,059 --> 00:06:00,468
+I have found painfully as I have spent
+
+129
+00:06:01,009 --> 00:06:03,034
+more than a day working with this.
+
+130
+00:06:03,035 --> 00:06:05,874
+When I run the app, it takes a moment here,
+
+131
+00:06:05,875 --> 00:06:08,634
+but if I wait for a few seconds here, you'll see a little
+
+132
+00:06:08,635 --> 00:06:11,234
+placeholder ad for MSN pop up on my screen.
+
+133
+00:06:11,235 --> 00:06:13,454
+So I know that I did this right.
+
+134
+00:06:14,665 --> 00:06:15,223
+Very cool.
+
+135
+00:06:15,224 --> 00:06:19,369
+At this point, what I would need to do is to go into
+
+136
+00:06:19,880 --> 00:06:24,379
+go into my dashboard area and
+
+137
+00:06:24,770 --> 00:06:27,544
+if I haven't already done this, I'm going to need to create
+
+138
+00:06:27,545 --> 00:06:30,424
+a new entry for my new app.
+
+139
+00:06:30,425 --> 00:06:33,854
+And if you take a look at
+
+140
+00:06:34,975 --> 00:06:37,336
+the App overview for this new app,
+
+141
+00:06:37,337 --> 00:06:39,386
+you want to make sure to
+
+142
+00:06:43,457 --> 00:06:46,876
+go to Submissions, and you can see that
+
+143
+00:06:46,877 --> 00:06:50,196
+I'm currently in progress in a submission,
+
+144
+00:06:50,197 --> 00:06:52,196
+and one of the first things I'm going to need to do
+
+145
+00:06:52,197 --> 00:06:55,956
+is make a change to the App properties,
+
+146
+00:06:55,957 --> 00:06:59,256
+and I need to, at a minimum, give it the category
+
+147
+00:06:59,257 --> 00:07:01,076
+and the subcategory, which I just selected
+
+148
+00:07:01,077 --> 00:07:03,116
+as Education, Instructional Tools.
+
+149
+00:07:03,117 --> 00:07:04,736
+It doesn't matter what you've chosen there.
+
+150
+00:07:04,737 --> 00:07:07,656
+But then save that, and now go back
+
+151
+00:07:07,657 --> 00:07:10,016
+to App overview, and if you scroll down,
+
+152
+00:07:10,017 --> 00:07:12,715
+you'll see something for Ad mediation,
+
+153
+00:07:12,716 --> 00:07:14,216
+and you should be able to start
+
+154
+00:07:14,217 --> 00:07:16,815
+configuring ad mediation now.
+
+155
+00:07:16,816 --> 00:07:19,036
+And you can choose what ad networks
+
+156
+00:07:19,037 --> 00:07:21,576
+that you're going to serve up,
+
+157
+00:07:21,577 --> 00:07:26,336
+and you can even create Microsoft Advertising Ad Units,
+
+158
+00:07:26,337 --> 00:07:28,926
+which is something that you're going to need to do
+
+159
+00:07:28,927 --> 00:07:32,791
+at some point, whenever you go to submit your application.
+
+160
+00:07:32,792 --> 00:07:34,071
+As you can see, I've already created
+
+161
+00:07:34,072 --> 00:07:37,550
+one ad unit name and gotten an application ID.
+
+162
+00:07:37,551 --> 00:07:41,111
+It'll be a banner ad for the PC/Tablet.
+
+163
+00:07:41,112 --> 00:07:44,911
+And so this will be utilized
+
+164
+00:07:44,912 --> 00:07:46,811
+inside of the settings for my app.
+
+165
+00:07:46,812 --> 00:07:48,532
+Now let's talk about
+
+166
+00:07:50,263 --> 00:07:51,861
+the different types of ads that
+
+167
+00:07:51,862 --> 00:07:54,402
+we can create for our application.
+
+168
+00:07:54,403 --> 00:07:57,362
+If you take a look at that URL,
+
+169
+00:07:57,363 --> 00:08:01,761
+that'll take you to a document in the Windows Dev Center
+
+170
+00:08:01,762 --> 00:08:03,842
+called "select and manage your ad networks."
+
+171
+00:08:03,843 --> 00:08:05,862
+And there's a bunch of ad networks
+
+172
+00:08:05,863 --> 00:08:08,519
+that are partially supported
+
+173
+00:08:08,520 --> 00:08:12,719
+by this ad SDK.
+
+174
+00:08:12,720 --> 00:08:15,239
+As you can see, the Windows Universal Platform,
+
+175
+00:08:15,240 --> 00:08:18,203
+they're still, the ad networks are still coming online.
+
+176
+00:08:18,204 --> 00:08:21,823
+It's mostly supported in some of the
+
+177
+00:08:21,824 --> 00:08:24,328
+oldest versions of the Windows Phone
+
+178
+00:08:25,199 --> 00:08:27,400
+and Windows 8.1,
+
+179
+00:08:28,011 --> 00:08:32,990
+but at any rate, you can decide to have multiple ad networks
+
+180
+00:08:32,991 --> 00:08:35,440
+and just iterate through
+
+181
+00:08:35,441 --> 00:08:37,023
+each of the ad networks that you want to use.
+
+182
+00:08:37,024 --> 00:08:38,942
+Now again, only Microsoft Advertising
+
+183
+00:08:38,943 --> 00:08:41,222
+is supported currently for the
+
+184
+00:08:41,223 --> 00:08:43,762
+Universal Windows Platform version that we're using.
+
+185
+00:08:43,763 --> 00:08:46,182
+But if you scroll down you can see that,
+
+186
+00:08:46,183 --> 00:08:48,563
+here are some more details about including
+
+187
+00:08:48,564 --> 00:08:53,183
+Microsoft Advertising network into your application,
+
+188
+00:08:53,184 --> 00:08:55,403
+and what's required, and how you get
+
+189
+00:08:55,404 --> 00:08:57,602
+the Application ID and the Ad Unit ID
+
+190
+00:08:57,603 --> 00:09:00,142
+and what they're used for, and how you can then use them
+
+191
+00:09:00,143 --> 00:09:04,382
+inside of the Ad Mediation Control.
+
+192
+00:09:04,383 --> 00:09:06,282
+Then if you take a look at the navigation
+
+193
+00:09:06,283 --> 00:09:10,734
+on the left-hand side, it will give you another
+
+194
+00:09:11,144 --> 00:09:13,824
+article about adding and using the Ad Mediation Control,
+
+195
+00:09:13,825 --> 00:09:16,665
+what we dragged and dropped onto our designer surface,
+
+196
+00:09:16,666 --> 00:09:20,885
+and the different default settings that are added
+
+197
+00:09:20,886 --> 00:09:23,867
+and how you can configure them for
+
+198
+00:09:23,868 --> 00:09:27,067
+each of the different ad networks,
+
+199
+00:09:27,068 --> 00:09:30,418
+and how you declare the capabilities
+
+200
+00:09:31,359 --> 00:09:35,314
+for a given network inside of the ad mediator,
+
+201
+00:09:35,315 --> 00:09:39,634
+or rather, the, yeah, the ad mediator that we saw
+
+202
+00:09:39,635 --> 00:09:44,015
+a little bit ago when we clicked on Add, Connected Services.
+
+203
+00:09:44,016 --> 00:09:46,455
+But I think, ultimately one of the most important things
+
+204
+00:09:46,456 --> 00:09:49,795
+from this page that is a takeaway is that
+
+205
+00:09:49,796 --> 00:09:52,355
+these are the different ad sizes that are supported
+
+206
+00:09:52,356 --> 00:09:54,635
+for the Universal Windows Platform.
+
+207
+00:09:54,636 --> 00:09:57,275
+And so most of these are going to be square
+
+208
+00:09:57,276 --> 00:10:01,175
+or like a three by four sized orientation,
+
+209
+00:10:01,176 --> 00:10:03,697
+I guess you can say, or four by three, rather,
+
+210
+00:10:03,698 --> 00:10:07,297
+but this one, this long, skinny one, would be the one
+
+211
+00:10:07,298 --> 00:10:09,437
+that I would probably use for our project,
+
+212
+00:10:09,438 --> 00:10:12,637
+because it's 728 pixels wide but 90 tall.
+
+213
+00:10:12,638 --> 00:10:17,537
+So it'd fit really nice along the bottom of our application.
+
+214
+00:10:17,538 --> 00:10:18,982
+So we're going to remember that.
+
+215
+00:10:18,983 --> 00:10:20,762
+In fact, I'm going to open up Notepad here
+
+216
+00:10:20,763 --> 00:10:25,602
+and type in 728 and 90, cause I'm going to remember that.
+
+217
+00:10:26,483 --> 00:10:30,792
+Alright, but ultimately, whenever you submit your app
+
+218
+00:10:30,793 --> 00:10:35,753
+to the app store, it will replace several of the
+
+219
+00:10:36,964 --> 00:10:39,704
+settings that were created here by default,
+
+220
+00:10:39,705 --> 00:10:42,104
+like in this AdMediator.config file.
+
+221
+00:10:42,105 --> 00:10:44,545
+So generally you shouldn't have to mess with this
+
+222
+00:10:44,546 --> 00:10:45,525
+if you were to configure
+
+223
+00:10:45,526 --> 00:10:47,696
+everything correctly in the dashboard.
+
+224
+00:10:48,570 --> 00:10:52,306
+So, any rate, now that we know how to create a ad,
+
+225
+00:10:52,307 --> 00:10:55,066
+let's go ahead and get back into our project
+
+226
+00:10:55,067 --> 00:10:56,946
+and make sure that we add that in.
+
+227
+00:10:56,947 --> 00:11:00,366
+So here we are, back in the AlbumCoverMatchGame.
+
+228
+00:11:00,367 --> 00:11:03,846
+And what I want to do is go to the MainPage.xaml,
+
+229
+00:11:03,847 --> 00:11:06,706
+specifically I want to go and I'm going to add
+
+230
+00:11:06,707 --> 00:11:10,906
+one more row definition at the bottom,
+
+231
+00:11:10,907 --> 00:11:12,467
+and it's only going to be 90 tall,
+
+232
+00:11:12,468 --> 00:11:14,177
+and that's where we're going to put the ad.
+
+233
+00:11:16,038 --> 00:11:19,001
+We'll put it, then, here, we'll drag and drop it
+
+234
+00:11:19,002 --> 00:11:20,951
+onto the design surface in just a moment.
+
+235
+00:11:21,622 --> 00:11:24,112
+I'm going to right-click my project name and select,
+
+236
+00:11:24,113 --> 00:11:25,432
+and you unfortunately can't see this
+
+237
+00:11:25,433 --> 00:11:29,232
+off to the top of the screen, Add, Connected Service,
+
+238
+00:11:29,233 --> 00:11:31,914
+and the Ad Mediatior, I'm going to select Configure,
+
+239
+00:11:31,915 --> 00:11:34,135
+I'm going to select the ad networks,
+
+240
+00:11:34,136 --> 00:11:36,774
+Microsoft Advertising is my only choice,
+
+241
+00:11:36,775 --> 00:11:38,593
+I'm going to click Add.
+
+242
+00:11:38,594 --> 00:11:43,234
+Now what I want to do is go to MainPage.xaml
+
+243
+00:11:43,235 --> 00:11:46,861
+and I want to view the design view for this,
+
+244
+00:11:47,612 --> 00:11:52,071
+and I'm going to try and find that bottom area,
+
+245
+00:11:52,072 --> 00:11:54,241
+hopefully I can drag into it.
+
+246
+00:11:54,751 --> 00:11:58,391
+I'm going to go to the Toolbox, go to the AdMediator Universal
+
+247
+00:11:58,392 --> 00:12:02,071
+section of the Toolbox and drag the AdMediatorControl
+
+248
+00:12:02,072 --> 00:12:06,451
+into what I hope to be that third row,
+
+249
+00:12:06,452 --> 00:12:09,211
+but I can fix that if it doesn't go there perfectly.
+
+250
+00:12:09,212 --> 00:12:11,731
+I'm going to get that message box that
+
+251
+00:12:11,732 --> 00:12:13,251
+the reference has been to the project,
+
+252
+00:12:13,252 --> 00:12:17,359
+I'm going to click OK, I'm going to click Build the Solution,
+
+253
+00:12:21,770 --> 00:12:26,619
+great, and now I'm going to go back and attempt to
+
+254
+00:12:27,110 --> 00:12:29,646
+go to the Toolbox and re-drag and drop
+
+255
+00:12:29,647 --> 00:12:33,086
+the AdMediatorControl into that bottom area there.
+
+256
+00:12:33,087 --> 00:12:34,786
+Now, admittedly, you can see that
+
+257
+00:12:34,787 --> 00:12:38,105
+it's kind of fighting me, but that's fine.
+
+258
+00:12:38,106 --> 00:12:40,026
+At this point I have everything in there that I need
+
+259
+00:12:40,027 --> 00:12:42,574
+and I go back to the XAML view
+
+260
+00:12:42,575 --> 00:12:45,534
+and actually make the changes to it that I need to make.
+
+261
+00:12:50,623 --> 00:12:53,619
+Here we go, Grid.Row equals 2 is what we needed,
+
+262
+00:12:53,620 --> 00:12:55,367
+perfect, it put that in there.
+
+263
+00:12:55,938 --> 00:12:58,400
+I'm going to go ahead and get rid of the margins here.
+
+264
+00:12:58,401 --> 00:13:00,881
+I'm also going to change the height of this
+
+265
+00:13:00,882 --> 00:13:03,701
+to 90 and the width to 728,
+
+266
+00:13:03,702 --> 00:13:05,709
+remember that was one of the ad sizes.
+
+267
+00:13:06,518 --> 00:13:08,077
+Let's get rid of everything there
+
+268
+00:13:08,078 --> 00:13:10,525
+and let's get rid of everything here.
+
+269
+00:13:11,836 --> 00:13:14,705
+Let's build it one more time just to be on the safe side.
+
+270
+00:13:15,476 --> 00:13:17,645
+And I'm going to run the app
+
+271
+00:13:20,574 --> 00:13:24,241
+and with any luck, after a moment we'll see
+
+272
+00:13:25,072 --> 00:13:27,940
+at least a sliver of that little MSN
+
+273
+00:13:30,112 --> 00:13:32,201
+advertisement popup.
+
+274
+00:13:33,252 --> 00:13:36,960
+(guitar music)It's not popping up for me.
+
+275
+00:13:37,591 --> 00:13:41,619
+That could be a size issue, so let me
+
+276
+00:13:42,352 --> 00:13:44,195
+back out of this change,
+
+277
+00:13:44,668 --> 00:13:47,915
+I'm just going to hit "ctrl + z" and "ctrl + z".
+
+278
+00:13:49,145 --> 00:13:51,694
+Oh, you know what, I did forget a step.
+
+279
+00:13:51,704 --> 00:13:53,283
+I forgot a step.
+
+280
+00:13:53,284 --> 00:13:58,003
+After I added everything, I need to go back now,
+
+281
+00:13:58,004 --> 00:14:02,563
+and go back to Add, Connected Service,
+
+282
+00:14:02,564 --> 00:14:05,423
+go back to the ad mediator, Configure,
+
+283
+00:14:05,424 --> 00:14:08,783
+click OK, and click Add.
+
+284
+00:14:08,784 --> 00:14:10,056
+Now I should be able to build,
+
+285
+00:14:10,057 --> 00:14:11,670
+I knew I was forgetting something.
+
+286
+00:14:13,258 --> 00:14:17,474
+And now I'm going to change the height to 90
+
+287
+00:14:17,475 --> 00:14:20,432
+and then the width to 728.
+
+288
+00:14:20,433 --> 00:14:21,933
+That should fix that.
+
+289
+00:14:24,625 --> 00:14:27,204
+And let's go ahead and build the solution
+
+290
+00:14:27,205 --> 00:14:29,180
+one more time, cause I'm paranoid about this.
+
+291
+00:14:29,181 --> 00:14:30,980
+(laughs) Clearly.
+
+292
+00:14:30,981 --> 00:14:32,651
+And let's run the app.
+
+293
+00:14:33,059 --> 00:14:35,908
+And hopefully we'll see the little sliver of blue down here.
+
+294
+00:14:36,980 --> 00:14:38,179
+And we do. Great.
+
+295
+00:14:38,180 --> 00:14:39,298
+So it's there.
+
+296
+00:14:39,299 --> 00:14:42,299
+And if I click on it, it opens up to MSN.
+
+297
+00:14:42,300 --> 00:14:43,358
+Perfect.
+
+298
+00:14:43,939 --> 00:14:46,284
+(guitar music)So that's how we can add
+
+299
+00:14:46,285 --> 00:14:49,244
+Microsoft Advertising (chuckles)
+
+300
+00:14:49,245 --> 00:14:51,794
+Microsoft Advertising to our app.
+
+301
+00:14:51,795 --> 00:14:53,344
+Now hold on a second, I just noticed
+
+302
+00:14:53,345 --> 00:14:55,143
+something that did not look very cool.
+
+303
+00:14:55,144 --> 00:14:59,474
+Let me make sure this is all running correctly.
+
+304
+00:15:06,225 --> 00:15:10,153
+I seem to have lost my(guitar music)
+
+305
+00:15:11,645 --> 00:15:13,684
+lost something here in the process.
+
+306
+00:15:14,782 --> 00:15:17,037
+I've introduced a bug somehow,
+
+307
+00:15:17,038 --> 00:15:21,117
+hoping it's a small fix, but let me look into that as well
+
+308
+00:15:21,118 --> 00:15:23,478
+by adding the Mediator Control,
+
+309
+00:15:23,479 --> 00:15:25,217
+seems like I lost all my album art.
+
+310
+00:15:25,218 --> 00:15:26,837
+So let me look into that
+
+311
+00:15:26,838 --> 00:15:29,467
+and we'll start back up in the next video.  
+

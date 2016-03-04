@@ -1,0 +1,240 @@
+1
+00:00:06,984 --> 00:00:08,807
+<v Voiceover>Alright so this is the</v>
+
+2
+00:00:08,808 --> 00:00:09,905
+part of the solution
+
+3
+00:00:09,906 --> 00:00:13,422
+for the Stupendous Styles Challenge that
+
+4
+00:00:13,423 --> 00:00:17,187
+involves the Pickup Date and Time.
+
+5
+00:00:17,188 --> 00:00:19,828
+As you can see here on the screenshot,
+
+6
+00:00:19,829 --> 00:00:21,426
+we're going to need the logo again,
+
+7
+00:00:21,427 --> 00:00:24,061
+we've already got a Style for that, that should be easy.
+
+8
+00:00:24,062 --> 00:00:25,855
+Looks like we're going to need
+
+9
+00:00:29,805 --> 00:00:33,128
+a Row with two Columns in it,
+
+10
+00:00:33,129 --> 00:00:38,128
+and then we'll need that DatePicker and TimePicker.
+
+11
+00:00:38,695 --> 00:00:40,337
+That should be pretty easy.
+
+12
+00:00:40,338 --> 00:00:43,933
+Let's go ahead and, actually I'll keep that open.
+
+13
+00:00:45,774 --> 00:00:46,904
+Let's get rid of that
+
+14
+00:00:46,905 --> 00:00:51,543
+and so let's open up the SchedulePage.
+
+15
+00:00:51,544 --> 00:00:54,144
+I think the very first thing we can agree on
+
+16
+00:00:54,145 --> 00:00:56,735
+that we need to do is set the Background="Green".
+
+17
+00:00:57,969 --> 00:01:00,142
+Okay, and so the next thing I'm going to do is
+
+18
+00:01:00,143 --> 00:01:04,070
+actually go to the DonutPage,
+
+19
+00:01:04,962 --> 00:01:09,327
+and I'm going to grab some of this stuff here
+
+20
+00:01:09,328 --> 00:01:12,273
+and I'll grab that,
+
+21
+00:01:12,274 --> 00:01:13,960
+and I'm going to paste it,
+
+22
+00:01:15,290 --> 00:01:16,818
+see how much did I grab?
+
+23
+00:01:16,819 --> 00:01:18,183
+Okay, there we go.
+
+24
+00:01:18,184 --> 00:01:19,697
+I sometimes forget what I copy
+
+25
+00:01:19,698 --> 00:01:22,786
+and what I need to paste over.
+
+26
+00:01:22,787 --> 00:01:27,147
+Alright, looks like we're going to need a back Grid down there.
+
+27
+00:01:29,681 --> 00:01:32,985
+Okay, so let's see what this looks like.
+
+28
+00:01:40,264 --> 00:01:42,646
+Okay, pretty good start.
+
+29
+00:01:45,382 --> 00:01:47,859
+And I think this was supposed to say pickup, right?
+
+30
+00:01:51,471 --> 00:01:56,140
+And here we're going to have the DatePicker
+
+31
+00:01:57,374 --> 00:01:58,714
+I think the DatePicker was on top right?
+
+32
+00:01:58,715 --> 00:02:00,421
+Let's look at this.
+
+33
+00:02:00,422 --> 00:02:01,619
+Yeah date picker
+
+34
+00:02:01,620 --> 00:02:04,018
+and in the next row we'll have the time picker, pickup.
+
+35
+00:02:04,853 --> 00:02:08,268
+Great, pickup, DatePicker.
+
+36
+00:02:11,390 --> 00:02:15,425
+Place holder text? No. Okay.
+
+37
+00:02:19,132 --> 00:02:21,455
+Well, I think that's all we're going to do there.
+
+38
+00:02:21,456 --> 00:02:24,219
+Grid.Row="1"
+
+39
+00:02:24,220 --> 00:02:29,219
+and a Grid.Column="1".
+
+40
+00:02:29,242 --> 00:02:31,896
+And then the TimePicker.
+
+41
+00:02:31,897 --> 00:02:36,429
+TimePicker... Grid.Row="2"
+
+42
+00:02:36,430 --> 00:02:39,713
+Grid.Column="1".
+
+43
+00:02:39,714 --> 00:02:42,070
+There might be some Margins, but you know,
+
+44
+00:02:42,071 --> 00:02:45,618
+this is I think almost all we need.
+
+45
+00:02:49,687 --> 00:02:52,104
+Yeah, I'm not crazy about the date format.
+
+46
+00:02:52,105 --> 00:02:54,216
+What did we have here?
+
+47
+00:02:57,457 --> 00:03:00,297
+Select a date, huh.
+
+48
+00:03:02,361 --> 00:03:05,774
+Oh, you know what, I got the wrong DatePicker.
+
+49
+00:03:05,775 --> 00:03:07,820
+This should be the CalendarDatePicker.
+
+50
+00:03:09,597 --> 00:03:12,454
+There we go, and let's go ahead and
+
+51
+00:03:12,455 --> 00:03:15,358
+set the Foreground="White" while we're at it.
+
+52
+00:03:18,277 --> 00:03:20,637
+And we'll do the same thing for the TimePicker.
+
+53
+00:03:32,812 --> 00:03:34,998
+Alright, that's a little more I like it.
+
+54
+00:03:34,999 --> 00:03:35,718
+There we go.
+
+55
+00:03:38,149 --> 00:03:39,873
+Awesome,
+
+56
+00:03:39,874 --> 00:03:42,227
+and I think that's all we gotta do for that.
+
+57
+00:03:42,228 --> 00:03:44,437
+See, this one was simple,
+
+58
+00:03:44,438 --> 00:03:46,057
+and most of it was just copy and paste,
+
+59
+00:03:46,058 --> 00:03:49,224
+but there was a lot of functionality on that Page.
+
+60
+00:03:49,225 --> 00:03:52,685
+Okay, so let's, without further ado, let's move on.  
+

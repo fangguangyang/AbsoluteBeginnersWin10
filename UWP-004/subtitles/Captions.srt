@@ -1,0 +1,828 @@
+1
+00:00:04,840 --> 00:00:08,476
+<v ->Hi, I'm Bob Tabor with www.LearnVisualStudio.NET.</v>
+
+2
+00:00:08,477 --> 00:00:12,241
+In this lesson, we'll begin learning about the XAML syntax.
+
+3
+00:00:12,242 --> 00:00:14,705
+Honestly, it's pretty easy to figure out
+
+4
+00:00:14,706 --> 00:00:17,745
+the absolute basics of XAML, just by looking at it.
+
+5
+00:00:17,746 --> 00:00:21,019
+I mean, I can imagine that whatever you saw
+
+6
+00:00:21,020 --> 00:00:23,995
+in the previous lesson, you were at least able
+
+7
+00:00:23,996 --> 00:00:27,333
+to figure out the correlation between the tags,
+
+8
+00:00:27,334 --> 00:00:29,189
+the properties, and what you saw
+
+9
+00:00:29,190 --> 00:00:31,099
+in the visual designer, right?
+
+10
+00:00:31,100 --> 00:00:33,669
+Well, what I want to accomplish is to talk about
+
+11
+00:00:33,670 --> 00:00:35,269
+some of its features and functions
+
+12
+00:00:35,270 --> 00:00:37,893
+that may not be so obvious at first glance.
+
+13
+00:00:37,894 --> 00:00:40,207
+So we're going to take a couple of passes at this
+
+14
+00:00:40,208 --> 00:00:42,831
+in short videos that, when combined together,
+
+15
+00:00:42,832 --> 00:00:45,157
+will give us a pretty thorough understanding of XAML
+
+16
+00:00:45,158 --> 00:00:46,447
+and how it all works.
+
+17
+00:00:46,448 --> 00:00:48,932
+In this first lesson, we're going to talk about the purpose
+
+18
+00:00:48,933 --> 00:00:52,996
+and the nature of XAML, especially in comparison to C#.
+
+19
+00:00:52,997 --> 00:00:55,663
+Then in the next few lessons, we're going to talk about
+
+20
+00:00:55,664 --> 00:00:57,753
+the special features of XAML.
+
+21
+00:00:57,754 --> 00:01:00,142
+Little hidden features of the language that,
+
+22
+00:01:00,143 --> 00:01:01,764
+again, may not be obvious
+
+23
+00:01:01,765 --> 00:01:04,249
+when you first start looking at it.
+
+24
+00:01:04,250 --> 00:01:08,110
+So my aim is that, by the end of these first set of lessons,
+
+25
+00:01:08,111 --> 00:01:09,379
+you're going to have enough knowledge
+
+26
+00:01:09,380 --> 00:01:11,779
+that you can look at the XAML that we write together
+
+27
+00:01:11,780 --> 00:01:13,784
+in the remainder of this series,
+
+28
+00:01:13,785 --> 00:01:15,527
+and you're going to be able to take a pretty good guess
+
+29
+00:01:15,528 --> 00:01:17,571
+at what it's trying to do before I even explain
+
+30
+00:01:17,572 --> 00:01:18,520
+what it does.
+
+31
+00:01:18,521 --> 00:01:21,059
+All right, so first of all, let's talk about what XAML is.
+
+32
+00:01:21,060 --> 00:01:23,544
+In the previous lesson, I made a passing remark
+
+33
+00:01:23,545 --> 00:01:26,562
+about how XAML looks similar to HTML
+
+34
+00:01:26,563 --> 00:01:28,077
+and that's no accident.
+
+35
+00:01:28,078 --> 00:01:32,642
+XAML is really just XML, the EXtensible Markup Language.
+
+36
+00:01:32,643 --> 00:01:35,159
+I'm going to explain that relationship in just a moment,
+
+37
+00:01:35,160 --> 00:01:39,618
+but at a higher level, XML looks a lot like HTML
+
+38
+00:01:39,619 --> 00:01:42,465
+insomuch that they share a common ancestry.
+
+39
+00:01:42,466 --> 00:01:47,436
+Whereas HTML is specific to structuring a web page document,
+
+40
+00:01:47,437 --> 00:01:50,710
+XML is a little bit more generic in nature.
+
+41
+00:01:50,711 --> 00:01:54,475
+And by generic I mean that you can use it for any purpose
+
+42
+00:01:54,476 --> 00:01:57,835
+that you devise, and you can define the names
+
+43
+00:01:57,836 --> 00:02:01,227
+and the elements and the attributes to suit your needs.
+
+44
+00:02:01,228 --> 00:02:03,595
+Now in the past, developers have used XML
+
+45
+00:02:03,596 --> 00:02:06,528
+for things like storing application settings
+
+46
+00:02:06,529 --> 00:02:09,237
+or using it as a means of transferring data
+
+47
+00:02:09,238 --> 00:02:11,306
+between two systems that were never intended
+
+48
+00:02:11,307 --> 00:02:13,557
+to work together.
+
+49
+00:02:13,558 --> 00:02:16,885
+And to use XML, you start out by defining
+
+50
+00:02:16,886 --> 00:02:19,925
+what's called a schema, which declares the proper names
+
+51
+00:02:19,926 --> 00:02:22,548
+of the elements and their attributes.
+
+52
+00:02:22,549 --> 00:02:24,874
+And so a schema is kinda like a contract
+
+53
+00:02:24,875 --> 00:02:26,356
+that two parties agree to.
+
+54
+00:02:26,357 --> 00:02:28,905
+Everybody agrees, both the producer of the XML
+
+55
+00:02:28,906 --> 00:02:32,180
+and the consumer of the XML, to write and read
+
+56
+00:02:32,181 --> 00:02:34,857
+the XML, to conform to those rules set forth
+
+57
+00:02:34,858 --> 00:02:37,385
+in the contract, I mean, the schema.
+
+58
+00:02:37,386 --> 00:02:40,073
+And now that they both agree
+
+59
+00:02:40,074 --> 00:02:41,570
+that they're working in the same rules
+
+60
+00:02:41,571 --> 00:02:43,022
+and the same contract, they can communicate
+
+61
+00:02:43,023 --> 00:02:44,125
+with each other.
+
+62
+00:02:44,126 --> 00:02:46,983
+So a schema is a really important part of XML.
+
+63
+00:02:46,984 --> 00:02:48,425
+And just keep that in mind,
+
+64
+00:02:48,426 --> 00:02:50,528
+because we're going to come back to that in just a moment.
+
+65
+00:02:50,529 --> 00:02:55,499
+Now XAML is a special usage of XML.
+
+66
+00:02:55,500 --> 00:02:58,816
+Obviously we see, at least in this case,
+
+67
+00:02:58,817 --> 00:03:02,090
+XAML has something to do with defining a user interface
+
+68
+00:03:02,091 --> 00:03:05,109
+for our application.
+
+69
+00:03:05,110 --> 00:03:07,690
+So in that regard, it feels a lot like HTML,
+
+70
+00:03:07,691 --> 00:03:09,631
+but there's a big difference.
+
+71
+00:03:09,632 --> 00:03:13,396
+XAML is actually used to create instances of classes
+
+72
+00:03:13,397 --> 00:03:17,396
+and set values of their properties.
+
+73
+00:03:17,397 --> 00:03:19,593
+So, for example, in the previous lesson,
+
+74
+00:03:19,594 --> 00:03:22,196
+we created a little Hello World application.
+
+75
+00:03:22,197 --> 00:03:23,988
+I kind of expanded on that here,
+
+76
+00:03:23,989 --> 00:03:25,748
+just to give it a little more design.
+
+77
+00:03:25,749 --> 00:03:27,603
+I added a button.
+
+78
+00:03:27,604 --> 00:03:30,185
+And notice that I put all the attributes on separate lines
+
+79
+00:03:30,186 --> 00:03:32,531
+so now we can see, hopefully, the definition
+
+80
+00:03:32,532 --> 00:03:33,715
+a little bit better.
+
+81
+00:03:33,716 --> 00:03:35,454
+Let me actually make a little more room here.
+
+82
+00:03:35,455 --> 00:03:38,099
+We're going to rely less and less on the visual designer.
+
+83
+00:03:38,100 --> 00:03:40,957
+In fact, we may even start getting rid of it completely.
+
+84
+00:03:40,958 --> 00:03:42,756
+But you can see here that I've create a red button
+
+85
+00:03:42,757 --> 00:03:46,191
+called Click Me, and there's also a MessageTextBlock
+
+86
+00:03:46,192 --> 00:03:47,940
+that will appear below it.
+
+87
+00:03:47,941 --> 00:03:49,465
+So it's very much like what we did before,
+
+88
+00:03:49,466 --> 00:03:50,841
+I just started over from scratch.
+
+89
+00:03:50,842 --> 00:03:55,076
+And what I want to do is,
+
+90
+00:03:55,077 --> 00:03:57,347
+well, first of all, let's go ahead
+
+91
+00:03:57,348 --> 00:04:01,806
+and take a look at the code behind,
+
+92
+00:04:01,807 --> 00:04:04,082
+and we'll
+
+93
+00:04:05,412 --> 00:04:08,238
+set the TextBlock equal to
+
+94
+00:04:08,239 --> 00:04:12,434
+"What is XAML?", the topic of this lesson.
+
+95
+00:04:12,697 --> 00:04:13,976
+Whenever you click the button.
+
+96
+00:04:13,977 --> 00:04:16,711
+So let's run the application briefly.
+
+97
+00:04:17,763 --> 00:04:20,636
+Just to show that there's nothing up my sleeve.
+
+98
+00:04:22,755 --> 00:04:25,282
+And click it, and we get the result, great.
+
+99
+00:04:25,283 --> 00:04:27,042
+Okay, so now what I want to do,
+
+100
+00:04:27,043 --> 00:04:29,506
+just to demonstrate how XAML works
+
+101
+00:04:29,507 --> 00:04:32,087
+is to actually comment out this button control.
+
+102
+00:04:32,088 --> 00:04:36,151
+And I'll use the syntax that you would use
+
+103
+00:04:36,152 --> 00:04:39,009
+if you're familiar with HTML and how to comment out things.
+
+104
+00:04:39,010 --> 00:04:42,409
+It's just this open bracket, exclamation mark dash dash
+
+105
+00:04:42,410 --> 00:04:44,808
+to start the commented section.
+
+106
+00:04:44,809 --> 00:04:46,216
+And then to end the commented section,
+
+107
+00:04:46,217 --> 00:04:49,235
+you just do dash dash, closing angle bracket, like so.
+
+108
+00:04:49,236 --> 00:04:53,213
+And you can see that in Visual Studio's code editor
+
+109
+00:04:53,214 --> 00:04:55,746
+that it appears green by default.
+
+110
+00:04:56,371 --> 00:04:59,250
+Okay, so now that we've got rid of it,
+
+111
+00:04:59,251 --> 00:05:01,928
+what I'm going to do is actually come back over here.
+
+112
+00:05:01,929 --> 00:05:03,986
+Well, actually, a couple of things.
+
+113
+00:05:03,987 --> 00:05:05,895
+I already gave this a name,
+
+114
+00:05:05,896 --> 00:05:08,402
+but by default, whenever you create a new project,
+
+115
+00:05:08,403 --> 00:05:10,076
+the grid does not have a name.
+
+116
+00:05:10,077 --> 00:05:12,071
+I gave it the name LayoutGrid because that is
+
+117
+00:05:12,072 --> 00:05:14,279
+indicative of what it's actually doing for us.
+
+118
+00:05:14,280 --> 00:05:15,943
+And then the other thing that I want to do
+
+119
+00:05:15,944 --> 00:05:17,713
+is that whenever the page loads,
+
+120
+00:05:17,714 --> 00:05:19,261
+so I'm going to go find
+
+121
+00:05:19,262 --> 00:05:23,442
+the load, loaded event.
+
+122
+00:05:23,443 --> 00:05:26,344
+I'm going to create a new event handler called PageLoaded.
+
+123
+00:05:26,345 --> 00:05:28,455
+I'm going to use the F12 key on my keyboard,
+
+124
+00:05:28,456 --> 00:05:30,898
+pop that open in the code behind.
+
+125
+00:05:30,899 --> 00:05:33,959
+And so now I'm going to write code that will execute
+
+126
+00:05:33,960 --> 00:05:36,423
+whenever the page has loaded into memory.
+
+127
+00:05:36,424 --> 00:05:38,876
+And this is going to take me a little bit
+
+128
+00:05:38,877 --> 00:05:41,831
+and hopefully you'll see why and it will prove
+
+129
+00:05:41,832 --> 00:05:44,331
+what I'm trying to explain here.
+
+130
+00:05:45,480 --> 00:05:48,284
+So I might even just start this out
+
+131
+00:05:48,285 --> 00:05:52,224
+and then fast forward near the end of this typing exercise.
+
+132
+00:05:53,458 --> 00:05:55,915
+I don't recommend that you do this.
+
+133
+00:05:59,153 --> 00:06:02,118
+Okay, so it took me about two minutes to type all this out.
+
+134
+00:06:02,119 --> 00:06:04,325
+I'm not the slowest typist in the world,
+
+135
+00:06:04,326 --> 00:06:07,835
+but this is pretty thick typing and Intellisense helped a lot.
+
+136
+00:06:07,836 --> 00:06:09,925
+I made a few mistakes along the way.
+
+137
+00:06:09,926 --> 00:06:12,293
+But the point of this is,
+
+138
+00:06:12,294 --> 00:06:14,618
+if we actually run the application,
+
+139
+00:06:14,619 --> 00:06:16,447
+I want to show you what it does.
+
+140
+00:06:17,382 --> 00:06:21,189
+Hey, it created a red button almost identical,
+
+141
+00:06:21,190 --> 00:06:24,346
+in fact it is identical to the one that we defined in XAML.
+
+142
+00:06:24,347 --> 00:06:27,428
+And if we click it, it gives me the same result.
+
+143
+00:06:27,429 --> 00:06:30,825
+So the point that I'm making here is that it took
+
+144
+00:06:30,826 --> 00:06:34,009
+all of this C# code
+
+145
+00:06:34,010 --> 00:06:36,558
+to do what I was able to do
+
+146
+00:06:36,559 --> 00:06:38,862
+in basically just one line of code.
+
+147
+00:06:38,863 --> 00:06:41,625
+Now I spaced it out over several lines,
+
+148
+00:06:41,626 --> 00:06:46,147
+but you can see that the C# version of this
+
+149
+00:06:46,148 --> 00:06:48,035
+is much more verbose.
+
+150
+00:06:48,036 --> 00:06:50,094
+And then secondly, what we're really doing
+
+151
+00:06:50,095 --> 00:06:54,413
+when we're defining elements and attributes in XAML
+
+152
+00:06:54,414 --> 00:06:58,360
+is that we're creating new instances of classes
+
+153
+00:06:58,361 --> 00:07:01,986
+in the Universal Windows Platform API
+
+154
+00:07:01,987 --> 00:07:05,325
+and defining and setting their attributes,
+
+155
+00:07:05,326 --> 00:07:08,887
+their properties, just like we're doing here in this code.
+
+156
+00:07:08,888 --> 00:07:09,954
+Alright?
+
+157
+00:07:09,955 --> 00:07:12,407
+By the way, before I forget, if you want to follow along
+
+158
+00:07:12,408 --> 00:07:16,919
+and do this exercise yourself, I will add the,
+
+159
+00:07:16,920 --> 00:07:19,308
+I already have the before where we started out,
+
+160
+00:07:19,309 --> 00:07:22,028
+and I'll add this code that I just typed in as the after.
+
+161
+00:07:22,029 --> 00:07:23,824
+So you'll be able to get at this project.
+
+162
+00:07:23,825 --> 00:07:26,005
+"What is XAML?"
+
+163
+00:07:27,078 --> 00:07:29,637
+So the important takeaway is this;
+
+164
+00:07:29,638 --> 00:07:32,858
+that XAML is simply a way to create instances of classes
+
+165
+00:07:32,859 --> 00:07:37,822
+and set those objects' properties in a much more simplified,
+
+166
+00:07:37,823 --> 00:07:39,727
+succinct syntax.
+
+167
+00:07:39,728 --> 00:07:43,248
+What took us, what, 12 lines of code,
+
+168
+00:07:43,249 --> 00:07:46,875
+13 lines of code in C# only took one line of XAML,
+
+169
+00:07:46,876 --> 00:07:48,869
+even if I did separate it out.
+
+170
+00:07:48,870 --> 00:07:51,589
+It's still much shorter than it would have been
+
+171
+00:07:51,590 --> 00:07:54,277
+had I used C# to create all of my objects.
+
+172
+00:07:54,278 --> 00:07:57,370
+Furthermore, whenever I do use XAML,
+
+173
+00:07:57,371 --> 00:07:59,737
+I get this automatic feedback here
+
+174
+00:08:00,438 --> 00:08:03,321
+in the visual designer.
+
+175
+00:08:03,322 --> 00:08:05,247
+In the preview pane.
+
+176
+00:08:05,248 --> 00:08:07,775
+So I can see the impact of my changes instantly
+
+177
+00:08:07,776 --> 00:08:09,567
+if I choose to work like that.
+
+178
+00:08:09,568 --> 00:08:13,166
+So in the case of the procedural C# that I wrote,
+
+179
+00:08:13,167 --> 00:08:16,294
+I have to run the application each time that I wanted to see
+
+180
+00:08:16,295 --> 00:08:20,294
+how my tweaks to the code actually worked.
+
+181
+00:08:20,295 --> 00:08:23,056
+So, okay, that's it, that's the point of this lesson.
+
+182
+00:08:23,057 --> 00:08:24,187
+Twofold.
+
+183
+00:08:24,188 --> 00:08:27,515
+One that XAML's just a specific flavor of XML.
+
+184
+00:08:27,516 --> 00:08:29,829
+It follows all the rules of XML.
+
+185
+00:08:29,830 --> 00:08:32,987
+Somebody defines a schema, a contract,
+
+186
+00:08:32,988 --> 00:08:36,357
+and then both the producer and consumer of XML agree
+
+187
+00:08:36,358 --> 00:08:40,517
+to the contract, and then they can begin to work together
+
+188
+00:08:40,518 --> 00:08:45,093
+knowing that they're pretty much on the same page.
+
+189
+00:08:45,094 --> 00:08:48,506
+Now in this case, the contract is XAML
+
+190
+00:08:48,507 --> 00:08:50,543
+and it was defined by Microsoft.
+
+191
+00:08:50,544 --> 00:08:55,535
+The producer of the XML is you, me, in Visual Studio,
+
+192
+00:08:55,536 --> 00:08:58,180
+and then the consumer of the XML
+
+193
+00:08:58,181 --> 00:09:02,340
+is the compiler, which will turn our code in an executable
+
+194
+00:09:02,341 --> 00:09:04,473
+that will run in Windows 10.
+
+195
+00:09:04,474 --> 00:09:05,987
+And so that's the first point.
+
+196
+00:09:05,988 --> 00:09:07,324
+And the second point of this lesson
+
+197
+00:09:07,325 --> 00:09:10,268
+was that XAML is an easy way to create instances of classes
+
+198
+00:09:10,269 --> 00:09:11,854
+and set their properties.
+
+199
+00:09:11,855 --> 00:09:13,827
+And sure, you could do it all in C#,
+
+200
+00:09:13,828 --> 00:09:17,657
+but it's much more verbose and you would lose
+
+201
+00:09:17,658 --> 00:09:21,486
+the design-time tooling that we've become accustomed to
+
+202
+00:09:21,487 --> 00:09:23,928
+in here in two or three short videos.
+
+203
+00:09:23,929 --> 00:09:27,203
+Okay, so actually, this example that we just created
+
+204
+00:09:27,204 --> 00:09:30,584
+has a few other little interesting features of XAML
+
+205
+00:09:30,585 --> 00:09:32,450
+that I want to explain a little further.
+
+206
+00:09:32,451 --> 00:09:34,957
+So I'll start that process in the very next lesson.
+
+207
+00:09:34,958 --> 00:09:37,042
+Thank you.  
+

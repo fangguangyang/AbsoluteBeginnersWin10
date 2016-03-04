@@ -1,0 +1,300 @@
+1
+00:00:06,511 --> 00:00:08,950
+<v ->Okay, so this fourth and final project</v>
+
+2
+00:00:08,951 --> 00:00:10,670
+that we'll work on together is
+
+3
+00:00:10,671 --> 00:00:11,990
+in my opinion the coolest
+
+4
+00:00:11,991 --> 00:00:15,071
+and was the most fun to work on.
+
+5
+00:00:15,072 --> 00:00:18,071
+Marvel was kind enough to allow us
+
+6
+00:00:18,072 --> 00:00:21,791
+to use their API in this tutorial series,
+
+7
+00:00:21,792 --> 00:00:24,491
+and build a really cool example
+
+8
+00:00:24,492 --> 00:00:27,794
+to help us all learn development,
+
+9
+00:00:27,795 --> 00:00:30,094
+learn development against the Marvel API.
+
+10
+00:00:30,095 --> 00:00:33,434
+So we'll show you how to create an account on their site
+
+11
+00:00:33,435 --> 00:00:36,274
+and how to use their interactive documentation
+
+12
+00:00:36,275 --> 00:00:39,394
+to learn how to make calls and get information back,
+
+13
+00:00:39,395 --> 00:00:43,534
+how to retrieve their images and work with them as well.
+
+14
+00:00:43,535 --> 00:00:44,954
+So we're building an application
+
+15
+00:00:44,955 --> 00:00:47,034
+that I call the Hero Explorer,
+
+16
+00:00:47,035 --> 00:00:49,194
+and it allows you to, first of all,
+
+17
+00:00:49,195 --> 00:00:54,194
+just get a random collection of characters
+
+18
+00:00:54,315 --> 00:00:57,394
+from their database of, I think over 1500 characters.
+
+19
+00:00:57,395 --> 00:01:01,446
+And so we're just going to like, select one of the characters
+
+20
+00:01:02,417 --> 00:01:06,576
+by clicking in a master list on the left-hand side
+
+21
+00:01:06,577 --> 00:01:08,456
+to view the details about that character
+
+22
+00:01:08,457 --> 00:01:10,176
+on the right-hand side.
+
+23
+00:01:10,177 --> 00:01:13,376
+So let me find, not all characters have all information,
+
+24
+00:01:13,377 --> 00:01:15,776
+but typically characters will have a name
+
+25
+00:01:15,777 --> 00:01:18,236
+and a description below them,
+
+26
+00:01:18,237 --> 00:01:20,878
+a large image, and then also
+
+27
+00:01:20,879 --> 00:01:24,078
+the comic books that they've been in recently,
+
+28
+00:01:24,079 --> 00:01:25,618
+and then clicking on one of those
+
+29
+00:01:25,619 --> 00:01:28,018
+will show you the name of the comic,
+
+30
+00:01:29,642 --> 00:01:30,801
+or actually the title,
+
+31
+00:01:30,802 --> 00:01:33,721
+and then the description of that particular issue.
+
+32
+00:01:33,722 --> 00:01:36,601
+And so there's a bunch of stuff that we're going to learn
+
+33
+00:01:36,602 --> 00:01:38,521
+by going through this example.
+
+34
+00:01:38,522 --> 00:01:40,781
+First of all, we're going to learn how to call
+
+35
+00:01:40,782 --> 00:01:45,001
+a public API, web API,
+
+36
+00:01:45,002 --> 00:01:47,481
+interpret the documentation,
+
+37
+00:01:47,482 --> 00:01:52,312
+create classes based on JSON examples in the documentation,
+
+38
+00:01:53,583 --> 00:01:57,222
+then de-serialize live data that we request
+
+39
+00:01:57,223 --> 00:01:59,222
+into those classes.
+
+40
+00:01:59,223 --> 00:02:02,262
+We're going to learn this master detail
+
+41
+00:02:02,263 --> 00:02:07,262
+kind of user design experience pattern,
+
+42
+00:02:07,403 --> 00:02:09,802
+and we're also going to learn how to create
+
+43
+00:02:09,803 --> 00:02:13,582
+and utilize some of the adaptive layout stuff
+
+44
+00:02:13,583 --> 00:02:18,302
+that we learned how to do earlier in this series of lessons.
+
+45
+00:02:18,303 --> 00:02:20,742
+We're going to do a ton of data binding
+
+46
+00:02:20,743 --> 00:02:23,117
+and working through real world issues
+
+47
+00:02:23,118 --> 00:02:25,377
+that you're going to probably experience
+
+48
+00:02:25,378 --> 00:02:27,977
+when building a similar style application.
+
+49
+00:02:27,978 --> 00:02:30,537
+You'll notice that over here I'm using
+
+50
+00:02:30,538 --> 00:02:35,537
+an Ellipse and a special brush,
+
+51
+00:02:35,878 --> 00:02:38,987
+not a SolidColorBrush, not a GradientBrush,
+
+52
+00:02:38,988 --> 00:02:42,953
+but an ImageBrush as the fill for that Ellipse.
+
+53
+00:02:42,954 --> 00:02:46,653
+We're going to call special APIs
+
+54
+00:02:46,654 --> 00:02:50,713
+that require some form of security.
+
+55
+00:02:50,714 --> 00:02:52,553
+So in the case of the Marvel API,
+
+56
+00:02:52,554 --> 00:02:55,813
+we're going to learn how to create a cache
+
+57
+00:02:55,814 --> 00:03:00,353
+using our public API key and a private API key
+
+58
+00:03:00,354 --> 00:03:03,631
+and then some timestamp value to ensure that, well,
+
+59
+00:03:03,632 --> 00:03:05,511
+to authenticate the request first of all,
+
+60
+00:03:05,512 --> 00:03:09,191
+and then also ensure that nobody's tampered with the request
+
+61
+00:03:09,192 --> 00:03:13,511
+as they inspect it from the client to the server.
+
+62
+00:03:13,512 --> 00:03:15,651
+And so we're going to learn how to employ
+
+63
+00:03:15,652 --> 00:03:18,191
+special cryptography classes
+
+64
+00:03:18,192 --> 00:03:21,671
+in the Universal Windows Platform,
+
+65
+00:03:21,672 --> 00:03:25,291
+and then finally we're going to integrate our application
+
+66
+00:03:25,292 --> 00:03:27,391
+with Cortana, and tell Cortana,
+
+67
+00:03:27,392 --> 00:03:32,131
+say hey, Cortana, refresh the characters in our application
+
+68
+00:03:32,132 --> 00:03:33,091
+and we'll see it work
+
+69
+00:03:33,092 --> 00:03:35,931
+and learn a little bit more about how easy it is
+
+70
+00:03:35,932 --> 00:03:37,471
+to integrate Cortana.
+
+71
+00:03:37,472 --> 00:03:39,951
+Okay, so this was so much fun,
+
+72
+00:03:39,952 --> 00:03:41,551
+so exciting to work on,
+
+73
+00:03:41,552 --> 00:03:43,091
+I hope you enjoy this.
+
+74
+00:03:43,092 --> 00:03:44,511
+We'll get started in the next lesson.
+
+75
+00:03:44,512 --> 00:03:46,021
+See you there, thanks.  
+

@@ -1,0 +1,1392 @@
+1
+00:00:06,300 --> 00:00:10,518
+My goal in this video is todisplay a list of comics,      
+
+2
+00:00:10,519 --> 00:00:14,931
+maybe ten comics at most,for the currently selected      
+
+3
+00:00:14,932 --> 00:00:19,951
+character that we was able toachieve in the previous video.      
+
+4
+00:00:21,380 --> 00:00:24,460
+And the good news is that we'vealready got a template for how      
+
+5
+00:00:24,461 --> 00:00:26,620
+it should work, we're just gonnaneed to call a different API,      
+
+6
+00:00:26,621 --> 00:00:28,740
+we'll get to thatin just a moment.      
+
+7
+00:00:28,741 --> 00:00:32,540
+Before we do that while I'm herein the developer portal, we were      
+
+8
+00:00:32,541 --> 00:00:36,180
+talking about attributionpreviously on this page, but      
+
+9
+00:00:36,181 --> 00:00:40,000
+there's also something we needto consider with regard to      
+
+10
+00:00:40,001 --> 00:00:40,770
+rate limits.      
+
+11
+00:00:40,771 --> 00:00:45,210
+Notice here that it says,most services default to 1,000      
+
+12
+00:00:45,211 --> 00:00:49,680
+calls per day but some servicesmay have different rate limits.      
+
+13
+00:00:50,870 --> 00:00:53,720
+So if this applicationbecomes popular,      
+
+14
+00:00:53,721 --> 00:00:58,460
+that means at most it canonly be launched 1,000 times      
+
+15
+00:00:58,461 --> 00:01:03,531
+by all customers combined.      
+
+16
+00:01:03,532 --> 00:01:06,690
+And that's the best-casescenario where every request      
+
+17
+00:01:06,691 --> 00:01:10,420
+comes through successfully,and it doesn't take three or      
+
+18
+00:01:10,421 --> 00:01:13,920
+four requests to get allthe data that we need.      
+
+19
+00:01:13,921 --> 00:01:18,010
+So if this were a realapplication that I plan      
+
+20
+00:01:18,011 --> 00:01:21,670
+on distributing tothe world at large,      
+
+21
+00:01:21,671 --> 00:01:26,570
+I would reconsider the waythat I go about this.      
+
+22
+00:01:27,600 --> 00:01:31,690
+One of two things, I wouldeither require end users to get      
+
+23
+00:01:31,691 --> 00:01:35,640
+their own key, which is kind of,that's a lot of friction in      
+
+24
+00:01:35,641 --> 00:01:39,770
+the process, or I might actuallycreate a web service similar to      
+
+25
+00:01:39,771 --> 00:01:43,300
+what we did inthe UWP weather app.      
+
+26
+00:01:44,310 --> 00:01:48,460
+I would make a callfrom my local app      
+
+27
+00:01:48,461 --> 00:01:53,010
+to the web service sitting inAzure or wherever, and it would      
+
+28
+00:01:53,011 --> 00:01:57,170
+then go out to the Marvel API,make the necessary call,      
+
+29
+00:01:57,171 --> 00:02:01,250
+grab the data andthen cache it locally.      
+
+30
+00:02:01,251 --> 00:02:06,642
+Now, you can see that you can,in fact, cache results, save      
+
+31
+00:02:06,643 --> 00:02:11,750
+them off locally for a periodof time, at most 24 hours.      
+
+32
+00:02:11,751 --> 00:02:15,206
+But as they say, the data doeschange on a regular basis so      
+
+33
+00:02:15,207 --> 00:02:17,798
+you can't just put itin the database, and      
+
+34
+00:02:17,799 --> 00:02:19,670
+store it until the end of time.      
+
+35
+00:02:19,671 --> 00:02:22,934
+If you do, you're breakingthe agreement that you have with      
+
+36
+00:02:22,935 --> 00:02:25,050
+Marvel, andtheir usage of their API.      
+
+37
+00:02:25,051 --> 00:02:29,210
+And also, we can't just go offand grab the entire database      
+
+38
+00:02:29,211 --> 00:02:33,070
+in one shot, it says onlymake the calls that you need.      
+
+39
+00:02:33,071 --> 00:02:36,951
+So, what I would understand thatto be is I can make a call for      
+
+40
+00:02:36,952 --> 00:02:40,912
+one client, and then cache offthe data that I get from him and      
+
+41
+00:02:40,913 --> 00:02:43,570
+hold on to it forno more that 24 hours.      
+
+42
+00:02:43,571 --> 00:02:47,418
+The second client makes aconnection and it requests data      
+
+43
+00:02:47,419 --> 00:02:50,702
+and I can grab data forhim and cache him as well and      
+
+44
+00:02:50,703 --> 00:02:54,730
+then a third client requestsdata and I can get data for her.      
+
+45
+00:02:54,731 --> 00:02:57,183
+And so now I have datafrom three clients and      
+
+46
+00:02:57,184 --> 00:03:01,010
+I'm making these calls, at somepoint I'm going to get an error.      
+
+47
+00:03:01,011 --> 00:03:02,990
+Where does that specify there?      
+
+48
+00:03:02,991 --> 00:03:06,572
+Yeah, you're gonna geta return code of 429,      
+
+49
+00:03:06,573 --> 00:03:09,570
+which means you'vemade too many calls.      
+
+50
+00:03:09,571 --> 00:03:13,110
+At that point, I can startserving up from my local cache.      
+
+51
+00:03:13,111 --> 00:03:14,330
+Does that make sense?      
+
+52
+00:03:14,331 --> 00:03:17,499
+That's not what we're gonnado in this application, but      
+
+53
+00:03:17,500 --> 00:03:19,955
+if I really wanted touse this going forward,      
+
+54
+00:03:19,956 --> 00:03:22,490
+that's how I would goabout it at a high level.      
+
+55
+00:03:23,942 --> 00:03:29,743
+Let's now navigate to ourinteractive documentation      
+
+56
+00:03:29,744 --> 00:03:35,037
+because what I need to do isfind a list of comics for      
+
+57
+00:03:35,038 --> 00:03:37,190
+a given character.      
+
+58
+00:03:37,191 --> 00:03:42,106
+And so I spent some time andI went through all the different      
+
+59
+00:03:42,107 --> 00:03:46,018
+API's I could call andhow I could call them and      
+
+60
+00:03:46,019 --> 00:03:49,450
+I settled onthe /public/comics API.      
+
+61
+00:03:49,451 --> 00:03:51,396
+And if you take a look,      
+
+62
+00:03:51,397 --> 00:03:55,600
+you can give an optionalrange of characters, so      
+
+63
+00:03:55,601 --> 00:04:00,727
+return only comics which featurethe specified characters      
+
+64
+00:04:00,728 --> 00:04:05,770
+that accepts a comma separatedlist of IDs, good enough.      
+
+65
+00:04:05,771 --> 00:04:11,024
+So for demonstration purposes,I'm gonna grab the real      
+
+66
+00:04:11,025 --> 00:04:16,825
+Spider-Man, the ID forSpider-Man is 1009610, and      
+
+67
+00:04:16,826 --> 00:04:21,870
+I'm gonna limit the numberof comics returned to ten.      
+
+68
+00:04:21,871 --> 00:04:25,630
+And so let's try that out.      
+
+69
+00:04:25,631 --> 00:04:29,250
+All right, it looks like I haveall the data that I need there.      
+
+70
+00:04:29,251 --> 00:04:34,113
+Let me see if I can just grab,I need to grab that out,      
+
+71
+00:04:34,114 --> 00:04:37,882
+let's go all the wayhere to the bottom.      
+
+72
+00:04:39,240 --> 00:04:43,750
+Probably should restrictthis actually, let me make      
+
+73
+00:04:43,751 --> 00:04:48,410
+the call again, but I'm justgonna limit it to two comics.      
+
+74
+00:04:48,411 --> 00:04:51,445
+Why two,because I don't want just one,      
+
+75
+00:04:51,446 --> 00:04:55,000
+I want it to show a collectionand I don't want ten      
+
+76
+00:04:55,001 --> 00:04:58,930
+because it's just too muchto give to json2csharp.      
+
+77
+00:04:58,931 --> 00:05:02,445
+So let's scroll up andgrab all this stuff,      
+
+78
+00:05:02,446 --> 00:05:07,385
+we've done this before, right,we're just doing it now for      
+
+79
+00:05:07,386 --> 00:05:09,950
+comics instead of characters.      
+
+80
+00:05:09,951 --> 00:05:15,230
+Great, okay, we'll go ahead andcopy all that.      
+
+81
+00:05:15,231 --> 00:05:18,403
+We'll go into json2csharp and      
+
+82
+00:05:18,404 --> 00:05:23,810
+I'm gonna paste all that in,I'll click Generate and      
+
+83
+00:05:23,811 --> 00:05:29,110
+then I am going to scroll tothe bottom and copy it all.      
+
+84
+00:05:29,111 --> 00:05:32,771
+Ctrl+C to copy to my clipboard,then what I wanna do is come      
+
+85
+00:05:32,772 --> 00:05:36,215
+over here to my Models folderin my Solution Explorer and      
+
+86
+00:05:36,216 --> 00:05:40,020
+I'm gonna go to the Projectmenu and select Add Class.      
+
+87
+00:05:40,021 --> 00:05:43,555
+And I'm gonna call thisclass ComicDataWrapper,      
+
+88
+00:05:43,556 --> 00:05:48,420
+because that is what theycall it on their side and      
+
+89
+00:05:48,421 --> 00:05:49,550
+I want to use the same term.      
+
+90
+00:05:50,640 --> 00:05:56,619
+Then I'm going to highlight theComicDataWrapper class stub that      
+
+91
+00:05:56,620 --> 00:06:01,847
+they give us and just Ctrl+V andpaste in all of our data and      
+
+92
+00:06:01,848 --> 00:06:06,890
+I'm going to rename this toComicDataWrapper like so.      
+
+93
+00:06:06,891 --> 00:06:10,700
+Now you'll noticeas we go up here,      
+
+94
+00:06:10,701 --> 00:06:13,670
+you'll see some redsquiggly lines under a few      
+
+95
+00:06:13,671 --> 00:06:17,980
+of the items andthe reason for this is that we      
+
+96
+00:06:17,981 --> 00:06:21,060
+already have a class namedEvents in the same name space.      
+
+97
+00:06:21,061 --> 00:06:24,922
+Now I could either add, put thisin a different name space and      
+
+98
+00:06:24,923 --> 00:06:27,728
+it wouldn't be inheroexplorer.models,      
+
+99
+00:06:27,729 --> 00:06:31,850
+it would be hero.explorer.modelsdot I don't know, comic?      
+
+100
+00:06:31,851 --> 00:06:35,421
+Or I could just simplyremove these and      
+
+101
+00:06:35,422 --> 00:06:38,330
+rely on the other definition.      
+
+102
+00:06:45,090 --> 00:06:51,354
+The other definitionto work in that case,      
+
+103
+00:06:51,355 --> 00:06:57,450
+and that's what I'mgonna choose to do.      
+
+104
+00:06:57,451 --> 00:07:01,521
+I'm gonna also remove this Item3because you'll notice that      
+
+105
+00:07:01,522 --> 00:07:03,824
+Stories containsa list of items and      
+
+106
+00:07:03,825 --> 00:07:06,830
+those items would beindividual story items.      
+
+107
+00:07:06,831 --> 00:07:10,635
+So I'm just gonna delete that,we're already accounted for      
+
+108
+00:07:10,636 --> 00:07:12,910
+that, I'm gonnaget rid of Events.      
+
+109
+00:07:12,911 --> 00:07:17,995
+And in this case,the ComicDataWrapper will have      
+
+110
+00:07:17,996 --> 00:07:23,926
+a reference to data which wouldbe a comic data container,      
+
+111
+00:07:23,927 --> 00:07:26,952
+which has a list of results and      
+
+112
+00:07:26,953 --> 00:07:31,210
+those result objects are comics,okay?      
+
+113
+00:07:31,211 --> 00:07:36,007
+So actually, let me go ahead andchange that,      
+
+114
+00:07:36,008 --> 00:07:40,558
+let me change this, andlet me change this to      
+
+115
+00:07:40,559 --> 00:07:46,100
+ComicDataContainer andwe'll change that as well.      
+
+116
+00:07:47,650 --> 00:07:50,240
+All right, so that's how ourclass structure should look now.      
+
+117
+00:07:51,920 --> 00:07:55,699
+And then what I'll needto do is go into our      
+
+118
+00:07:57,440 --> 00:08:03,490
+Facade andI'm going to create something      
+
+119
+00:08:03,491 --> 00:08:06,860
+almost identical to thisGetCharacterDataWrapperAsync,      
+
+120
+00:08:06,861 --> 00:08:09,570
+I'm gonna do the same thing forComic.      
+
+121
+00:08:09,571 --> 00:08:12,930
+So, in fact,I'm just gonna copy all of this,      
+
+122
+00:08:15,620 --> 00:08:19,330
+the entire method,copy it and then paste it.      
+
+123
+00:08:20,550 --> 00:08:25,493
+Now a lot of this will berepeatable so I'm going to pare      
+
+124
+00:08:25,494 --> 00:08:30,328
+these down, take out the commoncode that I need, and      
+
+125
+00:08:30,329 --> 00:08:33,350
+then put that ina helper method.      
+
+126
+00:08:33,351 --> 00:08:36,210
+So, I have to figure outwhat it is I need first.      
+
+127
+00:08:36,211 --> 00:08:41,683
+Let's go back to our call here,      
+
+128
+00:08:41,684 --> 00:08:46,548
+and this is the request URL so      
+
+129
+00:08:46,549 --> 00:08:52,427
+I'm gonna grab allof this here and      
+
+130
+00:08:52,428 --> 00:08:58,508
+I'm gonna use thatas the URI here,      
+
+131
+00:08:58,509 --> 00:09:04,391
+replacing pretty much everything      
+
+132
+00:09:04,392 --> 00:09:11,530
+that I don't need to API key,all right?      
+
+133
+00:09:11,531 --> 00:09:16,070
+All right and solet's trim off the API key here.      
+
+134
+00:09:20,050 --> 00:09:22,490
+And I don't know which, we'llcome back with the numbers.      
+
+135
+00:09:22,491 --> 00:09:24,853
+I'm gonna limit this to ten,      
+
+136
+00:09:24,854 --> 00:09:27,790
+let's hard code ten in here fornow.      
+
+137
+00:09:27,791 --> 00:09:32,890
+And the character, we'll haveto pass that in as well.      
+
+138
+00:09:32,891 --> 00:09:35,776
+So I think that's it, soI'm gonna pass in the character,      
+
+139
+00:09:35,777 --> 00:09:38,710
+that'll be the firstthing we replace.      
+
+140
+00:09:38,711 --> 00:09:41,510
+The API key will bethe second thing we replace,      
+
+141
+00:09:41,511 --> 00:09:44,520
+the time stamp will bethe third thing we replace and      
+
+142
+00:09:44,521 --> 00:09:47,186
+the hash will be the fourththing we replace.      
+
+143
+00:09:47,187 --> 00:09:50,813
+So the only thingwe're really replacing      
+
+144
+00:09:50,814 --> 00:09:53,195
+here is the characters, so      
+
+145
+00:09:53,196 --> 00:09:57,452
+this would be a characteridthat gets passed in.      
+
+146
+00:09:57,453 --> 00:10:04,905
+So we're going to call thisGetComicDataWrapperAsync and      
+
+147
+00:10:04,906 --> 00:10:10,530
+we're gonna pass inan int characterId.      
+
+148
+00:10:10,531 --> 00:10:17,510
+And I see they'repretty much identical      
+
+149
+00:10:17,511 --> 00:10:22,450
+up to the point when wedeserialize that jsonMessage.      
+
+150
+00:10:22,451 --> 00:10:25,240
+So what I could probablywind up doing here is taking      
+
+151
+00:10:25,241 --> 00:10:28,796
+all of this code here andputting it into a helper method.      
+
+152
+00:10:28,797 --> 00:10:32,258
+So private static string,      
+
+153
+00:10:32,259 --> 00:10:36,622
+it'll return the jsonMessage and      
+
+154
+00:10:36,623 --> 00:10:41,288
+this will just beCallMarvel() and      
+
+155
+00:10:41,289 --> 00:10:44,460
+I'll paste all that in.      
+
+156
+00:10:44,461 --> 00:10:49,434
+Now, what we'll need tosend out, let's see.      
+
+157
+00:10:51,539 --> 00:10:56,630
+Is pretty much everythingup until that API key.      
+
+158
+00:10:57,750 --> 00:11:01,556
+So if we were topass all of this in.      
+
+159
+00:11:08,999 --> 00:11:15,477
+We'll call this,the URL then I can make the call      
+
+160
+00:11:15,478 --> 00:11:21,008
+to CallMarvel,let's put it right there      
+
+161
+00:11:30,794 --> 00:11:36,770
+Like that, andwe could do that for now.      
+
+162
+00:11:36,771 --> 00:11:38,120
+We'll come back andreplace that in a minute.      
+
+163
+00:11:39,150 --> 00:11:42,050
+And let's see whatthe problem is.      
+
+164
+00:11:42,051 --> 00:11:44,110
+We gotta return something here,yeah.      
+
+165
+00:11:44,111 --> 00:11:45,462
+We'll return that JSON message.      
+
+166
+00:11:50,402 --> 00:11:53,153
+So we'll just return this.      
+
+167
+00:12:02,664 --> 00:12:03,966
+And we'll make this async.      
+
+168
+00:12:07,987 --> 00:12:10,870
+And, which means I'mgonna name this Async.      
+
+169
+00:12:10,871 --> 00:12:19,040
+Now it looks like I have somediscrepancy here with the URL.      
+
+170
+00:12:19,041 --> 00:12:24,341
+Let's call thisthe completeUrl and      
+
+171
+00:12:24,342 --> 00:12:29,480
+we'll pass that in here,like so.      
+
+172
+00:12:29,481 --> 00:12:32,400
+Obviously we're not going tobe passing in characterId,      
+
+173
+00:12:32,401 --> 00:12:35,440
+what we'll do insteadis pass in the URL.      
+
+174
+00:12:35,441 --> 00:12:42,460
+Okay, now what? Right.      
+
+175
+00:12:42,461 --> 00:12:45,945
+This needs to return a task of      
+
+176
+00:12:45,946 --> 00:12:47,112
+string.      
+
+177
+00:12:50,618 --> 00:12:56,896
+Perfect, and that should work.      
+
+178
+00:12:56,897 --> 00:13:02,352
+So, this is gonna becalled CallMarvelAsync and      
+
+179
+00:13:02,353 --> 00:13:07,010
+what we'll get backis the jsonMessage,      
+
+180
+00:13:07,011 --> 00:13:10,614
+so, var jsonMessage = await.      
+
+181
+00:13:10,615 --> 00:13:15,821
+And then we're gonnawanna compose that URL.      
+
+182
+00:13:15,822 --> 00:13:17,555
+So let's go.      
+
+183
+00:13:25,150 --> 00:13:27,414
+And we'll come back tothat in just a moment too.      
+
+184
+00:13:27,415 --> 00:13:30,467
+All right, so that meansI can get rid of this.      
+
+185
+00:13:35,536 --> 00:13:40,088
+And I can get rid of this,characterId.      
+
+186
+00:13:46,845 --> 00:13:48,621
+And then get rid of all that.      
+
+187
+00:13:55,861 --> 00:13:58,567
+Okay, now we need to make this.      
+
+188
+00:13:58,568 --> 00:14:04,523
+I'm gonna pass inthe URL like that.      
+
+189
+00:14:04,524 --> 00:14:08,144
+And that should work.      
+
+190
+00:14:12,052 --> 00:14:14,710
+So I'm gonna dothe same thing up here.      
+
+191
+00:14:14,711 --> 00:14:17,430
+We'll keep that URL butwe can rip all of that out.      
+
+192
+00:14:20,840 --> 00:14:23,057
+And all of this out.      
+
+193
+00:14:29,805 --> 00:14:35,366
+Okay, we're gonna go here.      
+
+194
+00:14:43,275 --> 00:14:46,688
+Get rid of everything here,except the offset.      
+
+195
+00:14:56,176 --> 00:14:59,230
+And I think I may haveaccidentally deleted the offset.      
+
+196
+00:14:59,231 --> 00:15:04,190
+So let me put that back in,actually right there.      
+
+197
+00:15:06,030 --> 00:15:10,918
+Int MaxCharacters, yeah,that's a int, a const.      
+
+198
+00:15:10,919 --> 00:15:16,259
+And we're gonna get back,we'll make the call.      
+
+199
+00:15:22,418 --> 00:15:24,281
+Okay.      
+
+200
+00:15:24,282 --> 00:15:26,270
+So I realize there's a lotof refactoring there but      
+
+201
+00:15:26,271 --> 00:15:31,130
+this is good because now allthe code that deals with      
+
+202
+00:15:31,131 --> 00:15:34,420
+calling Marvel isin just one method.      
+
+203
+00:15:35,830 --> 00:15:37,990
+But I can get rid of this,      
+
+204
+00:15:37,991 --> 00:15:40,340
+cuz that's only applicableto one case, great.      
+
+205
+00:15:43,120 --> 00:15:43,728
+That should work.      
+
+206
+00:15:43,729 --> 00:15:48,535
+All right, so the next thing weneed to do, though, is because      
+
+207
+00:15:48,536 --> 00:15:53,343
+we copied and paste a lot of thecode from here, let's make this      
+
+208
+00:15:53,344 --> 00:15:57,909
+comic data wrapper, notcharacter data wrapper, right?      
+
+209
+00:16:01,165 --> 00:16:05,785
+Okay and we're going to needto do that here as well,      
+
+210
+00:16:05,786 --> 00:16:07,685
+ComicDataWrapper.      
+
+211
+00:16:10,830 --> 00:16:12,168
+All right, I think we've got it.      
+
+212
+00:16:17,467 --> 00:16:22,398
+Now what we wanna do is, prettymuch, like what we did here,      
+
+213
+00:16:22,399 --> 00:16:27,428
+where we have another method,and we won't need to do quite as      
+
+214
+00:16:27,429 --> 00:16:32,774
+much effort We will      
+
+215
+00:16:32,775 --> 00:16:38,200
+need to do that whole thing withthe thumbnail images, right?      
+
+216
+00:16:38,201 --> 00:16:41,160
+Cuz, some of the imagescould come back like that.      
+
+217
+00:16:41,161 --> 00:16:46,120
+So, I'm just gonna copy this,and I'm gonna recreate it for comics      
+
+218
+00:16:52,710 --> 00:16:54,690
+PopulateMarvelComicsAsync.      
+
+219
+00:16:54,691 --> 00:16:58,710
+And what we want isObservableCollectionComic to      
+
+220
+00:16:59,710 --> 00:17:00,450
+be passed in.      
+
+221
+00:17:02,840 --> 00:17:07,435
+So, instead of MarvelCharacters,it'll be MarvelComics, like so.      
+
+222
+00:17:11,721 --> 00:17:13,680
+And this would bea comicDataWrapper.      
+
+223
+00:17:13,681 --> 00:17:20,130
+So, get characters would be getcomic and it may not have been      
+
+224
+00:17:20,131 --> 00:17:24,630
+worth it to copy and paste andchange all these references but,      
+
+225
+00:17:24,631 --> 00:17:29,200
+at least we'll get someconsistency out of this.      
+
+226
+00:17:29,201 --> 00:17:32,340
+ComicDataWrapperAsync, didI not call it that?      
+
+227
+00:17:32,341 --> 00:17:37,630
+GetComicDataWrapperAsync, okay,I did.      
+
+228
+00:17:39,410 --> 00:17:41,120
+All right, and I gotta giveit the ID that I want.      
+
+229
+00:17:41,121 --> 00:17:47,580
+All right, sowe're gonna also pass in the ID.      
+
+230
+00:17:47,581 --> 00:17:51,334
+So, int characterId.      
+
+231
+00:17:54,213 --> 00:17:55,676
+So we'll give it characterId.      
+
+232
+00:17:58,671 --> 00:17:59,217
+Like that.      
+
+233
+00:17:59,218 --> 00:18:04,105
+All right so, comicDataWrapper.data.results      
+
+234
+00:18:04,106 --> 00:18:05,990
+equals comics.      
+
+235
+00:18:05,991 --> 00:18:09,950
+Here we're gonna go for      
+
+236
+00:18:09,951 --> 00:18:14,306
+each comic, in comics and      
+
+237
+00:18:14,307 --> 00:18:19,775
+then comic.thumbnail. ComicCharacter,      
+
+238
+00:18:19,776 --> 00:18:21,460
+comic.thumbnail.path.      
+
+239
+00:18:21,461 --> 00:18:23,280
+I'm gonna have to make surethat some of these things      
+
+240
+00:18:23,281 --> 00:18:24,080
+are correct.      
+
+241
+00:18:24,081 --> 00:18:26,553
+I'll take a few minutes andlook through these as well.      
+
+242
+00:18:36,663 --> 00:18:41,945
+I'm pretty surethe same thing applies      
+
+243
+00:18:41,946 --> 00:18:46,914
+to comics that applyto characters.      
+
+244
+00:18:52,058 --> 00:18:53,091
+Okay, nice.      
+
+245
+00:18:57,756 --> 00:19:01,539
+All right, sonow we're gonna call      
+
+246
+00:19:01,540 --> 00:19:07,980
+PopulateMarvelComicsAsync whena given item is selected.      
+
+247
+00:19:09,190 --> 00:19:12,860
+So, the first thing that we'regonna wanna do is actually      
+
+248
+00:19:12,861 --> 00:19:16,120
+create a new property.      
+
+249
+00:19:16,121 --> 00:19:22,368
+So prop Tab, Tab, observableCollection<comic>      
+
+250
+00:19:22,369 --> 00:19:25,153
+called MarvelComics.      
+
+251
+00:19:29,804 --> 00:19:30,304
+Awesome.      
+
+252
+00:19:31,920 --> 00:19:34,060
+Then I'm gonna want toinitialize it, right?      
+
+253
+00:19:35,470 --> 00:19:41,231
+MarvelComics = newObservableCollectionComic and      
+
+254
+00:19:41,232 --> 00:19:46,608
+then what I'm gonna dois MarvelComics.clear,      
+
+255
+00:19:46,609 --> 00:19:51,344
+cuz I wanna get rid ofany previous items in it      
+
+256
+00:19:51,345 --> 00:19:54,423
+before I make the next call.      
+
+257
+00:19:54,424 --> 00:20:00,091
+And then I'm gonna call it,and I'm gonna pass in.      
+
+258
+00:20:00,092 --> 00:20:08,736
+So, I'm gonna pass inthe character ID so,      
+
+259
+00:20:08,737 --> 00:20:13,091
+let's selectcharacter.id, and      
+
+260
+00:20:13,092 --> 00:20:19,053
+then I'm gonna pass inMarvelComics, like so.      
+
+261
+00:20:19,054 --> 00:20:21,470
+Let's see what the problem is.      
+
+262
+00:20:21,471 --> 00:20:24,178
+All right,we need to add async here.      
+
+263
+00:20:28,137 --> 00:20:30,631
+What else is the problem?      
+
+264
+00:20:30,632 --> 00:20:35,118
+I'm kind of a knucklehead there,      
+
+265
+00:20:35,119 --> 00:20:39,303
+MarvelFacade., there we go.      
+
+266
+00:20:39,304 --> 00:20:41,220
+Now we're cooking.      
+
+267
+00:20:44,303 --> 00:20:44,888
+Okay.      
+
+268
+00:20:50,594 --> 00:20:55,727
+Now since we're makingthe call out to the API,      
+
+269
+00:20:55,728 --> 00:20:59,446
+what I might wannado is go ahead and      
+
+270
+00:20:59,447 --> 00:21:03,053
+reenact the progress ring here.      
+
+271
+00:21:03,054 --> 00:21:05,969
+We'll go ahead and      
+
+272
+00:21:05,970 --> 00:21:11,262
+start it here andend it down here.      
+
+273
+00:21:16,594 --> 00:21:19,641
+All right,let's see if this works.      
+
+274
+00:21:19,642 --> 00:21:20,990
+Oh, I'm a knucklehead.      
+
+275
+00:21:20,991 --> 00:21:23,052
+I forgot the mostimportant part of all.      
+
+276
+00:21:31,427 --> 00:21:34,644
+All right and I see an issuehere, that we already have      
+
+277
+00:21:34,645 --> 00:21:38,330
+a definition for comic andit's dramatically different.      
+
+278
+00:21:38,331 --> 00:21:42,435
+So I'm gonna actuallyname this ComicBook and      
+
+279
+00:21:42,436 --> 00:21:47,400
+the only place I'll need torename it is here, I think.      
+
+280
+00:21:47,401 --> 00:21:50,420
+Well, I guess I'll need torename it a lot of places.      
+
+281
+00:21:53,430 --> 00:22:00,487
+Wherever I wasdepending on it And,      
+
+282
+00:22:00,488 --> 00:22:07,070
+fortunately it's notthat many places.      
+
+283
+00:22:07,071 --> 00:22:10,550
+I will wanna reconsiderits use here,      
+
+284
+00:22:10,551 --> 00:22:11,930
+instead of Comic,we want ComicBook.      
+
+285
+00:22:14,425 --> 00:22:15,830
+We don't need that here as well.      
+
+286
+00:22:17,800 --> 00:22:21,690
+And then when we passin the observable      
+
+287
+00:22:21,691 --> 00:22:26,358
+collection it'll beComicBook instead of Comic.      
+
+288
+00:22:26,359 --> 00:22:28,180
+All right,let's see if that works or      
+
+289
+00:22:28,181 --> 00:22:30,279
+if we have other issues.      
+
+290
+00:22:32,530 --> 00:22:37,590
+All right, so now on theMainPage.xaml, I need to bind      
+
+291
+00:22:37,591 --> 00:22:42,600
+to that new Marvel Comicscollection.      
+
+292
+00:22:42,601 --> 00:22:46,469
+All right, so let's.      
+
+293
+00:22:52,719 --> 00:22:54,761
+Work inside of here.      
+
+294
+00:22:54,762 --> 00:22:56,928
+So, I'm gonna callthis List of Comics.      
+
+295
+00:22:59,595 --> 00:23:06,108
+And I'm gonna put another Grid,and this is going to be the,      
+
+296
+00:23:06,109 --> 00:23:10,344
+actually, it's gonnabe a grid view.      
+
+297
+00:23:10,345 --> 00:23:13,520
+And I'm gonna putthat in grid-row 1.      
+
+298
+00:23:13,521 --> 00:23:18,679
+Lets go ahead and      
+
+299
+00:23:18,680 --> 00:23:24,575
+set the ItemSource      
+
+300
+00:23:24,576 --> 00:23:28,997
+equal to x bind      
+
+301
+00:23:28,998 --> 00:23:35,636
+MarvelComicBooks.      
+
+302
+00:23:38,802 --> 00:23:41,612
+And then setthe IsItemClickEnabled equal      
+
+303
+00:23:41,613 --> 00:23:42,246
+to true.      
+
+304
+00:23:42,247 --> 00:23:44,677
+We'll come back to that later.      
+
+305
+00:23:44,678 --> 00:23:50,177
+And then the ItemClickedequals the event handler,      
+
+306
+00:23:50,178 --> 00:23:54,178
+again we'll comeback to that later.      
+
+307
+00:24:01,386 --> 00:24:05,794
+All right,here what we're gonna do,      
+
+308
+00:24:05,795 --> 00:24:11,550
+Gridview.ItemTemplate andthen DataTemplate.      
+
+309
+00:24:12,900 --> 00:24:17,890
+And then I'm gonna putthe image of ComicBook there.      
+
+310
+00:24:17,891 --> 00:24:23,598
+So, the image,let's go ahead and      
+
+311
+00:24:23,599 --> 00:24:30,453
+set the x:DataType=Data.ComicBook,      
+
+312
+00:24:30,454 --> 00:24:37,302
+and so the source isgoing to be that large,      
+
+313
+00:24:37,303 --> 00:24:42,060
+so X bind thumbnail.large,      
+
+314
+00:24:42,061 --> 00:24:45,511
+and we'll make the.      
+
+315
+00:24:47,927 --> 00:24:49,134
+Actually, we want it small.      
+
+316
+00:24:49,135 --> 00:24:51,094
+We want the small one.      
+
+317
+00:24:52,594 --> 00:24:56,630
+But that does make me think thatmaybe I need a different size.      
+
+318
+00:24:56,631 --> 00:24:59,303
+Okay, we'll come back to thatthought in a second here.      
+
+319
+00:24:59,304 --> 00:25:04,455
+We'll make the Width="100" andthe Height="150",      
+
+320
+00:25:04,456 --> 00:25:07,677
+and that should prettymuch wrap that up.      
+
+321
+00:25:12,219 --> 00:25:13,800
+Bound there, bound there.      
+
+322
+00:25:13,801 --> 00:25:16,450
+That looks good.      
+
+323
+00:25:16,451 --> 00:25:21,939
+Here in the facade, whenwe're populating the comics,      
+
+324
+00:25:23,100 --> 00:25:29,370
+I think I wanna use a differentset of sizes here for these.      
+
+325
+00:25:29,371 --> 00:25:32,090
+So I wanna use portraitin both cases,      
+
+326
+00:25:32,091 --> 00:25:37,450
+cuz comic books are arranged ina portrait not in a standard, so      
+
+327
+00:25:37,451 --> 00:25:42,380
+we'll go medium, portrait mediumand then portrait extra large.      
+
+328
+00:25:42,381 --> 00:25:44,220
+Okay, that should work.      
+
+329
+00:25:44,221 --> 00:25:46,012
+All right let's build it andsee if it works.      
+
+330
+00:25:51,136 --> 00:25:52,011
+It failed.      
+
+331
+00:26:00,512 --> 00:26:05,110
+Hm, I think maybe it's justa naming issue, let's see.      
+
+332
+00:26:05,111 --> 00:26:07,511
+Or, what I'm gonna do?      
+
+333
+00:26:07,512 --> 00:26:11,844
+Yeah, it just should beMarvelComics not ComicBooks.      
+
+334
+00:26:15,553 --> 00:26:19,540
+All right,      
+
+335
+00:26:19,541 --> 00:26:23,780
+very good.      
+
+336
+00:26:23,781 --> 00:26:24,280
+And let's go.      
+
+337
+00:26:31,344 --> 00:26:32,070
+There we go.      
+
+338
+00:26:32,071 --> 00:26:33,928
+Look at that,how beautiful that is.      
+
+339
+00:26:39,969 --> 00:26:43,534
+It looks like it's having a hardtime sometimes with the comics      
+
+340
+00:26:43,535 --> 00:26:45,470
+for the same reason.      
+
+341
+00:26:45,471 --> 00:26:47,720
+So we'll come back andfix that on the next video,      
+
+342
+00:26:47,721 --> 00:26:49,230
+cuz this one's runninga little bit long.      
+
+343
+00:26:49,231 --> 00:26:50,830
+But very cool.      
+
+344
+00:26:50,831 --> 00:26:54,170
+Okay, we'll continue onin the next video and      
+
+345
+00:26:54,171 --> 00:26:56,250
+you click on one of these andwe'll show      
+
+346
+00:26:57,620 --> 00:27:02,200
+the information about a givenitem, give a comic below it.      
+
+347
+00:27:02,201 --> 00:27:03,500
+So we'll do that inthe next lesson.      
+
+348
+00:27:03,501 --> 00:27:04,480
+We'll see you there, thanks.      
+

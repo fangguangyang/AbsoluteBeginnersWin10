@@ -1,0 +1,380 @@
+1
+00:00:05,860 --> 00:00:10,020
+Hi I'm Bob Taper withwww.learnvisualstudio.net.      
+
+2
+00:00:10,021 --> 00:00:12,386
+So up to this point you'vebeen sitting back and      
+
+3
+00:00:12,387 --> 00:00:14,525
+watching me do allthe heavy lifting here.      
+
+4
+00:00:14,526 --> 00:00:16,472
+You're all cozy and relaxed and      
+
+5
+00:00:16,473 --> 00:00:19,440
+might even have your feetkicked up on your desk.      
+
+6
+00:00:19,441 --> 00:00:21,871
+Well, now it's yourtime to struggle and      
+
+7
+00:00:21,872 --> 00:00:24,290
+struggle is goodit's how you learn.      
+
+8
+00:00:24,291 --> 00:00:25,790
+No struggle, and no learning.      
+
+9
+00:00:25,791 --> 00:00:28,931
+So if you're already familiarwith SAMIL this might go      
+
+10
+00:00:28,932 --> 00:00:29,621
+smoothly.      
+
+11
+00:00:29,622 --> 00:00:32,571
+If you're not then this mightbe a little bit more challenging      
+
+12
+00:00:32,572 --> 00:00:34,169
+for you, but challenge is good.      
+
+13
+00:00:34,170 --> 00:00:36,840
+It might take you 30 minutes,an hour.      
+
+14
+00:00:36,841 --> 00:00:38,235
+You might have to go back and      
+
+15
+00:00:38,236 --> 00:00:42,490
+re-watch some videos orreference MSDN for some help.      
+
+16
+00:00:42,491 --> 00:00:45,960
+But I think you can do thisbased on what we've already      
+
+17
+00:00:45,961 --> 00:00:46,670
+learned so far.      
+
+18
+00:00:46,671 --> 00:00:49,525
+There's actually threechallenges in a row and      
+
+19
+00:00:49,526 --> 00:00:52,245
+they're all related to layout,what we've already learned.      
+
+20
+00:00:52,246 --> 00:00:55,285
+And so this first challenge I'mcalling the laudable layout      
+
+21
+00:00:55,286 --> 00:00:58,215
+challenge and you can see thatwe're building a simple app.      
+
+22
+00:00:58,216 --> 00:00:59,345
+Only the user interface,      
+
+23
+00:00:59,346 --> 00:01:02,217
+we don't have any functionalityin this app whatsoever.      
+
+24
+00:01:02,218 --> 00:01:05,707
+It just has, first of allone grid and a grid only,      
+
+25
+00:01:05,708 --> 00:01:06,777
+that's part of the requirements.      
+
+26
+00:01:06,778 --> 00:01:09,577
+We'll talk about them ina moment and you can see that      
+
+27
+00:01:09,578 --> 00:01:11,917
+we're just capturing,in text boxes, the first name,      
+
+28
+00:01:11,918 --> 00:01:15,507
+last name, and the emailaddress for a sales prospect.      
+
+29
+00:01:15,508 --> 00:01:16,517
+And then we have a save button,and      
+
+30
+00:01:16,518 --> 00:01:18,647
+again it doesn't doanything at all, but      
+
+31
+00:01:18,648 --> 00:01:20,853
+you can kind of get an ideaof the layout here.      
+
+32
+00:01:20,854 --> 00:01:25,810
+As I kinda move this around, youcan see that there's one column      
+
+33
+00:01:25,811 --> 00:01:29,600
+here, there's a second columnthat holds the text boxes, and      
+
+34
+00:01:29,601 --> 00:01:32,050
+then a third column herethat just has some padding.      
+
+35
+00:01:32,051 --> 00:01:34,200
+You can also see there'sa number of rows,      
+
+36
+00:01:34,201 --> 00:01:36,020
+so I'm gonna let youfigure that out.      
+
+37
+00:01:36,021 --> 00:01:38,880
+Let's talk about eachof the requirements.      
+
+38
+00:01:38,881 --> 00:01:40,880
+First of all,you can only use a Grid control.      
+
+39
+00:01:40,881 --> 00:01:43,600
+Secondly, this is more of a tip,whenever I was designing      
+
+40
+00:01:43,601 --> 00:01:47,578
+the application, I usedthe designer of five inch phone,      
+
+41
+00:01:47,579 --> 00:01:51,500
+1920x1080 300% scale.      
+
+42
+00:01:51,501 --> 00:01:54,900
+The large text blockhere at the top,      
+
+43
+00:01:54,901 --> 00:01:58,640
+is 48 points, somake sure you use that.      
+
+44
+00:01:58,641 --> 00:02:01,700
+Most of the margins that yousee here on the left and here      
+
+45
+00:02:01,701 --> 00:02:07,540
+between this top text block andall the rest of the text boxes.      
+
+46
+00:02:07,541 --> 00:02:09,170
+They're either 10 pixels or      
+
+47
+00:02:09,171 --> 00:02:11,460
+20 pixels,I'll let you figure that out.      
+
+48
+00:02:11,461 --> 00:02:15,740
+And then the text blocks forthe first name, last name and      
+
+49
+00:02:15,741 --> 00:02:20,580
+email address should be centeredvertically in the row and      
+
+50
+00:02:20,581 --> 00:02:22,070
+I'll show you whatI mean by that.      
+
+51
+00:02:22,071 --> 00:02:25,750
+Presumably, this is a rowhere at the very top and      
+
+52
+00:02:25,751 --> 00:02:30,720
+you can see that the text box isbutted up at what appears to be      
+
+53
+00:02:30,721 --> 00:02:34,090
+the top of the row and thenthere's some spacing below it.      
+
+54
+00:02:35,100 --> 00:02:39,220
+And if you were to kind ofuse your mouse cursor and      
+
+55
+00:02:39,221 --> 00:02:43,670
+trace along you can see thatthe text block in the left most      
+
+56
+00:02:43,671 --> 00:02:49,140
+column is centered betweenthe top line of the text      
+
+57
+00:02:49,141 --> 00:02:53,360
+box and the start of the nexttext box in the next row.      
+
+58
+00:02:53,361 --> 00:02:56,580
+Okay, sofigure out how to do that.      
+
+59
+00:02:56,581 --> 00:02:58,420
+Now, this isthe tricky part here.      
+
+60
+00:02:58,421 --> 00:03:00,930
+Number six, you're gonna needto figure out how to allow your      
+
+61
+00:03:00,931 --> 00:03:04,360
+text block to spanmultiple columns.      
+
+62
+00:03:05,580 --> 00:03:09,810
+So when you have a need to      
+
+63
+00:03:09,811 --> 00:03:14,580
+tell the grid how to dosomething, what do you use?      
+
+64
+00:03:14,581 --> 00:03:15,970
+Use an attach property, so      
+
+65
+00:03:15,971 --> 00:03:19,850
+you should use Intellisense tofigure out the correct attach      
+
+66
+00:03:19,851 --> 00:03:24,542
+property to make your textblock span multiple columns.      
+
+67
+00:03:24,543 --> 00:03:28,620
+All right, if you ever get stuckyou can take a look at this      
+
+68
+00:03:28,621 --> 00:03:33,690
+extra little screen shot thatI've provide as a guidance.      
+
+69
+00:03:33,691 --> 00:03:40,210
+All right, and that's in a filenamed UWP-011-Screenshot.png and      
+
+70
+00:03:40,211 --> 00:03:43,990
+here's the partthat's important.      
+
+71
+00:03:43,991 --> 00:03:47,260
+First of all, you should attemptto solve this without my      
+
+72
+00:03:47,261 --> 00:03:47,950
+help whatsoever.      
+
+73
+00:03:47,951 --> 00:03:49,110
+Now if you get stuck,      
+
+74
+00:03:49,111 --> 00:03:52,100
+I don't want you to struggletoo much and get frustrated.      
+
+75
+00:03:52,101 --> 00:03:55,090
+Watch enough of the solutionvideo, the very next video,      
+
+76
+00:03:55,091 --> 00:03:58,690
+to get unstuck, and thencontinue to move forward on your      
+
+77
+00:03:58,691 --> 00:04:01,730
+own to the extentthat it's possible.      
+
+78
+00:04:01,731 --> 00:04:05,290
+And then, after you finish,and successfully complete      
+
+79
+00:04:05,291 --> 00:04:08,340
+the challenge, you willnot only feel victory, but      
+
+80
+00:04:08,341 --> 00:04:12,930
+you will also then want to watchthe solution video in total, so      
+
+81
+00:04:12,931 --> 00:04:15,670
+that you can compare the waythat you approached this      
+
+82
+00:04:15,671 --> 00:04:18,020
+challenge versus the waythat I approached it.      
+
+83
+00:04:18,021 --> 00:04:18,760
+Maybe you have a more      
+
+84
+00:04:18,761 --> 00:04:20,770
+elegant way of approachingsomething than I did.      
+
+85
+00:04:20,771 --> 00:04:22,630
+Maybe I used a differenttechnique than you did.      
+
+86
+00:04:22,631 --> 00:04:24,560
+So you can compare andcontrast and      
+
+87
+00:04:24,561 --> 00:04:28,140
+hopefully by doing that,learn a little bit more.      
+
+88
+00:04:28,141 --> 00:04:30,940
+And so that's pretty muchall I have to say here.      
+
+89
+00:04:30,941 --> 00:04:34,460
+Don't cheat, don't go on to thenext video and watch it first.      
+
+90
+00:04:34,461 --> 00:04:36,410
+Make sure you struggle.      
+
+91
+00:04:36,411 --> 00:04:39,449
+Half hour, an hour maybe,if it takes that.      
+
+92
+00:04:39,450 --> 00:04:42,269
+Rewatch videos if you have to,okay?      
+
+93
+00:04:42,270 --> 00:04:44,615
+So, we'll see what you comeup with in the next video,      
+
+94
+00:04:44,616 --> 00:04:45,381
+in the solution.      
+
+95
+00:04:45,382 --> 00:04:46,101
+See you there.      
+

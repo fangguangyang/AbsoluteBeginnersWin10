@@ -1,0 +1,476 @@
+1
+00:00:05,141 --> 00:00:08,553
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net,</v>      
+
+2
+00:00:08,554 --> 00:00:10,078
+and this is the challenge that I call      
+
+3
+00:00:10,079 --> 00:00:13,720
+the Adeptly Adaptive Challenge.      
+
+4
+00:00:14,665 --> 00:00:19,469
+You will be asked to create an apdaptive      
+
+5
+00:00:21,024 --> 00:00:25,469
+solution for a fake news website.      
+
+6
+00:00:25,470 --> 00:00:28,616
+So you can see as I make the application larger,      
+
+7
+00:00:28,617 --> 00:00:31,762
+at some point, at 900 pixels wide, actually,      
+
+8
+00:00:31,763 --> 00:00:33,350
+each of the individual news items      
+
+9
+00:00:33,351 --> 00:00:36,562
+will become extremely large, 400x400.      
+
+10
+00:00:36,563 --> 00:00:39,857
+When we go with the smaller size,      
+
+11
+00:00:39,858 --> 00:00:42,396
+it's more like 200x275.      
+
+12
+00:00:42,397 --> 00:00:46,401
+Also when we get larger you can see that      
+
+13
+00:00:46,402 --> 00:00:51,344
+the title grows from an 18 point font to a 26 point font,      
+
+14
+00:00:51,345 --> 00:00:52,487
+and there are instructions for this      
+
+15
+00:00:52,488 --> 00:00:54,395
+I'll call your attention to in just a moment.      
+
+16
+00:00:54,396 --> 00:00:57,344
+Furthermore, if we were to run this on      
+
+17
+00:00:59,388 --> 00:01:01,745
+mobile you wouldn't be able to see      
+
+18
+00:01:01,746 --> 00:01:03,814
+this SearchBox any longer,      
+
+19
+00:01:03,815 --> 00:01:07,285
+it would be hidden, the visibility would be collapsed.      
+
+20
+00:01:08,315 --> 00:01:11,850
+And we'll talk about which of which of the techniques      
+
+21
+00:01:11,851 --> 00:01:15,661
+that you've learned you should use to make that happen.      
+
+22
+00:01:15,662 --> 00:01:17,727
+Alright, so let me shut that down.      
+
+23
+00:01:17,728 --> 00:01:20,968
+I'm giving you the resources with this lesson      
+
+24
+00:01:20,969 --> 00:01:22,780
+and it'll include a number of different things      
+
+25
+00:01:22,781 --> 00:01:25,299
+like screenshots of things that we just looked at      
+
+26
+00:01:25,300 --> 00:01:26,781
+in the live demo.      
+
+27
+00:01:26,782 --> 00:01:28,871
+Furthermore there are a series of instructions,      
+
+28
+00:01:28,872 --> 00:01:31,229
+I highly recommend you keep these handy.      
+
+29
+00:01:31,230 --> 00:01:35,185
+You're going to create just the beginning of a fake news app.      
+
+30
+00:01:35,186 --> 00:01:36,966
+Now if this were a real app,      
+
+31
+00:01:36,967 --> 00:01:38,791
+we'd go out to an online service,      
+
+32
+00:01:38,792 --> 00:01:41,265
+pull down data, and then Bind to it,      
+
+33
+00:01:41,266 --> 00:01:43,175
+and we'll do something similar to that      
+
+34
+00:01:43,176 --> 00:01:45,371
+when we get to the weather app      
+
+35
+00:01:45,372 --> 00:01:48,016
+that we'll build together here in just a little while.      
+
+36
+00:01:48,017 --> 00:01:50,182
+In this case I'm going to give you      
+
+37
+00:01:50,183 --> 00:01:53,359
+some hard-coded data to use for the application.      
+
+38
+00:01:53,360 --> 00:01:55,716
+But essentially each news item will contain      
+
+39
+00:01:55,717 --> 00:01:57,914
+an image, a headline, a subhead, and a dateline.      
+
+40
+00:01:57,915 --> 00:02:01,794
+So when you're going to create a NewsItem class,      
+
+41
+00:02:01,795 --> 00:02:04,844
+and it's going to have these properties,      
+
+42
+00:02:04,845 --> 00:02:08,684
+and you're going to then create      
+
+43
+00:02:08,685 --> 00:02:12,343
+a bindable Collection of these items      
+
+44
+00:02:12,344 --> 00:02:15,978
+and then Bind to them using a GridView.      
+
+45
+00:02:15,979 --> 00:02:17,536
+Let me see if there's anything in here,      
+
+46
+00:02:17,537 --> 00:02:18,517
+I would highly recommend      
+
+47
+00:02:18,518 --> 00:02:19,979
+that you read through this thoroughly.      
+
+48
+00:02:19,980 --> 00:02:22,580
+I'm going to give you all the images that you'll need      
+
+49
+00:02:22,581 --> 00:02:24,384
+so there are five Financial images,      
+
+50
+00:02:24,385 --> 00:02:27,509
+five Food images that you'll use.      
+
+51
+00:02:27,510 --> 00:02:30,057
+They correspond with data that I'm going to give you      
+
+52
+00:02:30,058 --> 00:02:31,156
+in this little helper method,      
+
+53
+00:02:31,157 --> 00:02:34,589
+that's to be used with the Manager class that you'll build.      
+
+54
+00:02:34,590 --> 00:02:37,599
+So here's a little helper method that will return a list      
+
+55
+00:02:37,600 --> 00:02:41,008
+of five Financial news stories,      
+
+56
+00:02:41,009 --> 00:02:43,324
+and five Food news stories.      
+
+57
+00:02:44,496 --> 00:02:46,926
+I give you, let's walk through this.      
+
+58
+00:02:49,012 --> 00:02:52,790
+Use techniques that we discussed previously to create this.      
+
+59
+00:02:53,840 --> 00:02:57,114
+Having said that you're only going to need to create      
+
+60
+00:02:57,115 --> 00:03:01,178
+a MainPage.xaml so we not going to      
+
+61
+00:03:01,179 --> 00:03:05,367
+utilize the device family-specific view.      
+
+62
+00:03:06,276 --> 00:03:07,686
+Instead we're going to do this all      
+
+63
+00:03:07,687 --> 00:03:11,449
+with the Visual State Managers and Adaptive Triggers.      
+
+64
+00:03:13,086 --> 00:03:14,387
+You're going to use a GridView,      
+
+65
+00:03:14,388 --> 00:03:16,520
+you're also going to create a User Control      
+
+66
+00:03:16,521 --> 00:03:17,820
+that will store those values,      
+
+67
+00:03:17,821 --> 00:03:19,752
+because you'll have to use that technique,      
+
+68
+00:03:19,753 --> 00:03:23,874
+because we're going to re-size each of the individual      
+
+69
+00:03:25,383 --> 00:03:27,880
+templates for the news items      
+
+70
+00:03:27,881 --> 00:03:30,446
+in the DataTemplate for the GridView.      
+
+71
+00:03:32,329 --> 00:03:35,229
+I think a lot of this is self-explanatory.      
+
+72
+00:03:35,230 --> 00:03:39,036
+Just have a keen eye here towards these two items.      
+
+73
+00:03:39,037 --> 00:03:42,302
+Each NewsItem should be 200x275 when in a narrow state,      
+
+74
+00:03:42,303 --> 00:03:46,855
+400x400 wide in a wide state.      
+
+75
+00:03:46,856 --> 00:03:50,108
+The wide state I'm defining as 900 minimum window width.      
+
+76
+00:03:50,109 --> 00:03:52,060
+And then the AutoSuggestBox,      
+
+77
+00:03:52,061 --> 00:03:55,292
+when the width is less than 400 should be hidden.      
+
+78
+00:03:55,293 --> 00:03:57,937
+So the only way you would really be able to see this      
+
+79
+00:03:57,938 --> 00:03:58,832
+because you can't see it      
+
+80
+00:03:58,833 --> 00:04:00,709
+when you're running on the local machine      
+
+81
+00:04:00,710 --> 00:04:02,253
+is when you actually run it on      
+
+82
+00:04:02,254 --> 00:04:05,345
+one of the smaller device emulators.      
+
+83
+00:04:05,346 --> 00:04:07,373
+So let's go ahead and run that real quick.      
+
+84
+00:04:13,043 --> 00:04:14,077
+Now, just to note,      
+
+85
+00:04:14,078 --> 00:04:17,635
+We're not actually implementing the AutoSuggestBox,      
+
+86
+00:04:17,636 --> 00:04:19,021
+we're not implementing Search,      
+
+87
+00:04:19,022 --> 00:04:22,616
+I just want you to be able to successfully use      
+
+88
+00:04:22,617 --> 00:04:24,652
+the VisualStateManager to Show and Hide      
+
+89
+00:04:24,653 --> 00:04:27,693
+based on the Width of the window.      
+
+90
+00:04:27,694 --> 00:04:30,923
+And so again, when it's less than 400 pixels wide,      
+
+91
+00:04:33,709 --> 00:04:36,340
+the visibility of that      
+
+92
+00:04:40,421 --> 00:04:43,672
+AutoSuggestBox should be collapsed,      
+
+93
+00:04:43,673 --> 00:04:46,451
+and when it's greater than 400 it should be visible.      
+
+94
+00:04:47,694 --> 00:04:49,621
+And I think that's all      
+
+95
+00:04:49,622 --> 00:04:51,365
+that I really wanted to say about this.      
+
+96
+00:04:52,821 --> 00:04:57,733
+I give you all of the Segoe MDL2 assets that you'll need,      
+
+97
+00:04:57,734 --> 00:05:00,029
+the Colors, the FontSizes, the Margins.      
+
+98
+00:05:00,030 --> 00:05:04,807
+When in doubt reference the screenshots that I give you,      
+
+99
+00:05:04,808 --> 00:05:08,331
+A, B, and C, that are available in that folder.      
+
+100
+00:05:09,318 --> 00:05:11,921
+And then obviously here this helper method      
+
+101
+00:05:11,922 --> 00:05:14,420
+which will give you      
+
+102
+00:05:14,421 --> 00:05:16,828
+the list of news items.      
+
+103
+00:05:18,167 --> 00:05:22,414
+This should probably take you 40, 45 minutes      
+
+104
+00:05:22,415 --> 00:05:25,715
+if you make no mistakes and you know what you're doing.      
+
+105
+00:05:25,716 --> 00:05:26,909
+If you're new to all of this      
+
+106
+00:05:26,910 --> 00:05:27,932
+it might take a little bit longer.      
+
+107
+00:05:27,933 --> 00:05:30,247
+Don't get discouraged, keep struggling, pushing through,      
+
+108
+00:05:30,248 --> 00:05:32,658
+you can do this, I know you can.      
+
+109
+00:05:32,659 --> 00:05:34,451
+Reference the videos and the cheatsheet      
+
+110
+00:05:34,452 --> 00:05:36,135
+that we just went over previously,      
+
+111
+00:05:36,136 --> 00:05:38,234
+and I know you can figure this out.      
+
+112
+00:05:38,235 --> 00:05:40,486
+Just want you to get some hands-on exercise.      
+
+113
+00:05:40,487 --> 00:05:41,542
+All right, so if you get stuck,      
+
+114
+00:05:41,543 --> 00:05:43,185
+take a look in the next videos.      
+
+115
+00:05:43,186 --> 00:05:45,019
+I've split them out so that you can find the part      
+
+116
+00:05:45,020 --> 00:05:47,537
+that is pertinent to what you're looking for.      
+
+117
+00:05:47,538 --> 00:05:49,339
+I hope that helps, and good luck,      
+
+118
+00:05:49,340 --> 00:05:50,726
+and I know you can do this.      
+
+119
+00:05:50,727 --> 00:05:51,684
+Thanks.      
+

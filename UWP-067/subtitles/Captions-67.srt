@@ -1,0 +1,1160 @@
+1
+00:00:06,051 --> 00:00:08,029
+<v ->Okay, so we're making great progress here.</v>
+
+2
+00:00:08,030 --> 00:00:09,790
+The next thing we want to do is evaluate
+
+3
+00:00:09,791 --> 00:00:11,980
+what the user clicks on.
+
+4
+00:00:12,730 --> 00:00:15,510
+The song is playing, they're going to choose an album cover,
+
+5
+00:00:15,511 --> 00:00:19,350
+and we want to evaluate the click.
+
+6
+00:00:19,351 --> 00:00:21,069
+Is it the song that's currently selected?
+
+7
+00:00:21,070 --> 00:00:24,109
+If yes, then we want to award them points,
+
+8
+00:00:24,110 --> 00:00:28,150
+and we want to display
+
+9
+00:00:28,151 --> 00:00:32,940
+a "correct" symbol in place of that album art.
+
+10
+00:00:33,111 --> 00:00:35,286
+However, if it's not correct,
+
+11
+00:00:35,287 --> 00:00:37,166
+we want to deduct points from their score
+
+12
+00:00:37,167 --> 00:00:39,556
+and then display the "incorrect" icon.
+
+13
+00:00:39,827 --> 00:00:43,486
+These icons are available for the download that
+
+14
+00:00:43,487 --> 00:00:45,986
+is associated with this video.
+
+15
+00:00:45,987 --> 00:00:48,506
+So, wherever you typically download the source code from,
+
+16
+00:00:48,507 --> 00:00:51,946
+those two files, the "correct" and "incorrect" PNGs
+
+17
+00:00:51,947 --> 00:00:53,616
+will be there as well.
+
+18
+00:00:53,669 --> 00:00:56,526
+Ok, so let's go ahead and get started here,
+
+19
+00:00:56,527 --> 00:00:59,796
+and we're going to evaluate whatever the user clicked on.
+
+20
+00:01:00,947 --> 00:01:03,387
+And we know that will happen
+
+21
+00:01:03,388 --> 00:01:07,197
+here in the SongGridView_ItemClick event.
+
+22
+00:01:07,567 --> 00:01:11,196
+So, the first thing we'll want to do is
+
+23
+00:01:12,227 --> 00:01:16,137
+we're going to ignore clicks
+
+24
+00:01:16,207 --> 00:01:18,816
+when the music isn't playing.
+
+25
+00:01:18,817 --> 00:01:21,486
+When the music...
+
+26
+00:01:21,487 --> 00:01:24,506
+When we are in cooldown.
+
+27
+00:01:25,277 --> 00:01:29,999
+So if not playing music,
+
+28
+00:01:30,000 --> 00:01:32,179
+then just return.
+
+29
+00:01:32,180 --> 00:01:34,240
+This isn't the right time to be clicking on this
+
+30
+00:01:34,241 --> 00:01:39,189
+part of the application's user interface.
+
+31
+00:01:40,381 --> 00:01:42,420
+However, if we are currently playing music,
+
+32
+00:01:42,421 --> 00:01:45,320
+then we want the current animation
+
+33
+00:01:45,321 --> 00:01:47,439
+to pause for a moment.
+
+34
+00:01:47,440 --> 00:01:51,050
+So pause the playback of the countdown animation.
+
+35
+00:01:51,101 --> 00:01:54,653
+And as far as the music is concerned, MyMediaElement,
+
+36
+00:01:54,654 --> 00:01:57,889
+we're going to stop the playback of the music.
+
+37
+00:01:58,341 --> 00:02:00,630
+Ok, so that should fix that problem.
+
+38
+00:02:00,781 --> 00:02:03,320
+Next up, we want to determine what was actually clicked on,
+
+39
+00:02:03,321 --> 00:02:07,620
+so we're going to go var song equals the ClickedItem
+
+40
+00:02:07,621 --> 00:02:12,590
+in the Grid and we'll cast that to an instance of Song.
+
+41
+00:02:14,942 --> 00:02:18,617
+And now we want to find
+
+42
+00:02:18,618 --> 00:02:21,337
+what the correct song was.
+
+43
+00:02:21,338 --> 00:02:24,283
+So what did we pick randomly
+
+44
+00:02:24,284 --> 00:02:26,883
+before we started this round?
+
+45
+00:02:26,884 --> 00:02:28,393
+Well...
+
+46
+00:02:29,983 --> 00:02:32,433
+Here we want to...
+
+47
+00:02:34,784 --> 00:02:39,212
+actually get access to
+
+48
+00:02:39,213 --> 00:02:42,114
+the correct song.
+
+49
+00:02:44,285 --> 00:02:48,694
+So FirstOrDefault where
+
+50
+00:02:48,805 --> 00:02:51,933
+Selected equals True.
+
+51
+00:02:52,972 --> 00:02:57,971
+And now we want to evaluate,
+
+52
+00:02:58,792 --> 00:03:03,791
+so if the song...
+
+53
+00:03:06,510 --> 00:03:07,670
+You know what we're going to need to do?
+
+54
+00:03:07,671 --> 00:03:10,600
+We're going to need to compare apples to apples, I'm afraid.
+
+55
+00:03:12,091 --> 00:03:13,789
+Well, maybe not.
+
+56
+00:03:18,120 --> 00:03:19,578
+That's going to be a pickle.
+
+57
+00:03:19,579 --> 00:03:20,558
+We'll see if it works.
+
+58
+00:03:20,559 --> 00:03:23,758
+If the song, in fact, just to kinda get this squared
+
+59
+00:03:23,759 --> 00:03:24,979
+in my mind,
+
+60
+00:03:24,980 --> 00:03:27,489
+clickedSong...
+
+61
+00:03:28,219 --> 00:03:29,938
+Alright, so if the clicked song...
+
+62
+00:03:31,169 --> 00:03:33,537
+Yeah, I should, may not even have to do any of this,
+
+63
+00:03:33,538 --> 00:03:35,020
+honestly.
+
+64
+00:03:35,371 --> 00:03:40,240
+So if clickedSong.Selected,
+
+65
+00:03:41,580 --> 00:03:44,210
+then what we want to do is...
+
+66
+00:03:48,341 --> 00:03:52,047
+set the clickedSong
+
+67
+00:03:52,048 --> 00:03:54,782
+.AlbumCover
+
+68
+00:03:54,783 --> 00:03:58,992
+.SetSourceAsync...
+
+69
+00:04:00,302 --> 00:04:02,832
+and we're going to need a FileStream here.
+
+70
+00:04:04,703 --> 00:04:07,122
+So I should be able to just do what I did earlier
+
+71
+00:04:07,123 --> 00:04:10,832
+with await file.OpenAsync...
+
+72
+00:04:12,022 --> 00:04:14,051
+Why can't I do that?
+
+73
+00:04:15,823 --> 00:04:17,458
+Oh, I see.
+
+74
+00:04:17,909 --> 00:04:19,999
+Okay. Let me start over.
+
+75
+00:04:20,469 --> 00:04:25,198
+Let me get a reference to the correct URI,
+
+76
+00:04:25,950 --> 00:04:28,679
+so let's go...
+
+77
+00:04:30,277 --> 00:04:34,898
+var uri
+
+78
+00:04:34,899 --> 00:04:38,498
+equals new Uri
+
+79
+00:04:38,499 --> 00:04:43,408
+and we'll need to get at the correct PNG,
+
+80
+00:04:43,409 --> 00:04:45,947
+so let me just copy these into my Assets folder,
+
+81
+00:04:45,948 --> 00:04:47,206
+make sure I do that first of all,
+
+82
+00:04:47,207 --> 00:04:48,996
+assets...
+
+83
+00:04:49,267 --> 00:04:50,616
+Alright, great.
+
+84
+00:04:50,847 --> 00:04:52,756
+So, back here.
+
+85
+00:04:53,208 --> 00:04:54,346
+Sorry for the indecision,
+
+86
+00:04:54,347 --> 00:04:57,656
+just this is the nature of how this sort of thing goes.
+
+87
+00:04:59,827 --> 00:05:04,826
+So "ms-appx:///assets
+
+88
+00:05:05,156 --> 00:05:08,411
+"/correct.png."
+
+89
+00:05:08,563 --> 00:05:10,532
+Alright, so we got that,
+
+90
+00:05:10,922 --> 00:05:12,902
+and then what I want to do is
+
+91
+00:05:15,213 --> 00:05:18,211
+well, let's get that file, so...
+
+92
+00:05:18,823 --> 00:05:23,212
+"StorageFile file equals
+
+93
+00:05:23,982 --> 00:05:26,346
+"StorageFile
+
+94
+00:05:28,074 --> 00:05:33,046
+".GetFileFromApplication
+
+95
+00:05:33,047 --> 00:05:35,806
+"UriAsync"
+
+96
+00:05:35,807 --> 00:05:37,086
+and I'm going to give it the URI,
+
+97
+00:05:37,087 --> 00:05:38,966
+so that should give me a reference to that file
+
+98
+00:05:38,967 --> 00:05:41,337
+in the file system.
+
+99
+00:05:43,278 --> 00:05:47,597
+So "var fileStream
+
+100
+00:05:47,598 --> 00:05:51,127
+"equals file.OpenAsync"
+
+101
+00:05:53,528 --> 00:05:57,174
+access mode Read, like that,
+
+102
+00:05:57,175 --> 00:06:00,874
+and then what I want to do is
+
+103
+00:06:00,875 --> 00:06:04,111
+clickedSong.AlbumCover.SetSourceAsync
+
+104
+00:06:04,112 --> 00:06:08,158
+.SetSourceAsync()
+
+105
+00:06:08,159 --> 00:06:13,158
+to that fileStream
+
+106
+00:06:14,089 --> 00:06:16,128
+like that.
+
+107
+00:06:17,262 --> 00:06:19,140
+Alright, so I've got lots of problems here.
+
+108
+00:06:20,801 --> 00:06:24,221
+First problem I think I have here
+
+109
+00:06:24,222 --> 00:06:27,940
+is that I've got an async and I need to do this.
+
+110
+00:06:27,941 --> 00:06:31,380
+So, await that and then we'll have to add
+
+111
+00:06:31,381 --> 00:06:33,730
+async here.
+
+112
+00:06:35,381 --> 00:06:36,331
+Great.
+
+113
+00:06:36,421 --> 00:06:41,110
+And then SetSourceAsync(), why are you not happy?
+
+114
+00:06:42,341 --> 00:06:44,290
+Oh, we've gotta await you as well.
+
+115
+00:06:46,881 --> 00:06:47,930
+Great.
+
+116
+00:06:48,521 --> 00:06:50,790
+And what's the problem here?
+
+117
+00:06:52,481 --> 00:06:54,411
+Ah. Okay.
+
+118
+00:06:54,981 --> 00:06:57,250
+It's actually that problem.
+
+119
+00:06:57,861 --> 00:06:59,810
+There we go. Nice.
+
+120
+00:07:02,962 --> 00:07:05,550
+And this should actually be selected.
+
+121
+00:07:05,561 --> 00:07:09,360
+If the clickedSong is selected, then we want to change that,
+
+122
+00:07:09,361 --> 00:07:12,970
+but otherwise we want to do the reverse.
+
+123
+00:07:14,122 --> 00:07:17,010
+And for now, I'm just going to go ahead and do this,
+
+124
+00:07:17,681 --> 00:07:20,860
+where I see an opportunity to kinda consolidate that
+
+125
+00:07:20,861 --> 00:07:22,780
+into fewer lines of code,
+
+126
+00:07:22,781 --> 00:07:24,141
+but for right now I'm just going to copy and paste
+
+127
+00:07:24,142 --> 00:07:27,020
+just to see if the logic and the selections
+
+128
+00:07:27,021 --> 00:07:29,660
+of what I'm working with here
+
+129
+00:07:29,661 --> 00:07:30,681
+will actually work,
+
+130
+00:07:30,682 --> 00:07:32,350
+so let's try it.
+
+131
+00:07:33,441 --> 00:07:38,270
+My concern is that we're going to lose our connection
+
+132
+00:07:39,021 --> 00:07:41,180
+to what we're binding to,
+
+133
+00:07:41,181 --> 00:07:42,560
+so when we click it....
+
+134
+00:07:42,561 --> 00:07:44,550
+Hold on.
+
+135
+00:07:44,881 --> 00:07:45,580
+When we click it,
+
+136
+00:07:45,581 --> 00:07:47,420
+we're only clicking a copy of the object,
+
+137
+00:07:47,421 --> 00:07:49,872
+not part of the collection that we've bound to.
+
+138
+00:07:50,001 --> 00:07:51,690
+It'll make sense here in a moment.
+
+139
+00:07:52,001 --> 00:07:53,450
+(music plays)
+
+140
+00:07:54,602 --> 00:07:57,000
+That was an odd coincidence,
+
+141
+00:07:57,001 --> 00:07:58,450
+but we'll go with it.
+
+142
+00:08:03,822 --> 00:08:06,611
+(music plays).
+
+143
+00:08:07,201 --> 00:08:08,371
+Okay.
+
+144
+00:08:08,861 --> 00:08:10,280
+So you can see, I think we've got it working.
+
+145
+00:08:16,201 --> 00:08:19,310
+(music plays)
+
+146
+00:08:21,581 --> 00:08:22,650
+Okay. Great.
+
+147
+00:08:22,902 --> 00:08:24,540
+Now, I'm not entirely sure.
+
+148
+00:08:24,541 --> 00:08:27,630
+We're going to have to do some more work here.
+
+149
+00:08:27,701 --> 00:08:30,420
+But lemmie get rid of all of that,
+
+150
+00:08:30,421 --> 00:08:34,901
+and I think what I want to do here is
+
+151
+00:08:37,152 --> 00:08:40,430
+Uri uri like that,
+
+152
+00:08:40,681 --> 00:08:45,520
+and then all we'll do is just grab off the URI like so
+
+153
+00:08:45,521 --> 00:08:50,312
+and then we'll do this like so.
+
+154
+00:08:52,702 --> 00:08:56,012
+And get rid of that, great.
+
+155
+00:08:57,803 --> 00:08:59,952
+This should work, still.
+
+156
+00:09:00,123 --> 00:09:02,082
+See how I was able to consolidate all that?
+
+157
+00:09:02,083 --> 00:09:05,661
+Alright, and then the other thing I need
+
+158
+00:09:05,662 --> 00:09:10,562
+is a score, so let's go ahead and go
+
+159
+00:09:11,033 --> 00:09:15,851
+int _totalScore
+
+160
+00:09:19,163 --> 00:09:21,202
+We'll set it equal to zero initially,
+
+161
+00:09:21,203 --> 00:09:24,642
+and what we want to do is
+
+162
+00:09:25,313 --> 00:09:27,562
+go back to where we were, yeah, here,
+
+163
+00:09:27,563 --> 00:09:31,560
+and I want to
+
+164
+00:09:31,561 --> 00:09:35,469
+grab the score here
+
+165
+00:09:35,881 --> 00:09:39,242
+so let's go score equals
+
+166
+00:09:39,243 --> 00:09:43,289
+MyProgressBar.Value
+
+167
+00:09:46,185 --> 00:09:50,414
+And I'm just going to make sure that it's an int.
+
+168
+00:09:53,365 --> 00:09:55,904
+So that's, if we get it right, I want a positive score,
+
+169
+00:09:55,905 --> 00:09:57,864
+but if we get it wrong what I'm going to do
+
+170
+00:09:57,865 --> 00:09:59,464
+is kinda the opposite.
+
+171
+00:09:59,465 --> 00:10:03,556
+So ... score equals MyProgressBar.Value
+
+172
+00:10:03,557 --> 00:10:05,676
+MyProgressBar.Value
+
+173
+00:10:05,677 --> 00:10:10,440
+And let's go ahead and do this
+
+174
+00:10:11,691 --> 00:10:13,321
+like so.
+
+175
+00:10:14,451 --> 00:10:17,680
+And I'm going to subtract points if you get it wrong.
+
+176
+00:10:19,972 --> 00:10:23,721
+Oh, actually, multiply that times minus one.
+
+177
+00:10:25,131 --> 00:10:28,070
+This might not be the most fair scoring system,
+
+178
+00:10:28,071 --> 00:10:30,170
+but it's just going to illustrate
+
+179
+00:10:30,171 --> 00:10:32,430
+how I'm going to go about this.
+
+180
+00:10:32,431 --> 00:10:34,672
+We can always fix this later.
+
+181
+00:10:35,263 --> 00:10:37,462
+So we're going to set totalScore plus-equals
+
+182
+00:10:37,463 --> 00:10:41,592
+whatever the score was from that right there.
+
+183
+00:10:46,463 --> 00:10:51,373
+Alright, and I think also, while we're here
+
+184
+00:10:51,523 --> 00:10:54,412
+what I want to do is set some things about,
+
+185
+00:10:54,503 --> 00:10:59,350
+so the ResultTextBlock.Text
+
+186
+00:10:59,701 --> 00:11:04,700
+equals string.Format score,
+
+187
+00:11:12,421 --> 00:11:15,990
+total score, after...
+
+188
+00:11:27,640 --> 00:11:30,770
+So here what I want to do is show, first of all, the score.
+
+189
+00:11:31,301 --> 00:11:34,030
+Then I want to show the round.
+
+190
+00:11:35,500 --> 00:11:39,930
+And then I want to show the total score like that.
+
+191
+00:11:41,740 --> 00:11:44,099
+So then let's go with TitleTextBlock.Text
+
+192
+00:11:44,100 --> 00:11:48,259
+equals String.Format
+
+193
+00:11:48,260 --> 00:11:50,828
+and oh, you know what we need do?
+
+194
+00:11:50,829 --> 00:11:51,609
+So here's what I want to do
+
+195
+00:11:51,610 --> 00:11:54,548
+is "Correct Song"
+
+196
+00:11:56,249 --> 00:11:59,797
+but we've only determined whether our song
+
+197
+00:11:59,798 --> 00:12:01,337
+is correct or incorrect,
+
+198
+00:12:01,338 --> 00:12:05,106
+not whether it's, which one is the correct one.
+
+199
+00:12:05,117 --> 00:12:05,876
+So let me do this.
+
+200
+00:12:05,877 --> 00:12:10,777
+var correctSong equals
+
+201
+00:12:12,546 --> 00:12:15,494
+let's get all of our songs,
+
+202
+00:12:16,625 --> 00:12:19,614
+FirstOrDefault
+
+203
+00:12:19,615 --> 00:12:23,431
+where Selected
+
+204
+00:12:23,432 --> 00:12:25,041
+equals true
+
+205
+00:12:28,552 --> 00:12:30,911
+So that should give me the correct song
+
+206
+00:12:30,912 --> 00:12:33,102
+and now I can do something like this.
+
+207
+00:12:33,472 --> 00:12:37,451
+correctSong
+
+208
+00:12:39,722 --> 00:12:41,831
+.Title
+
+209
+00:12:43,382 --> 00:12:48,016
+and then the ArtistTextBlock.Text equals String.Format
+
+210
+00:12:49,467 --> 00:12:52,316
+"Performed by" ...
+
+211
+00:12:55,864 --> 00:12:59,293
+correctSong.Artist
+
+212
+00:13:00,404 --> 00:13:05,224
+And then ... AlbumTextBlock.Text
+
+213
+00:13:06,881 --> 00:13:10,902
+equals string.Format
+
+214
+00:13:10,903 --> 00:13:15,902
+"on album"
+
+215
+00:13:17,367 --> 00:13:21,516
+and then correctSong.Album
+
+216
+00:13:24,317 --> 00:13:27,206
+Now, what I want to do is
+
+217
+00:13:27,207 --> 00:13:28,997
+whenever we...
+
+218
+00:13:31,927 --> 00:13:34,946
+That's when we start the cooldown, we'll see that.
+
+219
+00:13:34,947 --> 00:13:39,363
+But when we restart,
+
+220
+00:13:40,554 --> 00:13:43,712
+prepare the next round,
+
+221
+00:13:43,743 --> 00:13:45,281
+where do I do that at?
+
+222
+00:13:45,282 --> 00:13:46,911
+I want to clear all that out.
+
+223
+00:13:49,162 --> 00:13:51,931
+Populate SongList, pick random songs...
+
+224
+00:13:52,943 --> 00:13:55,381
+And my code is honestly unwieldy.
+
+225
+00:13:55,382 --> 00:13:57,701
+I should be splitting this up into other classes
+
+226
+00:13:57,702 --> 00:13:59,081
+and things like that,
+
+227
+00:13:59,082 --> 00:14:02,251
+but I'm not going to do that just yet.
+
+228
+00:14:05,102 --> 00:14:05,748
+Okay.
+
+229
+00:14:05,749 --> 00:14:07,228
+I'll worry about that part later.
+
+230
+00:14:07,229 --> 00:14:08,568
+I gotta think about that a little bit more
+
+231
+00:14:08,569 --> 00:14:10,958
+when we're going to reset that.
+
+232
+00:14:15,199 --> 00:14:17,509
+But at any rate, I need to set the state of these songs
+
+233
+00:14:17,510 --> 00:14:20,169
+because now we're kinda done working with them,
+
+234
+00:14:20,170 --> 00:14:23,310
+so the clickedSong, I should be able to set
+
+235
+00:14:23,311 --> 00:14:26,189
+its Used property equal to true,
+
+236
+00:14:26,190 --> 00:14:29,249
+and then I should be able to set the correctSong,
+
+237
+00:14:29,250 --> 00:14:32,859
+the Selected is now false.
+
+238
+00:14:33,090 --> 00:14:35,469
+And then I want to make sure that we don't
+
+239
+00:14:38,380 --> 00:14:41,689
+reuse it because it's already been clicked on,
+
+240
+00:14:41,690 --> 00:14:46,119
+and that means it has either a checkmark or an X,
+
+241
+00:14:46,650 --> 00:14:48,549
+and so the album cover won't be visible anymore,
+
+242
+00:14:48,550 --> 00:14:50,869
+so we want to make sure that it's been used
+
+243
+00:14:50,870 --> 00:14:53,379
+and we don't accidentally choose it again.
+
+244
+00:14:55,810 --> 00:15:00,809
+So finally, what I want to do here is do a check.
+
+245
+00:15:01,361 --> 00:15:02,909
+I'm only going to run this five times,
+
+246
+00:15:02,910 --> 00:15:07,719
+so if the round is greater than or equal to five,
+
+247
+00:15:08,730 --> 00:15:13,729
+then I'm going to do some end-game cleanup.
+
+248
+00:15:14,515 --> 00:15:17,249
+Otherwise, if it's not, then I want to start
+
+249
+00:15:17,250 --> 00:15:19,259
+the cooldown process again.
+
+250
+00:15:19,410 --> 00:15:21,129
+Here what I'm going to do is set
+
+251
+00:15:23,490 --> 00:15:27,217
+the InstructionTextBlock.Text
+
+252
+00:15:27,218 --> 00:15:30,427
+equals String.Format
+
+253
+00:15:30,638 --> 00:15:34,507
+and I'm going to say "Game Over, you scored"
+
+254
+00:15:35,698 --> 00:15:40,550
+and then put the total score in there,
+
+255
+00:15:41,181 --> 00:15:42,950
+_totalScore
+
+256
+00:15:44,781 --> 00:15:49,760
+And then the PlayAgainButton's visiblity,
+
+257
+00:15:51,121 --> 00:15:53,750
+I'm going to set that equal to Visible.
+
+258
+00:15:56,511 --> 00:15:58,650
+Okay, so we'll show that.
+
+259
+00:16:00,242 --> 00:16:02,650
+And that should do it.
+
+260
+00:16:02,662 --> 00:16:06,430
+So let's go ahead and now see what we get ourselves here.
+
+261
+00:16:15,721 --> 00:16:20,150
+(music plays)
+
+262
+00:16:22,021 --> 00:16:23,561
+Hmm, thought I knew that one.
+
+263
+00:16:23,562 --> 00:16:25,620
+But you can see I scored minus 60.
+
+264
+00:16:25,621 --> 00:16:29,220
+"Catch Me When I Fall," Storm Coming,
+
+265
+00:16:29,221 --> 00:16:30,730
+so it was off that album.
+
+266
+00:16:31,582 --> 00:16:35,810
+(music plays)
+
+267
+00:16:38,182 --> 00:16:40,221
+And I don't know any of these songs,
+
+268
+00:16:40,222 --> 00:16:41,401
+they're all made up,
+
+269
+00:16:41,402 --> 00:16:44,962
+so that should have been "Humble and Proud,"
+
+270
+00:16:44,963 --> 00:16:45,840
+should have been off that album,
+
+271
+00:16:45,841 --> 00:16:48,631
+so these two should not be selected in the future.
+
+272
+00:16:49,861 --> 00:16:53,550
+(music plays)
+
+273
+00:16:54,641 --> 00:16:56,160
+Hey, I got one right.
+
+274
+00:16:56,161 --> 00:16:58,020
+That was "Brian Plays a Hot Guitar,"
+
+275
+00:16:58,021 --> 00:17:01,940
+Inclement Weather, on the Longhorn album.
+
+276
+00:17:01,941 --> 00:17:03,630
+Great.
+
+277
+00:17:05,721 --> 00:17:09,310
+(music plays)
+
+278
+00:17:10,121 --> 00:17:12,050
+I got that one wrong, too.
+
+279
+00:17:20,781 --> 00:17:23,990
+(music plays)
+
+280
+00:17:24,601 --> 00:17:25,900
+Hey, I got one accidentally right.
+
+281
+00:17:25,901 --> 00:17:27,160
+So I played five rounds,
+
+282
+00:17:27,161 --> 00:17:29,810
+I scored negative 50, and I can play again.
+
+283
+00:17:29,811 --> 00:17:31,080
+Now, this doesn't do anything,
+
+284
+00:17:31,081 --> 00:17:34,840
+but we'll have to come back to that, then,
+
+285
+00:17:34,841 --> 00:17:38,710
+in the next video,
+
+286
+00:17:38,742 --> 00:17:41,720
+so I think that's all I really wanted to cover
+
+287
+00:17:41,721 --> 00:17:42,720
+in this video.
+
+288
+00:17:42,721 --> 00:17:43,781
+Let's go ahead and stop it here
+
+289
+00:17:43,782 --> 00:17:46,470
+and then I can re-group and figure out where we go
+
+290
+00:17:46,471 --> 00:17:48,090
+from here.  
+

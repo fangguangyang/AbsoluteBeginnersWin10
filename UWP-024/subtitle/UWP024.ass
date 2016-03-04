@@ -11,13 +11,13 @@ PlayResY: 1080
 
 [Aegisub Project Garbage]
 Last Style Storage: Default
-Audio File: C:/Users/thinkpad/OneDrive/Win10 Translation/UWP-024/subtitle/uwp24HamburgerChallengeSolution_high.mp4
-Video File: C:/Users/thinkpad/OneDrive/Win10 Translation/UWP-024/subtitle/uwp24HamburgerChallengeSolution_high.mp4
+Audio File: uwp24HamburgerChallengeSolution_high.mp4
+Video File: uwp24HamburgerChallengeSolution_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.772222
-Video Zoom Percent: 0.375000
-Scroll Position: 130
-Active Line: 134
+Video Zoom Percent: 0.250000
+Scroll Position: 134
+Active Line: 112
 Video Position: 48012
 
 [V4+ Styles]
@@ -51,7 +51,7 @@ Dialogue: 0,0:03:34.55,0:03:55.57,yahei,,0,0,0,,我们先创建RowDefinition，�
 Dialogue: 0,0:03:55.57,0:04:04.10,yahei,,0,0,0,,在上面这部分，我要创建一个RelativePanel，\N因为之后会调整布局移动条目等等
 Dialogue: 0,0:04:04.10,0:04:12.00,yahei,,0,0,0,,在RelativePanel里面，我们要放一个汉堡Button
 Dialogue: 0,0:04:12.12,0:04:23.15,yahei,,0,0,0,,还有返回按钮的Button，和一个用作页面标题的TextBlock
-Dialogue: 0,0:04:23.45,0:04:37.70,yahei,,0,0,0,,然后还需要一个用作右上角搜索栏的Button，和用作搜索栏内容输入的TextBlock 
+Dialogue: 0,0:04:23.45,0:04:37.70,yahei,,0,0,0,,然后还需要一个用作右上角搜索栏的Button，和用作搜索栏内容输入的TextBlock
 Dialogue: 0,0:04:37.70,0:05:14.70,yahei,,0,0,0,,然后我们把它们都命名就好啦\N如画面所示 字幕君小小的偷个懒(●'◡'●)
 Dialogue: 0,0:05:14.70,0:05:23.30,yahei,,0,0,0,,接下来我们要设置HamburgerButton\N是与向左侧panel对齐的(align with left panel)
 Dialogue: 0,0:05:23.40,0:05:33.75,yahei,,0,0,0,,设置的方法呢，就是添加RelativePanel.AlignLeftWithPanel="True"
@@ -130,15 +130,15 @@ Dialogue: 0,0:20:05.28,0:20:16.17,yahei,,0,0,0,,然后我们要添加if这部分
 Dialogue: 0,0:20:16.42,0:20:33.51,yahei,,0,0,0,,和else这部分来应对多个选择
 Dialogue: 0,0:20:33.97,0:20:51.74,yahei,,0,0,0,,当用户选择Financial这部分是，首先用frame加载出financial.xaml
 Dialogue: 0,0:20:51.97,0:21:11.22,yahei,,0,0,0,,接着要设置TitleTextBlock.Text，之前没有详细说过，\N当app刚开始运行时，也要添加这部分来加载出financial（财经）页面
-Dialogue: 0,0:21:12.22,0:21:30.45,yahei,,0,0,0,,在下脉案这部分我们也要做同样的事情，只是要把之前的Financial都改成Food
+Dialogue: 0,0:21:12.22,0:21:30.45,yahei,,0,0,0,,在下面这部分我们也要做同样的事情，只是要把之前的Financial都改成Food
 Dialogue: 0,0:21:33.25,0:21:38.88,yahei,,0,0,0,,好哒我们来看看成果吧
 Dialogue: 0,0:21:39.62,0:21:52.77,yahei,,0,0,0,,导航都还可以，只是这里我们需要在返回键和标题文字之间留一点空间，\N让我们回到MainPage.xaml来设置一下
-Dialogue: 0,0:21:53.20,0:21:59.57,yahei,,0,0,0,,向上找到TitleTextBlock 
+Dialogue: 0,0:21:53.20,0:21:59.57,yahei,,0,0,0,,向上找到TitleTextBlock
 Dialogue: 0,0:21:59.57,0:22:10.28,yahei,,0,0,0,,在这里设置一点margin（左侧和上方都要添加空间）：20，5，0，0
 Dialogue: 0,0:22:10.62,0:22:24.60,yahei,,0,0,0,,设置好了之后就再来跑一下看看吧\Nooops我好像写错位置了
 Dialogue: 0,0:22:24.60,0:22:36.34,yahei,,0,0,0,,应该是放在TitleTextBlock里面的
 Dialogue: 0,0:22:36.60,0:22:43.11,yahei,,0,0,0,,看起来好多啦，那就继续吧！
-Dialogue: 0,0:22:43.77,0:22:50.05,yahei,,0,0,0,,看看教程我们接下来要做的是什么
+Dialogue: 0,0:22:43.77,0:22:50.05,yahei,,0,0,0,,看看教程我们接下来要做的是什么...
 Dialogue: 0,0:22:50.48,0:22:52.82,yahei,,0,0,0,,前五个完成了
 Dialogue: 0,0:22:52.82,0:23:03.14,yahei,,0,0,0,,第六个“当你点击导航时Food.xaml或者Financial.xaml会被显示”也完成啦\N第七个：“返回键只在用户不在主页时被显示”
 Dialogue: 0,0:23:03.48,0:23:17.02,yahei,,0,0,0,,我之前忘记说了，它还需要用于返回主页\N那接下来我们来调试这部分吧

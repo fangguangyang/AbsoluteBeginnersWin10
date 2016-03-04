@@ -1,0 +1,332 @@
+1
+00:00:05,120 --> 00:00:09,056
+<v ->Hi, I'm Bob Tabor with www.LearnVisualStudio.Net.</v>
+
+2
+00:00:09,457 --> 00:00:11,791
+We're picking apart XAML bit by bit.
+
+3
+00:00:11,792 --> 00:00:14,031
+And in this brief video, I want to explain
+
+4
+00:00:14,032 --> 00:00:17,487
+one curious little feature called Type Converters
+
+5
+00:00:17,488 --> 00:00:19,332
+that we see in play in this example
+
+6
+00:00:19,333 --> 00:00:21,145
+that we created in the previous lesson,
+
+7
+00:00:21,146 --> 00:00:23,283
+this "What Is XAML" app.
+
+8
+00:00:23,737 --> 00:00:26,041
+So, you'll notice a couple of things here.
+
+9
+00:00:26,042 --> 00:00:29,366
+First of all, I uncommented out the button
+
+10
+00:00:29,789 --> 00:00:31,574
+on our MainPage.xaml.
+
+11
+00:00:32,108 --> 00:00:37,072
+And, if you took a few moments to examine this project
+
+12
+00:00:37,073 --> 00:00:38,788
+between the previous video and this video,
+
+13
+00:00:39,148 --> 00:00:40,223
+and if you had a keen eye,
+
+14
+00:00:40,224 --> 00:00:42,144
+you may have noticed that
+
+15
+00:00:42,460 --> 00:00:44,659
+the horizontal alignment property,
+
+16
+00:00:44,997 --> 00:00:46,660
+and this goes true as well
+
+17
+00:00:46,661 --> 00:00:47,865
+for the vertical alignment,
+
+18
+00:00:47,866 --> 00:00:50,039
+but let's just focus on horizontal alignment property,
+
+19
+00:00:50,040 --> 00:00:53,557
+is set to a string with the value "Left".
+
+20
+00:00:53,558 --> 00:00:57,066
+However, the C# version is a little bit different.
+
+21
+00:00:57,067 --> 00:00:58,707
+If you take a look at when we set
+
+22
+00:00:58,708 --> 00:01:00,787
+that horizontal alignment property,
+
+23
+00:01:00,788 --> 00:01:03,166
+we're actually using a strongly typed enumeration,
+
+24
+00:01:03,167 --> 00:01:06,570
+not a string, a strongly typed enumeration of type,
+
+25
+00:01:07,952 --> 00:01:11,090
+Windows.UI.Xaml.HorizontalAlignment,
+
+26
+00:01:11,512 --> 00:01:15,323
+and the particular enumeration is also Left,
+
+27
+00:01:15,324 --> 00:01:16,789
+but it's strongly typed.
+
+28
+00:01:17,161 --> 00:01:18,509
+So, how does this work?
+
+29
+00:01:18,510 --> 00:01:21,250
+Why is it that we can use a string here,
+
+30
+00:01:21,251 --> 00:01:24,092
+but we have to use a strong type in C#?
+
+31
+00:01:24,093 --> 00:01:25,980
+Well, the reason why this works
+
+32
+00:01:25,981 --> 00:01:28,871
+is because the XAML parser will perform a conversion
+
+33
+00:01:28,872 --> 00:01:30,985
+to turn this string value
+
+34
+00:01:31,366 --> 00:01:34,498
+into a strongly typed version of that value
+
+35
+00:01:34,499 --> 00:01:38,136
+of type Windows.UI.Xaml.HorizontalAlignment.left
+
+36
+00:01:38,137 --> 00:01:41,795
+through the use of a feature called a Type Converter.
+
+37
+00:01:41,796 --> 00:01:44,403
+And a Type Converter is simply a class that has
+
+38
+00:01:44,404 --> 00:01:47,945
+one function, and that is to translate a string value
+
+39
+00:01:47,946 --> 00:01:49,609
+into a strong type.
+
+40
+00:01:49,610 --> 00:01:50,642
+And there are several of these that are
+
+41
+00:01:50,643 --> 00:01:53,180
+built into the Universal Windows Platform API
+
+42
+00:01:53,181 --> 00:01:54,645
+that we'll use throughout this series.
+
+43
+00:01:55,111 --> 00:01:58,887
+So, in this example of the horizontal alignment property,
+
+44
+00:01:59,215 --> 00:02:01,666
+when it was developed by Microsoft's developers
+
+45
+00:02:01,667 --> 00:02:04,721
+was marked with a special attribute
+
+46
+00:02:04,722 --> 00:02:05,895
+in the source code,
+
+47
+00:02:05,896 --> 00:02:08,924
+which signals to the XAML parser that looks through our code
+
+48
+00:02:08,925 --> 00:02:10,866
+and makes sure everything is okay
+
+49
+00:02:10,867 --> 00:02:12,416
+and that it would compile.
+
+50
+00:02:14,239 --> 00:02:18,461
+To run that string value left through a Type Converter
+
+51
+00:02:18,462 --> 00:02:21,617
+and try to match the literal string left
+
+52
+00:02:21,618 --> 00:02:23,910
+with one of the enumeration values defined
+
+53
+00:02:23,911 --> 00:02:28,810
+in this Windows.UI.Xaml.HorizontalAlignment enumeration.
+
+54
+00:02:29,190 --> 00:02:31,728
+So, just for fun, let's take a look at what happens
+
+55
+00:02:31,729 --> 00:02:33,949
+if we were to misspell the word "Left".
+
+56
+00:02:34,238 --> 00:02:36,003
+Let's get rid of the "t" on the end.
+
+57
+00:02:36,004 --> 00:02:38,947
+And notice that right away, the XAML parser
+
+58
+00:02:38,948 --> 00:02:40,768
+kicks in and says, "Wait a second.
+
+59
+00:02:40,770 --> 00:02:45,387
+"I can't find a match for this literal string, lef,
+
+60
+00:02:45,388 --> 00:02:48,885
+(without the T), with any of the enumerations
+
+61
+00:02:48,886 --> 00:02:50,392
+that are defined in this
+
+62
+00:02:50,841 --> 00:02:53,918
+Windows.UI.Xaml.HorizontalAlignment enumeration."
+
+63
+00:02:53,919 --> 00:02:56,393
+All right, so you can see how this works.
+
+64
+00:02:57,243 --> 00:02:58,275
+And, we'll get 
+
+65
+00:02:58,276 --> 00:03:00,002
+basically a compilation error
+
+66
+00:03:00,003 --> 00:03:03,131
+because the Type Converter can't find the exact match
+
+67
+00:03:03,468 --> 00:03:05,617
+so that it can convert that to a strong type.
+
+68
+00:03:06,018 --> 00:03:08,407
+So, one of the first characteristics of XAML
+
+69
+00:03:08,408 --> 00:03:10,809
+as we begin to pick it apart bit by bit,
+
+70
+00:03:11,125 --> 00:03:15,817
+is that it's succinct means of creating instances of classes
+
+71
+00:03:15,818 --> 00:03:18,958
+and setting properties in Type Converters,
+
+72
+00:03:19,244 --> 00:03:23,210
+is one little trick that XAML uses that helps
+
+73
+00:03:23,211 --> 00:03:27,357
+to accomplish this so that we don't have to waste characters
+
+74
+00:03:27,358 --> 00:03:30,387
+and that we can actually just use a very succinct
+
+75
+00:03:30,772 --> 00:03:33,270
+syntax to set values that might be
+
+76
+00:03:33,939 --> 00:03:36,119
+actually representing longer
+
+77
+00:03:37,065 --> 00:03:39,417
+class and enumeration names behind the scenes.
+
+78
+00:03:39,418 --> 00:03:40,754
+Okay, simple as that.
+
+79
+00:03:41,125 --> 00:03:42,925
+So, let's keep on moving along
+
+80
+00:03:43,786 --> 00:03:45,038
+and investigating XAML.
+
+81
+00:03:45,039 --> 00:03:46,231
+More XAML in the next lesson.
+
+82
+00:03:46,232 --> 00:03:46,806
+We'll see you there.
+
+83
+00:03:46,807 --> 00:03:47,360
+Thanks.  
+

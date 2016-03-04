@@ -1,0 +1,2504 @@
+1
+00:00:04,736 --> 00:00:06,856
+<v ->Alright, so to get started, we're going to do</v>
+
+2
+00:00:06,857 --> 00:00:08,936
+some basic Project setup, and then we're going to
+
+3
+00:00:08,937 --> 00:00:12,697
+talk immediately about our approach
+
+4
+00:00:12,698 --> 00:00:15,178
+working with the Weather API.
+
+5
+00:00:15,179 --> 00:00:16,638
+So let's go ahead and get started by just
+
+6
+00:00:16,639 --> 00:00:18,296
+creating a new Project and getting that part
+
+7
+00:00:18,297 --> 00:00:20,627
+of it out of the way.
+
+8
+00:00:20,628 --> 00:00:23,148
+We'll find our correct
+
+9
+00:00:23,149 --> 00:00:25,368
+Blank App template here.
+
+10
+00:00:25,369 --> 00:00:28,118
+I'm going to call this UWPWeather.
+
+11
+00:00:36,148 --> 00:00:38,849
+Okay, and first thing I'm going to do here
+
+12
+00:00:38,850 --> 00:00:41,630
+is get rid of the frame counter,
+
+13
+00:00:41,631 --> 00:00:44,369
+like always, and I'll open up the MainPage.xaml
+
+14
+00:00:44,370 --> 00:00:46,060
+MainPage.xaml
+
+15
+00:00:46,061 --> 00:00:48,700
+So what I have envisioned here is a
+
+16
+00:00:48,701 --> 00:00:50,159
+pretty simple application.
+
+17
+00:00:50,160 --> 00:00:53,859
+It's just going to have the current weather
+
+18
+00:00:53,860 --> 00:00:55,679
+for the current location you're at.
+
+19
+00:00:55,680 --> 00:00:57,919
+You can extend this, and I'll show you how
+
+20
+00:00:57,920 --> 00:01:00,380
+you can make this as complicated
+
+21
+00:01:00,381 --> 00:01:02,859
+and as feature-rich as you want.
+
+22
+00:01:02,860 --> 00:01:04,659
+It's just pretty much more of the same
+
+23
+00:01:04,660 --> 00:01:06,599
+of what I'm going to show you here
+
+24
+00:01:06,600 --> 00:01:10,180
+in this lesson, in these lessons.
+
+25
+00:01:10,181 --> 00:01:12,684
+Now that we have that in place,
+
+26
+00:01:12,685 --> 00:01:15,083
+I'm going to go ahead and minimize this.
+
+27
+00:01:15,084 --> 00:01:17,464
+We're going to pull our data from
+
+28
+00:01:17,465 --> 00:01:21,424
+a website called openweathermap.org.
+
+29
+00:01:21,425 --> 00:01:23,374
+By all rights, if you're going to use this
+
+30
+00:01:23,375 --> 00:01:25,777
+in a commercial product, you need to sign up
+
+31
+00:01:25,778 --> 00:01:29,516
+for an API, and then if your requests
+
+32
+00:01:30,555 --> 00:01:34,172
+are in excess of a certain number per month,
+
+33
+00:01:36,269 --> 00:01:37,948
+you'll need to get a
+
+34
+00:01:39,266 --> 00:01:40,839
+paid license.
+
+35
+00:01:40,840 --> 00:01:44,191
+For example, for $180 a month, as I record this,
+
+36
+00:01:44,192 --> 00:01:47,351
+you can have 30,000 API calls per minute.
+
+37
+00:01:47,352 --> 00:01:50,019
+Now, for just our own purposes
+
+38
+00:01:50,020 --> 00:01:52,958
+in learning and development, we're not
+
+39
+00:01:52,959 --> 00:01:55,678
+going to get any more than 1,200 APIs per minute,
+
+40
+00:01:55,679 --> 00:01:57,918
+API calls per minute, but here again,
+
+41
+00:01:57,919 --> 00:02:00,798
+you probably need to consult their website.
+
+42
+00:02:00,799 --> 00:02:02,558
+I'm not lawyer, I don't understand all
+
+43
+00:02:02,559 --> 00:02:04,538
+of the ramifications of this.
+
+44
+00:02:04,539 --> 00:02:07,038
+This is purely for us learning how to make
+
+45
+00:02:07,039 --> 00:02:09,398
+a call to a web service.
+
+46
+00:02:09,399 --> 00:02:11,439
+So I'm going to leave that part of it
+
+47
+00:02:11,440 --> 00:02:13,179
+between you and OpenWeatherMap,
+
+48
+00:02:13,180 --> 00:02:15,001
+but I'm going to look at the API.
+
+49
+00:02:15,002 --> 00:02:16,760
+There's several different weather APIs
+
+50
+00:02:16,761 --> 00:02:17,940
+that we can call.
+
+51
+00:02:17,941 --> 00:02:20,423
+API will be
+
+52
+00:02:21,491 --> 00:02:24,649
+basically a web-callable API.
+
+53
+00:02:24,650 --> 00:02:27,559
+That means we use a URL to make a call,
+
+54
+00:02:27,560 --> 00:02:30,439
+and it will deliver back to us either JSON
+
+55
+00:02:30,440 --> 00:02:32,960
+or XML or some file format that then
+
+56
+00:02:32,961 --> 00:02:36,080
+we can parse through and use as data
+
+57
+00:02:36,081 --> 00:02:37,879
+for our application.
+
+58
+00:02:37,880 --> 00:02:39,479
+There's current weather data, which is
+
+59
+00:02:39,480 --> 00:02:40,341
+the one we're going to use.
+
+60
+00:02:40,342 --> 00:02:42,280
+There's also 5 day/3 hour forecasts,
+
+61
+00:02:42,281 --> 00:02:44,504
+16 day/daily forecast,
+
+62
+00:02:44,505 --> 00:02:46,645
+a bunch of other APIs.
+
+63
+00:02:46,646 --> 00:02:48,325
+We're going to focus on this first one,
+
+64
+00:02:48,326 --> 00:02:50,845
+the current weather data.
+
+65
+00:02:50,846 --> 00:02:54,690
+You can see in the openweathermap.org/current
+
+66
+00:02:54,691 --> 00:02:58,079
+that there are different ways to make calls
+
+67
+00:02:58,080 --> 00:02:59,797
+into this weather API.
+
+68
+00:02:59,798 --> 00:03:03,536
+For example, if all we have is the
+
+69
+00:03:05,058 --> 00:03:06,971
+city name, then we can give it
+
+70
+00:03:06,972 --> 00:03:09,989
+something like that,
+
+71
+00:03:09,990 --> 00:03:13,555
+where we replace this curly brace
+
+72
+00:03:13,556 --> 00:03:16,184
+city name with, for example, Dallas
+
+73
+00:03:16,185 --> 00:03:18,567
+or Dallas, USA.
+
+74
+00:03:19,611 --> 00:03:22,922
+We would get back the weather, the current weather
+
+75
+00:03:22,923 --> 00:03:25,700
+for that location.
+
+76
+00:03:25,701 --> 00:03:27,120
+So there's a number of different ways
+
+77
+00:03:27,121 --> 00:03:29,080
+that we can acquire this.
+
+78
+00:03:29,081 --> 00:03:31,400
+We can use a city ID.
+
+79
+00:03:31,401 --> 00:03:34,658
+There's a list of IDs that we can download
+
+80
+00:03:36,228 --> 00:03:37,352
+and utilize.
+
+81
+00:03:37,353 --> 00:03:40,726
+We can get to the weather by geographic coordinates.
+
+82
+00:03:40,727 --> 00:03:42,406
+This is the one that we're going to use
+
+83
+00:03:42,407 --> 00:03:44,386
+because we're going to use our
+
+84
+00:03:44,387 --> 00:03:46,766
+device's built-in GPS functionality
+
+85
+00:03:46,767 --> 00:03:49,446
+or location functionality to bring us back
+
+86
+00:03:49,447 --> 00:03:52,666
+the latitude/longitude for
+
+87
+00:03:52,667 --> 00:03:54,806
+the current position of our device,
+
+88
+00:03:54,807 --> 00:03:58,185
+and then we'll deliver that as latitude
+
+89
+00:03:58,186 --> 00:04:01,430
+and longitude to this API call,
+
+90
+00:04:01,431 --> 00:04:04,591
+and retrieve back the current weather conditions for it.
+
+91
+00:04:04,592 --> 00:04:06,783
+We could also use ZIP code.
+
+92
+00:04:06,784 --> 00:04:09,142
+There's some advanced scenarios, as well,
+
+93
+00:04:09,143 --> 00:04:11,243
+that we're not going to really worry about
+
+94
+00:04:11,244 --> 00:04:13,182
+all that much.
+
+95
+00:04:13,183 --> 00:04:14,483
+But if you like, you could scroll down,
+
+96
+00:04:14,484 --> 00:04:16,182
+you could learn a lot about
+
+97
+00:04:16,183 --> 00:04:18,422
+what's delivered back to you
+
+98
+00:04:18,423 --> 00:04:20,382
+when you make one of these calls
+
+99
+00:04:20,383 --> 00:04:21,944
+into this API.
+
+100
+00:04:21,945 --> 00:04:23,902
+So let's do this.
+
+101
+00:04:23,903 --> 00:04:26,143
+What we'll do, first of all, I'm going to start
+
+102
+00:04:26,144 --> 00:04:29,654
+by saying Dallas
+
+103
+00:04:29,655 --> 00:04:31,293
+latitude longitude
+
+104
+00:04:32,503 --> 00:04:34,487
+This will give me back the coordinates.
+
+105
+00:04:34,488 --> 00:04:36,998
+32.77 North.
+
+106
+00:04:38,248 --> 00:04:40,330
+I think this is a,
+
+107
+00:04:40,331 --> 00:04:43,622
+it might be negative 96.79 West,
+
+108
+00:04:43,623 --> 00:04:46,149
+so West would be a negative.
+
+109
+00:04:46,150 --> 00:04:47,910
+But any rate, let me copy those coordinates
+
+110
+00:04:47,911 --> 00:04:49,870
+and put them just in a little notepad file
+
+111
+00:04:49,871 --> 00:04:52,069
+that I have here offscreen so that
+
+112
+00:04:52,070 --> 00:04:54,449
+I can remember those.
+
+113
+00:04:54,450 --> 00:04:56,990
+Then what we'll do is we'll come back over here,
+
+114
+00:04:56,991 --> 00:04:59,889
+and I'm going to
+
+115
+00:04:59,890 --> 00:05:01,651
+find this.
+
+116
+00:05:03,050 --> 00:05:04,461
+In fact, let me just go ahead and click on it
+
+117
+00:05:04,462 --> 00:05:05,749
+to start off with.
+
+118
+00:05:05,750 --> 00:05:07,929
+Then I'm going to change the latitude
+
+119
+00:05:07,930 --> 00:05:10,209
+and longitude here
+
+120
+00:05:10,210 --> 00:05:13,341
+to 32.77.
+
+121
+00:05:14,503 --> 00:05:18,374
+Then I'll change the latitude to a negative
+
+122
+00:05:18,375 --> 00:05:21,067
+96.79.
+
+123
+00:05:21,068 --> 00:05:22,847
+I'm going to see what we get back.
+
+124
+00:05:22,848 --> 00:05:24,167
+You can see what we get back
+
+125
+00:05:24,168 --> 00:05:26,368
+is a series of JSON,
+
+126
+00:05:27,829 --> 00:05:30,197
+JSON, JavaScript Object Notation, a very
+
+127
+00:05:30,198 --> 00:05:33,498
+lightweight way of exposing data
+
+128
+00:05:33,499 --> 00:05:36,993
+over the Internet, very common way of exposing data.
+
+129
+00:05:36,994 --> 00:05:39,255
+While this might look a little convoluted,
+
+130
+00:05:39,256 --> 00:05:42,315
+it actually follows a very simple pattern.
+
+131
+00:05:42,316 --> 00:05:44,674
+But let's do this, I'm going to actually
+
+132
+00:05:44,675 --> 00:05:48,094
+use my mouse to select that entire
+
+133
+00:05:48,095 --> 00:05:50,538
+JSON string that even runs off to the
+
+134
+00:05:50,539 --> 00:05:52,838
+right-hand side of the screen.
+
+135
+00:05:52,839 --> 00:05:54,578
+I'm going to hit Control+C to copy this
+
+136
+00:05:54,579 --> 00:05:55,737
+to my clipboard.
+
+137
+00:05:55,738 --> 00:05:56,997
+Then I'm going to go to another website
+
+138
+00:05:56,998 --> 00:05:58,996
+called json2csharp.
+
+139
+00:05:58,997 --> 00:06:00,353
+What this is going to allow me to do
+
+140
+00:06:00,354 --> 00:06:03,974
+is to paste in the JSON, right like this,
+
+141
+00:06:03,975 --> 00:06:06,493
+and now when I hit Generate, what'll happen
+
+142
+00:06:06,494 --> 00:06:09,374
+is it'll create a series of classes
+
+143
+00:06:09,375 --> 00:06:11,184
+that represent that JSON.
+
+144
+00:06:11,185 --> 00:06:14,323
+So now I have C# classes that I
+
+145
+00:06:14,324 --> 00:06:17,615
+can then deserialize the JSON
+
+146
+00:06:17,616 --> 00:06:21,417
+into these strongly typed classes in C#.
+
+147
+00:06:22,496 --> 00:06:24,506
+So you can see at the very highest level here,
+
+148
+00:06:24,507 --> 00:06:26,345
+I'll have a RootObject.
+
+149
+00:06:26,346 --> 00:06:30,487
+This RootObject will have a List of Weather items.
+
+150
+00:06:30,488 --> 00:06:33,645
+Then there's just a series of
+
+151
+00:06:33,646 --> 00:06:36,234
+other classes that were created, a main class,
+
+152
+00:06:36,235 --> 00:06:39,634
+a wind class, a rain class, a clouds class
+
+153
+00:06:39,635 --> 00:06:42,674
+and other information as well.
+
+154
+00:06:42,675 --> 00:06:44,675
+For example, this Sys class will give us
+
+155
+00:06:44,676 --> 00:06:48,561
+the county, a message, the sunrise, sunset times.
+
+156
+00:06:48,562 --> 00:06:50,722
+Just a ton of information.
+
+157
+00:06:50,723 --> 00:06:54,388
+In the main class, there's pressure, humidity.
+
+158
+00:06:54,389 --> 00:06:56,967
+In the weather class, we can get an icon
+
+159
+00:06:56,968 --> 00:07:00,052
+and a description for the current weather.
+
+160
+00:07:01,251 --> 00:07:03,194
+What we're going to do is actually I'm going to copy
+
+161
+00:07:03,195 --> 00:07:06,149
+all of this
+
+162
+00:07:06,150 --> 00:07:08,052
+to my clipboard.
+
+163
+00:07:08,053 --> 00:07:10,911
+I'm going to create something called,
+
+164
+00:07:10,912 --> 00:07:13,073
+here in Visual Studio.
+
+165
+00:07:14,252 --> 00:07:17,033
+I'm going to go over here and right-click.
+
+166
+00:07:17,034 --> 00:07:19,293
+Actually, let me go ahead and select
+
+167
+00:07:19,294 --> 00:07:21,793
+Project, Add Class.
+
+168
+00:07:21,794 --> 00:07:24,444
+I'm going to call this
+
+169
+00:07:28,028 --> 00:07:30,674
+OpenWeatherMapProxy.
+
+170
+00:07:30,675 --> 00:07:33,354
+A proxy is a go-between.
+
+171
+00:07:33,355 --> 00:07:35,594
+That might not be the best name for this,
+
+172
+00:07:35,595 --> 00:07:38,319
+but it's what came off the top of my head.
+
+173
+00:07:39,538 --> 00:07:41,909
+Inside of this, I'm actually going to paste
+
+174
+00:07:41,910 --> 00:07:44,809
+all these other classes as well.
+
+175
+00:07:44,810 --> 00:07:46,751
+So my thought process here is that I'm going to
+
+176
+00:07:46,752 --> 00:07:50,142
+have a static method on this
+
+177
+00:07:50,143 --> 00:07:51,844
+OpenWeatherMapProxy.
+
+178
+00:07:51,845 --> 00:07:54,767
+What it will do is it will, when you give it
+
+179
+00:07:54,768 --> 00:07:57,409
+the latitude and longitude, it's going to feed it
+
+180
+00:07:57,410 --> 00:08:00,522
+to this web service URL
+
+181
+00:08:01,572 --> 00:08:03,469
+that we have here, replacing the latitude
+
+182
+00:08:03,470 --> 00:08:05,083
+and the longitude that we're going to get
+
+183
+00:08:05,084 --> 00:08:07,384
+from our device's GPS,
+
+184
+00:08:07,385 --> 00:08:11,243
+and it will convert the data that comes back
+
+185
+00:08:11,244 --> 00:08:14,417
+in JSON format into a series of classes
+
+186
+00:08:14,418 --> 00:08:16,436
+that we can then navigate through, pull out
+
+187
+00:08:16,437 --> 00:08:18,696
+the bits we want to display to the user
+
+188
+00:08:18,697 --> 00:08:20,376
+on the screen.
+
+189
+00:08:20,377 --> 00:08:21,896
+Hopefully that all made sense.
+
+190
+00:08:21,897 --> 00:08:24,616
+You'll see it as we move forward here.
+
+191
+00:08:24,617 --> 00:08:26,617
+So what I want to do, just as we start
+
+192
+00:08:26,618 --> 00:08:29,317
+playing with this idea, is,
+
+193
+00:08:29,318 --> 00:08:31,276
+actually, let me go ahead and get rid of that.
+
+194
+00:08:34,013 --> 00:08:37,552
+I'm going to start just with a StackPanel.
+
+195
+00:08:37,553 --> 00:08:38,913
+I'm not going to get too fancy with this
+
+196
+00:08:38,914 --> 00:08:40,353
+just to begin with.
+
+197
+00:08:40,354 --> 00:08:42,485
+But I'm going to set the Background="HotPink"
+
+198
+00:08:42,486 --> 00:08:45,529
+because I saw a cool demo with
+
+199
+00:08:45,530 --> 00:08:47,589
+a hot pink background and it looked pretty cool,
+
+200
+00:08:47,590 --> 00:08:49,370
+and it's very different from anything else
+
+201
+00:08:49,371 --> 00:08:51,390
+that you'll see
+
+202
+00:08:51,391 --> 00:08:53,050
+out there right now.
+
+203
+00:08:53,051 --> 00:08:55,405
+I am going to add a Button with
+
+204
+00:08:56,770 --> 00:08:59,952
+Content="Get Weather".
+
+205
+00:09:02,075 --> 00:09:04,405
+I'll say set a Click Event.
+
+206
+00:09:05,576 --> 00:09:07,695
+I think that's all I'll need to do there.
+
+207
+00:09:07,696 --> 00:09:11,035
+Then I'm going to add a TextBlock.
+
+208
+00:09:11,036 --> 00:09:14,661
+We're going to call this, name this
+
+209
+00:09:14,662 --> 00:09:15,901
+"ResultTextBlock"
+
+210
+00:09:18,580 --> 00:09:20,179
+"ResultTextBlock".
+
+211
+00:09:20,180 --> 00:09:22,559
+I want you to know that this is not, ultimately,
+
+212
+00:09:22,560 --> 00:09:25,400
+what I'm going to have for my layout.
+
+213
+00:09:25,401 --> 00:09:28,379
+This is just for me to be able to test
+
+214
+00:09:28,380 --> 00:09:31,599
+the process of going out and grabbing
+
+215
+00:09:31,600 --> 00:09:34,579
+the data, and then displaying something to the user.
+
+216
+00:09:34,580 --> 00:09:37,860
+Once I can get that hardest, here's my thought process.
+
+217
+00:09:37,861 --> 00:09:39,692
+Whenever I go sit down to build an application,
+
+218
+00:09:39,693 --> 00:09:42,892
+I always like to tackle the most difficult aspects
+
+219
+00:09:42,893 --> 00:09:45,773
+of the application first because
+
+220
+00:09:45,774 --> 00:09:48,392
+then I get some degree of confidence
+
+221
+00:09:48,393 --> 00:09:50,592
+that I know what it will do.
+
+222
+00:09:50,593 --> 00:09:52,973
+I don't make any assumptions beforehand
+
+223
+00:09:52,974 --> 00:09:55,233
+what it's going to do, how it's going to operate.
+
+224
+00:09:55,234 --> 00:09:57,673
+That might adjust the way that I lay things out,
+
+225
+00:09:57,674 --> 00:09:59,807
+the way that I approach the rest of the application.
+
+226
+00:09:59,808 --> 00:10:01,887
+So I always attack the most difficult part
+
+227
+00:10:01,888 --> 00:10:03,167
+of the application first.
+
+228
+00:10:03,168 --> 00:10:05,928
+Typically, that's going to be any of the internals
+
+229
+00:10:05,929 --> 00:10:07,767
+of the application.
+
+230
+00:10:07,768 --> 00:10:10,628
+It's going to be business logic,
+
+231
+00:10:10,629 --> 00:10:13,947
+it's going to be any data access, it's going to be making
+
+232
+00:10:13,948 --> 00:10:16,770
+calls out to web APIs like we're doing here.
+
+233
+00:10:16,771 --> 00:10:18,829
+Once I can get those question marks
+
+234
+00:10:18,830 --> 00:10:21,742
+in my mind resolved, then it makes
+
+235
+00:10:21,743 --> 00:10:23,721
+building the rest of the application fairly easy.
+
+236
+00:10:23,722 --> 00:10:25,221
+That's what I'm doing here.
+
+237
+00:10:25,222 --> 00:10:27,801
+I'm just going to create some initial code
+
+238
+00:10:27,802 --> 00:10:29,301
+that I'm ultimately going to probably throw
+
+239
+00:10:29,302 --> 00:10:31,488
+all this stuff away.
+
+240
+00:10:31,489 --> 00:10:35,674
+So at any rate, let's go ahead and hit F12 there.
+
+241
+00:10:35,675 --> 00:10:37,613
+So now we have a Button_Click Event,
+
+242
+00:10:37,614 --> 00:10:39,474
+and we're going to make a call into this
+
+243
+00:10:39,475 --> 00:10:42,272
+OpenWeatherMapProxy class.
+
+244
+00:10:43,613 --> 00:10:46,693
+What I want to do is create a
+
+245
+00:10:48,304 --> 00:10:50,582
+public static RootObject GetWeather
+
+246
+00:10:50,583 --> 00:10:54,302
+public static RootObject GetWeather.
+
+247
+00:10:57,373 --> 00:10:59,913
+Eventually, I'll pass in the latitude and longitude.
+
+248
+00:10:59,914 --> 00:11:01,773
+Should I do that now?
+
+249
+00:11:01,774 --> 00:11:03,694
+Yeah, sure, why not?
+
+250
+00:11:03,695 --> 00:11:05,838
+I can always ignore it.
+
+251
+00:11:08,354 --> 00:11:11,793
+Whoops, double latitude,
+
+252
+00:11:11,794 --> 00:11:14,408
+double longitude.
+
+253
+00:11:16,369 --> 00:11:18,179
+Alright, great.
+
+254
+00:11:21,499 --> 00:11:23,898
+So what I need to do is make a call
+
+255
+00:11:23,899 --> 00:11:26,538
+out to this web service.
+
+256
+00:11:26,539 --> 00:11:29,018
+The way that I'll do that is through a class
+
+257
+00:11:29,019 --> 00:11:32,198
+called the HttpClient.
+
+258
+00:11:32,199 --> 00:11:33,818
+To add this, I'm actually going to go
+
+259
+00:11:33,819 --> 00:11:37,018
+to Tools, NuGet Package Manager.
+
+260
+00:11:38,799 --> 00:11:40,728
+I'm going to Manage NuGet Packages
+
+261
+00:11:40,729 --> 00:11:42,976
+for the Solution.
+
+262
+00:11:42,977 --> 00:11:46,686
+I'm going to search for the HttpClient.
+
+263
+00:11:50,327 --> 00:11:53,377
+I'm going to install this.
+
+264
+00:12:00,402 --> 00:12:03,885
+It asked me, "Do you want to add all these?"
+
+265
+00:12:03,886 --> 00:12:06,265
+Yes, yes,
+
+266
+00:12:06,266 --> 00:12:08,145
+and I accept.
+
+267
+00:12:14,416 --> 00:12:16,335
+Alright, very good.
+
+268
+00:12:18,386 --> 00:12:22,256
+So now what I want to do is
+
+269
+00:12:22,257 --> 00:12:23,636
+go here.
+
+270
+00:12:23,637 --> 00:12:26,212
+Should be able to find it.
+
+271
+00:12:26,213 --> 00:12:28,742
+I'm going to add that using statement.
+
+272
+00:12:32,213 --> 00:12:36,112
+We'll go var http = new HttpClient()
+
+273
+00:12:36,113 --> 00:12:39,320
+var http = new HttpClient(), like so.
+
+274
+00:12:41,309 --> 00:12:44,009
+Now what I want to do is
+
+275
+00:12:44,010 --> 00:12:46,568
+get a response object.
+
+276
+00:12:46,569 --> 00:12:49,478
+This a type HTTP response message.
+
+277
+00:12:50,889 --> 00:12:54,128
+I'm going to get to it by calling the GetAsync method.
+
+278
+00:12:54,129 --> 00:12:57,589
+So what we'll do is give it a URI,
+
+279
+00:12:57,590 --> 00:13:00,688
+a string URI that we're going to request.
+
+280
+00:13:00,689 --> 00:13:02,450
+Any time we see the word async,
+
+281
+00:13:02,451 --> 00:13:04,010
+what do we need to do?
+
+282
+00:13:04,011 --> 00:13:05,450
+Remember the formula.
+
+283
+00:13:05,451 --> 00:13:09,610
+We need to say, "I will wait for the results,"
+
+284
+00:13:09,611 --> 00:13:11,990
+and that means I need to tell my method
+
+285
+00:13:11,991 --> 00:13:15,516
+that this is an async method, right?
+
+286
+00:13:15,517 --> 00:13:19,336
+Then I need to give it the URL.
+
+287
+00:13:19,337 --> 00:13:22,316
+If you recall what we did here,
+
+288
+00:13:22,317 --> 00:13:24,756
+I should be able to just copy this in
+
+289
+00:13:24,757 --> 00:13:28,216
+for testing purposes, and just go ahead
+
+290
+00:13:28,217 --> 00:13:30,216
+and pop that in there like so.
+
+291
+00:13:30,217 --> 00:13:32,456
+We should be able to get back
+
+292
+00:13:32,457 --> 00:13:35,516
+whatever data comes from that,
+
+293
+00:13:35,517 --> 00:13:37,367
+comes back from that method.
+
+294
+00:13:38,897 --> 00:13:40,657
+Next up, I need to grab a result,
+
+295
+00:13:40,658 --> 00:13:42,528
+and the result will be
+
+296
+00:13:44,198 --> 00:13:47,468
+what comes back in the
+
+297
+00:13:49,359 --> 00:13:51,628
+response.Content.ReadAsStringAsync()
+
+298
+00:13:52,729 --> 00:13:55,894
+response.Content.ReadAsStringAsync().
+
+299
+00:13:55,895 --> 00:13:57,514
+Again, we see the async keyword.
+
+300
+00:13:57,515 --> 00:14:00,594
+That means we need to await that as well.
+
+301
+00:14:00,595 --> 00:14:04,954
+Now I have this in a string format.
+
+302
+00:14:04,955 --> 00:14:08,098
+Now what I need to do is I need to serialize.
+
+303
+00:14:08,099 --> 00:14:11,506
+I need to take all that string
+
+304
+00:14:11,507 --> 00:14:15,083
+that we see when we looked here,
+
+305
+00:14:15,084 --> 00:14:18,054
+and we need to convert that into an Object Graph.
+
+306
+00:14:19,273 --> 00:14:23,082
+All of these, the RootObject and all of the
+
+307
+00:14:23,083 --> 00:14:26,001
+objects that it has references to.
+
+308
+00:14:26,002 --> 00:14:29,093
+To do that, what I need to do is
+
+309
+00:14:30,342 --> 00:14:34,378
+use an object called the DataContractJsonSerializer.
+
+310
+00:14:36,630 --> 00:14:38,421
+I'm going to create something called a serializer.
+
+311
+00:14:38,422 --> 00:14:40,841
+It's an object that knows how to serialize
+
+312
+00:14:40,842 --> 00:14:43,962
+and deserialize from JSON.
+
+313
+00:14:43,963 --> 00:14:46,272
+We'll go DataContractJsonSerializer
+
+314
+00:14:46,273 --> 00:14:48,891
+DataContractJsonSerializer.
+
+315
+00:14:48,892 --> 00:14:51,891
+As you can see, it's not really part of my
+
+316
+00:14:51,892 --> 00:14:53,233
+Project just yet.
+
+317
+00:14:53,234 --> 00:14:56,071
+However, I can just hit Control+".".
+
+318
+00:14:56,072 --> 00:14:59,452
+and I can add that System.Runtime.Serialization.Json
+
+319
+00:14:59,453 --> 00:15:02,356
+System.Runtime.Serialization.Json namespace, and we should
+
+320
+00:15:02,357 --> 00:15:04,366
+be good to go there.
+
+321
+00:15:06,116 --> 00:15:10,039
+I need to give it the typeof
+
+322
+00:15:10,040 --> 00:15:11,738
+class that I want to work with.
+
+323
+00:15:11,739 --> 00:15:13,714
+In this case, we'll start with the RootObject,
+
+324
+00:15:13,715 --> 00:15:16,015
+and it'll have references to everything else
+
+325
+00:15:16,016 --> 00:15:17,486
+that it needs.
+
+326
+00:15:19,716 --> 00:15:22,199
+Oh, we need to create a new instance of that.
+
+327
+00:15:22,200 --> 00:15:24,458
+There we go.
+
+328
+00:15:24,459 --> 00:15:27,678
+Now, in order for this to work, we have to do something,
+
+329
+00:15:27,679 --> 00:15:29,738
+we have to adorn each of these classes
+
+330
+00:15:29,739 --> 00:15:32,940
+and their properties with special
+
+331
+00:15:34,280 --> 00:15:36,090
+attributes.
+
+332
+00:15:36,091 --> 00:15:38,631
+To get this to work right, every class is going to
+
+333
+00:15:38,632 --> 00:15:40,034
+have to be adorned with something called
+
+334
+00:15:40,035 --> 00:15:41,625
+a DataContract.
+
+335
+00:15:43,176 --> 00:15:45,496
+This attribute is in a namespace that we
+
+336
+00:15:45,497 --> 00:15:48,961
+need to add, System.Runtime.Serialization
+
+337
+00:15:50,400 --> 00:15:53,976
+This will just tell the serializer that, "Hey,
+
+338
+00:15:53,977 --> 00:15:57,841
+"treat this like a class, and treat this like
+
+339
+00:15:57,842 --> 00:15:59,041
+"a property."
+
+340
+00:15:59,042 --> 00:16:01,422
+We'll go DataMember for each property.
+
+341
+00:16:01,423 --> 00:16:04,021
+Now we have to go through
+
+342
+00:16:04,022 --> 00:16:06,821
+and add that attribute on top of every class
+
+343
+00:16:06,822 --> 00:16:09,162
+and every member of the class.
+
+344
+00:16:09,163 --> 00:16:11,521
+I'm just going to go ahead and do this.
+
+345
+00:16:11,522 --> 00:16:13,782
+It's going to take me a minute or two
+
+346
+00:16:13,783 --> 00:16:16,472
+of just copying and pasting a lot.
+
+347
+00:16:21,422 --> 00:16:23,244
+This is a common thing that you'll do whenever
+
+348
+00:16:23,245 --> 00:16:27,235
+you're calling out
+
+349
+00:16:29,065 --> 00:16:31,010
+to web APIs.
+
+350
+00:16:31,011 --> 00:16:33,718
+I don't think that you could be a professional developer
+
+351
+00:16:33,719 --> 00:16:37,898
+nowadays without knowing these techniques,
+
+352
+00:16:37,899 --> 00:16:40,999
+being able to serialize and deserialize from XML
+
+353
+00:16:41,000 --> 00:16:44,219
+and JSON format, and maybe other custom formats,
+
+354
+00:16:44,220 --> 00:16:47,100
+too, like some binary format.
+
+355
+00:16:47,101 --> 00:16:50,760
+It's a pretty crucial skill to have in your toolbelt.
+
+356
+00:16:50,761 --> 00:16:53,480
+This is just one
+
+357
+00:16:53,481 --> 00:16:55,711
+possible way to go about this.
+
+358
+00:16:57,460 --> 00:16:58,961
+I see something that caught my eye
+
+359
+00:16:58,962 --> 00:17:00,635
+just a moment ago.
+
+360
+00:17:03,384 --> 00:17:05,228
+It spurred a memory
+
+361
+00:17:05,229 --> 00:17:08,017
+of frustrations past.
+
+362
+00:17:09,267 --> 00:17:11,169
+Let me get back to it here in a just a second.
+
+363
+00:17:11,170 --> 00:17:12,684
+There'll be some things that I want to change
+
+364
+00:17:12,685 --> 00:17:15,704
+the names of that I don't like how they're
+
+365
+00:17:15,705 --> 00:17:18,485
+automatically named by that
+
+366
+00:17:18,486 --> 00:17:20,549
+tool that we used,
+
+367
+00:17:20,550 --> 00:17:23,681
+that free website that converts
+
+368
+00:17:25,152 --> 00:17:27,665
+your JSON into C#
+
+369
+00:17:27,666 --> 00:17:29,786
+POCO classes.
+
+370
+00:17:29,787 --> 00:17:32,225
+Yeah, for example, this item here
+
+371
+00:17:32,226 --> 00:17:33,445
+has an invalid name.
+
+372
+00:17:33,446 --> 00:17:35,445
+In fact, what I'm going to do is just
+
+373
+00:17:35,446 --> 00:17:37,405
+comment this out completely.
+
+374
+00:17:37,406 --> 00:17:39,648
+I'm not going to even use this at all.
+
+375
+00:17:41,687 --> 00:17:45,097
+Hopefully, the deserializer,
+
+376
+00:17:45,098 --> 00:17:47,672
+the DataContractJsonSerializer
+
+377
+00:17:47,673 --> 00:17:50,191
+will just say, "Oh, okay, they don't have a class for that.
+
+378
+00:17:50,192 --> 00:17:53,491
+"We'll just ignore that," as it tries to pair up
+
+379
+00:17:53,492 --> 00:17:55,651
+all of the data
+
+380
+00:17:55,652 --> 00:17:58,252
+that it has with all the class
+
+381
+00:17:58,253 --> 00:18:00,631
+and property names.
+
+382
+00:18:00,632 --> 00:18:02,434
+So that's the only thing that I think
+
+383
+00:18:02,435 --> 00:18:03,653
+I was concerned about.
+
+384
+00:18:03,654 --> 00:18:05,865
+Let's go ahead and continue on here.
+
+385
+00:18:07,736 --> 00:18:09,176
+Now what we're going to need to do is get
+
+386
+00:18:09,177 --> 00:18:11,936
+a MemoryStream.
+
+387
+00:18:11,937 --> 00:18:13,989
+New MemoryStream.
+
+388
+00:18:17,609 --> 00:18:19,522
+Let me go ahead and hit Control+"."
+
+389
+00:18:19,523 --> 00:18:21,222
+on my keyboard
+
+390
+00:18:23,963 --> 00:18:26,662
+and add the System.IO namespace.
+
+391
+00:18:30,454 --> 00:18:32,552
+I want to tell it that we're working
+
+392
+00:18:32,553 --> 00:18:35,064
+with a certain type of Encoding,
+
+393
+00:18:36,976 --> 00:18:40,985
+specifically, the UTF-8 Encoding.
+
+394
+00:18:42,265 --> 00:18:44,276
+We're going to call GetBytes.
+
+395
+00:18:44,277 --> 00:18:45,499
+The reason why we're doing this
+
+396
+00:18:45,500 --> 00:18:48,012
+is kind of a long story.
+
+397
+00:18:49,360 --> 00:18:51,343
+I don't really want to talk about it
+
+398
+00:18:51,344 --> 00:18:52,563
+at the moment.
+
+399
+00:18:52,564 --> 00:18:54,581
+Most of the time, whenever you're grabbing JSON
+
+400
+00:18:54,582 --> 00:18:56,242
+and you're working with it, you're going to need
+
+401
+00:18:56,243 --> 00:18:59,102
+to work with the,
+
+402
+00:18:59,103 --> 00:19:02,043
+the way that the text is encoded is just UTF-8,
+
+403
+00:19:02,044 --> 00:19:06,012
+so you'll often use this similar line of code to this.
+
+404
+00:19:06,013 --> 00:19:08,182
+Just keep that in mind.
+
+405
+00:19:08,183 --> 00:19:11,223
+Finally, now that we're ready to accept
+
+406
+00:19:11,224 --> 00:19:13,763
+a MemoryStream, and a Stream
+
+407
+00:19:13,764 --> 00:19:15,873
+is just a
+
+408
+00:19:17,745 --> 00:19:18,703
+straw.
+
+409
+00:19:18,704 --> 00:19:21,163
+It allows us to just have data come in and go out.
+
+410
+00:19:21,164 --> 00:19:22,804
+Whenever you have things that are happening
+
+411
+00:19:22,805 --> 00:19:24,504
+at two different speeds, you have something
+
+412
+00:19:24,505 --> 00:19:26,783
+sending data at a different rate of speed
+
+413
+00:19:26,784 --> 00:19:29,565
+than something accepting data, you use a Stream.
+
+414
+00:19:30,904 --> 00:19:32,175
+Here we're going to use a MemoryStream.
+
+415
+00:19:32,176 --> 00:19:34,676
+We're just going to keep everything in memory
+
+416
+00:19:34,677 --> 00:19:37,115
+until it all gets sorted out.
+
+417
+00:19:37,116 --> 00:19:40,262
+Data will go in one end, and then it'll be taken out
+
+418
+00:19:40,263 --> 00:19:42,702
+as it's needed on the other end.
+
+419
+00:19:42,703 --> 00:19:46,500
+Finally, we're going to go ahead and do,
+
+420
+00:19:48,291 --> 00:19:51,085
+get the actual data out of the serializer.
+
+421
+00:19:53,964 --> 00:19:55,904
+ReadObject
+
+422
+00:19:57,655 --> 00:19:59,916
+and
+
+423
+00:19:59,917 --> 00:20:02,839
+let's also then cast that
+
+424
+00:20:02,840 --> 00:20:04,879
+to a RootObject.
+
+425
+00:20:04,880 --> 00:20:07,309
+Then we're going to return the data.
+
+426
+00:20:08,740 --> 00:20:11,620
+So I realize this is pretty meaty stuff here.
+
+427
+00:20:11,621 --> 00:20:13,699
+It looks like there's one last thing that I need to do.
+
+428
+00:20:13,700 --> 00:20:15,939
+If I hover my mouse cursor over this,
+
+429
+00:20:15,940 --> 00:20:19,280
+we've created an async method,
+
+430
+00:20:19,281 --> 00:20:21,991
+but we've not adorned
+
+431
+00:20:21,992 --> 00:20:24,791
+the return object as a Task.
+
+432
+00:20:24,792 --> 00:20:26,771
+So we need to say, actually, what we're going to
+
+433
+00:20:26,772 --> 00:20:29,151
+be returning is not a RootObject,
+
+434
+00:20:29,152 --> 00:20:32,874
+but a promise that when this is completed,
+
+435
+00:20:32,875 --> 00:20:35,454
+it will give us the type RootObject.
+
+436
+00:20:35,455 --> 00:20:37,593
+That's what a Task object is.
+
+437
+00:20:41,032 --> 00:20:43,963
+That should work, hopefully.
+
+438
+00:20:43,964 --> 00:20:46,664
+We'll test that out in just a moment here.
+
+439
+00:20:46,665 --> 00:20:49,644
+So let's go over here to our MainPage.xaml
+
+440
+00:20:49,645 --> 00:20:52,883
+and make a call into
+
+441
+00:20:52,884 --> 00:20:53,843
+that.
+
+442
+00:20:53,844 --> 00:20:55,268
+So let's go
+
+443
+00:20:57,031 --> 00:21:00,372
+var weather equals
+
+444
+00:21:03,442 --> 00:21:05,942
+new, well, actually, let's not do it that way.
+
+445
+00:21:05,943 --> 00:21:09,463
+Let's go RootObject myWeather
+
+446
+00:21:09,464 --> 00:21:11,374
+RootObject myWeather = OpenWeatherMapProxy.GetWeather()
+
+447
+00:21:13,385 --> 00:21:16,337
+RootObject myWeather = OpenWeatherMapProxy.GetWeather()
+
+448
+00:21:20,846 --> 00:21:24,578
+RootObject myWeather = OpenWeatherMapProxy.GetWeather().
+
+449
+00:21:24,579 --> 00:21:27,203
+We'll give it just
+
+450
+00:21:32,920 --> 00:21:34,621
+a fake
+
+451
+00:21:39,721 --> 00:21:42,593
+latitude and longitude because I know
+
+452
+00:21:42,594 --> 00:21:45,544
+we're going to be hard coding that.
+
+453
+00:21:49,615 --> 00:21:53,214
+This has to be awaited, right?
+
+454
+00:21:53,215 --> 00:21:55,761
+That means this has to be async, right?
+
+455
+00:22:00,772 --> 00:22:02,811
+So that looks like that works, great.
+
+456
+00:22:02,812 --> 00:22:04,839
+Let's move that over a little bit.
+
+457
+00:22:06,853 --> 00:22:08,431
+Now that we have the weather, we should
+
+458
+00:22:08,432 --> 00:22:12,622
+be able to, for example, in the ResultTextBlock.Text,
+
+459
+00:22:13,833 --> 00:22:16,233
+we should be able to go
+
+460
+00:22:17,483 --> 00:22:20,804
+myWeather.name,
+
+461
+00:22:23,155 --> 00:22:26,564
+and then let's concatenate that to
+
+462
+00:22:28,035 --> 00:22:30,052
+myWeather.
+
+463
+00:22:30,053 --> 00:22:32,322
+What else can we get here?
+
+464
+00:22:35,935 --> 00:22:38,260
+I think if we do, if we want to get to the temperature,
+
+465
+00:22:38,261 --> 00:22:40,506
+we go to myWeather.main.temp
+
+466
+00:22:42,429 --> 00:22:43,556
+myWeather.main.temp.
+
+467
+00:22:43,557 --> 00:22:45,016
+There we go.
+
+468
+00:22:45,017 --> 00:22:48,424
+Then I think, also,
+
+469
+00:22:48,425 --> 00:22:50,142
+we can do this,
+
+470
+00:22:50,143 --> 00:22:52,780
+my... plus
+
+471
+00:22:52,781 --> 00:22:56,030
+myWeather dot...
+
+472
+00:22:59,909 --> 00:23:01,647
+What we'll get back with this weather
+
+473
+00:23:01,648 --> 00:23:04,128
+is it'll be a list of weather items.
+
+474
+00:23:04,129 --> 00:23:06,588
+We want the first weather item.
+
+475
+00:23:06,589 --> 00:23:08,187
+I think the other weather items are for
+
+476
+00:23:08,188 --> 00:23:10,668
+different hours or different days.
+
+477
+00:23:10,669 --> 00:23:12,568
+Then we'll say, "Give me a description
+
+478
+00:23:12,569 --> 00:23:16,166
+"of what the weather is."
+
+479
+00:23:18,249 --> 00:23:19,195
+So let's go ahead and run it.
+
+480
+00:23:19,196 --> 00:23:21,076
+I'm sure we'll hit some bugs
+
+481
+00:23:21,077 --> 00:23:22,883
+in just a moment.
+
+482
+00:23:26,437 --> 00:23:27,541
+Yeah.
+
+483
+00:23:28,977 --> 00:23:30,031
+Oh, here we go.
+
+484
+00:23:30,032 --> 00:23:31,871
+That's easy to fix.
+
+485
+00:23:31,872 --> 00:23:34,011
+I got rid of the class, so I have
+
+486
+00:23:34,012 --> 00:23:35,391
+to get rid of that as well.
+
+487
+00:23:35,392 --> 00:23:37,359
+Let's try it now.
+
+488
+00:23:43,632 --> 00:23:45,206
+Alright, well, we got our hot pink.
+
+489
+00:23:45,207 --> 00:23:48,014
+At least that's going for us.
+
+490
+00:23:48,015 --> 00:23:50,334
+I'll click Get Weather, and awesome.
+
+491
+00:23:50,335 --> 00:23:52,434
+Look, we got Dallas County.
+
+492
+00:23:52,435 --> 00:23:55,174
+We get the temperature is 299,
+
+493
+00:23:55,175 --> 00:23:57,074
+so that's Kelvin degrees.
+
+494
+00:23:57,075 --> 00:23:59,993
+We need to use, we can use Celsius
+
+495
+00:24:01,953 --> 00:24:04,459
+for those who live in the Metric System,
+
+496
+00:24:04,460 --> 00:24:07,440
+or Fahrenheit for those who live
+
+497
+00:24:07,441 --> 00:24:09,608
+in the Imperial System.
+
+498
+00:24:10,981 --> 00:24:12,643
+But at any rate, I was able to grab out
+
+499
+00:24:12,644 --> 00:24:14,502
+where I'm at currently.
+
+500
+00:24:14,503 --> 00:24:16,702
+So I'm in Dallas County.
+
+501
+00:24:16,703 --> 00:24:19,142
+This is on my local desktop.
+
+502
+00:24:19,143 --> 00:24:21,382
+I don't have a GPS, but it's able to triangulate
+
+503
+00:24:21,383 --> 00:24:24,742
+based on where my IP Address is to determine
+
+504
+00:24:24,743 --> 00:24:26,842
+where I'm coming from,
+
+505
+00:24:26,843 --> 00:24:29,242
+and it can determine that.
+
+506
+00:24:29,243 --> 00:24:31,962
+Then you can see here, it's light raining,
+
+507
+00:24:31,963 --> 00:24:33,622
+which is true.
+
+508
+00:24:33,623 --> 00:24:36,010
+I think it's in the mid 70s, high 70s.
+
+509
+00:24:36,011 --> 00:24:37,390
+We'll have to change that.
+
+510
+00:24:37,391 --> 00:24:39,530
+In fact, I think what I can do here,
+
+511
+00:24:39,531 --> 00:24:41,010
+let's go ahead and play around with this
+
+512
+00:24:41,011 --> 00:24:43,050
+a little bit.
+
+513
+00:24:43,051 --> 00:24:45,720
+We make our call out,
+
+514
+00:24:45,721 --> 00:24:48,880
+I think I can hit,
+
+515
+00:24:48,881 --> 00:24:51,811
+do this: units=imperial
+
+516
+00:24:53,450 --> 00:24:56,030
+units=imperial.
+
+517
+00:24:56,031 --> 00:24:58,068
+See if that's correct.
+
+518
+00:25:03,479 --> 00:25:05,998
+Yeah, so 78 degrees.
+
+519
+00:25:05,999 --> 00:25:10,328
+In fact, let me do one thing here with that,
+
+520
+00:25:11,519 --> 00:25:12,941
+with the temperature.
+
+521
+00:25:12,942 --> 00:25:15,441
+I'm just going to go ahead and go
+
+522
+00:25:15,442 --> 00:25:17,261
+convert that to an integer, and then take
+
+523
+00:25:17,262 --> 00:25:19,522
+the whole thing and convert it ToString,
+
+524
+00:25:21,322 --> 00:25:22,942
+like that.
+
+525
+00:25:25,762 --> 00:25:28,913
+That will get rid of the decimal.
+
+526
+00:25:28,914 --> 00:25:30,123
+Great.
+
+527
+00:25:30,124 --> 00:25:32,144
+One other thing that I want to talk about here
+
+528
+00:25:32,145 --> 00:25:36,046
+before we go any further, and that is
+
+529
+00:25:36,047 --> 00:25:37,958
+if you look at
+
+530
+00:25:40,507 --> 00:25:43,227
+this, you can also get to icons.
+
+531
+00:25:43,228 --> 00:25:46,467
+If we scroll down, there are some icons
+
+532
+00:25:46,468 --> 00:25:48,867
+that are associated
+
+533
+00:25:48,868 --> 00:25:50,419
+with.
+
+534
+00:25:51,868 --> 00:25:54,470
+Let me see if I search this, icon.
+
+535
+00:26:00,301 --> 00:26:02,741
+Yeah, you can see that it will return back
+
+536
+00:26:02,742 --> 00:26:04,901
+an icon as well.
+
+537
+00:26:04,902 --> 00:26:06,621
+So let's just,
+
+538
+00:26:08,181 --> 00:26:11,001
+let's have a little fun with this, actually.
+
+539
+00:26:14,514 --> 00:26:17,223
+Let's add an Image control.
+
+540
+00:26:22,892 --> 00:26:24,247
+Let's set its Name="ResultsImage"
+
+541
+00:26:24,248 --> 00:26:28,407
+Name="ResultsImage".
+
+542
+00:26:28,408 --> 00:26:31,480
+I'll just do Width="200"
+
+543
+00:26:31,481 --> 00:26:33,451
+Height="200".
+
+544
+00:26:36,084 --> 00:26:39,983
+Then what we'll do inside of here is set the
+
+545
+00:26:41,444 --> 00:26:43,576
+ResultImage.Source = myWeather
+
+546
+00:26:45,507 --> 00:26:48,477
+ResultImage.Source = myWeather
+
+547
+00:26:48,478 --> 00:26:50,908
+ResultImage.Source = myWeather
+
+548
+00:26:57,838 --> 00:27:00,018
+I think in order to get this work,
+
+549
+00:27:00,019 --> 00:27:02,540
+I'm going to have to act on this a little bit.
+
+550
+00:27:02,541 --> 00:27:04,940
+I don't think it's going to give me back,
+
+551
+00:27:04,941 --> 00:27:07,260
+the data that it gives us back, if we take a look
+
+552
+00:27:07,261 --> 00:27:10,641
+at this, like an example,
+
+553
+00:27:10,642 --> 00:27:13,933
+it gives us just '04n'
+
+554
+00:27:13,934 --> 00:27:15,333
+as the icon.
+
+555
+00:27:15,334 --> 00:27:17,146
+If we take a look at
+
+556
+00:27:18,854 --> 00:27:20,508
+this URL,
+
+557
+00:27:22,836 --> 00:27:25,679
+weather conditions.
+
+558
+00:27:25,680 --> 00:27:29,019
+Openweathermap.org/weather-conditions.
+
+559
+00:27:29,020 --> 00:27:31,399
+You can see that there are a bunch
+
+560
+00:27:31,400 --> 00:27:34,619
+of weather icons with specific names.
+
+561
+00:27:34,620 --> 00:27:38,339
+'01d' for daytime, '01n' for nighttime,
+
+562
+00:27:38,340 --> 00:27:41,399
+'02d' for daytime, so this is sunny,
+
+563
+00:27:41,400 --> 00:27:44,480
+partly sunny, cloudy, overcast.
+
+564
+00:27:45,840 --> 00:27:47,891
+It looks like they have the descriptions, too, here,
+
+565
+00:27:47,892 --> 00:27:49,291
+clear sky, rain, mist.
+
+566
+00:27:49,292 --> 00:27:51,392
+There's nine or ten of these things
+
+567
+00:27:51,393 --> 00:27:53,131
+with specific names.
+
+568
+00:27:53,132 --> 00:27:55,792
+So what my thought process is, is we can
+
+569
+00:27:55,793 --> 00:27:57,575
+access these
+
+570
+00:27:58,866 --> 00:28:01,275
+by going to
+
+571
+00:28:02,365 --> 00:28:04,085
+this URL, for example,
+
+572
+00:28:04,086 --> 00:28:07,716
+openweathermap.org/image/w/10d.png
+
+573
+00:28:07,717 --> 00:28:10,236
+openweathermap.org/image/w/10d.png.
+
+574
+00:28:10,237 --> 00:28:11,736
+Let's open that up in a new tab,
+
+575
+00:28:11,737 --> 00:28:14,875
+and you can see that we get that new image there.
+
+576
+00:28:14,876 --> 00:28:17,696
+So let's do this.
+
+577
+00:28:17,697 --> 00:28:20,375
+Let's grab that URL.
+
+578
+00:28:20,376 --> 00:28:22,568
+I copied it to my clipboard.
+
+579
+00:28:24,177 --> 00:28:26,369
+Let's go string icon = String.Format
+
+580
+00:28:26,370 --> 00:28:29,129
+string icon = String.Format
+
+581
+00:28:29,130 --> 00:28:32,688
+Then we'll use that for the most part,
+
+582
+00:28:32,689 --> 00:28:34,509
+but I know we're only going to get that little bit
+
+583
+00:28:34,510 --> 00:28:37,060
+right there from the
+
+584
+00:28:37,061 --> 00:28:38,941
+myWeather object.
+
+585
+00:28:38,942 --> 00:28:41,632
+So let's go myWeather dot...
+
+586
+00:28:43,282 --> 00:28:44,522
+There should be an icon here.
+
+587
+00:28:44,523 --> 00:28:46,463
+How do I get to the icon?
+
+588
+00:28:46,464 --> 00:28:48,023
+Oh, yeah, it's part of weather.
+
+589
+00:28:48,024 --> 00:28:52,344
+So weather.icon, great.
+
+590
+00:28:53,483 --> 00:28:55,295
+Now that we have it, we're going to set
+
+591
+00:28:55,296 --> 00:28:59,205
+the Source = new BitmapImage.
+
+592
+00:29:01,356 --> 00:29:03,986
+Yeah, and I don't have that correct,
+
+593
+00:29:05,295 --> 00:29:07,956
+so I'll have to add the using statement for
+
+594
+00:29:07,957 --> 00:29:11,389
+Windows.UI.Xaml.Media.Imaging.
+
+595
+00:29:11,390 --> 00:29:13,349
+So we've added that, and now I'm going to create
+
+596
+00:29:13,350 --> 00:29:15,209
+a new URI.
+
+597
+00:29:15,210 --> 00:29:17,083
+The URI will be
+
+598
+00:29:18,974 --> 00:29:20,549
+the string that we just formatted.
+
+599
+00:29:20,550 --> 00:29:24,389
+I have to tell it what kind of URI I want there.
+
+600
+00:29:24,390 --> 00:29:28,060
+So URIKind.Absolute.
+
+601
+00:29:29,551 --> 00:29:32,209
+So let's see if that works now, and let's
+
+602
+00:29:32,210 --> 00:29:34,090
+run the app.
+
+603
+00:29:37,510 --> 00:29:38,771
+Awesome.
+
+604
+00:29:38,772 --> 00:29:40,512
+So here's my thought.
+
+605
+00:29:40,513 --> 00:29:42,372
+I don't like their icons.
+
+606
+00:29:42,373 --> 00:29:44,531
+It makes the app look too generic.
+
+607
+00:29:44,532 --> 00:29:47,292
+What if supplied my own version of the icons,
+
+608
+00:29:47,293 --> 00:29:49,512
+and I just change wherever
+
+609
+00:29:49,513 --> 00:29:51,153
+we're actually accessing them?
+
+610
+00:29:51,154 --> 00:29:52,424
+I won't go out to
+
+611
+00:29:52,425 --> 00:29:55,544
+opwenweathermap.org/image/w.
+
+612
+00:29:55,545 --> 00:29:57,804
+I'll just go to my Assets folder here.
+
+613
+00:29:57,805 --> 00:30:00,295
+We'll do that, I think, in the next video.
+
+614
+00:30:02,705 --> 00:30:04,345
+I think that's the next thing that we'll talk about.
+
+615
+00:30:04,346 --> 00:30:06,925
+If not, it'll be the video after that.
+
+616
+00:30:06,926 --> 00:30:08,385
+We'll add that in.
+
+617
+00:30:08,386 --> 00:30:10,385
+At least we'll have our own icons,
+
+618
+00:30:10,386 --> 00:30:12,665
+and it'll look very distinctive
+
+619
+00:30:12,666 --> 00:30:15,225
+for the style that we're trying to achieve.
+
+620
+00:30:15,226 --> 00:30:16,925
+We covered a lot of ground in this video,
+
+621
+00:30:16,926 --> 00:30:19,445
+but we talked about a little bit of setup,
+
+622
+00:30:19,446 --> 00:30:21,805
+but mostly about how to get at the data.
+
+623
+00:30:21,806 --> 00:30:23,585
+So we've made huge strides just in this
+
+624
+00:30:23,586 --> 00:30:25,084
+very first video.
+
+625
+00:30:25,085 --> 00:30:26,131
+We'll pick it up in the next one.
+
+626
+00:30:26,132 --> 00:30:27,901
+Thanks.  
+

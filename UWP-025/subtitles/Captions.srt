@@ -1,0 +1,1756 @@
+1
+00:00:05,415 --> 00:00:09,594
+ďťż- Hi I'm Bob Tabor with www.learnvisualstudio.net,
+
+2
+00:00:09,595 --> 00:00:12,759
+and in this lesson we're going to add more controls
+
+3
+00:00:12,760 --> 00:00:14,274
+to our repertoire.
+
+4
+00:00:14,275 --> 00:00:17,559
+And we'll do it exactly like we did the previous time,
+
+5
+00:00:17,560 --> 00:00:21,984
+where we copied in some XAML, talked about the Control,
+
+6
+00:00:21,985 --> 00:00:24,889
+showed you how to access the values of that Control
+
+7
+00:00:24,890 --> 00:00:26,029
+and so on.
+
+8
+00:00:26,030 --> 00:00:28,524
+So let's begin by getting our example started off.
+
+9
+00:00:28,525 --> 00:00:30,154
+You can see that I created a new project called
+
+10
+00:00:30,155 --> 00:00:32,219
+ControlsExamplePart2,
+
+11
+00:00:32,220 --> 00:00:36,359
+and I'm going to replace the Grid with one that I had
+
+12
+00:00:36,360 --> 00:00:38,189
+on my clipboard.
+
+13
+00:00:38,190 --> 00:00:40,794
+This will create a number of RowDefinitions
+
+14
+00:00:40,795 --> 00:00:43,089
+and two ColumnDefinitions.
+
+15
+00:00:43,090 --> 00:00:48,024
+And inside of here, we're going to begin to copy and paste
+
+16
+00:00:48,025 --> 00:00:50,754
+some XAML for the various Controls that we'll cover.
+
+17
+00:00:50,755 --> 00:00:52,284
+We're going to start by talking about Controls
+
+18
+00:00:52,285 --> 00:00:55,744
+that allow user input for times and dates.
+
+19
+00:00:55,745 --> 00:00:57,784
+And so the first Control that I want to call
+
+20
+00:00:57,785 --> 00:00:59,684
+your attention to is the TimePicker.
+
+21
+00:00:59,685 --> 00:01:02,624
+This would allow a user to select an hour
+
+22
+00:01:02,625 --> 00:01:06,584
+and a minute for your application.
+
+23
+00:01:06,585 --> 00:01:09,959
+So say I want a reminder at 9:30 PM,
+
+24
+00:01:09,960 --> 00:01:12,554
+this would allow your user to easily select that
+
+25
+00:01:12,555 --> 00:01:14,849
+whether with touch or with mouse.
+
+26
+00:01:14,850 --> 00:01:17,279
+So the most interesting property, I believe,
+
+27
+00:01:17,280 --> 00:01:19,424
+is this ClockIdentifier property.
+
+28
+00:01:19,425 --> 00:01:22,319
+It comes with two potential values,
+
+29
+00:01:22,320 --> 00:01:24,554
+either a 12HourClock that will allow the user
+
+30
+00:01:24,555 --> 00:01:26,684
+to select AM/PM,
+
+31
+00:01:26,685 --> 00:01:29,094
+or a 24HourClock, which in the United States,
+
+32
+00:01:29,095 --> 00:01:30,924
+is known as military time.
+
+33
+00:01:30,925 --> 00:01:33,339
+So I'm going to choose the 12-hour clock,
+
+34
+00:01:33,340 --> 00:01:36,624
+and then let's go ahead and run the application.
+
+35
+00:01:37,695 --> 00:01:40,139
+And you can see that currently, as I'm recording,
+
+36
+00:01:40,140 --> 00:01:41,789
+it is 4:07 PM.
+
+37
+00:01:41,790 --> 00:01:46,094
+As I select the Control itself, it shows
+
+38
+00:01:46,095 --> 00:01:49,529
+a nice pop-up that would look good in a mobile device,
+
+39
+00:01:49,530 --> 00:01:51,584
+as well as a desktop.
+
+40
+00:01:51,585 --> 00:01:55,754
+And here I can select different times and choose AM/PM
+
+41
+00:01:55,755 --> 00:01:59,429
+and then click the check mark for acceptance
+
+42
+00:01:59,430 --> 00:02:01,244
+or the X to cancel.
+
+43
+00:02:01,245 --> 00:02:03,924
+All right, and you can see my selections now are displayed
+
+44
+00:02:03,925 --> 00:02:05,919
+in the Control's body as well.
+
+45
+00:02:05,920 --> 00:02:07,159
+Very nice.
+
+46
+00:02:07,160 --> 00:02:10,919
+The next Control that I want to talk about relates to dates.
+
+47
+00:02:10,920 --> 00:02:13,094
+And there are actually two of these.
+
+48
+00:02:13,095 --> 00:02:17,594
+The first one is what is called a CalendarDatePicker.
+
+49
+00:02:17,595 --> 00:02:19,709
+And so when you hear the term "Picker",
+
+50
+00:02:19,710 --> 00:02:22,154
+typically you're going to see a flyout up here.
+
+51
+00:02:22,155 --> 00:02:25,319
+In other words, you're not going to see the entire body
+
+52
+00:02:25,320 --> 00:02:26,484
+of the Control, you'll just see
+
+53
+00:02:26,485 --> 00:02:27,624
+a little part of the Control.
+
+54
+00:02:27,625 --> 00:02:30,589
+You click on that Control and it will show you more
+
+55
+00:02:30,590 --> 00:02:31,484
+items to choose from.
+
+56
+00:02:31,485 --> 00:02:34,229
+In this case, you'll see a Calendar pop up.
+
+57
+00:02:34,230 --> 00:02:37,784
+So let's go ahead and run the application as is,
+
+58
+00:02:37,785 --> 00:02:40,184
+and then we'll talk about some of its special properties.
+
+59
+00:02:40,185 --> 00:02:42,849
+So here you can see that we get this little Control,
+
+60
+00:02:42,850 --> 00:02:45,549
+select a date, a little date or Calendar icon
+
+61
+00:02:45,550 --> 00:02:47,094
+off to the right hand side.
+
+62
+00:02:47,095 --> 00:02:49,629
+And when I select it, you can see that
+
+63
+00:02:49,630 --> 00:02:51,144
+we get a nice Calendar here.
+
+64
+00:02:51,145 --> 00:02:53,319
+Today is selected by default.
+
+65
+00:02:53,320 --> 00:02:55,494
+I can move up and down in months.
+
+66
+00:02:55,495 --> 00:02:58,119
+I can choose different dates and when I do,
+
+67
+00:02:58,120 --> 00:02:59,659
+notice that it makes that selection
+
+68
+00:02:59,660 --> 00:03:03,919
+and puts it into the visible area of that CalendarPicker.
+
+69
+00:03:03,920 --> 00:03:07,159
+Now if you take a look here over on the,
+
+70
+00:03:07,160 --> 00:03:09,834
+let me get this off here,
+
+71
+00:03:11,385 --> 00:03:13,859
+take a look out here on the right-hand side
+
+72
+00:03:13,860 --> 00:03:16,994
+in the Properties area, you can see that there are
+
+73
+00:03:16,995 --> 00:03:18,339
+a number of interesting Properties
+
+74
+00:03:18,340 --> 00:03:20,814
+like the type of Calendar that we're going to use.
+
+75
+00:03:20,815 --> 00:03:22,554
+By default, in the United States,
+
+76
+00:03:22,555 --> 00:03:23,989
+it's set to GregorianCalendar.
+
+77
+00:03:23,990 --> 00:03:26,089
+However, you can see that there are
+
+78
+00:03:26,090 --> 00:03:28,519
+many different types of Calendars for various
+
+79
+00:03:28,520 --> 00:03:30,694
+Asian countries.
+
+80
+00:03:30,695 --> 00:03:34,819
+There is a HebrewCalendar and others as well, okay?
+
+81
+00:03:34,820 --> 00:03:37,924
+IsTodayHighlighted, that is interesting.
+
+82
+00:03:37,925 --> 00:03:39,829
+It's, by default, selected.
+
+83
+00:03:39,830 --> 00:03:41,554
+You can change the PlaceholderText,
+
+84
+00:03:41,555 --> 00:03:44,524
+and I'll just go ahead and change that to "choose a date",
+
+85
+00:03:44,525 --> 00:03:46,519
+and we'll see that the next time we run.
+
+86
+00:03:46,520 --> 00:03:48,689
+And there might be some other interesting
+
+87
+00:03:48,690 --> 00:03:51,624
+little things here, but I think that is probably
+
+88
+00:03:51,625 --> 00:03:54,549
+the majority of the interesting things to look at
+
+89
+00:03:54,550 --> 00:03:56,154
+with the CalendarDatePicker.
+
+90
+00:03:56,155 --> 00:03:59,289
+Now the other type of Calendar Control
+
+91
+00:03:59,290 --> 00:04:02,529
+is actually just called the CalendarView.
+
+92
+00:04:02,530 --> 00:04:05,619
+And when you hear the word view, typically,
+
+93
+00:04:05,620 --> 00:04:08,239
+in XAML controls, it means that it is going to be
+
+94
+00:04:08,240 --> 00:04:09,629
+displayed all of the time.
+
+95
+00:04:09,630 --> 00:04:12,554
+So in this case, we have a CalendarView control,
+
+96
+00:04:12,555 --> 00:04:16,889
+you can see that I have a SelectedDatesChanged EventHandler.
+
+97
+00:04:16,890 --> 00:04:19,184
+So let me go ahead and just create that EventHandler
+
+98
+00:04:19,185 --> 00:04:21,194
+by putting my mouse cursor on that word
+
+99
+00:04:21,195 --> 00:04:23,189
+and then hitting F12 on the keyboard,
+
+100
+00:04:23,190 --> 00:04:24,429
+that should satisfy for now.
+
+101
+00:04:24,430 --> 00:04:25,954
+We'll come back to and add some code to that
+
+102
+00:04:25,955 --> 00:04:27,154
+in just a moment.
+
+103
+00:04:27,155 --> 00:04:29,529
+Notice here that we can make Multiple selections
+
+104
+00:04:29,530 --> 00:04:31,719
+in the Calendar instead of just one.
+
+105
+00:04:31,720 --> 00:04:34,429
+Let's see what the other values are.
+
+106
+00:04:34,430 --> 00:04:37,744
+So No selection, a Single date selection
+
+107
+00:04:37,745 --> 00:04:39,784
+or Multiple date selections.
+
+108
+00:04:39,785 --> 00:04:43,004
+Leave it at Multiple and then run the application.
+
+109
+00:04:44,915 --> 00:04:48,849
+And so you can see today is highlighted by default.
+
+110
+00:04:48,850 --> 00:04:51,449
+I can make various selections and notice that
+
+111
+00:04:51,450 --> 00:04:55,734
+everytime I make a selection it highlights that date, okay?
+
+112
+00:04:56,590 --> 00:04:59,119
+Notice how much space this actually takes up
+
+113
+00:04:59,120 --> 00:05:02,339
+in our application as well.
+
+114
+00:05:03,695 --> 00:05:07,144
+Now let's actually handle the SelectedDateChanged,
+
+115
+00:05:07,145 --> 00:05:11,044
+and you can see here that I've added a TextBlock called
+
+116
+00:05:11,045 --> 00:05:13,354
+CalendarViewResultTextBlock.
+
+117
+00:05:13,355 --> 00:05:15,524
+What I want to do inside of that is add
+
+118
+00:05:15,525 --> 00:05:19,319
+all of the SelectedDates so that we can see them.
+
+119
+00:05:19,320 --> 00:05:22,754
+Now to get to the SelectedDates, we'll go
+
+120
+00:05:22,755 --> 00:05:26,144
+into the SelectedDateChanged EventHandler,
+
+121
+00:05:26,145 --> 00:05:28,289
+and I'm going to copy in some code here
+
+122
+00:05:28,290 --> 00:05:31,019
+and explain what it does.
+
+123
+00:05:31,020 --> 00:05:34,319
+So you might think that
+
+124
+00:05:34,320 --> 00:05:35,894
+what I do here is a little bit roundabout,
+
+125
+00:05:35,895 --> 00:05:37,819
+but I'm going to explain why we do all of this.
+
+126
+00:05:37,820 --> 00:05:40,189
+Let me move this over to the side here.
+
+127
+00:05:40,190 --> 00:05:41,494
+Alright, so what I want to do is get
+
+128
+00:05:41,495 --> 00:05:43,084
+a list of SelectedDates.
+
+129
+00:05:43,085 --> 00:05:46,749
+So the sender is of type CalendarView,
+
+130
+00:05:46,750 --> 00:05:49,929
+so we're going to say give me all the SelectedDates
+
+131
+00:05:49,930 --> 00:05:52,149
+for that Calendar Control.
+
+132
+00:05:52,150 --> 00:05:54,294
+Then we're going to Select
+
+133
+00:05:54,295 --> 00:05:57,424
+and make sure that we're choosing
+
+134
+00:05:57,425 --> 00:06:02,424
+or projecting out of those selections, the month/day.
+
+135
+00:06:02,550 --> 00:06:06,929
+The Select statement is a projection statement and link
+
+136
+00:06:06,930 --> 00:06:10,019
+and we're just choosing the data that we want to spit out
+
+137
+00:06:10,020 --> 00:06:12,359
+or emit from that statement.
+
+138
+00:06:12,360 --> 00:06:13,859
+So we're getting all the SelectedDates
+
+139
+00:06:13,860 --> 00:06:18,119
+but just give me the date/day as a string
+
+140
+00:06:18,120 --> 00:06:22,149
+and then I want all those dates to be added to an Array.
+
+141
+00:06:22,150 --> 00:06:24,194
+So I called the ToArray() in the very end of that.
+
+142
+00:06:24,195 --> 00:06:27,349
+So now we have an Array of strings called SelectedDates,
+
+143
+00:06:27,350 --> 00:06:29,124
+and the reason I put them in an Array is so that
+
+144
+00:06:29,125 --> 00:06:31,744
+I can call the string.Join method and separate
+
+145
+00:06:31,745 --> 00:06:33,784
+each of them with a comma.
+
+146
+00:06:33,785 --> 00:06:35,929
+And you'll see the effect in just a moment.
+
+147
+00:06:35,930 --> 00:06:37,894
+Now that we have are joined string,
+
+148
+00:06:37,895 --> 00:06:41,289
+we can set it as the text property to that TextBlock
+
+149
+00:06:41,290 --> 00:06:42,159
+that I added.
+
+150
+00:06:42,160 --> 00:06:43,869
+So let's see how this works.
+
+151
+00:06:45,030 --> 00:06:47,509
+All right, so now I'm going to start selecting some dates.
+
+152
+00:06:49,130 --> 00:06:53,029
+And as I select them, notice that they show up
+
+153
+00:06:53,030 --> 00:06:56,444
+as the month/day,
+
+154
+00:06:56,445 --> 00:06:58,559
+and they're separated by commas, all right?
+
+155
+00:06:58,560 --> 00:07:01,074
+So hopefully that little snippet of code will help you
+
+156
+00:07:01,075 --> 00:07:03,759
+to work with Multiple date selection.
+
+157
+00:07:03,760 --> 00:07:05,784
+All right, so that's enough with dates and times.
+
+158
+00:07:05,785 --> 00:07:08,449
+Let us move on and talk about the next thing,
+
+159
+00:07:08,450 --> 00:07:10,189
+which is going to be a Flyout Control.
+
+160
+00:07:10,190 --> 00:07:13,024
+And there is two different Flyout buttons
+
+161
+00:07:13,025 --> 00:07:14,884
+that we're going to look at.
+
+162
+00:07:14,885 --> 00:07:17,554
+The first one will just pop open
+
+163
+00:07:17,555 --> 00:07:19,424
+a little message box for us here.
+
+164
+00:07:19,425 --> 00:07:21,449
+So you can see that...
+
+165
+00:07:21,450 --> 00:07:22,754
+Actually, let me do this.
+
+166
+00:07:22,755 --> 00:07:27,124
+Let me put my mouse cursor in that Click,
+
+167
+00:07:27,125 --> 00:07:28,544
+that Click EventHandler,
+
+168
+00:07:28,545 --> 00:07:30,059
+InnerFlyoutButton_Click.
+
+169
+00:07:30,060 --> 00:07:31,754
+Hit F12 in my keyboard.
+
+170
+00:07:31,755 --> 00:07:35,084
+That'll create the EventHandler stub,
+
+171
+00:07:35,085 --> 00:07:37,289
+which we'll come back to in just a moment.
+
+172
+00:07:37,290 --> 00:07:40,049
+And what we'll do is you can see that
+
+173
+00:07:40,050 --> 00:07:41,789
+many of the Controls actually, in this case,
+
+174
+00:07:41,790 --> 00:07:44,084
+the Button Control, has a Flyout property.
+
+175
+00:07:44,085 --> 00:07:46,684
+And what you can put inside of that Flyout property
+
+176
+00:07:46,685 --> 00:07:49,089
+is either a Flyout or a Flyout menu
+
+177
+00:07:49,090 --> 00:07:50,994
+like we'll look at in just a moment.
+
+178
+00:07:50,995 --> 00:07:54,129
+And inside of that Flyout, we can add
+
+179
+00:07:54,130 --> 00:07:55,284
+any Controls that we want.
+
+180
+00:07:55,285 --> 00:07:56,994
+In this case, I'm going to create a StackPanel
+
+181
+00:07:56,995 --> 00:07:58,644
+and add a TextBlock and a Button.
+
+182
+00:07:58,645 --> 00:08:01,224
+And here I'm just going to put out some text inside of that
+
+183
+00:08:01,225 --> 00:08:04,794
+little dialog that I'm creating kind of manually.
+
+184
+00:08:04,795 --> 00:08:06,819
+And so then when somebody clicks the Button,
+
+185
+00:08:06,820 --> 00:08:09,984
+what we want to do is actually hide that Flyout again.
+
+186
+00:08:09,985 --> 00:08:12,669
+So let me go ahead and hit F12 again
+
+187
+00:08:12,670 --> 00:08:15,294
+with my mouse cursor selected on that name,
+
+188
+00:08:15,295 --> 00:08:18,594
+and I am going to add some code that will actually hide
+
+189
+00:08:18,595 --> 00:08:21,219
+the Flyout so that when we click the OK button,
+
+190
+00:08:21,220 --> 00:08:23,319
+that Flyout will hide.
+
+191
+00:08:23,320 --> 00:08:25,479
+Now you might be still wondering, what does this do?
+
+192
+00:08:25,480 --> 00:08:26,989
+I don't even know what a Flyout is?
+
+193
+00:08:26,990 --> 00:08:27,749
+Well, here.
+
+194
+00:08:27,750 --> 00:08:28,989
+You'll see, it's real simple.
+
+195
+00:08:28,990 --> 00:08:30,684
+Here's my little Flyout button,
+
+196
+00:08:30,685 --> 00:08:32,859
+it could be many different controls but in this case,
+
+197
+00:08:32,860 --> 00:08:34,344
+we're choosing a Button,
+
+198
+00:08:34,345 --> 00:08:37,989
+and when I click it you can see that there is a little
+
+199
+00:08:39,545 --> 00:08:42,859
+dialog box that I created with a little message.
+
+200
+00:08:42,860 --> 00:08:45,049
+And when I click the OK button, it hides.
+
+201
+00:08:45,050 --> 00:08:45,829
+Alright?
+
+202
+00:08:45,830 --> 00:08:47,389
+So that's one style of Flyout.
+
+203
+00:08:47,390 --> 00:08:50,149
+Let's take look at now a Flyout menu.
+
+204
+00:08:50,150 --> 00:08:52,884
+And you've probably seen these if you've worked
+
+205
+00:08:52,885 --> 00:08:55,479
+inside of
+
+206
+00:08:56,525 --> 00:08:59,149
+inside of Windows 10
+
+207
+00:08:59,150 --> 00:09:03,919
+or inside of the Windows 10 on the phone,
+
+208
+00:09:03,920 --> 00:09:06,589
+and this will often be useful
+
+209
+00:09:06,590 --> 00:09:09,949
+whenever you are trying to create a contextual menu
+
+210
+00:09:09,950 --> 00:09:11,524
+for giving control.
+
+211
+00:09:11,525 --> 00:09:13,644
+In this case, again, I'm only going to use a Button,
+
+212
+00:09:13,645 --> 00:09:15,424
+but you'll see that many different Controls
+
+213
+00:09:15,425 --> 00:09:18,589
+have a Flyout property, a complex property
+
+214
+00:09:18,590 --> 00:09:22,789
+that we can add this MenuFlyout.
+
+215
+00:09:22,790 --> 00:09:25,384
+We can also state where we want this placed.
+
+216
+00:09:25,385 --> 00:09:27,949
+Here in this case, I am saying put it to the Bottom.
+
+217
+00:09:27,950 --> 00:09:30,119
+But we can set it to the Left, the Right,
+
+218
+00:09:30,120 --> 00:09:31,994
+the Top or make it full-screen.
+
+219
+00:09:31,995 --> 00:09:34,124
+Let's go Bottom again.
+
+220
+00:09:34,125 --> 00:09:37,619
+So we want it below whatever, if possible,
+
+221
+00:09:37,620 --> 00:09:40,154
+put the menu below the Button.
+
+222
+00:09:40,155 --> 00:09:43,024
+Next up, we're going to create a series of Flyout
+
+223
+00:09:43,025 --> 00:09:45,319
+or MenuFlyoutItems,
+
+224
+00:09:45,320 --> 00:09:49,219
+and each of these could have a Click event
+
+225
+00:09:49,220 --> 00:09:52,519
+that we can handle, but I am not at the moment.
+
+226
+00:09:53,790 --> 00:09:57,044
+Here is a FlyoutSeparator, so a little line
+
+227
+00:09:57,045 --> 00:10:00,084
+that will make sections inside of our context menu
+
+228
+00:10:00,085 --> 00:10:01,584
+that we created.
+
+229
+00:10:01,585 --> 00:10:05,694
+Here, we're creating a MenuFlyoutSubItem.
+
+230
+00:10:05,695 --> 00:10:10,249
+So this will allow us to create kind of a hierarchical menu.
+
+231
+00:10:10,250 --> 00:10:13,189
+So inside that Item 3, when we click it,
+
+232
+00:10:13,190 --> 00:10:15,619
+we'll see Item 4, Item 5.
+
+233
+00:10:15,620 --> 00:10:19,954
+Item 5 is another SubItem Menu Flyout,
+
+234
+00:10:19,955 --> 00:10:22,459
+which has Item 6 and Item 7.
+
+235
+00:10:22,460 --> 00:10:23,159
+Alright.
+
+236
+00:10:23,160 --> 00:10:25,394
+And then also, at the very bottom you'll see that
+
+237
+00:10:25,395 --> 00:10:27,879
+I have a ToggleMenuFlyoutItem,
+
+238
+00:10:27,880 --> 00:10:29,649
+and this is useful whenever you want to turn something
+
+239
+00:10:29,650 --> 00:10:32,019
+on and off and show that
+
+240
+00:10:32,020 --> 00:10:34,629
+a selection has been made for a little,
+
+241
+00:10:34,630 --> 00:10:37,984
+a little checkmark in the left-hand corner.
+
+242
+00:10:37,985 --> 00:10:40,944
+Okay, so let's go ahead and run the application.
+
+243
+00:10:43,275 --> 00:10:47,459
+And unfortunately, we can't see it.
+
+244
+00:10:47,460 --> 00:10:49,184
+But I'm going to go ahead and click it now.
+
+245
+00:10:49,185 --> 00:10:50,594
+I said put it to the bottom,
+
+246
+00:10:50,595 --> 00:10:53,774
+however there wasn't enough space below it so in this case,
+
+247
+00:10:53,775 --> 00:10:55,019
+it put it above it.
+
+248
+00:10:55,020 --> 00:10:57,419
+But notice I have two items and then a separator,
+
+249
+00:10:57,420 --> 00:11:00,729
+then I have Item 3, which gives me a submenu,
+
+250
+00:11:00,730 --> 00:11:04,314
+and Item 5 which even gives me an additional submenu.
+
+251
+00:11:04,315 --> 00:11:07,884
+And then with Item 8, I selected it,
+
+252
+00:11:07,885 --> 00:11:09,219
+and now the next time I look at it,
+
+253
+00:11:09,220 --> 00:11:10,689
+it has a checkmark next to it.
+
+254
+00:11:10,690 --> 00:11:12,619
+So now it is, now it is off.
+
+255
+00:11:12,620 --> 00:11:13,624
+Okay?
+
+256
+00:11:13,625 --> 00:11:16,114
+So this is useful for contextual menus.
+
+257
+00:11:16,115 --> 00:11:18,979
+Again, I want to emphasize that
+
+258
+00:11:18,980 --> 00:11:20,614
+I'm using a Button in this case,
+
+259
+00:11:20,615 --> 00:11:24,124
+but we can use many different Controls that have this
+
+260
+00:11:24,125 --> 00:11:28,024
+Flyout property, where we can add
+
+261
+00:11:28,025 --> 00:11:32,659
+a contextual menu or just dialog as a result
+
+262
+00:11:32,660 --> 00:11:36,699
+of clicking on that item or interacting with it in some way.
+
+263
+00:11:37,320 --> 00:11:39,614
+All right, so the next item that I want to take a look at
+
+264
+00:11:39,615 --> 00:11:41,474
+is the AutoSuggestBox.
+
+265
+00:11:41,475 --> 00:11:43,889
+And this will become very helpful to us
+
+266
+00:11:43,890 --> 00:11:45,954
+whenever we're building real applications
+
+267
+00:11:45,955 --> 00:11:47,724
+that include the search feature
+
+268
+00:11:47,725 --> 00:11:49,794
+like a hamburger-style navigation that we've seen
+
+269
+00:11:49,795 --> 00:11:50,824
+up to this point.
+
+270
+00:11:50,825 --> 00:11:52,954
+Here again, so that the application compiles,
+
+271
+00:11:52,955 --> 00:11:56,139
+I'm going to put my mouse cursor on
+
+272
+00:11:56,140 --> 00:12:00,359
+this little TextChanged EventHandler
+
+273
+00:12:00,360 --> 00:12:02,879
+and then hit F12 in my keyboard just to create the stub
+
+274
+00:12:02,880 --> 00:12:04,424
+and my code behind.
+
+275
+00:12:04,425 --> 00:12:06,359
+And then coming back here to the MainPage,
+
+276
+00:12:06,360 --> 00:12:10,884
+you can see that I have
+
+277
+00:12:10,885 --> 00:12:12,759
+a number of interesting Properties here like
+
+278
+00:12:12,760 --> 00:12:14,224
+the PlaceholderText.
+
+279
+00:12:14,225 --> 00:12:17,594
+So we're going to say Search or Find Something,
+
+280
+00:12:17,595 --> 00:12:20,019
+maybe something like this,
+
+281
+00:12:21,120 --> 00:12:23,459
+so that this is very distinctive, right?
+
+282
+00:12:23,460 --> 00:12:25,554
+We can set also the QueryIcon.
+
+283
+00:12:25,555 --> 00:12:28,309
+Let's see what our options are there.
+
+284
+00:12:28,310 --> 00:12:31,074
+All right, so there are a number of different icons
+
+285
+00:12:31,075 --> 00:12:32,619
+that we can choose from.
+
+286
+00:12:32,620 --> 00:12:37,324
+But in our case, let us just go back to the Find icon.
+
+287
+00:12:38,125 --> 00:12:40,084
+Now let's run the application.
+
+288
+00:12:40,085 --> 00:12:42,394
+Now what it will do by itself,
+
+289
+00:12:42,395 --> 00:12:45,394
+there's not a whole lot that it'll do, honestly.
+
+290
+00:12:45,395 --> 00:12:47,419
+Unfortunately let's move that up a little bit.
+
+291
+00:12:47,420 --> 00:12:49,294
+So I can start typing in here,
+
+292
+00:12:49,295 --> 00:12:50,719
+and nothing really happens.
+
+293
+00:12:50,720 --> 00:12:53,824
+And you might think, "Well, this is not very interesting."
+
+294
+00:12:53,825 --> 00:12:57,574
+The reason this becomes interesting, as I close this down,
+
+295
+00:12:57,575 --> 00:13:00,889
+is what you can do with it to filter results.
+
+296
+00:13:00,890 --> 00:13:03,184
+So let's go back over here into the code behind,
+
+297
+00:13:03,185 --> 00:13:04,504
+and at the very top, what I want to do
+
+298
+00:13:04,505 --> 00:13:09,304
+is copy in a new Array of strings that I am calling
+
+299
+00:13:10,795 --> 00:13:12,249
+selectionItems.
+
+300
+00:13:12,250 --> 00:13:14,379
+And you can see that this is just a list of names.
+
+301
+00:13:14,380 --> 00:13:16,314
+And some of them start with the letter F,
+
+302
+00:13:16,315 --> 00:13:20,029
+some of them start with the letters F-R, F-R.
+
+303
+00:13:20,030 --> 00:13:24,109
+Some of them start with the letter T, T-A, T-O, okay.
+
+304
+00:13:24,110 --> 00:13:27,124
+And we're going to see how we narrow down that selection
+
+305
+00:13:27,125 --> 00:13:29,524
+as we type, as the text is changing
+
+306
+00:13:29,525 --> 00:13:31,489
+in that AutoSuggestBox.
+
+307
+00:13:31,490 --> 00:13:35,884
+Now we don't get that functionality automatically.
+
+308
+00:13:35,885 --> 00:13:38,329
+We're going to have to add some code.
+
+309
+00:13:38,330 --> 00:13:40,474
+And so I'm pasting in some additional code here.
+
+310
+00:13:40,475 --> 00:13:42,919
+The sender is an AutoSuggestBox,
+
+311
+00:13:42,920 --> 00:13:44,239
+so I'm just getting a reference to it
+
+312
+00:13:44,240 --> 00:13:46,129
+here in this line number 48.
+
+313
+00:13:46,130 --> 00:13:50,089
+In line number 49, here I'm going to do a Where clause
+
+314
+00:13:50,090 --> 00:13:52,954
+on that Array of strings, that selectionItems
+
+315
+00:13:52,955 --> 00:13:54,694
+that I paste in up here.
+
+316
+00:13:54,695 --> 00:13:58,659
+So we're going to filter that list
+
+317
+00:13:58,660 --> 00:14:01,344
+by looking for items that start with whatever text
+
+318
+00:14:01,345 --> 00:14:04,119
+was typed into the AutoSuggestBox.
+
+319
+00:14:04,120 --> 00:14:06,339
+Then we'll call ToArray on it,
+
+320
+00:14:06,340 --> 00:14:08,844
+and we'll use that filtered box and pass it
+
+321
+00:14:08,845 --> 00:14:12,249
+to the ItemsSource of our AutoSuggestBox.
+
+322
+00:14:12,250 --> 00:14:14,754
+And now that source will be,
+
+323
+00:14:14,755 --> 00:14:16,329
+you will see a little menu pop up
+
+324
+00:14:16,330 --> 00:14:18,729
+with all the filtered items that we can choose from.
+
+325
+00:14:18,730 --> 00:14:21,739
+So let's go ahead and run the application.
+
+326
+00:14:22,825 --> 00:14:26,109
+All right, so this time I'm going to type in the letter F.
+
+327
+00:14:26,110 --> 00:14:28,249
+And as you can see when I do that,
+
+328
+00:14:28,250 --> 00:14:29,794
+I get a number of options.
+
+329
+00:14:29,795 --> 00:14:31,684
+And then I can use the up and down arrow
+
+330
+00:14:31,685 --> 00:14:34,054
+to actually select one of the two.
+
+331
+00:14:34,055 --> 00:14:38,524
+So as I select it, then it removes all the other options.
+
+332
+00:14:38,525 --> 00:14:41,719
+All right, so let's try that with T.
+
+333
+00:14:41,720 --> 00:14:43,519
+T-A,
+
+334
+00:14:43,520 --> 00:14:45,424
+T-A-N,
+
+335
+00:14:45,425 --> 00:14:47,059
+T-A-N-Y,
+
+336
+00:14:47,060 --> 00:14:48,874
+and then I can use the down arrow
+
+337
+00:14:48,875 --> 00:14:51,389
+and then hit enter on my keyboard, it makes that selection.
+
+338
+00:14:51,390 --> 00:14:55,559
+So the AutoSuggestBox, very helpful,
+
+339
+00:14:55,560 --> 00:14:57,194
+especially for a search feature
+
+340
+00:14:57,195 --> 00:14:59,624
+that we'll be adding to our applications.
+
+341
+00:14:59,625 --> 00:15:02,384
+All right, so let's go on to the next one.
+
+342
+00:15:02,385 --> 00:15:05,294
+I want to talk about the Slider Control.
+
+343
+00:15:05,295 --> 00:15:10,259
+And the Slider, you'll see this often used in Windows 10.
+
+344
+00:15:10,260 --> 00:15:14,054
+It will allow the user to make a selection.
+
+345
+00:15:14,055 --> 00:15:16,019
+Here, we're going to make, allow them to make
+
+346
+00:15:16,020 --> 00:15:19,919
+a Maximum selection of 100 and a Minimum selection of 0.
+
+347
+00:15:19,920 --> 00:15:22,244
+So when we run the application,
+
+348
+00:15:22,245 --> 00:15:24,854
+you can see that there's this little Slider Control.
+
+349
+00:15:24,855 --> 00:15:27,749
+And it even has the number above it.
+
+350
+00:15:27,750 --> 00:15:31,274
+We can control the increments and whether or not
+
+351
+00:15:31,275 --> 00:15:33,584
+to display that little thing on the top.
+
+352
+00:15:33,585 --> 00:15:36,659
+But you'll this often used in Windows 10.
+
+353
+00:15:36,660 --> 00:15:39,059
+We're going to use it too in our applications.
+
+354
+00:15:39,060 --> 00:15:40,289
+The next thing I want to show,
+
+355
+00:15:40,290 --> 00:15:43,824
+that kind of goes along with it, is...
+
+356
+00:15:45,220 --> 00:15:48,599
+I'm going to copy some of it but not all just yet,
+
+357
+00:15:51,945 --> 00:15:53,624
+I'm going to talk about a ProgressBar.
+
+358
+00:15:53,625 --> 00:15:56,659
+And a ProgressBar will give feedback to the user
+
+359
+00:15:56,660 --> 00:15:58,759
+for long-running operations.
+
+360
+00:15:58,760 --> 00:16:01,199
+So in this particular case,
+
+361
+00:16:01,200 --> 00:16:04,724
+I can set the Value="57".
+
+362
+00:16:04,725 --> 00:16:06,524
+So the Maximum will be 100,
+
+363
+00:16:06,525 --> 00:16:09,609
+but I'm going to hardcode this Value to 57.
+
+364
+00:16:10,660 --> 00:16:12,679
+So let's run the application,
+
+365
+00:16:14,495 --> 00:16:19,384
+and you can see that we're 57% of the way through
+
+366
+00:16:19,385 --> 00:16:20,719
+our progress.
+
+367
+00:16:20,720 --> 00:16:22,984
+Now this isn't very interesting to set it
+
+368
+00:16:22,985 --> 00:16:25,729
+statically like that.
+
+369
+00:16:25,730 --> 00:16:28,174
+Ideally, you would be setting it
+
+370
+00:16:28,175 --> 00:16:30,319
+through some code behind operation
+
+371
+00:16:30,320 --> 00:16:32,119
+during the long-running operation.
+
+372
+00:16:32,120 --> 00:16:34,279
+But let me show you something really neat,
+
+373
+00:16:34,280 --> 00:16:35,749
+and let me just paste it in
+
+374
+00:16:35,750 --> 00:16:38,329
+and then I'll explain what it does in just a moment here.
+
+375
+00:16:38,330 --> 00:16:41,284
+I'm going to remove this Value="57"
+
+376
+00:16:41,285 --> 00:16:44,989
+and replace it with this strange syntax.
+
+377
+00:16:44,990 --> 00:16:47,029
+And then let's run the application
+
+378
+00:16:47,030 --> 00:16:48,659
+and I'll show you what it does.
+
+379
+00:16:48,660 --> 00:16:52,784
+So what I've done is I've bound
+
+380
+00:16:52,785 --> 00:16:55,559
+the current value of the ProgressBar
+
+381
+00:16:55,560 --> 00:16:57,809
+to whatever the value of the Slider is.
+
+382
+00:16:57,810 --> 00:17:00,194
+So notice as I move the Slider,
+
+383
+00:17:00,195 --> 00:17:04,484
+notice that I am also moving
+
+384
+00:17:04,485 --> 00:17:06,689
+the ProgressBar, okay?
+
+385
+00:17:06,690 --> 00:17:09,254
+So we're binding, data binding.
+
+386
+00:17:09,255 --> 00:17:12,494
+And binding statement, there is a new binding statement
+
+387
+00:17:12,495 --> 00:17:16,619
+new to the Universal Windows Platform,
+
+388
+00:17:16,620 --> 00:17:20,624
+and we'll talk about this in an upcoming lesson.
+
+389
+00:17:20,625 --> 00:17:22,694
+However, what we can do is say,
+
+390
+00:17:22,695 --> 00:17:25,919
+"Hey, you know that Slider, that Control called
+
+391
+00:17:25,920 --> 00:17:28,319
+"MySlider that I named up here?
+
+392
+00:17:28,320 --> 00:17:31,904
+"I want you to grab its value and bind to it."
+
+393
+00:17:31,905 --> 00:17:33,749
+Now this will be a one-way binding,
+
+394
+00:17:33,750 --> 00:17:37,019
+meaning that if I make any changes to the ProgressBar,
+
+395
+00:17:37,020 --> 00:17:39,629
+it will not reflect back to the Slider.
+
+396
+00:17:39,630 --> 00:17:41,459
+It's one way.
+
+397
+00:17:41,460 --> 00:17:44,219
+Any changes at the Slider will affect the ProgressBar,
+
+398
+00:17:44,220 --> 00:17:46,289
+but not vice versa, okay?
+
+399
+00:17:46,290 --> 00:17:47,684
+There is also other modes.
+
+400
+00:17:47,685 --> 00:17:49,259
+We'll talk about those later.
+
+401
+00:17:49,260 --> 00:17:50,849
+But this is just one of the kinds of things
+
+402
+00:17:50,850 --> 00:17:53,624
+that you can do with binding in XAML.
+
+403
+00:17:53,625 --> 00:17:57,284
+It's a very powerful feature that we'll be harnessing
+
+404
+00:17:57,285 --> 00:18:00,019
+frequently throughout the remainder of the series.
+
+405
+00:18:00,020 --> 00:18:02,344
+And then I guess the last thing that I want to talk about
+
+406
+00:18:02,345 --> 00:18:05,809
+is the ProgressRing, another type of progress.
+
+407
+00:18:05,810 --> 00:18:07,684
+This doesn't give the user
+
+408
+00:18:07,685 --> 00:18:12,684
+any specific feedback on how far we are through the process.
+
+409
+00:18:12,890 --> 00:18:17,254
+It's merely just displaying the fact that
+
+410
+00:18:17,255 --> 00:18:19,129
+something is in operation,
+
+411
+00:18:19,130 --> 00:18:22,909
+that something is going on and it's ongoing.
+
+412
+00:18:22,910 --> 00:18:24,049
+You see it's just a little ring,
+
+413
+00:18:24,050 --> 00:18:26,194
+it just goes up around and around and around
+
+414
+00:18:26,195 --> 00:18:27,559
+until we tell it to stop.
+
+415
+00:18:27,560 --> 00:18:30,679
+And so there's a method that allows us to start
+
+416
+00:18:30,680 --> 00:18:32,629
+and a method that will would us to stop,
+
+417
+00:18:32,630 --> 00:18:34,339
+or actually, a Property.
+
+418
+00:18:34,340 --> 00:18:37,434
+IsActive="True" or IsActive="False", okay?
+
+419
+00:18:39,360 --> 00:18:41,624
+All right, so hopefully you can see how these Controls
+
+420
+00:18:41,625 --> 00:18:44,594
+could be useful when building real applications,
+
+421
+00:18:44,595 --> 00:18:46,994
+whether they work with dates, whether we need
+
+422
+00:18:46,995 --> 00:18:50,984
+some contextual menus or some dialogs
+
+423
+00:18:50,985 --> 00:18:53,789
+to pop up, to notify the user of something,
+
+424
+00:18:53,790 --> 00:18:56,519
+to ask for some input.
+
+425
+00:18:56,520 --> 00:19:00,014
+We also looked at the AutoSuggestBox,
+
+426
+00:19:00,015 --> 00:19:01,724
+which will be huge when we create our own
+
+427
+00:19:01,725 --> 00:19:04,649
+search functionality and that hamburgers-style navigation.
+
+428
+00:19:04,650 --> 00:19:05,984
+We looked at the Slider Control,
+
+429
+00:19:05,985 --> 00:19:07,764
+which is used frequently in Windows 10,
+
+430
+00:19:07,765 --> 00:19:11,979
+especially in the Settings window.
+
+431
+00:19:11,980 --> 00:19:15,384
+And then finally, the ProgressBar
+
+432
+00:19:15,385 --> 00:19:17,454
+and the ProgressRing, okay?
+
+433
+00:19:17,455 --> 00:19:18,924
+So great.
+
+434
+00:19:18,925 --> 00:19:22,209
+More tools under our belt.
+
+435
+00:19:22,210 --> 00:19:24,489
+More tools in our toolbox that we can use
+
+436
+00:19:24,490 --> 00:19:27,024
+to build more powerful applications.
+
+437
+00:19:27,025 --> 00:19:28,989
+Let's continue on, keep building on this.
+
+438
+00:19:28,990 --> 00:19:30,054
+See you in the next lesson.
+
+439
+00:19:30,055 --> 00:19:31,609
+Thank you.  
+

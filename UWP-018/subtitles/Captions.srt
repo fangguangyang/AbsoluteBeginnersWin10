@@ -1,0 +1,704 @@
+1
+00:00:04,790 --> 00:00:08,319
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net</v>
+
+2
+00:00:08,320 --> 00:00:09,819
+and in this lesson we'll talk about
+
+3
+00:00:09,820 --> 00:00:12,189
+the second new layout control in the
+
+4
+00:00:12,190 --> 00:00:15,449
+universal Windows Platform API, the SplitView.
+
+5
+00:00:15,450 --> 00:00:16,889
+And the SplitView allows us
+
+6
+00:00:16,890 --> 00:00:19,419
+to create a panel that can be displayed
+
+7
+00:00:19,420 --> 00:00:21,449
+or hidden, and there's a little animation
+
+8
+00:00:21,450 --> 00:00:22,889
+associated with it so it looks like
+
+9
+00:00:22,890 --> 00:00:26,209
+it slides out and slides back,
+
+10
+00:00:26,210 --> 00:00:27,829
+into view and out of view.
+
+11
+00:00:27,830 --> 00:00:29,249
+So we would use the SplitView
+
+12
+00:00:29,250 --> 00:00:31,489
+to implement that hamburger navigation style
+
+13
+00:00:31,490 --> 00:00:33,519
+that is used in Windows 10,
+
+14
+00:00:33,520 --> 00:00:35,619
+like we saw in the previous lesson.
+
+15
+00:00:35,620 --> 00:00:37,189
+There are two parts to a SplitView.
+
+16
+00:00:37,190 --> 00:00:39,149
+One might be optional.
+
+17
+00:00:39,150 --> 00:00:42,169
+The other is required.
+
+18
+00:00:42,170 --> 00:00:44,419
+The part that's hidden by default that you display,
+
+19
+00:00:44,420 --> 00:00:45,889
+that's called the pane.
+
+20
+00:00:45,890 --> 00:00:48,949
+The part that's already displayed and can either
+
+21
+00:00:48,950 --> 00:00:51,289
+be overlapped, or it can be pushed over,
+
+22
+00:00:51,290 --> 00:00:53,019
+that's called the content.
+
+23
+00:00:53,020 --> 00:00:55,049
+Not sure that you have to have a content.
+
+24
+00:00:55,050 --> 00:00:57,119
+It'll work, I believe, without it.
+
+25
+00:00:57,120 --> 00:00:57,909
+But we're going to go ahead
+
+26
+00:00:57,910 --> 00:00:59,519
+and demonstrate it with it.
+
+27
+00:00:59,520 --> 00:01:02,599
+What you do is, you then implement
+
+28
+00:01:02,600 --> 00:01:05,889
+or define other controls
+
+29
+00:01:05,890 --> 00:01:08,269
+inside of the SplitView pane
+
+30
+00:01:08,270 --> 00:01:10,359
+and the SplitView content areas
+
+31
+00:01:10,360 --> 00:01:12,259
+that make up your application.
+
+32
+00:01:12,260 --> 00:01:16,049
+In the SplitView pane, what you want to do is to,
+
+33
+00:01:17,400 --> 00:01:19,519
+if we were to create a real application
+
+34
+00:01:19,520 --> 00:01:22,519
+that used the hamburger navigation style,
+
+35
+00:01:22,520 --> 00:01:25,319
+we'd have an icon and then text next to it.
+
+36
+00:01:25,320 --> 00:01:26,259
+And we'll get to that.
+
+37
+00:01:26,260 --> 00:01:28,919
+We'll build that in a couple lessons from now.
+
+38
+00:01:28,920 --> 00:01:30,189
+But we're just going to start with the basics
+
+39
+00:01:30,190 --> 00:01:32,859
+of just this component itself,
+
+40
+00:01:32,860 --> 00:01:35,289
+although it is a large piece of the overall puzzle
+
+41
+00:01:35,290 --> 00:01:36,619
+to make that happen.
+
+42
+00:01:36,620 --> 00:01:40,189
+Alright, so let's start by building a SplitView.
+
+43
+00:01:40,190 --> 00:01:43,919
+Here in my new application called "SplitViewExample."
+
+44
+00:01:43,920 --> 00:01:46,019
+So we're going to create a SplitView,
+
+45
+00:01:46,020 --> 00:01:49,019
+and inside the SplitView
+
+46
+00:01:49,020 --> 00:01:53,039
+we're going to create a pane,
+
+47
+00:01:54,440 --> 00:01:56,889
+and then a content area.
+
+48
+00:02:00,050 --> 00:02:02,319
+So inside the content area we can do
+
+49
+00:02:02,320 --> 00:02:03,649
+anything we want to do.
+
+50
+00:02:03,650 --> 00:02:05,449
+I'm going to actually just put a bunch
+
+51
+00:02:05,450 --> 00:02:08,651
+of TextBlocks for all of these.
+
+52
+00:02:08,652 --> 00:02:11,569
+Set the text equal to ...
+
+53
+00:02:11,570 --> 00:02:15,275
+So I'm going to create
+
+54
+00:02:16,336 --> 00:02:17,845
+just simple TextBlocks
+
+55
+00:02:17,846 --> 00:02:20,385
+in both the pane and the content area.
+
+56
+00:02:20,386 --> 00:02:22,785
+I'll just fill in some text
+
+57
+00:02:22,786 --> 00:02:24,815
+so we can distinguish it.
+
+58
+00:02:24,816 --> 00:02:29,125
+The first, second and third TextBlock will be in the pane.
+
+59
+00:02:29,126 --> 00:02:32,455
+The fourth,
+
+60
+00:02:34,326 --> 00:02:37,645
+fifth and sixth TextBlock
+
+61
+00:02:37,646 --> 00:02:40,685
+will be in the content area.
+
+62
+00:02:40,686 --> 00:02:42,385
+Now as you can see, we get the little error
+
+63
+00:02:42,386 --> 00:02:44,555
+that the property content can only be set once.
+
+64
+00:02:44,556 --> 00:02:45,975
+Why?
+
+65
+00:02:45,976 --> 00:02:48,855
+Because it has content property,
+
+66
+00:02:48,856 --> 00:02:50,185
+not a child property.
+
+67
+00:02:50,186 --> 00:02:53,265
+We're going to use a StackPanel or something else then
+
+68
+00:02:53,266 --> 00:02:57,885
+to enclose all of our items inside of each
+
+69
+00:02:57,886 --> 00:03:01,605
+the pane and this content area.
+
+70
+00:03:05,316 --> 00:03:07,345
+Alright.
+
+71
+00:03:10,026 --> 00:03:11,655
+Great.
+
+72
+00:03:12,926 --> 00:03:14,325
+Allright, and you can barely see,
+
+73
+00:03:14,326 --> 00:03:16,255
+let's go ahead and blow this up a little bit more,
+
+74
+00:03:16,256 --> 00:03:18,225
+to like 75%.
+
+75
+00:03:18,226 --> 00:03:22,025
+You can see that we will by default
+
+76
+00:03:22,026 --> 00:03:25,155
+be able to view the StackPanel's pane.
+
+77
+00:03:25,156 --> 00:03:28,935
+Now, if we were to run the application,
+
+78
+00:03:30,546 --> 00:03:34,725
+however, you see that the pane is nowhere to be found.
+
+79
+00:03:34,726 --> 00:03:38,105
+We only see the content area.
+
+80
+00:03:39,256 --> 00:03:41,925
+How do we actually display the pane?
+
+81
+00:03:41,926 --> 00:03:43,125
+Well we're going to have to first of all
+
+82
+00:03:43,126 --> 00:03:45,545
+give our SplitView a name.
+
+83
+00:03:45,546 --> 00:03:48,695
+So let's do that, MySplitView.
+
+84
+00:03:48,696 --> 00:03:52,535
+And then here let's go ahead and add
+
+85
+00:03:53,456 --> 00:03:57,155
+a Button outside of the SplitView
+
+86
+00:03:57,156 --> 00:04:00,205
+and call this...
+
+87
+00:04:06,986 --> 00:04:09,075
+And set the Click property...
+
+88
+00:04:09,076 --> 00:04:13,835
+the Click event rather, to Button.Click
+
+89
+00:04:17,796 --> 00:04:19,785
+And inside of here, what we're going to do
+
+90
+00:04:19,786 --> 00:04:24,375
+is work with MySplitView.IsPaneOpen,
+
+91
+00:04:25,196 --> 00:04:29,925
+and we're going to set the IsPaneOpen property
+
+92
+00:04:29,926 --> 00:04:32,255
+and we're going to set it to whatever
+
+93
+00:04:32,256 --> 00:04:35,755
+the MySplitView pane property is not.
+
+94
+00:04:35,756 --> 00:04:38,455
+So you can see that we're setting it equal
+
+95
+00:04:38,456 --> 00:04:40,785
+to the opposite of whatever it is right now
+
+96
+00:04:40,786 --> 00:04:43,865
+by using the not operator,
+
+97
+00:04:43,866 --> 00:04:46,635
+the exclamation mark.
+
+98
+00:04:46,636 --> 00:04:49,645
+So now let's do one more thing.
+
+99
+00:04:49,646 --> 00:04:52,985
+I'm going to change this outermost item
+
+100
+00:04:52,986 --> 00:04:56,365
+from a Grid to a StackPanel,
+
+101
+00:04:56,366 --> 00:04:58,725
+and then I'm going to delete that.
+
+102
+00:04:58,726 --> 00:05:00,185
+And then I'm going to save it,
+
+103
+00:05:00,186 --> 00:05:03,075
+and let's run the application.
+
+104
+00:05:05,106 --> 00:05:08,255
+Alright, so you can see that I can display
+
+105
+00:05:08,256 --> 00:05:11,185
+and hide that panel, very cool.
+
+106
+00:05:11,186 --> 00:05:14,815
+Now we can control more about that panel.
+
+107
+00:05:14,816 --> 00:05:17,453
+First of all, let me change this StackPanel
+
+108
+00:05:17,454 --> 00:05:21,763
+to the Orientation="Horizontal", great.
+
+109
+00:05:22,624 --> 00:05:24,223
+And what we're going to do
+
+110
+00:05:24,224 --> 00:05:29,223
+is set the SplitView's DisplayMode.
+
+111
+00:05:30,084 --> 00:05:33,953
+The DisplayMode is one of the most important
+
+112
+00:05:33,954 --> 00:05:36,243
+properties that we can set on the SplitView,
+
+113
+00:05:36,244 --> 00:05:37,953
+because it will
+
+114
+00:05:37,954 --> 00:05:41,093
+dictate how it actually operates.
+
+115
+00:05:41,094 --> 00:05:43,223
+So there's four options here.
+
+116
+00:05:43,224 --> 00:05:46,503
+Let's take a look at Inline,
+
+117
+00:05:47,484 --> 00:05:49,403
+and let's go ahead and run the application.
+
+118
+00:05:51,254 --> 00:05:53,743
+You can see whenever we click Inline
+
+119
+00:05:53,744 --> 00:05:56,753
+it actually pushes, the pane as it comes out,
+
+120
+00:05:56,754 --> 00:05:59,803
+pushes the content over.
+
+121
+00:06:02,544 --> 00:06:05,373
+Whereas, if we were to change this to Overlay,
+
+122
+00:06:06,134 --> 00:06:09,095
+just going to run the application again,
+
+123
+00:06:10,956 --> 00:06:13,603
+it would completely cover it up.
+
+124
+00:06:13,604 --> 00:06:16,583
+And then there's one other variation on this,
+
+125
+00:06:16,584 --> 00:06:18,923
+but we're going to have to set another property.
+
+126
+00:06:18,924 --> 00:06:22,823
+We're going to set the CompactPaneLength,
+
+127
+00:06:24,354 --> 00:06:28,183
+and you typically set this to a small value, like 50.
+
+128
+00:06:28,184 --> 00:06:31,223
+Just enough to display an icon.
+
+129
+00:06:31,224 --> 00:06:32,753
+So this is 50 pixels,
+
+130
+00:06:32,754 --> 00:06:35,713
+and so we'll do overlay...
+
+131
+00:06:36,674 --> 00:06:39,743
+CompactOverlay
+
+132
+00:06:39,744 --> 00:06:41,923
+This is a variation on overlay
+
+133
+00:06:41,924 --> 00:06:44,253
+that will display just a little crack
+
+134
+00:06:44,254 --> 00:06:48,973
+of what's underneath in the pane.
+
+135
+00:06:50,614 --> 00:06:52,323
+You can see First, Second and Third.
+
+136
+00:06:52,324 --> 00:06:54,643
+Let's change that even to just 10 pixels,
+
+137
+00:06:54,644 --> 00:06:57,383
+just so we can barely see it creeping out.
+
+138
+00:06:57,384 --> 00:07:01,143
+Right now it doesn't look particularly interesting.
+
+139
+00:07:02,224 --> 00:07:05,083
+You can just barely see First Second and Third
+
+140
+00:07:05,084 --> 00:07:08,083
+creeping through there on the very most left side.
+
+141
+00:07:08,084 --> 00:07:12,203
+Then when we click "Click Me," the pane covers up
+
+142
+00:07:12,204 --> 00:07:15,223
+whatever we see in the content area.
+
+143
+00:07:15,224 --> 00:07:18,623
+So that's CompactOverlay.
+
+144
+00:07:18,624 --> 00:07:21,423
+CompactInline is exactly like inline
+
+145
+00:07:21,424 --> 00:07:24,283
+except it shows that little compact area as well,
+
+146
+00:07:24,284 --> 00:07:26,723
+that will only be 10 pixels wide.
+
+147
+00:07:26,724 --> 00:07:29,053
+Here again, we see just a little bit
+
+148
+00:07:29,054 --> 00:07:30,653
+of First Second and Third text block,
+
+149
+00:07:30,654 --> 00:07:32,583
+and when we click it, it pushes everything over,
+
+150
+00:07:32,584 --> 00:07:34,903
+because it's Inline.
+
+151
+00:07:35,944 --> 00:07:40,553
+We can also adjust things like the OpenPaneLength,
+
+152
+00:07:41,284 --> 00:07:45,283
+and we can set that to, let's say, 50 pixels for example.
+
+153
+00:07:45,284 --> 00:07:48,373
+Now let's see how that affects our application.
+
+154
+00:07:51,784 --> 00:07:53,983
+So you can see that it really restricts
+
+155
+00:07:53,984 --> 00:07:58,073
+the size of that pane as it opens up, in this case.
+
+156
+00:08:00,284 --> 00:08:03,283
+We can also set the background and things of that nature.
+
+157
+00:08:03,284 --> 00:08:06,323
+Now, here's the thing about the SplitView,
+
+158
+00:08:06,324 --> 00:08:09,223
+is that by itself it really doesn't do much.
+
+159
+00:08:09,224 --> 00:08:14,053
+You're given a lot of latitude to build out
+
+160
+00:08:14,054 --> 00:08:16,178
+how you want to implement your pane.
+
+161
+00:08:16,179 --> 00:08:18,123
+In this case I just used TextBlocks.
+
+162
+00:08:18,124 --> 00:08:19,723
+They don't really make a whole lot of sense.
+
+163
+00:08:19,724 --> 00:08:21,253
+We would want to either use a Button
+
+164
+00:08:21,254 --> 00:08:22,723
+or something that's clickable so that
+
+165
+00:08:22,724 --> 00:08:26,183
+when we click it, we navigate to something
+
+166
+00:08:26,184 --> 00:08:28,123
+in the main area of our application,
+
+167
+00:08:28,124 --> 00:08:30,543
+some feature or some different information.
+
+168
+00:08:30,544 --> 00:08:32,463
+Again, like I said earlier, we're going to learn
+
+169
+00:08:32,464 --> 00:08:35,843
+how to do that a couple of lessons from now.
+
+170
+00:08:35,844 --> 00:08:38,303
+First, I think we need to learn a couple more
+
+171
+00:08:38,304 --> 00:08:40,623
+input controls that we can use,
+
+172
+00:08:40,624 --> 00:08:43,043
+and once we learn about those, I can show you
+
+173
+00:08:43,044 --> 00:08:46,253
+a very simple way to implement the hamburger navigation.
+
+174
+00:08:46,254 --> 00:08:47,983
+We're going to come back to this idea
+
+175
+00:08:47,984 --> 00:08:49,923
+in another lesson or two.
+
+176
+00:08:49,924 --> 00:08:52,703
+So we'll see you there, thank you.  
+

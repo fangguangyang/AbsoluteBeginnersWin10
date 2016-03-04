@@ -1,0 +1,1268 @@
+1
+00:00:04,950 --> 00:00:08,899
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net.</v>
+
+2
+00:00:09,250 --> 00:00:10,949
+Up to now we've only looked at binding
+
+3
+00:00:10,950 --> 00:00:13,319
+to Styles, using the Binding expression
+
+4
+00:00:13,320 --> 00:00:16,119
+with the curly braces, StaticResource
+
+5
+00:00:16,120 --> 00:00:18,749
+and then some Style name, alright,
+
+6
+00:00:18,750 --> 00:00:22,719
+and we said earlier that this type of Binding,
+
+7
+00:00:22,720 --> 00:00:25,549
+this StaticResource Binding only happens
+
+8
+00:00:25,550 --> 00:00:28,149
+once when the app first starts, that's why
+
+9
+00:00:28,150 --> 00:00:30,919
+it's a "StaticResource," it won't change
+
+10
+00:00:30,920 --> 00:00:33,339
+throughout the life of the app.
+
+11
+00:00:33,790 --> 00:00:36,489
+However, there are other examples of
+
+12
+00:00:36,490 --> 00:00:39,069
+Binding statements that are not static.
+
+13
+00:00:39,350 --> 00:00:42,119
+For example, there's a themed resource
+
+14
+00:00:42,120 --> 00:00:44,749
+which is similar to the StaticResource,
+
+15
+00:00:44,750 --> 00:00:47,449
+but the resource lookup is evaluated
+
+16
+00:00:47,450 --> 00:00:50,349
+when the theme changes, so what's
+
+17
+00:00:50,350 --> 00:00:51,749
+a theme, you might wonder?
+
+18
+00:00:51,750 --> 00:00:53,849
+Well a theme is a collection of colors
+
+19
+00:00:53,850 --> 00:00:56,549
+that are selected by the end user
+
+20
+00:00:56,550 --> 00:00:58,709
+at an operating system level,
+
+21
+00:00:58,710 --> 00:01:02,149
+so in the Windows 10 Desktop you can pop open
+
+22
+00:01:02,150 --> 00:01:05,119
+the Settings App, go to personalization,
+
+23
+00:01:05,120 --> 00:01:08,449
+and here you can choose a background color
+
+24
+00:01:08,450 --> 00:01:13,419
+and I think also an accent color,
+
+25
+00:01:13,420 --> 00:01:15,649
+alright, and so in this case I've got black
+
+26
+00:01:15,650 --> 00:01:17,149
+as my background and then this
+
+27
+00:01:17,150 --> 00:01:19,339
+blue accent color, alright?
+
+28
+00:01:20,590 --> 00:01:23,049
+You can also personalize the phone and
+
+29
+00:01:23,050 --> 00:01:24,889
+the Xbox One as well by choosing a
+
+30
+00:01:24,890 --> 00:01:27,249
+background and an accent, now admittedly,
+
+31
+00:01:27,250 --> 00:01:29,849
+each have a different set of options,
+
+32
+00:01:29,850 --> 00:01:31,809
+but in general the end user can
+
+33
+00:01:31,810 --> 00:01:34,419
+personalize their colors in all the
+
+34
+00:01:34,420 --> 00:01:38,049
+Windows 10 flavors, alright, so as a developer
+
+35
+00:01:38,050 --> 00:01:41,919
+you can choose to utilize these color selections
+
+36
+00:01:41,920 --> 00:01:44,649
+in your app so that your app honors
+
+37
+00:01:44,650 --> 00:01:46,689
+the user's choices, now you're not
+
+38
+00:01:46,690 --> 00:01:49,189
+required to do this, but you probably should
+
+39
+00:01:49,190 --> 00:01:52,649
+unless you have a particular branding goal in mind,
+
+40
+00:01:52,650 --> 00:01:56,819
+so there are a set of colors that allow you,
+
+41
+00:01:56,820 --> 00:01:59,189
+or rather a set of styles that allow you
+
+42
+00:01:59,190 --> 00:02:01,619
+to utilize those colors that
+
+43
+00:02:01,620 --> 00:02:03,339
+were selected by the user.
+
+44
+00:02:03,790 --> 00:02:06,619
+Getting to that ResourceDictionary,
+
+45
+00:02:06,620 --> 00:02:08,319
+where those Styles are defined,
+
+46
+00:02:08,320 --> 00:02:09,789
+that's a little bit tricky and that'll
+
+47
+00:02:09,790 --> 00:02:11,939
+be the topic of this lesson.
+
+48
+00:02:12,450 --> 00:02:14,881
+Now if you take a look, let's shut that down
+
+49
+00:02:14,882 --> 00:02:17,719
+and open up our MainPage.xaml
+
+50
+00:02:17,720 --> 00:02:20,759
+in a New Project that I'm calling ThemeResources.
+
+51
+00:02:24,010 --> 00:02:26,049
+If you take a look at the Grid here,
+
+52
+00:02:26,050 --> 00:02:30,479
+as you create a brand new Blank App Template app,
+
+53
+00:02:30,480 --> 00:02:34,349
+you'll see that the grid utilizes a ThemeResource
+
+54
+00:02:34,350 --> 00:02:39,119
+called ApplicationPageBackgroundThemeBrush,
+
+55
+00:02:39,120 --> 00:02:41,019
+all right, now if you put your mouse cursor just
+
+56
+00:02:41,020 --> 00:02:43,019
+anywhere in that word, application page
+
+57
+00:02:43,020 --> 00:02:45,489
+background theme brush, and then you hit
+
+58
+00:02:45,490 --> 00:02:47,909
+the F12 key on your keyboard, it'll open up
+
+59
+00:02:47,910 --> 00:02:50,889
+this file in the preview called generic.xaml
+
+60
+00:02:50,890 --> 00:02:52,719
+and if you hover your mouse cursor over it
+
+61
+00:02:52,720 --> 00:02:54,949
+and unfortunately, let me just double click it.
+
+62
+00:02:54,950 --> 00:02:56,299
+Can I do that?
+
+63
+00:02:56,690 --> 00:02:58,849
+There we go, if I hover my mouse cursor over
+
+64
+00:02:58,850 --> 00:03:01,789
+you can see the full path of that file
+
+65
+00:03:01,790 --> 00:03:06,289
+on my copy of Windows here, it's
+
+66
+00:03:06,290 --> 00:03:10,219
+Program Files (x86)\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP (version number)\Generic\generic.xaml
+
+67
+00:03:10,220 --> 00:03:15,219
+Program Files (x86)\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP (version number)\Generic\generic.xaml
+
+68
+00:03:15,370 --> 00:03:19,519
+okay, and you can see here
+
+69
+00:03:19,520 --> 00:03:21,819
+that's it's defined a SolidColorBrush
+
+70
+00:03:21,820 --> 00:03:24,889
+with that Key that's automatically being
+
+71
+00:03:24,890 --> 00:03:27,319
+used in our Grid and that sets it
+
+72
+00:03:27,320 --> 00:03:30,839
+to this Color which is white with all Fs, alright.
+
+73
+00:03:33,240 --> 00:03:35,649
+In this lesson I'm primarily going to be talking
+
+74
+00:03:35,650 --> 00:03:37,949
+about or referring to colors defined
+
+75
+00:03:37,950 --> 00:03:40,719
+as ThemeResources, however there are many
+
+76
+00:03:40,720 --> 00:03:42,919
+different types of Styles that are defined
+
+77
+00:03:42,920 --> 00:03:46,989
+in this generic.xaml file, including Font Faces
+
+78
+00:03:46,990 --> 00:03:50,019
+and weights and sizes and thicknesses
+
+79
+00:03:50,020 --> 00:03:55,019
+and there are even, it defines default Styles,
+
+80
+00:03:55,420 --> 00:03:58,149
+behavior and layout for all the
+
+81
+00:03:58,150 --> 00:04:00,389
+basic XAML Controls, so if you ever wonder
+
+82
+00:04:00,390 --> 00:04:03,089
+why something is styled a certain way
+
+83
+00:04:03,090 --> 00:04:05,419
+or why it behaves in a certain way,
+
+84
+00:04:05,420 --> 00:04:07,319
+this generic.xaml file is where
+
+85
+00:04:07,320 --> 00:04:08,919
+you can look and you can use that technique
+
+86
+00:04:08,920 --> 00:04:10,949
+that I used just a moment ago to get it,
+
+87
+00:04:10,950 --> 00:04:13,639
+but you can see it's a very long file.
+
+88
+00:04:14,250 --> 00:04:17,799
+Looks like it's 14,000 lines of code, alright.
+
+89
+00:04:18,290 --> 00:04:19,789
+You just would have to stare at it
+
+90
+00:04:19,790 --> 00:04:22,639
+for days on end to really figure out all that it's doing.
+
+91
+00:04:23,250 --> 00:04:25,549
+But at any rate, the way that you utilize
+
+92
+00:04:25,550 --> 00:04:29,619
+those Styles is to reference them inside
+
+93
+00:04:29,620 --> 00:04:32,349
+of your own Styles, and so here, let's just
+
+94
+00:04:32,350 --> 00:04:35,989
+create a little ResourceDictionary area here
+
+95
+00:04:35,990 --> 00:04:40,199
+for the page, so Page.Resources.
+
+96
+00:04:42,290 --> 00:04:44,019
+Inside of here I might wanna create
+
+97
+00:04:44,020 --> 00:04:47,739
+a SolidColorBrush that I call AccentBrush.
+
+98
+00:04:54,210 --> 00:04:58,139
+Then I would set the Color equal to that...
+
+99
+00:04:59,150 --> 00:05:04,149
+ThemeResource called SystemAccentColor.
+
+100
+00:05:09,410 --> 00:05:11,119
+Alright, so that SystemAccentColor will
+
+101
+00:05:11,120 --> 00:05:14,519
+give me access to the accent colors that
+
+102
+00:05:14,520 --> 00:05:18,749
+the user selects, so let me just add for example
+
+103
+00:05:18,750 --> 00:05:23,749
+a Rectangle here and I'll set the Width="100"
+
+104
+00:05:24,010 --> 00:05:29,009
+and the Height="100" and I'm gonna set the...
+
+105
+00:05:30,420 --> 00:05:34,769
+The Fill equal to that system.
+
+106
+00:05:36,550 --> 00:05:40,849
+Or rather, that StaticResource
+
+107
+00:05:40,850 --> 00:05:43,259
+that I called AccentBrush.
+
+108
+00:05:45,390 --> 00:05:48,289
+Let's take a look at our designer here
+
+109
+00:05:48,290 --> 00:05:50,319
+and you can see that it chose that same
+
+110
+00:05:50,320 --> 00:05:52,489
+blue color that you see in the tab
+
+111
+00:05:52,490 --> 00:05:54,909
+of Visual Studio because Visual Studio's using that
+
+112
+00:05:54,910 --> 00:05:57,899
+that blue color for the selected tab.
+
+113
+00:05:58,420 --> 00:06:00,519
+Also for the bar down the bottom
+
+114
+00:06:00,520 --> 00:06:03,599
+and other places here as well.
+
+115
+00:06:04,520 --> 00:06:06,889
+Alright, so you can see how I defined
+
+116
+00:06:06,890 --> 00:06:10,049
+a StaticResource using a ThemeResource,
+
+117
+00:06:10,050 --> 00:06:11,549
+but I could just go straight to the
+
+118
+00:06:11,550 --> 00:06:13,289
+ThemeResource as well, so let me just
+
+119
+00:06:13,290 --> 00:06:17,639
+copy this out here and use this instead.
+
+120
+00:06:21,010 --> 00:06:22,169
+Like so.
+
+121
+00:06:23,120 --> 00:06:24,769
+Nothing changes, all right.
+
+122
+00:06:25,850 --> 00:06:27,949
+That's how I get at the accent color,
+
+123
+00:06:27,950 --> 00:06:31,839
+how about the color of the windows in general here.
+
+124
+00:06:32,520 --> 00:06:35,249
+To get that color, let me just copy this down
+
+125
+00:06:35,250 --> 00:06:39,569
+and then we'll make this 50 and 50.
+
+126
+00:06:40,020 --> 00:06:43,519
+If we wanna get this light color, we would use
+
+127
+00:06:43,520 --> 00:06:48,049
+SystemColorWindowColor like so, and so that's
+
+128
+00:06:48,050 --> 00:06:53,049
+going to give us a light-colored area inside of the blue box.
+
+129
+00:06:57,710 --> 00:07:01,219
+Again, that matches that light color
+
+130
+00:07:01,220 --> 00:07:03,329
+and the rest of the window.
+
+131
+00:07:04,290 --> 00:07:05,819
+We're gonna see how that plays out
+
+132
+00:07:05,820 --> 00:07:08,289
+here in just a moment when we play
+
+133
+00:07:08,290 --> 00:07:10,881
+with the preferred Theme, but let's
+
+134
+00:07:10,882 --> 00:07:12,649
+come back to that in just a moment.
+
+135
+00:07:12,650 --> 00:07:14,449
+If you want an entire list of all of
+
+136
+00:07:14,450 --> 00:07:19,149
+these Themes, take a look at this XAML ThemeResource,
+
+137
+00:07:19,150 --> 00:07:21,709
+here, let me just put where you can find this
+
+138
+00:07:21,710 --> 00:07:24,829
+at bit.do/theme-resources.
+
+139
+00:07:25,290 --> 00:07:27,289
+You can come to this webpage and it has just
+
+140
+00:07:27,290 --> 00:07:32,289
+this long list of the different theme brushes,
+
+141
+00:07:33,800 --> 00:07:37,039
+colors for buttons and texts and all sorts of stuff.
+
+142
+00:07:37,450 --> 00:07:39,589
+You might want to spend some time on this page
+
+143
+00:07:39,590 --> 00:07:41,299
+to learn more about that.
+
+144
+00:07:42,150 --> 00:07:43,519
+On the Windows Phone you get to do
+
+145
+00:07:43,520 --> 00:07:45,319
+something a little bit different, let's go
+
+146
+00:07:45,320 --> 00:07:48,939
+to the emulator here and run it real quick.
+
+147
+00:07:52,020 --> 00:07:56,489
+On the Windows 10 Phone, the user can select
+
+148
+00:07:56,490 --> 00:08:00,309
+both a theme and an accent color, just like
+
+149
+00:08:00,310 --> 00:08:03,389
+whenever you're building for the Windows 10 Desktop,
+
+150
+00:08:03,390 --> 00:08:05,249
+you the developer get to decide whether
+
+151
+00:08:05,250 --> 00:08:07,219
+to use those colors or not.
+
+152
+00:08:07,220 --> 00:08:10,189
+Now on the phone, the user can select a Dark Theme
+
+153
+00:08:10,190 --> 00:08:15,189
+or a Light Theme and you can see here in this
+
+154
+00:08:15,190 --> 00:08:18,609
+particular case that I've chosen the Dark Theme.
+
+155
+00:08:18,610 --> 00:08:20,009
+How do I know that?
+
+156
+00:08:20,010 --> 00:08:23,049
+Because this system window color is not white
+
+157
+00:08:23,050 --> 00:08:25,089
+on the phone, it's actually black,
+
+158
+00:08:25,090 --> 00:08:26,989
+let's take a look in the Settings,
+
+159
+00:08:26,990 --> 00:08:28,599
+see if I can get to that.
+
+160
+00:08:29,650 --> 00:08:31,069
+In the simulator.
+
+161
+00:08:35,110 --> 00:08:38,469
+Let's go down to Settings, yeah, there we go.
+
+162
+00:08:40,250 --> 00:08:43,869
+We go to Personalization and then Colors.
+
+163
+00:08:44,250 --> 00:08:45,649
+You can see you can choose your mode,
+
+164
+00:08:45,650 --> 00:08:47,649
+either Light or Dark, so now I'm gonna
+
+165
+00:08:47,650 --> 00:08:51,719
+change from Dark to Light and I'm going to go back
+
+166
+00:08:51,720 --> 00:08:54,999
+to my app and go all the way down here.
+
+167
+00:08:57,390 --> 00:08:59,519
+Take a look at the ThemeResources app again
+
+168
+00:08:59,520 --> 00:09:01,489
+and notice that that system color
+
+169
+00:09:01,490 --> 00:09:03,739
+changed from Black to White.
+
+170
+00:09:05,490 --> 00:09:07,659
+The intent of that Light and Dark Theme
+
+171
+00:09:07,660 --> 00:09:10,919
+was really to change the shell, the colors
+
+172
+00:09:10,920 --> 00:09:12,689
+that are used by the operating system,
+
+173
+00:09:12,690 --> 00:09:15,159
+but again, as the developer you can choose
+
+174
+00:09:15,160 --> 00:09:19,679
+to actually utilize those colors and each
+
+175
+00:09:19,680 --> 00:09:23,189
+control of the Buttons, the TextBoxes,
+
+176
+00:09:23,190 --> 00:09:25,459
+everything are already Themed for
+
+177
+00:09:25,460 --> 00:09:28,279
+both Light and Dark and by default
+
+178
+00:09:29,390 --> 00:09:32,249
+the, I think the Dark will be used,
+
+179
+00:09:32,250 --> 00:09:34,419
+however, as the developer, you can change
+
+180
+00:09:34,420 --> 00:09:36,449
+or choose your preferred Theme by
+
+181
+00:09:36,450 --> 00:09:38,931
+setting it in the App.xaml.
+
+182
+00:09:40,410 --> 00:09:42,649
+I'm going to go here, App.xaml, and you can see
+
+183
+00:09:42,650 --> 00:09:45,049
+by default the RequestedTheme is Light,
+
+184
+00:09:45,050 --> 00:09:47,259
+but what if I change that to Dark?
+
+185
+00:09:48,620 --> 00:09:50,139
+Run the application again.
+
+186
+00:09:53,590 --> 00:09:55,889
+Okay, now you can see that the background color
+
+187
+00:09:55,890 --> 00:09:59,179
+for the window is black even though that
+
+188
+00:09:59,180 --> 00:10:04,049
+I chose the color, even though I chose the
+
+189
+00:10:04,050 --> 00:10:06,999
+Light Theme for the application.
+
+190
+00:10:07,420 --> 00:10:10,259
+This works the same way inside of our
+
+191
+00:10:11,160 --> 00:10:13,789
+Desktop apps as well, now that I've changed the
+
+192
+00:10:13,790 --> 00:10:16,149
+RequestedTheme to Dark, let's take a look
+
+193
+00:10:16,150 --> 00:10:18,789
+at this again on my local machine, you'll recall
+
+194
+00:10:18,790 --> 00:10:22,749
+last time we ran the app it had a white background
+
+195
+00:10:22,750 --> 00:10:26,399
+but now we're running with a black background, okay.
+
+196
+00:10:27,650 --> 00:10:29,319
+All right, so I'm not gonna show you how to
+
+197
+00:10:29,320 --> 00:10:32,109
+override the Styles that are defined in this
+
+198
+00:10:32,110 --> 00:10:36,049
+generic.xaml, but you can read about it in that
+
+199
+00:10:36,050 --> 00:10:38,649
+page that I pointed to you just a moment ago,
+
+200
+00:10:38,650 --> 00:10:41,589
+here, that XAML Theme Resources page,
+
+201
+00:10:41,590 --> 00:10:43,659
+it'll tell you about how to that.
+
+202
+00:10:44,120 --> 00:10:45,809
+All right, finally, a moment ago I said
+
+203
+00:10:45,810 --> 00:10:48,849
+that you could request a Theme and I wanted
+
+204
+00:10:48,850 --> 00:10:52,009
+to emphasize the fact that it's merely a request
+
+205
+00:10:52,010 --> 00:10:55,069
+and even the property says RequestedTheme.
+
+206
+00:10:56,690 --> 00:11:00,919
+If the user is using one of the high-contrast Themes
+
+207
+00:11:00,920 --> 00:11:04,289
+on the desktop, it's gonna override the RequestedTheme
+
+208
+00:11:04,290 --> 00:11:07,649
+as well as any Styles that you create for your Control,
+
+209
+00:11:07,650 --> 00:11:10,719
+so high-contrast Themes are for accessibility,
+
+210
+00:11:10,720 --> 00:11:13,781
+for people that are vision impaired, and that takes
+
+211
+00:11:13,782 --> 00:11:16,419
+precedence over any aesthetic that you might
+
+212
+00:11:16,420 --> 00:11:19,789
+want to use for your app, so here's what I'm
+
+213
+00:11:19,790 --> 00:11:24,389
+gonna do is go again to Settings, let me choose,
+
+214
+00:11:24,390 --> 00:11:25,989
+let me see if I can get to high-contrast,
+
+215
+00:11:25,990 --> 00:11:28,039
+yeah, high contrast settings.
+
+216
+00:11:31,050 --> 00:11:33,949
+It's under ease of access, choose "High contrast",
+
+217
+00:11:33,950 --> 00:11:37,631
+and I'm going to choose high contrast theme number one.
+
+218
+00:11:38,320 --> 00:11:39,899
+Then select apply.
+
+219
+00:11:43,260 --> 00:11:44,619
+Alright, and I don't know how much of that
+
+220
+00:11:44,620 --> 00:11:49,019
+you saw, but the system does a quick reboot
+
+221
+00:11:49,020 --> 00:11:53,089
+and now you can see that the Settings App
+
+222
+00:11:53,090 --> 00:11:55,449
+looks completely different, Visual Studio
+
+223
+00:11:55,450 --> 00:11:58,519
+looks different, when we run our app, this time
+
+224
+00:11:58,520 --> 00:12:02,989
+we get the Theme colors primarily for,
+
+225
+00:12:02,990 --> 00:12:06,239
+instead of any colors that we defined in our app.
+
+226
+00:12:08,220 --> 00:12:10,449
+Like I said earlier, ThemedResources should be
+
+227
+00:12:10,450 --> 00:12:12,849
+leveraged to keep your app looking like
+
+228
+00:12:12,850 --> 00:12:15,589
+they belong on the user's desktop or device,
+
+229
+00:12:15,590 --> 00:12:19,949
+so you should always resist the urge to
+
+230
+00:12:19,950 --> 00:12:24,019
+use custom colors or fonts and things
+
+231
+00:12:24,020 --> 00:12:25,619
+of that nature unless you have
+
+232
+00:12:25,620 --> 00:12:27,599
+a really good reason to do so.
+
+233
+00:12:28,220 --> 00:12:29,589
+One of the good reasons would be
+
+234
+00:12:29,590 --> 00:12:31,249
+for branding purposes for your company,
+
+235
+00:12:31,250 --> 00:12:33,181
+like think about Netflix, how they have that
+
+236
+00:12:33,182 --> 00:12:35,989
+iconic red color with the white text
+
+237
+00:12:35,990 --> 00:12:38,639
+and that specific font, alright.
+
+238
+00:12:39,250 --> 00:12:41,319
+Furthermore, there are built in Styles that
+
+239
+00:12:41,320 --> 00:12:44,019
+are available to your app, so for example,
+
+240
+00:12:44,020 --> 00:12:47,389
+if I go back to this MainPage.xaml and I took
+
+241
+00:12:47,390 --> 00:12:49,249
+a look and this is hard to look at,
+
+242
+00:12:49,250 --> 00:12:51,489
+so I'm gonna go back here and change
+
+243
+00:12:51,490 --> 00:12:54,769
+out of high-contrast settings.
+
+244
+00:12:56,150 --> 00:12:57,439
+Select none.
+
+245
+00:13:01,610 --> 00:13:03,659
+Ah, much better, okay.
+
+246
+00:13:05,390 --> 00:13:06,539
+There we go.
+
+247
+00:13:07,450 --> 00:13:10,369
+Let me change this to a StackPanel real quick here.
+
+248
+00:13:11,520 --> 00:13:15,749
+Then I'm gonna add a TextBlock and I'll set
+
+249
+00:13:15,750 --> 00:13:20,109
+the Text="My App Title", something like that,
+
+250
+00:13:20,110 --> 00:13:24,319
+and then I'm gonna set the Style equals,
+
+251
+00:13:24,320 --> 00:13:26,299
+we'll get to that point right there.
+
+252
+00:13:27,450 --> 00:13:30,649
+Okay, and so I can take advantage of some
+
+253
+00:13:30,650 --> 00:13:33,099
+of the default styling built into...
+
+254
+00:13:35,790 --> 00:13:38,149
+That generic.xaml page, like for example
+
+255
+00:13:38,150 --> 00:13:39,839
+here let's just use...
+
+256
+00:13:40,920 --> 00:13:44,839
+"StaticResource HeaderTextBlockStyle".
+
+257
+00:13:46,520 --> 00:13:51,519
+You can see, and let's just put this up to 66%.
+
+258
+00:13:54,090 --> 00:13:56,849
+We have this very specific font, I think it's
+
+259
+00:13:56,850 --> 00:13:59,919
+one of the Segoe fonts, but it's very thin and light
+
+260
+00:13:59,920 --> 00:14:04,349
+and you'll see that particular font used often in
+
+261
+00:14:04,350 --> 00:14:07,599
+applications, so we can borrow from that as well.
+
+262
+00:14:08,650 --> 00:14:10,709
+If you ever are wondering where you can
+
+263
+00:14:10,710 --> 00:14:14,619
+actually find some of these, some of these Styles,
+
+264
+00:14:15,740 --> 00:14:18,049
+for example for the TextBlock, let me go over here
+
+265
+00:14:18,050 --> 00:14:20,639
+to the Properties window on the right-hand side.
+
+266
+00:14:21,420 --> 00:14:25,349
+I'm going go to, I'm going to go to Miscellaneous
+
+267
+00:14:25,350 --> 00:14:29,649
+and then you can see that right now under Style
+
+268
+00:14:29,650 --> 00:14:33,719
+I get this Windows.UI.Xaml.Style,
+
+269
+00:14:33,720 --> 00:14:36,849
+if I click this little green button,
+
+270
+00:14:36,850 --> 00:14:39,799
+you can see that I can choose from...
+
+271
+00:14:40,850 --> 00:14:43,249
+A System Resource, let me move this over
+
+272
+00:14:43,250 --> 00:14:45,299
+a little bit so you can see it better.
+
+273
+00:14:49,310 --> 00:14:51,349
+Choose from one of the System Resources,
+
+274
+00:14:51,350 --> 00:14:54,119
+in this case I've chosen the HeaderTextBlockStyle,
+
+275
+00:14:54,120 --> 00:14:55,789
+but we could also choose for example
+
+276
+00:14:55,790 --> 00:15:00,789
+the sSubheaderTextBlockStyle or the...
+
+277
+00:15:03,650 --> 00:15:06,739
+CaptionTextBlockStyle, okay, a much smaller font.
+
+278
+00:15:08,350 --> 00:15:10,249
+There's one last thing that I wanna point out here
+
+279
+00:15:10,250 --> 00:15:13,619
+and that is if we were to put our mouse cursor
+
+280
+00:15:13,620 --> 00:15:17,549
+on the CaptionTextBlockStyle and hit F12,
+
+281
+00:15:18,970 --> 00:15:23,419
+you'll notice that it brings us to line 12,400
+
+282
+00:15:23,420 --> 00:15:25,539
+in the generic.xaml file.
+
+283
+00:15:26,050 --> 00:15:27,889
+If you scroll over to the right, you'll see that
+
+284
+00:15:27,890 --> 00:15:32,889
+this Style has a BasedOn Attribute, and so this Style
+
+285
+00:15:33,190 --> 00:15:37,699
+builds on something called BaseTextBlockStyle.
+
+286
+00:15:38,520 --> 00:15:41,019
+And that it adds a couple of modifications to it
+
+287
+00:15:41,020 --> 00:15:43,419
+and so this is where you'll see that it's
+
+288
+00:15:43,420 --> 00:15:46,249
+a lot like Cascading Style Sheets where you are,
+
+289
+00:15:46,250 --> 00:15:48,349
+you take a Style and you keep modifying it
+
+290
+00:15:48,350 --> 00:15:51,299
+and adding additional changes to it.
+
+291
+00:15:51,720 --> 00:15:54,209
+Now if we wanted to look at this BaseTextBlockStyle,
+
+292
+00:15:54,210 --> 00:15:56,319
+I'll just hit F12 again, oops, can't naviagate
+
+293
+00:15:56,320 --> 00:15:58,749
+to the definition, let's just go ahead
+
+294
+00:15:58,750 --> 00:16:02,349
+and control copy that and look
+
+295
+00:16:02,350 --> 00:16:04,169
+through it to find it.
+
+296
+00:16:05,820 --> 00:16:07,889
+All right, and so we can see it defined here
+
+297
+00:16:07,890 --> 00:16:11,589
+as the BaseTextBlockStyle, it doesn't,
+
+298
+00:16:11,590 --> 00:16:13,899
+it's not based on anything else.
+
+299
+00:16:14,550 --> 00:16:16,749
+TargetType="TextBlock" and then here it
+
+300
+00:16:16,750 --> 00:16:19,149
+sets the FontFamily, FontWeight, FontSize,
+
+301
+00:16:19,150 --> 00:16:22,849
+TextTrimming, Wrapping, LineStackingStrategy,
+
+302
+00:16:22,850 --> 00:16:25,649
+TextLineBounds, everything, and you can see
+
+303
+00:16:25,650 --> 00:16:29,219
+that there are a number of these Attributes that
+
+304
+00:16:29,220 --> 00:16:31,319
+we saw just a moment ago in the Properties window
+
+305
+00:16:31,320 --> 00:16:36,319
+that are all based on that BaseTextBlockStyle.
+
+306
+00:16:37,810 --> 00:16:41,289
+We can actually utilize BasedOn in our own Styles,
+
+307
+00:16:41,290 --> 00:16:43,649
+again, to give us that Cascading Style Sheet
+
+308
+00:16:43,650 --> 00:16:45,499
+approach to Styling the app.
+
+309
+00:16:47,990 --> 00:16:50,149
+Okay, so just to recap, the big takeaway
+
+310
+00:16:50,150 --> 00:16:52,489
+from this lesson was the ways in which you
+
+311
+00:16:52,490 --> 00:16:55,049
+can utilize ThemeResources in your apps
+
+312
+00:16:55,050 --> 00:16:57,749
+to achieve styling that's consistent with
+
+313
+00:16:57,750 --> 00:17:01,939
+other apps on the user's desktop or on their device.
+
+314
+00:17:02,850 --> 00:17:04,249
+I think it's time for a review,
+
+315
+00:17:04,250 --> 00:17:05,749
+see you in the next lesson where we'll
+
+316
+00:17:05,750 --> 00:17:08,019
+add to our little cheat sheet.
+
+317
+00:17:08,020 --> 00:17:09,299
+Thanks.  
+

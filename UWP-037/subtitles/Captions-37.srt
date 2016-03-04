@@ -1,0 +1,996 @@
+1
+00:00:04,889 --> 00:00:05,822
+<v ->Hi, I'm Bob Tabor with</v>
+
+2
+00:00:05,823 --> 00:00:09,626
+www.LearnVisualStudio.net, and I want you to take a look
+
+3
+00:00:09,627 --> 00:00:11,746
+on-screen right now because
+
+4
+00:00:13,177 --> 00:00:15,085
+I wanted to illustrate an idea,
+
+5
+00:00:15,086 --> 00:00:17,046
+it's easier to show you than explain it.
+
+6
+00:00:17,047 --> 00:00:19,718
+Here I have a simple application with a Grid,
+
+7
+00:00:19,719 --> 00:00:21,688
+I set the Grid's Background="Red"
+
+8
+00:00:21,689 --> 00:00:24,086
+and I have a simple TextBlock and I've got a,
+
+9
+00:00:24,387 --> 00:00:27,739
+I don't know, 16 point, 18 point font there.
+
+10
+00:00:27,910 --> 00:00:31,190
+And so watch what happens though whenever I resize this.
+
+11
+00:00:31,191 --> 00:00:34,025
+I get to a certain point and
+
+12
+00:00:34,026 --> 00:00:37,651
+it triggers the change of the BackgroundColor
+
+13
+00:00:37,652 --> 00:00:41,248
+to Yellow, and the FontSize to a larger FontSize,
+
+14
+00:00:41,249 --> 00:00:43,218
+I think like 24 or something.
+
+15
+00:00:43,219 --> 00:00:46,069
+Now let's continue to resize,
+
+16
+00:00:46,145 --> 00:00:48,145
+and the Cackground color changes to blue
+
+17
+00:00:48,146 --> 00:00:51,620
+and I use an even larger Font for the TextBlock.
+
+18
+00:00:51,621 --> 00:00:54,383
+And so this is made possible by an object called
+
+19
+00:00:54,384 --> 00:00:56,953
+the VisualStateManager and it does
+
+20
+00:00:56,954 --> 00:00:59,320
+exactly what it sounds like, it manages
+
+21
+00:00:59,321 --> 00:01:01,443
+the visual state of your application,
+
+22
+00:01:01,444 --> 00:01:04,450
+where things belong, the sizes of things,
+
+23
+00:01:04,451 --> 00:01:08,219
+the colors of things based on Triggers that you create.
+
+24
+00:01:08,220 --> 00:01:11,957
+So, essentially you can manipulate any property
+
+25
+00:01:11,958 --> 00:01:14,355
+of any object, you can resize,
+
+26
+00:01:14,356 --> 00:01:16,823
+reposition, set the visibility,
+
+27
+00:01:16,824 --> 00:01:20,155
+you can set the FontSize, set the FontFamily.
+
+28
+00:01:20,156 --> 00:01:22,756
+Anything that you possibly can imagine
+
+29
+00:01:22,757 --> 00:01:24,946
+based on the current size of the window,
+
+30
+00:01:24,947 --> 00:01:27,252
+or the current available screen real estate.
+
+31
+00:01:27,253 --> 00:01:28,725
+And so think about how that applies to the
+
+32
+00:01:28,726 --> 00:01:30,381
+Universal Windows Platform.
+
+33
+00:01:31,252 --> 00:01:33,048
+One of the selling points is that you're able
+
+34
+00:01:33,049 --> 00:01:35,151
+to write one code base and then use it
+
+35
+00:01:35,152 --> 00:01:37,091
+across all these different form factors.
+
+36
+00:01:37,092 --> 00:01:39,885
+And so this allows you to accommodate different
+
+37
+00:01:39,886 --> 00:01:42,587
+screen resolutions for different form factors
+
+38
+00:01:42,588 --> 00:01:44,659
+with the same code base.
+
+39
+00:01:44,660 --> 00:01:47,219
+And so this is a very foundational concept
+
+40
+00:01:47,220 --> 00:01:49,708
+and what we're going to talk about briefly in this lesson,
+
+41
+00:01:49,709 --> 00:01:53,386
+we'll talk about how this applies to adaptive layout,
+
+42
+00:01:53,387 --> 00:01:55,509
+in other words, changing the entire layout
+
+43
+00:01:55,510 --> 00:01:58,221
+of your application based on the screen size,
+
+44
+00:01:58,222 --> 00:01:59,420
+the form factor.
+
+45
+00:01:59,421 --> 00:02:01,523
+We'll talk about that in the very next video.
+
+46
+00:02:01,524 --> 00:02:04,459
+But again, this is all made possible because of
+
+47
+00:02:04,460 --> 00:02:06,886
+a object called the VisualStateManager,
+
+48
+00:02:06,887 --> 00:02:09,650
+You create a VisualState group and inside of that group
+
+49
+00:02:09,651 --> 00:02:11,549
+you create a series of States.
+
+50
+00:02:11,550 --> 00:02:13,581
+So a State can be anything, you give it a name
+
+51
+00:02:13,582 --> 00:02:15,450
+and you give it some Triggers.
+
+52
+00:02:15,451 --> 00:02:16,852
+So in this case take a look at
+
+53
+00:02:16,853 --> 00:02:18,992
+the application we were just looking at.
+
+54
+00:02:19,643 --> 00:02:23,919
+So here I have a VisualState that I called Phone.
+
+55
+00:02:23,920 --> 00:02:25,818
+I have another VisualState that I called Tablet,
+
+56
+00:02:25,819 --> 00:02:27,058
+or VisualStateTablet,
+
+57
+00:02:27,059 --> 00:02:28,332
+And then another VisualState
+
+58
+00:02:28,333 --> 00:02:29,658
+that I called VisualStateDesktop.
+
+59
+00:02:29,659 --> 00:02:31,020
+Now you can name these things anything you want to.
+
+60
+00:02:31,021 --> 00:02:35,202
+And I don't know if there's any standard sizes or
+
+61
+00:02:35,593 --> 00:02:36,851
+anything that you've got to stick with.
+
+62
+00:02:36,852 --> 00:02:39,086
+It's whatever makes sense for your application,
+
+63
+00:02:39,087 --> 00:02:42,256
+and that's why I think, you know, testing your application
+
+64
+00:02:42,257 --> 00:02:45,151
+continually on different devices, and VisualStudio
+
+65
+00:02:45,152 --> 00:02:47,112
+obviously makes that very simple.
+
+66
+00:02:48,623 --> 00:02:51,421
+But testing it as many different form factors as possible,
+
+67
+00:02:51,422 --> 00:02:53,351
+will help you see the optimal layout
+
+68
+00:02:53,352 --> 00:02:55,383
+for that given form factor.
+
+69
+00:02:56,324 --> 00:02:58,123
+So here we go, we have a VisualState.
+
+70
+00:02:58,124 --> 00:03:00,754
+And a VisualState is comprised of two things.
+
+71
+00:03:00,755 --> 00:03:02,887
+First of all, a series of Triggers
+
+72
+00:03:02,888 --> 00:03:04,055
+and then a series of Setters.
+
+73
+00:03:04,056 --> 00:03:07,621
+So when a Trigger is essentially, in this case,
+
+74
+00:03:07,622 --> 00:03:09,551
+either the MinWindowWidth,
+
+75
+00:03:09,552 --> 00:03:11,156
+or the MinWindowHeight,
+
+76
+00:03:11,157 --> 00:03:15,484
+that once it's achieved will Trigger
+
+77
+00:03:15,485 --> 00:03:17,587
+this particular VisualState.
+
+78
+00:03:17,588 --> 00:03:19,385
+So once that State is Triggered,
+
+79
+00:03:19,386 --> 00:03:21,853
+then it applies these Setters.
+
+80
+00:03:21,854 --> 00:03:23,357
+And these Setters are very similar to the Setters
+
+81
+00:03:23,358 --> 00:03:24,718
+that we had in Styles right?
+
+82
+00:03:24,719 --> 00:03:27,491
+Where we have a Target, property,
+
+83
+00:03:27,492 --> 00:03:30,092
+so here's the object, the ColorGrid object.
+
+84
+00:03:30,093 --> 00:03:32,418
+And I'm going to set the Background Value="Red".
+
+85
+00:03:32,419 --> 00:03:33,790
+Alright, same thing with the TextBlock,
+
+86
+00:03:33,791 --> 00:03:35,151
+this MessageTextBlock.
+
+87
+00:03:35,152 --> 00:03:39,316
+And I use the dot notation just like we would to access
+
+88
+00:03:39,317 --> 00:03:41,754
+members of an object in C#.
+
+89
+00:03:41,755 --> 00:03:45,716
+So we use the dot notation to access the property FontSize
+
+90
+00:03:45,717 --> 00:03:48,841
+and we set it's value to 18, whenever we are in that
+
+91
+00:03:48,842 --> 00:03:52,305
+smallest state where the MinWindowWidth="0".
+
+92
+00:03:52,691 --> 00:03:55,159
+The next State up has a Trigger
+
+93
+00:03:55,160 --> 00:03:57,912
+of MinWindowWidth="600".
+
+94
+00:03:57,913 --> 00:04:01,254
+And at that point then we were applying,
+
+95
+00:04:02,535 --> 00:04:04,321
+the Setters that we're applying are setting the
+
+96
+00:04:04,322 --> 00:04:07,247
+background ColorGrid to yellow,
+
+97
+00:04:07,248 --> 00:04:10,091
+and the FontSize of the MessageTextBlock to 36.
+
+98
+00:04:10,092 --> 00:04:13,423
+And then finally the desktop, as long as the
+
+99
+00:04:13,424 --> 00:04:15,384
+MinWindowWidth="800",
+
+100
+00:04:15,385 --> 00:04:17,223
+once we stretch it out that far,
+
+101
+00:04:17,224 --> 00:04:19,590
+then we were able to change the Background
+
+102
+00:04:19,591 --> 00:04:22,221
+to blue and the FontSize to 54.
+
+103
+00:04:23,092 --> 00:04:25,085
+So conceptually it's easy,
+
+104
+00:04:26,336 --> 00:04:27,276
+it's very easy.
+
+105
+00:04:28,148 --> 00:04:30,733
+It allows you to get creative
+
+106
+00:04:30,854 --> 00:04:34,581
+with how you want to make changes to your application
+
+107
+00:04:34,582 --> 00:04:36,802
+using this tool.
+
+108
+00:04:36,979 --> 00:04:40,686
+And that's really all there is to the notion of
+
+109
+00:04:40,687 --> 00:04:42,454
+what we were calling in the video
+
+110
+00:04:42,455 --> 00:04:44,354
+an AdaptiveTrigger.
+
+111
+00:04:44,355 --> 00:04:46,223
+Here's an AdaptiveTrigger object,
+
+112
+00:04:46,224 --> 00:04:49,758
+we set the Trigger and then once that Trigger is
+
+113
+00:04:49,759 --> 00:04:52,247
+fired off, we apply the Setters.
+
+114
+00:04:52,248 --> 00:04:53,314
+Ok great.
+
+115
+00:04:53,315 --> 00:04:55,518
+Now I wanted to show you
+
+116
+00:04:55,519 --> 00:05:00,191
+that there's actually a tool that will help you do this.
+
+117
+00:05:00,192 --> 00:05:02,416
+Now I don't like this tool, honestly,
+
+118
+00:05:02,417 --> 00:05:04,082
+I'm being completely honest with you,
+
+119
+00:05:04,083 --> 00:05:05,849
+I would prefer to do it by hand,
+
+120
+00:05:05,850 --> 00:05:07,322
+I feel like I have more control.
+
+121
+00:05:07,323 --> 00:05:10,492
+But if you're a more visual type person
+
+122
+00:05:10,493 --> 00:05:12,453
+and you don't remember the syntax
+
+123
+00:05:12,454 --> 00:05:14,454
+and you don't want to look up on your cheat sheet,
+
+124
+00:05:14,455 --> 00:05:16,120
+as we'll add this to our cheat sheet in a little bit,
+
+125
+00:05:16,121 --> 00:05:17,583
+you can use this trick.
+
+126
+00:05:18,604 --> 00:05:20,857
+In your project, in the Solution Explorer,
+
+127
+00:05:20,858 --> 00:05:22,421
+you can see here I have
+
+128
+00:05:22,422 --> 00:05:24,392
+a New Project called UsingBlendForVisualStates,
+
+129
+00:05:24,393 --> 00:05:26,424
+and I have the same color Grid and TextBlock,
+
+130
+00:05:26,425 --> 00:05:28,659
+but I haven't added anything else to it just yet.
+
+131
+00:05:28,660 --> 00:05:31,757
+Here in the Solution Explorer I'm going to right-click
+
+132
+00:05:31,758 --> 00:05:34,185
+on the project and select Design in Blend.
+
+133
+00:05:34,186 --> 00:05:36,491
+And so Blend is a tool that should be installed
+
+134
+00:05:36,912 --> 00:05:39,037
+along with Visual Studio.
+
+135
+00:05:40,424 --> 00:05:43,725
+And it really was intended for
+
+136
+00:05:43,726 --> 00:05:46,356
+more design work, and by design I mean
+
+137
+00:05:46,357 --> 00:05:48,185
+aesthetic design work.
+
+138
+00:05:48,186 --> 00:05:50,684
+And you see that it has many of the same
+
+139
+00:05:50,685 --> 00:05:52,492
+features of VisualStudio.
+
+140
+00:05:52,493 --> 00:05:55,285
+On the right-hand side we have the properties window.
+
+141
+00:05:55,286 --> 00:05:58,882
+There is also a Solution Explorer docked by default
+
+142
+00:05:58,883 --> 00:06:00,385
+over here on the left.
+
+143
+00:06:00,386 --> 00:06:02,488
+There are two things that Blend does for you
+
+144
+00:06:02,489 --> 00:06:04,784
+that you can't easily do
+
+145
+00:06:06,885 --> 00:06:08,551
+in Visual Studio.
+
+146
+00:06:08,552 --> 00:06:10,877
+And one of them, is it gives you this cool little
+
+147
+00:06:10,878 --> 00:06:15,038
+way of creating VisualStates and
+
+148
+00:06:15,053 --> 00:06:17,754
+recording the changes in a given State.
+
+149
+00:06:17,755 --> 00:06:19,420
+And then secondly, working with animation,
+
+150
+00:06:19,421 --> 00:06:21,655
+which we're not going to talk about in this series.
+
+151
+00:06:21,656 --> 00:06:23,250
+But let me show you how this works,
+
+152
+00:06:23,251 --> 00:06:24,784
+in fact it's just easier if I go straight
+
+153
+00:06:24,785 --> 00:06:27,791
+to the design view for this.
+
+154
+00:06:27,792 --> 00:06:30,189
+And let's go down to where we can actually see
+
+155
+00:06:30,190 --> 00:06:32,704
+our design area.
+
+156
+00:06:33,258 --> 00:06:37,523
+So there's this Objects and Timeline window,
+
+157
+00:06:37,524 --> 00:06:39,484
+typically docked on the left-hand side.
+
+158
+00:06:39,485 --> 00:06:42,318
+And you can see that I can drill down and see
+
+159
+00:06:42,319 --> 00:06:44,655
+the ColorGrid and whatever's inside the ColorGrid,
+
+160
+00:06:44,656 --> 00:06:46,554
+in this case, the MessageTextBlock.
+
+161
+00:06:46,555 --> 00:06:48,688
+And then I'm going to go to the States tab here
+
+162
+00:06:48,689 --> 00:06:51,888
+that's usually docked up on the upper left-hand corner.
+
+163
+00:06:51,889 --> 00:06:56,242
+And what I'll do is, I'm going to add a state group,
+
+164
+00:06:56,257 --> 00:06:58,359
+so I'm going to click this little button here.
+
+165
+00:06:58,360 --> 00:07:01,589
+And this will create a VisualStateGroup.
+
+166
+00:07:01,590 --> 00:07:03,814
+I'm going to add a state to that group
+
+167
+00:07:03,815 --> 00:07:06,953
+and I'm going to call this state Phone,
+
+168
+00:07:06,954 --> 00:07:08,751
+we can call it anything we want.
+
+169
+00:07:08,752 --> 00:07:10,184
+I'm going to add another state
+
+170
+00:07:10,185 --> 00:07:13,059
+that I'm going to call Tablet.
+
+171
+00:07:13,060 --> 00:07:17,356
+And I'm going to add another state that I call Desktop.
+
+172
+00:07:19,967 --> 00:07:23,274
+And notice that whenever I select any of these,
+
+173
+00:07:23,518 --> 00:07:25,691
+that a little red light
+
+174
+00:07:25,692 --> 00:07:29,592
+is selected on the left-hand side,
+
+175
+00:07:29,593 --> 00:07:32,751
+and there's a red border all around the designer area.
+
+176
+00:07:32,752 --> 00:07:36,754
+You might also see that Phone state recording is on.
+
+177
+00:07:36,755 --> 00:07:40,492
+Now I select Tablet and Tablet state recording is on
+
+178
+00:07:40,493 --> 00:07:42,879
+So essentially what you're doing here is,
+
+179
+00:07:42,880 --> 00:07:45,592
+you're recording the changes in the property window
+
+180
+00:07:45,593 --> 00:07:47,085
+that you want to be made
+
+181
+00:07:47,086 --> 00:07:49,889
+when you're in that given state.
+
+182
+00:07:49,890 --> 00:07:50,945
+Now there's something else that we need to do
+
+183
+00:07:50,946 --> 00:07:54,653
+before we actually continue on with this.
+
+184
+00:07:54,654 --> 00:07:57,051
+And that is, we need to set the Triggers.
+
+185
+00:07:57,052 --> 00:07:58,686
+So as you can see here,
+
+186
+00:07:58,687 --> 00:08:01,957
+there's a little lightning bolt
+
+187
+00:08:01,958 --> 00:08:03,187
+off to the right-hand side
+
+188
+00:08:03,188 --> 00:08:05,757
+I'm going to click Edit Adaptive Triggers,
+
+189
+00:08:05,758 --> 00:08:08,071
+and I'm going to add an AdaptiveTrigger,
+
+190
+00:08:08,072 --> 00:08:12,437
+and set in this case the MinWindowWidth to zero,
+
+191
+00:08:13,084 --> 00:08:14,836
+and click OK.
+
+192
+00:08:15,125 --> 00:08:17,376
+And then for Tablet,
+
+193
+00:08:17,452 --> 00:08:22,374
+I'm going to set it's MinWindowWidth I think to 600,
+
+194
+00:08:22,724 --> 00:08:23,922
+again these are arbitrary numbers,
+
+195
+00:08:23,923 --> 00:08:26,025
+you would want to test this for your own application,
+
+196
+00:08:26,026 --> 00:08:28,453
+there are no standards that I'm aware of,
+
+197
+00:08:28,454 --> 00:08:30,119
+at certain break points you should be using
+
+198
+00:08:30,120 --> 00:08:33,055
+this versus that, I think this is something you get
+
+199
+00:08:33,056 --> 00:08:36,123
+to determine on your own as the developer.
+
+200
+00:08:36,124 --> 00:08:38,144
+So the MinWindowWidth 600, that will trigger
+
+201
+00:08:38,145 --> 00:08:43,144
+the Tablet state, and then finally the Desktop,
+
+202
+00:08:43,153 --> 00:08:45,637
+we'll set it's minimum to 800.
+
+203
+00:08:47,024 --> 00:08:48,238
+So here.
+
+204
+00:08:49,025 --> 00:08:50,270
+800 great.
+
+205
+00:08:51,758 --> 00:08:53,921
+Now, whenever in Desktop mode,
+
+206
+00:08:53,922 --> 00:08:56,989
+what we want to do, I'm going to select the MessageTextBlock
+
+207
+00:08:56,990 --> 00:08:59,620
+here in the Objects and Timeline window.
+
+208
+00:08:59,621 --> 00:09:03,141
+And then I'm going to change the font
+
+209
+00:09:03,257 --> 00:09:06,869
+to oh let's say 54, I forget what we chose originally.
+
+210
+00:09:08,346 --> 00:09:11,268
+And then I'm going to go to the Tablet,
+
+211
+00:09:11,554 --> 00:09:14,022
+and then I'm going to change the TextBlock
+
+212
+00:09:14,023 --> 00:09:16,029
+to let's say 36.
+
+213
+00:09:17,284 --> 00:09:18,959
+And then I'm going to go to the Phone
+
+214
+00:09:18,960 --> 00:09:20,804
+and change it to like 16.
+
+215
+00:09:23,227 --> 00:09:25,304
+And so now, let me go ahead
+
+216
+00:09:25,553 --> 00:09:26,838
+save what I have,
+
+217
+00:09:29,627 --> 00:09:31,369
+and then I'm going to run the application.
+
+218
+00:09:38,587 --> 00:09:40,106
+And you can see
+
+219
+00:09:40,192 --> 00:09:42,852
+that I was able to make those changes
+
+220
+00:09:42,853 --> 00:09:43,990
+using this tool.
+
+221
+00:09:43,991 --> 00:09:47,556
+Now again, I would prefer to just type it in myself.
+
+222
+00:09:47,557 --> 00:09:50,492
+It does create nice clean XAML, but there are some cases
+
+223
+00:09:50,493 --> 00:09:52,920
+like working with colors, and brushes,
+
+224
+00:09:52,921 --> 00:09:55,886
+I didn't like the XAML that it outputted.
+
+225
+00:09:55,887 --> 00:09:57,857
+That's me just being a little snobby here.
+
+226
+00:09:58,768 --> 00:10:00,787
+But otherwise you can use this tool to help you
+
+227
+00:10:00,788 --> 00:10:03,083
+generate these sorts of things.
+
+228
+00:10:03,084 --> 00:10:05,084
+Now when you close down Blend,
+
+229
+00:10:05,085 --> 00:10:06,618
+you're going to come back into VisualStudio,
+
+230
+00:10:06,619 --> 00:10:10,286
+it says hey, any windows that you had open,
+
+231
+00:10:11,527 --> 00:10:14,186
+they changed out from under VisualStudio.
+
+232
+00:10:14,187 --> 00:10:16,157
+Do you want to reload this?
+
+233
+00:10:16,158 --> 00:10:18,117
+Yes, I want to reload it and now you can see
+
+234
+00:10:18,118 --> 00:10:20,616
+All of the visual States
+
+235
+00:10:20,617 --> 00:10:23,583
+and the Triggers and the Setters
+
+236
+00:10:23,584 --> 00:10:26,941
+are all updated here in VisualStudio.
+
+237
+00:10:27,017 --> 00:10:31,253
+So again, a very simple concept, very powerful
+
+238
+00:10:31,254 --> 00:10:33,457
+in how we can go about using this
+
+239
+00:10:33,458 --> 00:10:35,824
+to style up our applications based on the
+
+240
+00:10:35,825 --> 00:10:37,785
+form factor and screen resolution.
+
+241
+00:10:37,786 --> 00:10:42,153
+And again, foundational concept for building real
+
+242
+00:10:42,154 --> 00:10:45,292
+Universal Windows Platform applications.
+
+243
+00:10:45,293 --> 00:10:46,816
+And so we're going to use this now
+
+244
+00:10:46,817 --> 00:10:49,152
+in the next lesson to actually
+
+245
+00:10:49,153 --> 00:10:51,154
+create a more realistic app,
+
+246
+00:10:51,155 --> 00:10:54,618
+and utilize these concepts to change out the layout
+
+247
+00:10:54,619 --> 00:10:58,011
+based on the available screen resolution.
+
+248
+00:10:58,012 --> 00:11:01,708
+Alright so stay tuned to exciting part two of this
+
+249
+00:11:01,709 --> 00:11:04,265
+in the very next lesson, thanks.  
+

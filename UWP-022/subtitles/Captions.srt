@@ -1,0 +1,1004 @@
+1
+00:00:04,876 --> 00:00:08,509
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net</v>
+
+2
+00:00:08,510 --> 00:00:11,168
+and it's time for another cheat sheet review
+
+3
+00:00:11,169 --> 00:00:13,890
+where we'll talk about Windows 10 Layout in general,
+
+4
+00:00:13,891 --> 00:00:16,885
+specifically, several new Layout controls
+
+5
+00:00:16,886 --> 00:00:19,556
+that allow us to cheat Windows 10 Layout
+
+6
+00:00:19,557 --> 00:00:22,354
+and that hamburger style navigation,
+
+7
+00:00:22,355 --> 00:00:24,956
+and then finally we talked about controls as well.
+
+8
+00:00:24,957 --> 00:00:26,985
+So let's open up our cheat sheet
+
+9
+00:00:26,986 --> 00:00:29,458
+and then let's scroll to the bottom here,
+
+10
+00:00:29,459 --> 00:00:31,225
+and we'll start with lesson number 17,
+
+11
+00:00:31,226 --> 00:00:32,920
+where we talked about the relative panel.
+
+12
+00:00:32,921 --> 00:00:34,793
+We said that the RelativePanel allows you
+
+13
+00:00:34,794 --> 00:00:38,690
+to define an area where all the controls on the side
+
+14
+00:00:38,691 --> 00:00:42,289
+can either align themselves relative to the panel itself,
+
+15
+00:00:42,290 --> 00:00:44,209
+or relative to the other controls.
+
+16
+00:00:44,210 --> 00:00:48,606
+And we said that the controls would use attached properties
+
+17
+00:00:48,607 --> 00:00:52,837
+to tell the Layout engine
+
+18
+00:00:52,838 --> 00:00:55,378
+where they want to be positioned in relation to.
+
+19
+00:00:55,379 --> 00:00:58,029
+We said that there's different types of properties
+
+20
+00:00:58,030 --> 00:01:01,546
+that can be set and they're applied in a certain order.
+
+21
+00:01:01,547 --> 00:01:04,296
+So first, you have panel alignment relationships
+
+22
+00:01:04,297 --> 00:01:08,187
+like align the top of my control with the panel,
+
+23
+00:01:08,188 --> 00:01:10,625
+align the left of my control with the panel,
+
+24
+00:01:10,626 --> 00:01:12,737
+and these are applied first.
+
+25
+00:01:12,738 --> 00:01:16,383
+The next grouping are sibling alignment relationships.
+
+26
+00:01:16,384 --> 00:01:18,102
+They allow you to AlignTopWith
+
+27
+00:01:18,103 --> 00:01:20,414
+AlignTopWith relative to another control,
+
+28
+00:01:20,415 --> 00:01:22,514
+or left with another control,
+
+29
+00:01:22,515 --> 00:01:24,452
+and then finally, applied last are
+
+30
+00:01:24,453 --> 00:01:26,269
+the sibling positional relationships.
+
+31
+00:01:26,270 --> 00:01:30,163
+So for this given control,
+
+32
+00:01:30,164 --> 00:01:32,101
+put it in such a position
+
+33
+00:01:32,102 --> 00:01:34,784
+where it's above or below, or to the left
+
+34
+00:01:34,785 --> 00:01:36,664
+or right of another given control.
+
+35
+00:01:36,665 --> 00:01:39,155
+Alright, so I have a quick little example here
+
+36
+00:01:39,156 --> 00:01:42,479
+that you can use as a form of cheat sheet,
+
+37
+00:01:42,480 --> 00:01:46,158
+where we have a RelativePanel and two Rectangles.
+
+38
+00:01:46,159 --> 00:01:51,158
+And the first Rectangle, it sets its attached property
+
+39
+00:01:51,259 --> 00:01:53,917
+AlignRightWithPanel="True",
+
+40
+00:01:53,918 --> 00:01:56,518
+so it will always be to the right of the Panel.
+
+41
+00:01:56,519 --> 00:02:01,324
+And then, we say to the second Rectangle
+
+42
+00:02:01,325 --> 00:02:05,420
+that it will be relative to LeftOf the RedRectangle.
+
+43
+00:02:07,251 --> 00:02:09,583
+Alright, next up, we talked about the SplitPanel
+
+44
+00:02:09,584 --> 00:02:13,040
+and we said that you use the SplitPanel
+
+45
+00:02:13,041 --> 00:02:15,827
+to create a panel that can be displayed or hidden
+
+46
+00:02:15,828 --> 00:02:18,329
+and it's used for that hamburger style navigation
+
+47
+00:02:18,330 --> 00:02:20,517
+and we said that it's basically
+
+48
+00:02:20,518 --> 00:02:23,385
+two main pieces of the puzzle there.
+
+49
+00:02:23,386 --> 00:02:26,125
+There is the part that's hidden that comes
+
+50
+00:02:26,126 --> 00:02:29,805
+and shows itself and hides itself, that's the Pane.
+
+51
+00:02:29,806 --> 00:02:33,518
+And then, there's the part that is actually beneath it,
+
+52
+00:02:33,519 --> 00:02:36,026
+or to the right of it, and that is the content.
+
+53
+00:02:36,027 --> 00:02:38,359
+So let me go ahead and copy and paste
+
+54
+00:02:38,360 --> 00:02:41,877
+a little example into the window here,
+
+55
+00:02:41,878 --> 00:02:45,859
+and it looks like I need a little formatting.
+
+56
+00:02:45,860 --> 00:02:48,982
+And so, one of the things that we can do
+
+57
+00:02:48,983 --> 00:02:53,138
+is change the display mode, and the DisplayMode
+
+58
+00:02:53,139 --> 00:02:56,905
+will dictate the behavior of the Pane
+
+59
+00:02:56,906 --> 00:03:01,905
+and the content area, which are defined below it here.
+
+60
+00:03:01,947 --> 00:03:06,946
+So let me just go ahead and copy and paste
+
+61
+00:03:06,975 --> 00:03:11,972
+in the different DisplayModes.
+
+62
+00:03:11,973 --> 00:03:14,384
+So there's Inline, CompactInline,
+
+63
+00:03:14,385 --> 00:03:16,184
+Overlay, and CompactOverlay.
+
+64
+00:03:16,185 --> 00:03:19,388
+So Inline is where the panel is completely
+
+65
+00:03:19,389 --> 00:03:21,756
+covering the content, and when it's shown,
+
+66
+00:03:21,757 --> 00:03:24,966
+it'll actually push the content out,
+
+67
+00:03:24,967 --> 00:03:27,656
+so that it's still visible.
+
+68
+00:03:27,657 --> 00:03:29,482
+CompactInline is almost identical,
+
+69
+00:03:29,483 --> 00:03:32,584
+except it will show a little sliver of,
+
+70
+00:03:32,585 --> 00:03:35,150
+if you have it docked to the left at the left-hand side,
+
+71
+00:03:35,151 --> 00:03:37,757
+it'll show those icons on the left.
+
+72
+00:03:37,758 --> 00:03:39,991
+Overlay will do the same thing as Inlign,
+
+73
+00:03:39,992 --> 00:03:42,791
+it will completely cover the...
+
+74
+00:03:42,792 --> 00:03:46,007
+the Pane will be completely hidden, and when it's shown,
+
+75
+00:03:46,008 --> 00:03:48,725
+it will completely cover the content.
+
+76
+00:03:48,726 --> 00:03:53,246
+CompactOverlay will let a little area peak out,
+
+77
+00:03:53,247 --> 00:03:56,926
+and then whenever it's expanded,
+
+78
+00:03:56,927 --> 00:04:01,305
+then it will completely cover whatever's underneath it.
+
+79
+00:04:01,306 --> 00:04:04,506
+And so, I also gave a little C# code snippet
+
+80
+00:04:04,507 --> 00:04:09,501
+that allows you to basically show and hide the Pane.
+
+81
+00:04:09,502 --> 00:04:11,821
+Whatever its current state is, do the opposite
+
+82
+00:04:11,822 --> 00:04:15,687
+and set it equal to the IsPaneOpen property.
+
+83
+00:04:15,688 --> 00:04:19,469
+Next up, we talked about working with navigation.
+
+84
+00:04:19,470 --> 00:04:22,959
+And, let's see, let's get a couple things here.
+
+85
+00:04:22,960 --> 00:04:27,876
+Alright, first up, we said that at the highest level
+
+86
+00:04:27,877 --> 00:04:31,019
+of our application is the App and App owns a Window
+
+87
+00:04:31,020 --> 00:04:32,551
+and inside the Window is a Frame.
+
+88
+00:04:32,552 --> 00:04:36,525
+We see all this set up for us in the App.xaml.cs
+
+89
+00:04:36,526 --> 00:04:39,951
+And then, the Frame will load in the MainPage.
+
+90
+00:04:39,952 --> 00:04:41,425
+Now you don't have to do it that way,
+
+91
+00:04:41,426 --> 00:04:44,188
+but that is what the Blank App template will give you.
+
+92
+00:04:44,189 --> 00:04:49,188
+So then you can either load new Pages into that root frame,
+
+93
+00:04:49,228 --> 00:04:53,773
+or you can add other Frames into your XAML pages
+
+94
+00:04:53,774 --> 00:04:55,160
+and then load content in and out of that,
+
+95
+00:04:55,161 --> 00:04:57,493
+and we demonstrated that by creating a Frame
+
+96
+00:04:57,494 --> 00:05:00,187
+inside of the MainPage, and then loading Page 1,
+
+97
+00:05:00,188 --> 00:05:03,322
+Page 2, Page 3 inside of that Frame.
+
+98
+00:05:03,323 --> 00:05:06,422
+So the way that you navigate, there's a Frame property
+
+99
+00:05:06,423 --> 00:05:11,127
+on the Page that'll give you access to the parent Frame
+
+100
+00:05:11,128 --> 00:05:14,827
+and you just call its navigate method, you pass in the type
+
+101
+00:05:14,828 --> 00:05:16,789
+that you want to create a new instance of,
+
+102
+00:05:16,790 --> 00:05:19,053
+and you can also optionally pass in
+
+103
+00:05:19,054 --> 00:05:21,237
+any additional parameters of any type.
+
+104
+00:05:21,238 --> 00:05:24,153
+Then, you can retrieve whatever was passed in
+
+105
+00:05:24,154 --> 00:05:28,820
+from the previous page by overriding a specific method
+
+106
+00:05:28,821 --> 00:05:31,827
+called OnNavigatedTo, and we can retrieve
+
+107
+00:05:31,828 --> 00:05:34,923
+the value of the Parameter that was passed in
+
+108
+00:05:34,924 --> 00:05:39,813
+by calling the NavigationEventArgs "e.Parameter"
+
+109
+00:05:39,814 --> 00:05:42,356
+and then casting it to whatever the object type is
+
+110
+00:05:42,357 --> 00:05:45,320
+that you passed in, and then you can work with it
+
+111
+00:05:45,321 --> 00:05:46,671
+in any way that you like.
+
+112
+00:05:46,672 --> 00:05:48,505
+We also talked about the BackStack and how
+
+113
+00:05:48,506 --> 00:05:51,489
+it essentially keeps the history as you move
+
+114
+00:05:51,490 --> 00:05:53,625
+forward and backwards and it will replay
+
+115
+00:05:53,626 --> 00:05:58,285
+that navigation event and we showed that
+
+116
+00:05:58,286 --> 00:06:01,639
+you can traverse the BackStack
+
+117
+00:06:01,640 --> 00:06:04,158
+by checking if the Frame can go
+
+118
+00:06:04,159 --> 00:06:06,712
+back or if it can go forward, and if it can,
+
+119
+00:06:06,713 --> 00:06:10,311
+then you can call GoBack and GoForward methods.
+
+120
+00:06:10,312 --> 00:06:12,587
+And then finally, I demonstrated in that video
+
+121
+00:06:12,588 --> 00:06:15,917
+how you can create kind of a global variable
+
+122
+00:06:15,918 --> 00:06:20,621
+at the App level by declaring a static internal field
+
+123
+00:06:20,622 --> 00:06:23,280
+in the App class definition.
+
+124
+00:06:23,281 --> 00:06:25,451
+And that would allow you to get around those situations
+
+125
+00:06:25,452 --> 00:06:29,260
+where when you replay the BackStack traversing,
+
+126
+00:06:29,261 --> 00:06:32,347
+you don't get the values that you would expect.
+
+127
+00:06:32,348 --> 00:06:34,959
+They don't maintain the state of whatever
+
+128
+00:06:34,960 --> 00:06:39,348
+was typed into a given form field as you go
+
+129
+00:06:39,349 --> 00:06:42,850
+and you traverse around through the BackStack.
+
+130
+00:06:42,851 --> 00:06:47,585
+Next up, we talked about the common XAML controls,
+
+131
+00:06:47,586 --> 00:06:49,117
+and this is going to be a long one,
+
+132
+00:06:49,118 --> 00:06:50,988
+I'm not going to spend too much time on it
+
+133
+00:06:50,989 --> 00:06:53,658
+because we did work with this at length.
+
+134
+00:07:04,369 --> 00:07:06,159
+I basically just stripped out the essence
+
+135
+00:07:06,160 --> 00:07:08,249
+of each of the controls that we looked at,
+
+136
+00:07:08,250 --> 00:07:10,385
+and hopefully that'll be helpful to you.
+
+137
+00:07:10,386 --> 00:07:14,342
+So let me go ahead and paste in the first chunk here.
+
+138
+00:07:14,343 --> 00:07:17,223
+So lesson number 20: Common XAML Controls - Part 1,
+
+139
+00:07:17,224 --> 00:07:19,303
+we looked at the CheckBox,
+
+140
+00:07:19,304 --> 00:07:21,858
+we saw that there was a checked property.
+
+141
+00:07:21,859 --> 00:07:23,274
+Although it's not represented here,
+
+142
+00:07:23,275 --> 00:07:25,363
+we're able to access it programmatically
+
+143
+00:07:25,364 --> 00:07:28,959
+in C# in this line of code.
+
+144
+00:07:28,960 --> 00:07:31,010
+It also supports a Tapped event,
+
+145
+00:07:31,011 --> 00:07:32,417
+we can handle that Tapped event
+
+146
+00:07:32,418 --> 00:07:35,090
+and then display some result there.
+
+147
+00:07:35,091 --> 00:07:37,944
+Similar to the CheckBox, the yes or no/true or false
+
+148
+00:07:37,945 --> 00:07:39,813
+CheckBoxes, a RadioButton allows you
+
+149
+00:07:39,814 --> 00:07:44,423
+to provide several different options to the user.
+
+150
+00:07:44,424 --> 00:07:47,544
+And here, you need to use a GroupName
+
+151
+00:07:47,545 --> 00:07:49,459
+to group together multiple RadioButtons
+
+152
+00:07:49,460 --> 00:07:51,723
+that belong in the same group.
+
+153
+00:07:51,724 --> 00:07:55,682
+So, you can see that in this case, I was able to handle
+
+154
+00:07:55,683 --> 00:07:58,655
+the Checked event, and in that Checked event,
+
+155
+00:07:58,656 --> 00:08:01,348
+I implemented this ternary operator,
+
+156
+00:08:01,349 --> 00:08:03,124
+where I'm just checking to see
+
+157
+00:08:03,125 --> 00:08:04,960
+if the RadioButton.IsChecked.
+
+158
+00:08:04,961 --> 00:08:06,617
+If it is, then we'll just print out Yes,
+
+159
+00:08:06,618 --> 00:08:08,715
+if it's not, then we'll print out No.
+
+160
+00:08:08,716 --> 00:08:10,758
+You might need to do some variation on that.
+
+161
+00:08:10,759 --> 00:08:12,245
+Also, I didn't mention this at the time,
+
+162
+00:08:12,246 --> 00:08:14,659
+but IsChecked is a nullable bool,
+
+163
+00:08:14,660 --> 00:08:17,156
+so you have to cast it to boolean
+
+164
+00:08:17,157 --> 00:08:19,118
+in order to get the ternary operator to work.
+
+165
+00:08:19,119 --> 00:08:22,647
+I should have mentioned that before, it just came to me now.
+
+166
+00:08:22,648 --> 00:08:25,056
+Next up, we talked about the ComboBox,
+
+167
+00:08:25,057 --> 00:08:26,786
+which allows you to add a number of different
+
+168
+00:08:26,787 --> 00:08:30,351
+ComboBox items to a drop-down list,
+
+169
+00:08:30,352 --> 00:08:31,988
+so when somebody clicks the arrow,
+
+170
+00:08:31,989 --> 00:08:34,912
+they can see all of the items that were in the list.
+
+171
+00:08:34,913 --> 00:08:38,083
+You can set an IsSelected to a default value,
+
+172
+00:08:38,084 --> 00:08:42,159
+so in this case, when we load up the XAML Page,
+
+173
+00:08:42,160 --> 00:08:45,142
+the Sixth option will be displayed in the ComboBox.
+
+174
+00:08:45,143 --> 00:08:49,405
+To actually select an item in the ComboBox,
+
+175
+00:08:49,406 --> 00:08:53,139
+we get the value that's passed in
+
+176
+00:08:53,140 --> 00:08:55,416
+from the SelectionChanged event,
+
+177
+00:08:55,417 --> 00:08:57,291
+so there should be a SelectionChanged EventArgs e
+
+178
+00:08:57,292 --> 00:09:00,121
+EventArgs e, args n, I'm sorry,
+
+179
+00:09:00,122 --> 00:09:02,286
+there should be a sender, and then an EventArgs e.
+
+180
+00:09:02,295 --> 00:09:03,590
+So we're gonna take the sender,
+
+181
+00:09:03,591 --> 00:09:08,526
+whoever initiated this event, the SelectionChanged event,
+
+182
+00:09:08,527 --> 00:09:10,752
+we're gonna cast that to ComboBox,
+
+183
+00:09:10,753 --> 00:09:12,458
+then we're gonna find in the ComboBox
+
+184
+00:09:12,459 --> 00:09:15,187
+a SelectedItem and cast that to a ComboBox item,
+
+185
+00:09:15,188 --> 00:09:17,169
+and now that we have a ComboBox item,
+
+186
+00:09:17,170 --> 00:09:21,286
+we can grab its content and then print that to screen.
+
+187
+00:09:23,317 --> 00:09:26,300
+Next up, and this was an important one, the ListBox.
+
+188
+00:09:26,301 --> 00:09:28,772
+And the ListBox is important because we were able to use it
+
+189
+00:09:28,773 --> 00:09:32,522
+in the next video where we actually were creating
+
+190
+00:09:32,523 --> 00:09:35,819
+a more full hamburger example.
+
+191
+00:09:35,820 --> 00:09:38,315
+So here, we create a number of ListBox items
+
+192
+00:09:38,316 --> 00:09:41,183
+with content inside of them, we set the SelectionMode
+
+193
+00:09:41,184 --> 00:09:42,924
+both to Multiple and Single.
+
+194
+00:09:42,925 --> 00:09:47,275
+In Multiple, you can select multiple list items,
+
+195
+00:09:47,276 --> 00:09:49,953
+and in Single, you can only select one.
+
+196
+00:09:49,954 --> 00:09:51,846
+And since you can select multiples,
+
+197
+00:09:51,847 --> 00:09:54,586
+I have this little link statement that allows us to find
+
+198
+00:09:54,587 --> 00:09:57,720
+all of the ListBox items that were selected.
+
+199
+00:09:57,721 --> 00:10:01,087
+Grab out just the content and put them in an Array,
+
+200
+00:10:01,088 --> 00:10:04,582
+and then use string.Join for that Array and can catenate
+
+201
+00:10:04,583 --> 00:10:06,648
+them all together with a comma.
+
+202
+00:10:08,279 --> 00:10:10,239
+And then the next thing we talked about
+
+203
+00:10:10,240 --> 00:10:13,351
+was the Image control, and you want to set the Source,
+
+204
+00:10:13,352 --> 00:10:16,126
+attribute, and the Stretch attribute.
+
+205
+00:10:16,127 --> 00:10:18,360
+We talked about the different Stretch options
+
+206
+00:10:18,361 --> 00:10:22,551
+about None, Fill, UniformToFill, and Stretch.
+
+207
+00:10:22,552 --> 00:10:24,884
+Next up, we talked about the ToggleButton
+
+208
+00:10:24,885 --> 00:10:28,785
+and how to retrieve its value.
+
+209
+00:10:28,786 --> 00:10:32,814
+The toggle button has an IsThreeState, and remember,
+
+210
+00:10:32,815 --> 00:10:36,788
+the three states were Clicked,
+
+211
+00:10:36,789 --> 00:10:40,538
+Unclicked, and then I guess you could say Selected,
+
+212
+00:10:40,539 --> 00:10:42,349
+where it was turned on.
+
+213
+00:10:42,350 --> 00:10:45,210
+And so, whenever it's clicked, we can evaluate
+
+214
+00:10:45,211 --> 00:10:47,509
+the current value of IsChecked,
+
+215
+00:10:47,510 --> 00:10:49,510
+either true/false, or null.
+
+216
+00:10:51,221 --> 00:10:53,291
+Finally, we talked about the ToggleSwitch
+
+217
+00:10:53,292 --> 00:10:57,227
+and that would allow us to define some content
+
+218
+00:10:57,228 --> 00:10:59,224
+for the OnContent and the OffContent.
+
+219
+00:10:59,225 --> 00:11:00,786
+So when you flip on the switch,
+
+220
+00:11:00,787 --> 00:11:04,156
+you can show this content,
+
+221
+00:11:04,157 --> 00:11:07,216
+whatever's here, in this case, we just put a TextBox.
+
+222
+00:11:07,217 --> 00:11:09,356
+When the user switches it off, then it would display
+
+223
+00:11:09,357 --> 00:11:13,253
+the other section here underneath ToggleSwitch.OffContent.
+
+224
+00:11:14,864 --> 00:11:19,269
+Alright so, that was a whirlwind review,
+
+225
+00:11:19,270 --> 00:11:22,085
+but let's continue on.
+
+226
+00:11:22,086 --> 00:11:24,521
+We talked next about implementing
+
+227
+00:11:24,522 --> 00:11:27,551
+a simple hamburger navigation menu,
+
+228
+00:11:27,552 --> 00:11:30,419
+and I pointed you to Jerry Nixon's example
+
+229
+00:11:30,420 --> 00:11:33,250
+for a more full-featured example,
+
+230
+00:11:33,251 --> 00:11:35,970
+and I demonstrated my example
+
+231
+00:11:35,971 --> 00:11:37,650
+in the most simplest way possible
+
+232
+00:11:37,651 --> 00:11:40,848
+by using a SplitView and a ListBox control.
+
+233
+00:11:40,849 --> 00:11:43,216
+At any rate, one of the things that we needed to do
+
+234
+00:11:43,217 --> 00:11:46,583
+was actually to grab off some icons
+
+235
+00:11:46,584 --> 00:11:49,822
+in the Segoe MDL5 Assets font
+
+236
+00:11:49,823 --> 00:11:52,086
+and I showed you how to use the Character Map app
+
+237
+00:11:52,087 --> 00:11:54,245
+to find the fonts that you want to use
+
+238
+00:11:54,246 --> 00:11:58,053
+and then you prefix and suffix whatever the value is
+
+239
+00:11:58,054 --> 00:12:02,019
+you find with a &#x
+
+240
+00:12:02,020 --> 00:12:05,730
+and then suffix it with a ;.
+
+241
+00:12:05,731 --> 00:12:08,419
+Alright, and then finally, and I'm not gonna write out
+
+242
+00:12:08,420 --> 00:12:11,286
+a lot of this, you can always find this code example.
+
+243
+00:12:11,287 --> 00:12:13,182
+You can use ListBox and ListBoxItems
+
+244
+00:12:13,183 --> 00:12:15,783
+for the navigation links inside of a SplitView,
+
+245
+00:12:15,784 --> 00:12:17,838
+and that's what we did in that example.
+
+246
+00:12:17,839 --> 00:12:19,719
+And that technique's gonna come in handy
+
+247
+00:12:19,720 --> 00:12:22,412
+in the very next video because you're challenged
+
+248
+00:12:22,413 --> 00:12:26,244
+to create a more full-featured
+
+249
+00:12:26,245 --> 00:12:30,397
+hamburger navigation style with a search bar
+
+250
+00:12:30,398 --> 00:12:33,953
+and all that stuff and we'll start that in the next lesson.
+
+251
+00:12:33,954 --> 00:12:35,725
+We'll see you there! Thanks.  
+

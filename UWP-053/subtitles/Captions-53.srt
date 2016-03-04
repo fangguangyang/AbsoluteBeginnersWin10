@@ -1,0 +1,1936 @@
+1
+00:00:05,509 --> 00:00:06,082
+<v ->So the next feature that I would</v>
+
+2
+00:00:06,083 --> 00:00:08,962
+like to add is to drag and drop
+
+3
+00:00:08,963 --> 00:00:11,241
+a sound from the desktop onto our
+
+4
+00:00:11,242 --> 00:00:16,241
+design surface, our app's GridView
+
+5
+00:00:16,883 --> 00:00:19,512
+and have it play that sound.
+
+6
+00:00:20,322 --> 00:00:22,399
+What I set out to do was to create
+
+7
+00:00:22,400 --> 00:00:24,179
+a little scratch pad application,
+
+8
+00:00:24,180 --> 00:00:27,339
+I frequently do this, to help me
+
+9
+00:00:27,340 --> 00:00:31,038
+understand how to get drag and drop working
+
+10
+00:00:31,039 --> 00:00:36,038
+and once I understood that then
+
+11
+00:00:36,088 --> 00:00:37,197
+my plan was to apply it,
+
+12
+00:00:37,198 --> 00:00:39,638
+add it to the larger application.
+
+13
+00:00:39,639 --> 00:00:42,926
+This helps me to isolate just the feature
+
+14
+00:00:42,927 --> 00:00:45,548
+or the idea that I don't quite understand,
+
+15
+00:00:45,549 --> 00:00:46,907
+wrap my brain around it,
+
+16
+00:00:46,908 --> 00:00:49,287
+try variants, understand what my options are
+
+17
+00:00:49,288 --> 00:00:51,447
+and then once I'm done experimenting
+
+18
+00:00:51,448 --> 00:00:53,387
+and I have it pretty full-fledged,
+
+19
+00:00:53,388 --> 00:00:57,317
+then I can apply that to the larger project.
+
+20
+00:00:57,327 --> 00:00:58,583
+What I set out to do was create
+
+21
+00:00:58,584 --> 00:01:00,919
+a little app, you'll have access
+
+22
+00:01:00,920 --> 00:01:03,890
+to this drag and drop example.
+
+23
+00:01:04,379 --> 00:01:06,309
+You can see it's very, very, simple
+
+24
+00:01:06,310 --> 00:01:09,019
+but it does illustrate some important ideas.
+
+25
+00:01:09,510 --> 00:01:11,669
+As we launch the app here,
+
+26
+00:01:11,670 --> 00:01:16,048
+the idea is that we have a StackPanel,
+
+27
+00:01:16,049 --> 00:01:18,328
+this red area here and I can
+
+28
+00:01:18,329 --> 00:01:21,028
+drag and drop an item off of my desktop
+
+29
+00:01:21,029 --> 00:01:23,283
+on to this red area and that it will either
+
+30
+00:01:23,284 --> 00:01:25,263
+display and image or play the sound
+
+31
+00:01:25,264 --> 00:01:28,682
+and it will also allow me to copy
+
+32
+00:01:28,683 --> 00:01:32,903
+that file from the desktop to a working
+
+33
+00:01:32,904 --> 00:01:36,223
+folder that is available to my application
+
+34
+00:01:36,224 --> 00:01:38,263
+on the user's device or computer
+
+35
+00:01:38,264 --> 00:01:41,772
+and that's called the working folder or local folder.
+
+36
+00:01:42,139 --> 00:01:43,877
+For example, if I drag and drop
+
+37
+00:01:43,878 --> 00:01:46,777
+this image control on to that red area,
+
+38
+00:01:46,778 --> 00:01:49,337
+you can see that I'm displaying it now
+
+39
+00:01:49,338 --> 00:01:53,296
+in an ImageControl in my application.
+
+40
+00:01:53,297 --> 00:01:56,977
+Also notice that here is this location
+
+41
+00:01:56,978 --> 00:02:00,576
+where I copy that file to the local
+
+42
+00:02:00,577 --> 00:02:04,517
+storage container for this application
+
+43
+00:02:04,518 --> 00:02:07,737
+and I'm just going to Control+A,
+
+44
+00:02:07,738 --> 00:02:10,335
+Control+C, to copy the location and then
+
+45
+00:02:10,336 --> 00:02:13,294
+open up File Explorer and paste it in.
+
+46
+00:02:13,295 --> 00:02:16,455
+You can see that as I, you navigate
+
+47
+00:02:16,456 --> 00:02:18,895
+through all the various folders
+
+48
+00:02:18,896 --> 00:02:21,414
+and everything to get to it.
+
+49
+00:02:21,995 --> 00:02:24,987
+It's copied this image and actually
+
+50
+00:02:24,988 --> 00:02:26,006
+since I've done this several times
+
+51
+00:02:26,007 --> 00:02:27,665
+it copied the image several times.
+
+52
+00:02:27,666 --> 00:02:30,513
+Let me actually just delete all of this out
+
+53
+00:02:30,523 --> 00:02:32,651
+and then do this again.
+
+54
+00:02:33,002 --> 00:02:35,089
+I'll just redo that same image.
+
+55
+00:02:35,134 --> 00:02:36,152
+Drag and drop and you can see
+
+56
+00:02:36,153 --> 00:02:37,813
+by dragging it into my app,
+
+57
+00:02:37,814 --> 00:02:41,933
+it copied it over to the local storage area
+
+58
+00:02:41,934 --> 00:02:44,453
+and then used that local copy
+
+59
+00:02:44,454 --> 00:02:46,693
+to display it in my image.
+
+60
+00:02:46,694 --> 00:02:48,353
+Same thing would be true with the song file.
+
+61
+00:02:48,354 --> 00:02:51,123
+Here I'm going to drag and drop the sound,
+
+62
+00:02:51,194 --> 00:02:54,823
+the MP3 file (music plays) and it will start playing.
+
+63
+00:02:55,134 --> 00:02:57,413
+Here I'm playing nine seconds
+
+64
+00:02:57,414 --> 00:03:00,653
+and I fade out the sound after a few seconds.
+
+65
+00:03:00,654 --> 00:03:02,613
+And I'll show you how I do that as well
+
+66
+00:03:02,614 --> 00:03:05,463
+here in this little example app.
+
+67
+00:03:07,354 --> 00:03:09,089
+There's a couple of things to notice first of all.
+
+68
+00:03:09,090 --> 00:03:10,840
+Let's look at the XAML to begin with.
+
+69
+00:03:10,841 --> 00:03:13,481
+Here I have a StackPanel then I have
+
+70
+00:03:13,482 --> 00:03:15,081
+that image where I display
+
+71
+00:03:15,082 --> 00:03:16,980
+the dragged image and in the media element
+
+72
+00:03:16,981 --> 00:03:18,917
+where I play music.
+
+73
+00:03:18,918 --> 00:03:20,877
+Then there's that TextBox at the bottom
+
+74
+00:03:20,878 --> 00:03:25,877
+where I actually display the full URI
+
+75
+00:03:25,957 --> 00:03:30,047
+for that private local...
+
+76
+00:03:34,817 --> 00:03:36,967
+local storage area.
+
+77
+00:03:37,178 --> 00:03:39,249
+Now inside of the StackPanel,
+
+78
+00:03:39,250 --> 00:03:44,249
+this inner StackPanel, I've actually added
+
+79
+00:03:44,470 --> 00:03:47,649
+two properties, actually three.
+
+80
+00:03:47,650 --> 00:03:50,608
+The first one is important: AllowDrop.
+
+81
+00:03:50,609 --> 00:03:51,768
+If you don't set this property,
+
+82
+00:03:51,769 --> 00:03:53,248
+drag and drop won't work.
+
+83
+00:03:53,249 --> 00:03:55,509
+Doesn't matter if you have everything else working.
+
+84
+00:03:55,510 --> 00:03:57,569
+We have to set that equal to "True"
+
+85
+00:03:57,570 --> 00:04:02,365
+and then we have the Drop EventHandler
+
+86
+00:04:02,366 --> 00:04:06,405
+set to StackPanel_Drop and the DragOver
+
+87
+00:04:06,406 --> 00:04:09,105
+set to StackPanel_DragOver.
+
+88
+00:04:09,106 --> 00:04:12,844
+These two are crucial, one for what happens
+
+89
+00:04:12,845 --> 00:04:15,045
+as we're dragging the file over
+
+90
+00:04:15,046 --> 00:04:16,565
+and you saw as we were dragging,
+
+91
+00:04:16,566 --> 00:04:18,685
+we showed a little bit of a hint
+
+92
+00:04:18,686 --> 00:04:20,601
+at the bottom which said, "Drop here
+
+93
+00:04:20,602 --> 00:04:23,561
+"in order to play that sound."
+
+94
+00:04:23,562 --> 00:04:25,981
+Then the Drop will actually perform,
+
+95
+00:04:25,982 --> 00:04:29,241
+it will grab the file, copy it into local storage,
+
+96
+00:04:29,242 --> 00:04:30,821
+use that storage area to either
+
+97
+00:04:30,822 --> 00:04:32,421
+display or play it.
+
+98
+00:04:32,422 --> 00:04:33,801
+Let's look at the code behind where
+
+99
+00:04:33,802 --> 00:04:36,471
+this actually all happens.
+
+100
+00:04:37,362 --> 00:04:39,421
+In the MainPage.xaml.cs
+
+101
+00:04:39,422 --> 00:04:42,160
+Let's first of all take a look at
+
+102
+00:04:42,161 --> 00:04:45,082
+the DragOver and the DragOver,
+
+103
+00:04:45,083 --> 00:04:49,321
+all I'm doing here is saying,
+
+104
+00:04:49,322 --> 00:04:52,377
+treat this like a copy operation
+
+105
+00:04:52,378 --> 00:04:56,437
+and so it's as if I were going to copy this file.
+
+106
+00:04:56,438 --> 00:04:58,716
+That's the accepted operation
+
+107
+00:04:58,717 --> 00:05:01,016
+and then I start setting attributes
+
+108
+00:05:01,017 --> 00:05:04,197
+of the DragUIOverrideObject
+
+109
+00:05:04,198 --> 00:05:06,172
+on our DragEventArgs e.
+
+110
+00:05:06,173 --> 00:05:07,832
+Here I'm able to set the caption,
+
+111
+00:05:07,833 --> 00:05:11,342
+I'm also saying, make the caption visible,
+
+112
+00:05:11,523 --> 00:05:13,016
+make the content of the file
+
+113
+00:05:13,017 --> 00:05:15,336
+itself visible so in the case of an image
+
+114
+00:05:15,337 --> 00:05:17,402
+you'd be able to see the image file
+
+115
+00:05:17,403 --> 00:05:20,761
+and then is a Glyph visible and I think
+
+116
+00:05:20,762 --> 00:05:25,761
+the Glyph is for the little icons.
+
+117
+00:05:27,543 --> 00:05:30,182
+In the case of a copy operation,
+
+118
+00:05:30,183 --> 00:05:32,182
+it would just have two little files
+
+119
+00:05:32,183 --> 00:05:34,022
+sitting on top of each other.
+
+120
+00:05:34,023 --> 00:05:36,202
+Let's notice that behavior as we
+
+121
+00:05:36,203 --> 00:05:40,852
+drag the image on top of that red StackPanel.
+
+122
+00:05:42,922 --> 00:05:45,341
+You can still see the image
+
+123
+00:05:45,342 --> 00:05:48,021
+and you see that little helper message,
+
+124
+00:05:48,022 --> 00:05:50,000
+Drop to create a custom sound.
+
+125
+00:05:50,001 --> 00:05:51,641
+And then also, the little Glyph
+
+126
+00:05:51,642 --> 00:05:54,420
+off to the left-hand side and I drop it
+
+127
+00:05:54,421 --> 00:05:56,741
+and you can see that part working.
+
+128
+00:05:56,742 --> 00:05:59,041
+That's the DragOver part of it.
+
+129
+00:05:59,042 --> 00:06:01,641
+Let's look at the Drop part.
+
+130
+00:06:01,642 --> 00:06:03,281
+The first thing we want to do is make sure
+
+131
+00:06:03,282 --> 00:06:07,081
+that what's being dragged over and dropped
+
+132
+00:06:07,082 --> 00:06:08,981
+is actually a file.
+
+133
+00:06:08,982 --> 00:06:13,080
+These are storage items, not just fragments
+
+134
+00:06:13,081 --> 00:06:15,580
+of text or something else from another
+
+135
+00:06:15,581 --> 00:06:18,549
+application that's being dragged over.
+
+136
+00:06:18,801 --> 00:06:20,600
+If that DataView of what's been dragged
+
+137
+00:06:20,601 --> 00:06:24,760
+into our StackPanel is something
+
+138
+00:06:24,761 --> 00:06:28,496
+that is a StorageItem, a file based
+
+139
+00:06:29,056 --> 00:06:31,892
+drag operation, then we can proceed on.
+
+140
+00:06:31,893 --> 00:06:34,392
+Then go ahead and get a reference
+
+141
+00:06:34,393 --> 00:06:35,772
+to all of those items.
+
+142
+00:06:35,773 --> 00:06:37,692
+If more than one has been selected
+
+143
+00:06:37,693 --> 00:06:39,512
+then let's get a reference to all of them.
+
+144
+00:06:39,513 --> 00:06:41,032
+Now we're only going to work with one item
+
+145
+00:06:41,033 --> 00:06:43,972
+so you can see here that making sure
+
+146
+00:06:43,973 --> 00:06:48,522
+that there are items actually in that...
+
+147
+00:06:49,713 --> 00:06:52,888
+drag operation that are StorageItems,
+
+148
+00:06:52,889 --> 00:06:55,288
+then we're going to be able to say hey,
+
+149
+00:06:55,289 --> 00:06:59,346
+give me the first item at index zero
+
+150
+00:06:59,347 --> 00:07:01,767
+and we'll make sure to pull off
+
+151
+00:07:01,768 --> 00:07:04,787
+the ContentType so is it an image file,
+
+152
+00:07:04,788 --> 00:07:06,287
+a sound file, a document,
+
+153
+00:07:06,288 --> 00:07:07,828
+whatever the case might be.
+
+154
+00:07:07,829 --> 00:07:10,607
+Here we get a reference to that local folder
+
+155
+00:07:10,608 --> 00:07:13,667
+so that local storage area that our application
+
+156
+00:07:13,668 --> 00:07:17,007
+will be allocated whenever it's installed on our device.
+
+157
+00:07:17,008 --> 00:07:20,427
+We just then display that in that PathTextBox.
+
+158
+00:07:20,428 --> 00:07:22,927
+Now we're going to check the contentType.
+
+159
+00:07:22,928 --> 00:07:25,387
+It's either going to be an image/png,
+
+160
+00:07:25,388 --> 00:07:26,846
+image/jpeg in which case we're
+
+161
+00:07:26,847 --> 00:07:28,346
+dealing with an image and we want
+
+162
+00:07:28,347 --> 00:07:29,827
+to display that in the ImageControl
+
+163
+00:07:29,828 --> 00:07:32,486
+or it's going to be audio/wav or audio/mpeg
+
+164
+00:07:32,487 --> 00:07:36,205
+in which case we want to tell our
+
+165
+00:07:36,206 --> 00:07:39,716
+media player to go ahead and play that file.
+
+166
+00:07:40,326 --> 00:07:43,183
+What we do first of all is actually copy that file
+
+167
+00:07:43,184 --> 00:07:46,583
+into our local storage area.
+
+168
+00:07:46,584 --> 00:07:47,983
+That's what this line of code does
+
+169
+00:07:47,984 --> 00:07:49,181
+on line number 50.
+
+170
+00:07:49,182 --> 00:07:51,841
+Here's the folder, here's the file name.
+
+171
+00:07:51,842 --> 00:07:53,941
+If there's all ready a file with that file name
+
+172
+00:07:53,942 --> 00:07:56,240
+then generate a unique name.
+
+173
+00:07:56,241 --> 00:07:58,260
+Now we have a reference to that file.
+
+174
+00:07:58,261 --> 00:07:59,640
+We're going to create a bitmapImage
+
+175
+00:07:59,641 --> 00:08:02,040
+and say the Source of that bitmapImage
+
+176
+00:08:02,041 --> 00:08:04,020
+is that new file and then we set that
+
+177
+00:08:04,021 --> 00:08:08,218
+as the Source to the ImageControl in our XAML.
+
+178
+00:08:08,219 --> 00:08:11,219
+Now with the audio we do things slightly different.
+
+179
+00:08:11,220 --> 00:08:13,319
+Still almost an identical line of code,
+
+180
+00:08:13,320 --> 00:08:14,839
+line 57 and line 50.
+
+181
+00:08:14,840 --> 00:08:18,239
+Here we are taking that file that was
+
+182
+00:08:18,240 --> 00:08:22,899
+dropped into the StackPanel
+
+183
+00:08:22,900 --> 00:08:24,259
+and we're going to save that in
+
+184
+00:08:24,260 --> 00:08:26,858
+a local storage, that's what line 57 does.
+
+185
+00:08:26,859 --> 00:08:28,418
+Then we want to, on the MediaPlayer,
+
+186
+00:08:28,419 --> 00:08:32,179
+set the Source to that file that we copied
+
+187
+00:08:32,180 --> 00:08:37,179
+into our local storage and at this point then,
+
+188
+00:08:38,280 --> 00:08:41,919
+you'll notice the different sort of line of code.
+
+189
+00:08:41,920 --> 00:08:43,598
+We're going to do something a little bit different
+
+190
+00:08:43,599 --> 00:08:44,617
+in our actual app.
+
+191
+00:08:44,618 --> 00:08:47,717
+I was trying something to see how it would work.
+
+192
+00:08:47,718 --> 00:08:51,699
+Here I'm calling the MediaPlayerStoryboard.Begin().
+
+193
+00:08:51,700 --> 00:08:54,420
+If you take a look here in our MainPage.xaml,
+
+194
+00:08:54,421 --> 00:08:55,460
+I've created a Storyboard.
+
+195
+00:08:55,461 --> 00:08:57,921
+A Storyboard allows you to define an Animation.
+
+196
+00:08:57,922 --> 00:08:59,000
+Before you think you know what
+
+197
+00:08:59,001 --> 00:09:02,027
+an Animation is, let me say that in XAML
+
+198
+00:09:02,028 --> 00:09:03,166
+it's a little bit different.
+
+199
+00:09:03,167 --> 00:09:05,146
+An Animation is anything that we want
+
+200
+00:09:05,147 --> 00:09:08,467
+to be able to change the value of over time.
+
+201
+00:09:08,468 --> 00:09:10,427
+If you have an attribute of an object
+
+202
+00:09:10,428 --> 00:09:13,386
+and you say I want to at 1/2 a second
+
+203
+00:09:13,387 --> 00:09:16,266
+or five seconds in I want the attributes
+
+204
+00:09:16,267 --> 00:09:18,387
+to be changed to this value,
+
+205
+00:09:18,388 --> 00:09:19,567
+three more seconds I want it to be
+
+206
+00:09:19,568 --> 00:09:21,046
+changed to this value and then
+
+207
+00:09:21,047 --> 00:09:22,146
+10 more seconds I want it to be
+
+208
+00:09:22,147 --> 00:09:23,827
+changed to that value.
+
+209
+00:09:23,828 --> 00:09:26,546
+So in our case, we're not going to animate
+
+210
+00:09:26,547 --> 00:09:30,386
+the position on an X-Y axis like
+
+211
+00:09:30,387 --> 00:09:32,067
+you would do in a traditional Animation
+
+212
+00:09:32,068 --> 00:09:35,234
+but instead we're going to control the volume
+
+213
+00:09:35,235 --> 00:09:37,093
+and we do that here in the StoryBoard
+
+214
+00:09:37,094 --> 00:09:39,550
+that I created called MediaPlayerStoryboard.
+
+215
+00:09:39,551 --> 00:09:41,890
+And I'm saying, the TargetProperty
+
+216
+00:09:41,891 --> 00:09:43,130
+that we're going to change is
+
+217
+00:09:43,131 --> 00:09:45,969
+the MediaElement.Volume.
+
+218
+00:09:46,871 --> 00:09:48,308
+The object that we're going to change
+
+219
+00:09:48,309 --> 00:09:50,377
+is the MediaPlayer.
+
+220
+00:09:50,670 --> 00:09:54,398
+That MediaPlayer defined right here.
+
+221
+00:09:55,749 --> 00:09:59,128
+What we'll do is at key moments in time,
+
+222
+00:09:59,129 --> 00:10:00,948
+so these key frames, this KeyTime
+
+223
+00:10:00,949 --> 00:10:05,148
+of zero seconds, two seconds, nine seconds,
+
+224
+00:10:05,149 --> 00:10:10,148
+we're going to modify the volume to different values.
+
+225
+00:10:11,148 --> 00:10:12,447
+In fact, what I'm going to do here
+
+226
+00:10:12,448 --> 00:10:16,627
+is actually bring this all the way up to 1.0
+
+227
+00:10:16,628 --> 00:10:21,267
+and I'll let it go for six seconds and then,
+
+228
+00:10:21,268 --> 00:10:23,866
+on the seventh second, I'm sorry,
+
+229
+00:10:23,867 --> 00:10:26,177
+that should be...
+
+230
+00:10:27,238 --> 00:10:28,677
+let's see, at two seconds
+
+231
+00:10:28,678 --> 00:10:30,007
+we'll get it up to volume 1.0.
+
+232
+00:10:30,008 --> 00:10:35,007
+At six seconds, then we'll...
+
+233
+00:10:37,919 --> 00:10:40,258
+still have it at 1.0 and then it will
+
+234
+00:10:40,259 --> 00:10:42,664
+from six to nine, go to value 0.
+
+235
+00:10:42,665 --> 00:10:45,074
+Sorry, I confused myself there a little bit.
+
+236
+00:10:45,345 --> 00:10:47,944
+Let's go ahead and see if this actually works.
+
+237
+00:10:47,945 --> 00:10:50,025
+It will be difficult to ascertain through
+
+238
+00:10:50,026 --> 00:10:53,184
+audio on my computer but if you rerun
+
+239
+00:10:53,185 --> 00:10:54,424
+this application and you listen closely
+
+240
+00:10:54,425 --> 00:10:55,904
+to a sound that you drag in that's
+
+241
+00:10:55,905 --> 00:10:57,404
+at least nine seconds long,
+
+242
+00:10:57,405 --> 00:11:00,095
+you'll hear how this works.
+
+243
+00:11:01,485 --> 00:11:02,623
+And again, this is not a feature that
+
+244
+00:11:02,624 --> 00:11:04,804
+we're going to use in this lesson
+
+245
+00:11:04,805 --> 00:11:07,504
+but when we get to a future lesson
+
+246
+00:11:07,505 --> 00:11:09,464
+where we want to nicely,
+
+247
+00:11:09,465 --> 00:11:11,024
+instead of abruptly end a sound
+
+248
+00:11:11,025 --> 00:11:13,429
+we want to, over a second period of time,
+
+249
+00:11:13,430 --> 00:11:15,850
+phase it off, have it trail off.
+
+250
+00:11:15,851 --> 00:11:17,450
+It's a nice little touch that it sounds
+
+251
+00:11:17,451 --> 00:11:20,710
+better to the ear than just an abrupt stop.
+
+252
+00:11:20,711 --> 00:11:22,310
+Here I'm going to drag in the song.
+
+253
+00:11:22,311 --> 00:11:25,150
+It's going to start out at 1/2 volume
+
+254
+00:11:25,151 --> 00:11:27,190
+and build to full volume within
+
+255
+00:11:27,191 --> 00:11:29,299
+the first two seconds.
+
+256
+00:11:30,111 --> 00:11:33,450
+(music plays)
+
+257
+00:11:33,451 --> 00:11:35,408
+And then it's going to go along for six seconds
+
+258
+00:11:35,409 --> 00:11:38,528
+and then it starts to fade out
+
+259
+00:11:38,529 --> 00:11:41,229
+from seconds six through nine.
+
+260
+00:11:41,366 --> 00:11:42,904
+That's how that works.
+
+261
+00:11:42,905 --> 00:11:44,925
+Now that I have this working
+
+262
+00:11:44,926 --> 00:11:47,751
+and I kind of understand what it does,
+
+263
+00:11:47,752 --> 00:11:50,731
+I'm going to apply that to my larger project.
+
+264
+00:11:50,732 --> 00:11:52,343
+I'm going to get this actually up out of the way
+
+265
+00:11:52,344 --> 00:11:54,323
+but I'm going to use it as a reference here
+
+266
+00:11:54,324 --> 00:11:55,643
+in just a moment.
+
+267
+00:11:55,644 --> 00:11:58,260
+Here we are back at our MainPage.xaml
+
+268
+00:11:58,261 --> 00:11:59,880
+and what I would like to do is go
+
+269
+00:11:59,881 --> 00:12:01,439
+to my GridView control so whenever
+
+270
+00:12:01,440 --> 00:12:04,199
+I drag and drop a song on to my GridView,
+
+271
+00:12:04,200 --> 00:12:05,199
+it will just play it.
+
+272
+00:12:05,200 --> 00:12:06,419
+I'm not going to give it an icon.
+
+273
+00:12:06,420 --> 00:12:10,449
+I'm not going to store it persistent long term.
+
+274
+00:12:10,880 --> 00:12:13,000
+That would be a great project
+
+275
+00:12:13,001 --> 00:12:14,500
+for you to work on yourself to be able
+
+276
+00:12:14,501 --> 00:12:16,459
+to just drag items, have it save
+
+277
+00:12:16,460 --> 00:12:18,299
+to that local storage area and then
+
+278
+00:12:18,300 --> 00:12:21,399
+represent that data from that point on
+
+279
+00:12:21,400 --> 00:12:23,419
+every time the user opens the application
+
+280
+00:12:23,420 --> 00:12:25,160
+from that point on subsequently.
+
+281
+00:12:25,161 --> 00:12:26,320
+But that's not something I'm going
+
+282
+00:12:26,321 --> 00:12:27,720
+to demonstrate how to do here.
+
+283
+00:12:27,721 --> 00:12:28,719
+That would probably be a better
+
+284
+00:12:28,720 --> 00:12:31,029
+full featured app though.
+
+285
+00:12:31,340 --> 00:12:32,739
+One thing I want to do is set
+
+286
+00:12:32,740 --> 00:12:35,286
+the AllowDrop="True".
+
+287
+00:12:35,437 --> 00:12:36,836
+Without that we're not going to get
+
+288
+00:12:36,837 --> 00:12:38,776
+satisfaction of this working.
+
+289
+00:12:38,777 --> 00:12:41,116
+I'm going to handle the Drop event
+
+290
+00:12:41,117 --> 00:12:45,686
+and I'm going to handle the DragOver event as well.
+
+291
+00:12:45,757 --> 00:12:46,936
+With that in place, now I'm going
+
+292
+00:12:46,937 --> 00:12:49,017
+to hit F12 on the keyboard with my mouse
+
+293
+00:12:49,018 --> 00:12:51,958
+selecting SoundGridView_Drop
+
+294
+00:12:51,959 --> 00:12:55,665
+and here what I going to do is...
+
+295
+00:12:56,877 --> 00:13:01,575
+I'm going to go and copy verbatim
+
+296
+00:13:01,576 --> 00:13:03,836
+everything that I had in that previous project
+
+297
+00:13:03,837 --> 00:13:05,395
+and I'll strip out the things that don't
+
+298
+00:13:05,396 --> 00:13:10,395
+really apply and add things that do.
+
+299
+00:13:11,017 --> 00:13:14,145
+I think we're good to go there.
+
+300
+00:13:15,317 --> 00:13:16,188
+I know I'm not going to use
+
+301
+00:13:16,189 --> 00:13:17,929
+the MediaPlayerStoryboard so I'm just
+
+302
+00:13:17,930 --> 00:13:19,868
+going to go ahead and get rid of this.
+
+303
+00:13:19,869 --> 00:13:21,389
+Another thing I didn't talk about
+
+304
+00:13:21,390 --> 00:13:23,409
+was creating a marker and you can see,
+
+305
+00:13:23,410 --> 00:13:25,088
+I have that all commented out.
+
+306
+00:13:25,089 --> 00:13:27,524
+I'm going to go ahead and remove it from this.
+
+307
+00:13:27,525 --> 00:13:31,140
+A marker just allows you to say "Hey,
+
+308
+00:13:31,534 --> 00:13:34,718
+"in this position in this audio file I want
+
+309
+00:13:34,719 --> 00:13:38,610
+"to set a marker and you can label the marker
+
+310
+00:13:38,611 --> 00:13:43,290
+"and you can have an event fire whenever
+
+311
+00:13:43,291 --> 00:13:45,870
+"playback happens and that marker is reached."
+
+312
+00:13:45,871 --> 00:13:49,531
+So the idea is that I can do an annotation of a video.
+
+313
+00:13:49,532 --> 00:13:51,530
+Three seconds in I might want to pop-up
+
+314
+00:13:51,531 --> 00:13:53,411
+a TextBlock that has some messaging
+
+315
+00:13:53,412 --> 00:13:55,992
+and then it'll continue to play on
+
+316
+00:13:55,993 --> 00:13:58,330
+and then I'll pop-up something different.
+
+317
+00:13:58,331 --> 00:14:01,150
+It allows us to do a closed-captioning style system.
+
+318
+00:14:01,151 --> 00:14:03,181
+There's a lot of options there, really cool.
+
+319
+00:14:03,192 --> 00:14:05,855
+But we're not going to work with markers
+
+320
+00:14:05,856 --> 00:14:07,615
+but you can see how I used that application
+
+321
+00:14:07,616 --> 00:14:11,235
+as a scratch pad to learn more about
+
+322
+00:14:11,236 --> 00:14:14,765
+how the MediaElement actually works.
+
+323
+00:14:15,351 --> 00:14:16,627
+I'm actually going to change this
+
+324
+00:14:16,628 --> 00:14:19,406
+to MyMediaElement, the name of
+
+325
+00:14:19,407 --> 00:14:20,326
+the MediaElement.
+
+326
+00:14:20,327 --> 00:14:22,946
+I got lots of unresolved references
+
+327
+00:14:22,947 --> 00:14:26,637
+so I'm going to hit Control+"." on my keyboard.
+
+328
+00:14:26,747 --> 00:14:29,607
+It looks like the issue here however,
+
+329
+00:14:29,608 --> 00:14:32,987
+is that we don't have the async keyword.
+
+330
+00:14:32,988 --> 00:14:35,106
+So again, this is not a topic that I want
+
+331
+00:14:35,107 --> 00:14:36,627
+to talk about in this series.
+
+332
+00:14:36,628 --> 00:14:39,527
+I do talk about it in the 8.1 series.
+
+333
+00:14:39,528 --> 00:14:42,643
+I believe the 8.0 series as well.
+
+334
+00:14:42,644 --> 00:14:44,464
+Whenever you see the await keyword
+
+335
+00:14:44,465 --> 00:14:47,003
+or the async keyword like I just used here
+
+336
+00:14:47,004 --> 00:14:49,443
+in the method signature,
+
+337
+00:14:49,444 --> 00:14:52,323
+you're essentially saying that I have
+
+338
+00:14:52,324 --> 00:14:55,864
+a method that could be long-running in nature.
+
+339
+00:14:55,865 --> 00:15:00,163
+Instead of allowing that long-running method
+
+340
+00:15:00,164 --> 00:15:02,564
+to block the ongoing operation
+
+341
+00:15:02,565 --> 00:15:05,063
+of all the other code beneath
+
+342
+00:15:05,064 --> 00:15:06,163
+the current line that I'm on,
+
+343
+00:15:06,164 --> 00:15:08,404
+that I'm calling out to that method,
+
+344
+00:15:08,405 --> 00:15:11,463
+I'm going to say, go off and do your thing
+
+345
+00:15:11,464 --> 00:15:13,964
+and I'm going to continue running
+
+346
+00:15:13,965 --> 00:15:15,904
+until I can't go any further and when
+
+347
+00:15:15,905 --> 00:15:18,681
+you are finished, let me know that you're done
+
+348
+00:15:18,682 --> 00:15:22,510
+and I'll make everything work together magically.
+
+349
+00:15:23,300 --> 00:15:27,019
+There are two different ways to introduce
+
+350
+00:15:27,020 --> 00:15:30,234
+asynchrony into your applications
+
+351
+00:15:30,235 --> 00:15:33,493
+based on the two different types
+
+352
+00:15:33,494 --> 00:15:35,914
+of blocking that there are.
+
+353
+00:15:35,915 --> 00:15:38,434
+There's blocking because an operation
+
+354
+00:15:38,435 --> 00:15:40,613
+is mathematically intensive and then
+
+355
+00:15:40,614 --> 00:15:42,974
+there's blocking because the operation
+
+356
+00:15:42,975 --> 00:15:45,934
+is not mathematically or computationally intensive
+
+357
+00:15:45,935 --> 00:15:50,633
+but instead because there's just lag time.
+
+358
+00:15:50,634 --> 00:15:54,483
+For example, I make a request over the internet,
+
+359
+00:15:54,947 --> 00:15:58,142
+without any async or await keywords
+
+360
+00:15:58,143 --> 00:16:00,123
+introduced into my application,
+
+361
+00:16:00,124 --> 00:16:01,923
+my app would wait right there
+
+362
+00:16:01,924 --> 00:16:04,999
+for two seconds, five seconds, ten seconds
+
+363
+00:16:05,000 --> 00:16:07,139
+and could perform nothing else,
+
+364
+00:16:07,140 --> 00:16:09,280
+it would be completely unresponsive
+
+365
+00:16:09,281 --> 00:16:12,559
+to any additional user input,
+
+366
+00:16:12,560 --> 00:16:15,700
+any changes in the user interface until
+
+367
+00:16:15,701 --> 00:16:19,960
+a response came back from a remote web server.
+
+368
+00:16:19,961 --> 00:16:24,960
+There's not a lot of computational time
+
+369
+00:16:25,057 --> 00:16:29,417
+being spent there it's just waiting lag time.
+
+370
+00:16:29,714 --> 00:16:31,729
+Async and await allow you to just
+
+371
+00:16:31,730 --> 00:16:34,509
+handle those situations where we're not
+
+372
+00:16:34,510 --> 00:16:36,109
+computationally intensive, we're just
+
+373
+00:16:36,110 --> 00:16:38,830
+waiting on something to finish.
+
+374
+00:16:39,006 --> 00:16:41,062
+Beyond explaining it like that,
+
+375
+00:16:41,063 --> 00:16:42,442
+I don't want to go into it any deeper
+
+376
+00:16:42,443 --> 00:16:44,581
+but you'll see this frequently.
+
+377
+00:16:44,592 --> 00:16:48,335
+Any time in the Universal Windows Platform API,
+
+378
+00:16:48,336 --> 00:16:50,015
+there's an operation that could potentially
+
+379
+00:16:50,016 --> 00:16:51,435
+take a long time.
+
+380
+00:16:51,436 --> 00:16:54,474
+To a computer 1/2 a second, one second,
+
+381
+00:16:54,475 --> 00:16:56,095
+that's a long time.
+
+382
+00:16:56,096 --> 00:16:58,675
+Any time that you see any operations
+
+383
+00:16:58,676 --> 00:17:00,294
+that might take a while because
+
+384
+00:17:00,295 --> 00:17:04,035
+there's latency in access to a disk,
+
+385
+00:17:04,036 --> 00:17:08,225
+to a network, whatever, you'll see
+
+386
+00:17:08,512 --> 00:17:11,288
+the need to apply and adorn that method
+
+387
+00:17:11,289 --> 00:17:13,864
+with the await and async keywords.
+
+388
+00:17:13,865 --> 00:17:15,304
+Hopefully that's helpful enough.
+
+389
+00:17:15,305 --> 00:17:16,564
+The only thing you need to know
+
+390
+00:17:16,565 --> 00:17:18,352
+is that if you see an await keyword
+
+391
+00:17:18,353 --> 00:17:20,253
+in your code, you know that you're
+
+392
+00:17:20,254 --> 00:17:25,253
+going to need an async method in the call.
+
+393
+00:17:28,153 --> 00:17:30,533
+Furthermore, if you get any methods
+
+394
+00:17:30,534 --> 00:17:32,172
+that have the keyword async,
+
+395
+00:17:32,173 --> 00:17:37,172
+like we're calling in to this UWP/API methods
+
+396
+00:17:38,970 --> 00:17:40,785
+called GetStorageItemsAsync.
+
+397
+00:17:40,786 --> 00:17:42,784
+Async is going to require you to adorn
+
+398
+00:17:42,785 --> 00:17:45,445
+that call with an await keyword
+
+399
+00:17:47,465 --> 00:17:50,724
+to add an async keyword to the method.
+
+400
+00:17:50,725 --> 00:17:53,524
+You learn a lot more about async and await
+
+401
+00:17:53,525 --> 00:17:58,524
+and asynchrony in other channel nine videos,
+
+402
+00:18:00,465 --> 00:18:02,765
+even on my own web site
+
+403
+00:18:02,766 --> 00:18:05,034
+but that's all I'm going to say about it for now.
+
+404
+00:18:05,225 --> 00:18:07,165
+Let's continue on here.
+
+405
+00:18:07,166 --> 00:18:08,745
+We're resolving references in the code
+
+406
+00:18:08,746 --> 00:18:09,704
+that we copied in.
+
+407
+00:18:09,705 --> 00:18:11,304
+For example, the BitmapImage I need
+
+408
+00:18:11,305 --> 00:18:13,245
+to hit Control+"." on my keyboard,
+
+409
+00:18:13,246 --> 00:18:17,122
+add the using statement Windows.UI.Xaml.Media.Imaging
+
+410
+00:18:17,123 --> 00:18:19,631
+and that should resolve that reference.
+
+411
+00:18:20,962 --> 00:18:23,762
+Well and that's funny because I don't even
+
+412
+00:18:23,763 --> 00:18:25,281
+need that whole section,
+
+413
+00:18:25,282 --> 00:18:27,591
+we're only dealing with the audio.
+
+414
+00:18:27,983 --> 00:18:30,471
+We'll just get rid of that like that.
+
+415
+00:18:35,662 --> 00:18:37,362
+Here we don't need the PathTextBox,
+
+416
+00:18:37,363 --> 00:18:39,452
+we can get rid of that.
+
+417
+00:18:45,522 --> 00:18:48,226
+I actually need one more of these.
+
+418
+00:18:50,856 --> 00:18:53,056
+StorageFolder, ApplicationData,
+
+419
+00:18:53,057 --> 00:18:54,956
+these area all items that you'd probably
+
+420
+00:18:54,957 --> 00:18:57,992
+need to add using statements for if you're
+
+421
+00:18:57,993 --> 00:18:59,992
+trying to follow along with me as
+
+422
+00:18:59,993 --> 00:19:02,153
+I'm going through this.
+
+423
+00:19:02,154 --> 00:19:06,093
+I think that will pretty much do
+
+424
+00:19:06,094 --> 00:19:09,922
+what we need it to do here with one exception.
+
+425
+00:19:10,629 --> 00:19:12,244
+We're not going to use the storyboard
+
+426
+00:19:12,245 --> 00:19:14,205
+so I'm just going to call my MediaElement.Play()
+
+427
+00:19:14,206 --> 00:19:16,624
+instead and that will just play
+
+428
+00:19:16,625 --> 00:19:18,505
+the song straight out.
+
+429
+00:19:18,506 --> 00:19:19,944
+Now we need the DragOver code
+
+430
+00:19:19,945 --> 00:19:21,964
+and once again, I'm going to come over here
+
+431
+00:19:21,965 --> 00:19:25,634
+and I'm going to copy all of the code...
+
+432
+00:19:26,671 --> 00:19:27,951
+that I had and you can see that
+
+433
+00:19:27,952 --> 00:19:30,751
+I actually added some comments here
+
+434
+00:19:30,752 --> 00:19:33,230
+about an article where you can learn more
+
+435
+00:19:33,231 --> 00:19:36,210
+about how to do this
+
+436
+00:19:36,211 --> 00:19:39,701
+drag and drop operation and add...
+
+437
+00:19:42,551 --> 00:19:44,191
+a Drag Adorner which would allow you
+
+438
+00:19:44,192 --> 00:19:46,430
+to put a custom image as your dragging.
+
+439
+00:19:46,431 --> 00:19:47,590
+I'm not going to obviously going
+
+440
+00:19:47,591 --> 00:19:48,300
+to do any of that so I'm just going
+
+441
+00:19:48,301 --> 00:19:52,329
+to rip all that out like so.
+
+442
+00:19:54,081 --> 00:19:55,799
+I have here that it's using
+
+443
+00:19:55,800 --> 00:19:58,496
+Windows.ApplicationModel.DataTransfer
+
+444
+00:19:58,497 --> 00:20:00,975
+for that keyword.
+
+445
+00:20:00,976 --> 00:20:03,346
+I'm just going to rip that out as well.
+
+446
+00:20:04,397 --> 00:20:06,785
+Now with any luck this will actually work.
+
+447
+00:20:10,077 --> 00:20:13,305
+Let's make sure the cow works (cow moos).
+
+448
+00:20:13,596 --> 00:20:16,875
+Now I'm going to drag and drop that song.
+
+449
+00:20:18,407 --> 00:20:22,410
+(music plays) It works.
+
+450
+00:20:22,781 --> 00:20:26,215
+What happens if we were to drag a different
+
+451
+00:20:26,216 --> 00:20:29,217
+sound like one of these that we all ready have?
+
+452
+00:20:30,948 --> 00:20:32,447
+(crash sound)
+
+453
+00:20:32,448 --> 00:20:36,087
+(laughs) An abrupt ending to the song (laughs)
+
+454
+00:20:37,789 --> 00:20:41,335
+Let's see what happens when we drag an image.
+
+455
+00:20:41,626 --> 00:20:44,876
+Nothing, it just ignores it okay? Very good.
+
+456
+00:20:45,227 --> 00:20:46,786
+Now the real question is what would
+
+457
+00:20:46,787 --> 00:20:50,726
+happen if we attempted to run this in mobile
+
+458
+00:20:50,727 --> 00:20:53,696
+because we can't drag and drop with mobile right?
+
+459
+00:20:59,087 --> 00:21:00,992
+We haven't really tested this at all anyway.
+
+460
+00:21:00,993 --> 00:21:03,026
+Let's just do something real quick here.
+
+461
+00:21:03,027 --> 00:21:04,286
+(gun shot)
+
+462
+00:21:04,287 --> 00:21:07,287
+We can hear it but there's nothing
+
+463
+00:21:07,288 --> 00:21:11,247
+really to drag and drop into here.
+
+464
+00:21:12,248 --> 00:21:14,777
+It just ignores that functionality
+
+465
+00:21:14,778 --> 00:21:17,037
+in this particular case.
+
+466
+00:21:17,038 --> 00:21:18,176
+That's pretty cool.
+
+467
+00:21:18,177 --> 00:21:19,857
+A neat little addition to our app
+
+468
+00:21:19,858 --> 00:21:21,477
+to make it a true soundboard
+
+469
+00:21:21,478 --> 00:21:24,937
+to drag and drop and have it play automatically.
+
+470
+00:21:24,938 --> 00:21:27,116
+I know we could probably just double click
+
+471
+00:21:27,117 --> 00:21:29,937
+on a given item and have it pop open
+
+472
+00:21:29,938 --> 00:21:32,336
+and groove music unless Windows 10
+
+473
+00:21:32,337 --> 00:21:34,356
+disagrees with that idea.
+
+474
+00:21:34,357 --> 00:21:37,192
+However, again, this is just really for the purpose
+
+475
+00:21:37,193 --> 00:21:41,130
+of showing how this functionality,
+
+476
+00:21:41,131 --> 00:21:42,630
+how we can add it to our app.
+
+477
+00:21:42,631 --> 00:21:45,371
+It's pretty cool. Let's continue on.
+
+478
+00:21:45,372 --> 00:21:46,611
+We've got some finishing touches.
+
+479
+00:21:46,612 --> 00:21:48,731
+I'd like to implement the AutoSearchBox
+
+480
+00:21:48,732 --> 00:21:50,910
+in the next lesson and just a little bit
+
+481
+00:21:50,911 --> 00:21:52,831
+of general cleanup and then we'll be
+
+482
+00:21:52,832 --> 00:21:55,431
+looking to start getting this ready
+
+483
+00:21:55,432 --> 00:21:58,420
+for submission into the Windows Store.
+
+484
+00:21:58,871 --> 00:22:01,795
+Doing great, we'll see you in the next lesson. Thanks.  
+

@@ -1,0 +1,2424 @@
+1
+00:00:05,098 --> 00:00:07,027
+<v ->So for the most part our application</v>      
+
+2
+00:00:07,028 --> 00:00:08,670
+is feature complete.      
+
+3
+00:00:08,671 --> 00:00:11,337
+We need to address some layout issues      
+
+4
+00:00:11,338 --> 00:00:13,161
+and make it look a little nicer      
+
+5
+00:00:13,162 --> 00:00:14,366
+and then I'll hand it over to you      
+
+6
+00:00:14,367 --> 00:00:16,541
+and you can run with it and add      
+
+7
+00:00:16,542 --> 00:00:18,408
+more functionality to it.      
+
+8
+00:00:18,409 --> 00:00:22,291
+But what I want to do before we get to that point      
+
+9
+00:00:22,292 --> 00:00:24,456
+is add one more cool feature.      
+
+10
+00:00:24,457 --> 00:00:27,858
+And I want to show you how to add Live Tiles      
+
+11
+00:00:27,859 --> 00:00:30,877
+to your application, so tiles that will update      
+
+12
+00:00:30,878 --> 00:00:33,256
+based on content from your application.      
+
+13
+00:00:33,257 --> 00:00:35,313
+And we're going to go through two scenarios.      
+
+14
+00:00:35,314 --> 00:00:38,151
+First of all, we're going to change the content      
+
+15
+00:00:38,152 --> 00:00:40,668
+of the tile on demand, which means      
+
+16
+00:00:40,669 --> 00:00:43,740
+my program is going to actively push      
+
+17
+00:00:43,741 --> 00:00:45,735
+data into that tile.      
+
+18
+00:00:45,736 --> 00:00:47,719
+And then secondly, we're going to      
+
+19
+00:00:47,720 --> 00:00:50,140
+schedule periodic notification and give it      
+
+20
+00:00:50,141 --> 00:00:53,916
+some source online to pull data from      
+
+21
+00:00:53,917 --> 00:00:55,889
+to present to the user.      
+
+22
+00:00:55,890 --> 00:00:57,755
+There's a lot to this and I'm only      
+
+23
+00:00:57,756 --> 00:01:00,091
+going to show you like one easy scenario      
+
+24
+00:01:00,092 --> 00:01:02,128
+through this content, but hopefully      
+
+25
+00:01:02,129 --> 00:01:04,400
+once you have that and once you kind of      
+
+26
+00:01:04,401 --> 00:01:06,331
+know where to look in the documentation,      
+
+27
+00:01:06,332 --> 00:01:08,667
+you can really branch out from there      
+
+28
+00:01:08,668 --> 00:01:12,004
+and add some rich functionality to the start,      
+
+29
+00:01:12,005 --> 00:01:14,544
+to the start menu for the phone      
+
+30
+00:01:14,545 --> 00:01:17,103
+and the start for the desktop.      
+
+31
+00:01:17,104 --> 00:01:19,940
+Okay, so as you can see here in the lower      
+
+32
+00:01:19,941 --> 00:01:21,626
+left hand corner of my screen,      
+
+33
+00:01:21,627 --> 00:01:24,538
+I have a new application I built      
+
+34
+00:01:24,539 --> 00:01:26,223
+called TileUpdateManagerExample,      
+
+35
+00:01:26,224 --> 00:01:29,700
+another, what I call, "scratchpad application".      
+
+36
+00:01:29,701 --> 00:01:33,721
+This was used for me to learn this technique      
+
+37
+00:01:33,722 --> 00:01:38,169
+and these APIs and now that I understand them,      
+
+38
+00:01:38,170 --> 00:01:40,302
+I'm not going to apply them to my main application.      
+
+39
+00:01:40,303 --> 00:01:43,587
+So there's actually two features of this application      
+
+40
+00:01:43,588 --> 00:01:44,653
+as I run it.      
+
+41
+00:01:44,654 --> 00:01:47,022
+The first scenario that I'm going to demonstrate      
+
+42
+00:01:47,023 --> 00:01:49,581
+is how to actively push new content      
+
+43
+00:01:49,582 --> 00:01:54,019
+into a Live Tile programmatically,      
+
+44
+00:01:54,020 --> 00:01:57,079
+but this will be, I will have to force it      
+
+45
+00:01:57,080 --> 00:01:59,320
+programmatically through code      
+
+46
+00:01:59,321 --> 00:02:00,845
+where as the other I'm going to      
+
+47
+00:02:00,846 --> 00:02:02,509
+schedule notification and just say      
+
+48
+00:02:02,510 --> 00:02:03,639
+hey, every half hour go out and      
+
+49
+00:02:03,640 --> 00:02:05,740
+you'll find the data you'll need      
+
+50
+00:02:05,741 --> 00:02:08,034
+way out here on this web service      
+
+51
+00:02:08,035 --> 00:02:09,431
+and we're going to build a web service      
+
+52
+00:02:09,432 --> 00:02:11,083
+that demonstrates that, okay?      
+
+53
+00:02:11,084 --> 00:02:12,887
+So now that I have the application up and running,      
+
+54
+00:02:12,888 --> 00:02:14,188
+what I want to do is actually go to      
+
+55
+00:02:14,189 --> 00:02:17,707
+all programs to find this in the list of apps.      
+
+56
+00:02:17,708 --> 00:02:19,425
+And once I do, I'm going to right click and select      
+
+57
+00:02:19,426 --> 00:02:24,203
+pin to start and now I have the icon,      
+
+58
+00:02:24,204 --> 00:02:26,901
+the Live Tile with the default icon      
+
+59
+00:02:26,902 --> 00:02:31,902
+for this project type on my start screen.      
+
+60
+00:02:32,214 --> 00:02:34,912
+Okay, so now what I'm going to do      
+
+61
+00:02:34,913 --> 00:02:35,947
+is just type in something like      
+
+62
+00:02:35,948 --> 00:02:37,920
+hello world, real simple and click      
+
+63
+00:02:37,921 --> 00:02:39,360
+change tile content.      
+
+64
+00:02:39,361 --> 00:02:40,704
+The next time I go to the start page,      
+
+65
+00:02:40,705 --> 00:02:44,618
+watch that icon, it flips and it has the content there      
+
+66
+00:02:44,619 --> 00:02:46,538
+that I just added, very cool.      
+
+67
+00:02:46,539 --> 00:02:51,539
+How about if I do this again, hello periodic updates,      
+
+68
+00:02:52,096 --> 00:02:54,175
+so we'll just type in hello periodic      
+
+69
+00:02:54,176 --> 00:02:56,137
+because there's not a lot of room on that tile.      
+
+70
+00:02:56,138 --> 00:02:58,686
+And then go here and it's going to flip one more time      
+
+71
+00:02:58,687 --> 00:03:00,873
+and it changes to hello periodic, okay.      
+
+72
+00:03:00,874 --> 00:03:02,580
+So let's talk about how I was able      
+
+73
+00:03:02,581 --> 00:03:06,643
+to programmatically force the message to change.      
+
+74
+00:03:06,644 --> 00:03:09,203
+This is going to uncover a few important concepts      
+
+75
+00:03:09,204 --> 00:03:11,848
+before we move on to the more advanced scenario.      
+
+76
+00:03:11,849 --> 00:03:14,280
+So we have a  TileUpdateManager Class,      
+
+77
+00:03:14,281 --> 00:03:15,644
+it's part of system, or I'm sorry,      
+
+78
+00:03:15,645 --> 00:03:17,873
+windows.ui.notificationsnamespace,      
+
+79
+00:03:17,874 --> 00:03:20,337
+so you'll need to add that in your using statement,      
+
+80
+00:03:20,338 --> 00:03:22,070
+at the top of the file.      
+
+81
+00:03:22,071 --> 00:03:23,270
+And then the first thing we're going to do      
+
+82
+00:03:23,271 --> 00:03:26,469
+is get a template, get the content of a template      
+
+83
+00:03:26,470 --> 00:03:29,679
+and there a number of innumerations      
+
+84
+00:03:29,680 --> 00:03:32,613
+in this tile template type en-um      
+
+85
+00:03:32,614 --> 00:03:35,205
+and you can just see I can just scroll through all of them,      
+
+86
+00:03:35,206 --> 00:03:36,900
+just a bunch of them and you find      
+
+87
+00:03:36,901 --> 00:03:40,090
+a laundry list of them at this URL      
+
+88
+00:03:40,091 --> 00:03:42,298
+that I have on screen right now.      
+
+89
+00:03:42,299 --> 00:03:45,103
+So I'm actually going to open up that page      
+
+90
+00:03:45,104 --> 00:03:49,124
+to, okay here we go, let's get back there,      
+
+91
+00:03:49,125 --> 00:03:52,804
+the tile template catalog and so now      
+
+92
+00:03:52,805 --> 00:03:55,790
+if I look through this page, you can see      
+
+93
+00:03:55,791 --> 00:03:58,713
+that there is innumeration, in this case      
+
+94
+00:03:58,714 --> 00:04:02,296
+tile square 150-by-150 image and      
+
+95
+00:04:02,297 --> 00:04:04,280
+how it's going to look in both      
+
+96
+00:04:04,281 --> 00:04:05,944
+the Windows desktop and the Windows phone      
+
+97
+00:04:05,945 --> 00:04:09,219
+for the start menus for each of those.      
+
+98
+00:04:09,220 --> 00:04:10,562
+And for the most part, they''re going to      
+
+99
+00:04:10,563 --> 00:04:12,428
+seem very similar, there might be      
+
+100
+00:04:12,429 --> 00:04:14,114
+some small layout changes to      
+
+101
+00:04:14,115 --> 00:04:17,238
+accommodate the rest of the, how the menus      
+
+102
+00:04:17,239 --> 00:04:20,246
+typically layout that content, okay.      
+
+103
+00:04:20,247 --> 00:04:22,315
+And again, there's just a bunch of these.      
+
+104
+00:04:22,316 --> 00:04:24,918
+Now once you find one that kind of works      
+
+105
+00:04:24,919 --> 00:04:27,850
+for your scenario, let's say this one right here,      
+
+106
+00:04:27,851 --> 00:04:29,856
+tile square 150-by-150 text 4.      
+
+107
+00:04:29,857 --> 00:04:32,683
+I'm going to click on that and it's      
+
+108
+00:04:32,684 --> 00:04:34,528
+going to take me down deeper into the page      
+
+109
+00:04:34,529 --> 00:04:37,346
+for a more descriptive,      
+
+110
+00:04:39,068 --> 00:04:41,873
+descriptive explanation      
+
+111
+00:04:41,874 --> 00:04:45,765
+of what the tile template does      
+
+112
+00:04:45,766 --> 00:04:48,880
+and how you can modify its content.      
+
+113
+00:04:48,881 --> 00:04:50,586
+Alright, and so you can see that this      
+
+114
+00:04:50,587 --> 00:04:53,445
+particular content will wrap your content.      
+
+115
+00:04:53,446 --> 00:04:55,888
+So you could give a real long line of text      
+
+116
+00:04:55,889 --> 00:04:57,414
+and it's just going to wrap it.      
+
+117
+00:04:57,415 --> 00:04:59,588
+There are others that will give you,      
+
+118
+00:04:59,589 --> 00:05:02,917
+like in this case, four independent fields of information      
+
+119
+00:05:02,918 --> 00:05:04,378
+that you can fill in.      
+
+120
+00:05:04,379 --> 00:05:06,212
+So there are some subtle differences      
+
+121
+00:05:06,213 --> 00:05:07,503
+between each of the templates,      
+
+122
+00:05:07,504 --> 00:05:09,679
+but hopefully you, you can see      
+
+123
+00:05:09,680 --> 00:05:12,057
+where you can find that information.      
+
+124
+00:05:12,058 --> 00:05:13,891
+Here's the XML that we would actually      
+
+125
+00:05:13,892 --> 00:05:18,521
+be working with and let's go ahead      
+
+126
+00:05:18,522 --> 00:05:21,582
+and take a look at what the tile square      
+
+127
+00:05:21,583 --> 00:05:26,179
+150-by-150 text 01, see what it looks like here.      
+
+128
+00:05:26,180 --> 00:05:28,451
+So I'm going to go back up to the top,      
+
+129
+00:05:28,452 --> 00:05:31,459
+I hit control 5 on my keyboard,      
+
+130
+00:05:31,460 --> 00:05:33,613
+paste that in and you can find, okay,      
+
+131
+00:05:33,614 --> 00:05:35,852
+so this is the one that we're working with.      
+
+132
+00:05:35,853 --> 00:05:37,613
+So I click on it and you can see      
+
+133
+00:05:37,614 --> 00:05:41,207
+that here is the, here is the template      
+
+134
+00:05:41,208 --> 00:05:43,143
+that we're working with.      
+
+135
+00:05:46,124 --> 00:05:47,970
+Actually this is the template that we're working with.      
+
+136
+00:05:47,971 --> 00:05:51,243
+Okay, and so just keep that XML in mind      
+
+137
+00:05:51,244 --> 00:05:52,438
+because what we're going to do next      
+
+138
+00:05:52,439 --> 00:05:56,021
+is manipulate that XML in the next two lines of code.      
+
+139
+00:05:56,022 --> 00:05:57,600
+We're going to find an element      
+
+140
+00:05:57,601 --> 00:05:59,243
+with the name text and we're going to      
+
+141
+00:05:59,244 --> 00:06:03,009
+add a child to that first element      
+
+142
+00:06:03,010 --> 00:06:06,335
+with whatever I typed into that TextBlock.      
+
+143
+00:06:06,336 --> 00:06:08,596
+Alright, so we're going to create a text node      
+
+144
+00:06:08,597 --> 00:06:13,597
+in our template and then append it as a child to the text.      
+
+145
+00:06:14,379 --> 00:06:16,702
+So if we take a look at the template again,      
+
+146
+00:06:16,703 --> 00:06:19,423
+we're going to find the first occurrence      
+
+147
+00:06:19,424 --> 00:06:22,207
+of the text element and we're going to      
+
+148
+00:06:22,208 --> 00:06:24,030
+add a child to that element.      
+
+149
+00:06:24,031 --> 00:06:26,312
+And we're going to fill in this text right here      
+
+150
+00:06:26,313 --> 00:06:28,115
+with whatever we typed in.      
+
+151
+00:06:28,116 --> 00:06:30,675
+And then after we've done that,      
+
+152
+00:06:30,676 --> 00:06:34,760
+then we're going to add that new XML      
+
+153
+00:06:34,761 --> 00:06:36,585
+to a new tile notification object      
+
+154
+00:06:36,586 --> 00:06:38,760
+and tell the  TileUpdateMananager      
+
+155
+00:06:38,761 --> 00:06:41,971
+to go update our application's tile      
+
+156
+00:06:41,972 --> 00:06:45,266
+with this new tile that we've basically      
+
+157
+00:06:45,267 --> 00:06:48,594
+borrowed a template and modified its values.      
+
+158
+00:06:48,595 --> 00:06:50,706
+Okay, so that's the basic course of events here      
+
+159
+00:06:50,707 --> 00:06:51,847
+in five lines of code.      
+
+160
+00:06:51,848 --> 00:06:53,694
+Very simple but what we want to do next      
+
+161
+00:06:53,695 --> 00:06:56,946
+is actually another step forward with this idea      
+
+162
+00:06:56,947 --> 00:06:59,324
+and here what I'm doing in the next,      
+
+163
+00:06:59,325 --> 00:07:02,983
+in the next button click event      
+
+164
+00:07:02,984 --> 00:07:07,984
+is to tell the TileUpdateManager      
+
+165
+00:07:08,338 --> 00:07:10,715
+that instead of me giving you explicitly      
+
+166
+00:07:10,716 --> 00:07:14,481
+the data that I want you to force into that tile,      
+
+167
+00:07:14,482 --> 00:07:16,667
+I'm going to say hey, why don't you just update it      
+
+168
+00:07:16,668 --> 00:07:20,411
+every half hour with this URL that I'm going to give you.      
+
+169
+00:07:20,412 --> 00:07:22,640
+So now we need to go out, we need to create      
+
+170
+00:07:22,641 --> 00:07:25,669
+a web service that will return      
+
+171
+00:07:25,670 --> 00:07:29,692
+something like this, some XML like this      
+
+172
+00:07:29,693 --> 00:07:31,255
+every time that its called.      
+
+173
+00:07:31,256 --> 00:07:34,166
+So I have another project, it is an      
+
+174
+00:07:34,167 --> 00:07:38,262
+ASP.NET MVC 5 application.      
+
+175
+00:07:38,263 --> 00:07:41,845
+It has a single Controller, the HomeController      
+
+176
+00:07:41,846 --> 00:07:43,531
+just returns a single View.      
+
+177
+00:07:43,532 --> 00:07:45,847
+So let's open up the index.cshtml      
+
+178
+00:07:45,848 --> 00:07:47,936
+and inside here all that it does      
+
+179
+00:07:47,937 --> 00:07:50,560
+is just takes whatever the current time is      
+
+180
+00:07:50,561 --> 00:07:53,824
+and .ToString()s it and will display to the end user.      
+
+181
+00:07:53,825 --> 00:07:55,925
+So you can see we're using a different template,      
+
+182
+00:07:55,926 --> 00:07:58,624
+the TileSquare150by150Text04.      
+
+183
+00:07:58,625 --> 00:08:02,953
+Basically I went out to this template catalog,      
+
+184
+00:08:02,954 --> 00:08:06,379
+I grabbed the actual XML that is      
+
+185
+00:08:06,380 --> 00:08:09,588
+necessary for text 04, so this one right here.      
+
+186
+00:08:09,589 --> 00:08:14,548
+And I said hey, let's, right here,      
+
+187
+00:08:14,549 --> 00:08:17,129
+I'm going to replace this and just use this      
+
+188
+00:08:17,130 --> 00:08:20,585
+and put, and put the current date time here.      
+
+189
+00:08:20,586 --> 00:08:23,017
+So now that I've created this and      
+
+190
+00:08:23,018 --> 00:08:24,848
+I've deployed it out to Azure, so here's      
+
+191
+00:08:24,849 --> 00:08:25,885
+what we going to do.      
+
+192
+00:08:25,886 --> 00:08:27,698
+I'm going to drag this over and I'm      
+
+193
+00:08:27,699 --> 00:08:29,255
+going to right click and say whoops,      
+
+194
+00:08:29,256 --> 00:08:30,461
+you can't see it, but it's off screen,      
+
+195
+00:08:30,462 --> 00:08:32,369
+but I'm going to choose the Publish option      
+
+196
+00:08:32,370 --> 00:08:33,672
+and I'm actually going to publish this out      
+
+197
+00:08:33,673 --> 00:08:36,375
+to my Azure account.      
+
+198
+00:08:37,790 --> 00:08:41,329
+Okay, and if I click on this, or here,      
+
+199
+00:08:41,330 --> 00:08:44,358
+let me just actually open up another window over here,      
+
+200
+00:08:44,359 --> 00:08:46,407
+so let me open it up.      
+
+201
+00:08:46,408 --> 00:08:51,408
+It will display this, so I'm at periodic.azurewebsites.net,      
+
+202
+00:08:52,359 --> 00:08:54,192
+this may not be available at the time      
+
+203
+00:08:54,193 --> 00:08:56,322
+when you watch this video, it might take this down      
+
+204
+00:08:56,323 --> 00:08:58,680
+because it costs me money every time somebody gets it.      
+
+205
+00:08:58,681 --> 00:09:01,985
+And let's view the source for this,      
+
+206
+00:09:01,986 --> 00:09:04,386
+and could see that I get that template      
+
+207
+00:09:04,387 --> 00:09:06,838
+and inside of the text element      
+
+208
+00:09:06,839 --> 00:09:08,791
+is the date and the time, okay.      
+
+209
+00:09:08,792 --> 00:09:10,540
+So that's a pretty cool tactic.      
+
+210
+00:09:10,541 --> 00:09:12,449
+Let's go ahead and get rid of that.      
+
+211
+00:09:12,450 --> 00:09:16,353
+Now that we've built our notification service,      
+
+212
+00:09:16,354 --> 00:09:21,354
+let's go ahead and pop open TileUpdateManager      
+
+213
+00:09:21,612 --> 00:09:26,325
+and here we're basically saying here's the tile content,      
+
+214
+00:09:26,326 --> 00:09:28,277
+here's the requested interval.      
+
+215
+00:09:28,278 --> 00:09:31,178
+I would prefer if you update every half hour.      
+
+216
+00:09:31,179 --> 00:09:32,832
+You're going to notice that it does not      
+
+217
+00:09:32,833 --> 00:09:36,351
+happen exactly at 30 minutes.      
+
+218
+00:09:36,352 --> 00:09:37,662
+If we were to pause the video and come      
+
+219
+00:09:37,663 --> 00:09:41,705
+back to this in 32 minutes, 35, 37 minutes,      
+
+220
+00:09:41,706 --> 00:09:43,880
+it would probably update in that, roughly,      
+
+221
+00:09:43,881 --> 00:09:44,915
+in that period of time.      
+
+222
+00:09:44,916 --> 00:09:48,040
+So this requested interval,      
+
+223
+00:09:48,041 --> 00:09:50,281
+now we're going to say hey, TileUpdateManager,      
+
+224
+00:09:50,282 --> 00:09:53,447
+why don't we update the tile 4 application      
+
+225
+00:09:53,448 --> 00:09:55,334
+with a periodic update.      
+
+226
+00:09:55,335 --> 00:09:57,222
+Now to learn more about periodic updates,      
+
+227
+00:09:57,223 --> 00:10:02,223
+take a look at this URL and this will explain      
+
+228
+00:10:02,929 --> 00:10:05,616
+a little bit more about how -- whoops, whoops, whoops,      
+
+229
+00:10:05,617 --> 00:10:08,741
+this will explain how periodic updates work.      
+
+230
+00:10:08,742 --> 00:10:12,986
+And the polling sequence and what's going on      
+
+231
+00:10:12,987 --> 00:10:14,607
+behind the scene, so I would recommend      
+
+232
+00:10:14,608 --> 00:10:16,953
+for more information, read that page      
+
+233
+00:10:16,954 --> 00:10:19,338
+bit.do/periodic      
+
+234
+00:10:20,113 --> 00:10:22,245
+And here we're just going to give it the URI      
+
+235
+00:10:22,246 --> 00:10:24,879
+and how often we want it to update.      
+
+236
+00:10:24,880 --> 00:10:27,525
+And it should go off and update itself.      
+
+237
+00:10:27,526 --> 00:10:30,127
+So now let's run the application again      
+
+238
+00:10:30,128 --> 00:10:32,133
+and see this working.      
+
+239
+00:10:34,928 --> 00:10:37,753
+And I go ahead and click "scheduled notification".      
+
+240
+00:10:37,754 --> 00:10:42,116
+And nothing happens, that's good, that's fine.      
+
+241
+00:10:42,117 --> 00:10:43,972
+Now let's open up the Start menu      
+
+242
+00:10:43,973 --> 00:10:47,102
+and with any luck, this will update itself      
+
+243
+00:10:48,516 --> 00:10:50,445
+and it does, and you can see that the current      
+
+244
+00:10:50,446 --> 00:10:55,349
+date and time is listed there, okay, very nice.      
+
+245
+00:10:55,350 --> 00:10:58,271
+Okay, so what we're going to do is take these ideas      
+
+246
+00:10:58,272 --> 00:10:59,914
+and apply them to our application.      
+
+247
+00:10:59,915 --> 00:11:01,439
+So I'm going to shut everything else down      
+
+248
+00:11:01,440 --> 00:11:03,273
+that we don't need and we're going to come back      
+
+249
+00:11:03,274 --> 00:11:06,985
+to UWPWeather, I'll shut that down too.      
+
+250
+00:11:06,986 --> 00:11:10,622
+And what I think we'll do is every time      
+
+251
+00:11:10,623 --> 00:11:13,406
+that we go off and grab the weather,      
+
+252
+00:11:13,407 --> 00:11:15,790
+we'll go off and we'll say hey,      
+
+253
+00:11:15,791 --> 00:11:18,427
+for the current position where the user is at      
+
+254
+00:11:18,428 --> 00:11:21,605
+let's go ahead and schedule an update      
+
+255
+00:11:21,606 --> 00:11:25,338
+using the last known position of the device.      
+
+256
+00:11:25,339 --> 00:11:28,869
+So we're not going to update it wherever you are.      
+
+257
+00:11:28,870 --> 00:11:30,991
+So if you're like on a long road trip      
+
+258
+00:11:30,992 --> 00:11:33,263
+and you only look at your phone or the weather app      
+
+259
+00:11:33,264 --> 00:11:36,090
+once every 10 hours then it may not be accurate.      
+
+260
+00:11:36,091 --> 00:11:38,703
+But if you were to pop open the weather app      
+
+261
+00:11:38,704 --> 00:11:42,490
+then it will change the URL that we're going to point to.      
+
+262
+00:11:42,491 --> 00:11:44,068
+Hopefully that makes sense.      
+
+263
+00:11:44,069 --> 00:11:46,084
+Okay, but there are, there would be ways      
+
+264
+00:11:46,085 --> 00:11:48,889
+to modify this and make it work in that scenario      
+
+265
+00:11:48,890 --> 00:11:50,350
+and I'm just being a little bit lazy here      
+
+266
+00:11:50,351 --> 00:11:52,686
+and I want to show you the simple, a simple case.      
+
+267
+00:11:52,687 --> 00:11:56,163
+Okay, so to get started what we're going to need to do      
+
+268
+00:11:56,164 --> 00:11:57,667
+is actually create a new project.      
+
+269
+00:11:57,668 --> 00:12:00,014
+So let me go over here to Visual Studio,      
+
+270
+00:12:00,015 --> 00:12:03,875
+pop open a new version and I'm going to create      
+
+271
+00:12:03,876 --> 00:12:06,477
+an ASP.NET application and we'll call this      
+
+272
+00:12:06,478 --> 00:12:10,384
+UWPWeatherService      
+
+273
+00:12:12,523 --> 00:12:14,943
+UWPWeatherService, maybe?      
+
+274
+00:12:14,944 --> 00:12:16,287
+And I'm going to grab that name      
+
+275
+00:12:16,288 --> 00:12:18,089
+because I'm going to want that in just a moment,      
+
+276
+00:12:18,090 --> 00:12:20,021
+then you click OK.      
+
+277
+00:12:20,022 --> 00:12:22,132
+Alright, and here I want to use      
+
+278
+00:12:22,133 --> 00:12:24,938
+an empty, and I'm using the old version      
+
+279
+00:12:24,939 --> 00:12:26,730
+by the time you watch this video,      
+
+280
+00:12:26,731 --> 00:12:28,904
+ASP.NET 5 might be out, but I'm going to use,      
+
+281
+00:12:28,905 --> 00:12:30,239
+it doesn't really matter.      
+
+282
+00:12:30,240 --> 00:12:31,763
+That's not really the focal point      
+
+283
+00:12:31,764 --> 00:12:33,395
+of this series of lessons.      
+
+284
+00:12:33,396 --> 00:12:35,913
+But I'm going to use the empty template,      
+
+285
+00:12:35,914 --> 00:12:37,896
+but Add Core References to MVC      
+
+286
+00:12:37,897 --> 00:12:39,059
+and I'm going to make sure that      
+
+287
+00:12:39,060 --> 00:12:42,354
+we're going to host in the cloud as a web app.      
+
+288
+00:12:42,355 --> 00:12:44,093
+And now it's going to want me to log in,      
+
+289
+00:12:44,094 --> 00:12:45,970
+I'm going to use one of my accounts      
+
+290
+00:12:45,971 --> 00:12:48,733
+and it wants me to re-enter my credentials.      
+
+291
+00:12:48,734 --> 00:12:52,411
+Alright, looks like we're ready to go,      
+
+292
+00:12:52,412 --> 00:12:54,993
+I'm going to name this the same thing that I named      
+
+293
+00:12:54,994 --> 00:12:58,427
+the Visual Studio project, so we'll be able      
+
+294
+00:12:58,428 --> 00:13:00,869
+to get to this at http://uwpweatherservice.azurewebsites.net      
+
+295
+00:13:00,870 --> 00:13:02,555
+http://uwpweatherservice.azurewebsites.net      
+
+296
+00:13:02,556 --> 00:13:04,356
+I'm going to select one of my plans      
+
+297
+00:13:04,357 --> 00:13:07,930
+and I'm going to select one of my app service plans.      
+
+298
+00:13:07,931 --> 00:13:10,436
+The resource group region will be      
+
+299
+00:13:10,437 --> 00:13:13,200
+set for my automatically by the service      
+
+300
+00:13:13,201 --> 00:13:15,269
+plan I select and then I'm not going to      
+
+301
+00:13:15,270 --> 00:13:18,254
+select a database and we're going to      
+
+302
+00:13:18,255 --> 00:13:19,779
+go ahead and create it.      
+
+303
+00:13:19,780 --> 00:13:22,585
+This should set up the published credentials      
+
+304
+00:13:22,586 --> 00:13:24,515
+for the project as well as the      
+
+305
+00:13:24,516 --> 00:13:27,887
+project template itself for MVC application.      
+
+306
+00:13:27,888 --> 00:13:30,467
+Now even if you don't know ASP.NET MVC      
+
+307
+00:13:30,468 --> 00:13:32,878
+this is going to be a really simple process here,      
+
+308
+00:13:32,879 --> 00:13:35,789
+so don't feel intimidated, just follow along      
+
+309
+00:13:35,790 --> 00:13:38,263
+and you'll get the idea how to do this.      
+
+310
+00:13:38,264 --> 00:13:41,965
+Right now it's going out too as you're reserving      
+
+311
+00:13:41,966 --> 00:13:43,595
+that name, setting up the account,      
+
+312
+00:13:43,596 --> 00:13:45,036
+so you can see that's where this      
+
+313
+00:13:45,037 --> 00:13:48,290
+overall status bar is, alright great.      
+
+314
+00:13:48,291 --> 00:13:51,233
+So now we're ready out online and locally,      
+
+315
+00:13:51,234 --> 00:13:52,565
+so we're ready to get going.      
+
+316
+00:13:52,566 --> 00:13:54,240
+First thing I want to do is Add a Controller,      
+
+317
+00:13:54,241 --> 00:13:56,374
+so I'm going to right click and select      
+
+318
+00:13:56,375 --> 00:13:59,435
+add a controller and this will be      
+
+319
+00:13:59,436 --> 00:14:04,213
+an Empty MVC5 Controller called HomeController.      
+
+320
+00:14:04,214 --> 00:14:08,137
+And honestly there's, to begin with      
+
+321
+00:14:08,138 --> 00:14:09,673
+we're not going to do anything with this,      
+
+322
+00:14:09,674 --> 00:14:11,242
+we're just going to leave it alone.      
+
+323
+00:14:11,243 --> 00:14:12,661
+We'll come back to it in just a moment,      
+
+324
+00:14:12,662 --> 00:14:14,740
+but I am going to add a view for this controller      
+
+325
+00:14:14,741 --> 00:14:16,064
+at, unfortunately here,      
+
+326
+00:14:16,065 --> 00:14:19,061
+let me see if I can, there we go,      
+
+327
+00:14:19,062 --> 00:14:21,098
+there we go, Add View.      
+
+328
+00:14:21,099 --> 00:14:25,461
+And I'm going to make sure to not make this      
+
+329
+00:14:25,462 --> 00:14:28,895
+a partial view and I do not want a layout page.      
+
+330
+00:14:28,896 --> 00:14:31,658
+I just want it Empty Without Model template      
+
+331
+00:14:31,659 --> 00:14:34,485
+with a view need of index and click Add.      
+
+332
+00:14:34,486 --> 00:14:36,032
+Okay, now what I'm going to do      
+
+333
+00:14:36,033 --> 00:14:38,644
+is rip out everything in the index.cshtml page      
+
+334
+00:14:38,645 --> 00:14:40,820
+and what I want to do is actually      
+
+335
+00:14:40,821 --> 00:14:45,290
+I want to come back over here to my template catalog.      
+
+336
+00:14:45,291 --> 00:14:48,866
+And I want to find      
+
+337
+00:14:48,867 --> 00:14:53,867
+the template 01 right here.      
+
+338
+00:14:54,690 --> 00:14:57,418
+Okay, so this is what I'm going to grab      
+
+339
+00:14:57,419 --> 00:15:01,419
+from the very first, maybe not the first,      
+
+340
+00:15:01,420 --> 00:15:05,090
+but it's the TileSquare150by150Text01 template      
+
+341
+00:15:05,091 --> 00:15:09,245
+and so I've copied that and I'm going to paste it here.      
+
+342
+00:15:09,246 --> 00:15:13,565
+And what I want to do is actually replace      
+
+343
+00:15:13,566 --> 00:15:16,797
+all of this stuff and I'm going to replace it      
+
+344
+00:15:16,798 --> 00:15:20,371
+a couple different ways in MVC to do this.      
+
+345
+00:15:20,372 --> 00:15:21,895
+There's the right way and there's      
+
+346
+00:15:21,896 --> 00:15:23,346
+the cheap and easy way, and I'm going      
+
+347
+00:15:23,347 --> 00:15:25,213
+to use the cheap and easy way, okay.      
+
+348
+00:15:25,214 --> 00:15:28,018
+So I'm going to create a couple of ViewBag      
+
+349
+00:15:28,019 --> 00:15:31,462
+values and just pass data from the controller      
+
+350
+00:15:31,463 --> 00:15:33,414
+into the view using the ViewBag.      
+
+351
+00:15:33,415 --> 00:15:35,676
+If you wanted this to be a real app,      
+
+352
+00:15:35,677 --> 00:15:37,607
+I would recommend creating a "view model",      
+
+353
+00:15:37,608 --> 00:15:38,555
+but we're not going to go through      
+
+354
+00:15:38,556 --> 00:15:39,951
+all that right now.      
+
+355
+00:15:39,952 --> 00:15:43,133
+ViewBag.Name, whoops,      
+
+356
+00:15:46,338 --> 00:15:49,004
+so the first thing we'll display is the temperature,      
+
+357
+00:15:49,005 --> 00:15:52,736
+then we'll display the description of what's going on.      
+
+358
+00:15:52,737 --> 00:15:56,533
+So is it light mist, is it sunny, you know,      
+
+359
+00:15:56,534 --> 00:15:58,261
+that sort of thing.      
+
+360
+00:15:58,262 --> 00:16:00,661
+And then the name, so that'll be      
+
+361
+00:16:00,662 --> 00:16:03,509
+the area or the town that you're currently in      
+
+362
+00:16:03,510 --> 00:16:08,180
+and then finally we'll just show the      
+
+363
+00:16:08,181 --> 00:16:13,181
+DateTime.Now.ToShortTimeString      
+
+364
+00:16:13,834 --> 00:16:17,173
+so we can see when it last updated.      
+
+365
+00:16:17,174 --> 00:16:19,752
+Great, then inside of the HomeController,      
+
+366
+00:16:19,753 --> 00:16:22,675
+what I need to do is populate those values.      
+
+367
+00:16:22,676 --> 00:16:26,814
+And so what we're going to do here      
+
+368
+00:16:26,815 --> 00:16:31,815
+is, like for example, ViewBag.Name equals, and then whatever, okay,      
+
+369
+00:16:32,191 --> 00:16:34,388
+and we're going to grab that data      
+
+370
+00:16:34,389 --> 00:16:36,904
+as it's passed in through the querystring.      
+
+371
+00:16:36,905 --> 00:16:39,624
+So in MVC, I can just add two input      
+
+372
+00:16:39,625 --> 00:16:41,757
+parameters with the names of the querystring parameters      
+
+373
+00:16:41,758 --> 00:16:44,573
+that I expect and then it will      
+
+374
+00:16:44,574 --> 00:16:46,556
+parse that out of the querystring,      
+
+375
+00:16:46,557 --> 00:16:48,635
+and pass them into the input parameter      
+
+376
+00:16:48,636 --> 00:16:51,013
+for the Index action result method.      
+
+377
+00:16:51,014 --> 00:16:55,081
+So here we go, string lat, string lon for longitude      
+
+378
+00:16:55,082 --> 00:16:58,228
+and I'm going to need to do some validation      
+
+379
+00:16:58,229 --> 00:17:01,193
+or some trimming of the latitude / longitude,      
+
+380
+00:17:01,194 --> 00:17:03,326
+I know that to be a fact from future      
+
+381
+00:17:03,327 --> 00:17:07,688
+or from previous, previous attempts of doing this.      
+
+382
+00:17:07,689 --> 00:17:11,699
+Sometimes the phone's GPS will pass in      
+
+383
+00:17:11,700 --> 00:17:14,643
+just this really, really long value      
+
+384
+00:17:14,644 --> 00:17:16,957
+after the decimal point and we need to trim that down      
+
+385
+00:17:16,958 --> 00:17:19,112
+in order to get this to work.      
+
+386
+00:17:19,113 --> 00:17:22,322
+But once we have those values, latitude / longitude,      
+
+387
+00:17:22,323 --> 00:17:27,323
+what we need to do is actually then run them      
+
+388
+00:17:27,527 --> 00:17:32,422
+by the openweathermap.org web service      
+
+389
+00:17:32,423 --> 00:17:35,409
+and we're just going to call it from the web app      
+
+390
+00:17:35,410 --> 00:17:37,553
+as opposed to the individual phone,      
+
+391
+00:17:37,554 --> 00:17:40,625
+each individual device or desktop      
+
+392
+00:17:40,626 --> 00:17:41,766
+that it's running on.      
+
+393
+00:17:41,767 --> 00:17:45,072
+So what I want to do is add a new class here      
+
+394
+00:17:45,073 --> 00:17:48,507
+and I'm going to call this OpenWeatherMapProxy      
+
+395
+00:17:48,508 --> 00:17:50,480
+and you can probably guess where      
+
+396
+00:17:50,481 --> 00:17:52,272
+I'm going to go with this.      
+
+397
+00:17:52,273 --> 00:17:56,652
+It'll be identical to what we created      
+
+398
+00:17:56,653 --> 00:18:00,385
+in our example version.      
+
+399
+00:18:00,386 --> 00:18:03,765
+In fact what I'm going to do is come down here      
+
+400
+00:18:03,766 --> 00:18:05,792
+to the OpenWeatherMapProxy,      
+
+401
+00:18:05,793 --> 00:18:09,451
+I'm going to pretty much copy everything here.      
+
+402
+00:18:09,452 --> 00:18:14,452
+Inside of that class or those classes inside      
+
+403
+00:18:15,137 --> 00:18:18,731
+of that file and I'm going to come back      
+
+404
+00:18:18,732 --> 00:18:20,074
+over here and I think I could just      
+
+405
+00:18:20,075 --> 00:18:22,815
+re-use everything like that.      
+
+406
+00:18:22,816 --> 00:18:26,538
+I'm going to have to add a few namespaces,      
+
+407
+00:18:26,539 --> 00:18:29,257
+in fact I know that I'm going to have to add,      
+
+408
+00:18:29,258 --> 00:18:34,258
+here let's go to Tools, Nuget Package Manager,      
+
+409
+00:18:34,262 --> 00:18:37,546
+Manage Nuget Packages for the Solution,      
+
+410
+00:18:37,547 --> 00:18:41,182
+I know I'm going to need HTTPClient.      
+
+411
+00:18:41,183 --> 00:18:43,583
+So let's add that one.      
+
+412
+00:18:48,689 --> 00:18:53,681
+Yes, I accept and I also know that I'm      
+
+413
+00:18:53,682 --> 00:18:55,514
+going to have to add a reference for      
+
+414
+00:18:55,515 --> 00:18:59,162
+the JSON, whatever that was again,      
+
+415
+00:18:59,163 --> 00:19:01,787
+the DataContractJSONSerializer.      
+
+416
+00:19:01,788 --> 00:19:05,445
+So I think I know where that's at,      
+
+417
+00:19:05,446 --> 00:19:08,100
+let's go and right click on references      
+
+418
+00:19:08,101 --> 00:19:10,674
+and click add reference and      
+
+419
+00:19:10,675 --> 00:19:15,554
+then "serialize", "serialize", yes.      
+
+420
+00:19:15,555 --> 00:19:20,124
+And that should be in the System.Runtime.Serialization      
+
+421
+00:19:20,125 --> 00:19:22,351
+namespace, so we're going to add a reference      
+
+422
+00:19:22,352 --> 00:19:24,591
+to that assembly.      
+
+423
+00:19:24,592 --> 00:19:28,470
+And I also know that we're going to need      
+
+424
+00:19:28,471 --> 00:19:32,534
+to add a using statement for System.Threading.Tasks.      
+
+425
+00:19:32,535 --> 00:19:35,764
+So let me add all my using statements here,      
+
+426
+00:19:35,765 --> 00:19:37,301
+just a lot of set up work here      
+
+427
+00:19:37,302 --> 00:19:38,709
+just to get this going in the right direction.      
+
+428
+00:19:38,710 --> 00:19:42,507
+Yes, yes, yes, it's all coming together now.      
+
+429
+00:19:42,508 --> 00:19:45,109
+And I think this is System.IO, let's see,      
+
+430
+00:19:45,110 --> 00:19:47,668
+that should take care of that.      
+
+431
+00:19:47,669 --> 00:19:51,626
+And let Intellisense catch up, here's some coding,      
+
+432
+00:19:51,627 --> 00:19:52,948
+where did that come from?      
+
+433
+00:19:52,949 --> 00:19:54,452
+System.Text okay, that's fine.      
+
+434
+00:19:54,453 --> 00:19:59,343
+And then this comes from yeah,      
+
+435
+00:19:59,344 --> 00:20:02,827
+System.Runtime.Serialization.      
+
+436
+00:20:04,165 --> 00:20:06,819
+Alright, we should be in good shape now.      
+
+437
+00:20:06,820 --> 00:20:11,820
+Awesome, let's, I just want to build this real quick      
+
+438
+00:20:12,068 --> 00:20:16,717
+just to see if we can build it or      
+
+439
+00:20:16,718 --> 00:20:19,122
+if there's any errors so far.      
+
+440
+00:20:20,333 --> 00:20:25,228
+Okay, great, now assuming that this is correct,      
+
+441
+00:20:25,229 --> 00:20:27,457
+yeah, that should work there,      
+
+442
+00:20:27,458 --> 00:20:30,956
+HomeController, here's what I want to do.      
+
+443
+00:20:30,957 --> 00:20:35,957
+Let's set latitude equal to latitude.      
+
+444
+00:20:39,297 --> 00:20:42,071
+I want to trim off or just want to make sure      
+
+445
+00:20:42,072 --> 00:20:46,206
+that this is no larger than yeah,      
+
+446
+00:20:46,207 --> 00:20:49,959
+I use the Substring, the second overload,      
+
+447
+00:20:49,960 --> 00:20:54,960
+I'll say hey, you can have five digits of precision total      
+
+448
+00:20:55,785 --> 00:21:00,423
+and that should suffice, we could up that      
+
+449
+00:21:00,424 --> 00:21:02,088
+to six I think without a problem.      
+
+450
+00:21:03,738 --> 00:21:05,500
+And this will just ensure that      
+
+451
+00:21:05,501 --> 00:21:08,305
+the latitude and the longitude      
+
+452
+00:21:08,306 --> 00:21:10,641
+are just not like these massively long numbers.      
+
+453
+00:21:10,642 --> 00:21:13,564
+Okay, with values after the decimal point.      
+
+454
+00:21:13,565 --> 00:21:16,124
+Alright, so once we have that,      
+
+455
+00:21:16,125 --> 00:21:20,990
+we can call out to our open      
+
+456
+00:21:22,462 --> 00:21:27,462
+I think it's Models.OpenWeatherMapProxy.GetWeather      
+
+457
+00:21:27,866 --> 00:21:32,314
+and then we can pass in the latitude and the longitude.      
+
+458
+00:21:34,634 --> 00:21:37,625
+And I guess I need to take these strings      
+
+459
+00:21:37,626 --> 00:21:39,869
+and make them into doubles as well.      
+
+460
+00:21:40,708 --> 00:21:43,512
+Well we'll do this, Double.Parse,      
+
+461
+00:21:43,513 --> 00:21:46,072
+so I really need to test this a little bit more      
+
+462
+00:21:46,073 --> 00:21:50,284
+and make sure that all this is correct.      
+
+463
+00:21:50,285 --> 00:21:55,285
+We'll call this var      
+
+464
+00:21:56,420 --> 00:22:01,420
+latitude      
+
+465
+00:22:01,704 --> 00:22:04,903
+and var longitude.      
+
+466
+00:22:05,783 --> 00:22:07,775
+Kind of doing this off script and      
+
+467
+00:22:07,776 --> 00:22:08,874
+off the top of my head here,      
+
+468
+00:22:08,875 --> 00:22:11,012
+so hopefully this will work.      
+
+469
+00:22:13,535 --> 00:22:15,647
+Then we'll pass those values in, okay.      
+
+470
+00:22:20,896 --> 00:22:22,942
+Alright, now what does this return to us again?      
+
+471
+00:22:22,943 --> 00:22:24,671
+It's going to be awaitable, it's going to      
+
+472
+00:22:24,672 --> 00:22:29,672
+return to us a rootObject, so var weather equals await      
+
+473
+00:22:31,692 --> 00:22:33,819
+... alright, and remember the formula      
+
+474
+00:22:33,820 --> 00:22:35,558
+if we have something that's awaitable      
+
+475
+00:22:35,559 --> 00:22:40,559
+what we need to do is mark the method      
+
+476
+00:22:41,127 --> 00:22:43,323
+as async and then what it's going to return      
+
+477
+00:22:43,324 --> 00:22:45,989
+will be a promise in the future to return      
+
+478
+00:22:45,990 --> 00:22:50,990
+a task of type ActionResult.      
+
+479
+00:22:52,124 --> 00:22:56,623
+So that should work there.      
+
+480
+00:22:56,624 --> 00:23:01,624
+And we're probably missing a System.Threading.Task      
+
+481
+00:23:02,416 --> 00:23:05,849
+using statement and now we're good to go.      
+
+482
+00:23:05,850 --> 00:23:07,568
+Okay, very good, alright.      
+
+483
+00:23:07,569 --> 00:23:10,011
+All of that to do this, let's      
+
+484
+00:23:13,132 --> 00:23:15,935
+grab off the various parts that we get back from weather.      
+
+485
+00:23:15,936 --> 00:23:20,865
+So weather.name that's easy enough,      
+
+486
+00:23:23,101 --> 00:23:26,988
+ViewBag.Temp should equal      
+
+487
+00:23:26,989 --> 00:23:30,444
+weather.main.temp      
+
+488
+00:23:32,504 --> 00:23:35,328
+and we want to make that,      
+
+489
+00:23:35,329 --> 00:23:37,771
+it's going to give us something that's      
+
+490
+00:23:37,772 --> 00:23:39,541
+going to have values after the decimal,      
+
+491
+00:23:39,542 --> 00:23:41,973
+so we want to cast that to an integer      
+
+492
+00:23:41,974 --> 00:23:44,730
+and then ToString() the whole thing.      
+
+493
+00:23:45,569 --> 00:23:50,569
+And then next one, we go ViewBag.Description      
+
+494
+00:23:53,376 --> 00:23:58,015
+and we go weather, dot, and if you remember      
+
+495
+00:23:58,016 --> 00:24:01,257
+what we had to do here, there are many different weathers      
+
+496
+00:24:01,258 --> 00:24:05,918
+that come back, so we're going to grab the first item      
+
+497
+00:24:05,919 --> 00:24:09,342
+and then grab its description and then finally      
+
+498
+00:24:12,426 --> 00:24:14,513
+let's grab, oh, we already know      
+
+499
+00:24:14,514 --> 00:24:17,681
+that the last one will be the date and the time.      
+
+500
+00:24:17,682 --> 00:24:20,624
+So that's all we should have to do right there.      
+
+501
+00:24:20,625 --> 00:24:24,331
+Let's build this and make sure this actually works.      
+
+502
+00:24:26,119 --> 00:24:28,144
+Okay, great, now I want to run it locally      
+
+503
+00:24:28,145 --> 00:24:31,649
+just to make sure that it's going to work.      
+
+504
+00:24:32,902 --> 00:24:36,315
+And you can see that I get an error,      
+
+505
+00:24:36,316 --> 00:24:39,546
+but the error is because I did not supply      
+
+506
+00:24:39,547 --> 00:24:44,133
+a latitude and longitude, so let's go lat equals 32.      
+
+507
+00:24:44,134 --> 00:24:46,063
+and I'll just type in a bunch of numbers      
+
+508
+00:24:46,064 --> 00:24:49,455
+after the decimal and longitude equals      
+
+509
+00:24:49,456 --> 00:24:53,295
+a -96. and then I'll just type in a bunch of numbers      
+
+510
+00:24:53,296 --> 00:24:55,162
+like that and see what happens.      
+
+511
+00:24:57,556 --> 00:24:59,838
+Alright, some place called "Seven Points",      
+
+512
+00:24:59,839 --> 00:25:01,361
+I have no idea where that is, but the sky      
+
+513
+00:25:01,362 --> 00:25:04,509
+is clear there and it's 71 degrees at 10 AM, okay.      
+
+514
+00:25:04,510 --> 00:25:07,789
+Perfect, perfect.      
+
+515
+00:25:09,405 --> 00:25:11,399
+Okay, so we know that works,      
+
+516
+00:25:11,400 --> 00:25:13,628
+so what I'm going to do, stop it,      
+
+517
+00:25:13,629 --> 00:25:15,035
+and I'm going to deploy it.      
+
+518
+00:25:15,036 --> 00:25:16,636
+So I'm going to right click and select Publish,      
+
+519
+00:25:16,637 --> 00:25:18,448
+which you cannot see off to the      
+
+520
+00:25:18,449 --> 00:25:19,505
+upper right hand corner of the screen.      
+
+521
+00:25:19,506 --> 00:25:21,722
+I want to validate the connection.      
+
+522
+00:25:21,723 --> 00:25:24,518
+It filled in these details when we set up the project      
+
+523
+00:25:24,519 --> 00:25:28,581
+originally a few moments ago and then      
+
+524
+00:25:28,582 --> 00:25:30,416
+we can walk through all this,      
+
+525
+00:25:30,417 --> 00:25:33,178
+but there's really nothing there that demands our attention.      
+
+526
+00:25:33,179 --> 00:25:35,024
+Let's just go ahead and publish this out.      
+
+527
+00:25:35,025 --> 00:25:37,178
+The key is to remember that it's called      
+
+528
+00:25:37,179 --> 00:25:41,688
+uwpweatherservice.azurewebsites.net      
+
+529
+00:25:42,739 --> 00:25:45,899
+uwpweatherservice.azurewebsites.net      
+
+530
+00:25:48,243 --> 00:25:51,003
+So let me grab that real quick.      
+
+531
+00:25:51,004 --> 00:25:55,110
+Copy that, now what we're going to do      
+
+532
+00:25:55,111 --> 00:25:58,811
+is save that, minimize it, and then      
+
+533
+00:25:58,812 --> 00:26:02,972
+let's open up UWPWeather and here what I want to do      
+
+534
+00:26:05,102 --> 00:26:10,102
+in the MainPage.xaml is schedule      
+
+535
+00:26:12,016 --> 00:26:13,495
+the update.      
+
+536
+00:26:13,496 --> 00:26:18,496
+So let's set the var uri equal to      
+
+537
+00:26:20,745 --> 00:26:25,686
+that URL with the latitude      
+
+538
+00:26:26,674 --> 00:26:29,289
+and a longitude      
+
+539
+00:26:34,180 --> 00:26:36,935
+and we'll want to go String.Format that      
+
+540
+00:26:39,811 --> 00:26:41,985
+with whatever we pull back from here.      
+
+541
+00:26:41,986 --> 00:26:44,881
+So actually let me to do this,      
+
+542
+00:26:47,032 --> 00:26:49,836
+what is this, should be Doubles, right?      
+
+543
+00:26:49,837 --> 00:26:54,221
+So, equals,      
+
+544
+00:26:55,272 --> 00:26:57,059
+and we'll grab this.      
+
+545
+00:27:04,712 --> 00:27:06,615
+And then we'll grab that.      
+
+546
+00:27:15,910 --> 00:27:18,571
+Okay then we'll just go lat and long here.      
+
+547
+00:27:22,694 --> 00:27:23,776
+Great.      
+
+548
+00:27:27,995 --> 00:27:30,149
+Next up, I'm going to pull whatever we did      
+
+549
+00:27:30,150 --> 00:27:34,351
+from my TileUpdateManager example      
+
+550
+00:27:34,352 --> 00:27:35,791
+because pretty much the rest of it      
+
+551
+00:27:35,792 --> 00:27:38,724
+is boiler plate honestly it's just going to be      
+
+552
+00:27:38,725 --> 00:27:40,954
+a code I can grab right off      
+
+553
+00:27:42,704 --> 00:27:44,468
+here.      
+
+554
+00:27:45,946 --> 00:27:47,753
+So grab all of that.      
+
+555
+00:27:49,477 --> 00:27:53,049
+Close that down, open this back up, pop that in there,      
+
+556
+00:27:53,050 --> 00:27:56,077
+and then we're going to get this uri      
+
+557
+00:27:56,078 --> 00:27:59,517
+and everything else should work.      
+
+558
+00:28:01,603 --> 00:28:03,106
+Alright, now I'm going to, let's build this,      
+
+559
+00:28:03,107 --> 00:28:06,589
+make sure it does work or build at least.      
+
+560
+00:28:10,648 --> 00:28:13,633
+Okay, great, now let's, let's cross our fingers      
+
+561
+00:28:13,634 --> 00:28:16,737
+and run the app, see what happens.      
+
+562
+00:28:16,738 --> 00:28:18,913
+Now before we get too far,      
+
+563
+00:28:18,914 --> 00:28:21,634
+let's find our weather app.      
+
+564
+00:28:26,759 --> 00:28:30,991
+UWPWeather, should be under U, there we go.      
+
+565
+00:28:30,992 --> 00:28:33,423
+Right click that, pin that to Start.      
+
+566
+00:28:33,424 --> 00:28:37,327
+Okay, so all we get is a little box right now,      
+
+567
+00:28:37,328 --> 00:28:39,279
+that's fine, let's go ahead and click      
+
+568
+00:28:39,280 --> 00:28:41,732
+get weather, I get the notification      
+
+569
+00:28:41,733 --> 00:28:43,599
+"Are you sure you want it to allow      
+
+570
+00:28:43,600 --> 00:28:46,159
+"it to access location?", yes.      
+
+571
+00:28:46,160 --> 00:28:49,902
+And the reason is because uninstalled it.      
+
+572
+00:28:49,903 --> 00:28:51,652
+Okay, so the good news here is that      
+
+573
+00:28:51,653 --> 00:28:56,174
+I get that it's 69 degrees, sky is clear out in Plano.      
+
+574
+00:28:56,175 --> 00:28:59,506
+Now the real key here is      
+
+575
+00:29:01,410 --> 00:29:02,983
+will this update?      
+
+576
+00:29:04,173 --> 00:29:06,304
+And I would've expected it to update by now,      
+
+577
+00:29:06,305 --> 00:29:09,195
+so what I'm going to do is actually debug this real quick.      
+
+578
+00:29:09,196 --> 00:29:12,118
+I want to see the URL that's being created.      
+
+579
+00:29:12,119 --> 00:29:16,608
+Oh you know what, the problem is not in the weather service      
+
+580
+00:29:16,609 --> 00:29:20,469
+as I'm thinking through this, the problem is right there      
+
+581
+00:29:20,470 --> 00:29:22,922
+is that URL ... well that's an easy fix.      
+
+582
+00:29:22,923 --> 00:29:27,013
+Don't have to republish or anything, let's run it now.      
+
+583
+00:29:28,267 --> 00:29:30,085
+Now let's do that.      
+
+584
+00:29:32,800 --> 00:29:33,823
+Here I am going to just go ahead      
+
+585
+00:29:33,824 --> 00:29:35,529
+and step over it and grab the uri      
+
+586
+00:29:35,530 --> 00:29:38,057
+just to make sure that I can test this right.      
+
+587
+00:29:38,058 --> 00:29:42,606
+So copy that, and then let's continue on.      
+
+588
+00:29:43,743 --> 00:29:46,099
+Alright so we get that, now let's go over here to our tile      
+
+589
+00:29:46,100 --> 00:29:49,534
+and with any luck it'll flip, come one flip, yes!      
+
+590
+00:29:49,535 --> 00:29:50,952
+Sweet.      
+
+591
+00:29:50,953 --> 00:29:53,288
+Now the interesting thing is that it says      
+
+592
+00:29:53,289 --> 00:29:55,443
+that we're in Sasche as opposed to Plano,      
+
+593
+00:29:55,444 --> 00:29:56,787
+which are just neighboring towns,      
+
+594
+00:29:56,788 --> 00:30:00,541
+but I must be on the border or something along those lines.      
+
+595
+00:30:00,542 --> 00:30:03,261
+So that's an oddity, but whatever.      
+
+596
+00:30:03,262 --> 00:30:05,767
+I'm happy we got this far, okay.      
+
+597
+00:30:05,768 --> 00:30:08,796
+So probably should have some, wrap some      
+
+598
+00:30:08,797 --> 00:30:10,418
+exception handling around that,      
+
+599
+00:30:10,419 --> 00:30:11,879
+but I'm pretty happy with it,      
+
+600
+00:30:11,880 --> 00:30:13,138
+now we're just going to finish up      
+
+601
+00:30:13,139 --> 00:30:14,641
+with some finishing touches      
+
+602
+00:30:14,642 --> 00:30:15,942
+and then we'll move on to the next,      
+
+603
+00:30:15,943 --> 00:30:19,174
+to the next challenge or the next app      
+
+604
+00:30:19,175 --> 00:30:20,497
+that we'll build together.      
+
+605
+00:30:20,498 --> 00:30:22,118
+So I'm pretty excited about this.      
+
+606
+00:30:22,119 --> 00:30:24,480
+Let's finish it up, thank you.      
+

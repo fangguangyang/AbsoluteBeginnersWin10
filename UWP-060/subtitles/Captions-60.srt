@@ -1,0 +1,348 @@
+1
+00:00:06,369 --> 00:00:08,608
+<v ->In this lesson, we're going to learn a little bit more</v>
+
+2
+00:00:08,609 --> 00:00:11,548
+about how to use some of the features of the
+
+3
+00:00:11,549 --> 00:00:15,927
+phone emulator in order to uncover a
+
+4
+00:00:15,928 --> 00:00:19,218
+issue with our short-term memory. (laughs)
+
+5
+00:00:19,969 --> 00:00:22,665
+The programmer's short-term memory, not the device.
+
+6
+00:00:23,536 --> 00:00:26,025
+And so, let's go ahead and if you haven't already done this,
+
+7
+00:00:26,026 --> 00:00:30,245
+change from running it on the local machine to one of
+
+8
+00:00:30,246 --> 00:00:33,835
+the mobile emulators and I'm going to go ahead and hit run.
+
+9
+00:00:36,626 --> 00:00:37,935
+And then I'll show you one of the
+
+10
+00:00:37,936 --> 00:00:42,935
+cool features of the emulator that I briefly touched on
+
+11
+00:00:43,615 --> 00:00:46,074
+at the very outset of this series of lessons,
+
+12
+00:00:46,075 --> 00:00:49,314
+but didn't really elaborate on at the time.
+
+13
+00:00:49,315 --> 00:00:54,254
+So what we want to do is test our app to see if it's grabbing
+
+14
+00:00:54,255 --> 00:00:55,954
+coordinates correctly, geo coordinates,
+
+15
+00:00:55,955 --> 00:00:58,314
+from different places in the world,
+
+16
+00:00:58,315 --> 00:01:01,734
+and so one of the things that we can do is actually
+
+17
+00:01:01,735 --> 00:01:04,556
+click the double chevron to open up the Tools pane
+
+18
+00:01:04,557 --> 00:01:07,716
+for the emulator and go to the location tab.
+
+19
+00:01:07,717 --> 00:01:11,565
+And here what I can do is search on a map,
+
+20
+00:01:11,566 --> 00:01:14,305
+you know, either search for cities or places
+
+21
+00:01:16,006 --> 00:01:21,005
+or I can zoom in, zoom out, and find somewhere on the map
+
+22
+00:01:21,255 --> 00:01:25,654
+and say, I am physically located here.
+
+23
+00:01:25,655 --> 00:01:28,294
+Now I'm sitting in Dallas, but I'm putting my little marker
+
+24
+00:01:28,295 --> 00:01:32,074
+there in Redmond, and now that will tell the emulator
+
+25
+00:01:32,075 --> 00:01:36,914
+whenever it uses the location services for the emulator,
+
+26
+00:01:36,915 --> 00:01:41,554
+or for the phone, serve up Redmond,
+
+27
+00:01:41,555 --> 00:01:44,254
+the location that I have pinned right there.
+
+28
+00:01:44,255 --> 00:01:46,453
+So let's go ahead and click the get weather button,
+
+29
+00:01:46,454 --> 00:01:48,173
+and it gives us that familiar little
+
+30
+00:01:51,014 --> 00:01:54,133
+little message, "Are you sure you want to allow
+
+31
+00:01:54,134 --> 00:01:57,113
+"this application to access location?"
+
+32
+00:01:57,114 --> 00:01:58,614
+I'm going to go ahead and click yes.
+
+33
+00:02:00,115 --> 00:02:02,453
+Now, when I do this, we're going to,
+
+34
+00:02:02,454 --> 00:02:05,514
+you know, be a little confused here.
+
+35
+00:02:05,515 --> 00:02:09,893
+I have my position set to Redmond, however,
+
+36
+00:02:09,894 --> 00:02:12,373
+this is still delivering back Dallas County.
+
+37
+00:02:12,374 --> 00:02:15,813
+Now I could say to myself, "Hmm, there must be a problem
+
+38
+00:02:15,814 --> 00:02:18,914
+"with what I've done here in the location
+
+39
+00:02:18,915 --> 00:02:22,634
+"window of the emulator or maybe I did
+
+40
+00:02:22,635 --> 00:02:24,314
+"something incorrectly in code."
+
+41
+00:02:24,315 --> 00:02:26,994
+And in this case, the latter would be true,
+
+42
+00:02:26,995 --> 00:02:29,333
+but this would help us to uncover issues.
+
+43
+00:02:29,334 --> 00:02:32,774
+And the issue is this, if we take a look at this,
+
+44
+00:02:32,775 --> 00:02:37,554
+the OpenWeatherMapProxy.cs, you can see that we hardcoded
+
+45
+00:02:37,555 --> 00:02:39,493
+the latitude and longitude and
+
+46
+00:02:39,494 --> 00:02:42,333
+we never ever swapped that out.
+
+47
+00:02:42,334 --> 00:02:44,973
+So what we should do here is actually
+
+48
+00:02:47,234 --> 00:02:50,682
+var url equals and then I'll do
+
+49
+00:02:50,683 --> 00:02:55,682
+a String.Format around that
+
+50
+00:02:55,754 --> 00:03:00,273
+and then pass in the lat and longitude that we grabbed from
+
+51
+00:03:01,544 --> 00:03:03,913
+from input parameters for the GetWeather method.
+
+52
+00:03:03,914 --> 00:03:05,792
+Let me grab all of this out right here
+
+53
+00:03:07,073 --> 00:03:11,361
+and paste that in there and we will substitute in
+
+54
+00:03:14,232 --> 00:03:17,902
+latitude and longitude.
+
+55
+00:03:17,903 --> 00:03:22,502
+So, it frequently, I see people go online and say,
+
+56
+00:03:22,503 --> 00:03:26,541
+"Hey, Microsoft's stuff is broken. It doesn't work."
+
+57
+00:03:26,542 --> 00:03:31,381
+And many times I've done that
+
+58
+00:03:31,382 --> 00:03:33,001
+and when I was just getting started,
+
+59
+00:03:33,002 --> 00:03:34,881
+I thought that they were the problem,
+
+60
+00:03:34,882 --> 00:03:37,682
+but the longer I do this, the more I realize
+
+61
+00:03:37,683 --> 00:03:40,821
+it's me that's the problem, that I've forgotten something.
+
+62
+00:03:41,502 --> 00:03:45,810
+And so, that humility has led to,
+
+63
+00:03:45,811 --> 00:03:47,650
+has prevented me from a lot
+
+64
+00:03:47,651 --> 00:03:50,650
+of embarrassing situations. (laughs)
+
+65
+00:03:50,651 --> 00:03:53,090
+Alright, so be humble when you're a software developer
+
+66
+00:03:53,091 --> 00:03:53,850
+because it's probably going to come back
+
+67
+00:03:53,851 --> 00:03:55,150
+and bite you at some point.
+
+68
+00:03:55,151 --> 00:03:56,530
+Okay, here we go.
+
+69
+00:03:56,531 --> 00:03:58,410
+Now that I've fixed that,
+
+70
+00:04:00,971 --> 00:04:05,123
+and let's open up the tools pane and location
+
+71
+00:04:05,124 --> 00:04:09,922
+and looks like it forgot my, where I was at previously here
+
+72
+00:04:09,923 --> 00:04:13,143
+so let's go ahead and make sure we put
+
+73
+00:04:13,144 --> 00:04:15,542
+our pin right on Redmond and then click get weather.
+
+74
+00:04:15,543 --> 00:04:18,923
+Allow permissions and here we go.
+
+75
+00:04:18,924 --> 00:04:21,542
+We get Redmond, it's 56 degrees and there's a light mist.
+
+76
+00:04:21,543 --> 00:04:22,303
+Very nice.
+
+77
+00:04:23,204 --> 00:04:28,203
+Alright, so that's how we could use the emulator's tools
+
+78
+00:04:28,381 --> 00:04:31,160
+to further test our application
+
+79
+00:04:31,161 --> 00:04:33,300
+to uncover bugs that we may not find,
+
+80
+00:04:33,301 --> 00:04:36,321
+especially whenever there's a sensor
+
+81
+00:04:36,322 --> 00:04:39,541
+on the device that we're utilizing.
+
+82
+00:04:40,992 --> 00:04:42,430
+And there are other sensors that
+
+83
+00:04:42,431 --> 00:04:44,827
+we can mimic in a similar sort of way.
+
+84
+00:04:44,828 --> 00:04:47,748
+We're just not utilizing those in this series of lessons.
+
+85
+00:04:47,749 --> 00:04:49,988
+Alright, so let's continue on in the next lesson
+
+86
+00:04:49,989 --> 00:04:51,668
+as we continue to build this app.
+
+87
+00:04:52,199 --> 00:04:54,368
+See you there, thanks.  
+

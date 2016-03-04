@@ -1,0 +1,1132 @@
+1
+00:00:05,662 --> 00:00:09,721
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net.</v>
+
+2
+00:00:09,722 --> 00:00:11,280
+As you already know, Windows 10 has a very
+
+3
+00:00:11,281 --> 00:00:13,460
+distinctive look and feel.
+
+4
+00:00:13,461 --> 00:00:15,460
+I'm not just talking about things like
+
+5
+00:00:15,461 --> 00:00:18,160
+the hamburger-style navigation, I'm also talking
+
+6
+00:00:18,161 --> 00:00:21,661
+about the colors, the background/foreground colors,
+
+7
+00:00:21,662 --> 00:00:23,120
+the typography.
+
+8
+00:00:23,121 --> 00:00:25,620
+And so, there's actually this great resource
+
+9
+00:00:25,621 --> 00:00:27,880
+that deals with the aesthetics of building
+
+10
+00:00:27,881 --> 00:00:30,181
+Universal Windows Platform apps.
+
+11
+00:00:30,182 --> 00:00:31,881
+As you can see onscreen right now,
+
+12
+00:00:31,882 --> 00:00:35,120
+it's at this URL that I'm going to pop up right here,
+
+13
+00:00:35,121 --> 00:00:39,841
+and this will talk about the aesthetics, about navigation
+
+14
+00:00:39,842 --> 00:00:43,780
+styles, so anything related to the design and
+
+15
+00:00:43,781 --> 00:00:46,561
+user interaction, user experience, you'll definitely
+
+16
+00:00:46,562 --> 00:00:49,260
+want to consult this document; there are probably
+
+17
+00:00:49,261 --> 00:00:52,460
+other great resources available on www.microsoft.com as well,
+
+18
+00:00:52,461 --> 00:00:53,900
+or www.windows.com.
+
+19
+00:00:53,901 --> 00:00:56,820
+But even inside of those guidelines,
+
+20
+00:00:56,821 --> 00:00:59,601
+there is room for some creative expression,
+
+21
+00:00:59,602 --> 00:01:02,461
+for example, your company may need
+
+22
+00:01:02,462 --> 00:01:06,820
+its branding, its colors, its font styles to be
+
+23
+00:01:06,821 --> 00:01:09,076
+represented in the application.
+
+24
+00:01:09,077 --> 00:01:11,517
+So, you'll not only want to know what the rules are,
+
+25
+00:01:11,518 --> 00:01:14,077
+but then you'll also want to know why and when
+
+26
+00:01:14,078 --> 00:01:15,657
+to break those rules.
+
+27
+00:01:15,658 --> 00:01:17,476
+Now in this lesson, I'm going to talk about the
+
+28
+00:01:17,477 --> 00:01:19,756
+technical aspects of working with XAML
+
+29
+00:01:19,757 --> 00:01:21,077
+to style up your app.
+
+30
+00:01:21,078 --> 00:01:23,276
+Primarily, what I want to talk about are
+
+31
+00:01:23,277 --> 00:01:26,817
+creating reusable styles and resources that
+
+32
+00:01:26,818 --> 00:01:28,837
+can be shared between many different elements
+
+33
+00:01:28,838 --> 00:01:32,377
+across a single Page, multiple Pages in your
+
+34
+00:01:32,378 --> 00:01:36,303
+entire app, or even across multiple applications.
+
+35
+00:01:36,304 --> 00:01:38,424
+Now in the next lesson, we're going to talk about the
+
+36
+00:01:38,425 --> 00:01:41,984
+pre-built Themes that are available that will help
+
+37
+00:01:41,985 --> 00:01:45,984
+enforce consistency across all apps on a given
+
+38
+00:01:45,985 --> 00:01:49,083
+user's device, we'll talk about that later.
+
+39
+00:01:49,084 --> 00:01:52,824
+Now suppose that you have a particular color,
+
+40
+00:01:52,825 --> 00:01:55,654
+or a setting that you know that you're going to want
+
+41
+00:01:55,655 --> 00:01:59,135
+to use throughout the entire page of your
+
+42
+00:01:59,136 --> 00:02:01,554
+application, or the entire app.
+
+43
+00:02:01,555 --> 00:02:03,834
+Perhaps a color or a setting that you
+
+44
+00:02:03,835 --> 00:02:06,295
+might want to change occasionally,
+
+45
+00:02:06,296 --> 00:02:08,014
+and you just want to make that change
+
+46
+00:02:08,015 --> 00:02:09,855
+in one place and then have it reflected
+
+47
+00:02:09,856 --> 00:02:12,294
+everywhere that that particular style
+
+48
+00:02:12,295 --> 00:02:14,135
+is being utilized, kind of similar to
+
+49
+00:02:14,136 --> 00:02:16,015
+Cascading Style Sheets.
+
+50
+00:02:16,016 --> 00:02:17,595
+Well, in that case, you're going to want
+
+51
+00:02:17,596 --> 00:02:20,294
+to create a resource and then bind
+
+52
+00:02:20,295 --> 00:02:22,794
+to that resource as necessary.
+
+53
+00:02:22,795 --> 00:02:25,314
+So I've created a new Project called
+
+54
+00:02:25,315 --> 00:02:28,955
+XAMLResources and I want to create the most
+
+55
+00:02:28,956 --> 00:02:33,814
+simple illustration, example, of using resources
+
+56
+00:02:33,815 --> 00:02:35,214
+that I possibly could.
+
+57
+00:02:35,215 --> 00:02:39,114
+So, what I'm going to do here, in the MainPage.xaml,
+
+58
+00:02:39,115 --> 00:02:41,075
+and I made no changes to this whatsoever,
+
+59
+00:02:41,076 --> 00:02:45,315
+I'm going to add a Page.Resources section.
+
+60
+00:02:45,316 --> 00:02:49,155
+All right, so, inside of that Page.Resources,
+
+61
+00:02:49,156 --> 00:02:53,955
+I'm going to add a new Resource that I'm going to call
+
+62
+00:02:53,956 --> 00:02:57,235
+SolidColorBrush, and I'm going to give it a Name,
+
+63
+00:02:57,236 --> 00:03:00,455
+called MyBrush, and that will simply use a
+
+64
+00:03:00,456 --> 00:03:02,695
+solid color brush Color of Brown.
+
+65
+00:03:02,696 --> 00:03:04,915
+Again, an extremely simple example,
+
+66
+00:03:04,916 --> 00:03:06,354
+just to illustrate the concept and
+
+67
+00:03:06,355 --> 00:03:07,875
+then we'll move on from there with
+
+68
+00:03:07,876 --> 00:03:09,715
+better examples.
+
+69
+00:03:09,716 --> 00:03:13,055
+Now whenever I want to use that Brush
+
+70
+00:03:13,056 --> 00:03:15,435
+that I've defined anywhere in my application,
+
+71
+00:03:15,436 --> 00:03:19,095
+I can reference it like so, using a
+
+72
+00:03:19,096 --> 00:03:20,494
+binding Statement.
+
+73
+00:03:20,495 --> 00:03:23,555
+So here, I'm setting the Foreground
+
+74
+00:03:23,556 --> 00:03:26,655
+of my TextBlock to a Binding statement.
+
+75
+00:03:26,656 --> 00:03:29,175
+You can see the open and close curly braces
+
+76
+00:03:29,176 --> 00:03:31,155
+and the word StaticResource, and then I
+
+77
+00:03:31,156 --> 00:03:32,875
+give it the name of the resource that I want to
+
+78
+00:03:32,876 --> 00:03:35,614
+bind to, in this case, MyBrush.
+
+79
+00:03:35,615 --> 00:03:38,455
+Now, the key is that Binding syntax,
+
+80
+00:03:38,456 --> 00:03:41,695
+which we see often for different purposes in XAML,
+
+81
+00:03:42,966 --> 00:03:45,896
+binding to a resource takes the form of
+
+82
+00:03:45,897 --> 00:03:48,676
+the Binding expression syntax of the open and close
+
+83
+00:03:48,677 --> 00:03:51,596
+curly brace and then the word StaticResource and then
+
+84
+00:03:51,597 --> 00:03:53,537
+whatever the resource name is.
+
+85
+00:03:53,538 --> 00:03:57,256
+The curly braces indicate binding, so that first word,
+
+86
+00:03:57,257 --> 00:04:00,116
+StaticResource, defines the type of binding
+
+87
+00:04:00,117 --> 00:04:01,497
+that we're engaging in.
+
+88
+00:04:01,498 --> 00:04:04,176
+We're binding to a resource that's defined
+
+89
+00:04:04,177 --> 00:04:07,596
+in XAML and it's only evaluated once
+
+90
+00:04:07,597 --> 00:04:09,936
+as the application first starts.
+
+91
+00:04:09,937 --> 00:04:12,456
+And there are other kinds of Binding expressions
+
+92
+00:04:12,457 --> 00:04:15,266
+that allow you to continually evaluate
+
+93
+00:04:15,267 --> 00:04:19,416
+the information that'll be bound, or pre-compile
+
+94
+00:04:19,417 --> 00:04:21,256
+the Binding statements that we'll talk about
+
+95
+00:04:21,257 --> 00:04:26,256
+as well, and so on, and those will come into play
+
+96
+00:04:26,257 --> 00:04:28,257
+at various points during the remainder
+
+97
+00:04:28,258 --> 00:04:30,016
+of this series of lessons.
+
+98
+00:04:30,017 --> 00:04:31,656
+Now, in this case, I've only created a
+
+99
+00:04:31,657 --> 00:04:34,556
+SolidColorBrush, but we can create
+
+100
+00:04:34,557 --> 00:04:36,596
+lots of different Resources.
+
+101
+00:04:36,597 --> 00:04:38,376
+So, for example, here I'm just going to create
+
+102
+00:04:38,377 --> 00:04:43,376
+a Resource that's a String, and it'll just
+
+103
+00:04:43,617 --> 00:04:47,076
+be called greeting, and here I can
+
+104
+00:04:47,077 --> 00:04:51,396
+use that greeting in that Text attribute
+
+105
+00:04:51,397 --> 00:04:52,656
+of my TextBlock.
+
+106
+00:04:52,657 --> 00:04:55,556
+So, here I'll go StaticResource, and then
+
+107
+00:04:55,557 --> 00:04:59,936
+I'll use the key greeting like so.
+
+108
+00:04:59,937 --> 00:05:01,251
+Let's run the application; we haven't done that
+
+109
+00:05:01,252 --> 00:05:05,151
+just yet, take a look at what this will look like,
+
+110
+00:05:05,152 --> 00:05:09,891
+hopefully it'll say "Hello, World" in a brown font.
+
+111
+00:05:09,892 --> 00:05:13,791
+And, it does. Again, extremely simple example
+
+112
+00:05:13,792 --> 00:05:15,051
+to get started here.
+
+113
+00:05:15,052 --> 00:05:18,411
+Now, beyond simple Resources, Styles allow you
+
+114
+00:05:18,412 --> 00:05:22,251
+to collect one or more settings that can be reused
+
+115
+00:05:22,252 --> 00:05:26,051
+across a Page, or across an entire app,
+
+116
+00:05:26,052 --> 00:05:27,391
+for a specific Control.
+
+117
+00:05:27,392 --> 00:05:29,591
+Then, whenever you want to reuse that Style,
+
+118
+00:05:29,592 --> 00:05:33,411
+you set a given Control's Style attribute
+
+119
+00:05:33,412 --> 00:05:35,951
+and essentially bind it to the Style
+
+120
+00:05:35,952 --> 00:05:37,151
+that you've defined.
+
+121
+00:05:37,152 --> 00:05:40,011
+So virtually every Control, and even the Page itself
+
+122
+00:05:40,012 --> 00:05:42,892
+has features of its appearance that
+
+123
+00:05:42,893 --> 00:05:45,991
+can be customized, whether it be Fonts,
+
+124
+00:05:45,992 --> 00:05:48,831
+or Colors or Border thickness, or Width,
+
+125
+00:05:48,832 --> 00:05:51,391
+or Height, what have you.
+
+126
+00:05:51,392 --> 00:05:53,271
+So all these attributes can be set
+
+127
+00:05:53,272 --> 00:05:55,791
+on an individual basis on each Control
+
+128
+00:05:55,792 --> 00:05:58,591
+in your XAML, which will make your XAML
+
+129
+00:05:58,592 --> 00:06:01,599
+quite wordy and maybe even difficult to
+
+130
+00:06:01,600 --> 00:06:04,709
+kind of parse through visually.
+
+131
+00:06:05,490 --> 00:06:06,991
+And that would be one downside.
+
+132
+00:06:06,992 --> 00:06:08,051
+The other downside is, obviously, if you
+
+133
+00:06:08,052 --> 00:06:09,251
+miss a setting and you're trying to
+
+134
+00:06:09,252 --> 00:06:11,411
+keep things consistent, you might forget,
+
+135
+00:06:11,412 --> 00:06:14,051
+"Oh, I forgot to set the FontSize,
+
+136
+00:06:14,052 --> 00:06:16,951
+"the Font color", you can keep this all consistent by
+
+137
+00:06:16,952 --> 00:06:20,229
+defining that Style one time and then just
+
+138
+00:06:20,230 --> 00:06:21,630
+reusing the Style.
+
+139
+00:06:21,631 --> 00:06:23,189
+Alright, so here, I'm just going to copy and paste
+
+140
+00:06:23,190 --> 00:06:27,129
+a style, this is just to kind of save
+
+141
+00:06:27,130 --> 00:06:30,419
+from having to type it all out.
+
+142
+00:06:30,631 --> 00:06:32,490
+Alright, so we start with an open tag
+
+143
+00:06:32,491 --> 00:06:37,490
+called Style, and we define the type of Style
+
+144
+00:06:37,970 --> 00:06:40,690
+that this will be used for.
+
+145
+00:06:40,691 --> 00:06:42,730
+So, the TargetType for this Style will be
+
+146
+00:06:42,731 --> 00:06:45,950
+a Button Control, and we give it also a Key
+
+147
+00:06:45,951 --> 00:06:48,569
+so that we can reference it then, later on,
+
+148
+00:06:48,570 --> 00:06:49,790
+in our XAML.
+
+149
+00:06:49,791 --> 00:06:54,790
+And here we use a series of Setter elements.
+
+150
+00:06:54,910 --> 00:06:58,689
+Each Setter has the Property we want to affect,
+
+151
+00:06:58,690 --> 00:07:00,669
+the Property we want to set, as well as
+
+152
+00:07:00,670 --> 00:07:02,710
+the Value that we want to set it to.
+
+153
+00:07:02,711 --> 00:07:06,310
+So, just a series of name/value pairs.
+
+154
+00:07:06,311 --> 00:07:09,570
+So, in this case, whenever we apply the Style called
+
+155
+00:07:09,571 --> 00:07:11,890
+MyButtonStyle, we want to set the Background="Blue",
+
+156
+00:07:11,891 --> 00:07:14,269
+the FontFamily="Arial Black",
+
+157
+00:07:14,270 --> 00:07:16,510
+and the FontSize="36".
+
+158
+00:07:16,511 --> 00:07:21,010
+All right, so let's go ahead and actually use that,
+
+159
+00:07:21,011 --> 00:07:23,030
+here I'm going to put a Button,
+
+160
+00:07:25,729 --> 00:07:27,328
+I'm going to set the Content="My Button Style Example"
+
+161
+00:07:27,329 --> 00:07:32,328
+Content="My Button Style Example",
+
+162
+00:07:35,720 --> 00:07:38,880
+set the Height="100",
+
+163
+00:07:38,881 --> 00:07:41,420
+and then I'm going to set the Style equal to that --
+
+164
+00:07:41,421 --> 00:07:46,080
+whoops -- set the Style equal to that Binding syntax.
+
+165
+00:07:46,081 --> 00:07:50,380
+So, StaticResource, and I'm going to type in "My",
+
+166
+00:07:50,381 --> 00:07:52,339
+and you notice that even IntelliSense will see
+
+167
+00:07:52,340 --> 00:07:57,339
+the Styles and the other Resources that we've defined.
+
+168
+00:07:58,261 --> 00:08:02,760
+So, MyButtonStyle, and that should be good,
+
+169
+00:08:02,761 --> 00:08:05,900
+and just to make sure that these work well
+
+170
+00:08:05,901 --> 00:08:08,460
+I'm going to create this StackPanel out of this,
+
+171
+00:08:08,461 --> 00:08:12,050
+(mumbles)
+
+172
+00:08:12,861 --> 00:08:14,259
+Now let's run the application.
+
+173
+00:08:16,497 --> 00:08:17,936
+OK, so you can see that I have now
+
+174
+00:08:17,937 --> 00:08:22,795
+a big, blue button, large text, all of
+
+175
+00:08:22,796 --> 00:08:26,036
+the Properties that we set for that style
+
+176
+00:08:26,037 --> 00:08:28,555
+were applied, very quickly and easily,
+
+177
+00:08:28,556 --> 00:08:32,955
+by just binding it to that StaticResource that we defined.
+
+178
+00:08:32,956 --> 00:08:37,496
+OK. So, again, these are very simple examples
+
+179
+00:08:37,497 --> 00:08:40,595
+to illustrate the idea, and as a result, it may not
+
+180
+00:08:40,596 --> 00:08:43,976
+be readily apparent why you would actually
+
+181
+00:08:43,977 --> 00:08:47,316
+want to utilize Styles and Resources.
+
+182
+00:08:47,317 --> 00:08:49,456
+I mean, what's the value of this approach?
+
+183
+00:08:49,457 --> 00:08:52,215
+Well, as your application grows larger and larger,
+
+184
+00:08:52,216 --> 00:08:54,776
+as you add more Pages or many more Controls
+
+185
+00:08:54,777 --> 00:08:59,136
+to your application, you might find this approach
+
+186
+00:08:59,137 --> 00:09:00,276
+to be quite handy.
+
+187
+00:09:00,277 --> 00:09:03,275
+I mean, it'll be a lot of effort to reapply even those
+
+188
+00:09:03,276 --> 00:09:06,335
+three Properties every single time you have
+
+189
+00:09:06,336 --> 00:09:08,836
+a Button Control in your application.
+
+190
+00:09:08,837 --> 00:09:11,996
+So, using Styles and Resources is going to help
+
+191
+00:09:11,997 --> 00:09:15,756
+to keep your XAML compact and concise.
+
+192
+00:09:15,757 --> 00:09:18,116
+It's also going to be easier to manage.
+
+193
+00:09:18,117 --> 00:09:20,916
+And so, in that regard, if you ever need to
+
+194
+00:09:20,917 --> 00:09:23,116
+make a change, you change it in one spot,
+
+195
+00:09:23,117 --> 00:09:26,196
+in the Style itself, and then it's applied everywhere.
+
+196
+00:09:26,197 --> 00:09:31,196
+Now I created these as local Resources on the Page
+
+197
+00:09:33,497 --> 00:09:35,696
+where they're being used, meaning that their scoped
+
+198
+00:09:35,697 --> 00:09:39,555
+to just this MainPage.xaml.
+
+199
+00:09:39,556 --> 00:09:42,515
+But what if I wanted to share these Resources
+
+200
+00:09:42,516 --> 00:09:45,015
+across all of the Pages in my application?
+
+201
+00:09:45,016 --> 00:09:50,015
+Well, in that case, I would remove those Resources
+
+202
+00:09:50,453 --> 00:09:54,032
+and the Style from this MainPage.xaml,
+
+203
+00:09:54,033 --> 00:09:58,832
+and I'd put them into an application Resources Element
+
+204
+00:09:58,833 --> 00:10:00,591
+on the App.xaml.
+
+205
+00:10:00,592 --> 00:10:02,392
+So, here, let me do this; I'm actually going to just
+
+206
+00:10:02,393 --> 00:10:05,811
+select, hit Ctrl-X on my keyboard to remove these,
+
+207
+00:10:05,812 --> 00:10:08,392
+go over to the App.xaml and go
+
+208
+00:10:08,393 --> 00:10:13,392
+Application.Resources,
+
+209
+00:10:14,413 --> 00:10:16,651
+and then I'll paste them in here.
+
+210
+00:10:16,652 --> 00:10:18,991
+Now, the end result should be the same;
+
+211
+00:10:18,992 --> 00:10:22,291
+nothing should change about my application whatsoever.
+
+212
+00:10:22,292 --> 00:10:25,592
+Now, we're to re-run the application, because we're sharing
+
+213
+00:10:25,593 --> 00:10:28,792
+those Styles across all Pages of my app,
+
+214
+00:10:28,793 --> 00:10:31,732
+by putting that into the App.xaml,
+
+215
+00:10:31,733 --> 00:10:34,472
+we get the same effect, and it just makes my
+
+216
+00:10:34,473 --> 00:10:38,591
+MainPage.XAML that much smaller and more compact.
+
+217
+00:10:38,592 --> 00:10:43,591
+Alright. And, one last point, you can see here that
+
+218
+00:10:45,705 --> 00:10:47,844
+this ResourceDictionary that we've defined
+
+219
+00:10:47,845 --> 00:10:50,624
+here in this Application.Resources,
+
+220
+00:10:50,625 --> 00:10:54,383
+that we're only using it to create, like,
+
+221
+00:10:54,384 --> 00:10:57,104
+Resources, SolidColorBrushes and Strings or
+
+222
+00:10:57,105 --> 00:11:02,104
+actually Styles, but this can also contain Static Resources,
+
+223
+00:11:03,485 --> 00:11:06,864
+Control templates, animations and even more.
+
+224
+00:11:06,865 --> 00:11:09,484
+So this is very handy, especially if you need to reuse
+
+225
+00:11:09,485 --> 00:11:11,664
+things across the entire application.
+
+226
+00:11:11,665 --> 00:11:14,763
+Alright, so beyond just a simple ResourceDictionary
+
+227
+00:11:14,764 --> 00:11:16,423
+that we've defined at the Page level and at
+
+228
+00:11:16,424 --> 00:11:18,744
+the Application level, you can also create
+
+229
+00:11:18,745 --> 00:11:21,284
+what are called merged Resource dictionaries
+
+230
+00:11:21,285 --> 00:11:24,083
+that allow you to define your Resource dictionaries
+
+231
+00:11:24,084 --> 00:11:27,083
+in multiple files and then combine them together,
+
+232
+00:11:27,084 --> 00:11:28,984
+and you might do this to help you manage
+
+233
+00:11:28,985 --> 00:11:33,643
+the complexity, to reuse your Dictionary files
+
+234
+00:11:33,644 --> 00:11:36,624
+in other projects, things of that nature.
+
+235
+00:11:36,625 --> 00:11:37,843
+All right, so what we're going to do here
+
+236
+00:11:37,844 --> 00:11:39,484
+in the XAMLResources is, right-click --
+
+237
+00:11:39,485 --> 00:11:42,064
+well, actually, let me do this instead --
+
+238
+00:11:42,065 --> 00:11:45,004
+I'm going to go to Project, Add New Item,
+
+239
+00:11:45,005 --> 00:11:48,864
+and here, what I wanna do, is select the
+
+240
+00:11:48,865 --> 00:11:51,164
+Resource Dictionary, I'm going to leave the name
+
+241
+00:11:51,165 --> 00:11:56,164
+as Dictionary1.xaml and click Add, (mumbles)
+
+242
+00:11:56,465 --> 00:12:00,173
+and I'm just going to paste in a really, really simple
+
+243
+00:12:00,174 --> 00:12:03,671
+SolidColorBrush, I'm just giving it the name "brush",
+
+244
+00:12:03,672 --> 00:12:06,550
+setting its color equal to "Red", nothing very fancy here,
+
+245
+00:12:06,551 --> 00:12:09,991
+but what we'll do then is we actually need to
+
+246
+00:12:09,992 --> 00:12:13,351
+merge this ResourceDictionary into
+
+247
+00:12:13,352 --> 00:12:17,430
+the Page's ResourceDictionary, and to do that,
+
+248
+00:12:17,431 --> 00:12:21,747
+we're going to go to the Page.Resources and
+
+249
+00:12:24,097 --> 00:12:27,717
+create a ResourceDictionary element,
+
+250
+00:12:27,718 --> 00:12:32,717
+and then a ResourceDictionary.MergedDictionaries
+
+251
+00:12:34,378 --> 00:12:39,377
+attribute, and here we're going to create a
+
+252
+00:12:40,218 --> 00:12:44,817
+ResourceDictionary and set the Source="Dictionary1.xaml"
+
+253
+00:12:44,818 --> 00:12:46,257
+Source="Dictionary1.xaml"
+
+254
+00:12:46,258 --> 00:12:47,317
+And, just to prove how this works,
+
+255
+00:12:47,318 --> 00:12:51,077
+I'm going to remove this foreground from
+
+256
+00:12:51,078 --> 00:12:53,117
+the MyBrush that I created earlier,
+
+257
+00:12:53,118 --> 00:12:56,077
+just to the brush that I know that's defined
+
+258
+00:12:56,078 --> 00:12:59,737
+inside of that Dictionary1.xaml.
+
+259
+00:12:59,738 --> 00:13:01,606
+And now, we should see red text at the
+
+260
+00:13:01,607 --> 00:13:06,255
+very top of our app, and we do. Great.
+
+261
+00:13:07,125 --> 00:13:10,605
+We can actually merge multiple Dictionaries together,
+
+262
+00:13:10,606 --> 00:13:15,105
+so, here again, I'm just going to go to Project, Add New Item,
+
+263
+00:13:15,106 --> 00:13:18,504
+Resource Dictionary, Dictionary2.xaml is fine for the name,
+
+264
+00:13:18,505 --> 00:13:19,825
+and I'll click Add.
+
+265
+00:13:19,826 --> 00:13:24,705
+And here I'm going to grab out the greeting, here,
+
+266
+00:13:24,706 --> 00:13:29,485
+and just paste it into Dictionary2, and then
+
+267
+00:13:29,486 --> 00:13:34,485
+I'm going to merge that into my MainPage.xaml.
+
+268
+00:13:36,026 --> 00:13:38,185
+So, right now, it can't find that greeting,
+
+269
+00:13:38,186 --> 00:13:43,185
+but what we'll do is just copy and paste that
+
+270
+00:13:43,826 --> 00:13:46,645
+and just change this to Dictionary2.xaml,
+
+271
+00:13:46,646 --> 00:13:50,745
+it should find it again and it should work just like before.
+
+272
+00:13:50,746 --> 00:13:55,745
+So, we can create multiple ResourceDictionaries,
+
+273
+00:13:57,246 --> 00:14:01,984
+merge them together, then reuse these Dictionary files
+
+274
+00:14:01,985 --> 00:14:05,245
+in other applications, or just split up our Styles
+
+275
+00:14:05,246 --> 00:14:07,405
+and other things that we've defined in the
+
+276
+00:14:07,406 --> 00:14:12,125
+multiple ResourceDictionary files for
+
+277
+00:14:12,126 --> 00:14:13,765
+easy management, so that we could find
+
+278
+00:14:13,766 --> 00:14:16,565
+what we're looking for when we need it. OK?
+
+279
+00:14:16,566 --> 00:14:20,024
+So hopefully this was helpful, just a way to
+
+280
+00:14:20,025 --> 00:14:23,525
+add consistency and manageability to your
+
+281
+00:14:23,526 --> 00:14:25,765
+application development efforts. Right.
+
+282
+00:14:25,766 --> 00:14:28,005
+So we'll talk about themes in the next lessons.
+
+283
+00:14:28,006 --> 00:14:30,904
+See you there. Thanks.  
+

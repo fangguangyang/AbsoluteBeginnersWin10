@@ -1,0 +1,1164 @@
+1
+00:00:04,670 --> 00:00:08,690
+<v ->Hi, I'm Bob Tabor with www.LearnVisualStudio.NET.</v>
+
+2
+00:00:08,691 --> 00:00:10,529
+In this lesson, we're going to talk about
+
+3
+00:00:10,530 --> 00:00:13,070
+several related topics
+
+4
+00:00:13,071 --> 00:00:16,194
+and all kind of merged together at the very end.
+
+5
+00:00:16,195 --> 00:00:18,695
+So we'll talk about Default Properties,
+
+6
+00:00:18,696 --> 00:00:20,435
+Complex Properties,
+
+7
+00:00:20,436 --> 00:00:22,235
+and the Property Element Syntax,
+
+8
+00:00:22,236 --> 00:00:25,385
+then we'll talk about how an intelligent XAML parser
+
+9
+00:00:25,386 --> 00:00:29,287
+really saves us from extra extraneous XAML code,
+
+10
+00:00:29,288 --> 00:00:32,067
+because it can infer
+
+11
+00:00:32,068 --> 00:00:36,287
+the relationships between the elements
+
+12
+00:00:36,288 --> 00:00:38,768
+by their context, so we'll talk about that at the very end,
+
+13
+00:00:38,769 --> 00:00:39,867
+but before we get started here,
+
+14
+00:00:39,868 --> 00:00:41,968
+I just want to point out
+
+15
+00:00:41,969 --> 00:00:43,308
+kind of the containment relationship
+
+16
+00:00:43,309 --> 00:00:45,408
+that we'd see in our XAML.
+
+17
+00:00:45,409 --> 00:00:48,929
+Since XAML is essentially an XML document,
+
+18
+00:00:48,930 --> 00:00:52,049
+we can embed elements inside of other elements
+
+19
+00:00:52,050 --> 00:00:56,348
+and that again kind of implies a containment relationship.
+
+20
+00:00:56,349 --> 00:00:58,790
+So, you can see that we have a Page object
+
+21
+00:00:58,791 --> 00:01:02,119
+and inside of the opening and closing 
+
+22
+00:01:02,120 --> 00:01:05,690
+Page tag, we have a Grid object,
+
+23
+00:01:05,691 --> 00:01:09,153
+and inside of the opening and closing Grid element,
+
+24
+00:01:09,154 --> 00:01:12,653
+we can see that there's both a Button and a TextBlock.
+
+25
+00:01:12,654 --> 00:01:15,134
+Now, what's really going on behind the scenes,
+
+26
+00:01:15,135 --> 00:01:19,386
+and we don't see this in our XAML is,
+
+27
+00:01:20,057 --> 00:01:23,417
+what's actually kind of more the proper parlance in XAML
+
+28
+00:01:23,418 --> 00:01:25,977
+is that the Page's content property
+
+29
+00:01:25,978 --> 00:01:29,237
+is set to a new instance of the Grid control,
+
+30
+00:01:29,238 --> 00:01:32,058
+and the Grid control has a collection
+
+31
+00:01:32,059 --> 00:01:35,238
+called Children, and here we're adding two instances
+
+32
+00:01:35,239 --> 00:01:40,028
+of control to that Children collection.
+
+33
+00:01:40,029 --> 00:01:43,500
+So again, we don't see those properties listed anywhere here
+
+34
+00:01:43,501 --> 00:01:45,961
+so if you take a look, we don't see a content property
+
+35
+00:01:45,962 --> 00:01:47,900
+listed among the other properties.
+
+36
+00:01:47,901 --> 00:01:51,375
+We don't see any mention of Children here
+
+37
+00:01:51,376 --> 00:01:54,874
+in the Grid control but what is going on behind the scenes
+
+38
+00:01:54,875 --> 00:01:57,974
+is that we're populating those properties.
+
+39
+00:01:57,975 --> 00:02:01,454
+And I'll explain why we don't see them in our XAML,
+
+40
+00:02:01,455 --> 00:02:04,174
+again, at the very end of this lesson.
+
+41
+00:02:04,175 --> 00:02:05,715
+But for now, just understand there's a little more
+
+42
+00:02:05,716 --> 00:02:06,656
+than meets the eye.
+
+43
+00:02:06,657 --> 00:02:10,847
+We're actually setting the Grid's Children property
+
+44
+00:02:10,848 --> 00:02:14,487
+and we're setting the Pages' content property.
+
+45
+00:02:14,488 --> 00:02:17,667
+Now, if you take a look at the C# version of our code,
+
+46
+00:02:17,668 --> 00:02:21,287
+it more accurately shows that relationship
+
+47
+00:02:21,288 --> 00:02:24,067
+between the LayoutGrid.
+
+48
+00:02:24,068 --> 00:02:27,767
+It has a Children collection of controls,
+
+49
+00:02:27,768 --> 00:02:30,288
+and we're adding to that Children collection
+
+50
+00:02:30,289 --> 00:02:32,530
+an instance of the Button, OK.
+
+51
+00:02:32,531 --> 00:02:35,450
+We just don't see that here in our XAML, OK?
+
+52
+00:02:35,451 --> 00:02:37,310
+So just keep that in the back of your mind.
+
+53
+00:02:37,311 --> 00:02:39,110
+We're going to come back to that in just a moment.
+
+54
+00:02:39,111 --> 00:02:42,550
+Let's talk for a moment about Default Properties.
+
+55
+00:02:42,551 --> 00:02:44,310
+So, depending on the type of control
+
+56
+00:02:44,311 --> 00:02:46,450
+that you're working with, the Default Property
+
+57
+00:02:46,451 --> 00:02:48,810
+for that control can be populated
+
+58
+00:02:48,811 --> 00:02:51,330
+by using this embedded style syntax,
+
+59
+00:02:51,331 --> 00:02:53,750
+where we have elements inside of elements.
+
+60
+00:02:53,751 --> 00:02:56,250
+Now, in the case of, for example, the Button control,
+
+61
+00:02:56,251 --> 00:02:58,450
+the Content Property happens to be
+
+62
+00:02:58,451 --> 00:03:00,210
+the Default Property for that control,
+
+63
+00:03:00,211 --> 00:03:02,331
+so I can remove that property
+
+64
+00:03:02,332 --> 00:03:06,550
+from the properties or the attributes of that element,
+
+65
+00:03:06,551 --> 00:03:10,371
+and then I can also just remove that self-enclosing
+
+66
+00:03:10,372 --> 00:03:11,832
+syntax there for the element,
+
+67
+00:03:11,833 --> 00:03:14,793
+and just create a proper closing tag for the Button.
+
+68
+00:03:14,794 --> 00:03:17,933
+So we have an open Button tag and a closing Button tag
+
+69
+00:03:17,934 --> 00:03:20,573
+with nothing inside of it, but we can add something
+
+70
+00:03:20,574 --> 00:03:23,493
+like Hello World inside of it,
+
+71
+00:03:23,494 --> 00:03:27,994
+and now, by using that Default Property syntax,
+
+72
+00:03:27,995 --> 00:03:30,234
+we can actually see in the Design View
+
+73
+00:03:30,235 --> 00:03:34,395
+that we've changed the content property for the Button, OK?
+
+74
+00:03:34,396 --> 00:03:36,796
+So that will come to bear here in just a moment as well.
+
+75
+00:03:36,797 --> 00:03:39,656
+Keep that in the back of your mind.
+
+76
+00:03:39,657 --> 00:03:42,568
+Let's go back to the XAML editor
+
+77
+00:03:42,569 --> 00:03:44,768
+for our MainPage,
+
+78
+00:03:44,769 --> 00:03:48,308
+and let's talk about Type Converters just for a moment.
+
+79
+00:03:48,309 --> 00:03:51,008
+You'll recall from the last lesson, we talked about
+
+80
+00:03:51,009 --> 00:03:53,210
+Type Converters and I really, at that time,
+
+81
+00:03:53,211 --> 00:03:55,830
+only mentioned some simple Type Converters.
+
+82
+00:03:55,831 --> 00:03:58,310
+For example, the HorizontalAlignment property.
+
+83
+00:03:58,311 --> 00:04:02,809
+Here, that particular property is adorned with an attribute
+
+84
+00:04:02,810 --> 00:04:05,809
+that the developers of this property
+
+85
+00:04:05,810 --> 00:04:08,329
+decided to create a type converter
+
+86
+00:04:08,330 --> 00:04:11,985
+so that we can just give it a literal string value
+
+87
+00:04:11,986 --> 00:04:14,965
+and it will perform the type conversion
+
+88
+00:04:14,966 --> 00:04:19,005
+to an instance of
+
+89
+00:04:19,006 --> 00:04:22,206
+an enumeration Windows.UI.Xaml.HorizontalAlignment.Left,
+
+90
+00:04:22,207 --> 00:04:25,106
+and the same holds true, this simple type converter,
+
+91
+00:04:25,107 --> 00:04:27,127
+for the VerticalAlignment as well.
+
+92
+00:04:27,128 --> 00:04:29,927
+Now, there are some more complex versions
+
+93
+00:04:29,928 --> 00:04:33,188
+of Type Converters, like we see here in the Margin.
+
+94
+00:04:33,189 --> 00:04:36,548
+Here, our Margin property in XAML is set to a literal string
+
+95
+00:04:36,549 --> 00:04:39,347
+of "20, 20, 0, 0",
+
+96
+00:04:39,348 --> 00:04:41,947
+and if you take a look at the Background property,
+
+97
+00:04:41,948 --> 00:04:45,167
+it also is set to just a simple string,
+
+98
+00:04:45,168 --> 00:04:46,687
+a literal string of "Red",
+
+99
+00:04:46,688 --> 00:04:49,228
+but if you take a look at the C# version,
+
+100
+00:04:49,229 --> 00:04:50,909
+there's a little bit more going on here.
+
+101
+00:04:50,910 --> 00:04:53,048
+The Type Converters have to work a little bit harder
+
+102
+00:04:53,049 --> 00:04:55,449
+than they did with the Horizontal and Vertical Alignment.
+
+103
+00:04:55,450 --> 00:04:57,148
+In the case of the Margin, notice that
+
+104
+00:04:57,149 --> 00:04:59,589
+we're just not giving it an enumeration
+
+105
+00:04:59,590 --> 00:05:01,609
+but we're actually creating a new instance of an object
+
+106
+00:05:01,610 --> 00:05:04,509
+called Thickness, and that Thickness has a constructor
+
+107
+00:05:04,510 --> 00:05:07,722
+that accepts four input parameters
+
+108
+00:05:07,723 --> 00:05:10,727
+that happen to be the
+
+109
+00:05:10,728 --> 00:05:13,980
+left margin, top margin, right margin, bottom margin.
+
+110
+00:05:13,981 --> 00:05:15,063
+Likewise, if you take a look
+
+111
+00:05:15,064 --> 00:05:16,731
+at the Background property here,
+
+112
+00:05:16,732 --> 00:05:19,567
+we're actually setting it to a new instance
+
+113
+00:05:19,568 --> 00:05:22,827
+of an object called a SolidColorBrush,
+
+114
+00:05:22,828 --> 00:05:24,367
+and we're passing in
+
+115
+00:05:24,368 --> 00:05:28,188
+as an input parameter to the constructor,
+
+116
+00:05:28,189 --> 00:05:31,558
+a enumeration of type, Windows.UI.Colors.Red,
+
+117
+00:05:31,559 --> 00:05:34,300
+so in these cases, they're a little bit more complex
+
+118
+00:05:34,301 --> 00:05:36,440
+than the previous cases we looked at,
+
+119
+00:05:36,441 --> 00:05:39,861
+however, there's still even a
+
+120
+00:05:39,862 --> 00:05:42,561
+additionally more difficult situation.
+
+121
+00:05:42,562 --> 00:05:46,842
+In some situations, there are properties,
+
+122
+00:05:46,843 --> 00:05:48,665
+and values that you set to those properties,
+
+123
+00:05:48,666 --> 00:05:51,285
+that are simply too complex to be represented
+
+124
+00:05:51,286 --> 00:05:55,045
+merely by Type Converters, or handled by Type Converters.
+
+125
+00:05:55,046 --> 00:05:58,705
+So when a control's property's not easily represented by
+
+126
+00:05:58,706 --> 00:06:03,225
+just a simple XAML attribute like we see in these examples
+
+127
+00:06:03,226 --> 00:06:04,485
+that we've been looking at,
+
+128
+00:06:04,486 --> 00:06:06,986
+then it's referred to as a complex property.
+
+129
+00:06:06,987 --> 00:06:08,326
+So to demonstrate this,
+
+130
+00:06:08,327 --> 00:06:09,868
+I actually want to remove
+
+131
+00:06:09,869 --> 00:06:13,917
+this Background color here.
+
+132
+00:06:14,528 --> 00:06:17,409
+We're going to remove it.
+
+133
+00:06:17,410 --> 00:06:21,937
+And we're also going to remove this Default Property
+
+134
+00:06:21,938 --> 00:06:24,797
+and I'll reset the Content property here
+
+135
+00:06:24,798 --> 00:06:25,599
+back to what it was.
+
+136
+00:06:25,600 --> 00:06:27,909
+I think it was just "Click Me", alright?
+
+137
+00:06:27,910 --> 00:06:28,721
+And then finally,
+
+138
+00:06:28,722 --> 00:06:30,221
+I want to go over here to the MainPage.xaml,
+
+139
+00:06:30,222 --> 00:06:33,452
+I'm going to comment this out just so we don't accidentally
+
+140
+00:06:35,143 --> 00:06:36,763
+get some results we're not expecting 
+
+141
+00:06:36,764 --> 00:06:39,762
+if I happen to decide to run it. OK.
+
+142
+00:06:39,763 --> 00:06:42,262
+Let me go ahead and add that closing, OK.
+
+143
+00:06:42,263 --> 00:06:43,662
+Now, we're good to go.
+
+144
+00:06:43,663 --> 00:06:45,002
+Alright, so now what I want to do
+
+145
+00:06:45,003 --> 00:06:47,782
+is put my mouse cursor on the Button
+
+146
+00:06:47,783 --> 00:06:50,723
+so that when I look at the Properties window,
+
+147
+00:06:50,724 --> 00:06:53,224
+the Name is set to ClickMeButton.
+
+148
+00:06:53,225 --> 00:06:56,223
+That lets me know that I'm in the right context
+
+149
+00:06:56,224 --> 00:06:58,364
+for the Properties window.
+
+150
+00:06:58,365 --> 00:07:01,684
+And I want to set that Background property again
+
+151
+00:07:01,685 --> 00:07:05,023
+using the Property dialog here,
+
+152
+00:07:05,024 --> 00:07:06,765
+and I want to change the Background property,
+
+153
+00:07:06,766 --> 00:07:09,524
+so I'm going to make sure to select that.
+
+154
+00:07:09,525 --> 00:07:11,465
+Now since we've removed it in the XAML,
+
+155
+00:07:11,466 --> 00:07:15,284
+our Background property is not being set at all.
+
+156
+00:07:15,285 --> 00:07:17,044
+And what I want to do is change that
+
+157
+00:07:17,045 --> 00:07:20,645
+to a GradientBrush,
+
+158
+00:07:20,646 --> 00:07:23,424
+and a GradientBrush is just going to give us a gradient.
+
+159
+00:07:23,425 --> 00:07:26,544
+As you can see right now, the gradient starts out as black
+
+160
+00:07:26,545 --> 00:07:31,065
+and then it slowly fades into the color white.
+
+161
+00:07:31,066 --> 00:07:34,345
+Now, if you look at the XAML that was generated,
+
+162
+00:07:34,346 --> 00:07:37,146
+we see that quite a bit has been added to our project
+
+163
+00:07:37,147 --> 00:07:39,986
+between the opening and closing Button tags.
+
+164
+00:07:39,987 --> 00:07:44,386
+Here, we're setting the Button.Background property
+
+165
+00:07:44,387 --> 00:07:48,284
+to an instance of LinearGradientBrush.
+
+166
+00:07:48,285 --> 00:07:51,525
+So whenever you see this type of syntax,
+
+167
+00:07:51,526 --> 00:07:54,485
+this type of element embedded inside of another element,
+
+168
+00:07:54,486 --> 00:07:56,325
+this is called a Property Element Syntax,
+
+169
+00:07:56,326 --> 00:08:00,021
+where we have an Object.Property
+
+170
+00:08:00,022 --> 00:08:01,403
+and what your intent is
+
+171
+00:08:01,404 --> 00:08:03,844
+is to give it some additional XAML
+
+172
+00:08:03,845 --> 00:08:08,386
+inside of that Property Element Syntax
+
+173
+00:08:08,387 --> 00:08:12,357
+that will define the values for this Complex Property.
+
+174
+00:08:12,358 --> 00:08:14,877
+Now, what is LinearGradientBrush?
+
+175
+00:08:14,878 --> 00:08:19,248
+It's simply just, again, kind of think of a paint brush,
+
+176
+00:08:20,020 --> 00:08:21,659
+so whenever you see the term "brush",
+
+177
+00:08:21,660 --> 00:08:24,080
+you're just thinking about color or colors.
+
+178
+00:08:24,081 --> 00:08:26,480
+In this case, we're looking at a paintbrush
+
+179
+00:08:26,481 --> 00:08:29,360
+that can paint a color starting at the top of the wall,
+
+180
+00:08:29,361 --> 00:08:31,961
+at black, and by the time we paint the bottom of the wall,
+
+181
+00:08:31,962 --> 00:08:33,422
+it'll be white, OK.
+
+182
+00:08:33,423 --> 00:08:35,122
+Now, let's actually change this.
+
+183
+00:08:35,123 --> 00:08:37,623
+I'm going to put my mouse cursor back up here in the Button,
+
+184
+00:08:37,624 --> 00:08:39,864
+and I'm going to come back to the Property window
+
+185
+00:08:39,865 --> 00:08:42,714
+and I don't want it to go
+
+186
+00:08:42,715 --> 00:08:43,628
+from black to white.
+
+187
+00:08:43,629 --> 00:08:45,408
+I want it to go from black to red,
+
+188
+00:08:45,409 --> 00:08:47,411
+so there's a little circle on this upper left hand corner,
+
+189
+00:08:47,412 --> 00:08:48,732
+I'm just going to drag it all the way here
+
+190
+00:08:48,733 --> 00:08:50,233
+to the right hand side,
+
+191
+00:08:50,234 --> 00:08:53,353
+and notice that it changed the GradientStop
+
+192
+00:08:53,354 --> 00:08:56,893
+from White, the color White to the color Red.
+
+193
+00:08:56,894 --> 00:08:58,384
+Let's save that and take a look at
+
+194
+00:08:58,385 --> 00:09:00,557
+what it looks like here in the designer,
+
+195
+00:09:00,558 --> 00:09:02,457
+and you can kind of see how that's represented.
+
+196
+00:09:02,458 --> 00:09:03,817
+At the top of the Button, it's black,
+
+197
+00:09:03,818 --> 00:09:06,418
+the bottom of the button is red, great.
+
+198
+00:09:06,419 --> 00:09:09,778
+Now, honestly, you probably never, ever want to do this
+
+199
+00:09:09,779 --> 00:09:12,578
+because it just doesn't follow the same aesthetic as
+
+200
+00:09:12,579 --> 00:09:14,298
+the rest of the applications that your users
+
+201
+00:09:14,299 --> 00:09:15,877
+are going to see in Windows 10,
+
+202
+00:09:15,878 --> 00:09:18,339
+but let's pretend for now that
+
+203
+00:09:18,340 --> 00:09:19,860
+you want to express your individuality
+
+204
+00:09:19,861 --> 00:09:21,800
+or there's some branding that you want to do
+
+205
+00:09:21,801 --> 00:09:23,560
+that your company is known for
+
+206
+00:09:23,561 --> 00:09:26,340
+and you need that gradient, OK.
+
+207
+00:09:26,341 --> 00:09:31,164
+So, you can see that, as we go back to the XAML editor,
+
+208
+00:09:31,165 --> 00:09:34,166
+if you do want to define a LinearGradientBrush,
+
+209
+00:09:34,167 --> 00:09:36,646
+you have to supply quite a bit of information here.
+
+210
+00:09:36,647 --> 00:09:40,805
+You have to not only give it the colors that you want
+
+211
+00:09:40,806 --> 00:09:43,142
+to use, you also have to give it
+
+212
+00:09:43,143 --> 00:09:47,723
+a collection of GradientStops and their Offsets,
+
+213
+00:09:47,724 --> 00:09:50,969
+where one Color starts
+
+214
+00:09:50,970 --> 00:09:53,489
+and the other Color stops, OK?
+
+215
+00:09:53,490 --> 00:09:56,089
+While this does look like a lot of additional XAML
+
+216
+00:09:56,090 --> 00:09:59,049
+just to represent a Color,
+
+217
+00:09:59,050 --> 00:10:02,489
+the code snippet here that I have highlighted
+
+218
+00:10:02,490 --> 00:10:06,329
+is actually shortened automatically by Visual Studio.
+
+219
+00:10:06,330 --> 00:10:07,990
+Let me take just a moment here
+
+220
+00:10:07,991 --> 00:10:12,170
+and type out what the full XAML should be
+
+221
+00:10:12,171 --> 00:10:16,980
+if Visual Studio didn't try to compact it for us, OK?
+
+222
+00:10:17,271 --> 00:10:19,901
+So, give me just one moment here.
+
+223
+00:10:21,832 --> 00:10:23,131
+OK, so it took a moment or two
+
+224
+00:10:23,132 --> 00:10:25,351
+but you can see that I've added a couple lines of code here
+
+225
+00:10:25,352 --> 00:10:29,451
+in Line 23 and 24, and then the closing tags
+
+226
+00:10:29,452 --> 00:10:33,613
+in Lines number 28 and 29 here, OK?
+
+227
+00:10:33,614 --> 00:10:36,953
+And so you'll see that we're setting the Button's Background
+
+228
+00:10:36,954 --> 00:10:41,233
+to a new instance of the LinearGradientBrush class.
+
+229
+00:10:41,234 --> 00:10:44,813
+The LinearGradientBrush class has a property
+
+230
+00:10:44,814 --> 00:10:46,573
+called GradientStops.
+
+231
+00:10:46,574 --> 00:10:48,214
+The GradientStops property
+
+232
+00:10:48,215 --> 00:10:50,555
+is of type GradientStopCollection,
+
+233
+00:10:50,556 --> 00:10:53,256
+so we create a new instance of GradientStopCollection
+
+234
+00:10:53,257 --> 00:10:57,936
+and add two instances of the GradientStop object
+
+235
+00:10:57,937 --> 00:10:59,985
+to that collection, OK?
+
+236
+00:10:59,986 --> 00:11:03,125
+So, as you can see, that
+
+237
+00:11:03,126 --> 00:11:06,515
+we were able to omit lines 23, 24,
+
+238
+00:11:06,516 --> 00:11:10,697
+as well as 27, or rather 28,
+
+239
+00:11:10,698 --> 00:11:12,797
+or yeah, 27 and 28,
+
+240
+00:11:12,798 --> 00:11:15,380
+and we were able to omit this, or actually,
+
+241
+00:11:15,381 --> 00:11:17,600
+Visual Studio, when it generated the XAML for us,
+
+242
+00:11:17,601 --> 00:11:20,641
+was able to omit it because it wanted
+
+243
+00:11:20,642 --> 00:11:23,462
+to make the XAML more concise and more compact,
+
+244
+00:11:23,463 --> 00:11:26,722
+and it's made possible by an intelligent XAML parser.
+
+245
+00:11:26,723 --> 00:11:29,502
+So first of all, we talked about Default Properties
+
+246
+00:11:29,503 --> 00:11:31,883
+at the very outset of this lesson.
+
+247
+00:11:31,884 --> 00:11:35,884
+The GradientStops property is the Default Property
+
+248
+00:11:35,885 --> 00:11:38,263
+for the LinearGradientBrush.
+
+249
+00:11:38,264 --> 00:11:40,185
+The GradientStops property
+
+250
+00:11:40,186 --> 00:11:43,605
+is of type GradientStopCollection, so the only thing
+
+251
+00:11:43,606 --> 00:11:45,685
+that we can put in a GradientStopCollection
+
+252
+00:11:45,686 --> 00:11:47,865
+are instances of GradientStop.
+
+253
+00:11:47,866 --> 00:11:50,666
+So since we just put two GradientStop objects
+
+254
+00:11:50,667 --> 00:11:52,766
+inside of a LinearGradientBrush,
+
+255
+00:11:52,767 --> 00:11:55,786
+it knows that we're dealing with the Default Property
+
+256
+00:11:55,787 --> 00:11:59,206
+and that Default Property is of type GradientStopCollection,
+
+257
+00:11:59,207 --> 00:12:01,466
+so we don't even need to put that in there.
+
+258
+00:12:01,467 --> 00:12:04,786
+That's already implied. We can just supply it, whoops,
+
+259
+00:12:04,787 --> 00:12:08,026
+gave it the wrong thing here.
+
+260
+00:12:08,027 --> 00:12:12,026
+We can just give it the two GradientStops
+
+261
+00:12:12,027 --> 00:12:14,926
+and it can infer the rest that it needs
+
+262
+00:12:14,927 --> 00:12:17,866
+from its context, OK?
+
+263
+00:12:17,867 --> 00:12:19,086
+So the moral of the story is that
+
+264
+00:12:19,087 --> 00:12:21,111
+the XAML parser is intelligent,
+
+265
+00:12:21,112 --> 00:12:23,751
+and it doesn't require us to include redundant code
+
+266
+00:12:23,752 --> 00:12:26,591
+that it can infer from the context.
+
+267
+00:12:26,592 --> 00:12:29,091
+As long as it has enough information to create
+
+268
+00:12:29,092 --> 00:12:31,691
+that object graph correctly, it'll do it
+
+269
+00:12:31,692 --> 00:12:33,791
+and we don't have to give it any more than it needs.
+
+270
+00:12:33,792 --> 00:12:36,151
+And furthermore, Visual Studio will
+
+271
+00:12:36,152 --> 00:12:41,072
+emit concise code if we use the Properties window
+
+272
+00:12:41,073 --> 00:12:44,273
+or other tooling support inside of Visual Studio.
+
+273
+00:12:44,274 --> 00:12:45,853
+So just to recap this lesson,
+
+274
+00:12:45,854 --> 00:12:47,495
+we talked about a number of different things again
+
+275
+00:12:47,496 --> 00:12:48,415
+that all kind of fit together.
+
+276
+00:12:48,416 --> 00:12:50,215
+We talked about Default Properties,
+
+277
+00:12:50,216 --> 00:12:52,235
+we talked about Complex Properties,
+
+278
+00:12:52,236 --> 00:12:54,535
+then we talked about the Property Element Syntax
+
+279
+00:12:54,536 --> 00:12:56,196
+like we saw here, like we saw,
+
+280
+00:12:56,197 --> 00:12:58,646
+we've actually removed some of those
+
+281
+00:12:58,647 --> 00:13:02,598
+lines of code between Line 22 and Line 25,
+
+282
+00:13:02,599 --> 00:13:05,338
+and we also talked about how an intelligent XAML parser
+
+283
+00:13:05,339 --> 00:13:07,438
+allowed us to remove those lines of code
+
+284
+00:13:07,439 --> 00:13:10,578
+because it allows us to keep our XAML compact
+
+285
+00:13:10,579 --> 00:13:13,438
+by inferring from context what inner elements
+
+286
+00:13:13,439 --> 00:13:14,998
+should be used for.
+
+287
+00:13:14,999 --> 00:13:16,318
+And finally, whenever possible,
+
+288
+00:13:16,319 --> 00:13:19,877
+Visual Studio will generate concise XAML for us, OK?
+
+289
+00:13:19,878 --> 00:13:21,320
+So let's keep plugging along
+
+290
+00:13:21,321 --> 00:13:22,720
+with more XAML in the next lesson.
+
+291
+00:13:22,721 --> 00:13:24,750
+We'll see you there, thank you.  
+

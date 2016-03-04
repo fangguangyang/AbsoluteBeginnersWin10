@@ -1,0 +1,1316 @@
+1
+00:00:04,223 --> 00:00:07,763
+<v ->Okay, so next up we're going to create the Data Model,</v>
+
+2
+00:00:07,764 --> 00:00:09,635
+which we're going to call Sound,
+
+3
+00:00:09,636 --> 00:00:13,919
+and the Sound will have an audio file and an image file,
+
+4
+00:00:13,920 --> 00:00:16,146
+and also a category.
+
+5
+00:00:16,147 --> 00:00:19,440
+Then we're going to create a sound manager,
+
+6
+00:00:19,441 --> 00:00:21,095
+which will allow us to get either
+
+7
+00:00:21,096 --> 00:00:23,538
+access to all sounds or just
+
+8
+00:00:23,539 --> 00:00:24,989
+a soundbyte category.
+
+9
+00:00:24,990 --> 00:00:28,146
+So we're going to pass in an empty or populated
+
+10
+00:00:28,147 --> 00:00:30,825
+ObservableCollection that we're going to Bind to,
+
+11
+00:00:30,826 --> 00:00:34,239
+and we'll stick instances of Sound into it,
+
+12
+00:00:34,240 --> 00:00:37,993
+whether it be all of them, or just filtered by category.
+
+13
+00:00:37,994 --> 00:00:42,379
+And then I'll do some preliminary Binding,
+
+14
+00:00:42,380 --> 00:00:45,417
+just so we can see something appear on screen.
+
+15
+00:00:45,418 --> 00:00:47,874
+It won't do much yet,
+
+16
+00:00:47,875 --> 00:00:50,144
+but at least it'll get us that far.
+
+17
+00:00:50,145 --> 00:00:51,817
+So let's go ahead and get started here,
+
+18
+00:00:51,818 --> 00:00:55,162
+and create a Model Folder.
+
+19
+00:00:58,480 --> 00:01:01,739
+And I want to create a class inside that Model Folder,
+
+20
+00:01:01,740 --> 00:01:03,183
+called Sound.
+
+21
+00:01:06,791 --> 00:01:11,330
+And in this class I'm going to create,
+
+22
+00:01:11,331 --> 00:01:14,863
+I'm going to give it a Name,
+
+23
+00:01:14,864 --> 00:01:19,072
+and a Category.
+
+24
+00:01:20,171 --> 00:01:22,440
+So let's come back to Category because
+
+25
+00:01:22,441 --> 00:01:25,154
+I think I want to create enumeration there.
+
+26
+00:01:25,155 --> 00:01:28,260
+Whoops, and then let's give it a,
+
+27
+00:01:28,261 --> 00:01:31,792
+an AudioFile and,
+
+28
+00:01:31,793 --> 00:01:35,358
+an ImageFile, alright.
+
+29
+00:01:35,359 --> 00:01:38,260
+And I'm going to create a SoundCategory,
+
+30
+00:01:38,261 --> 00:01:42,390
+so public enum SoundCategory.
+
+31
+00:01:42,391 --> 00:01:44,609
+And those Categories will be,
+
+32
+00:01:44,610 --> 00:01:46,315
+you know, the Categories that
+
+33
+00:01:46,316 --> 00:01:48,261
+I already kind of had here: Animals, Cartoons,
+
+34
+00:01:48,262 --> 00:01:50,445
+Taunts, and Warnings, so.
+
+35
+00:01:50,446 --> 00:01:52,666
+Animals.
+
+36
+00:01:54,687 --> 00:01:56,501
+Cartoons.
+
+37
+00:01:56,502 --> 00:01:58,037
+Taunts.
+
+38
+00:01:58,038 --> 00:01:59,999
+Warnings, great.
+
+39
+00:02:00,000 --> 00:02:04,129
+And so I'll make this Category of type SoundCategory.
+
+40
+00:02:04,130 --> 00:02:08,652
+Alright, and I think I'm going to also do something
+
+41
+00:02:08,653 --> 00:02:11,041
+to make it easy to populate all these.
+
+42
+00:02:11,042 --> 00:02:14,676
+I know that the Audio and the ImageFiles follow
+
+43
+00:02:14,677 --> 00:02:16,724
+a similar pattern, they're all going to be found at,
+
+44
+00:02:16,725 --> 00:02:18,977
+/assets/audio/categoryname/soundname
+
+45
+00:02:18,978 --> 00:02:21,963
+asssets/audio/categoryname/soundname
+
+46
+00:02:21,964 --> 00:02:26,184
+asssets/audio/categoryname/soundname
+
+47
+00:02:26,185 --> 00:02:27,978
+Same thing with icons.
+
+48
+00:02:27,979 --> 00:02:32,774
+They'll be at /assets/images/animal,
+
+49
+00:02:32,775 --> 00:02:36,307
+or category/name.
+
+50
+00:02:36,308 --> 00:02:39,123
+So I can make it easy on myself whenever I create
+
+51
+00:02:39,124 --> 00:02:41,051
+new instances of these little guys,
+
+52
+00:02:41,052 --> 00:02:44,130
+by creating an overloaded constructor.
+
+53
+00:02:44,131 --> 00:02:48,782
+So public sound, and we'll take a...
+
+54
+00:02:51,128 --> 00:02:55,871
+Name and a Category, SoundCategory.
+
+55
+00:02:57,704 --> 00:03:00,377
+And then we can do something like this.
+
+56
+00:03:02,210 --> 00:03:03,978
+Name = name.
+
+57
+00:03:05,179 --> 00:03:08,278
+Category = category.
+
+58
+00:03:09,890 --> 00:03:14,559
+And then the AudioFile will equal String.Format.
+
+59
+00:03:16,426 --> 00:03:20,442
+And we'll give it the Category and the Name.
+
+60
+00:03:20,443 --> 00:03:24,419
+And inside there it'll be like,
+
+61
+00:03:24,420 --> 00:03:28,868
+/assets/audio/
+
+62
+00:03:28,869 --> 00:03:32,520
+then whatever the Category name is,
+
+63
+00:03:32,521 --> 00:03:37,043
+then whatever the file name is, WAV, right?
+
+64
+00:03:37,044 --> 00:03:40,951
+And we can do the exact same thing for Image as well.
+
+65
+00:03:40,952 --> 00:03:43,954
+So ImageFile.
+
+66
+00:03:43,955 --> 00:03:48,272
+Just change this from Audio to Images,
+
+67
+00:03:48,273 --> 00:03:52,851
+and from WAV to PNG, and that should work.
+
+68
+00:03:52,852 --> 00:03:56,660
+We'd populate those two, just be a really easy way
+
+69
+00:03:56,661 --> 00:03:58,077
+of constructing those.
+
+70
+00:03:58,078 --> 00:04:00,433
+Let me make sure I have the names of things right,
+
+71
+00:04:00,434 --> 00:04:02,918
+like these folders, yeah that looks good.
+
+72
+00:04:02,919 --> 00:04:06,399
+Okay, I think we're good to go there, great.
+
+73
+00:04:06,400 --> 00:04:10,444
+Next up, let's create the SoundManager,
+
+74
+00:04:10,445 --> 00:04:15,171
+which will allow us to get instances of Sound.
+
+75
+00:04:15,172 --> 00:04:16,753
+So...
+
+76
+00:04:20,975 --> 00:04:25,019
+I like to make these manager classes static and stateless.
+
+77
+00:04:27,995 --> 00:04:30,930
+Or I should say the methods inside of them static.
+
+78
+00:04:30,931 --> 00:04:33,387
+And what I want to do is be able to pass in an
+
+79
+00:04:33,388 --> 00:04:36,954
+ObservableCollection, and have it populate it.
+
+80
+00:04:36,955 --> 00:04:41,596
+So I know I'm going to create like a private static.
+
+81
+00:04:44,624 --> 00:04:46,842
+And this will return,
+
+82
+00:04:46,843 --> 00:04:48,634
+what will it return?
+
+83
+00:04:48,635 --> 00:04:51,512
+Yeah it'll return just a List<Sound>.
+
+84
+00:04:52,867 --> 00:04:56,143
+Called getSounds, something like that.
+
+85
+00:04:56,144 --> 00:04:57,383
+And...
+
+86
+00:04:59,967 --> 00:05:04,045
+So let's do a var sounds
+
+87
+00:05:04,046 --> 00:05:08,527
+equals new List<Sound>, like that.
+
+88
+00:05:09,814 --> 00:05:13,482
+And then we'll just do sounds.Add.
+
+89
+00:05:15,998 --> 00:05:20,554
+Add new Sound, and we'll use the overloaded constructor,
+
+90
+00:05:20,555 --> 00:05:22,858
+to give it a Name.
+
+91
+00:05:22,859 --> 00:05:27,750
+So for example, maybe Cow.
+
+92
+00:05:29,224 --> 00:05:30,685
+And...
+
+93
+00:05:32,330 --> 00:05:33,804
+Animals.
+
+94
+00:05:33,805 --> 00:05:36,841
+And we'll just follow that little pattern there
+
+95
+00:05:36,842 --> 00:05:38,958
+a bunch of times.
+
+96
+00:05:40,949 --> 00:05:43,969
+And then we'll return sounds, okay?
+
+97
+00:05:48,584 --> 00:05:51,904
+So you know, the other one's Cat.
+
+98
+00:05:51,905 --> 00:05:56,546
+Then here, I'm going to have to look at my folders.
+
+99
+00:05:56,547 --> 00:06:00,403
+Cartoons, Gun, and Spring, okay.
+
+100
+00:06:00,404 --> 00:06:05,232
+Gun, Spring, and both of those are,
+
+101
+00:06:05,233 --> 00:06:08,321
+Cartoons.
+
+102
+00:06:11,025 --> 00:06:12,987
+Great.
+
+103
+00:06:12,988 --> 00:06:16,673
+Now Taunts: Clock and LOL, okay.
+
+104
+00:06:26,384 --> 00:06:30,156
+And then finally, Warnings: Ship and Siren.
+
+105
+00:06:35,703 --> 00:06:38,852
+Whoops whoops, Warnings, there we go.
+
+106
+00:06:40,720 --> 00:06:42,579
+Okay, so far so good.
+
+107
+00:06:42,580 --> 00:06:46,573
+So we can get a list of new sounds, so public static void GetAllSounds,
+
+108
+00:06:46,574 --> 00:06:51,027
+public static void GetAllSounds.
+
+109
+00:06:54,430 --> 00:06:56,392
+And first thing I'll do is just
+
+110
+00:06:56,393 --> 00:07:00,180
+var sounds = getSounds.
+
+111
+00:07:00,181 --> 00:07:04,157
+So what I want to do is be able to pass in
+
+112
+00:07:04,158 --> 00:07:06,768
+an ObservableCollection of sound.
+
+113
+00:07:06,769 --> 00:07:07,980
+Because that's what I'm going to have
+
+114
+00:07:07,981 --> 00:07:10,727
+passing in from MainPage.xaml.cs,
+
+115
+00:07:10,728 --> 00:07:14,733
+to this SoundManager, so ObservableCollection
+
+116
+00:07:14,734 --> 00:07:18,619
+of type Sound, like so.
+
+117
+00:07:18,620 --> 00:07:22,077
+Let me get that namespace in there,
+
+118
+00:07:22,078 --> 00:07:24,600
+System.Collections.ObjectModel, great.
+
+119
+00:07:24,601 --> 00:07:27,885
+Whoops I've gotta give it...
+
+120
+00:07:33,472 --> 00:07:37,294
+Observe, I don't know what a good name for this is,
+
+121
+00:07:37,295 --> 00:07:38,933
+sounds, here I'll just do this,
+
+122
+00:07:38,934 --> 00:07:41,680
+I'm going to call this allSounds.
+
+123
+00:07:41,681 --> 00:07:43,199
+Hard to know what to name things,
+
+124
+00:07:43,200 --> 00:07:45,349
+I keep saying that, but it's true.
+
+125
+00:07:45,350 --> 00:07:48,217
+All right, all sounds, okay.
+
+126
+00:07:48,218 --> 00:07:51,408
+So sounds.Clear() because I want to get rid of
+
+127
+00:07:51,409 --> 00:07:53,968
+anything that's already in the Collection.
+
+128
+00:07:53,969 --> 00:07:57,978
+And then do you remember what we did with that nifty little.
+
+129
+00:08:01,245 --> 00:08:04,982
+That nifty little LAMBDA expression we did here?
+
+130
+00:08:13,244 --> 00:08:16,498
+I think I can do that, isn't that how that would work?
+
+131
+00:08:16,499 --> 00:08:20,070
+Yeah, I think that'll work.
+
+132
+00:08:20,071 --> 00:08:21,862
+Well, we'll test it and make sure it works,
+
+133
+00:08:21,863 --> 00:08:23,381
+but I'm pretty sure that's the LAMBDA expression
+
+134
+00:08:23,382 --> 00:08:26,162
+I need to add, so we're gonna loop through every sound
+
+135
+00:08:26,163 --> 00:08:28,739
+that we pulled back from this getSounds.
+
+136
+00:08:28,740 --> 00:08:31,965
+And for each one, I'm going to add it to this
+
+137
+00:08:31,966 --> 00:08:35,310
+ObservableCollection<Sound> called sounds.
+
+138
+00:08:35,311 --> 00:08:37,870
+I don't need to return anything because
+
+139
+00:08:37,871 --> 00:08:41,368
+it's passed in by reference.
+
+140
+00:08:41,369 --> 00:08:44,713
+Let's do the same thing here with public static
+
+141
+00:08:44,714 --> 00:08:49,645
+void GetSoundsByCategory,
+
+142
+00:08:49,646 --> 00:08:52,393
+and it's going to work almost identically.
+
+143
+00:08:52,394 --> 00:08:55,111
+We'll still have
+
+144
+00:08:55,112 --> 00:08:58,746
+this ObservableCollection<Sound>
+
+145
+00:08:58,747 --> 00:09:00,931
+passed in, but I'm also going to pass in
+
+146
+00:09:00,932 --> 00:09:04,532
+a Sound Category called soundCategory,
+
+147
+00:09:04,533 --> 00:09:07,057
+and we'll just filter on that.
+
+148
+00:09:10,717 --> 00:09:14,309
+And let me fix that, okay.
+
+149
+00:09:16,296 --> 00:09:21,222
+So here again we'll get allSounds = getSounds.
+
+150
+00:09:21,223 --> 00:09:24,789
+This time I want to filter though,
+
+151
+00:09:24,790 --> 00:09:27,036
+and so var filteredSounds...
+
+152
+00:09:31,601 --> 00:09:36,092
+Equals allSounds.Where, and,
+
+153
+00:09:36,093 --> 00:09:40,372
+p.Category == soundCategory, alright.
+
+154
+00:09:40,373 --> 00:09:45,112
+And then I'll go sounds.Clear(),
+
+155
+00:09:45,113 --> 00:09:49,015
+just like before, and then,
+
+156
+00:09:49,016 --> 00:09:52,735
+filteredSounds.ForEach.
+
+157
+00:09:52,736 --> 00:09:56,217
+Okay, yeah, why can't I do that?
+
+158
+00:09:56,218 --> 00:09:59,715
+Because I didn't ToList this on the end I think.
+
+159
+00:10:02,692 --> 00:10:04,330
+There we go.
+
+160
+00:10:04,331 --> 00:10:07,930
+filteredSounds.ForEach,
+
+161
+00:10:07,931 --> 00:10:10,013
+given p,
+
+162
+00:10:10,014 --> 00:10:14,279
+call sounds and Add that item
+
+163
+00:10:14,280 --> 00:10:17,743
+to our ObservableCollection<Sound>.
+
+164
+00:10:17,744 --> 00:10:19,416
+Okay so that's all the setup we should have to do for
+
+165
+00:10:19,417 --> 00:10:22,232
+SoundManager, and for sound at least for the moment.
+
+166
+00:10:22,233 --> 00:10:25,321
+Now in the MainPage.xaml.cs,
+
+167
+00:10:25,322 --> 00:10:29,287
+we're going to want to create a
+
+168
+00:10:29,288 --> 00:10:32,946
+private reference to
+
+169
+00:10:32,947 --> 00:10:36,355
+the ObservableCollection
+
+170
+00:10:36,356 --> 00:10:40,479
+ObservableCollection called sounds.
+
+171
+00:10:45,093 --> 00:10:48,916
+Whoops, ObservableCollection<Sound>.
+
+172
+00:10:48,917 --> 00:10:51,373
+Whoops.
+
+173
+00:10:54,749 --> 00:10:57,138
+Alright, there we go.
+
+174
+00:10:57,139 --> 00:11:00,397
+Great, okay, very good.
+
+175
+00:11:00,398 --> 00:11:03,071
+And what I want to do is...
+
+176
+00:11:07,276 --> 00:11:10,808
+First of all, after we initialize the component.
+
+177
+00:11:10,809 --> 00:11:15,518
+Let's call the SoundManager,
+
+178
+00:11:15,519 --> 00:11:19,716
+and get all sounds passing in
+
+179
+00:11:19,717 --> 00:11:22,515
+our ObservableCollection<Sound>,
+
+180
+00:11:22,516 --> 00:11:24,708
+and that should populate it now.
+
+181
+00:11:24,709 --> 00:11:26,892
+Okay, very good.
+
+182
+00:11:26,893 --> 00:11:31,466
+And that's all I should have to do for the moment,
+
+183
+00:11:31,467 --> 00:11:34,743
+and let me just see if I can Bind to it.
+
+184
+00:11:36,251 --> 00:11:39,573
+So let's create an XML namespace
+
+185
+00:11:39,574 --> 00:11:43,828
+for data, and we're going to set that equal to,
+
+186
+00:11:43,829 --> 00:11:46,917
+whoops, not application insights.
+
+187
+00:11:46,918 --> 00:11:51,849
+We'll set that equal to UWPSoundBoard.Model.
+
+188
+00:11:51,850 --> 00:11:54,187
+Great.
+
+189
+00:11:54,188 --> 00:11:57,719
+Here in my DataTemplate,
+
+190
+00:11:57,720 --> 00:12:00,825
+I'm going to need to set the DataType
+
+191
+00:12:00,826 --> 00:12:04,290
+equal to data:Sound, okay?
+
+192
+00:12:04,291 --> 00:12:09,222
+And then let's compile, you can see that,
+
+193
+00:12:09,223 --> 00:12:11,894
+I'm getting a blue squiggly, it's just because we haven't
+
+194
+00:12:11,895 --> 00:12:14,130
+built in a while, let's make sure everything builds.
+
+195
+00:12:18,485 --> 00:12:20,293
+Okay, good.
+
+196
+00:12:20,294 --> 00:12:23,410
+And then I'm going to set the Source
+
+197
+00:12:26,250 --> 00:12:29,213
+Source=x:Bind, and then...
+
+198
+00:12:30,960 --> 00:12:35,089
+What's the name, AudioFile?
+
+199
+00:12:35,090 --> 00:12:37,803
+Does that sound right?
+
+200
+00:12:40,643 --> 00:12:42,912
+I think that's right.
+
+201
+00:12:42,913 --> 00:12:46,325
+Oh, I'm sorry, duh, ImageFile not AudioFile.
+
+202
+00:12:48,293 --> 00:12:49,777
+Okay, that's better.
+
+203
+00:12:49,778 --> 00:12:51,671
+Let's see what this does.
+
+204
+00:12:51,672 --> 00:12:54,163
+Oh and then I need to give it a Source, so,
+
+205
+00:12:54,164 --> 00:12:57,423
+ItemsSource,
+
+206
+00:12:57,424 --> 00:13:02,252
+and we'll go x:Bind that to Sounds.
+
+207
+00:13:04,428 --> 00:13:07,703
+And I'll cross my fingers, and with any luck,
+
+208
+00:13:07,704 --> 00:13:10,929
+we'll get at least some images on screen.
+
+209
+00:13:16,596 --> 00:13:18,830
+Ah, okay.
+
+210
+00:13:18,831 --> 00:13:22,397
+No reference, okay we can fix that.
+
+211
+00:13:22,398 --> 00:13:25,469
+Mm, yeah.
+
+212
+00:13:34,210 --> 00:13:37,552
+Alright, it's not pretty,
+
+213
+00:13:37,553 --> 00:13:40,487
+but I got all of my icons there.
+
+214
+00:13:40,488 --> 00:13:43,542
+Yeah, things are pretty ugly right now.
+
+215
+00:13:43,543 --> 00:13:46,443
+But I got the Binding to kind of work.
+
+216
+00:13:46,444 --> 00:13:51,085
+And we'll fix, well let's take a quick stab at
+
+217
+00:13:51,086 --> 00:13:54,243
+why we might be getting some oddness there.
+
+218
+00:13:54,244 --> 00:13:56,205
+I think the fundamental problem here is that
+
+219
+00:13:56,206 --> 00:14:00,216
+that SplitView should be in Grid.Row="1".
+
+220
+00:14:00,217 --> 00:14:03,526
+I think that's pretty much the biggie.
+
+221
+00:14:06,333 --> 00:14:09,216
+So let's try that again, that should at least push that
+
+222
+00:14:09,217 --> 00:14:11,197
+grey little area down a little bit.
+
+223
+00:14:16,443 --> 00:14:18,838
+Okay, got that going for us now.
+
+224
+00:14:18,839 --> 00:14:21,551
+And while we're here and while I'm thinking about it,
+
+225
+00:14:21,552 --> 00:14:25,398
+let's go ahead and get the...
+
+226
+00:14:30,095 --> 00:14:32,688
+The HamburgerButton_Click working.
+
+227
+00:14:33,644 --> 00:14:36,858
+So we'll go MySplitView.IsOpen
+
+228
+00:14:36,859 --> 00:14:39,890
+MySplitView.IsOpen = !MySplitView.IsPaneOpen
+
+229
+00:14:39,891 --> 00:14:44,527
+MySplitView.IsOpen = !MySplitView.IsPaneOpen
+
+230
+00:14:44,528 --> 00:14:49,241
+Like so, and at least that'll open that up.
+
+231
+00:14:49,242 --> 00:14:52,467
+Now the other thing that I need to do here,
+
+232
+00:14:52,468 --> 00:14:54,361
+I'm going to need one more,
+
+233
+00:14:54,362 --> 00:14:56,034
+I'm going to take a different tact,
+
+234
+00:14:56,035 --> 00:14:59,590
+I think I said with regards to the,
+
+235
+00:14:59,591 --> 00:15:03,037
+Pane of our SplitView,
+
+236
+00:15:03,038 --> 00:15:05,529
+I was going to use a ListView Control instead.
+
+237
+00:15:05,530 --> 00:15:09,693
+And so what I need to do is make another Model class,
+
+238
+00:15:09,694 --> 00:15:13,397
+a View Model class called MenuItem.
+
+239
+00:15:13,398 --> 00:15:15,291
+So let me go ahead and just do that real quick.
+
+240
+00:15:15,292 --> 00:15:16,776
+It's pretty easy, it'll only take
+
+241
+00:15:16,777 --> 00:15:18,687
+a minute or two to do this.
+
+242
+00:15:18,688 --> 00:15:20,865
+So let's go MenuItem.
+
+243
+00:15:26,112 --> 00:15:30,002
+And let's go public class MenuItem,
+
+244
+00:15:30,003 --> 00:15:32,709
+and we'll go...
+
+245
+00:15:35,839 --> 00:15:40,702
+IconFile, and then SoundCategory,
+
+246
+00:15:40,703 --> 00:15:44,201
+so what Category does that icon represent?
+
+247
+00:15:44,202 --> 00:15:46,894
+And that'll help us to filter.
+
+248
+00:15:46,895 --> 00:15:50,768
+And filter the sounds based on the selected menu item
+
+249
+00:15:50,769 --> 00:15:53,106
+in the SplitView Pane.
+
+250
+00:15:53,107 --> 00:15:57,048
+So back here in the MainPage.XAML then,
+
+251
+00:15:57,049 --> 00:15:59,858
+what we'll do is...
+
+252
+00:16:02,613 --> 00:16:04,680
+Do it right here I guess.
+
+253
+00:16:04,681 --> 00:16:08,690
+I'm going to create a private
+
+254
+00:16:08,691 --> 00:16:11,412
+List<MenuItem>.
+
+255
+00:16:14,064 --> 00:16:17,186
+Called MenuItems.
+
+256
+00:16:30,010 --> 00:16:33,286
+And so we'll set that, and then we'll set the Category
+
+257
+00:16:33,287 --> 00:16:37,359
+equal to SoundCategory.Animals.
+
+258
+00:16:40,642 --> 00:16:44,771
+Now the IconFile will be at
+
+259
+00:16:44,772 --> 00:16:48,566
+Assets/Icons/animals.png
+
+260
+00:16:48,567 --> 00:16:52,167
+Assets/Icons/animals.png, like that.
+
+261
+00:16:52,168 --> 00:16:54,556
+So let me go.
+
+262
+00:16:54,557 --> 00:16:58,345
+And let's go cartoon.
+
+263
+00:17:01,595 --> 00:17:03,773
+And taunt.
+
+264
+00:17:04,753 --> 00:17:06,708
+And warning.
+
+265
+00:17:13,030 --> 00:17:15,207
+So cartoons.
+
+266
+00:17:18,736 --> 00:17:20,214
+Taunts.
+
+267
+00:17:21,047 --> 00:17:23,316
+Warnings.
+
+268
+00:17:23,317 --> 00:17:24,732
+Great.
+
+269
+00:17:24,733 --> 00:17:27,804
+Now let's Bind those here
+
+270
+00:17:27,805 --> 00:17:30,989
+on our ListView.
+
+271
+00:17:32,447 --> 00:17:33,856
+So...
+
+272
+00:17:36,236 --> 00:17:37,611
+Let me go ahead...
+
+273
+00:17:46,305 --> 00:17:49,711
+And I'm going to add a StackPanel.
+
+274
+00:17:51,544 --> 00:17:54,950
+With the Orientation="Horizontal".
+
+275
+00:17:56,920 --> 00:17:59,991
+And here I'm going to add an Image,
+
+276
+00:17:59,992 --> 00:18:02,955
+and I'm going to set its Source
+
+277
+00:18:02,956 --> 00:18:06,891
+equal to the IconFile.
+
+278
+00:18:10,397 --> 00:18:13,929
+And I think I need to set the
+
+279
+00:18:13,930 --> 00:18:17,194
+Height="0.5", Width="45".
+
+280
+00:18:17,195 --> 00:18:20,693
+I may have to reduce that, but let's start with that.
+
+281
+00:18:20,694 --> 00:18:24,891
+And then the TextBlock next to it, it'll have the Text,
+
+282
+00:18:24,892 --> 00:18:28,459
+{x:Bind Category}
+
+283
+00:18:28,460 --> 00:18:31,179
+{x:Bind Category}.
+
+284
+00:18:35,374 --> 00:18:37,074
+Like that.
+
+285
+00:18:37,934 --> 00:18:40,641
+FontSize="18".
+
+286
+00:18:41,808 --> 00:18:44,179
+And I know I'm going to need some padding on the left.
+
+287
+00:18:44,180 --> 00:18:47,183
+Actually let's go Margin on the left,
+
+288
+00:18:47,184 --> 00:18:49,856
+"10,0,0,0".
+
+289
+00:18:51,723 --> 00:18:55,392
+And then on the ListView, I'm going to set the ItemsSource
+
+290
+00:18:55,393 --> 00:18:59,368
+ItemsSource="{x:Bind MenuItems}"
+
+291
+00:18:59,369 --> 00:19:02,269
+ItemsSource="{x:Bind MenuItems}".
+
+292
+00:19:02,270 --> 00:19:04,880
+Alright, let's see if that works.
+
+293
+00:19:04,881 --> 00:19:06,809
+It may not look pretty, but let's just
+
+294
+00:19:06,810 --> 00:19:09,619
+make sure it even works here.
+
+295
+00:19:11,264 --> 00:19:13,379
+Oh.
+
+296
+00:19:13,380 --> 00:19:15,427
+Where do I have,
+
+297
+00:19:15,428 --> 00:19:18,687
+MenuItems being paged cannot be found on it.
+
+298
+00:19:22,704 --> 00:19:26,424
+IconFile, Category, wait, what?
+
+299
+00:19:28,955 --> 00:19:31,123
+MenuItems.
+
+300
+00:19:31,124 --> 00:19:34,997
+Uh, whoops, whoops.
+
+301
+00:19:34,998 --> 00:19:38,701
+ListView, I'm going to need a template here.
+
+302
+00:19:38,702 --> 00:19:41,699
+Kind of got ahead of myself there, didn't I?
+
+303
+00:19:44,369 --> 00:19:49,368
+And let's go x:DataType="data:MenuItem".
+
+304
+00:19:52,819 --> 00:19:55,873
+x:DataType="data:MenuItem".
+
+305
+00:19:55,874 --> 00:19:59,696
+That should work, let's build it.
+
+306
+00:19:59,697 --> 00:20:02,916
+Okay.
+
+307
+00:20:12,298 --> 00:20:14,158
+What did I do this time?
+
+308
+00:20:14,159 --> 00:20:17,537
+Oh, here again, same issue as before.
+
+309
+00:20:19,615 --> 00:20:23,847
+MenuItems = new List<MenuItem>.
+
+310
+00:20:23,848 --> 00:20:25,992
+And go.
+
+311
+00:20:34,737 --> 00:20:37,387
+That is not what I had in mind.
+
+312
+00:20:37,388 --> 00:20:41,255
+Somewhere I have erred.
+
+313
+00:20:44,010 --> 00:20:45,966
+What did I do wrong?
+
+314
+00:20:59,485 --> 00:21:02,656
+All right, I think I just lost my mind, that's all.
+
+315
+00:21:03,773 --> 00:21:06,639
+Let's see if that works, fixes it.
+
+316
+00:21:06,640 --> 00:21:09,318
+There we go.
+
+317
+00:21:09,319 --> 00:21:12,834
+Alright, this, the margins and everything are off,
+
+318
+00:21:12,835 --> 00:21:14,626
+but we can fix that pretty easily.
+
+319
+00:21:14,627 --> 00:21:16,332
+I'm going to actually do that in the next video,
+
+320
+00:21:16,333 --> 00:21:17,885
+this one's getting kind of long.
+
+321
+00:21:17,886 --> 00:21:22,084
+Okay, so we created two Data Sources,
+
+322
+00:21:22,085 --> 00:21:25,650
+one for Menu, but the main one is for the Sounds,
+
+323
+00:21:25,651 --> 00:21:27,818
+and we also created a SoundManager that lets us
+
+324
+00:21:27,819 --> 00:21:31,163
+get at those sounds and split them up by category.
+
+325
+00:21:31,164 --> 00:21:33,415
+And we'll continue working on this
+
+326
+00:21:33,416 --> 00:21:36,317
+in the next lesson when we actually now
+
+327
+00:21:36,318 --> 00:21:38,962
+hook up the sounds to the media element
+
+328
+00:21:38,963 --> 00:21:41,368
+and start playing things, that'll be exciting.
+
+329
+00:21:41,369 --> 00:21:43,990
+Okay, we'll see you in the next video, thanks.  
+

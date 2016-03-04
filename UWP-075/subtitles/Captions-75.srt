@@ -1,0 +1,1116 @@
+1
+00:00:05,223 --> 00:00:08,689
+The goal of this lesson isto display details about      
+
+2
+00:00:08,690 --> 00:00:13,180
+the character that was selectedin the master list view.      
+
+3
+00:00:13,181 --> 00:00:18,880
+We want to displaythe characters larger      
+
+4
+00:00:18,881 --> 00:00:22,790
+version of the thumbnail image,their name, a description.      
+
+5
+00:00:22,791 --> 00:00:25,990
+And then, eventually we'lldisplay, in the next video,      
+
+6
+00:00:25,991 --> 00:00:29,196
+all the comic books relatedto that particular character.      
+
+7
+00:00:29,197 --> 00:00:31,930
+At least the mostrecent comic books.      
+
+8
+00:00:31,931 --> 00:00:34,490
+Now, there's also another thingthat I wanna address in this      
+
+9
+00:00:34,491 --> 00:00:35,610
+lesson, and      
+
+10
+00:00:35,611 --> 00:00:40,509
+that is, sometimes you're onlygonna get back a small number of      
+
+11
+00:00:41,660 --> 00:00:45,720
+characters that satisfy theconditions that we have here.      
+
+12
+00:00:45,721 --> 00:00:47,650
+Many of them don'thave thumbnails.      
+
+13
+00:00:47,651 --> 00:00:50,850
+We might get an errorwhenever we're making a call      
+
+14
+00:00:50,851 --> 00:00:53,820
+into a resourceacross the Internet.      
+
+15
+00:00:53,821 --> 00:00:57,570
+The Marvel comics APIservers could have an issue.      
+
+16
+00:00:57,571 --> 00:01:01,310
+The JSON that comesback is botched or      
+
+17
+00:01:01,311 --> 00:01:03,540
+isn't quite formed correctly.      
+
+18
+00:01:03,541 --> 00:01:08,150
+The JSON that does come backwhen we try to do that step      
+
+19
+00:01:08,151 --> 00:01:11,690
+that I'm always nervousabout whenever we      
+
+20
+00:01:11,691 --> 00:01:14,850
+deserialize that JSONinto our object graph.      
+
+21
+00:01:14,851 --> 00:01:16,240
+That could go bad.      
+
+22
+00:01:16,241 --> 00:01:19,790
+So, I need a strategy for      
+
+23
+00:01:19,791 --> 00:01:24,460
+recovering whenever ourapplication simply can't      
+
+24
+00:01:24,461 --> 00:01:27,730
+get on the first tryeverything it needs.      
+
+25
+00:01:27,731 --> 00:01:28,982
+So, we'll address that as well.      
+
+26
+00:01:28,983 --> 00:01:30,386
+But let's start offwith the simple stuff.      
+
+27
+00:01:30,387 --> 00:01:34,620
+I'm gonna go over hereto the mainpage.xaml.      
+
+28
+00:01:34,621 --> 00:01:40,730
+And what I want to dois flesh out the grid.      
+
+29
+00:01:40,731 --> 00:01:43,154
+The details grid orthe grid detail.      
+
+30
+00:01:44,722 --> 00:01:47,218
+The detail grid.      
+
+31
+00:01:47,219 --> 00:01:50,531
+All right,let me get into code mode here,      
+
+32
+00:01:50,532 --> 00:01:55,424
+and what we're gonna wanna dois create some RowDefinitions.      
+
+33
+00:01:58,687 --> 00:02:06,900
+And there's gonna bethree distinct areas.      
+
+34
+00:02:06,901 --> 00:02:10,800
+The top row, will be      
+
+35
+00:02:14,390 --> 00:02:17,076
+where we display the detailsof the character.      
+
+36
+00:02:17,077 --> 00:02:21,312
+The second row, will be where wedisplay the list of comics that      
+
+37
+00:02:21,313 --> 00:02:24,270
+character has been in recently,and then finally,      
+
+38
+00:02:24,271 --> 00:02:26,980
+as you click on one ofthose comics, we'll display      
+
+39
+00:02:26,981 --> 00:02:32,120
+the details about a givencomic in the third row, okay?      
+
+40
+00:02:32,121 --> 00:02:34,130
+The next thing we'regonna wanna do,      
+
+41
+00:02:34,131 --> 00:02:37,310
+is now that we have ourrow definitions created,      
+
+42
+00:02:37,311 --> 00:02:39,960
+we're gonna focus on thatfirst row definition, so      
+
+43
+00:02:39,961 --> 00:02:42,390
+we're gonna create anothergrid inside of it.      
+
+44
+00:02:42,391 --> 00:02:45,968
+So, just to make sure weremember what we're doing here,      
+
+45
+00:02:45,969 --> 00:02:47,283
+grid.row = 0, and      
+
+46
+00:02:47,284 --> 00:02:51,096
+I'm gonna make sure to set thehorizontal alignment to left.      
+
+47
+00:02:51,097 --> 00:02:52,845
+Most of these shouldbe defaults but      
+
+48
+00:02:52,846 --> 00:02:54,776
+I'm just not takingany chances here.      
+
+49
+00:02:58,117 --> 00:03:02,843
+And then, inside of that gridI'm gonna create one row      
+
+50
+00:03:02,844 --> 00:03:07,528
+that will display the Name and      
+
+51
+00:03:07,529 --> 00:03:12,920
+a second row, that willdisplay the description.      
+
+52
+00:03:12,921 --> 00:03:14,080
+And then, two columns,      
+
+53
+00:03:14,081 --> 00:03:17,397
+a left column that willdisplay the image and      
+
+54
+00:03:17,398 --> 00:03:21,910
+a right column that will displaythe name and the description.      
+
+55
+00:03:21,911 --> 00:03:23,710
+Okay, so two by two grid.      
+
+56
+00:03:24,780 --> 00:03:27,027
+So, row definitions, and      
+
+57
+00:03:27,028 --> 00:03:31,240
+we'll just set the heighton each of these to star.      
+
+58
+00:03:32,670 --> 00:03:36,380
+Give them equal width there.      
+
+59
+00:03:37,760 --> 00:03:39,523
+And we'll do the samewith column definitions.      
+
+60
+00:03:46,743 --> 00:03:51,356
+The first column,I'm gonna set to auto, And      
+
+61
+00:03:51,357 --> 00:03:54,963
+the second column widthI'm gonna set to star.      
+
+62
+00:03:54,964 --> 00:03:56,686
+Now, all of this issubject to change, so      
+
+63
+00:03:56,687 --> 00:03:58,972
+this is just where I'm starting.      
+
+64
+00:03:58,973 --> 00:04:02,240
+All right, on the left sideI want the image to appear.      
+
+65
+00:04:02,241 --> 00:04:07,705
+So I'm gonna set thatimage Grid.Column = "0".      
+
+66
+00:04:07,706 --> 00:04:12,310
+But actually,I want it to span both rows.      
+
+67
+00:04:12,311 --> 00:04:17,989
+So, Grid.RowSpan="2".      
+
+68
+00:04:17,990 --> 00:04:21,748
+And then, we're gonna need to      
+
+69
+00:04:21,749 --> 00:04:26,580
+populate its valueprogrmatically.      
+
+70
+00:04:26,581 --> 00:04:29,940
+So, I'm gonna set the name ofthis equal to DetailImage.      
+
+71
+00:04:31,480 --> 00:04:35,930
+Next up, we're gonna havethe text block that will contain      
+
+72
+00:04:35,931 --> 00:04:38,072
+the name of the characters.      
+
+73
+00:04:38,073 --> 00:04:40,150
+So, DetailNameTextBlock.      
+
+74
+00:04:44,271 --> 00:04:47,491
+We're gonna setthe column equal to 1, so      
+
+75
+00:04:47,492 --> 00:04:50,443
+the second column,and I'm also gonna      
+
+76
+00:04:50,444 --> 00:04:54,300
+make the font size a littlebit larger than before.      
+
+77
+00:04:54,301 --> 00:04:56,260
+So, we'll set the fontsize at like 32.      
+
+78
+00:04:56,261 --> 00:05:00,511
+And then finally, we'll createanother text block that will      
+
+79
+00:05:00,512 --> 00:05:03,779
+contain the description,if there is one, and      
+
+80
+00:05:03,780 --> 00:05:05,577
+just like the thumbnail,      
+
+81
+00:05:05,578 --> 00:05:09,029
+many of the characters donot have descriptions.      
+
+82
+00:05:11,664 --> 00:05:15,420
+So, that's fine, we just want todisplay it if there's not one.      
+
+83
+00:05:15,421 --> 00:05:20,507
+So, we're gonna set thatin Row="1" Grid.Column="1".      
+
+84
+00:05:20,508 --> 00:05:23,750
+And I'm also gonna go ahead,while I'm thinking about this,      
+
+85
+00:05:23,751 --> 00:05:26,600
+and set the text wrapping.      
+
+86
+00:05:26,601 --> 00:05:28,900
+Because this mightbe a paragraph, so      
+
+87
+00:05:28,901 --> 00:05:31,260
+I'm gonna set the wrappingequal to wrap.      
+
+88
+00:05:32,510 --> 00:05:34,156
+Let me put these ona separate line, so      
+
+89
+00:05:34,157 --> 00:05:35,759
+you can see thema little bit easier.      
+
+90
+00:05:43,375 --> 00:05:43,955
+Great.      
+
+91
+00:05:48,320 --> 00:05:50,034
+All right.The next thing that I wanna do      
+
+92
+00:05:50,035 --> 00:05:52,194
+is go back to our list view,and I wanna make it,      
+
+93
+00:05:52,195 --> 00:05:54,483
+so that you can actuallyclick on one of the items.      
+
+94
+00:05:54,484 --> 00:06:00,345
+So, IsItemClickEnabled="true".      
+
+95
+00:06:00,346 --> 00:06:07,856
+And then,ItemClick="NewEventHandler".      
+
+96
+00:06:07,857 --> 00:06:13,342
+I'm gonna go to thatnew event handler      
+
+97
+00:06:13,343 --> 00:06:17,971
+using F12 on my keyboard, and      
+
+98
+00:06:17,972 --> 00:06:25,180
+what we wanna do is to getthe selected character.      
+
+99
+00:06:26,200 --> 00:06:29,710
+So, the item click event argswill actually give us the item      
+
+100
+00:06:29,711 --> 00:06:33,910
+that was clicked, and that willbe an instance of character.      
+
+101
+00:06:33,911 --> 00:06:37,937
+It's just unfortunatelysaved as an object.      
+
+102
+00:06:37,938 --> 00:06:44,936
+So, we're gonna have toa casting back to character.      
+
+103
+00:06:44,937 --> 00:06:48,872
+So, var selectedCharacter =      
+
+104
+00:06:53,633 --> 00:06:56,637
+Then, I'm going topopulate the easy stuff.      
+
+105
+00:06:56,638 --> 00:07:03,702
+DetailNameTextBlock.Text =selectedCharacter.name.      
+
+106
+00:07:03,703 --> 00:07:05,978
+And we'll do the same thing forthe description.      
+
+107
+00:07:10,540 --> 00:07:13,794
+Now, getting the image todisplay an image will be      
+
+108
+00:07:13,795 --> 00:07:15,350
+a little bit trickier.      
+
+109
+00:07:15,351 --> 00:07:19,180
+We're gonna have to createa bitmap image, and      
+
+110
+00:07:19,181 --> 00:07:22,650
+once we populate the bitmapimage's source, then,      
+
+111
+00:07:22,651 --> 00:07:26,820
+we can set it as the sourceof our XAML image control.      
+
+112
+00:07:26,821 --> 00:07:27,760
+So, this is how you do it.      
+
+113
+00:07:27,761 --> 00:07:28,930
+You might even wannasave this little snippet      
+
+114
+00:07:28,931 --> 00:07:29,489
+to your cheat sheet.      
+
+115
+00:07:35,989 --> 00:07:40,918
+Now, the bitmap image object,we're gonna have to add a using      
+
+116
+00:07:40,919 --> 00:07:45,198
+statement towindows.ui.xaml.media.imaging,      
+
+117
+00:07:45,199 --> 00:07:45,949
+like so.      
+
+118
+00:07:45,950 --> 00:07:48,027
+And we're gonna needto create a new URI.      
+
+119
+00:07:52,428 --> 00:08:02,428
+And we're going to give itthe location by giving it selectedCharacter.thumbnail.la-      
+
+120
+00:08:04,283 --> 00:08:04,966
+rge.      
+
+121
+00:08:04,967 --> 00:08:08,680
+And then, we're gonna giveit the URI kind of absolute.      
+
+122
+00:08:09,765 --> 00:08:11,130
+Cuz it's gonna be a URL.      
+
+123
+00:08:12,470 --> 00:08:16,000
+All right, it doesn't like,oh I didn't spell it correctly.      
+
+124
+00:08:16,001 --> 00:08:16,500
+There we go.      
+
+125
+00:08:18,530 --> 00:08:19,898
+All right, so      
+
+126
+00:08:19,899 --> 00:08:25,830
+largeImage.uri.UriSource = uri,obviously.      
+
+127
+00:08:25,831 --> 00:08:28,720
+And now, it should haveeverything it needs to be a real      
+
+128
+00:08:28,721 --> 00:08:29,530
+bitmap image.      
+
+129
+00:08:29,531 --> 00:08:38,141
+And so, we can do thisDetailImage.Source = largeImage.      
+
+130
+00:08:38,142 --> 00:08:39,071
+That should work.      
+
+131
+00:08:42,136 --> 00:08:42,820
+Let's go ahead and try it.      
+
+132
+00:08:50,540 --> 00:08:54,070
+Okay, so this is an errorI run into occasionally.      
+
+133
+00:08:55,130 --> 00:08:57,056
+I'm not exactlysure what happens.      
+
+134
+00:08:57,057 --> 00:08:59,694
+In this case,I believe this to be      
+
+135
+00:08:59,695 --> 00:09:03,290
+an issue withthe deserialization process.      
+
+136
+00:09:03,291 --> 00:09:08,428
+This is one of thosethings I seek to resolve      
+
+137
+00:09:08,429 --> 00:09:14,294
+by adding some some code,in the very next step.      
+
+138
+00:09:14,295 --> 00:09:15,397
+And we hit thisa couple of times.      
+
+139
+00:09:19,402 --> 00:09:22,431
+All right, buteventually we get data.      
+
+140
+00:09:22,432 --> 00:09:23,687
+Okay, so now,      
+
+141
+00:09:23,688 --> 00:09:28,140
+this will kind of show whetherwe got this right or not.      
+
+142
+00:09:28,141 --> 00:09:30,880
+I'm going to click onone of the items and      
+
+143
+00:09:30,881 --> 00:09:32,840
+you can see the image andthe name.      
+
+144
+00:09:34,220 --> 00:09:35,360
+The image and the name.      
+
+145
+00:09:35,361 --> 00:09:40,187
+The image and the name.      
+
+146
+00:09:40,188 --> 00:09:43,805
+Like I said, most of these itemsdon't have descriptions, but      
+
+147
+00:09:43,806 --> 00:09:45,949
+Pete Wisdom doeshave a description,      
+
+148
+00:09:45,950 --> 00:09:47,356
+which is awesome for us,      
+
+149
+00:09:47,357 --> 00:09:51,540
+because now we can kind of workwith the spacing of things here.      
+
+150
+00:09:51,541 --> 00:09:52,340
+If you take a look.      
+
+151
+00:09:52,341 --> 00:09:57,220
+First of all,I gave each of these rows equal      
+
+152
+00:09:57,221 --> 00:10:00,040
+space by giving them both starbut I think I'm just gonna make      
+
+153
+00:10:00,041 --> 00:10:04,510
+this top row auto, andthe bottom row, star or auto.      
+
+154
+00:10:04,511 --> 00:10:06,230
+Probably, star.      
+
+155
+00:10:06,231 --> 00:10:06,730
+And then,      
+
+156
+00:10:06,731 --> 00:10:10,000
+I'm gonna add some marginsaround the size of this guy.      
+
+157
+00:10:10,001 --> 00:10:12,590
+I'm actually gonnapush everything off      
+
+158
+00:10:12,591 --> 00:10:14,550
+about 10 pixels there.      
+
+159
+00:10:14,551 --> 00:10:15,490
+Okay.      
+
+160
+00:10:15,491 --> 00:10:17,140
+So, we've got a littlebit of work to do.      
+
+161
+00:10:17,141 --> 00:10:22,792
+I'll push that up, or that downa little bit as well, okay.      
+
+162
+00:10:22,793 --> 00:10:28,132
+So let's get started in here,in the MainPage.xaml.      
+
+163
+00:10:28,133 --> 00:10:31,223
+I'm gonna go to the DetailImage,and      
+
+164
+00:10:31,224 --> 00:10:35,481
+I'm gonna set its verticalalignment equal to top.      
+
+165
+00:10:35,482 --> 00:10:39,320
+I think that have might havebeen the issue with that.      
+
+166
+00:10:39,321 --> 00:10:43,146
+I'm gonna go to the grid,actually, I think what I'll do,      
+
+167
+00:10:43,147 --> 00:10:45,398
+is go to the entire detail grid,and      
+
+168
+00:10:45,399 --> 00:10:48,791
+I'm gonna add a margin thereon the left-hand side.      
+
+169
+00:10:48,792 --> 00:10:54,816
+So, margin 10, 0, 0, 0.      
+
+170
+00:10:54,817 --> 00:10:57,716
+Actually, I might add 10 fromthe right as well just to      
+
+171
+00:10:57,717 --> 00:11:00,690
+make sure that nothing bumpsup against the right there.      
+
+172
+00:11:03,177 --> 00:11:06,815
+All right,the next thing I wanna do,      
+
+173
+00:11:06,816 --> 00:11:10,466
+is in this inner gridI want to set the.      
+
+174
+00:11:15,586 --> 00:11:17,690
+RowDefinition ofthe top row to Auto.      
+
+175
+00:11:17,691 --> 00:11:20,740
+That should fix that issue.      
+
+176
+00:11:21,920 --> 00:11:27,176
+And then,I also want to set the margin      
+
+177
+00:11:27,177 --> 00:11:32,447
+to the right ofthe text to maybe 10.      
+
+178
+00:11:35,106 --> 00:11:38,102
+And the same would be true then,for the other text block.      
+
+179
+00:11:45,102 --> 00:11:49,019
+So now I'm going to runthe application again, and      
+
+180
+00:11:49,020 --> 00:11:53,484
+I'm going to keep refreshinguntil I find a character that      
+
+181
+00:11:53,485 --> 00:11:54,865
+has a description      
+
+182
+00:12:05,069 --> 00:12:05,590
+Okay.      
+
+183
+00:12:06,610 --> 00:12:08,960
+So, I'm very happywith the results.      
+
+184
+00:12:10,010 --> 00:12:13,480
+Still, wish that the textwas up a little bit higher.      
+
+185
+00:12:13,481 --> 00:12:15,510
+I guess it's finethe way that it is.      
+
+186
+00:12:15,511 --> 00:12:18,392
+We'll just go ahead andgo with that for now.      
+
+187
+00:12:18,393 --> 00:12:19,070
+But do you notice,      
+
+188
+00:12:19,071 --> 00:12:22,830
+we only got three itemson that particularly try?      
+
+189
+00:12:22,831 --> 00:12:26,730
+So, that leads me to somethingI wanted to talk about here.      
+
+190
+00:12:26,731 --> 00:12:28,370
+Which is,      
+
+191
+00:12:28,371 --> 00:12:34,090
+making the call into thisPopulateMarvelCharactersAsync,      
+
+192
+00:12:34,091 --> 00:12:39,060
+it just might not returnas many items as we want.      
+
+193
+00:12:40,090 --> 00:12:44,280
+So, I want at least ten itemsin the list, maybe more.      
+
+194
+00:12:44,281 --> 00:12:49,837
+So, what I'm gonna do is adda while condition here so,      
+
+195
+00:12:49,838 --> 00:12:54,450
+here let's do this again,while Tab Tab, and      
+
+196
+00:12:54,451 --> 00:12:56,580
+what we'll check for      
+
+197
+00:12:56,581 --> 00:13:01,807
+is the number of itemsinside of marvel characters.      
+
+198
+00:13:01,808 --> 00:13:06,509
+So, MarvelCharacters.Count.      
+
+199
+00:13:06,510 --> 00:13:09,402
+While it's less than 10 items,      
+
+200
+00:13:09,403 --> 00:13:13,800
+then we're gonna continueto go through this loop.      
+
+201
+00:13:14,820 --> 00:13:21,785
+And inside of herewe're gonna call await MarvelFacade.PopulateMarvelChar-      
+
+202
+00:13:21,786 --> 00:13:23,084
+actersAsync.      
+
+203
+00:13:23,085 --> 00:13:27,193
+Now, the challenge here, is thatan asynch method might take      
+
+204
+00:13:27,194 --> 00:13:31,224
+awhile to return, so we couldbe looping here a billion times      
+
+205
+00:13:31,225 --> 00:13:35,100
+while this is still tryingto run the very first time.      
+
+206
+00:13:35,101 --> 00:13:40,150
+So, it could be a lot ofcalls out to that method.      
+
+207
+00:13:40,151 --> 00:13:42,150
+That's just the waythat this works.      
+
+208
+00:13:42,151 --> 00:13:43,950
+It works as a promise, and then,      
+
+209
+00:13:43,951 --> 00:13:45,610
+it continues on withthe next line of code.      
+
+210
+00:13:45,611 --> 00:13:49,920
+But that promise may not comeback to us before we actually do      
+
+211
+00:13:49,921 --> 00:13:53,250
+an evaluation on the currentcount of Marvel Characters.      
+
+212
+00:13:53,251 --> 00:13:58,930
+So, to fix this, what I wantto do is make sure that PopulateMarvelCharactersAsynch      
+
+213
+00:13:58,931 --> 00:14:00,460
+returns a task.      
+
+214
+00:14:00,461 --> 00:14:02,680
+And then, we'll just checkthe task, or we'll just wait for      
+
+215
+00:14:02,681 --> 00:14:08,510
+the task, before we continueon with another run of      
+
+216
+00:14:08,511 --> 00:14:12,290
+our while statement, or check onthe while statement's condition.      
+
+217
+00:14:12,291 --> 00:14:13,560
+So, let's go tothe MarvelFacade, and      
+
+218
+00:14:13,561 --> 00:14:14,940
+take a look at whatwe return here.      
+
+219
+00:14:14,941 --> 00:14:17,520
+We do indeed return a task,so that's great news.      
+
+220
+00:14:17,521 --> 00:14:20,860
+Let's go back tothe MainPage.xaml.cs.      
+
+221
+00:14:20,861 --> 00:14:24,770
+And instead of usingthis await statement,      
+
+222
+00:14:24,771 --> 00:14:27,180
+I'm just gonna say, hey,give me a task of T.      
+
+223
+00:14:28,450 --> 00:14:28,950
+Woops.      
+
+224
+00:14:30,340 --> 00:14:35,150
+Task of T, I'm going toneed to add the task      
+
+225
+00:14:35,151 --> 00:14:39,418
+by adding a using statement tosystem.threading.tasks, and now,      
+
+226
+00:14:39,419 --> 00:14:41,020
+we should see it.      
+
+227
+00:14:41,021 --> 00:14:42,780
+Great, and then,we'll just do this.      
+
+228
+00:14:42,781 --> 00:14:44,140
+await t.      
+
+229
+00:14:45,240 --> 00:14:50,970
+So, this will force us to waitfor the first call to finish      
+
+230
+00:14:50,971 --> 00:14:56,060
+before it loops back, and doesthe conditional check, right?      
+
+231
+00:14:57,360 --> 00:15:01,862
+So, let's go ahead andrun the application.      
+
+232
+00:15:10,569 --> 00:15:13,551
+One, two, three, four,five, six, seven.      
+
+233
+00:15:13,552 --> 00:15:17,985
+And now, I'm waiting for it,it's still going, notice that.      
+
+234
+00:15:17,986 --> 00:15:23,360
+And now, we have eight, nine,ten, and a bunch more, okay.      
+
+235
+00:15:23,361 --> 00:15:27,823
+And then,there's one last thing that I      
+
+236
+00:15:27,824 --> 00:15:31,628
+wanna do cuz thiscould still die,      
+
+237
+00:15:31,629 --> 00:15:37,023
+if we're not doing thisjust right, so let's,      
+
+238
+00:15:39,263 --> 00:15:42,909
+I wanna wrap try-catches aroundany code that's gonna make      
+
+239
+00:15:42,910 --> 00:15:46,570
+a call out to a dependencythat I cannot control.      
+
+240
+00:15:46,571 --> 00:15:49,890
+In this case, I can't controlthis call out to Marvel.      
+
+241
+00:15:51,010 --> 00:15:53,460
+A bunch of differentthings could go wrong.      
+
+242
+00:15:53,461 --> 00:15:54,220
+So, in that case,      
+
+243
+00:15:54,221 --> 00:15:57,110
+I'm going to wrap the try-catcharound this line specifically.      
+
+244
+00:15:57,111 --> 00:15:59,560
+Now unfortunately,you can see that when I do that,      
+
+245
+00:16:00,690 --> 00:16:05,800
+I'm going to out of scope withsome other things here so.      
+
+246
+00:16:05,801 --> 00:16:08,320
+What I'll just do is justgrab everything else,      
+
+247
+00:16:08,321 --> 00:16:10,500
+just to make thiseasy on myself.      
+
+248
+00:16:10,501 --> 00:16:13,270
+You shouldn't haveto do this always.      
+
+249
+00:16:13,271 --> 00:16:15,970
+Really, the only thing youneed to wrap the try-catch      
+
+250
+00:16:15,971 --> 00:16:17,750
+around is for this line.      
+
+251
+00:16:17,751 --> 00:16:19,940
+But since everything elsebelow it depends on it,      
+
+252
+00:16:19,941 --> 00:16:22,740
+we'll just do that.      
+
+253
+00:16:22,741 --> 00:16:24,430
+So, essentially,      
+
+254
+00:16:24,431 --> 00:16:26,400
+what we're doing here isswallowing the exception.      
+
+255
+00:16:26,401 --> 00:16:28,220
+We're saying,if there's a problem, so      
+
+256
+00:16:28,221 --> 00:16:30,690
+let's just ignorethe problem and go on,      
+
+257
+00:16:30,691 --> 00:16:35,080
+which means that we'll return tand we'll try to evaluate and      
+
+258
+00:16:35,081 --> 00:16:39,360
+say, oh we still don't havemore than ten or ten or      
+
+259
+00:16:39,361 --> 00:16:41,940
+more items that means we'regonna try calling it again, and      
+
+260
+00:16:41,941 --> 00:16:45,410
+we'll just keep tryinguntil it can't try anymore.      
+
+261
+00:16:45,411 --> 00:16:48,651
+Maybe I should add a counter andsay after ten attempts maybe we      
+
+262
+00:16:48,652 --> 00:16:51,340
+should just give it up butI won't do that just yet.      
+
+263
+00:16:57,552 --> 00:16:59,060
+So let's watch as thesethings filter in.      
+
+264
+00:17:02,451 --> 00:17:04,191
+Okay, so we've got one,two, three, four, five.      
+
+265
+00:17:04,192 --> 00:17:05,840
+And then we got more.      
+
+266
+00:17:05,841 --> 00:17:08,700
+Okay, so you can see that itmade two calls because it      
+
+267
+00:17:08,701 --> 00:17:12,840
+started off with the Bs andit went off to the Fs okay.      
+
+268
+00:17:12,841 --> 00:17:15,887
+And let's just make sure thateverything is still getting      
+
+269
+00:17:15,888 --> 00:17:17,073
+returned correctly.      
+
+270
+00:17:20,303 --> 00:17:28,630
+I just wanna see an itemthat has a description.      
+
+271
+00:17:28,631 --> 00:17:30,790
+Unfortunately, none of theseitems have descriptions.      
+
+272
+00:17:32,550 --> 00:17:34,180
+All right, well that's okay.      
+
+273
+00:17:34,181 --> 00:17:35,340
+I'm pretty sure it works.      
+
+274
+00:17:35,341 --> 00:17:39,000
+So we're gonna stop right hereand we're gonna move on and      
+
+275
+00:17:39,001 --> 00:17:43,700
+we're gonna display a list ofcomics for every item, for      
+
+276
+00:17:43,701 --> 00:17:45,770
+the character that was selected.      
+
+277
+00:17:45,771 --> 00:17:46,790
+So we'll do that next.      
+
+278
+00:17:46,791 --> 00:17:47,430
+We'll see you there.      
+
+279
+00:17:47,431 --> 00:17:47,930
+Thanks.      
+

@@ -1,0 +1,968 @@
+1
+00:00:05,088 --> 00:00:06,587
+Alright, so we're making great progress.
+
+2
+00:00:06,588 --> 00:00:10,807
+The next thing we need to focus on is the animation
+
+3
+00:00:10,808 --> 00:00:15,807
+and the events surrounding the countdown
+
+4
+00:00:16,388 --> 00:00:18,347
+of the ProgressBar and what happens when we get
+
+5
+00:00:18,348 --> 00:00:20,517
+all the way to the end of countdown.
+
+6
+00:00:20,708 --> 00:00:25,707
+We need to fire off an event that we can handle
+
+7
+00:00:26,148 --> 00:00:27,847
+and then decide what to do.
+
+8
+00:00:27,848 --> 00:00:30,507
+There's really two scenarios where we need to
+
+9
+00:00:30,508 --> 00:00:32,067
+worry about countdown.
+
+10
+00:00:32,068 --> 00:00:35,427
+First is whenever we're cooling off, there's a cooling-off
+
+11
+00:00:35,428 --> 00:00:38,067
+period waiting for the next round to start,
+
+12
+00:00:38,068 --> 00:00:40,367
+and then there's the next round itself
+
+13
+00:00:40,368 --> 00:00:44,087
+that's actually ongoing and we are waiting,
+
+14
+00:00:44,088 --> 00:00:47,807
+we're playing the music and we're counting down to
+
+15
+00:00:47,808 --> 00:00:51,567
+determine the value or the score
+
+16
+00:00:51,568 --> 00:00:53,507
+for the player if he makes a selection
+
+17
+00:00:53,508 --> 00:00:55,457
+at a given moment in time.
+
+18
+00:00:55,588 --> 00:00:58,427
+So, to get the animation to work,
+
+19
+00:00:58,428 --> 00:01:00,407
+I'm going to have to add a Storyboard.
+
+20
+00:01:00,408 --> 00:01:03,067
+I'm going to add a Storyboard to the Page's resources.
+
+21
+00:01:03,068 --> 00:01:04,807
+So let's get started with that.
+
+22
+00:01:04,808 --> 00:01:07,187
+We didn't talk about storyboards and animations,
+
+23
+00:01:07,188 --> 00:01:09,387
+I only briefly described what they were.
+
+24
+00:01:09,388 --> 00:01:11,987
+You'll get a little bit more of an insight into
+
+25
+00:01:11,988 --> 00:01:15,727
+what they are, and Keyframes are Actions that happen
+
+26
+00:01:15,728 --> 00:01:17,487
+at certain moments in time during
+
+27
+00:01:17,488 --> 00:01:19,377
+the playback of the animation.
+
+28
+00:01:19,748 --> 00:01:22,917
+Hopefully you'll get the hang of it here as we get started.
+
+29
+00:01:23,208 --> 00:01:25,307
+Like I said, the first thing that we're going to do
+
+30
+00:01:25,308 --> 00:01:30,307
+is actually add a Page.Resources section to our app.
+
+31
+00:01:31,128 --> 00:01:33,527
+And, I'm going to create a Storyboard
+
+32
+00:01:33,528 --> 00:01:37,587
+and Storyboard, let's give it a name,
+
+33
+00:01:39,558 --> 00:01:42,487
+and you can see it doesn't have a name, but I'm going to
+
+34
+00:01:42,488 --> 00:01:47,487
+use the "x:" from this namespace here, and that will
+
+35
+00:01:48,248 --> 00:01:51,087
+allow me to attach a name to a Storyboard,
+
+36
+00:01:51,088 --> 00:01:54,137
+and I'm just going to call it the "countdown" storyboard.
+
+37
+00:01:56,458 --> 00:01:58,307
+Because we're going to need to access it progamatically
+
+38
+00:01:58,308 --> 00:02:00,587
+and that's why I want to give it name, and then
+
+39
+00:02:00,588 --> 00:02:02,927
+I'm also going to handle the completed event.
+
+40
+00:02:02,928 --> 00:02:05,027
+So, I'll go ahead and add a complete and
+
+41
+00:02:05,028 --> 00:02:06,477
+we'll come back to that later.
+
+42
+00:02:06,788 --> 00:02:09,167
+Now, there's different types of animations that I can add.
+
+43
+00:02:09,168 --> 00:02:12,177
+In this particular case, I want a DoubleAnimationUsingKeyframes
+
+44
+00:02:12,178 --> 00:02:16,127
+DoubleAnimationUsingKeyframes, and so, a double is the data type,
+
+45
+00:02:16,128 --> 00:02:21,127
+I want it to have values that are numeric and
+
+46
+00:02:21,288 --> 00:02:26,287
+using keyframes allows me to identify key moments
+
+47
+00:02:28,748 --> 00:02:33,747
+in the life of the animation where I change key values
+
+48
+00:02:35,768 --> 00:02:40,067
+of given properties, alright, so hopefully that will
+
+49
+00:02:40,068 --> 00:02:43,867
+make enough sense to at least get started with it, and
+
+50
+00:02:43,868 --> 00:02:47,307
+we're going to give a few important pieces of information.
+
+51
+00:02:50,028 --> 00:02:55,027
+For example, the Storyboard.TargetName, this is what we want
+
+52
+00:02:56,848 --> 00:03:00,957
+to affect and I think I've called this "MyProgressBar" so
+
+53
+00:03:00,958 --> 00:03:04,297
+that's what this animation will deal with and then
+
+54
+00:03:04,298 --> 00:03:09,297
+the property of that Storyboard, so TargetProperty equals-- and
+
+55
+00:03:12,179 --> 00:03:17,178
+this we're going to just have to kind of follow this,
+
+56
+00:03:17,825 --> 00:03:22,824
+essentially, what I want to do is set the value...
+
+57
+00:03:26,065 --> 00:03:29,128
+So, typically with a ProgressBar, you have a maximum
+
+58
+00:03:29,129 --> 00:03:31,228
+and minimum, so I think that's pretty much what that's
+
+59
+00:03:31,229 --> 00:03:36,028
+denoting, just using a based class called range.
+
+60
+00:03:36,029 --> 00:03:39,288
+Then there's one other property I need to set,
+
+61
+00:03:39,289 --> 00:03:43,158
+which is called EnableDependentAnimation and
+
+62
+00:03:43,159 --> 00:03:46,108
+I'm going to set that to "true."
+
+63
+00:03:50,119 --> 00:03:54,356
+And now what I want to do is actually add another keyframe.
+
+64
+00:03:54,357 --> 00:03:58,916
+So I'm going to add a DiscreteDoubleKeyframe
+
+65
+00:03:58,917 --> 00:04:01,136
+and the key time will be, in this first case
+
+66
+00:04:01,137 --> 00:04:06,136
+at zero seconds, I want the value of my
+
+67
+00:04:07,297 --> 00:04:10,416
+ProgressBar to be 100.
+
+68
+00:04:10,417 --> 00:04:13,606
+And then I'm going to copy this like ten times.
+
+69
+00:04:14,257 --> 00:04:17,346
+Copy and paste.
+
+70
+00:04:17,347 --> 00:04:19,042
+I'll come back to that in just a moment.
+
+71
+00:04:19,533 --> 00:04:22,092
+And so, at 001...
+
+72
+00:04:22,093 --> 00:04:23,852
+actually let me get rid of all this...
+
+73
+00:04:25,473 --> 00:04:29,207
+Alright, at 001, I want the value to still be 100.
+
+74
+00:04:30,118 --> 00:04:34,897
+At 002, I want the value to be 90.
+
+75
+00:04:34,898 --> 00:04:36,890
+Hopefully you can see the pattern emerging.
+
+76
+00:04:36,891 --> 00:04:41,690
+And so now I'm just going to copy and paste a bunch of these
+
+77
+00:04:44,441 --> 00:04:49,440
+so at three seconds, four seconds, five seconds, eight, nine
+
+78
+00:04:49,928 --> 00:04:53,827
+and then at ten seconds, and we'll just keep counting
+
+79
+00:04:53,828 --> 00:04:58,827
+down the values, 70, 60, 50, 40, 30, 20 and 10, OK.
+
+80
+00:05:10,768 --> 00:05:14,587
+Back here on the MainPage.xaml.cs I'm going to
+
+81
+00:05:14,588 --> 00:05:16,937
+create a helper method.
+
+82
+00:05:21,688 --> 00:05:26,687
+So, we'll start the cooldown and basically, MyProgressBar
+
+83
+00:05:31,016 --> 00:05:34,376
+Actually I can just call it Countdown.Begin()
+
+84
+00:05:36,927 --> 00:05:41,926
+Here, let's do this, whenever we load up, finish there,
+
+85
+00:05:42,807 --> 00:05:45,076
+we'll just call it StartCooldown()
+
+86
+00:05:46,527 --> 00:05:48,776
+Let's see how this works.
+
+87
+00:05:51,137 --> 00:05:52,834
+Yup, and there we go, you can see how we're
+
+88
+00:05:52,835 --> 00:05:55,174
+starting the cooldown, so we'll deliver a message,
+
+89
+00:05:55,175 --> 00:05:59,694
+something like "Getting ready for Round 1, Round 2, Round 3"
+
+90
+00:05:59,695 --> 00:06:04,694
+Now at this point we fired off, when we get to the end,
+
+91
+00:06:04,975 --> 00:06:09,584
+we get to the Countdown_Completed.
+
+92
+00:06:09,715 --> 00:06:11,924
+So we've got to figure out what we want to do there.
+
+93
+00:06:13,155 --> 00:06:14,974
+And like I've said, there's two scenarios.
+
+94
+00:06:14,975 --> 00:06:17,394
+There's one where music is actually playing and then there's
+
+95
+00:06:17,395 --> 00:06:20,204
+another scenario where there's no music playing.
+
+96
+00:06:20,675 --> 00:06:23,234
+So, I'm going to actually keep track of the current state
+
+97
+00:06:23,235 --> 00:06:28,234
+of the app by creating a _playingMusic boolean, and
+
+98
+00:06:31,935 --> 00:06:36,184
+I'm going to initialize this value "false" and this will
+
+99
+00:06:36,185 --> 00:06:38,936
+allow us to determine the current state of the app
+
+100
+00:06:38,937 --> 00:06:40,446
+once we hit the countdown.
+
+101
+00:06:42,447 --> 00:06:46,826
+So, here, if we're not playing music,
+
+102
+00:06:46,827 --> 00:06:51,826
+So, if not _playingMusic then what we need to do
+
+103
+00:06:53,667 --> 00:06:58,666
+is start playing some music and
+
+104
+00:07:01,387 --> 00:07:06,096
+then we'll do kind of the opposite, the StartCountdown.
+
+105
+00:07:06,767 --> 00:07:09,566
+So, the cooldown is different than the countdown.
+
+106
+00:07:09,567 --> 00:07:13,066
+The countdown will be where you're actually playing music
+
+107
+00:07:13,067 --> 00:07:17,166
+and we're waiting for user input
+
+108
+00:07:17,167 --> 00:07:18,806
+to determine what the correct song is,
+
+109
+00:07:18,807 --> 00:07:22,416
+so let's call this StartCountDown.
+
+110
+00:07:25,427 --> 00:07:29,496
+Here, we're going to set _playingMusic equal to "true"
+
+111
+00:07:29,497 --> 00:07:34,496
+and then I'm also going to change the...
+
+112
+00:07:39,187 --> 00:07:44,186
+color of the ProgressBar to red,
+
+113
+00:07:48,483 --> 00:07:50,952
+so I'm getting ready for that here.
+
+114
+00:07:51,203 --> 00:07:56,202
+So, MyProgressBar.Foreground equals brush.
+
+115
+00:07:58,943 --> 00:08:02,132
+Then in the InstructionTextBlock, I'm going to say
+
+116
+00:08:02,803 --> 00:08:07,662
+"GO" ... it's time to listen...
+
+117
+00:08:08,543 --> 00:08:11,142
+listen to music...
+
+118
+00:08:11,143 --> 00:08:14,052
+and I'm also going to set the Foreground
+
+119
+00:08:14,053 --> 00:08:17,342
+equal to that same red color there,
+
+120
+00:08:18,353 --> 00:08:20,982
+and then I'm going to call countdown begin again.
+
+121
+00:08:24,133 --> 00:08:27,722
+So, in the cooldown we kind of want to do the exact opposite
+
+122
+00:08:27,753 --> 00:08:30,712
+So, I'm going to StartCooldown(), we're going to set
+
+123
+00:08:30,713 --> 00:08:33,262
+_playingmusic equal to "false"
+
+124
+00:08:34,433 --> 00:08:38,982
+and actually, let me grab several things here
+
+125
+00:08:43,933 --> 00:08:45,782
+This will be blue instead of red.
+
+126
+00:08:48,733 --> 00:08:51,352
+And then in the InstructionTextBlock
+
+127
+00:08:51,353 --> 00:08:56,352
+we want to do String.Format("Get ready for round ...12800:09:00.813 --> 00:09:03.263and then I've got to figure out what round it is.
+
+128
+00:09:03,633 --> 00:09:06,682
+So, here's another place where I'm going to have to
+
+129
+00:09:06,733 --> 00:09:08,782
+keep track of which round we're in.
+
+130
+00:09:09,653 --> 00:09:10,662
+Let's go up here,
+
+131
+00:09:12,053 --> 00:09:15,942
+and let's go: int _round equals zero
+
+132
+00:09:17,653 --> 00:09:20,042
+Yeah, seems right, ok.
+
+133
+00:09:20,593 --> 00:09:23,102
+So, then here, we're going to go
+
+134
+00:09:24,873 --> 00:09:28,540
+_round plus one because that'll be the next...
+
+135
+00:09:28,541 --> 00:09:31,460
+the next round will be round one right,
+
+136
+00:09:31,461 --> 00:09:35,860
+and, I'm also going to do InstructionTextBlock.Foreground
+
+137
+00:09:35,861 --> 00:09:39,030
+equals brush, like that.
+
+138
+00:09:41,341 --> 00:09:43,870
+We're going to call StartCountdown()
+
+139
+00:09:46,621 --> 00:09:50,598
+And, here what I want to do is...
+
+140
+00:09:50,599 --> 00:09:52,458
+there's a bunch of things that have to happen,
+
+141
+00:09:52,459 --> 00:09:57,458
+like, we're going to evaluate the user's selection, and
+
+142
+00:09:58,599 --> 00:10:01,578
+score it, and all that kind of stuff, and then
+
+143
+00:10:01,579 --> 00:10:05,508
+eventually, we're also going to...
+
+144
+00:10:07,079 --> 00:10:12,078
+we're going to want to start the cooldown again.
+
+145
+00:10:12,975 --> 00:10:14,964
+So StartCooldown() here.
+
+146
+00:10:15,615 --> 00:10:18,224
+Alright, so let's see how this works.
+
+147
+00:10:25,133 --> 00:10:28,152
+OK, so we're getting ready for round 1.
+
+148
+00:10:32,891 --> 00:10:36,000
+Alright, and you can see here now we're playing.
+
+149
+00:10:37,071 --> 00:10:39,390
+And ideally, I would make a selection here
+
+150
+00:10:39,391 --> 00:10:41,090
+and it'll reset everything, but I'm going to go ahead
+
+151
+00:10:41,091 --> 00:10:43,040
+and let it tick all the way down.
+
+152
+00:10:44,261 --> 00:10:47,368
+OK, so we're just kind of waiting here, you get
+
+153
+00:10:47,369 --> 00:10:50,668
+minimal points at this point even if you selected it true,
+
+154
+00:10:50,669 --> 00:10:54,208
+but by selecting a song, it will start the next round,
+
+155
+00:10:54,209 --> 00:10:57,978
+we just have to increment the round number.
+
+156
+00:10:58,009 --> 00:11:02,568
+So that's one of the things we'll want to do here.
+
+157
+00:11:03,559 --> 00:11:08,558
+It's going to be a round like that...
+
+158
+00:11:09,987 --> 00:11:13,106
+Whoops, what I wanted to do was ++.
+
+159
+00:11:13,127 --> 00:11:14,006
+Can we do that?
+
+160
+00:11:14,007 --> 00:11:14,836
+Yea, great.
+
+161
+00:11:15,967 --> 00:11:18,999
+OK, so we got the countdown working,
+
+162
+00:11:19,000 --> 00:11:21,079
+got the Storyboard working.
+
+163
+00:11:21,080 --> 00:11:24,279
+We need to select the next song that we want played,
+
+164
+00:11:24,280 --> 00:11:26,879
+and that's really going to get kicked off
+
+165
+00:11:26,880 --> 00:11:31,499
+here when the cooldown is completed
+
+166
+00:11:31,500 --> 00:11:35,179
+and this fires and we're not playing music
+
+167
+00:11:35,180 --> 00:11:37,179
+that means we want to start playing music, so
+
+168
+00:11:37,180 --> 00:11:41,079
+here I want to pick a song, so...
+
+169
+00:11:41,080 --> 00:11:46,079
+let's do something like this, var song equals pickSong()
+
+170
+00:11:49,150 --> 00:11:52,361
+and we don't have that implemented just yet, so let's
+
+171
+00:11:55,392 --> 00:12:00,391
+create private void pickSong
+
+172
+00:12:05,254 --> 00:12:06,413
+and actually it's not going to be void,
+
+173
+00:12:06,414 --> 00:12:08,643
+it's going to return a Song.
+
+174
+00:12:17,501 --> 00:12:20,360
+And what we need to do is
+
+175
+00:12:20,361 --> 00:12:24,260
+first of all, we're going to need to use the Random class,
+
+176
+00:12:27,681 --> 00:12:32,680
+and, so here's what my thought process is,
+
+177
+00:12:36,937 --> 00:12:37,876
+this is what I would like to do.
+
+178
+00:12:37,877 --> 00:12:41,076
+I would like to have a list of unused songs,
+
+179
+00:12:41,077 --> 00:12:44,696
+songs that we've not touched yet that are still available
+
+180
+00:12:44,697 --> 00:12:47,006
+on that list of songs we initially picked out.
+
+181
+00:12:47,197 --> 00:12:49,856
+So of all the songs, give me all the songs where
+
+182
+00:12:49,857 --> 00:12:54,856
+the "used" property is "false" so we need to add another
+
+183
+00:12:58,417 --> 00:13:02,206
+attribute to "song" called "used."
+
+184
+00:13:09,137 --> 00:13:12,116
+And, obviously by default, that would be...
+
+185
+00:13:12,117 --> 00:13:17,116
+that should be false, but we'll populate that.
+
+186
+00:13:17,857 --> 00:13:20,936
+And now what we'll want to do is grab the random number.
+
+187
+00:13:20,937 --> 00:13:25,936
+It goes Random.Next() give me a random number
+
+188
+00:13:28,777 --> 00:13:33,396
+of unusedSongs.count like that
+
+189
+00:13:33,641 --> 00:13:36,238
+and so then we'll get the randomSong...
+
+190
+00:13:38,609 --> 00:13:43,608
+equals unusedSongs.element at randomNumber
+
+191
+00:13:47,109 --> 00:13:52,108
+and so that randomSong now is currently the selected song
+
+192
+00:13:52,909 --> 00:13:56,228
+so I'm going to set it's selected attribute to "true"
+
+193
+00:13:56,229 --> 00:14:00,438
+and then return that randomSong, like so.
+
+194
+00:14:02,169 --> 00:14:03,438
+So we pick the song,
+
+195
+00:14:05,509 --> 00:14:10,508
+and now I need to go "MyMediaElement.SetSource"
+
+196
+00:14:13,909 --> 00:14:18,908
+and I want to set it to my song.
+
+197
+00:14:19,989 --> 00:14:24,548
+Now the Song class does contain
+
+198
+00:14:25,979 --> 00:14:28,496
+the song file, right.
+
+199
+00:14:28,497 --> 00:14:33,496
+That's of type StorageFile, and in order to call this
+
+200
+00:14:35,597 --> 00:14:38,296
+SetSource() method I'm going to need to give it two things.
+
+201
+00:14:38,297 --> 00:14:41,836
+First of all, I'm going to need to give it the stream
+
+202
+00:14:41,837 --> 00:14:46,116
+from the file itself so basically I need to open up the file
+
+203
+00:14:46,117 --> 00:14:51,116
+and give it a pipeline into that file,
+
+204
+00:14:52,477 --> 00:14:55,626
+and then I need to give it the content type, the mime type.
+
+205
+00:14:55,737 --> 00:14:57,976
+So that's easy enough, I can just
+
+206
+00:14:57,977 --> 00:14:59,926
+use a property called ContentType.
+
+207
+00:15:00,157 --> 00:15:02,356
+But, the other one, I'm going to have to do
+
+208
+00:15:02,357 --> 00:15:04,886
+actually something a little bit nifty here.
+
+209
+00:15:04,897 --> 00:15:09,896
+Song.SongFile.Open, I want you to open yourself and
+
+210
+00:15:10,517 --> 00:15:13,176
+I need an access mode just for read-only,
+
+211
+00:15:13,177 --> 00:15:14,646
+I'm not going to write to you.
+
+212
+00:15:15,097 --> 00:15:18,906
+Now, obviously this is async, so it's await-able,
+
+213
+00:15:19,057 --> 00:15:20,846
+I have to do something like that...
+
+214
+00:15:22,337 --> 00:15:24,856
+In fact, let's go ahead and knock that to the next line,
+
+215
+00:15:24,857 --> 00:15:26,536
+put that on the next line, and do that.
+
+216
+00:15:26,537 --> 00:15:28,636
+And so that would make this
+
+217
+00:15:28,637 --> 00:15:30,536
+async...
+
+218
+00:15:31,907 --> 00:15:34,604
+(Do I not even return a task to that...)
+
+219
+00:15:34,605 --> 00:15:35,704
+(I don't know that I do...)
+
+220
+00:15:35,705 --> 00:15:39,974
+(I'm not going to this time. OK)
+
+221
+00:15:40,645 --> 00:15:44,844
+So, MyMediaElement.SetSource, and then
+
+222
+00:15:44,845 --> 00:15:47,264
+I want to start the countdown after I've made that...
+
+223
+00:15:47,265 --> 00:15:49,474
+after I've made that pick.
+
+224
+00:15:50,665 --> 00:15:54,414
+So let's see what happens here.
+
+225
+00:15:54,725 --> 00:15:57,494
+We're pretty close here to a working prototype.
+
+226
+00:15:59,185 --> 00:16:01,424
+OK, we grab all the song, now let's
+
+227
+00:16:01,425 --> 00:16:02,724
+get ready for round one.
+
+228
+00:16:02,725 --> 00:16:04,364
+If we're lucky, at the end of round one,
+
+229
+00:16:04,365 --> 00:16:07,844
+when this goes away, when we get down to
+
+230
+00:16:07,845 --> 00:16:09,374
+the end of the cooldown...
+
+231
+00:16:10,025 --> 00:16:11,664
+Oh, and here we go
+
+232
+00:16:11,695 --> 00:16:14,194
+[Music playing]
+
+233
+00:16:16,009 --> 00:16:18,348
+Ok, so it mostly worked.
+
+234
+00:16:19,419 --> 00:16:22,644
+There's some things after the click I've got figure out,
+
+235
+00:16:22,645 --> 00:16:24,384
+like, did they click on the right song or not,
+
+236
+00:16:24,385 --> 00:16:26,484
+if they didn't what are we going to do then.
+
+237
+00:16:26,485 --> 00:16:27,994
+But we'll get to that.
+
+238
+00:16:29,645 --> 00:16:33,324
+Actually, I think we're good to go in this video.
+
+239
+00:16:33,325 --> 00:16:36,824
+We will continue on to the next one where we actually
+
+240
+00:16:36,825 --> 00:16:39,504
+do that evaluation of what the user clicked on
+
+241
+00:16:39,505 --> 00:16:42,114
+and what points do we give them as a result of that,
+
+242
+00:16:42,115 --> 00:16:45,324
+so we'll do that next, we're doing great.  
+

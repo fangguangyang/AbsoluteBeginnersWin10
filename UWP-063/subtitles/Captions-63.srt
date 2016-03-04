@@ -1,0 +1,356 @@
+1
+00:00:06,488 --> 00:00:08,466
+<v ->So in my music collection,</v>      
+
+2
+00:00:08,467 --> 00:00:10,438
+I literally have...      
+
+3
+00:00:11,907 --> 00:00:13,467
+hundreds, hundreds of albums      
+
+4
+00:00:13,468 --> 00:00:16,966
+that I've purchased legitimately through the years.      
+
+5
+00:00:16,967 --> 00:00:21,686
+And sometimes I don't even remember what I have,      
+
+6
+00:00:21,687 --> 00:00:23,426
+so I can concocted a little game here      
+
+7
+00:00:23,427 --> 00:00:27,846
+that will allow you to rediscover music that you have      
+
+8
+00:00:27,847 --> 00:00:30,606
+in your music collection, in your music library,      
+
+9
+00:00:30,607 --> 00:00:33,406
+and will make a little game out of it.      
+
+10
+00:00:33,407 --> 00:00:35,566
+And so you've gotta kind of watch closely here      
+
+11
+00:00:35,567 --> 00:00:38,637
+at the game itself.      
+
+12
+00:00:41,547 --> 00:00:45,227
+Alright, so these are songs, or album covers      
+
+13
+00:00:45,228 --> 00:00:48,356
+representing songs on my hard drive.      
+
+14
+00:00:50,857 --> 00:00:53,308
+(music plays)      
+
+15
+00:00:55,048 --> 00:00:57,886
+Ok. And I successfully guessed that song      
+
+16
+00:00:57,887 --> 00:01:00,667
+and I got it right, and I scored 70 points      
+
+17
+00:01:00,668 --> 00:01:02,098
+as a result of that.      
+
+18
+00:01:02,247 --> 00:01:04,138
+Here we go, the next one.      
+
+19
+00:01:05,788 --> 00:01:07,877
+(music plays)      
+
+20
+00:01:08,447 --> 00:01:11,227
+Ok, I missed that one and I lost 80 points,      
+
+21
+00:01:11,228 --> 00:01:14,977
+so I'm at a negative 10 after two rounds,      
+
+22
+00:01:14,987 --> 00:01:16,818
+as you can see.      
+
+23
+00:01:18,048 --> 00:01:21,057
+(music plays)      
+
+24
+00:01:21,947 --> 00:01:23,926
+Alright, and so as you might guess,      
+
+25
+00:01:23,927 --> 00:01:26,007
+this is not my music collection.      
+
+26
+00:01:26,008 --> 00:01:28,266
+I'll explain that in the next video,      
+
+27
+00:01:28,267 --> 00:01:31,347
+but these are purely songs that somebody      
+
+28
+00:01:31,348 --> 00:01:32,997
+created for me.      
+
+29
+00:01:33,487 --> 00:01:35,498
+(music plays)      
+
+30
+00:01:36,327 --> 00:01:38,746
+But you can also see here that there's      
+
+31
+00:01:38,747 --> 00:01:40,026
+a little blue area down here.      
+
+32
+00:01:40,027 --> 00:01:42,427
+This actually represents an advertisement      
+
+33
+00:01:42,917 --> 00:01:46,180
+from Microsoft Advertisement Network.      
+
+34
+00:01:46,181 --> 00:01:47,531
+(music plays)      
+
+35
+00:01:48,051 --> 00:01:48,875
+Okay.      
+
+36
+00:01:48,876 --> 00:01:50,595
+So you can see that after five rounds,      
+
+37
+00:01:50,596 --> 00:01:53,376
+I've got a massive negative score of 260.      
+
+38
+00:01:53,377 --> 00:01:54,677
+I can choose to play again,      
+
+39
+00:01:55,377 --> 00:01:57,916
+but that's really not the most significant thing      
+
+40
+00:01:57,917 --> 00:01:59,366
+about this application.      
+
+41
+00:01:59,436 --> 00:02:01,235
+What it will do is it'll allow you to go through      
+
+42
+00:02:01,236 --> 00:02:06,236
+special folders on the user's device      
+
+43
+00:02:06,257 --> 00:02:10,326
+or desktop, specifically the music library.      
+
+44
+00:02:10,327 --> 00:02:13,396
+And it'll go through every single folder      
+
+45
+00:02:13,397 --> 00:02:14,297
+in the music library      
+
+46
+00:02:14,298 --> 00:02:17,687
+and find a list of all MP3 files.      
+
+47
+00:02:17,837 --> 00:02:21,716
+It'll then grab the metadata from the MP3 file itself,      
+
+48
+00:02:21,717 --> 00:02:26,357
+so information like the album name, the artist's name,      
+
+49
+00:02:30,127 --> 00:02:32,397
+the album art,      
+
+50
+00:02:32,398 --> 00:02:33,697
+so you can see that we've got the cover art      
+
+51
+00:02:33,698 --> 00:02:35,618
+for the album itself,      
+
+52
+00:02:35,619 --> 00:02:38,217
+and then it's going to choose to randomly play songs      
+
+53
+00:02:38,218 --> 00:02:41,937
+and as the user, I then have to guess,      
+
+54
+00:02:41,938 --> 00:02:44,177
+and it's going to evaluate my guess whether right or wrong      
+
+55
+00:02:44,178 --> 00:02:47,449
+and it will change the tile      
+
+56
+00:02:48,999 --> 00:02:50,268
+as a result of that      
+
+57
+00:02:50,269 --> 00:02:53,428
+and it'll keep score, and there's a lot of logic      
+
+58
+00:02:53,429 --> 00:02:55,348
+around what songs to play,      
+
+59
+00:02:55,349 --> 00:02:57,469
+what to stay away from because you've already guessed      
+
+60
+00:02:57,470 --> 00:03:01,028
+that album art or it's already been used once,      
+
+61
+00:03:01,029 --> 00:03:03,268
+you can't use it because it's already got an X on it,      
+
+62
+00:03:03,269 --> 00:03:04,329
+sort of thing, okay?      
+
+63
+00:03:05,599 --> 00:03:07,949
+Like I said, we demonstrate how to use      
+
+64
+00:03:08,439 --> 00:03:12,608
+and monetize this application through Microsoft Advertising.      
+
+65
+00:03:12,609 --> 00:03:15,269
+We'll demonstrate that and then we'll also demonstrate      
+
+66
+00:03:15,270 --> 00:03:16,788
+how to remove ads,      
+
+67
+00:03:16,789 --> 00:03:18,808
+so to add a premium feature to the app      
+
+68
+00:03:18,809 --> 00:03:22,026
+and allow you to monetize it      
+
+69
+00:03:22,027 --> 00:03:26,076
+by allowing the user to click a button      
+
+70
+00:03:26,077 --> 00:03:27,716
+and it'll pop up the      
+
+71
+00:03:27,717 --> 00:03:29,796
+"are you sure you want to purchase this for a dollar?"      
+
+72
+00:03:29,797 --> 00:03:33,276
+Now, this is a little simulator and we'll talk about this      
+
+73
+00:03:33,277 --> 00:03:36,836
+near the end of our time together building this,      
+
+74
+00:03:36,837 --> 00:03:38,216
+but I'm going to go ahead and say "Yes,"      
+
+75
+00:03:38,217 --> 00:03:42,716
+the user successfully purchased the removal of ads      
+
+76
+00:03:42,717 --> 00:03:43,916
+in the app.      
+
+77
+00:03:43,917 --> 00:03:45,976
+And so we're going to demonstrate how to add      
+
+78
+00:03:45,977 --> 00:03:49,047
+in-app purchases in your application.      
+
+79
+00:03:49,097 --> 00:03:50,716
+So there's a lot to learn in this app,      
+
+80
+00:03:50,717 --> 00:03:53,596
+it's going to be a lot of fun, a lot of logic,      
+
+81
+00:03:53,597 --> 00:03:55,196
+a lot of typing,      
+
+82
+00:03:55,197 --> 00:03:57,956
+so you'll need to follow along closely or you'll probably,      
+
+83
+00:03:57,957 --> 00:04:00,616
+honestly you'll probably just want to look at the source code      
+
+84
+00:04:00,617 --> 00:04:01,757
+after I finish the video,      
+
+85
+00:04:01,758 --> 00:04:03,538
+but just follow along with the thought process      
+
+86
+00:04:03,539 --> 00:04:06,277
+as I work my way through this example.      
+
+87
+00:04:06,278 --> 00:04:07,116
+Alright, ready?      
+
+88
+00:04:07,117 --> 00:04:08,536
+Let's get started in the next video.      
+
+89
+00:04:08,537 --> 00:04:10,208
+Thanks.      
+

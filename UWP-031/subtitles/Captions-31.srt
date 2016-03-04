@@ -1,0 +1,860 @@
+1
+00:00:04,975 --> 00:00:08,619
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net</v>
+
+2
+00:00:08,620 --> 00:00:10,451
+and this is the challenge that I'm calling
+
+3
+00:00:10,452 --> 00:00:12,680
+the Stupendous Styles Challenge.
+
+4
+00:00:12,681 --> 00:00:15,246
+And you can see that I've got a
+
+5
+00:00:15,247 --> 00:00:17,521
+fictitious company I created called GoNuts.
+
+6
+00:00:17,522 --> 00:00:21,120
+So my idea here is that someday when I'm burnt out
+
+7
+00:00:21,121 --> 00:00:25,614
+or when everybody discovers I'm a fraud (laughs),
+
+8
+00:00:25,615 --> 00:00:27,686
+I will open up a donut shop.
+
+9
+00:00:27,687 --> 00:00:29,323
+And I thought it'd be cool, you know, if you go up
+
+10
+00:00:29,324 --> 00:00:32,226
+and you pull up to some sort of a terminal
+
+11
+00:00:32,227 --> 00:00:34,722
+and you push in your order and then you drive around
+
+12
+00:00:34,723 --> 00:00:37,479
+and a robot delivers it into your car.
+
+13
+00:00:37,480 --> 00:00:38,419
+That would be pretty cool.
+
+14
+00:00:38,420 --> 00:00:41,716
+So this is the kiosk application that I just came up with.
+
+15
+00:00:41,717 --> 00:00:43,284
+It's just a layout, there's no real
+
+16
+00:00:43,285 --> 00:00:47,106
+e-commerce functionality, but let me walk you through it.
+
+17
+00:00:47,617 --> 00:00:49,683
+You can see that I have some navigation across the top.
+
+18
+00:00:49,684 --> 00:00:50,913
+I'll give you some specific instruction
+
+19
+00:00:50,914 --> 00:00:52,190
+about that in a moment.
+
+20
+00:00:52,191 --> 00:00:55,693
+And you can say, "Hey, I want, you know, so many,
+
+21
+00:00:55,694 --> 00:00:59,884
+"three glazed and four of the specials."
+
+22
+00:01:00,235 --> 00:01:02,648
+I'm going to go and order a dark
+
+23
+00:01:02,649 --> 00:01:05,586
+with sugar and cream.
+
+24
+00:01:05,937 --> 00:01:09,399
+And then let's make sure to pick that up,
+
+25
+00:01:09,400 --> 00:01:12,858
+let's see, tomorrow morning at,
+
+26
+00:01:13,689 --> 00:01:16,824
+I would say, like 9:30am, I should be there.
+
+27
+00:01:18,454 --> 00:01:20,657
+And then finally, hit the Complete
+
+28
+00:01:20,658 --> 00:01:22,558
+and I get this little ticket that tells me
+
+29
+00:01:22,559 --> 00:01:24,520
+which order number that I have.
+
+30
+00:01:24,521 --> 00:01:27,152
+And you'll notice that, and I make a point of this,
+
+31
+00:01:27,153 --> 00:01:29,254
+that it's responsive insomuch that,
+
+32
+00:01:29,255 --> 00:01:31,360
+you can resize things and they mostly look good.
+
+33
+00:01:31,361 --> 00:01:33,090
+You see there's like this attractive little graphic here
+
+34
+00:01:33,091 --> 00:01:34,808
+on the right-hand side.
+
+35
+00:01:34,809 --> 00:01:37,066
+That I've got these,
+
+36
+00:01:37,317 --> 00:01:40,157
+even though different colors on the different Pages.
+
+37
+00:01:40,158 --> 00:01:42,548
+I've got the logo on the last Page.
+
+38
+00:01:42,549 --> 00:01:44,522
+There's a color logo.
+
+39
+00:01:44,523 --> 00:01:46,055
+What else can I show you here?
+
+40
+00:01:46,056 --> 00:01:46,856
+Well, tell you what.
+
+41
+00:01:46,857 --> 00:01:49,584
+We have a bunch of resources, let me shut this down.
+
+42
+00:01:49,585 --> 00:01:51,616
+And let's talk about the requirements here.
+
+43
+00:01:51,617 --> 00:01:55,888
+You can see that I have this folder for you
+
+44
+00:01:55,889 --> 00:01:56,860
+to download from
+
+45
+00:01:56,861 --> 00:01:58,796
+wherever you're currently watching this video.
+
+46
+00:01:58,797 --> 00:02:00,685
+Make sure you grab this because it has instructions
+
+47
+00:02:00,686 --> 00:02:01,591
+and all the resource files
+
+48
+00:02:01,592 --> 00:02:03,483
+that you're going to need to put this together.
+
+49
+00:02:03,484 --> 00:02:05,155
+So here's the instruction file,
+
+50
+00:02:05,156 --> 00:02:07,222
+and let's go through it really quick here.
+
+51
+00:02:07,223 --> 00:02:09,683
+You can see that, even if you're fast,
+
+52
+00:02:09,684 --> 00:02:10,855
+this is going to take you 45 minutes.
+
+53
+00:02:10,856 --> 00:02:13,421
+Like, it took me 50 minutes to solve this on camera,
+
+54
+00:02:13,422 --> 00:02:15,987
+and then I wanted to re-record it and split it up
+
+55
+00:02:15,988 --> 00:02:18,088
+because it was so long.
+
+56
+00:02:18,089 --> 00:02:20,422
+So don't get discouraged if it takes you a while,
+
+57
+00:02:20,423 --> 00:02:22,407
+just keep plugging away.
+
+58
+00:02:22,408 --> 00:02:25,252
+First of all, you want to use Styles as often as possible.
+
+59
+00:02:25,253 --> 00:02:27,887
+So if you see the same thing happening in multiple places,
+
+60
+00:02:27,888 --> 00:02:30,244
+if you see that you're applying the same
+
+61
+00:02:30,245 --> 00:02:34,319
+Margins and Colors and Fonts to more than one item,
+
+62
+00:02:34,320 --> 00:02:35,596
+then make a Style for it, ok?
+
+63
+00:02:35,597 --> 00:02:38,116
+That's really the point of this lesson, is to exercise that,
+
+64
+00:02:38,117 --> 00:02:40,554
+as well as to exercise some of the new Controls
+
+65
+00:02:40,555 --> 00:02:43,212
+that we just added on the last couple of videos.
+
+66
+00:02:43,213 --> 00:02:44,455
+So you're going to create five pages,
+
+67
+00:02:44,456 --> 00:02:46,359
+or you're obviously going to have the MainPage
+
+68
+00:02:46,360 --> 00:02:47,822
+and then four others.
+
+69
+00:02:47,823 --> 00:02:49,993
+And so let's talk about each of the Pages.
+
+70
+00:02:49,994 --> 00:02:52,419
+That "MainPage.xaml" will host the navigation buttons
+
+71
+00:02:52,420 --> 00:02:54,486
+at the very top, those black buttons.
+
+72
+00:02:54,487 --> 00:02:57,125
+And I talk about how to get that effect,
+
+73
+00:02:57,656 --> 00:03:00,616
+the black background, white text, 18 point font.
+
+74
+00:03:00,617 --> 00:03:02,624
+There will be an icon next to the text.
+
+75
+00:03:02,625 --> 00:03:05,853
+You want a gray border on the right that's two pixels.
+
+76
+00:03:06,294 --> 00:03:08,952
+Not sure if we've talked about how to apply a border.
+
+77
+00:03:08,953 --> 00:03:11,413
+Look through the properties of the button
+
+78
+00:03:11,414 --> 00:03:14,885
+to see if you can figure out how to give the border a color,
+
+79
+00:03:14,886 --> 00:03:19,122
+and how to give it a size on one side,
+
+80
+00:03:19,123 --> 00:03:21,049
+but not have any border on the rest,
+
+81
+00:03:21,050 --> 00:03:23,789
+on the other sides of the button, ok?
+
+82
+00:03:23,790 --> 00:03:25,287
+And then I give you a hint about how to create
+
+83
+00:03:25,288 --> 00:03:26,390
+those large buttons,
+
+84
+00:03:26,391 --> 00:03:28,224
+basically create a grid with four columns
+
+85
+00:03:28,225 --> 00:03:30,686
+and then set the Vertical and HorizontalAlignment
+
+86
+00:03:30,687 --> 00:03:32,776
+to Stretch on each of those buttons,
+
+87
+00:03:32,777 --> 00:03:35,713
+and that will fill up that entire area of the cell.
+
+88
+00:03:35,714 --> 00:03:37,478
+Alright, also on the "MainPage.xaml",
+
+89
+00:03:37,479 --> 00:03:38,856
+you want to split that bottom area
+
+90
+00:03:38,857 --> 00:03:42,025
+underneath the navigation, and you want to give it,
+
+91
+00:03:42,026 --> 00:03:44,486
+I guess I need to write this in here, let me add this in.
+
+92
+00:03:44,487 --> 00:03:48,424
+This, make that
+
+93
+00:03:48,925 --> 00:03:51,457
+100 pixels tall
+
+94
+00:03:51,458 --> 00:03:54,046
+for the buttons spot.
+
+95
+00:03:54,047 --> 00:03:55,741
+Probably should have re-phrased that.
+
+96
+00:03:55,742 --> 00:03:58,057
+I'll edit that off camera.
+
+97
+00:03:58,058 --> 00:04:00,693
+So, you want to take the rest of the area
+
+98
+00:04:00,694 --> 00:04:02,759
+that's beneath the buttons,
+
+99
+00:04:02,760 --> 00:04:07,450
+and you want to split that area to 66% and 33%.
+
+100
+00:04:07,451 --> 00:04:10,782
+On the one side, you want to put the pages.
+
+101
+00:04:10,783 --> 00:04:11,954
+We'll load in the
+
+102
+00:04:11,955 --> 00:04:14,857
+DonutPage, CoffeePage, SchedulePage, CompletePage.
+
+103
+00:04:14,858 --> 00:04:16,656
+And then on the right-hand side, the 33%,
+
+104
+00:04:16,657 --> 00:04:19,988
+we're going to put that neat little background image
+
+105
+00:04:19,989 --> 00:04:21,858
+of the coffee and the donuts there,
+
+106
+00:04:21,859 --> 00:04:23,593
+kind of to style it up a little bit.
+
+107
+00:04:23,594 --> 00:04:25,323
+And so whenever a user clicks on one of the
+
+108
+00:04:25,324 --> 00:04:29,421
+black navigation buttons at the top, it will load in
+
+109
+00:04:29,422 --> 00:04:33,357
+one of the other Pages into that bottom Frame area.
+
+110
+00:04:33,358 --> 00:04:35,354
+And so, you'll start with the DonutPage.
+
+111
+00:04:35,355 --> 00:04:36,689
+It's just going to host a white logo
+
+112
+00:04:36,690 --> 00:04:37,885
+and two slider controls.
+
+113
+00:04:37,886 --> 00:04:39,022
+Make sure you add some padding
+
+114
+00:04:39,023 --> 00:04:40,984
+around the sides of those controls.
+
+115
+00:04:40,985 --> 00:04:43,353
+Make sure that you can only order up to
+
+116
+00:04:43,354 --> 00:04:48,218
+two dozen of each type of donut, arbitrary limit there.
+
+117
+00:04:48,219 --> 00:04:50,493
+On the CoffeePage, little more involved.
+
+118
+00:04:50,494 --> 00:04:52,153
+There will be some logic on this page.
+
+119
+00:04:52,154 --> 00:04:54,092
+First of all, you'll notice that it had
+
+120
+00:04:54,093 --> 00:04:56,194
+a white logo and three buttons.
+
+121
+00:04:56,195 --> 00:04:59,456
+And each of the buttons are going to have a flyout menu,
+
+122
+00:04:59,457 --> 00:05:02,521
+and I give you the contents of those flyout menus here.
+
+123
+00:05:02,522 --> 00:05:04,785
+And whenever a selection is made,
+
+124
+00:05:04,786 --> 00:05:07,119
+you want to update a Label Control
+
+125
+00:05:07,120 --> 00:05:12,119
+that will display the, your selection from the TextBlock.
+
+126
+00:05:12,121 --> 00:05:12,921
+I don't know if I demoed that,
+
+127
+00:05:12,922 --> 00:05:15,948
+so let me run that again really quick here.
+
+128
+00:05:15,949 --> 00:05:17,750
+Let me show you what I mean.
+
+129
+00:05:18,086 --> 00:05:21,492
+Here I'm going to say, I want
+
+130
+00:05:21,493 --> 00:05:25,323
+Medium, Sugar, and Whole Milk.
+
+131
+00:05:25,324 --> 00:05:27,750
+But if I were to set the Coffee equal to None,
+
+132
+00:05:27,751 --> 00:05:29,816
+then it removes everything else,
+
+133
+00:05:29,817 --> 00:05:32,651
+because obviously you can't just order,
+
+134
+00:05:34,392 --> 00:05:36,927
+you can't just order a coffee,
+
+135
+00:05:36,928 --> 00:05:38,053
+you can't just order sweetener and cream
+
+136
+00:05:38,054 --> 00:05:39,655
+without a coffee, you know?
+
+137
+00:05:39,656 --> 00:05:41,859
+Although I've tried that before.
+
+138
+00:05:42,251 --> 00:05:46,487
+Ok, so next up, also, you'll need that color for the Brown,
+
+139
+00:05:46,488 --> 00:05:47,822
+because there's not a preset color
+
+140
+00:05:47,823 --> 00:05:51,526
+that had exactly the right color that I was looking for.
+
+141
+00:05:51,527 --> 00:05:53,718
+Ok, number 7, the SchedulePage.
+
+142
+00:05:53,719 --> 00:05:56,350
+It had that TimePicker and DatePicker
+
+143
+00:05:56,351 --> 00:05:58,451
+that allowed me to choose the day and the time
+
+144
+00:05:58,452 --> 00:06:00,088
+where I want to pick up my order.
+
+145
+00:06:00,089 --> 00:06:01,458
+And you want to make sure to match the colors
+
+146
+00:06:01,459 --> 00:06:03,118
+to screenshots that I give you.
+
+147
+00:06:03,119 --> 00:06:04,384
+And let's go ahead and talk about those.
+
+148
+00:06:04,385 --> 00:06:06,776
+Look, I give you the screenshots,
+
+149
+00:06:06,777 --> 00:06:08,854
+what everything should look like here in a bunch of images
+
+150
+00:06:08,855 --> 00:06:10,816
+so you don't have to keep the videos open.
+
+151
+00:06:10,817 --> 00:06:15,216
+So here's for the four Pages, A, B, C, and D there.
+
+152
+00:06:15,217 --> 00:06:18,057
+Alrighty, next up,
+
+153
+00:06:18,058 --> 00:06:20,419
+there is the CompletePage,
+
+154
+00:06:20,420 --> 00:06:23,682
+and it'll have the color version of the logo,
+
+155
+00:06:23,683 --> 00:06:28,356
+so, this file here, as well as the,
+
+156
+00:06:28,797 --> 00:06:30,642
+that ticket.jpg.
+
+157
+00:06:30,643 --> 00:06:34,752
+And let's, let's go to the view
+
+158
+00:06:34,753 --> 00:06:37,091
+and look at the large icons here,
+
+159
+00:06:37,092 --> 00:06:39,316
+that'll show us what we're looking at here.
+
+160
+00:06:39,317 --> 00:06:41,116
+Alright, so there's a bunch of icons.
+
+161
+00:06:41,117 --> 00:06:45,388
+You can see they have the suffix, "-icon.png".
+
+162
+00:06:45,389 --> 00:06:47,850
+Here's that ticket icon, ticket graphic
+
+163
+00:06:47,851 --> 00:06:49,391
+and you're going to superimpose the word,
+
+164
+00:06:49,392 --> 00:06:52,380
+"Order 96" on top of it.
+
+165
+00:06:52,991 --> 00:06:56,449
+And there's the white-logo and the color-logo.
+
+166
+00:06:56,450 --> 00:06:58,957
+So, that should be all good.
+
+167
+00:06:58,958 --> 00:07:01,106
+Some general requirements.
+
+168
+00:07:02,017 --> 00:07:03,253
+The design should be responsive.
+
+169
+00:07:03,254 --> 00:07:05,087
+You notice when I was resizing,
+
+170
+00:07:05,088 --> 00:07:09,116
+things resized nicely, to an extent.
+
+171
+00:07:09,117 --> 00:07:11,217
+The navigation's at the top, they have to have that
+
+172
+00:07:11,218 --> 00:07:13,853
+border thickness of two and a gray border brush.
+
+173
+00:07:13,854 --> 00:07:15,083
+I think I already mentioned that earlier,
+
+174
+00:07:15,084 --> 00:07:17,228
+but I just want, bears repeating.
+
+175
+00:07:17,229 --> 00:07:20,955
+Most margins are 10 or 20, most font sizes are 18.
+
+176
+00:07:20,956 --> 00:07:22,917
+Try to match up as well as you can
+
+177
+00:07:22,918 --> 00:07:24,860
+if I haven't specified it.
+
+178
+00:07:25,321 --> 00:07:26,888
+Some of this is to your discretion,
+
+179
+00:07:26,889 --> 00:07:28,792
+whatever you come up with.
+
+180
+00:07:28,793 --> 00:07:30,487
+Make sure it just looks good.
+
+181
+00:07:30,488 --> 00:07:32,983
+You'll only need code behind for the navigation itself.
+
+182
+00:07:32,984 --> 00:07:34,852
+We're not talking about any other logic
+
+183
+00:07:34,853 --> 00:07:38,486
+unless I've noted above, ok, earlier in the document.
+
+184
+00:07:38,487 --> 00:07:41,725
+You have those images, A through D,
+
+185
+00:07:41,726 --> 00:07:43,583
+that will give you the various layouts
+
+186
+00:07:43,584 --> 00:07:44,674
+so you can look at it.
+
+187
+00:07:44,675 --> 00:07:46,683
+Also, you want to try to resolve this
+
+188
+00:07:46,684 --> 00:07:50,110
+without watching the next few videos.
+
+189
+00:07:50,111 --> 00:07:51,473
+where I think I'm going to split this up into like
+
+190
+00:07:51,474 --> 00:07:54,016
+four or five videos so you can get to
+
+191
+00:07:54,017 --> 00:07:56,222
+just the help that you need.
+
+192
+00:07:56,223 --> 00:07:59,717
+Only watch enough of the solution to get unstuck
+
+193
+00:07:59,718 --> 00:08:01,621
+and then continue on struggling.
+
+194
+00:08:01,622 --> 00:08:03,292
+Because struggling is how you learn.
+
+195
+00:08:03,293 --> 00:08:05,382
+And if you do wind up finishing it
+
+196
+00:08:05,383 --> 00:08:07,182
+and you've got an hour to spare,
+
+197
+00:08:07,183 --> 00:08:10,746
+you can watch how I solved the challenge
+
+198
+00:08:10,747 --> 00:08:12,441
+and the Styles that I created
+
+199
+00:08:12,442 --> 00:08:16,957
+and how I went about working in Visual Studio.
+
+200
+00:08:16,958 --> 00:08:20,626
+Probably will learn a little bit about maneuvering around,
+
+201
+00:08:20,627 --> 00:08:25,119
+but that is not necessarily an hour well spent,
+
+202
+00:08:25,120 --> 00:08:26,385
+just bear that in mind.
+
+203
+00:08:26,386 --> 00:08:28,045
+There's a lot of tedious work.
+
+204
+00:08:28,046 --> 00:08:31,690
+This isn't hard, it's just, there's a lot to it, ok?
+
+205
+00:08:31,691 --> 00:08:32,956
+Alright, well see what you come up with.
+
+206
+00:08:32,957 --> 00:08:34,152
+I know you can do it.
+
+207
+00:08:34,153 --> 00:08:36,242
+It's not that hard based on everything we've learned
+
+208
+00:08:36,243 --> 00:08:38,482
+up to this point, if you're paying attention.
+
+209
+00:08:38,483 --> 00:08:39,481
+Might have struggled a little bit,
+
+210
+00:08:39,482 --> 00:08:40,183
+may have to go back and look at
+
+211
+00:08:40,184 --> 00:08:43,015
+some of the work that we've done previously,
+
+212
+00:08:43,016 --> 00:08:46,719
+look at the cheat sheet, but I think you can do this, ok?
+
+213
+00:08:46,720 --> 00:08:48,286
+Alright, we'll see you in the next,
+
+214
+00:08:48,287 --> 00:08:50,215
+the next couple of videos for the solution.
+
+215
+00:08:50,216 --> 00:08:51,277
+Thanks.  
+

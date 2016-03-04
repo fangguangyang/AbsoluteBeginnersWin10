@@ -1,0 +1,904 @@
+1
+00:00:06,290 --> 00:00:09,659
+<v ->Hi, I'm Bob Tabor with www.LearnVisualStudio.net</v>      
+
+2
+00:00:09,660 --> 00:00:12,319
+and this is the first of several solution videos for      
+
+3
+00:00:12,320 --> 00:00:17,169
+the challenge I call the Adeptly Adaptive Challenge, whew.      
+
+4
+00:00:17,170 --> 00:00:19,649
+Alright, so let's go ahead and get started by creating      
+
+5
+00:00:19,650 --> 00:00:20,249
+a New Project.      
+
+6
+00:00:20,250 --> 00:00:23,149
+I'm also going to turn off the webcam here so      
+
+7
+00:00:23,150 --> 00:00:26,719
+we can focus on just the screen.      
+
+8
+00:00:26,720 --> 00:00:28,289
+And I'm going to call this FakeNews.      
+
+9
+00:00:28,290 --> 00:00:29,740
+You can call it whatever you'd like to.      
+
+10
+00:00:32,590 --> 00:00:34,369
+And so in this first video all we're going to do      
+
+11
+00:00:34,370 --> 00:00:37,940
+is setup the Project and get the MainPage.xaml laid out.      
+
+12
+00:00:39,350 --> 00:00:42,049
+And the first thing I want to do is open up the Assets      
+
+13
+00:00:42,050 --> 00:00:43,149
+from the previous lesson.      
+
+14
+00:00:43,150 --> 00:00:47,689
+I'm going to copy the Food and Financial PNGs      
+
+15
+00:00:47,690 --> 00:00:49,289
+into the Assets folder.      
+
+16
+00:00:49,290 --> 00:00:52,689
+So I'm just going to drag and drop them into Assets, great.      
+
+17
+00:00:52,690 --> 00:00:54,849
+And while I'm here in the Solution Explorer,      
+
+18
+00:00:54,850 --> 00:00:58,470
+I'm actually going to open up the Instructions.txt      
+
+19
+00:00:59,850 --> 00:01:02,670
+and I will keep those around and available.      
+
+20
+00:01:03,890 --> 00:01:05,789
+And let me pull this back out here.      
+
+21
+00:01:05,790 --> 00:01:08,719
+Also, since we're opened up in the App.xaml.cs      
+
+22
+00:01:08,720 --> 00:01:10,540
+I'm going to remove the frame counter.      
+
+23
+00:01:12,480 --> 00:01:14,300
+And then we'll open up the      
+
+24
+00:01:15,250 --> 00:01:16,719
+MainPage.xaml.      
+
+25
+00:01:16,720 --> 00:01:19,819
+And I know that I'm going to create two areas,      
+
+26
+00:01:19,820 --> 00:01:22,400
+a top area that will contain      
+
+27
+00:01:25,590 --> 00:01:26,549
+the SearchBox      
+
+28
+00:01:26,550 --> 00:01:29,219
+and the Title of the current Page that we're on      
+
+29
+00:01:29,220 --> 00:01:33,889
+and then in the second Row of the Grid      
+
+30
+00:01:33,890 --> 00:01:36,789
+we're going to add a SplitView with a pane      
+
+31
+00:01:36,790 --> 00:01:37,879
+and a content area.      
+
+32
+00:01:37,880 --> 00:01:40,589
+The content area will then contain a GridView      
+
+33
+00:01:40,590 --> 00:01:44,319
+ultimately with all of our news items.      
+
+34
+00:01:44,320 --> 00:01:46,889
+Okay, so let's go      
+
+35
+00:01:46,890 --> 00:01:50,860
+Grid.RowDefinitions.      
+
+36
+00:01:56,090 --> 00:01:57,840
+And we'll set this one Auto.      
+
+37
+00:02:01,650 --> 00:02:03,900
+And the second one will be just "*" sizing.      
+
+38
+00:02:05,790 --> 00:02:08,989
+So in the top Row, what we'll do is just add      
+
+39
+00:02:08,990 --> 00:02:10,570
+actually a RelativePanel.      
+
+40
+00:02:14,790 --> 00:02:17,919
+And I'm going to create first of all a Button      
+
+41
+00:02:17,920 --> 00:02:19,240
+that will be used for      
+
+42
+00:02:20,550 --> 00:02:22,869
+our HamburgerButton,      
+
+43
+00:02:22,870 --> 00:02:26,140
+the TextBlock which will be used for the      
+
+44
+00:02:27,220 --> 00:02:29,649
+title, that bold title,      
+
+45
+00:02:29,650 --> 00:02:32,749
+and then I'm going to use an AutoSuggestBox      
+
+46
+00:02:32,750 --> 00:02:33,749
+for the search.      
+
+47
+00:02:33,750 --> 00:02:35,419
+Now we're not going to implement search      
+
+48
+00:02:35,420 --> 00:02:37,770
+but I'm just going to use that and set it up here.      
+
+49
+00:02:38,820 --> 00:02:41,719
+So the Button, we're going to set that to the      
+
+50
+00:02:41,720 --> 00:02:45,389
+RelativePanel.RightOf      
+
+51
+00:02:45,390 --> 00:02:47,650
+RelativePanel.AlignLeftWithPanel,      
+
+52
+00:02:49,950 --> 00:02:51,000
+True.      
+
+53
+00:02:52,620 --> 00:02:54,049
+And while I'm here I should probably go ahead      
+
+54
+00:02:54,050 --> 00:02:55,619
+and just flush everything out here.      
+
+55
+00:02:55,620 --> 00:02:57,440
+This is going to be HamburgerButton.      
+
+56
+00:03:02,190 --> 00:03:05,409
+And let's go ahead and we know that we're      
+
+57
+00:03:05,410 --> 00:03:08,289
+going to use the FontFamily of      
+
+58
+00:03:08,290 --> 00:03:09,500
+Segoe MDL2 Assets      
+
+59
+00:03:12,720 --> 00:03:14,840
+Segoe MDL2 Assets.      
+
+60
+00:03:16,250 --> 00:03:19,009
+And if we take a look      
+
+61
+00:03:19,010 --> 00:03:20,970
+in our little help file here,      
+
+62
+00:03:23,320 --> 00:03:25,800
+I know that we're going to use      
+
+63
+00:03:27,760 --> 00:03:29,060
+that character.      
+
+64
+00:03:36,020 --> 00:03:38,700
+And let's set the FontSize="20".      
+
+65
+00:03:41,720 --> 00:03:43,019
+And I think we'll just go ahead and set      
+
+66
+00:03:43,020 --> 00:03:46,849
+the Width and the Height="45".      
+
+67
+00:03:46,850 --> 00:03:48,740
+That should be sufficiently large.      
+
+68
+00:03:50,950 --> 00:03:53,949
+And I'm going to set the alignment of this item      
+
+69
+00:03:53,950 --> 00:03:55,619
+to the Center,      
+
+70
+00:03:55,620 --> 00:03:57,449
+and I'm also going to go ahead and create a      
+
+71
+00:03:57,450 --> 00:03:59,549
+Click event for this guy.      
+
+72
+00:03:59,550 --> 00:04:01,619
+We'll come back to that, great.      
+
+73
+00:04:01,620 --> 00:04:03,649
+All right, so now the TextBlock will be      
+
+74
+00:04:03,650 --> 00:04:07,850
+RelativePanel.RightOf="HamburgerButton", great.      
+
+75
+00:04:09,090 --> 00:04:14,019
+And I'm going to set the FontSize="18".      
+
+76
+00:04:14,020 --> 00:04:15,500
+The FontWeight will be Bold.      
+
+77
+00:04:20,920 --> 00:04:23,589
+I'm going to go ahead and give it a name as well      
+
+78
+00:04:23,590 --> 00:04:25,270
+because we're going to need that.      
+
+79
+00:04:26,550 --> 00:04:28,689
+So TitleTextBlock.      
+
+80
+00:04:28,690 --> 00:04:30,700
+We're going to set it programmatically, right?      
+
+81
+00:04:31,790 --> 00:04:33,279
+I think the only thing we'll need to do is probably give it      
+
+82
+00:04:33,280 --> 00:04:37,389
+some Margin so I want it like 20 pixels from the left,      
+
+83
+00:04:37,390 --> 00:04:41,049
+and I know I'm going to probably want to set      
+
+84
+00:04:41,050 --> 00:04:42,900
+some of it on the right as well,      
+
+85
+00:04:44,320 --> 00:04:45,809
+or at least on the top.      
+
+86
+00:04:45,810 --> 00:04:48,270
+Alright, the next stop, let's go to the AutoSuggestBox      
+
+87
+00:04:49,390 --> 00:04:50,689
+and give this just the Name      
+
+88
+00:04:50,690 --> 00:04:53,519
+"MyAutoSuggestBox".      
+
+89
+00:04:53,520 --> 00:04:55,019
+I probably should give it a different name than that      
+
+90
+00:04:55,020 --> 00:04:56,969
+but I'm lazy right now.      
+
+91
+00:04:56,970 --> 00:05:00,619
+And we're going to set the QueryIcon="Find",      
+
+92
+00:05:00,620 --> 00:05:02,170
+give us a little magnifying glass.      
+
+93
+00:05:03,520 --> 00:05:06,270
+And then the PlaceholderText, we'll type in Search.      
+
+94
+00:05:08,420 --> 00:05:10,989
+Now if you'd like to do this, I would recommend that you      
+
+95
+00:05:10,990 --> 00:05:13,250
+go off and you build this functionality.      
+
+96
+00:05:16,640 --> 00:05:21,289
+You should have the tools already to do that sort of thing.      
+
+97
+00:05:21,290 --> 00:05:23,770
+So I want this aligned on the right-hand side      
+
+98
+00:05:26,650 --> 00:05:29,969
+and I'll set the Width="200"      
+
+99
+00:05:29,970 --> 00:05:32,319
+and I know we're going to need some Margin as well      
+
+100
+00:05:32,320 --> 00:05:34,649
+so I'll just go ahead and take a stab at it.      
+
+101
+00:05:34,650 --> 00:05:36,349
+A "0" on the left.      
+
+102
+00:05:36,350 --> 00:05:37,449
+I know I'm going to need some on the top.      
+
+103
+00:05:37,450 --> 00:05:39,719
+I'll come back to that one.      
+
+104
+00:05:39,720 --> 00:05:41,620
+Let's just say "10" from the right, and "0".      
+
+105
+00:05:42,980 --> 00:05:44,779
+That should do it.      
+
+106
+00:05:44,780 --> 00:05:47,700
+Okay, so that's in the top row.      
+
+107
+00:05:49,150 --> 00:05:51,489
+The next Row, that's SplitView,      
+
+108
+00:05:51,490 --> 00:05:53,300
+and we'll set the Grid.Row="1".      
+
+109
+00:05:55,020 --> 00:05:57,909
+And I'm going to go ahead and give it a name as well      
+
+110
+00:05:57,910 --> 00:05:59,949
+because I know we're going to want to      
+
+111
+00:05:59,950 --> 00:06:02,119
+control it programmatically from the      
+
+112
+00:06:02,120 --> 00:06:03,489
+HamburgerButton, right.      
+
+113
+00:06:03,490 --> 00:06:05,649
+So MySplitView.      
+
+114
+00:06:05,650 --> 00:06:07,449
+And I'm going to set the      
+
+115
+00:06:07,450 --> 00:06:10,420
+DisplayMode="CompactOverlay".      
+
+116
+00:06:12,030 --> 00:06:13,150
+Whoops.      
+
+117
+00:06:15,700 --> 00:06:16,900
+Go ahead and do that.      
+
+118
+00:06:18,120 --> 00:06:20,989
+And I'm going to go ahead and do this      
+
+119
+00:06:20,990 --> 00:06:22,400
+while I'm thinking about it.      
+
+120
+00:06:24,120 --> 00:06:27,800
+SplitView.Content, great.      
+
+121
+00:06:39,520 --> 00:06:41,889
+I'll come back here and finish this idea up.      
+
+122
+00:06:41,890 --> 00:06:44,189
+I know I'm going to need the OpenPaneLength.      
+
+123
+00:06:44,190 --> 00:06:45,789
+I'm going to set it to like 150 to start      
+
+124
+00:06:45,790 --> 00:06:47,319
+and see if that works well.      
+
+125
+00:06:47,320 --> 00:06:48,219
+And then I'm going to set the      
+
+126
+00:06:48,220 --> 00:06:53,082
+CompactPaneLength="45".      
+
+127
+00:06:53,083 --> 00:06:56,050
+I'm setting it to the same Width as my      
+
+128
+00:06:57,660 --> 00:06:59,070
+HamburgerButton.      
+
+129
+00:07:02,020 --> 00:07:04,219
+Okay, now we have a SplitView      
+
+130
+00:07:04,220 --> 00:07:06,589
+and inside that we're going to add the ListBox      
+
+131
+00:07:06,590 --> 00:07:08,340
+like I've been working with here.      
+
+132
+00:07:11,320 --> 00:07:12,349
+And I'm going set the      
+
+133
+00:07:12,350 --> 00:07:16,470
+SelectionMode="Single"      
+
+134
+00:07:18,390 --> 00:07:20,449
+and I'm going to set the      
+
+135
+00:07:20,450 --> 00:07:25,169
+SelectionChanged equal to a NewEventHandler.      
+
+136
+00:07:25,170 --> 00:07:26,640
+That should be good.      
+
+137
+00:07:29,020 --> 00:07:30,589
+Okay, good.      
+
+138
+00:07:30,590 --> 00:07:32,289
+Inside of here, I'm going to need a few ListBox      
+
+139
+00:07:32,290 --> 00:07:34,470
+or at least two ListBoxItems.      
+
+140
+00:07:41,810 --> 00:07:44,389
+So the first one, I'm going to create a StackPanel.      
+
+141
+00:07:44,390 --> 00:07:46,149
+And we've done this so many times already,      
+
+142
+00:07:46,150 --> 00:07:48,589
+hopefully this isn't foreign to you.      
+
+143
+00:07:48,590 --> 00:07:51,389
+So the Orientation="Horizontal"      
+
+144
+00:07:51,390 --> 00:07:53,640
+and we'll use two TextBlocks, right.      
+
+145
+00:07:56,420 --> 00:08:00,119
+The first one will be that Segoe MDL2 Assets      
+
+146
+00:08:00,120 --> 00:08:01,740
+so FontFamily.      
+
+147
+00:08:07,520 --> 00:08:12,140
+And I think I'm using FontSize="20" for those assets.      
+
+148
+00:08:13,450 --> 00:08:17,389
+And I think, if memory serves me correctly,      
+
+149
+00:08:17,390 --> 00:08:19,949
+I put that in here as well,      
+
+150
+00:08:19,950 --> 00:08:21,700
+and yeah, we'll use that as the Home.      
+
+151
+00:08:23,390 --> 00:08:24,770
+So we'll set the Text.      
+
+152
+00:08:27,790 --> 00:08:29,000
+Go with that.      
+
+153
+00:08:30,920 --> 00:08:34,600
+And the second one, TextBlock, will just have the Text.      
+
+154
+00:08:42,850 --> 00:08:44,979
+Financial.      
+
+155
+00:08:44,980 --> 00:08:47,049
+This is the Font, actually      
+
+156
+00:08:47,050 --> 00:08:51,500
+FontSize="18".      
+
+157
+00:08:53,690 --> 00:08:55,809
+And I know that needs some Margin on the left,      
+
+158
+00:08:55,810 --> 00:08:59,040
+so I'll go ahead and just use 20 there.      
+
+159
+00:09:08,650 --> 00:09:11,030
+I'm also going to name this, the first item,      
+
+160
+00:09:14,890 --> 00:09:16,070
+Financial.      
+
+161
+00:09:17,530 --> 00:09:20,089
+And so that should pretty much wrap up      
+
+162
+00:09:20,090 --> 00:09:22,759
+that first ListBoxItem.      
+
+163
+00:09:22,760 --> 00:09:23,649
+Tell you what I'm going to do.      
+
+164
+00:09:23,650 --> 00:09:25,170
+I'm just going to copy the whole thing      
+
+165
+00:09:27,620 --> 00:09:32,229
+and actually let me copy the whole thing ListBoxItem.      
+
+166
+00:09:32,230 --> 00:09:34,019
+There we go.      
+
+167
+00:09:34,020 --> 00:09:35,430
+And I'll replace this one.      
+
+168
+00:09:36,550 --> 00:09:38,900
+I'm just going to replace this with Food.      
+
+169
+00:09:40,550 --> 00:09:42,449
+And this will be Food      
+
+170
+00:09:42,450 --> 00:09:47,100
+and then the icon should be the Star, I believe.      
+
+171
+00:09:52,283 --> 00:09:53,999
+Great.      
+
+172
+00:09:54,000 --> 00:09:55,489
+Alright, that should take care of that.      
+
+173
+00:09:55,490 --> 00:09:58,500
+Now inside of the Content area,      
+
+174
+00:10:01,880 --> 00:10:04,170
+I know I'm going to have a GridView.      
+
+175
+00:10:06,790 --> 00:10:09,789
+Just trying to figure out what needs to happen      
+
+176
+00:10:09,790 --> 00:10:11,040
+inside of there.      
+
+177
+00:10:13,490 --> 00:10:14,949
+Let me just try a GridView by itself      
+
+178
+00:10:14,950 --> 00:10:17,499
+and see where that takes us.      
+
+179
+00:10:17,500 --> 00:10:19,889
+I may have to come back and revisit this      
+
+180
+00:10:19,890 --> 00:10:21,200
+but we'll start here.      
+
+181
+00:10:22,950 --> 00:10:24,519
+I'm going to give this the Name      
+
+182
+00:10:24,520 --> 00:10:29,389
+NewsItemGrid and I'll set the      
+
+183
+00:10:29,390 --> 00:10:32,789
+HorizontalAlignment="Stretch".      
+
+184
+00:10:32,790 --> 00:10:35,349
+That should take up the entire Width      
+
+185
+00:10:35,350 --> 00:10:36,570
+of the available area.      
+
+186
+00:10:38,290 --> 00:10:40,349
+Margin, I'm going to give me a little Margin      
+
+187
+00:10:40,350 --> 00:10:42,140
+on the left-hand side.      
+
+188
+00:10:43,790 --> 00:10:47,669
+And I know I'm going to need      
+
+189
+00:10:47,670 --> 00:10:49,469
+an Item.Source Property      
+
+190
+00:10:49,470 --> 00:10:51,519
+and I'm also going to need to do things like the      
+
+191
+00:10:51,520 --> 00:10:55,440
+GridView.ItemTemplate.      
+
+192
+00:10:57,090 --> 00:10:59,349
+And I had to do like a DataTemplate.      
+
+193
+00:10:59,350 --> 00:11:02,300
+We'll come back to that in an upcoming lesson.      
+
+194
+00:11:03,684 --> 00:11:06,649
+So I'll just get kind of set up for now.      
+
+195
+00:11:06,650 --> 00:11:09,600
+Let me see what this looks like to see if it started here.      
+
+196
+00:11:10,590 --> 00:11:13,319
+Again, I want to emphasize that in these videos      
+
+197
+00:11:13,320 --> 00:11:16,289
+I blow through writing this code because I've already done      
+
+198
+00:11:16,290 --> 00:11:19,809
+it once, it's fresh in my mind, and I have some notes      
+
+199
+00:11:19,810 --> 00:11:20,950
+as well to help.      
+
+200
+00:11:22,170 --> 00:11:26,389
+If this were a real application development effort,      
+
+201
+00:11:26,390 --> 00:11:28,300
+I would probably take my time.      
+
+202
+00:11:29,710 --> 00:11:32,249
+Okay, you can't see anything because we haven't wired up      
+
+203
+00:11:32,250 --> 00:11:34,799
+that button yet.      
+
+204
+00:11:34,800 --> 00:11:35,789
+I'll tell you what, let me go ahead      
+
+205
+00:11:35,790 --> 00:11:36,849
+and get that part working      
+
+206
+00:11:36,850 --> 00:11:38,949
+So I'm going go into the code behind for the      
+
+207
+00:11:38,950 --> 00:11:40,700
+MainPage.xaml here.      
+
+208
+00:11:44,190 --> 00:11:46,910
+And in the HamburgerButton_Click event,      
+
+209
+00:11:48,500 --> 00:11:49,700
+we'll go      
+
+210
+00:11:55,450 --> 00:11:58,069
+MySplitView.IsPaneOpen != MySplitView.IsPaneOpen      
+
+211
+00:11:58,070 --> 00:12:02,519
+MySplitView.IsPaneOpen != MySplitView.IsPaneOpen      
+
+212
+00:12:02,520 --> 00:12:07,059
+MySplitView.IsPaneOpen != MySplitView.IsPaneOpen      
+
+213
+00:12:07,060 --> 00:12:09,289
+Alright, let's go ahead and run it now.      
+
+214
+00:12:09,290 --> 00:12:11,240
+Whoops. What don't you like?      
+
+215
+00:12:13,250 --> 00:12:14,870
+Oh, sorry. (laughs)      
+
+216
+00:12:15,920 --> 00:12:17,019
+That's what it should be.      
+
+217
+00:12:17,020 --> 00:12:18,300
+Sorry about that.      
+
+218
+00:12:27,720 --> 00:12:28,589
+Alright, there you go.      
+
+219
+00:12:28,590 --> 00:12:30,449
+Alright, so we're off to a good start.      
+
+220
+00:12:30,450 --> 00:12:32,219
+Next up, we're going to work I think      
+
+221
+00:12:32,220 --> 00:12:35,049
+on the data, I forget.      
+
+222
+00:12:35,050 --> 00:12:36,549
+I'll look at my notes.      
+
+223
+00:12:36,550 --> 00:12:39,089
+But that should at least complete the first setup steps      
+
+224
+00:12:39,090 --> 00:12:40,289
+and the general layout.      
+
+225
+00:12:40,290 --> 00:12:42,049
+Okay, so let's pick it up in the next lesson.      
+
+226
+00:12:42,050 --> 00:12:43,300
+Thanks.      
+

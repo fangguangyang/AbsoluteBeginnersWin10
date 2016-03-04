@@ -1,0 +1,668 @@
+1
+00:00:03,880 --> 00:00:05,819
+<v ->All right, just a handful of finishing touches</v>      
+
+2
+00:00:05,820 --> 00:00:07,000
+and then we're going to move on.      
+
+3
+00:00:08,320 --> 00:00:09,589
+Let me run the app real quick.      
+
+4
+00:00:09,590 --> 00:00:10,549
+There's two things I want to do.      
+
+5
+00:00:10,550 --> 00:00:13,449
+First of all, going to get rid of the button,      
+
+6
+00:00:13,450 --> 00:00:15,889
+going to make sure that everything is nice and centered,      
+
+7
+00:00:15,890 --> 00:00:18,049
+which it's not so we'll fix that.      
+
+8
+00:00:18,050 --> 00:00:19,889
+And I guess three things,      
+
+9
+00:00:19,890 --> 00:00:22,049
+I'm going to add some exception handling as well.      
+
+10
+00:00:22,050 --> 00:00:25,949
+So let's go to the MainPage.xaml.      
+
+11
+00:00:25,950 --> 00:00:28,819
+This will all be really just quick and easy honestly.      
+
+12
+00:00:28,820 --> 00:00:29,809
+There's a little TextBlock,      
+
+13
+00:00:29,810 --> 00:00:33,129
+I'm going to put that there.      
+
+14
+00:00:33,130 --> 00:00:35,570
+And let's quick change the font.      
+
+15
+00:00:38,050 --> 00:00:41,019
+FontSize equals,      
+
+16
+00:00:41,020 --> 00:00:44,049
+oh, I don't know, 36.      
+
+17
+00:00:44,050 --> 00:00:45,583
+That should be sufficient.      
+
+18
+00:00:47,383 --> 00:00:49,689
+Foreground="white".      
+
+19
+00:00:49,690 --> 00:00:51,639
+That should look good.      
+
+20
+00:00:51,640 --> 00:00:54,049
+I might even break that up into multiple lines      
+
+21
+00:00:54,050 --> 00:00:57,310
+so let me see how that looks before I get too far here.      
+
+22
+00:01:00,140 --> 00:01:02,740
+We're going to get rid of the button      
+
+23
+00:01:04,090 --> 00:01:06,849
+and I think what      
+
+24
+00:01:06,850 --> 00:01:10,110
+we're going to do also is      
+
+25
+00:01:12,990 --> 00:01:15,079
+VerticalAlignment="Center".      
+
+26
+00:01:15,080 --> 00:01:16,670
+Let's see how that works.      
+
+27
+00:01:17,850 --> 00:01:21,409
+And then HorizontalAlignment="Center"      
+
+28
+00:01:21,410 --> 00:01:24,140
+on the image and the text.      
+
+29
+00:01:28,090 --> 00:01:31,180
+Then, on the MainPage.xaml,      
+
+30
+00:01:32,270 --> 00:01:34,219
+actually let's go back to MainPage.      
+
+31
+00:01:34,220 --> 00:01:38,079
+I'm going to go Page, add a load--      
+
+32
+00:01:38,080 --> 00:01:40,232
+Loaded event handler.      
+
+33
+00:01:41,750 --> 00:01:46,239
+And inside there, I'm going to take everything      
+
+34
+00:01:46,240 --> 00:01:48,440
+inside that click button and move it      
+
+35
+00:01:50,550 --> 00:01:52,240
+like so.      
+
+36
+00:01:55,250 --> 00:01:59,969
+And we'll have to add async keyword,      
+
+37
+00:01:59,970 --> 00:02:00,829
+like so.      
+
+38
+00:02:00,830 --> 00:02:03,019
+And we'll get rid of the Button_Click event.      
+
+39
+00:02:03,020 --> 00:02:05,640
+So this will just load up as soon as we load the app.      
+
+40
+00:02:06,650 --> 00:02:08,919
+All right, so let's take a look at the changes now      
+
+41
+00:02:08,920 --> 00:02:10,089
+and just make sure everything looks good.      
+
+42
+00:02:10,090 --> 00:02:11,789
+There are one or two more things I want to do though.      
+
+43
+00:02:11,790 --> 00:02:14,260
+Whoa, that's not what I had in mind whatsoever.      
+
+44
+00:02:15,550 --> 00:02:19,089
+Okay, all right, so clearly got one thing      
+
+45
+00:02:19,090 --> 00:02:20,289
+I need to do there.      
+
+46
+00:02:20,290 --> 00:02:24,089
+Let's wrap another StackPanel      
+
+47
+00:02:24,090 --> 00:02:25,690
+inside of that StackPanel.      
+
+48
+00:02:36,830 --> 00:02:38,700
+Okay, we got that going for us.      
+
+49
+00:02:42,750 --> 00:02:44,419
+And we're going to make the background      
+
+50
+00:02:44,420 --> 00:02:49,370
+of the outermost StackPanel pink.      
+
+51
+00:02:51,190 --> 00:02:52,849
+All right, why aren't you happy?      
+
+52
+00:02:52,850 --> 00:02:55,370
+Oh, that's why.      
+
+53
+00:02:56,490 --> 00:02:58,200
+Okay, all right, that's good.      
+
+54
+00:02:59,510 --> 00:03:00,549
+That should fix that problem.      
+
+55
+00:03:00,550 --> 00:03:02,240
+Let's see where we have ourselves now.      
+
+56
+00:03:06,720 --> 00:03:09,119
+Okay, ideally I'd put these on separate lines.      
+
+57
+00:03:09,120 --> 00:03:09,849
+Let's go ahead and do that.      
+
+58
+00:03:09,850 --> 00:03:13,600
+So there is the location, the temp, and the description.      
+
+59
+00:03:16,450 --> 00:03:19,640
+So let's do this.      
+
+60
+00:03:22,120 --> 00:03:26,940
+Location, actually let's go Temp,      
+
+61
+00:03:29,320 --> 00:03:32,219
+Description, and then Location.      
+
+62
+00:03:33,220 --> 00:03:33,849
+I like that better.      
+
+63
+00:03:33,850 --> 00:03:35,689
+Temp will be the largest.      
+
+64
+00:03:35,690 --> 00:03:39,350
+We'll put this at like, I don't know, 52.      
+
+65
+00:03:40,990 --> 00:03:44,419
+The Description, yeah, 36 is good there.      
+
+66
+00:03:44,420 --> 00:03:46,549
+And then the Location.      
+
+67
+00:03:46,550 --> 00:03:50,170
+We'll make that smaller, 24.      
+
+68
+00:03:52,020 --> 00:03:55,200
+All right, and so Temp, Description, Location.      
+
+69
+00:03:57,220 --> 00:03:59,100
+Where are we here? Yeah.      
+
+70
+00:04:00,420 --> 00:04:04,670
+TempTextBlock.Text =,      
+
+71
+00:04:07,320 --> 00:04:09,940
+Description, Text      
+
+72
+00:04:12,220 --> 00:04:15,700
+and LocationTextBlock.      
+
+73
+00:04:18,020 --> 00:04:22,660
+Great, okay, so let's grab the Location off,      
+
+74
+00:04:22,660 --> 00:04:23,870
+stick that there,      
+
+75
+00:04:25,580 --> 00:04:27,170
+grab the Temp off      
+
+76
+00:04:30,290 --> 00:04:33,040
+and we'll stick that here.      
+
+77
+00:04:35,420 --> 00:04:38,940
+And finally, we'll take this      
+
+78
+00:04:40,520 --> 00:04:43,789
+and, whoops, put that there      
+
+79
+00:04:43,790 --> 00:04:46,940
+and this, the Temp, here.      
+
+80
+00:04:47,920 --> 00:04:49,409
+Great and get rid of that.      
+
+81
+00:04:49,410 --> 00:04:51,419
+Okay, one other thing that I want to do.      
+
+82
+00:04:51,420 --> 00:04:54,109
+So structure exception handling,      
+
+83
+00:04:54,110 --> 00:04:58,849
+you always want to wrap any call with a      
+
+84
+00:04:58,850 --> 00:05:02,149
+try-catch statement any time you're calling out to something      
+
+85
+00:05:02,150 --> 00:05:03,789
+you don't control.      
+
+86
+00:05:03,790 --> 00:05:06,590
+So if it's something you control in your own source code,      
+
+87
+00:05:07,750 --> 00:05:09,789
+that is up to you.      
+
+88
+00:05:09,790 --> 00:05:11,489
+But if you're going to make a call to a network,      
+
+89
+00:05:11,490 --> 00:05:14,619
+to a database, to a web service,      
+
+90
+00:05:14,620 --> 00:05:16,049
+to something you do not control,      
+
+91
+00:05:16,050 --> 00:05:18,640
+to the file system, you want to wrap it with a try-catch.      
+
+92
+00:05:22,590 --> 00:05:24,789
+Typically you only want to wrap try-catch around      
+
+93
+00:05:24,790 --> 00:05:28,689
+those things not just entire blocks of code.      
+
+94
+00:05:28,690 --> 00:05:33,389
+So you want to be very deliberate and specific      
+
+95
+00:05:33,390 --> 00:05:35,889
+with what you're wrapping try-catches around.      
+
+96
+00:05:35,890 --> 00:05:36,619
+Typically.      
+
+97
+00:05:36,620 --> 00:05:39,849
+In this case, if we get an error in one spot,      
+
+98
+00:05:39,850 --> 00:05:42,349
+the whole thing is going to fall down like a house of cards.      
+
+99
+00:05:42,350 --> 00:05:45,570
+So in that case, what I'm going to do      
+
+100
+00:05:48,390 --> 00:05:52,060
+is just wrap the entire code passage      
+
+101
+00:05:53,320 --> 00:05:54,440
+with a try.      
+
+102
+00:05:56,590 --> 00:05:58,780
+Now I could be a little bit more      
+
+103
+00:06:01,630 --> 00:06:05,319
+careful with what gets wrapped and what gets reported      
+
+104
+00:06:05,320 --> 00:06:07,349
+but honestly I'm just going to do this.      
+
+105
+00:06:07,350 --> 00:06:10,919
+I'm going to take this and in that Location      
+
+106
+00:06:10,920 --> 00:06:12,889
+I'm just going to say,      
+
+107
+00:06:12,890 --> 00:06:17,449
+"Unable to get weather at this time."      
+
+108
+00:06:17,450 --> 00:06:18,719
+something like that.      
+
+109
+00:06:18,720 --> 00:06:20,989
+And so here's what I'm going to do.      
+
+110
+00:06:20,990 --> 00:06:24,640
+I'm going to set up a break point on the try statement      
+
+111
+00:06:25,620 --> 00:06:28,649
+and then when I hit that I'm going to force it go      
+
+112
+00:06:28,650 --> 00:06:32,119
+to that line just so I can see what it looks like by itself.      
+
+113
+00:06:32,120 --> 00:06:35,819
+All right, so let's right click and say      
+
+114
+00:06:35,820 --> 00:06:37,960
+Set as the Next Statement.      
+
+115
+00:06:40,390 --> 00:06:42,040
+All right, well, pooh, on me.      
+
+116
+00:06:43,620 --> 00:06:46,149
+All right, we'll force this issue.      
+
+117
+00:06:46,150 --> 00:06:48,589
+We'll go and do it like this instead.      
+
+118
+00:06:48,590 --> 00:06:50,840
+I just want to see what it looks like when we can't get...      
+
+119
+00:06:52,460 --> 00:06:54,549
+All right, let's do this.      
+
+120
+00:06:54,550 --> 00:06:55,940
+Let's get rid of that.      
+
+121
+00:06:57,620 --> 00:06:59,549
+I'm just going to comment everything out.      
+
+122
+00:06:59,550 --> 00:07:01,449
+I just want to see what this will look like      
+
+123
+00:07:01,450 --> 00:07:02,900
+with just that text in it.      
+
+124
+00:07:03,950 --> 00:07:06,249
+I probably need to add the wrapping.      
+
+125
+00:07:06,250 --> 00:07:07,319
+No, that should do it.      
+
+126
+00:07:07,320 --> 00:07:08,889
+Let's see what it looks like here      
+
+127
+00:07:08,890 --> 00:07:12,740
+whenever we see it in our phone.      
+
+128
+00:07:16,620 --> 00:07:19,419
+Yeah, I need to wrap a little bit there.      
+
+129
+00:07:19,420 --> 00:07:21,370
+All right, no problem.      
+
+130
+00:07:24,650 --> 00:07:26,220
+So we'll turn on wrapping,      
+
+131
+00:07:28,790 --> 00:07:30,134
+equals Wrap      
+
+132
+00:07:32,820 --> 00:07:34,000
+Do it again.      
+
+133
+00:07:38,720 --> 00:07:40,289
+Okay, it's not pretty.      
+
+134
+00:07:40,290 --> 00:07:41,789
+I could work a little bit more on this      
+
+135
+00:07:41,790 --> 00:07:45,149
+and make it look better but for my purposes right now,      
+
+136
+00:07:45,150 --> 00:07:46,649
+it's just fine.      
+
+137
+00:07:46,650 --> 00:07:49,349
+Now let me go ahead and take the gloves off      
+
+138
+00:07:49,350 --> 00:07:51,300
+and let me run it,      
+
+139
+00:07:53,290 --> 00:07:56,500
+the whole code on the phone emulator.      
+
+140
+00:07:58,590 --> 00:07:59,700
+Yes.      
+
+141
+00:08:01,950 --> 00:08:05,570
+All right, I'm surprised that this is not lower.      
+
+142
+00:08:07,850 --> 00:08:11,270
+Well, let me think about this one second here.      
+
+143
+00:08:12,350 --> 00:08:16,170
+Did we not set VerticalAlignment="Center"? Hmm.      
+
+144
+00:08:17,120 --> 00:08:18,450
+That surprises me a little bit.      
+
+145
+00:08:23,060 --> 00:08:25,389
+But honestly it's just fine the way that it is.      
+
+146
+00:08:25,390 --> 00:08:27,250
+Okay, I'm going to go ahead and stop right now.      
+
+147
+00:08:28,650 --> 00:08:32,209
+And again, if you wanted to go and improve this,      
+
+148
+00:08:32,210 --> 00:08:34,519
+let me give you one little assignment.      
+
+149
+00:08:34,520 --> 00:08:36,419
+I'm not going to show you how to solve this,      
+
+150
+00:08:36,420 --> 00:08:40,319
+but what would be great if, in addition to right now,      
+
+151
+00:08:40,320 --> 00:08:41,719
+the current weather conditions,      
+
+152
+00:08:41,720 --> 00:08:43,759
+you were able to see for the next seven days.      
+
+153
+00:08:43,760 --> 00:08:47,019
+You can get that through the open OpenWeatherMap API.      
+
+154
+00:08:47,020 --> 00:08:49,519
+And you've already got the icons, just make them smaller,      
+
+155
+00:08:49,520 --> 00:08:51,219
+just put them up for the next seven days.      
+
+156
+00:08:51,220 --> 00:08:52,559
+Figure out how to do that.      
+
+157
+00:08:52,560 --> 00:08:55,259
+That would be a nice little addition to this.      
+
+158
+00:08:55,260 --> 00:08:58,100
+You can improve some of the exception handling,      
+
+159
+00:08:59,890 --> 00:09:02,489
+maybe add some options to change the background color      
+
+160
+00:09:02,490 --> 00:09:05,649
+from hot pink to whatever you want it to be.      
+
+161
+00:09:05,650 --> 00:09:07,119
+So those were all things I'm just going to      
+
+162
+00:09:07,120 --> 00:09:08,449
+let you do on your own.      
+
+163
+00:09:08,450 --> 00:09:10,619
+Take this, run with it, it's yours.      
+
+164
+00:09:10,620 --> 00:09:12,789
+And now we're going to move on to the next one.      
+
+165
+00:09:12,790 --> 00:09:15,109
+All right, so great, we're doing awesome.      
+
+166
+00:09:15,110 --> 00:09:16,049
+We'll see you in the next lesson.      
+
+167
+00:09:16,050 --> 00:09:17,100
+Thanks.      
+

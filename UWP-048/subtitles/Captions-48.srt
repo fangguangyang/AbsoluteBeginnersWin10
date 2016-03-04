@@ -1,0 +1,624 @@
+1
+00:00:03,830 --> 00:00:06,885
+<v Voiceover>Okay, so here we are in</v>      
+
+2
+00:00:06,886 --> 00:00:09,750
+the final of the Solution Videos      
+
+3
+00:00:09,751 --> 00:00:13,698
+for the Adeptly Adaptive Challenge,      
+
+4
+00:00:13,699 --> 00:00:15,911
+and there are two things we need to accomplish here.      
+
+5
+00:00:15,912 --> 00:00:20,912
+Each news item should be 200 X 275 in narrow state,      
+
+6
+00:00:21,111 --> 00:00:24,171
+and 400 X 400 tall when in a wide state.      
+
+7
+00:00:24,172 --> 00:00:25,742
+And here we're defining the wide state      
+
+8
+00:00:25,743 --> 00:00:28,087
+as 900 min window width.      
+
+9
+00:00:28,088 --> 00:00:31,786
+In the narrow state, the Headline should be 18 point,      
+
+10
+00:00:31,787 --> 00:00:34,055
+and 26 point in the wide state.      
+
+11
+00:00:34,056 --> 00:00:36,615
+And then also we're going to hide the AutoSuggestBox      
+
+12
+00:00:36,616 --> 00:00:40,166
+when in a narrow state of 400 or less.      
+
+13
+00:00:40,167 --> 00:00:44,665
+Okay, so this will apply really      
+
+14
+00:00:44,666 --> 00:00:46,286
+only to the MainPage.xaml.      
+
+15
+00:00:46,287 --> 00:00:51,022
+This will only apply to our User Control that we created.      
+
+16
+00:00:51,023 --> 00:00:53,572
+The NewsItemControl.      
+
+17
+00:00:53,573 --> 00:00:57,512
+So let's go ahead and get started here,      
+
+18
+00:00:57,513 --> 00:01:01,052
+and let's open up the NewsItemControl.      
+
+19
+00:01:02,545 --> 00:01:06,058
+And inside of our Grid,      
+
+20
+00:01:06,059 --> 00:01:08,488
+right after the GridRowDefinitions, we're going to      
+
+21
+00:01:08,489 --> 00:01:10,878
+start adding a VisualStateManager,      
+
+22
+00:01:10,879 --> 00:01:15,531
+creating the VisualState groups,      
+
+23
+00:01:15,532 --> 00:01:19,881
+and we'll create one VisualState group.      
+
+24
+00:01:19,882 --> 00:01:23,051
+And inside that we'll create two VisualStates.      
+
+25
+00:01:23,052 --> 00:01:27,111
+The first one I'm going to call the NarrowLayout,      
+
+26
+00:01:27,112 --> 00:01:29,041
+(typing on keyboard)      
+
+27
+00:01:29,042 --> 00:01:32,064
+and then the second one      
+
+28
+00:01:32,065 --> 00:01:35,135
+I'll call WideLayout.      
+
+29
+00:01:39,123 --> 00:01:40,292
+Not that it really matters,      
+
+30
+00:01:40,293 --> 00:01:41,952
+because we're not referencing it by name.      
+
+31
+00:01:41,953 --> 00:01:43,212
+But any rate, okay,      
+
+32
+00:01:43,213 --> 00:01:47,811
+and then, here we go, VisualState.StateTriggers,      
+
+33
+00:01:47,812 --> 00:01:52,558
+and then VisualState.Setters.      
+
+34
+00:01:55,128 --> 00:01:59,078
+and I'll just copy and paste that here as well.      
+
+35
+00:01:59,079 --> 00:02:03,042
+All right, so in the Triggers, I'm going to      
+
+36
+00:02:03,043 --> 00:02:04,789
+create an AdaptiveTrigger where      
+
+37
+00:02:04,790 --> 00:02:09,012
+the MinWindowWidth      
+
+38
+00:02:09,013 --> 00:02:12,232
+will be "0" for the NarrowLayout.      
+
+39
+00:02:12,233 --> 00:02:14,172
+(typing)      
+
+40
+00:02:14,173 --> 00:02:19,080
+And then we'll make this MinwindowWidth      
+
+41
+00:02:19,081 --> 00:02:22,460
+"900" in the WideLayout.      
+
+42
+00:02:22,461 --> 00:02:25,240
+And remember this is really on a per app basis.      
+
+43
+00:02:25,241 --> 00:02:26,800
+Whatever makes sense for your application,      
+
+44
+00:02:26,801 --> 00:02:29,870
+where the logical breaks are.      
+
+45
+00:02:29,871 --> 00:02:32,874
+So there's no like as I've said many times already,      
+
+46
+00:02:32,875 --> 00:02:35,854
+there's no standard way to do this that I'm aware of.      
+
+47
+00:02:35,855 --> 00:02:38,655
+I might be corrected as some point here, but...      
+
+48
+00:02:38,656 --> 00:02:40,216
+(typing)      
+
+49
+00:02:40,217 --> 00:02:41,782
+So we're going to set that      
+
+50
+00:02:41,783 --> 00:02:46,522
+MainPanel.Width,      
+
+51
+00:02:46,523 --> 00:02:47,613
+and let's make sure that we have      
+
+52
+00:02:47,614 --> 00:02:50,625
+that's called MainPanel here.      
+
+53
+00:02:50,626 --> 00:02:52,299
+Here I want to call this...      
+
+54
+00:02:52,300 --> 00:02:56,853
+Give this Name...      
+
+55
+00:02:56,854 --> 00:02:58,863
+MainPanel.      
+
+56
+00:02:58,864 --> 00:03:01,633
+Okay? So we're going to set...      
+
+57
+00:03:01,634 --> 00:03:05,153
+(typing on keyboard)      
+
+58
+00:03:05,154 --> 00:03:07,864
+(typing)      
+
+59
+00:03:07,865 --> 00:03:10,422
+(typing)      
+
+60
+00:03:10,423 --> 00:03:13,553
+(typing)      
+
+61
+00:03:13,554 --> 00:03:15,933
+(typing)      
+
+62
+00:03:15,934 --> 00:03:18,482
+(typing)      
+
+63
+00:03:18,483 --> 00:03:22,542
+the MainPanel's Width to a value of 200.      
+
+64
+00:03:22,543 --> 00:03:27,543
+(typing)      
+
+65
+00:03:27,923 --> 00:03:31,832
+And the MainPanel.Height      
+
+66
+00:03:31,833 --> 00:03:33,312
+(typing)      
+
+67
+00:03:33,313 --> 00:03:35,782
+equal to 275.      
+
+68
+00:03:35,783 --> 00:03:38,440
+Now keep in mind, this is just for (mumbles)      
+
+69
+00:03:38,441 --> 00:03:42,688
+the individual newsItems inside of our GridView.      
+
+70
+00:03:42,689 --> 00:03:44,178
+(takes a deep breath)      
+
+71
+00:03:44,179 --> 00:03:45,645
+And then the other requirement was      
+
+72
+00:03:45,646 --> 00:03:47,880
+to...      
+
+73
+00:03:47,881 --> 00:03:49,510
+(typing)      
+
+74
+00:03:49,511 --> 00:03:51,140
+set the...      
+
+75
+00:03:51,141 --> 00:03:52,751
+HeadlineTextBlock      
+
+76
+00:03:52,752 --> 00:03:57,401
+HeadlineTextBlock...      
+
+77
+00:03:57,402 --> 00:03:58,690
+Right?      
+
+78
+00:03:58,691 --> 00:04:01,169
+(typing)      
+
+79
+00:04:01,170 --> 00:04:04,418
+.FontSize,      
+
+80
+00:04:04,419 --> 00:04:06,455
+so the value equal to 18 there.      
+
+81
+00:04:06,456 --> 00:04:08,685
+Let me make sure I have that name set.      
+
+82
+00:04:08,686 --> 00:04:13,079
+Yeah, I do. HeadlineTextBlock. Great. Okay.      
+
+83
+00:04:13,080 --> 00:04:17,927
+HeadlineText, did I say box? That should be Block.      
+
+84
+00:04:17,928 --> 00:04:21,657
+There we go.      
+
+85
+00:04:21,658 --> 00:04:23,331
+Boy, it did not like that.      
+
+86
+00:04:26,093 --> 00:04:27,093
+Oh.      
+
+87
+00:04:27,094 --> 00:04:30,102
+(typing)      
+
+88
+00:04:30,103 --> 00:04:32,392
+That (mumbles), yeah. It just didn't like that.      
+
+89
+00:04:32,393 --> 00:04:37,393
+Okay, good alright, so then we'll change      
+
+90
+00:04:37,408 --> 00:04:41,680
+each of these Setters up      
+
+91
+00:04:41,681 --> 00:04:43,100
+when we go to the wide size.      
+
+92
+00:04:43,101 --> 00:04:46,444
+And so in this case we want 400 X 400,      
+
+93
+00:04:46,445 --> 00:04:49,199
+and...      
+
+94
+00:04:49,200 --> 00:04:52,568
+we'll set this Font at 26.      
+
+95
+00:04:52,569 --> 00:04:54,479
+(typing)      
+
+96
+00:04:54,480 --> 00:04:55,943
+Great.      
+
+97
+00:04:55,944 --> 00:05:00,644
+So that should complete the first of the two...      
+
+98
+00:05:00,645 --> 00:05:02,405
+items.      
+
+99
+00:05:02,406 --> 00:05:06,431
+Now let's go over to the MainPage.xaml,      
+
+100
+00:05:06,432 --> 00:05:08,357
+and we're going to need to add      
+
+101
+00:05:08,358 --> 00:05:12,387
+a VisualStateManager.      
+
+102
+00:05:12,388 --> 00:05:13,549
+In fact, let me just do this.      
+
+103
+00:05:13,550 --> 00:05:16,247
+Because I hate typing all this stuff out.      
+
+104
+00:05:16,248 --> 00:05:19,468
+Just grab all this, we'll strip out the stuff we don't need.      
+
+105
+00:05:19,469 --> 00:05:23,699
+(typing)      
+
+106
+00:05:23,700 --> 00:05:28,335
+Alright, so we'll just get rid of these Setters,      
+
+107
+00:05:28,336 --> 00:05:33,336
+and I think the MinWindowWidth is going to be 400, any rate.      
+
+108
+00:05:33,518 --> 00:05:36,480
+(sighing)      
+
+109
+00:05:36,481 --> 00:05:39,680
+And so in this case what we're going to do      
+
+110
+00:05:39,681 --> 00:05:42,535
+is set the MyAutoSuggestBox.Visibility      
+
+111
+00:05:42,536 --> 00:05:43,745
+MyAutoSuggestBox.Visibility      
+
+112
+00:05:43,746 --> 00:05:47,535
+MyAutoSuggestBox.Visibility      
+
+113
+00:05:47,536 --> 00:05:50,075
+MyAutoSuggestBox.Visibility      
+
+114
+00:05:50,076 --> 00:05:52,856
+and we'll set that equal to Collapsed.      
+
+115
+00:05:52,857 --> 00:05:54,706
+(typing)      
+
+116
+00:05:54,707 --> 00:05:57,617
+And then we'll do the same here,      
+
+117
+00:05:57,618 --> 00:06:00,547
+(typing)      
+
+118
+00:06:00,548 --> 00:06:02,227
+and it should be set to Visible,      
+
+119
+00:06:02,228 --> 00:06:06,038
+I believe is the property there.      
+
+120
+00:06:08,938 --> 00:06:11,258
+Alright. Let's save it, and let's see what we got.      
+
+121
+00:06:16,678 --> 00:06:19,719
+Alright, here goes nothing. Oh yeah, look at that.      
+
+122
+00:06:19,720 --> 00:06:24,698
+Font got bigger. The entire size of the item got larger.      
+
+123
+00:06:24,699 --> 00:06:29,396
+All right, now unfortunately      
+
+124
+00:06:29,397 --> 00:06:31,916
+we can't really go smaller than 400.      
+
+125
+00:06:31,917 --> 00:06:34,585
+At least I can't, so to test this,      
+
+126
+00:06:34,586 --> 00:06:37,716
+what we're going to do...      
+
+127
+00:06:37,717 --> 00:06:40,233
+is change to the Mobile Emulator.      
+
+128
+00:06:42,736 --> 00:06:46,451
+And test it there.      
+
+129
+00:06:46,452 --> 00:06:50,323
+And ideally that SuggestBox will not be visible.      
+
+130
+00:06:53,563 --> 00:06:56,622
+And you can see it is not visible.      
+
+131
+00:06:56,623 --> 00:07:00,482
+I do have a little bit of... a little something      
+
+132
+00:07:00,483 --> 00:07:04,302
+I want to do up there with that TextBlock, up on top.      
+
+133
+00:07:04,303 --> 00:07:09,262
+Let me play around with that real quick,      
+
+134
+00:07:09,263 --> 00:07:12,002
+but other than that, I think we're pretty much done.      
+
+135
+00:07:12,003 --> 00:07:13,902
+Yeah, I think it was too close to the top,      
+
+136
+00:07:13,903 --> 00:07:16,646
+so all I wanna do      
+
+137
+00:07:16,647 --> 00:07:19,764
+is change the Margin a little bit.      
+
+138
+00:07:19,765 --> 00:07:23,803
+Push it down there and then      
+
+139
+00:07:23,804 --> 00:07:28,232
+let's see what the text...      
+
+140
+00:07:28,233 --> 00:07:30,483
+That AutoSuggestBox, I'm going to have a closer eye      
+
+141
+00:07:30,484 --> 00:07:32,683
+at that too, cause I didn't pay attention to that.      
+
+142
+00:07:35,163 --> 00:07:38,162
+Alright, it does sit up a little high.      
+
+143
+00:07:38,163 --> 00:07:40,423
+I might push that down 5px.      
+
+144
+00:07:43,064 --> 00:07:48,064
+So, push it down 5px.      
+
+145
+00:07:48,124 --> 00:07:49,744
+Yeah, I like that better.      
+
+146
+00:07:49,745 --> 00:07:51,664
+Okay, looks good.      
+
+147
+00:07:51,665 --> 00:07:55,144
+Let me just make sure that there wasn't some other item.      
+
+148
+00:07:55,145 --> 00:07:58,844
+Got that. Got that.      
+
+149
+00:07:58,845 --> 00:08:03,546
+Got that. Did all that.      
+
+150
+00:08:03,547 --> 00:08:08,066
+Screenshots, got it, (mumbles) okay, NewsItem, got it.      
+
+151
+00:08:08,067 --> 00:08:12,756
+And I think we did all of that.      
+
+152
+00:08:12,757 --> 00:08:15,287
+For the most part, I think we're in good shape.      
+
+153
+00:08:15,288 --> 00:08:18,088
+Okay, great, that's all there was to it.      
+
+154
+00:08:18,089 --> 00:08:20,787
+Hope you got it, or at least if you didn't get      
+
+155
+00:08:20,788 --> 00:08:25,188
+it fist time around, that this helped you get unstuck.      
+
+156
+00:08:25,189 --> 00:08:29,049
+Alright, let's move on see you in the next video, thanks.      
+

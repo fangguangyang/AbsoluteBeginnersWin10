@@ -1,0 +1,652 @@
+1
+00:00:05,742 --> 00:00:09,723
+And one of the last big tasksthat I wanna tackle is adaptive      
+
+2
+00:00:09,724 --> 00:00:12,190
+layout for an application.      
+
+3
+00:00:12,191 --> 00:00:14,850
+Recall what we wanted toaccomplish was to take      
+
+4
+00:00:14,851 --> 00:00:16,510
+the details from the right and      
+
+5
+00:00:16,511 --> 00:00:20,480
+move it under the list wheneverwe're in a narrow layout.      
+
+6
+00:00:20,481 --> 00:00:22,160
+But when we're in a wide layout,      
+
+7
+00:00:22,161 --> 00:00:24,590
+then we want it to bewhere it's at right now.      
+
+8
+00:00:24,591 --> 00:00:28,740
+So we'll adda VisualStateManager and      
+
+9
+00:00:28,741 --> 00:00:31,880
+some VisualStates, andwe'll get it to work.      
+
+10
+00:00:31,881 --> 00:00:34,970
+And then we'll do any cleanup on the UI that we need to      
+
+11
+00:00:34,971 --> 00:00:37,730
+before we add our lastfeature in the next video.      
+
+12
+00:00:37,731 --> 00:00:39,733
+So let's go ahead andget started here.      
+
+13
+00:00:39,734 --> 00:00:43,560
+I'm going to, underneath thisfirst grid that I added in      
+
+14
+00:00:43,561 --> 00:00:47,707
+the previous video, I'm goingto start with the visual state      
+
+15
+00:00:47,708 --> 00:00:50,910
+manager and add a bunchof visual state groups.      
+
+16
+00:00:50,911 --> 00:00:55,136
+We'll create one visual stategroup called Visual State Group.      
+
+17
+00:01:04,597 --> 00:01:07,372
+And then I'm gonna create.      
+
+18
+00:01:09,636 --> 00:01:12,908
+A single visual state,and I'll copy and      
+
+19
+00:01:12,909 --> 00:01:16,050
+paste it to create a second one.      
+
+20
+00:01:16,051 --> 00:01:18,130
+So this first one,we're gonna call Wide.      
+
+21
+00:01:20,000 --> 00:01:26,045
+And this one will be valid,with the state trigger.      
+
+22
+00:01:26,046 --> 00:01:32,777
+So VisualState.StateTriggers andlet me go ahead and      
+
+23
+00:01:32,778 --> 00:01:37,908
+create VisualState.Setters,great.      
+
+24
+00:01:37,909 --> 00:01:40,188
+And here are the triggers,      
+
+25
+00:01:40,189 --> 00:01:43,666
+the minimum windowwidth will be 800.      
+
+26
+00:01:43,667 --> 00:01:49,148
+We can test this with our phoneto make sure it looks good,      
+
+27
+00:01:49,149 --> 00:01:53,710
+with the phone emulatorthat that will work.      
+
+28
+00:01:53,711 --> 00:01:57,150
+If not, well, I think itwill be fine on the phone.      
+
+29
+00:01:57,151 --> 00:01:59,460
+It's just a matter ofthe desktop, how it looks.      
+
+30
+00:01:59,461 --> 00:02:00,650
+Any rate, we'll test it.      
+
+31
+00:02:00,651 --> 00:02:02,270
+All right, setters.      
+
+32
+00:02:02,271 --> 00:02:05,090
+Here we go.Setter Target=,      
+
+33
+00:02:05,091 --> 00:02:08,490
+okay, so this is where thingsstart to get interesting, right.      
+
+34
+00:02:08,491 --> 00:02:12,877
+What we really wanna do is take,let's see, we take this detail      
+
+35
+00:02:12,878 --> 00:02:16,291
+grid, everything insideof the detail grid, and      
+
+36
+00:02:16,292 --> 00:02:19,590
+you know it doescontain quite a bit.      
+
+37
+00:02:19,591 --> 00:02:23,410
+And we wanna move it toa different column and      
+
+38
+00:02:23,411 --> 00:02:29,290
+row based on the currentvisual state.      
+
+39
+00:02:29,291 --> 00:02:32,900
+I think I've lost my mind here,there we go.      
+
+40
+00:02:34,220 --> 00:02:37,760
+So I wanna setthe detail grids row and      
+
+41
+00:02:37,761 --> 00:02:44,250
+column appropriately, andto do that, I'm gonna need to      
+
+42
+00:02:44,251 --> 00:02:49,310
+access it through its name, butI'm using attached properties.      
+
+43
+00:02:49,311 --> 00:02:52,084
+So how do I do that?      
+
+44
+00:02:52,085 --> 00:02:56,269
+Well, I think wedo it like this,      
+
+45
+00:02:56,270 --> 00:03:00,455
+DetailGrid.(Grid.Row) and      
+
+46
+00:03:00,456 --> 00:03:04,489
+we set its value equal to 0, and      
+
+47
+00:03:04,490 --> 00:03:10,910
+we'll do somethingsimilar with a column.      
+
+48
+00:03:10,911 --> 00:03:14,795
+So the column value would be 1.      
+
+49
+00:03:17,420 --> 00:03:22,360
+And then let's go ahead and copythis visual state, paste it,      
+
+50
+00:03:22,361 --> 00:03:24,590
+and we wanna set the minimumwindow width for      
+
+51
+00:03:24,591 --> 00:03:29,210
+this one to 0, andthis is gonna be narrow.      
+
+52
+00:03:29,211 --> 00:03:31,940
+And we're gonna reverse it.      
+
+53
+00:03:31,941 --> 00:03:35,290
+The row will be 1 andthe column will be 0,      
+
+54
+00:03:35,291 --> 00:03:38,292
+and the narrow VisualState.      
+
+55
+00:03:38,293 --> 00:03:39,994
+All right,let's see what we have, and      
+
+56
+00:03:39,995 --> 00:03:42,612
+then we may need to make someother adjustments based on that.      
+
+57
+00:03:46,849 --> 00:03:50,054
+Okay, solet's go ahead and select.      
+
+58
+00:03:52,411 --> 00:03:55,696
+Our data, and just go ahead andget all queued up here.      
+
+59
+00:04:01,917 --> 00:04:04,111
+All right,we have one comic book left.      
+
+60
+00:04:04,112 --> 00:04:05,552
+Okay, great.      
+
+61
+00:04:05,553 --> 00:04:09,040
+And it looks like I still havesome issues here on the right.      
+
+62
+00:04:09,041 --> 00:04:11,390
+We'll have to work on thatin the UI cleanup phase.      
+
+63
+00:04:11,391 --> 00:04:15,030
+I'm gonna get to a certainpoint, where it goes off screen,      
+
+64
+00:04:15,031 --> 00:04:16,460
+and you can see it below.      
+
+65
+00:04:16,461 --> 00:04:17,859
+Boy, that does notlook good at all.      
+
+66
+00:04:19,430 --> 00:04:23,730
+So, I think we're gonna needto make one more change and      
+
+67
+00:04:23,731 --> 00:04:26,395
+then a little bitof clean up here.      
+
+68
+00:04:26,396 --> 00:04:27,826
+The change that we need to make,and      
+
+69
+00:04:27,827 --> 00:04:29,700
+let's just pick anotherone of these as well.      
+
+70
+00:04:29,701 --> 00:04:32,740
+Let's pick Carnage.      
+
+71
+00:04:32,741 --> 00:04:36,048
+Let's see if we get anythinginteresting there, no.      
+
+72
+00:04:39,803 --> 00:04:42,067
+All right, there we go.      
+
+73
+00:04:42,068 --> 00:04:44,250
+Okay, gets a littlemore interesting there.      
+
+74
+00:04:44,251 --> 00:04:46,640
+You'll notice that these runoff to the side of the screen.      
+
+75
+00:04:46,641 --> 00:04:49,040
+When we had a description ora title,      
+
+76
+00:04:49,041 --> 00:04:51,020
+it ran off to the sideof the screen.      
+
+77
+00:04:51,021 --> 00:04:55,300
+And I think the problemthere is the width for      
+
+78
+00:04:56,390 --> 00:04:58,530
+this entire column right here.      
+
+79
+00:05:00,240 --> 00:05:02,306
+So, let's set that.      
+
+80
+00:05:04,268 --> 00:05:09,242
+And to do that, I'm gonnagive this topmost grid,      
+
+81
+00:05:09,243 --> 00:05:12,490
+the columns here, names.      
+
+82
+00:05:12,491 --> 00:05:15,510
+And I can do that byusing the x:Name= and      
+
+83
+00:05:15,511 --> 00:05:18,890
+we'll just callthis "ColumnOne".      
+
+84
+00:05:18,891 --> 00:05:25,364
+And we'll do the same thing forthe second column, like so.      
+
+85
+00:05:28,742 --> 00:05:33,223
+So here in the wide state,      
+
+86
+00:05:33,224 --> 00:05:36,889
+what we wanna do is set      
+
+87
+00:05:36,890 --> 00:05:44,854
+the SetterTarget="ColumnOne.Width".      
+
+88
+00:05:44,855 --> 00:05:47,304
+And we'll make surethat's set to Auto.      
+
+89
+00:05:49,754 --> 00:05:51,554
+And then Column.      
+
+90
+00:05:55,188 --> 00:05:57,729
+Two.width.      
+
+91
+00:05:57,730 --> 00:05:59,058
+We'll set that to *.      
+
+92
+00:06:02,297 --> 00:06:04,016
+And then we'll dothe exact opposite.      
+
+93
+00:06:05,978 --> 00:06:11,977
+When we hit the narrow one,so we'll hit the * there and      
+
+94
+00:06:11,978 --> 00:06:18,117
+Auto there, and hopefully,that'll fix the problem.      
+
+95
+00:06:18,118 --> 00:06:19,509
+Okay, let's run it again.      
+
+96
+00:06:23,132 --> 00:06:25,071
+Okay, we'll pickUnion Jack there.      
+
+97
+00:06:38,352 --> 00:06:39,430
+All right.      
+
+98
+00:06:42,594 --> 00:06:44,249
+Great.      
+
+99
+00:06:44,250 --> 00:06:44,766
+All right,      
+
+100
+00:06:44,767 --> 00:06:47,470
+looks like I do still have somethings falling off to the side.      
+
+101
+00:06:47,471 --> 00:06:50,370
+I think I need towrap the title there.      
+
+102
+00:06:50,371 --> 00:06:55,500
+Honestly, I'll wrap all thetitles, and then I need to add      
+
+103
+00:06:55,501 --> 00:07:00,580
+some more margin on the righthand side here for this.      
+
+104
+00:07:00,581 --> 00:07:04,098
+So let's do this.      
+
+105
+00:07:04,099 --> 00:07:10,179
+Let's come down tothe comic detail.      
+
+106
+00:07:12,815 --> 00:07:15,558
+And I want to.      
+
+107
+00:07:15,559 --> 00:07:19,553
+Nope, move thatover a little bit.      
+
+108
+00:07:19,554 --> 00:07:23,279
+I want to add in thissome text wrapping.      
+
+109
+00:07:23,280 --> 00:07:29,042
+So let's go,TextWrapping="Wrap".      
+
+110
+00:07:29,043 --> 00:07:32,474
+And I think I'm gonna goahead and do the same thing,      
+
+111
+00:07:32,475 --> 00:07:34,970
+even though we didn'tsee it happen,      
+
+112
+00:07:34,971 --> 00:07:39,120
+I wanna do the same thing forthe DetailNameTextBlock as well.      
+
+113
+00:07:40,950 --> 00:07:42,890
+That should handle that problem.      
+
+114
+00:07:42,891 --> 00:07:47,100
+Now I'm also gonna want to addsome margin on the right there      
+
+115
+00:07:47,101 --> 00:07:49,300
+in both of these cases.      
+
+116
+00:07:49,301 --> 00:07:52,340
+So I'm gonna put 10pixels to the right.      
+
+117
+00:07:52,341 --> 00:07:54,520
+That will give usa little breathing room.      
+
+118
+00:07:54,521 --> 00:07:56,426
+All right,let's see what happens now.      
+
+119
+00:07:58,516 --> 00:07:59,746
+Let's pick Klaw.      
+
+120
+00:08:04,970 --> 00:08:08,394
+Looks like it's still grabbing,okay, great.      
+
+121
+00:08:08,395 --> 00:08:10,810
+All right, I like that.      
+
+122
+00:08:10,811 --> 00:08:12,354
+It doesn't buttright up against it.      
+
+123
+00:08:12,355 --> 00:08:15,627
+That's good, that's good,looks great.      
+
+124
+00:08:15,628 --> 00:08:19,551
+Let's pick another one here.      
+
+125
+00:08:19,552 --> 00:08:20,388
+That looks good.      
+
+126
+00:08:20,389 --> 00:08:25,337
+You can see that this wasintended to be used in HTML.      
+
+127
+00:08:25,338 --> 00:08:27,780
+[LAUGH] Let's pick Bishop.      
+
+128
+00:08:29,220 --> 00:08:30,310
+It's a pretty coolpicture of Bishop.      
+
+129
+00:08:33,300 --> 00:08:35,760
+We're still waiting forthe comics to roll in.      
+
+130
+00:08:35,761 --> 00:08:38,243
+There we go.      
+
+131
+00:08:38,244 --> 00:08:41,483
+All right, Cable, good.      
+
+132
+00:08:41,484 --> 00:08:42,886
+Good, good, good.      
+
+133
+00:08:42,887 --> 00:08:44,141
+That looks awesome.      
+
+134
+00:08:44,142 --> 00:08:45,824
+Okay, very cool.      
+
+135
+00:08:45,825 --> 00:08:47,424
+All right, and so      
+
+136
+00:08:47,425 --> 00:08:52,987
+now let's see what it looks likewhen we actually scroll out.      
+
+137
+00:08:52,988 --> 00:08:56,447
+Okay, still looks good,looks great.      
+
+138
+00:08:56,448 --> 00:08:59,747
+All right,the next thing I wanna do, and      
+
+139
+00:08:59,748 --> 00:09:04,274
+I'm really enjoying this andenjoying the way it looks,      
+
+140
+00:09:04,275 --> 00:09:06,558
+I'm gonna try it on a phone.      
+
+141
+00:09:06,559 --> 00:09:09,520
+So let's put it in the mobileemulator and run it there,      
+
+142
+00:09:09,521 --> 00:09:11,736
+just to make sureeverything looks good.      
+
+143
+00:09:19,158 --> 00:09:20,434
+All right, there we go.      
+
+144
+00:09:20,435 --> 00:09:23,093
+Let's go ahead andselect one of these items.      
+
+145
+00:09:23,094 --> 00:09:25,635
+You can see it's listed below.      
+
+146
+00:09:25,636 --> 00:09:29,072
+Boy, that description area isgoing to be awfully small.      
+
+147
+00:09:32,589 --> 00:09:35,132
+But ultimately, yeah.      
+
+148
+00:09:35,133 --> 00:09:37,651
+I wish there was an easyway to wrap around.      
+
+149
+00:09:42,069 --> 00:09:44,000
+Well, we might wannathink about that.      
+
+150
+00:09:44,001 --> 00:09:46,268
+I don't really have a goodsolution in mind just yet.      
+
+151
+00:09:46,269 --> 00:09:52,430
+Other than [LAUGH] Icould put this whole area      
+
+152
+00:09:52,431 --> 00:09:56,280
+in a user control, andthen whenever we're in      
+
+153
+00:09:56,281 --> 00:09:58,710
+the narrow width,we could change its layout too.      
+
+154
+00:09:58,711 --> 00:10:01,200
+But that's not somethingI wanna take on.      
+
+155
+00:10:01,201 --> 00:10:04,730
+I didn't even think about theway this would look on a phone.      
+
+156
+00:10:04,731 --> 00:10:06,860
+But that would be the next stepthat I would have to take if I      
+
+157
+00:10:06,861 --> 00:10:09,700
+was wanting to releasethis into the wild.      
+
+158
+00:10:09,701 --> 00:10:12,300
+Okay, but I think it'sgood enough for now.      
+
+159
+00:10:12,301 --> 00:10:15,450
+I have one more cool featurethat I wanna add, and      
+
+160
+00:10:15,451 --> 00:10:18,350
+that is Cortana integration.      
+
+161
+00:10:18,351 --> 00:10:20,140
+So excited about that.      
+
+162
+00:10:20,141 --> 00:10:21,472
+We'll learn about itin the next lesson.      
+
+163
+00:10:21,473 --> 00:10:22,610
+We'll see you there, thanks.      
+

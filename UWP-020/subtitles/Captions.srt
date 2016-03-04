@@ -1,0 +1,1108 @@
+1
+00:00:05,920 --> 00:00:09,549
+<v ->Hi, I'm Bob Tabor with www.LearnVisualStudio.net,</v>      
+
+2
+00:00:09,550 --> 00:00:13,019
+and I just wanted to take this lesson and cover some      
+
+3
+00:00:13,020 --> 00:00:15,419
+of the most basic input controls that      
+
+4
+00:00:15,420 --> 00:00:17,749
+we haven't already covered up to this point.      
+
+5
+00:00:17,750 --> 00:00:19,449
+We're going to need some of these input controls      
+
+6
+00:00:19,450 --> 00:00:21,219
+for future projects.      
+
+7
+00:00:21,220 --> 00:00:24,149
+Also I just want to do a review of all the controls      
+
+8
+00:00:24,150 --> 00:00:25,889
+eventually and so we'll get to that.      
+
+9
+00:00:25,890 --> 00:00:29,109
+We're going to cover seven in rapid fire      
+
+10
+00:00:29,110 --> 00:00:31,359
+in this lesson.      
+
+11
+00:00:31,360 --> 00:00:35,149
+You see that I've created a new project: ControlsExamplePart1      
+
+12
+00:00:35,150 --> 00:00:37,319
+and I've really done nothing to it just yet.      
+
+13
+00:00:37,320 --> 00:00:41,249
+I'm going to drag and drop an image that should be included      
+
+14
+00:00:41,250 --> 00:00:44,189
+with the download associated with this lesson.      
+
+15
+00:00:44,190 --> 00:00:46,249
+I'm just going to drag and drop if from my desktop      
+
+16
+00:00:46,250 --> 00:00:48,219
+into my Assets folder      
+
+17
+00:00:48,220 --> 00:00:50,080
+so you can see it now appear here.      
+
+18
+00:00:51,290 --> 00:00:52,509
+All right, and we're going to need that      
+
+19
+00:00:52,510 --> 00:00:53,309
+in just a little bit.      
+
+20
+00:00:53,310 --> 00:00:55,789
+So I'm going to copy and paste most of the code      
+
+21
+00:00:55,790 --> 00:00:59,119
+for this lesson just because there's so much of it.      
+
+22
+00:00:59,120 --> 00:01:01,149
+And there's really three things that I want to learn      
+
+23
+00:01:01,150 --> 00:01:02,289
+about each control.      
+
+24
+00:01:02,290 --> 00:01:05,150
+First of all, how do I display it on screen?      
+
+25
+00:01:05,150 --> 00:01:09,419
+Secondly, how do I handle the major events      
+
+26
+00:01:09,420 --> 00:01:12,049
+that it will emit whether it be a tapped      
+
+27
+00:01:12,050 --> 00:01:14,589
+or a selection changed, whatever the case might be?      
+
+28
+00:01:14,590 --> 00:01:17,289
+And then third, how do I retrieve the value      
+
+29
+00:01:17,290 --> 00:01:18,700
+out of that control,      
+
+30
+00:01:19,650 --> 00:01:22,019
+the current selection, whatever has been typed in,      
+
+31
+00:01:22,020 --> 00:01:24,689
+whatever has been checked or unchecked,      
+
+32
+00:01:24,690 --> 00:01:25,989
+things of that nature, okay?      
+
+33
+00:01:25,990 --> 00:01:29,140
+So the first input control that we want to look at      
+
+34
+00:01:30,730 --> 00:01:32,349
+is the CheckBox,      
+
+35
+00:01:32,350 --> 00:01:35,049
+a very simple yes/no control.      
+
+36
+00:01:35,050 --> 00:01:38,399
+As you can see, we create a new CheckBox      
+
+37
+00:01:38,400 --> 00:01:41,709
+and I set the content to      
+
+38
+00:01:41,710 --> 00:01:44,349
+a label that will be displayed      
+
+39
+00:01:44,350 --> 00:01:48,519
+by default to the right of that square, that CheckBox.      
+
+40
+00:01:48,520 --> 00:01:52,019
+The user will tap it to check it or tap it to uncheck it.      
+
+41
+00:01:52,020 --> 00:01:55,919
+So we have a Tapped event that we can handle.      
+
+42
+00:01:55,920 --> 00:01:59,649
+And inside of this, what I want to do is just      
+
+43
+00:01:59,650 --> 00:02:03,779
+display in the label below it or the TextBox below it,      
+
+44
+00:02:03,780 --> 00:02:06,719
+whether the CheckBox is currently checked or not.      
+
+45
+00:02:06,720 --> 00:02:09,619
+Now there's also a Checked event, however, it only      
+
+46
+00:02:09,620 --> 00:02:12,489
+fires once and then it never fires again      
+
+47
+00:02:12,490 --> 00:02:14,319
+and that's not what we want.      
+
+48
+00:02:14,320 --> 00:02:17,349
+We want to handle every time that particular control      
+
+49
+00:02:17,350 --> 00:02:18,600
+has been touched.      
+
+50
+00:02:19,890 --> 00:02:23,289
+So you can see, when I check it or uncheck it,      
+
+51
+00:02:23,290 --> 00:02:26,549
+I get the IsCheck property equals true or false, great.      
+
+52
+00:02:26,550 --> 00:02:28,349
+All right, we're off to a great start.      
+
+53
+00:02:28,350 --> 00:02:29,919
+All right, the next thing that I want to look at      
+
+54
+00:02:29,920 --> 00:02:33,649
+is a RadioButton which is similar to a CheckBox      
+
+55
+00:02:33,650 --> 00:02:36,799
+however it will allow you to add      
+
+56
+00:02:36,800 --> 00:02:38,949
+multiple potential values      
+
+57
+00:02:38,950 --> 00:02:41,689
+each grouped together by a GroupName.      
+
+58
+00:02:41,690 --> 00:02:44,479
+So all the radio buttons that belong together      
+
+59
+00:02:44,480 --> 00:02:45,819
+you have to give it the same GroupName.      
+
+60
+00:02:45,820 --> 00:02:49,149
+You can have two groups of radio buttons,      
+
+61
+00:02:49,150 --> 00:02:51,969
+and the selections will be unique within      
+
+62
+00:02:51,970 --> 00:02:53,589
+each of those groups.      
+
+63
+00:02:53,590 --> 00:02:57,149
+So here again, I'm setting the Content property.      
+
+64
+00:02:57,150 --> 00:02:59,369
+It'll be a label off to the right-hand side      
+
+65
+00:02:59,370 --> 00:03:02,139
+of the actual RadioButton itself.      
+
+66
+00:03:02,140 --> 00:03:03,519
+RadioButtons are not really buttons,      
+
+67
+00:03:03,520 --> 00:03:06,599
+they're more like CheckBoxes, so that's an odd name,      
+
+68
+00:03:06,600 --> 00:03:10,349
+but I guess because it's a button like a button on a shirt      
+
+69
+00:03:10,350 --> 00:03:12,329
+it's circular.      
+
+70
+00:03:12,330 --> 00:03:14,749
+So let's see, the other thing that we want to do,      
+
+71
+00:03:14,750 --> 00:03:16,949
+we can handle the Checked event again.      
+
+72
+00:03:16,950 --> 00:03:18,689
+I'm not sure we're going to get the results we want.      
+
+73
+00:03:18,690 --> 00:03:21,219
+Here, I'm going to go ahead and go along with that,      
+
+74
+00:03:21,220 --> 00:03:23,549
+so I'll hit F12 on my keyboard.      
+
+75
+00:03:23,550 --> 00:03:27,929
+And here we will set the      
+
+76
+00:03:27,930 --> 00:03:32,849
+RadioButtonTextBlock below it      
+
+77
+00:03:32,850 --> 00:03:36,219
+to the Text and we'll just use this ternary operator.      
+
+78
+00:03:36,220 --> 00:03:37,679
+We'll either say yes or no.      
+
+79
+00:03:37,680 --> 00:03:39,723
+So let's go ahead and run the application now.      
+
+80
+00:03:42,090 --> 00:03:46,270
+And so we'll select yes or no, or yes or no, okay.      
+
+81
+00:03:48,600 --> 00:03:50,781
+And we could add as many RadioButtons as we want      
+
+82
+00:03:50,782 --> 00:03:52,249
+but it typically only works well      
+
+83
+00:03:52,250 --> 00:03:55,019
+with four or five selections at most.      
+
+84
+00:03:55,020 --> 00:03:56,919
+If you have more than that, then you'll probably      
+
+85
+00:03:56,920 --> 00:04:00,219
+want to move onto a different type of control for input.      
+
+86
+00:04:00,220 --> 00:04:03,281
+All right, so we've covered those two.      
+
+87
+00:04:03,282 --> 00:04:05,849
+Let's move on to the next one and look at a ComboBox.      
+
+88
+00:04:05,850 --> 00:04:08,719
+And a ComboBox will allow you to create a number      
+
+89
+00:04:08,720 --> 00:04:11,840
+of ComboBoxItems, each with their own value.      
+
+90
+00:04:13,960 --> 00:04:15,620
+Let's go ahead and format this a little bit.      
+
+91
+00:04:16,800 --> 00:04:18,180
+If I stuff in the paste.      
+
+92
+00:04:19,790 --> 00:04:22,149
+All right, so here we have a ComboBox,      
+
+93
+00:04:22,150 --> 00:04:24,589
+and we're handling a SelectionChanged event      
+
+94
+00:04:24,590 --> 00:04:27,189
+so whenever somebody makes a different selection      
+
+95
+00:04:27,190 --> 00:04:29,909
+in the ComboBox, we want to handle that and then      
+
+96
+00:04:29,910 --> 00:04:32,349
+take whatever the new selection was and display that      
+
+97
+00:04:32,350 --> 00:04:35,109
+in the label below or in the TextBlock below.      
+
+98
+00:04:35,110 --> 00:04:36,849
+You can see that we created a number of individual      
+
+99
+00:04:36,850 --> 00:04:40,049
+TextBox items that will show up in the dropdown list      
+
+100
+00:04:40,050 --> 00:04:42,349
+and we can even say, "Hey, this one should be selected."      
+
+101
+00:04:42,350 --> 00:04:45,619
+In fact, I'm going to move this one just to prove this.      
+
+102
+00:04:45,620 --> 00:04:48,519
+We'll move it to the last one will be selected by default.      
+
+103
+00:04:50,350 --> 00:04:54,149
+All right, and then in this SelectionChanged event here      
+
+104
+00:04:54,150 --> 00:04:55,430
+I want to handle that.      
+
+105
+00:04:56,650 --> 00:04:58,919
+And I'm going to go ahead and paste in the code.      
+
+106
+00:04:58,920 --> 00:05:00,789
+It's a little bit tricky honestly.      
+
+107
+00:05:00,790 --> 00:05:05,079
+The way that we retrieve the value is that we're going to      
+
+108
+00:05:05,080 --> 00:05:08,519
+use the sender that was passed in      
+
+109
+00:05:08,520 --> 00:05:12,379
+in order to get a reference to      
+
+110
+00:05:12,380 --> 00:05:16,920
+the ComboBox itself, and then to get      
+
+111
+00:05:18,430 --> 00:05:21,609
+access to the SelectedItem that was chosen      
+
+112
+00:05:21,610 --> 00:05:23,349
+from the ComboBox,      
+
+113
+00:05:23,350 --> 00:05:26,209
+then we're going to choose combo.SelectedItem      
+
+114
+00:05:26,210 --> 00:05:28,449
+and we're going to cast that to a ComboBoxItem.      
+
+115
+00:05:28,450 --> 00:05:32,019
+And only then can we retrieve the Content of that      
+
+116
+00:05:32,020 --> 00:05:36,249
+ComboBoxItem and display that in the TextBlock below.      
+
+117
+00:05:36,250 --> 00:05:38,070
+So let's go ahead and run the application.      
+
+118
+00:05:40,750 --> 00:05:43,689
+And here you can see sixth was chosen because we set      
+
+119
+00:05:43,690 --> 00:05:46,409
+the IsSelected property to true for that.      
+
+120
+00:05:46,410 --> 00:05:48,589
+But when I make different selections you can see      
+
+121
+00:05:48,590 --> 00:05:52,089
+how they show up here in the label to the right-hand side.      
+
+122
+00:05:52,090 --> 00:05:55,489
+So that's how we get access to the SelectedItem.      
+
+123
+00:05:55,490 --> 00:05:57,720
+This is great because you can      
+
+124
+00:06:00,880 --> 00:06:03,969
+have a long list of items unlike a RadioButton.      
+
+125
+00:06:03,970 --> 00:06:06,179
+However, they're all hidden and it might not be completely      
+
+126
+00:06:06,180 --> 00:06:08,949
+obvious to the user that there are many other options.      
+
+127
+00:06:08,950 --> 00:06:13,289
+In this case, you might want to choose a ListBox instead.      
+
+128
+00:06:13,290 --> 00:06:17,079
+Now the ListBox is going to be a pretty important control      
+
+129
+00:06:17,080 --> 00:06:18,449
+when we go forward, when we're creating      
+
+130
+00:06:18,450 --> 00:06:20,019
+our hamburger navigation.      
+
+131
+00:06:20,020 --> 00:06:21,589
+There's a bunch of different ways that we can create      
+
+132
+00:06:21,590 --> 00:06:25,689
+that hamburger navigation that's popular in Windows 10.      
+
+133
+00:06:25,690 --> 00:06:29,519
+I choose the ListBox for reasons that I'll demonstrate      
+
+134
+00:06:29,520 --> 00:06:32,089
+in an upcoming lesson      
+
+135
+00:06:32,090 --> 00:06:34,819
+to kind of follow up on a promise that I made earlier.      
+
+136
+00:06:34,820 --> 00:06:36,489
+However, let's go ahead and take a look.      
+
+137
+00:06:36,490 --> 00:06:38,489
+It, too, has a SelectionChanged event.      
+
+138
+00:06:38,490 --> 00:06:40,709
+Let's go ahead and handle that.      
+
+139
+00:06:40,710 --> 00:06:43,519
+What makes the ListBox a little bit different than      
+
+140
+00:06:43,520 --> 00:06:48,189
+the other items like the radio and the ComboBox,      
+
+141
+00:06:48,190 --> 00:06:52,399
+is that several items can be selected.      
+
+142
+00:06:52,400 --> 00:06:54,989
+Take a look here that I changed the SelectionMode      
+
+143
+00:06:54,990 --> 00:06:57,519
+which is by default a single item,      
+
+144
+00:06:57,520 --> 00:06:58,719
+and I changed it to Multiple,      
+
+145
+00:06:58,720 --> 00:07:01,509
+so you could select multiples.      
+
+146
+00:07:01,510 --> 00:07:05,519
+And what I want to do is use this link query      
+
+147
+00:07:05,520 --> 00:07:09,819
+against all of the ListBoxItems      
+
+148
+00:07:09,820 --> 00:07:14,129
+for those items where the IsSelected property      
+
+149
+00:07:14,130 --> 00:07:17,281
+is true and then I want to grab out just the      
+
+150
+00:07:17,282 --> 00:07:19,989
+Content property of those selected items,      
+
+151
+00:07:19,990 --> 00:07:23,309
+put them in an Array of strings      
+
+152
+00:07:23,310 --> 00:07:25,349
+and then I'm going to call string.Join()      
+
+153
+00:07:25,350 --> 00:07:27,989
+to concatenate them all together      
+
+154
+00:07:27,990 --> 00:07:31,049
+for display into the TextBlock below.      
+
+155
+00:07:31,050 --> 00:07:33,182
+So let's go ahead and run this      
+
+156
+00:07:33,183 --> 00:07:35,349
+and you can see what I mean by all that.      
+
+157
+00:07:36,750 --> 00:07:39,449
+All right, so I'll select the first one, the second,      
+
+158
+00:07:39,450 --> 00:07:41,549
+the third, I'll get rid of the second one,      
+
+159
+00:07:41,550 --> 00:07:44,349
+I'll get rid of the First one, I'll add the Second one.      
+
+160
+00:07:44,350 --> 00:07:46,579
+So you can see how that works.      
+
+161
+00:07:46,580 --> 00:07:50,919
+Now what we'll use it for, when we actually do use it      
+
+162
+00:07:50,920 --> 00:07:52,019
+in an upcoming lesson,      
+
+163
+00:07:52,020 --> 00:07:53,379
+we'll change the SelectionMode.      
+
+164
+00:07:53,380 --> 00:07:56,049
+It'll just be Single selection.      
+
+165
+00:07:56,050 --> 00:07:57,879
+But one of the features that I like about it      
+
+166
+00:07:57,880 --> 00:07:59,849
+is that once you make a selection,      
+
+167
+00:07:59,850 --> 00:08:02,589
+it actually will keep that selection highlighted      
+
+168
+00:08:02,590 --> 00:08:05,549
+which is one of the things that we noted about the      
+
+169
+00:08:05,550 --> 00:08:08,419
+hamburger navigation style on the money app,      
+
+170
+00:08:08,420 --> 00:08:11,419
+the sports app, the ones that are built-in to Windows 10.      
+
+171
+00:08:11,420 --> 00:08:15,749
+Okay, we'll come back to ListBox some day soon here.      
+
+172
+00:08:15,750 --> 00:08:16,719
+Now let's move on.      
+
+173
+00:08:16,720 --> 00:08:17,880
+I want to show you      
+
+174
+00:08:20,050 --> 00:08:21,669
+the Image control      
+
+175
+00:08:21,670 --> 00:08:24,619
+because it too will be used in an upcoming exercise.      
+
+176
+00:08:24,620 --> 00:08:27,789
+And the Image control will do just like what it says.      
+
+177
+00:08:27,790 --> 00:08:29,389
+It will display an image.      
+
+178
+00:08:29,390 --> 00:08:32,719
+However, there is this interesting property.      
+
+179
+00:08:32,720 --> 00:08:34,179
+First of all, you set the Source.      
+
+180
+00:08:34,180 --> 00:08:36,889
+And in this case the Source is going to be relative      
+
+181
+00:08:36,890 --> 00:08:38,689
+to the root of our projects.      
+
+182
+00:08:38,690 --> 00:08:40,049
+So we're going to look in the Assets folder      
+
+183
+00:08:40,050 --> 00:08:42,049
+for a logo.png.      
+
+184
+00:08:42,050 --> 00:08:45,349
+We could also supply it a location across the internet      
+
+185
+00:08:45,350 --> 00:08:49,470
+or some other folder in our application.      
+
+186
+00:08:50,390 --> 00:08:52,219
+The thing that I wanted to point out which      
+
+187
+00:08:52,220 --> 00:08:54,419
+is interesting here is the Stretch property.      
+
+188
+00:08:54,420 --> 00:08:55,881
+And there's a couple different options      
+
+189
+00:08:55,882 --> 00:08:57,449
+and I'll go through each of them here      
+
+190
+00:08:57,450 --> 00:08:59,049
+as we run the application over and over.      
+
+191
+00:08:59,050 --> 00:09:00,989
+So first of all the Stretch property is None      
+
+192
+00:09:00,990 --> 00:09:04,409
+which means we're not going to stretch      
+
+193
+00:09:04,410 --> 00:09:06,249
+the property to fit the available space.      
+
+194
+00:09:06,250 --> 00:09:07,719
+There's no stretching at all.      
+
+195
+00:09:07,720 --> 00:09:09,509
+We're just going to put it in its original size      
+
+196
+00:09:09,510 --> 00:09:11,949
+which as you can see is quite large.      
+
+197
+00:09:11,950 --> 00:09:15,660
+Next we're going to change the Stretch property to      
+
+198
+00:09:19,220 --> 00:09:22,389
+Fill, and let's see what that does for us.      
+
+199
+00:09:22,390 --> 00:09:26,740
+So the Fill selection will say, okay, it's a      
+
+200
+00:09:29,920 --> 00:09:32,619
+250px wide by 50px tall area      
+
+201
+00:09:32,620 --> 00:09:34,559
+so fill it up to the best that you can      
+
+202
+00:09:34,560 --> 00:09:36,959
+so it'll just stretch that Image out of shape      
+
+203
+00:09:36,960 --> 00:09:38,819
+and make it distorted but it will fill up      
+
+204
+00:09:38,820 --> 00:09:40,120
+the entire area.      
+
+205
+00:09:41,220 --> 00:09:43,849
+And then the next one that we'll look at is      
+
+206
+00:09:43,850 --> 00:09:47,119
+Uniform and that will make sure that      
+
+207
+00:09:47,120 --> 00:09:50,589
+it's not distorted and it's actually resized correctly      
+
+208
+00:09:50,590 --> 00:09:53,409
+so that it fits in the available area,      
+
+209
+00:09:53,410 --> 00:09:57,149
+but there's a lot of extra area here that is unused      
+
+210
+00:09:57,150 --> 00:09:58,889
+off to the right-hand side.      
+
+211
+00:09:58,890 --> 00:10:01,929
+Finally, UniformToFill is the last option.      
+
+212
+00:10:01,930 --> 00:10:05,469
+It's going to look a lot like None      
+
+213
+00:10:05,470 --> 00:10:08,089
+that we looked at earlier, however,      
+
+214
+00:10:08,090 --> 00:10:11,089
+it's going to keep the proportions correct.      
+
+215
+00:10:11,090 --> 00:10:13,709
+It's just going to stretch out the proportions      
+
+216
+00:10:13,710 --> 00:10:15,599
+to fit the available space.      
+
+217
+00:10:15,600 --> 00:10:18,849
+And again this might not be so obvious in this example,      
+
+218
+00:10:18,850 --> 00:10:23,219
+however, if you have a different size boundary      
+
+219
+00:10:23,220 --> 00:10:25,509
+and a different type of image or size of image,      
+
+220
+00:10:25,510 --> 00:10:29,219
+you might see some change in how that looks.      
+
+221
+00:10:29,220 --> 00:10:33,089
+All right, so let's go ahead and move on from there      
+
+222
+00:10:33,090 --> 00:10:35,989
+to the ToggleButton.      
+
+223
+00:10:35,990 --> 00:10:39,259
+And the ToggleButton is just      
+
+224
+00:10:39,260 --> 00:10:41,519
+a stateful Button,      
+
+225
+00:10:41,520 --> 00:10:43,289
+so you can click it on and you can click it off.      
+
+226
+00:10:43,290 --> 00:10:46,449
+There's also an option to make it a ThreeState,      
+
+227
+00:10:46,450 --> 00:10:49,189
+so you can click it and give it no value,      
+
+228
+00:10:49,190 --> 00:10:52,419
+click it on or click it off.      
+
+229
+00:10:52,420 --> 00:10:55,149
+And so I've set the IsThreeState="True"      
+
+230
+00:10:55,150 --> 00:10:56,749
+so that we can see it at work.      
+
+231
+00:10:56,750 --> 00:10:57,819
+Here I'm going to handle the      
+
+232
+00:10:57,820 --> 00:11:00,389
+MyToggleButton_Click event      
+
+233
+00:11:00,390 --> 00:11:03,339
+and inside of here      
+
+234
+00:11:03,340 --> 00:11:06,909
+I'm merely going to display whether      
+
+235
+00:11:06,910 --> 00:11:09,489
+the ToggleButton is on or off,      
+
+236
+00:11:09,490 --> 00:11:11,400
+if it's Checked or Unchecked.      
+
+237
+00:11:13,470 --> 00:11:14,800
+Let's go ahead and run it.      
+
+238
+00:11:17,883 --> 00:11:18,849
+I see the Premium Option.      
+
+239
+00:11:18,850 --> 00:11:20,090
+I turn it to true.      
+
+240
+00:11:21,170 --> 00:11:24,709
+I click it again, which sets the      
+
+241
+00:11:24,710 --> 00:11:27,389
+IsChecked to Null essentially      
+
+242
+00:11:27,390 --> 00:11:29,489
+and then I check it again and it's false.      
+
+243
+00:11:29,490 --> 00:11:30,849
+So that's ThreeState.      
+
+244
+00:11:30,850 --> 00:11:32,749
+We can turn it to TwoState and it will be simply      
+
+245
+00:11:32,750 --> 00:11:34,640
+one click on, one click off.      
+
+246
+00:11:37,200 --> 00:11:38,239
+Then the last one that we're      
+
+247
+00:11:38,240 --> 00:11:40,419
+going to look at here is similar to that      
+
+248
+00:11:40,420 --> 00:11:42,450
+except it's called the ToggleSwitch.      
+
+249
+00:11:46,020 --> 00:11:48,189
+The ToggleSwitch allows us to      
+
+250
+00:11:48,190 --> 00:11:50,189
+toggle between two states.      
+
+251
+00:11:50,190 --> 00:11:54,689
+And we see this control used often in the Settings panel      
+
+252
+00:11:54,690 --> 00:11:55,770
+in Windows 10.      
+
+253
+00:11:57,090 --> 00:12:00,619
+What you can do that's interesting is actually set a      
+
+254
+00:12:00,620 --> 00:12:04,569
+Content area for what should be displayed      
+
+255
+00:12:04,570 --> 00:12:08,819
+whenever the Toggle is in an off position or an on position.      
+
+256
+00:12:08,820 --> 00:12:11,089
+You can also handle other events but this will be      
+
+257
+00:12:11,090 --> 00:12:14,719
+primarily how it's used to display the current state      
+
+258
+00:12:14,720 --> 00:12:16,009
+of the toggle.      
+
+259
+00:12:16,010 --> 00:12:18,360
+So let's go ahead and run that application one more time.      
+
+260
+00:12:19,220 --> 00:12:22,519
+And you can see I've set it to "I'm off right now".      
+
+261
+00:12:22,520 --> 00:12:24,819
+I can turn it on and "I'm on".      
+
+262
+00:12:24,820 --> 00:12:25,649
+I'm off, I'm on.      
+
+263
+00:12:25,650 --> 00:12:27,519
+And I just used a simple TextBlock,      
+
+264
+00:12:27,520 --> 00:12:30,019
+but if you got creative you could do quite a bit with this.      
+
+265
+00:12:30,020 --> 00:12:33,349
+Okay, so that's all I wanted to cover in this lesson.      
+
+266
+00:12:33,350 --> 00:12:34,619
+Hopefully, you were able to see      
+
+267
+00:12:34,620 --> 00:12:37,289
+for each of the controls that we covered,      
+
+268
+00:12:37,290 --> 00:12:38,649
+how to display it,      
+
+269
+00:12:38,650 --> 00:12:41,520
+if we can, how do we handle the events      
+
+270
+00:12:45,010 --> 00:12:47,849
+that it emits or how do we set properties      
+
+271
+00:12:47,850 --> 00:12:50,419
+that are special to that particular control,      
+
+272
+00:12:50,420 --> 00:12:53,119
+and then also finally how to retrieve the current      
+
+273
+00:12:53,120 --> 00:12:55,649
+selected value out of that control.      
+
+274
+00:12:55,650 --> 00:12:57,889
+All right, so let's continue on.      
+
+275
+00:12:57,890 --> 00:12:58,719
+We're doing great.      
+
+276
+00:12:58,720 --> 00:12:59,849
+We'll see you in the next lesson.      
+
+277
+00:12:59,850 --> 00:13:00,870
+Thank you.      
+

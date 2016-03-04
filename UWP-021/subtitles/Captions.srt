@@ -1,0 +1,1276 @@
+1
+00:00:04,340 --> 00:00:08,469
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net.</v>      
+
+2
+00:00:08,470 --> 00:00:10,710
+In this lesson we gonna combine several ideas      
+
+3
+00:00:10,711 --> 00:00:14,188
+that we just covered in previous lessons in order to create      
+
+4
+00:00:14,189 --> 00:00:18,788
+what I call a "poor man's" hamburger navigation Layout.      
+
+5
+00:00:18,789 --> 00:00:21,468
+Now, why am I calling it a "poor man's" version?      
+
+6
+00:00:21,469 --> 00:00:24,309
+Because I'm trying to give you the simplest, cleanest,      
+
+7
+00:00:24,310 --> 00:00:27,929
+clearest path so that you can implement hamburger navigation      
+
+8
+00:00:27,930 --> 00:00:30,789
+right away in your Windows 10 apps.      
+
+9
+00:00:30,790 --> 00:00:34,812
+There is a "rich man's" version of this detailed at      
+
+10
+00:00:34,813 --> 00:00:39,812
+Jerry Nixon's blog here at the shortcut on screen.      
+
+11
+00:00:40,310 --> 00:00:43,849
+Like I said, Jerry Nixon works for Microsoft.      
+
+12
+00:00:43,850 --> 00:00:48,769
+He's done an awesome job with this particular article.      
+
+13
+00:00:48,770 --> 00:00:50,769
+Let me pull it up here.      
+
+14
+00:00:50,770 --> 00:00:52,509
+"Implementing an Awesome Hamburger Button      
+
+15
+00:00:52,510 --> 00:00:54,309
+with XAML's SplitView control."      
+
+16
+00:00:54,310 --> 00:00:56,948
+The reason why I would call it a "rich man's" version      
+
+17
+00:00:56,949 --> 00:00:58,290
+is because it's more robust.      
+
+18
+00:00:58,291 --> 00:00:59,728
+It includes a bunch more features.      
+
+19
+00:00:59,729 --> 00:01:01,991
+But it's also a bit more complex      
+
+20
+00:01:01,992 --> 00:01:05,180
+if you are indeed an absolute beginner.      
+
+21
+00:01:05,181 --> 00:01:06,788
+Just keep that in mind.      
+
+22
+00:01:06,789 --> 00:01:08,948
+You might want to visit it and bookmark it for later,      
+
+23
+00:01:08,949 --> 00:01:11,428
+maybe after we go through several more lessons.      
+
+24
+00:01:11,429 --> 00:01:14,909
+You'll be able to use his version instead of mine.      
+
+25
+00:01:14,910 --> 00:01:19,079
+What I want to do now is to recreate the hamburger layout      
+
+26
+00:01:19,080 --> 00:01:21,049
+that we saw in the Money app.      
+
+27
+00:01:21,050 --> 00:01:23,250
+When I click on the hamburger little icon at the top,      
+
+28
+00:01:23,251 --> 00:01:25,189
+the SplitView opens up.      
+
+29
+00:01:25,190 --> 00:01:26,929
+When I click it again,      
+
+30
+00:01:26,930 --> 00:01:29,070
+it closes and all we can see is the icons.      
+
+31
+00:01:29,071 --> 00:01:31,251
+Furthermore, whatever we currently select,      
+
+32
+00:01:31,252 --> 00:01:34,570
+you can see that one of the secondary colors,      
+
+33
+00:01:34,571 --> 00:01:37,619
+in this case, a darker green color,      
+
+34
+00:01:37,620 --> 00:01:40,488
+highlights the fact that we're no longer      
+
+35
+00:01:40,489 --> 00:01:44,150
+on the Home tab but rather we're on      
+
+36
+00:01:44,151 --> 00:01:46,578
+what I guess is the Watchlist.      
+
+37
+00:01:46,579 --> 00:01:49,108
+We're not going to implement any of these other      
+
+38
+00:01:49,109 --> 00:01:50,589
+pieces of the puzzle.      
+
+39
+00:01:50,590 --> 00:01:52,108
+We've already talked about many of them.      
+
+40
+00:01:52,109 --> 00:01:53,348
+I'm gonna let you do that      
+
+41
+00:01:53,349 --> 00:01:55,509
+whenever we get to our next challenge.      
+
+42
+00:01:55,510 --> 00:01:57,699
+That's one of the reasons why I wanted to      
+
+43
+00:01:57,700 --> 00:02:00,449
+go through this lesson is because we're gonna use      
+
+44
+00:02:00,450 --> 00:02:03,068
+the hamburger navigation Layout in several of the apps      
+
+45
+00:02:03,069 --> 00:02:04,789
+that we're gonna build together later in the series.      
+
+46
+00:02:04,790 --> 00:02:08,149
+But we're also gonna use it in an upcoming challenge,      
+
+47
+00:02:08,150 --> 00:02:11,330
+what I'm gonna call the Hamburger Heaven Challenge      
+
+48
+00:02:11,331 --> 00:02:15,148
+that'll allow you to kind of implement the full...      
+
+49
+00:02:15,149 --> 00:02:17,989
+The bar at the top of the search and the back arrows,      
+
+50
+00:02:17,990 --> 00:02:20,029
+as well as the hamburger down the side.      
+
+51
+00:02:20,030 --> 00:02:21,669
+Let's go ahead and get started.      
+
+52
+00:02:21,670 --> 00:02:24,428
+I've created a new project called HamburgerExample.      
+
+53
+00:02:24,429 --> 00:02:28,511
+You can see here, all I've done is just open the App.xaml.cs      
+
+54
+00:02:28,512 --> 00:02:30,689
+and I removed the Frame counter.      
+
+55
+00:02:30,690 --> 00:02:33,510
+Let's open up the MainPage.xaml and begin working together.      
+
+56
+00:02:33,511 --> 00:02:36,909
+I'm gonna get rid of the designer view again      
+
+57
+00:02:36,910 --> 00:02:40,189
+just because at this point it's in the way.      
+
+58
+00:02:40,190 --> 00:02:41,649
+The first thing I'm gonna do is create      
+
+59
+00:02:41,650 --> 00:02:43,039
+a couple of Row definitions.      
+
+60
+00:02:43,040 --> 00:02:45,179
+(typing) so create that Rows definition      
+
+61
+00:02:45,180 --> 00:02:49,109
+We're gonna create two row definitions this time.      
+
+62
+00:02:49,110 --> 00:02:52,769
+We're gonna set the Height="Auto" in the first one.      
+
+63
+00:02:52,770 --> 00:02:57,769
+Then we'll set the Height="*" on the second one.      
+
+64
+00:03:00,171 --> 00:03:05,170
+The next thing we're gonna do is create a RelativePanel.      
+
+65
+00:03:08,630 --> 00:03:12,389
+I'm gonna set that into a Grid.Row="0".      
+
+66
+00:03:12,390 --> 00:03:13,728
+I'm not gonna put that on there.      
+
+67
+00:03:13,729 --> 00:03:15,750
+Honestly, I'll just leave that off.      
+
+68
+00:03:15,751 --> 00:03:20,069
+Then, inside of that we're gonna put a Button.      
+
+69
+00:03:20,070 --> 00:03:22,049
+We'll come back to that in a moment,      
+
+70
+00:03:22,050 --> 00:03:24,429
+but that'll be our hamburger button.      
+
+71
+00:03:24,430 --> 00:03:28,089
+Beneath that, what I want to do is add a SplitView.      
+
+72
+00:03:28,090 --> 00:03:33,089
+Here, we're gonna add this into the Grid.Row="1",      
+
+73
+00:03:34,171 --> 00:03:37,168
+that second Row that takes up the * size.      
+
+74
+00:03:37,169 --> 00:03:41,169
+This is where we're gonna do the majority of our work.      
+
+75
+00:03:41,170 --> 00:03:42,889
+Inside of this SplitView,      
+
+76
+00:03:42,890 --> 00:03:44,229
+like we talked about in the previous lesson,      
+
+77
+00:03:44,230 --> 00:03:47,768
+I'm gonna use a ListBox control for all the reasons      
+
+78
+00:03:47,769 --> 00:03:50,229
+I talked about in that previous lesson.      
+
+79
+00:03:50,230 --> 00:03:53,230
+You'll see it all come together here in just a moment.      
+
+80
+00:03:53,231 --> 00:03:55,689
+The ListBox is gonna require us to create      
+
+81
+00:03:55,690 --> 00:03:57,689
+a number of ListBoxItems.      
+
+82
+00:03:57,690 --> 00:04:00,011
+I know we're gonna have several of those as well.      
+
+83
+00:04:00,012 --> 00:04:02,029
+I'll just copy and paste a couple here.      
+
+84
+00:04:02,030 --> 00:04:03,668
+That's our general Layout      
+
+85
+00:04:03,669 --> 00:04:05,010
+of what we're gonna do in this lesson.      
+
+86
+00:04:05,011 --> 00:04:06,510
+Now we just have to fill in the details.      
+
+87
+00:04:06,511 --> 00:04:08,789
+Hopefully, up to this point it makes sense.      
+
+88
+00:04:08,790 --> 00:04:11,789
+The ListBox will sit inside of the SplitView.      
+
+89
+00:04:11,790 --> 00:04:14,648
+Each ListBox item will have an icon on the left      
+
+90
+00:04:14,649 --> 00:04:16,412
+and then Text on the right.      
+
+91
+00:04:16,413 --> 00:04:18,211
+As you select an item from the ListBox,      
+
+92
+00:04:18,212 --> 00:04:20,910
+we're going to handle the Click event      
+
+93
+00:04:20,911 --> 00:04:23,149
+or SelectionChanged Event and...      
+
+94
+00:04:23,150 --> 00:04:24,569
+I don't know if we're going to do anything with it.      
+
+95
+00:04:24,570 --> 00:04:29,309
+I just want to show you how we would actually use that.      
+
+96
+00:04:29,310 --> 00:04:31,569
+Let's start here with the Button control.      
+
+97
+00:04:31,570 --> 00:04:33,290
+The first thing I want to do is give it a Name.      
+
+98
+00:04:33,291 --> 00:04:37,691
+We're gonna name it HamburgerButton.      
+
+99
+00:04:37,692 --> 00:04:42,691
+Then what I want to do is choose a icon that      
+
+100
+00:04:43,491 --> 00:04:45,109
+represents the hamburger.      
+
+101
+00:04:45,110 --> 00:04:49,270
+You'll recall that it has three vertical lines      
+
+102
+00:04:49,271 --> 00:04:51,069
+stacked above each other.      
+
+103
+00:04:51,070 --> 00:04:53,270
+To do that we're gonna find that there's      
+
+104
+00:04:53,271 --> 00:04:56,428
+a specific FontFamily available on Windows 10 devices      
+
+105
+00:04:56,429 --> 00:05:00,589
+called Segoe MDL2 Assets.      
+
+106
+00:05:00,590 --> 00:05:03,249
+What I'm gonna do is open the Character Map application.      
+
+107
+00:05:03,250 --> 00:05:07,129
+You can get to this by going to your Cortana search bar      
+
+108
+00:05:07,130 --> 00:05:10,749
+or in your task bar on the desktop      
+
+109
+00:05:10,750 --> 00:05:13,609
+and typing in Character Map and that should find it.      
+
+110
+00:05:13,610 --> 00:05:16,708
+What you can do is scroll all the way through all of these      
+
+111
+00:05:16,709 --> 00:05:20,401
+graphic assets for this specific font:      
+
+112
+00:05:20,402 --> 00:05:24,481
+Segoe MDL2 Assets.      
+
+113
+00:05:24,482 --> 00:05:28,062
+I happen to know where this one is at,      
+
+114
+00:05:28,063 --> 00:05:30,021
+where the hamburger icon is.      
+
+115
+00:05:30,022 --> 00:05:31,441
+I just have to find it again      
+
+116
+00:05:31,442 --> 00:05:34,060
+so bear with me one second here.      
+
+117
+00:05:34,061 --> 00:05:36,461
+Obviously, with so many to choose from      
+
+118
+00:05:36,462 --> 00:05:40,243
+it's easy to lose track.      
+
+119
+00:05:40,244 --> 00:05:42,233
+There I go.      
+
+120
+00:05:42,234 --> 00:05:45,061
+It's right here and you can see that the most important part      
+
+121
+00:05:45,062 --> 00:05:49,222
+of this is what you see down here in this little status bar.      
+
+122
+00:05:49,223 --> 00:05:52,440
+You see a capital U+E700      
+
+123
+00:05:52,441 --> 00:05:54,241
+and it's marked for private use.      
+
+124
+00:05:54,242 --> 00:05:55,821
+We don't care anything about that.      
+
+125
+00:05:55,822 --> 00:05:59,200
+The only thing that's important to us is the E700 part.      
+
+126
+00:05:59,201 --> 00:06:00,881
+Let's do this.      
+
+127
+00:06:00,882 --> 00:06:05,881
+Let's set the FontFamily to Segoe MDL2 Assets.      
+
+128
+00:06:07,381 --> 00:06:09,160
+Then we're gonna choose to set      
+
+129
+00:06:09,161 --> 00:06:14,160
+the Content="E700".      
+
+130
+00:06:15,123 --> 00:06:18,141
+I'm gonna put something before and after that E700.      
+
+131
+00:06:18,142 --> 00:06:23,141
+I'm gonna suffix it with a closing semicolon      
+
+132
+00:06:24,753 --> 00:06:27,622
+then prior to that, I'm gonna add an &,      
+
+133
+00:06:27,623 --> 00:06:31,961
+a #, and an X.      
+
+134
+00:06:31,962 --> 00:06:35,681
+Now, I'm also gonna set the FontSize large      
+
+135
+00:06:35,682 --> 00:06:36,901
+so we can actually see it.      
+
+136
+00:06:36,902 --> 00:06:38,400
+You probably wouldn't want to set it to 36      
+
+137
+00:06:38,401 --> 00:06:40,520
+in a real application.      
+
+138
+00:06:40,521 --> 00:06:44,240
+You just have to kind of test it and see what works for you.      
+
+139
+00:06:44,241 --> 00:06:46,940
+I think that's pretty much it.      
+
+140
+00:06:46,941 --> 00:06:50,361
+I think we're gonna add the Click EventHandler for it      
+
+141
+00:06:50,362 --> 00:06:51,963
+to open and close it.      
+
+142
+00:06:51,964 --> 00:06:55,662
+We'll get to that in just a moment.      
+
+143
+00:06:55,663 --> 00:07:00,261
+Now let's take a look at what it looks like in the designer.      
+
+144
+00:07:00,262 --> 00:07:01,642
+Let's blow this up a little bit      
+
+145
+00:07:01,643 --> 00:07:06,461
+so we can actually see what we're looking at.      
+
+146
+00:07:06,462 --> 00:07:09,141
+You can see we've got our button with an icon on it.      
+
+147
+00:07:09,142 --> 00:07:09,901
+Awesome.      
+
+148
+00:07:09,902 --> 00:07:12,452
+We can style up that button to be      
+
+149
+00:07:12,453 --> 00:07:14,300
+one of the primary colors for our apps.      
+
+150
+00:07:14,301 --> 00:07:17,601
+I'm just not gonna do that in this particular example.      
+
+151
+00:07:17,602 --> 00:07:19,941
+So we have our button and now let's move on      
+
+152
+00:07:19,942 --> 00:07:22,140
+to the SplitView itself.      
+
+153
+00:07:22,141 --> 00:07:23,820
+I'm gonna give it a Name 'cause we're gonna need      
+
+154
+00:07:23,821 --> 00:07:24,941
+to reference it programatically.      
+
+155
+00:07:24,942 --> 00:07:29,941
+A Name="MySplitView".      
+
+156
+00:07:31,713 --> 00:07:34,963
+Here we're going to set      
+
+157
+00:07:34,964 --> 00:07:39,963
+the DisplayMode="CompactOverlay".      
+
+158
+00:07:41,943 --> 00:07:45,741
+What I want is for it to show icons.      
+
+159
+00:07:45,742 --> 00:07:47,921
+Then when it comes out I want to overlay      
+
+160
+00:07:47,922 --> 00:07:50,952
+any of the content that's underneath it.      
+
+161
+00:07:50,953 --> 00:07:53,981
+That's why I'm choosing that DisplayMode.      
+
+162
+00:07:53,982 --> 00:07:58,981
+When the Pane is open, I'm going to set it's width to 200.      
+
+163
+00:08:00,581 --> 00:08:04,431
+When it's closed I'm gonna be around this size.      
+
+164
+00:08:04,432 --> 00:08:06,721
+I may adjust it a little bit but I'm going to set      
+
+165
+00:08:06,722 --> 00:08:11,721
+the CompactPanelLength="56".      
+
+166
+00:08:12,043 --> 00:08:16,461
+When I was getting ready for this 56 seemed right,      
+
+167
+00:08:16,462 --> 00:08:19,001
+but we can monkey with that a little bit later.      
+
+168
+00:08:19,002 --> 00:08:23,081
+Also, I want the HorizontalAlignment="Left" on this.      
+
+169
+00:08:23,082 --> 00:08:25,621
+There might be some other settings that we'll want      
+
+170
+00:08:25,622 --> 00:08:30,522
+as we test this and play around with it.      
+
+171
+00:08:30,523 --> 00:08:32,343
+Put all these on separate lines.      
+
+172
+00:08:32,344 --> 00:08:34,523
+Next up is the ListBox.      
+
+173
+00:08:34,524 --> 00:08:38,322
+This is where we're going to actually display items.      
+
+174
+00:08:38,323 --> 00:08:43,322
+Let's go SelectionMode="Single".      
+
+175
+00:08:44,222 --> 00:08:45,991
+We only want to select one at a time not multiples.      
+
+176
+00:08:45,992 --> 00:08:49,601
+That wouldn't make sense in this context.      
+
+177
+00:08:49,602 --> 00:08:51,462
+When the selection changes...      
+
+178
+00:08:51,463 --> 00:08:52,843
+I'm gonna give it a Name, too.      
+
+179
+00:08:52,844 --> 00:08:57,843
+So let's give it Name equals      
+
+180
+00:08:59,032 --> 00:09:04,032
+(typing)      
+
+181
+00:09:06,542 --> 00:09:08,601
+Name="IconsListBox".      
+
+182
+00:09:08,602 --> 00:09:11,041
+Something like that then we're gonna go ahead      
+
+183
+00:09:11,042 --> 00:09:15,841
+and set the SelectionChanged      
+
+184
+00:09:15,842 --> 00:09:19,991
+SelectionChanged equal to a new event.      
+
+185
+00:09:19,992 --> 00:09:22,721
+We'll come back to that later.      
+
+186
+00:09:22,722 --> 00:09:27,721
+Then, we're gonna set for each of the TextBox items.      
+
+187
+00:09:29,382 --> 00:09:31,701
+We're gonna do something like this.      
+
+188
+00:09:31,702 --> 00:09:34,061
+We're gonna open it up and we're gonna need      
+
+189
+00:09:34,062 --> 00:09:36,961
+to add a StackPanel.      
+
+190
+00:09:36,962 --> 00:09:41,961
+We want what comes next to be oriented horizontally.      
+
+191
+00:09:42,223 --> 00:09:44,161
+Then I'm gonna put TextBlock.      
+
+192
+00:09:44,162 --> 00:09:46,441
+This first TextBlock will be the icon.      
+
+193
+00:09:46,442 --> 00:09:49,502
+The second TextBlock will be the actual text.      
+
+194
+00:09:49,503 --> 00:09:51,482
+Where will we get the icon from?      
+
+195
+00:09:51,483 --> 00:09:55,791
+Once again, we're gonna go to the FontFamily="Segoe MDL2 Assets"      
+
+196
+00:09:55,792 --> 00:10:00,791
+FontFamily="Segoe MDL2 Assets"      
+
+197
+00:10:03,602 --> 00:10:08,601
+then we'll set the FontFamily="36".      
+
+198
+00:10:10,662 --> 00:10:13,401
+Finally, we're gonna set the Text equal to...      
+
+199
+00:10:13,402 --> 00:10:17,620
+Now let's find another icon we want to use with Character Map.      
+
+200
+00:10:17,621 --> 00:10:20,040
+We can choose any of these for this example.      
+
+201
+00:10:20,041 --> 00:10:22,121
+You'll just have to hunt through to find something      
+
+202
+00:10:22,122 --> 00:10:23,740
+that you're looking for.      
+
+203
+00:10:23,741 --> 00:10:26,731
+Let me choose something relatively simple like this      
+
+204
+00:10:26,732 --> 00:10:31,141
+little share button that we would see all over Windows 10,      
+
+205
+00:10:31,142 --> 00:10:34,400
+especially on the Edge browser.      
+
+206
+00:10:34,401 --> 00:10:38,870
+I'm gonna select that and it's E72D.      
+
+207
+00:10:38,871 --> 00:10:43,640
+(typing) E72D      
+
+208
+00:10:43,641 --> 00:10:46,583
+We're gonna add a ; after it.      
+
+209
+00:10:46,584 --> 00:10:51,351
+I'll put an &, #, x      
+
+210
+00:10:51,352 --> 00:10:54,021
+above it like so: "&#xE72D;"      
+
+211
+00:10:54,022 --> 00:10:57,841
+I just realized a mistake here.      
+
+212
+00:10:57,842 --> 00:11:01,142
+Font size equals 36. Great.      
+
+213
+00:11:01,143 --> 00:11:04,261
+The next step I want to put the text that comes next to it.      
+
+214
+00:11:04,262 --> 00:11:09,261
+We'll put the Text="First Option".      
+
+215
+00:11:11,982 --> 00:11:13,580
+Very generic, you can come up with something      
+
+216
+00:11:13,581 --> 00:11:14,580
+better than that.      
+
+217
+00:11:14,581 --> 00:11:16,522
+How about I just rename that to "Share".      
+
+218
+00:11:16,523 --> 00:11:19,560
+Think that might be better.      
+
+219
+00:11:19,561 --> 00:11:23,970
+We'll set it's FontSize="36",      
+
+220
+00:11:29,251 --> 00:11:31,441
+and we'll see what that looks like.      
+
+221
+00:11:31,442 --> 00:11:34,980
+We may have to come back and adjust that.      
+
+222
+00:11:34,981 --> 00:11:39,980
+We're gonna do the same thing for the other ListBoxItems.      
+
+223
+00:11:41,803 --> 00:11:45,480
+In fact, we'll just create two.      
+
+224
+00:11:45,481 --> 00:11:49,581
+(typing)      
+
+225
+00:12:05,291 --> 00:12:07,200
+Let's open up our Character Map      
+
+226
+00:12:07,201 --> 00:12:08,801
+and find another icon we want to use.      
+
+227
+00:12:08,802 --> 00:12:10,840
+I'll go ahead and use this star.      
+
+228
+00:12:10,841 --> 00:12:12,161
+Anything that you find is fine.      
+
+229
+00:12:12,162 --> 00:12:17,161
+In this case, E734.      
+
+230
+00:12:19,382 --> 00:12:24,381
+E734, ; after it, &#x before it: "&#xE734;".      
+
+231
+00:12:26,602 --> 00:12:29,993
+Then let's set the FontFamily.      
+
+232
+00:12:29,994 --> 00:12:33,640
+(typing)      
+
+233
+00:12:33,641 --> 00:12:37,441
+FontFamily="Segoe MDL2 Assets".      
+
+234
+00:12:37,442 --> 00:12:42,441
+Finally, the FontSize="36".      
+
+235
+00:12:42,701 --> 00:12:46,821
+Then I'll just put here Text="Favorites".      
+
+236
+00:12:46,822 --> 00:12:51,821
+We'll put it's FontSize="36" as well.      
+
+237
+00:12:54,221 --> 00:12:57,521
+I think I have enough here to work with.      
+
+238
+00:12:57,522 --> 00:12:59,461
+The one thing I will want to do though,      
+
+239
+00:12:59,462 --> 00:13:02,941
+is whenever the selection changes...      
+
+240
+00:13:02,942 --> 00:13:05,801
+Actually, let's back up to the hamburger.      
+
+241
+00:13:05,802 --> 00:13:07,601
+Whenever someone clicks the hamburger,      
+
+242
+00:13:07,602 --> 00:13:09,301
+remember what we want to do.      
+
+243
+00:13:09,302 --> 00:13:13,780
+We want to show or hide the SplitView.      
+
+244
+00:13:13,781 --> 00:13:18,100
+Let's go and select F12 on our keyboard.      
+
+245
+00:13:18,101 --> 00:13:20,940
+We're here in the code behind      
+
+246
+00:13:20,941 --> 00:13:25,940
+and what I want to do is MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;      
+
+247
+00:13:27,661 --> 00:13:32,660
+MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;, like so.      
+
+248
+00:13:34,521 --> 00:13:37,421
+Remember we talked about how that would show and hide      
+
+249
+00:13:37,422 --> 00:13:41,320
+the SplitView's Pane.      
+
+250
+00:13:41,321 --> 00:13:45,423
+Let's run and see what happens now.      
+
+251
+00:13:53,434 --> 00:13:54,971
+Alright, not exactly what we had in mind.      
+
+252
+00:13:54,972 --> 00:13:59,971
+I think I see the error in my ways here.      
+
+253
+00:14:00,522 --> 00:14:02,782
+I forgot one crucial, little thing here.      
+
+254
+00:14:02,783 --> 00:14:07,782
+That is, we need to go SplitView.Pane.      
+
+255
+00:14:08,241 --> 00:14:13,240
+Wrap that around our ListBox because it's sitting outside of      
+
+256
+00:14:14,132 --> 00:14:19,131
+the Pane right now.      
+
+257
+00:14:19,281 --> 00:14:24,280
+Great. Let's run it again.      
+
+258
+00:14:25,012 --> 00:14:28,700
+I see that it mostly works. The hover works great.      
+
+259
+00:14:28,701 --> 00:14:31,201
+There's some margin issues here      
+
+260
+00:14:31,202 --> 00:14:36,000
+and that font is way too large but we're very close.      
+
+261
+00:14:36,001 --> 00:14:37,200
+Tell you what, let's go ahead      
+
+262
+00:14:37,201 --> 00:14:40,861
+and modify that FontSize down to 24.      
+
+263
+00:14:40,862 --> 00:14:42,500
+That should help.      
+
+264
+00:14:42,501 --> 00:14:45,181
+Then, I want to put some margin space      
+
+265
+00:14:45,182 --> 00:14:47,141
+to the left of this TextBox.      
+
+266
+00:14:47,142 --> 00:14:48,901
+We'll set Margin.      
+
+267
+00:14:48,902 --> 00:14:52,381
+The reason is because that second TextBlock      
+
+268
+00:14:52,382 --> 00:14:55,940
+is bleeding too close to the first TextBlock.      
+
+269
+00:14:55,941 --> 00:14:58,081
+We want to set some space in there.      
+
+270
+00:14:58,082 --> 00:15:02,261
+We'll put 20px to the left      
+
+271
+00:15:02,262 --> 00:15:07,261
+of both of these TextBlocks.      
+
+272
+00:15:07,641 --> 00:15:12,640
+Great. Now let's run one more time.      
+
+273
+00:15:13,092 --> 00:15:16,563
+There we go, that looks nice.      
+
+274
+00:15:16,564 --> 00:15:19,240
+Then the other thing we'll want to do now is      
+
+275
+00:15:19,241 --> 00:15:24,171
+to just create a SplitView.      
+
+276
+00:15:24,172 --> 00:15:29,171
+We'll set the SplitView's Content.      
+
+277
+00:15:32,022 --> 00:15:37,021
+For our purposes I'm just gonna put a TextBlock in there.      
+
+278
+00:15:37,342 --> 00:15:39,991
+I'm gonna give it a Name.      
+
+279
+00:15:39,992 --> 00:15:43,822
+(typing)      
+
+280
+00:15:43,823 --> 00:15:47,061
+Just to prove that the click actually works      
+
+281
+00:15:47,062 --> 00:15:51,041
+or that the SelectionChanged actually works.      
+
+282
+00:15:51,042 --> 00:15:56,041
+Furthermore, I'm gonna change or add to this ListBoxItem.      
+
+283
+00:15:56,262 --> 00:15:57,761
+I'm gonna give it a Name.      
+
+284
+00:15:57,762 --> 00:16:02,761
+We're gonna call this first one the ShareListBoxItem.      
+
+285
+00:16:03,144 --> 00:16:08,143
+Then the second one, give it a Name="FavoritesListBoxItem"      
+
+286
+00:16:09,524 --> 00:16:14,523
+Name="FavoritesListBoxItem".      
+
+287
+00:16:15,542 --> 00:16:20,502
+Now, in the ListBox SelectionChanged EventHandler.      
+
+288
+00:16:20,503 --> 00:16:24,041
+What I want to do is put my mouse cursor there and hit F12.      
+
+289
+00:16:24,042 --> 00:16:27,021
+That'll open it up in the code behind.      
+
+290
+00:16:27,022 --> 00:16:32,021
+I can do something as simple as this.      
+
+291
+00:16:33,603 --> 00:16:36,481
+What did we name that again?      
+
+292
+00:16:36,482 --> 00:16:38,202
+ShareListBox      
+
+293
+00:16:38,203 --> 00:16:43,202
+if (ShareListBox.IsSelected),      
+
+294
+00:16:45,734 --> 00:16:50,733
+else if (FavoritesListBoxItem.IsSelected).      
+
+295
+00:16:54,442 --> 00:16:57,260
+Each of these cases result...      
+
+296
+00:16:57,261 --> 00:17:02,221
+ResultTextBlock.Text = "Share"      
+
+297
+00:17:02,222 --> 00:17:05,722
+ResultTextBlock.Text = "Share"      
+
+298
+00:17:05,723 --> 00:17:06,861
+Then we'll do that same.      
+
+299
+00:17:06,862 --> 00:17:09,920
+ResultTextBlock.Text = ""      
+
+300
+00:17:09,921 --> 00:17:12,083
+Here's where you probably want to do      
+
+301
+00:17:12,084 --> 00:17:13,871
+what we talked about earlier with navigation      
+
+302
+00:17:13,872 --> 00:17:18,421
+and load in another Page into a Frame      
+
+303
+00:17:18,422 --> 00:17:19,681
+and that Frame would sit in the middle      
+
+304
+00:17:19,682 --> 00:17:23,121
+where we currently have the content area.      
+
+305
+00:17:23,122 --> 00:17:25,231
+That's something that you're actually going to need      
+
+306
+00:17:25,232 --> 00:17:27,941
+to do for the next challenge.      
+
+307
+00:17:27,942 --> 00:17:32,743
+Let's see what we have here.      
+
+308
+00:17:32,744 --> 00:17:36,321
+You can see that when we select      
+
+309
+00:17:36,322 --> 00:17:41,321
+either of the buttons it changes the selected item.      
+
+310
+00:17:41,982 --> 00:17:46,061
+I can even select then go away and it still selected it      
+
+311
+00:17:46,062 --> 00:17:51,061
+because we have Overlay and not InLine.      
+
+312
+00:17:51,402 --> 00:17:53,622
+Hopefully, that all made sense.      
+
+313
+00:17:53,623 --> 00:17:55,781
+You're gonna need this skill.      
+
+314
+00:17:55,782 --> 00:17:59,741
+This "poor man's" hamburger navigation layout      
+
+315
+00:17:59,742 --> 00:18:02,881
+for our upcoming challenge as we move along      
+
+316
+00:18:02,882 --> 00:18:04,301
+like I said before.      
+
+317
+00:18:04,302 --> 00:18:07,981
+I think we're just about ready to get started with that.      
+
+318
+00:18:07,982 --> 00:18:11,141
+After a quick review we'll get started with that challenge.      
+
+319
+00:18:11,142 --> 00:18:13,911
+We'll see you there. Thanks.      
+

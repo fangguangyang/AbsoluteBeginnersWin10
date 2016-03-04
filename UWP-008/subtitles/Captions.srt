@@ -1,0 +1,1336 @@
+1
+00:00:05,570 --> 00:00:09,749
+<v ->Hi, I'm Bob Tabor with www.LearnVisualStudio.NET.</v>
+
+2
+00:00:09,750 --> 00:00:12,319
+In this lesson, I want to begin talking about layout,
+
+3
+00:00:12,320 --> 00:00:16,349
+or rather, the process of positioning visual controls
+
+4
+00:00:16,350 --> 00:00:20,149
+and other elements on your application's user interface.
+
+5
+00:00:20,150 --> 00:00:22,549
+And there are several different XAML controls
+
+6
+00:00:22,550 --> 00:00:25,049
+that exist for the purpose of layout,
+
+7
+00:00:25,050 --> 00:00:27,189
+and we'll cover most of the popular ones
+
+8
+00:00:27,190 --> 00:00:28,649
+in this series of lessons.
+
+9
+00:00:28,650 --> 00:00:31,759
+Now in the past, layout was relatively simple.
+
+10
+00:00:31,760 --> 00:00:34,119
+After all, you were typically only laying out
+
+11
+00:00:34,120 --> 00:00:37,249
+an application for a single form factor,
+
+12
+00:00:37,250 --> 00:00:40,249
+a single device like a phone or a desktop application.
+
+13
+00:00:40,250 --> 00:00:43,059
+However, there are a few new wrinkles
+
+14
+00:00:43,060 --> 00:00:45,449
+introduced as we begin to build applications
+
+15
+00:00:45,450 --> 00:00:48,649
+that can adaptively resize based on the device
+
+16
+00:00:48,650 --> 00:00:50,419
+that we run our app on.
+
+17
+00:00:50,420 --> 00:00:54,019
+And this is one of the new key features in app development
+
+18
+00:00:54,020 --> 00:00:56,019
+on the Windows platform.
+
+19
+00:00:56,020 --> 00:00:58,779
+We'll start with the easy stuff in this lesson,
+
+20
+00:00:58,780 --> 00:01:00,389
+then we'll build up to the more challenging stuff
+
+21
+00:01:00,390 --> 00:01:02,119
+in the following lessons.
+
+22
+00:01:02,120 --> 00:01:04,249
+Now before we begin, I want to point out one thing
+
+23
+00:01:04,250 --> 00:01:07,089
+regarding all XAML controls that are intended
+
+24
+00:01:07,090 --> 00:01:08,789
+for the purpose of layout.
+
+25
+00:01:08,790 --> 00:01:11,749
+Most controls have a content property,
+
+26
+00:01:11,750 --> 00:01:15,389
+so your button control has a content property, for example.
+
+27
+00:01:15,390 --> 00:01:17,649
+And the content property can only be set
+
+28
+00:01:17,650 --> 00:01:20,419
+to an instance of another object.
+
+29
+00:01:20,420 --> 00:01:22,889
+So in other words, I can put a TextBlock,
+
+30
+00:01:22,890 --> 00:01:24,649
+and let me just copy and paste some code here
+
+31
+00:01:24,650 --> 00:01:26,889
+into what I've got.
+
+32
+00:01:26,890 --> 00:01:31,889
+I can create here a Button
+
+33
+00:01:33,920 --> 00:01:36,519
+with a Content property set to a TextBlock,
+
+34
+00:01:36,520 --> 00:01:39,449
+but then I also have added an Image inside
+
+35
+00:01:39,450 --> 00:01:41,749
+of that Button control as well.
+
+36
+00:01:41,750 --> 00:01:44,919
+So whenever I attempt to put more than one control
+
+37
+00:01:44,920 --> 00:01:46,319
+inside of the Content property,
+
+38
+00:01:46,320 --> 00:01:47,849
+I get this error, and if I hover over it,
+
+39
+00:01:47,850 --> 00:01:51,619
+it says: The property "Content" can only be set once.
+
+40
+00:01:51,620 --> 00:01:54,849
+However, layout controls are intended to host
+
+41
+00:01:54,850 --> 00:01:56,519
+more than one control.
+
+42
+00:01:56,520 --> 00:01:59,849
+And so as a result, they do not have a Content property.
+
+43
+00:01:59,850 --> 00:02:02,889
+Instead, they usually have a Children property
+
+44
+00:02:02,890 --> 00:02:07,189
+that is of a special data type, a collection data type
+
+45
+00:02:07,190 --> 00:02:10,949
+that can hold XAML controls called UIElementCollection.
+
+46
+00:02:10,950 --> 00:02:14,519
+In XAML, as we add new instances of controls
+
+47
+00:02:14,520 --> 00:02:18,249
+inside of the definition of our layout control,
+
+48
+00:02:18,250 --> 00:02:20,549
+we're actually calling the Add method
+
+49
+00:02:20,550 --> 00:02:24,719
+of our layout control's UIElementCollection,
+
+50
+00:02:24,720 --> 00:02:26,719
+or rather, just the collection property.
+
+51
+00:02:26,720 --> 00:02:29,649
+So here again, XAML hides a lot of the complexity for us
+
+52
+00:02:29,650 --> 00:02:32,319
+and makes our code very concise
+
+53
+00:02:32,320 --> 00:02:36,619
+by inferring our intent by how we write our XAML.
+
+54
+00:02:36,620 --> 00:02:38,989
+Alright, so we're going to begin in this lesson
+
+55
+00:02:38,990 --> 00:02:40,319
+looking at the Grid control.
+
+56
+00:02:40,320 --> 00:02:44,179
+Like any grid, it allows you to define both rows and columns
+
+57
+00:02:44,180 --> 00:02:45,549
+to create cells.
+
+58
+00:02:45,550 --> 00:02:47,689
+And then each of the controls that are used
+
+59
+00:02:47,690 --> 00:02:51,089
+by your application can request which row and which column
+
+60
+00:02:51,090 --> 00:02:53,689
+that they want to be placed inside of.
+
+61
+00:02:53,690 --> 00:02:55,809
+So whenever you create a new app
+
+62
+00:02:55,810 --> 00:02:57,249
+using the blank app template,
+
+63
+00:02:57,250 --> 00:02:59,019
+you're provided very little guidance,
+
+64
+00:02:59,020 --> 00:03:00,619
+as you saw here a moment ago,
+
+65
+00:03:00,620 --> 00:03:02,189
+let me just get rid of that,
+
+66
+00:03:02,190 --> 00:03:04,989
+that's pretty much all you are given to get started.
+
+67
+00:03:04,990 --> 00:03:06,789
+You get a single empty Grid
+
+68
+00:03:06,790 --> 00:03:09,219
+with no rows or no columns defined.
+
+69
+00:03:09,220 --> 00:03:13,389
+However by default, there is always one row definition
+
+70
+00:03:13,390 --> 00:03:15,549
+and one column definition,
+
+71
+00:03:15,550 --> 00:03:18,819
+even if it is not explicitly defined in your XAML.
+
+72
+00:03:18,820 --> 00:03:23,649
+And these take up the full vertical and horizontal space
+
+73
+00:03:23,650 --> 00:03:28,549
+available to represent one large cell in the grid.
+
+74
+00:03:28,550 --> 00:03:29,849
+Now any items that are placed between
+
+75
+00:03:29,850 --> 00:03:33,789
+that opening and closing Grid element
+
+76
+00:03:33,790 --> 00:03:36,749
+are understood to be inside of that single,
+
+77
+00:03:36,750 --> 00:03:39,349
+implicitly defined cell.
+
+78
+00:03:39,350 --> 00:03:41,949
+So I'm going to create a quick example of a grid
+
+79
+00:03:41,950 --> 00:03:46,149
+that defines two rows, just to illustrate two primary ways
+
+80
+00:03:46,150 --> 00:03:49,119
+of creating rows and setting their heights.
+
+81
+00:03:49,120 --> 00:03:51,309
+And so actually, I have already taken the opportunity
+
+82
+00:03:51,310 --> 00:03:52,249
+to create this.
+
+83
+00:03:52,250 --> 00:03:54,389
+I'm going to go to a project called Row Definition.
+
+84
+00:03:54,390 --> 00:03:56,619
+You should be able to open this up and follow along.
+
+85
+00:03:56,620 --> 00:03:59,919
+Or you can just pause the video and type this in as well.
+
+86
+00:03:59,920 --> 00:04:02,219
+So here you can see that I want you to notice
+
+87
+00:04:02,220 --> 00:04:04,089
+that I have two rectangles.
+
+88
+00:04:04,090 --> 00:04:07,949
+There is an upper rectangle and a lower rectangle.
+
+89
+00:04:07,950 --> 00:04:10,289
+And those are defined through a series
+
+90
+00:04:10,290 --> 00:04:13,949
+of RowDefinition objects here.
+
+91
+00:04:13,950 --> 00:04:16,119
+So you can see that I have, inside of the grid,
+
+92
+00:04:16,120 --> 00:04:18,509
+I have this property element syntax to define
+
+93
+00:04:18,510 --> 00:04:22,519
+a collection of RowDefinitions with instances
+
+94
+00:04:22,520 --> 00:04:26,459
+of RowDefinition created with their height property set.
+
+95
+00:04:26,460 --> 00:04:29,459
+And here, the first one has its Height property set to Auto
+
+96
+00:04:29,460 --> 00:04:32,319
+and its second row definition object has its height
+
+97
+00:04:32,320 --> 00:04:33,959
+set to star (*).
+
+98
+00:04:33,960 --> 00:04:36,119
+And then we have two rectangle objects,
+
+99
+00:04:36,120 --> 00:04:40,249
+and notice that here, we're setting the row
+
+100
+00:04:40,250 --> 00:04:43,619
+that this rectangle object wants to put itself inside of.
+
+101
+00:04:43,620 --> 00:04:48,619
+It wants to put itself inside of the row zero,
+
+102
+00:04:48,820 --> 00:04:51,049
+so we can see that this is the first row, row zero,
+
+103
+00:04:51,050 --> 00:04:52,289
+so it's zero based,
+
+104
+00:04:52,290 --> 00:04:55,419
+and then the second rectangle wants to put itself
+
+105
+00:04:55,420 --> 00:04:58,289
+inside of the Grid.Row="1"
+
+106
+00:04:58,290 --> 00:05:02,819
+so it puts itself here in this row.
+
+107
+00:05:02,820 --> 00:05:05,019
+So the first thing to notice is how the rectangles
+
+108
+00:05:05,020 --> 00:05:08,159
+are putting themselves into the various grid rows,
+
+109
+00:05:08,160 --> 00:05:13,159
+and then also how you reference both rows and columns
+
+110
+00:05:13,350 --> 00:05:17,049
+using a zero-based numbering scheme like we saw here.
+
+111
+00:05:17,050 --> 00:05:18,789
+Now the second thing that I want you to notice
+
+112
+00:05:18,790 --> 00:05:21,789
+is this weird syntax: Grid.Row 
+
+113
+00:05:21,790 --> 00:05:24,719
+Grid.Row, and we'll also be setting Grid.Column
+
+114
+00:05:24,720 --> 00:05:26,519
+in another example here.
+
+115
+00:05:26,520 --> 00:05:30,393
+And these are called "Attached Properties".
+
+116
+00:05:30,394 --> 00:05:33,189
+Attach properties enable an object,
+
+117
+00:05:33,190 --> 00:05:38,189
+in this case, a rectangle, to assign a value for a property
+
+118
+00:05:38,490 --> 00:05:40,649
+in this case, the row property,
+
+119
+00:05:40,650 --> 00:05:43,219
+(but it could apply to the column property as well),
+
+120
+00:05:43,220 --> 00:05:45,989
+to assign a value for a property
+
+121
+00:05:45,990 --> 00:05:48,609
+that its own class structure does not define.
+
+122
+00:05:48,610 --> 00:05:51,819
+So nowhere in the Rectangle definition is there a
+
+123
+00:05:51,820 --> 00:05:54,819
+Grid.Row property, or even a Row property.
+
+124
+00:05:54,820 --> 00:05:58,619
+These are all defined inside of the Grid object.
+
+125
+00:05:58,620 --> 00:06:01,289
+Now the reason why Attached Properties exist
+
+126
+00:06:01,290 --> 00:06:04,719
+is really an advanced XAML topic that is not actionable
+
+127
+00:06:04,720 --> 00:06:06,749
+at this point in your introduction to XAML.
+
+128
+00:06:06,750 --> 00:06:08,549
+So I'm going to skip that topic.
+
+129
+00:06:08,550 --> 00:06:10,989
+If you want to get deeper into the internals of XAML,
+
+130
+00:06:10,990 --> 00:06:13,882
+then you should search MSDN for articles
+
+131
+00:06:13,883 --> 00:06:17,589
+about both Attached Properties, as well as
+
+132
+00:06:17,590 --> 00:06:20,519
+the loosely related topic of Dependency Properties.
+
+133
+00:06:20,520 --> 00:06:22,659
+But in a nutshell, Attached Properties
+
+134
+00:06:22,660 --> 00:06:24,659
+keep your XAML simple.
+
+135
+00:06:24,660 --> 00:06:26,489
+Let's just leave it at that, and then you can go off
+
+136
+00:06:26,490 --> 00:06:30,289
+and explore that topic a little bit on your own later on.
+
+137
+00:06:30,290 --> 00:06:31,849
+So the third thing that I want you to notice
+
+138
+00:06:31,850 --> 00:06:34,819
+about this example are the two different row heights.
+
+139
+00:06:34,820 --> 00:06:37,489
+The first height, we set to Auto; and the second row height,
+
+140
+00:06:37,490 --> 00:06:39,019
+we set to star (*).
+
+141
+00:06:39,020 --> 00:06:41,709
+There are three syntaxes that you can use
+
+142
+00:06:41,710 --> 00:06:45,819
+to help persuade the sizing for each row and each column.
+
+143
+00:06:45,820 --> 00:06:48,289
+I use the term "persuade" intentionally.
+
+144
+00:06:48,290 --> 00:06:52,019
+With XAML layout, heights and widths are relative
+
+145
+00:06:52,020 --> 00:06:54,819
+and can be influenced by a number of different factors.
+
+146
+00:06:54,820 --> 00:06:58,889
+All these factors are considered by the layout engine
+
+147
+00:06:58,890 --> 00:07:01,619
+at run time to determine the actual placement
+
+148
+00:07:01,620 --> 00:07:06,619
+of items on your given page, or your screen.
+
+149
+00:07:07,090 --> 00:07:09,149
+So for example, this term, Auto,
+
+150
+00:07:09,150 --> 00:07:11,719
+means that the height for the row
+
+151
+00:07:11,720 --> 00:07:15,119
+should be tall enough to accommodate all of the controls
+
+152
+00:07:15,120 --> 00:07:17,449
+that are placed inside of that row.
+
+153
+00:07:17,450 --> 00:07:19,549
+If the tallest control, in this case,
+
+154
+00:07:19,550 --> 00:07:21,989
+you can see this rectangle, has its height
+
+155
+00:07:21,990 --> 00:07:25,439
+explicitly set to 100 pixels,
+
+156
+00:07:25,440 --> 00:07:28,989
+if the tallest item is 100 pixels tall,
+
+157
+00:07:28,990 --> 00:07:32,419
+then that's the actual height of the row, 100 pixels.
+
+158
+00:07:32,420 --> 00:07:35,649
+If we were to change this to 50 pixels,
+
+159
+00:07:35,650 --> 00:07:39,319
+you can see that the height of the row changes
+
+160
+00:07:39,320 --> 00:07:41,689
+now to be half the height to 50 instead.
+
+161
+00:07:41,690 --> 00:07:43,799
+Let's change it back to 100.
+
+162
+00:07:45,620 --> 00:07:50,149
+So therefore, auto means that the height is relative
+
+163
+00:07:50,150 --> 00:07:53,849
+to the controls that are inside of that given row or column,
+
+164
+00:07:53,850 --> 00:07:56,149
+or whatever the case might be.
+
+165
+00:07:56,150 --> 00:07:58,619
+Secondly, you see this asterisk,
+
+166
+00:07:58,620 --> 00:08:01,025
+it's also known as "star sizing", and it means
+
+167
+00:08:01,026 --> 00:08:03,819
+that the height of the row should take up
+
+168
+00:08:03,820 --> 00:08:07,749
+all of the rest of the available height available.
+
+169
+00:08:07,750 --> 00:08:10,419
+So here is a quick example of another way
+
+170
+00:08:10,420 --> 00:08:11,619
+to use star sizing.
+
+171
+00:08:11,620 --> 00:08:15,189
+I created a project that has three rows
+
+172
+00:08:15,190 --> 00:08:17,889
+in the content panel.
+
+173
+00:08:17,890 --> 00:08:20,339
+Here, let me get to star sizing. Great.
+
+174
+00:08:21,350 --> 00:08:23,019
+Bring it down here.
+
+175
+00:08:23,020 --> 00:08:27,729
+So again, you can see that we have three rows
+
+176
+00:08:27,730 --> 00:08:28,819
+that are defined.
+
+177
+00:08:28,820 --> 00:08:32,449
+Let me just get down here like so.
+
+178
+00:08:32,450 --> 00:08:35,049
+Notice the heights of each one of them.
+
+179
+00:08:35,050 --> 00:08:39,449
+Putting a number before the asterisk,
+
+180
+00:08:39,450 --> 00:08:42,319
+I am saying of all the available space,
+
+181
+00:08:42,320 --> 00:08:45,189
+give me one share of all the available space,
+
+182
+00:08:45,190 --> 00:08:47,389
+or two shares of all the available space.
+
+183
+00:08:47,390 --> 00:08:50,889
+Or in this case, three shares of all of the available space.
+
+184
+00:08:50,890 --> 00:08:54,219
+So the sum of all of those rows adds up to six.
+
+185
+00:08:54,220 --> 00:08:58,249
+So each one star is equivalent to 1/6th
+
+186
+00:08:58,250 --> 00:09:01,209
+of the height that is currently available.
+
+187
+00:09:01,210 --> 00:09:04,819
+So therefore, three star would get half of the height
+
+188
+00:09:04,820 --> 00:09:09,289
+that is available as depicted in the output of this example.
+
+189
+00:09:09,290 --> 00:09:13,689
+As you can see, it gets half of the available height.
+
+190
+00:09:13,690 --> 00:09:16,619
+I also want you to notice, off to the left-hand side,
+
+191
+00:09:16,620 --> 00:09:18,589
+that there are some visual tools that we can use
+
+192
+00:09:18,590 --> 00:09:21,619
+to change the sizing.
+
+193
+00:09:21,620 --> 00:09:25,389
+So for example, I can change from star sizing to auto,
+
+194
+00:09:25,390 --> 00:09:27,049
+or to pixel.
+
+195
+00:09:27,050 --> 00:09:30,349
+I can also just type in the given value here,
+
+196
+00:09:30,350 --> 00:09:32,549
+and that would set the height property
+
+197
+00:09:32,550 --> 00:09:35,319
+in this particular case.
+
+198
+00:09:35,320 --> 00:09:38,949
+Besides auto and star sizing, you can also specify
+
+199
+00:09:38,950 --> 00:09:42,419
+widths and heights, as well as margins in terms of pixels.
+
+200
+00:09:42,420 --> 00:09:46,019
+So in fact, when only numbers are present,
+
+201
+00:09:46,020 --> 00:09:48,619
+it represents that number of pixels
+
+202
+00:09:48,620 --> 00:09:49,719
+for the width or the height.
+
+203
+00:09:49,720 --> 00:09:54,719
+Now generally, it is not a good idea to use exact pixels
+
+204
+00:09:54,850 --> 00:09:57,089
+in layouts for widths and heights
+
+205
+00:09:57,090 --> 00:09:59,689
+because of the likelihood that various screens
+
+206
+00:09:59,690 --> 00:10:02,689
+will be larger or smaller, so there are
+
+207
+00:10:02,690 --> 00:10:04,819
+several different types of phones
+
+208
+00:10:04,820 --> 00:10:09,579
+or several different form factors for tablets and desktops,
+
+209
+00:10:09,580 --> 00:10:13,149
+things of that nature, and so you do not want
+
+210
+00:10:13,150 --> 00:10:16,049
+to specify exact numbers or else
+
+211
+00:10:16,050 --> 00:10:19,549
+it is not going to look correct on a different form factor.
+
+212
+00:10:19,550 --> 00:10:22,019
+Instead, it is preferable to use relative layouts
+
+213
+00:10:22,020 --> 00:10:25,589
+like auto and star sizing for layout.
+
+214
+00:10:25,590 --> 00:10:27,489
+Now the one other thing that I want you to notice
+
+215
+00:10:27,490 --> 00:10:31,649
+from this example is that the XAML control,
+
+216
+00:10:31,650 --> 00:10:34,249
+widths and heights, are assumed to be 100%
+
+217
+00:10:34,250 --> 00:10:36,819
+unless otherwise specified, especially for rectangles.
+
+218
+00:10:36,820 --> 00:10:39,649
+And that's pretty much true for many different controls,
+
+219
+00:10:39,650 --> 00:10:42,619
+not all controls, like the button control is not
+
+220
+00:10:42,620 --> 00:10:47,619
+treated this way, but a rectangle, an image control,
+
+221
+00:10:48,650 --> 00:10:52,219
+these are all assumed to be 100% of whatever space
+
+222
+00:10:52,220 --> 00:10:54,419
+that is available, width and height.
+
+223
+00:10:54,420 --> 00:10:57,389
+I also want to point out that a grid can have a collection
+
+224
+00:10:57,390 --> 00:10:59,349
+of column definitions.
+
+225
+00:10:59,350 --> 00:11:03,789
+And what I want to do is show you another example here.
+
+226
+00:11:03,790 --> 00:11:07,519
+And so here you can see that we have a 3 x 3 grid,
+
+227
+00:11:07,520 --> 00:11:11,189
+three row definitions and then we see that we're also,
+
+228
+00:11:11,190 --> 00:11:12,519
+with property elements syntax,
+
+229
+00:11:12,520 --> 00:11:17,089
+defining a ColumnDefinitions collection that contains
+
+230
+00:11:17,090 --> 00:11:19,019
+three columns.
+
+231
+00:11:19,020 --> 00:11:21,189
+Furthermore, you can see that I put a TextBlock
+
+232
+00:11:21,190 --> 00:11:25,799
+inside of each one of the cells.
+
+233
+00:11:27,010 --> 00:11:30,649
+Now unfortunately, you cannot see the numbers here
+
+234
+00:11:30,650 --> 00:11:32,109
+on the designer.
+
+235
+00:11:32,110 --> 00:11:34,449
+It is not representing them correctly,
+
+236
+00:11:34,450 --> 00:11:36,249
+but if we were to run the application,
+
+237
+00:11:36,250 --> 00:11:38,889
+you would be able to see that we get a different number
+
+238
+00:11:38,890 --> 00:11:41,349
+in each cell.
+
+239
+00:11:41,350 --> 00:11:44,499
+We'll make that smaller, you can see one through nine, okay?
+
+240
+00:11:46,690 --> 00:11:49,049
+And one of the things I want you to notice, for example,
+
+241
+00:11:49,050 --> 00:11:51,489
+in this very first cell in the upper left-hand corner
+
+242
+00:11:51,490 --> 00:11:54,489
+is that I am not setting a row,
+
+243
+00:11:54,490 --> 00:11:55,989
+nor am I setting a column.
+
+244
+00:11:55,990 --> 00:11:59,919
+And so by default, if you do not supply that information,
+
+245
+00:11:59,920 --> 00:12:01,419
+it is assumed to be zero.
+
+246
+00:12:01,420 --> 00:12:05,579
+So we're assuming that we're putting this particular
+
+247
+00:12:05,580 --> 00:12:08,849
+TextBlock in row zero, column zero.
+
+248
+00:12:08,850 --> 00:12:11,889
+Furthermore, if you take a look at this next TextBlock,
+
+249
+00:12:11,890 --> 00:12:14,349
+I am setting the grid column equal to one,
+
+250
+00:12:14,350 --> 00:12:15,619
+but I'm not setting the row,
+
+251
+00:12:15,620 --> 00:12:17,989
+meaning that I am assuming that to be zero.
+
+252
+00:12:17,990 --> 00:12:22,649
+And I do that here several times throughout this example.
+
+253
+00:12:22,650 --> 00:12:25,189
+So relying on defaults keeps your code, again,
+
+254
+00:12:25,190 --> 00:12:27,349
+more concise, but you have to understand
+
+255
+00:12:27,350 --> 00:12:30,149
+that there is a convention being used here.
+
+256
+00:12:30,150 --> 00:12:33,189
+All right, I have another example that I want to show you
+
+257
+00:12:33,190 --> 00:12:35,089
+called AlignmentAndMargins.
+
+258
+00:12:35,090 --> 00:12:36,889
+Here, let's bring this down.
+
+259
+00:12:36,890 --> 00:12:39,149
+Most of these examples should be pretty obvious
+
+260
+00:12:39,150 --> 00:12:40,629
+if you stare at it for a few moments,
+
+261
+00:12:40,630 --> 00:12:42,519
+but there are several finer distinctions
+
+262
+00:12:42,520 --> 00:12:44,889
+that I want to make about alignments and margins.
+
+263
+00:12:44,890 --> 00:12:47,989
+First of all, this example illustrates
+
+264
+00:12:47,990 --> 00:12:50,819
+how VerticalAlignment and HorizontalAlignment work
+
+265
+00:12:50,820 --> 00:12:52,719
+even in a given grid cell.
+
+266
+00:12:52,720 --> 00:12:55,089
+And this will hold true in a stack panel as well,
+
+267
+00:12:55,090 --> 00:12:57,139
+when we talk about it in the next lesson.
+
+268
+00:12:57,140 --> 00:13:01,049
+The Vertical or HorizontalAlignment property attributes
+
+269
+00:13:01,050 --> 00:13:04,919
+pull controls towards their boundaries.
+
+270
+00:13:04,920 --> 00:13:09,049
+So by contrast, the margin attributes push controls
+
+271
+00:13:09,050 --> 00:13:11,349
+away from their boundaries.
+
+272
+00:13:11,350 --> 00:13:13,589
+So in this case here, you can see that,
+
+273
+00:13:13,590 --> 00:13:17,349
+the HorizontalAlignment, we're pulling this blue rectangle
+
+274
+00:13:17,350 --> 00:13:19,819
+towards the left hand side,
+
+275
+00:13:19,820 --> 00:13:23,419
+and we're pulling it towards the top hand side, okay?
+
+276
+00:13:23,420 --> 00:13:28,419
+However, if we take a look at an example
+
+277
+00:13:28,550 --> 00:13:31,049
+that has some margins defined, here at the very bottom,
+
+278
+00:13:31,050 --> 00:13:31,789
+this white one.
+
+279
+00:13:31,790 --> 00:13:36,419
+So here again, we are pulling the HorizontalAlignment
+
+280
+00:13:36,420 --> 00:13:39,419
+towards the left, and we're pulling the VerticalAlignment
+
+281
+00:13:39,420 --> 00:13:40,919
+towards the bottom.
+
+282
+00:13:40,920 --> 00:13:45,919
+And then we're setting the margins equal to 50, 0, 0 and 50.
+
+283
+00:13:47,490 --> 00:13:50,819
+So you can see that the margin will now push
+
+284
+00:13:50,820 --> 00:13:55,119
+the rectangle away from the left-hand boundary by 50.
+
+285
+00:13:55,120 --> 00:13:59,019
+So you can see here that we get that
+
+286
+00:13:59,020 --> 00:14:01,019
+little spacing on the left-hand side,
+
+287
+00:14:01,020 --> 00:14:04,919
+and the margin is pushing the white rectangle
+
+288
+00:14:04,920 --> 00:14:09,919
+away from the bottom boundary by 50 pixels as well.
+
+289
+00:14:11,390 --> 00:14:13,489
+Now the second observation that I want to make
+
+290
+00:14:13,490 --> 00:14:15,689
+is the odd way in which margins are defined.
+
+291
+00:14:15,690 --> 00:14:16,919
+And we already talked about this,
+
+292
+00:14:16,920 --> 00:14:19,049
+so I'm not going to harp on this in this lesson.
+
+293
+00:14:19,050 --> 00:14:21,989
+Margins are represented as a series of numeric values
+
+294
+00:14:21,990 --> 00:14:23,819
+that are separated by commas.
+
+295
+00:14:23,820 --> 00:14:24,919
+And this convention was borrowed
+
+296
+00:14:24,920 --> 00:14:26,689
+from Cascading Style Sheets.
+
+297
+00:14:26,690 --> 00:14:30,919
+So the numbers represent the margin pixel values
+
+298
+00:14:30,920 --> 00:14:34,289
+in a clockwise fashion, starting at the left-hand side.
+
+299
+00:14:34,290 --> 00:14:39,289
+So in this case, left, top, right to bottom, alright?
+
+300
+00:14:40,520 --> 00:14:42,919
+A bit earlier, I said that it is generally a better idea
+
+301
+00:14:42,920 --> 00:14:46,189
+to use relative sizes like auto or star sizing
+
+302
+00:14:46,190 --> 00:14:48,489
+whenever you want to define heights and widths.
+
+303
+00:14:48,490 --> 00:14:51,919
+So why is it then that margins are defined in exact pixels?
+
+304
+00:14:51,920 --> 00:14:56,849
+Well, usually, margins are just small values
+
+305
+00:14:56,850 --> 00:15:00,919
+to provide spacing or padding between two relative values
+
+306
+00:15:00,920 --> 00:15:04,019
+and so they can be fixed without negatively impacting
+
+307
+00:15:04,020 --> 00:15:05,349
+the overall layout of the page.
+
+308
+00:15:05,350 --> 00:15:08,689
+I mean, if you want a small amount of spacing
+
+309
+00:15:08,690 --> 00:15:12,919
+between two rectangles, 50 pixels will be enough
+
+310
+00:15:12,920 --> 00:15:14,809
+whether you have a large or a smaller size.
+
+311
+00:15:14,810 --> 00:15:16,189
+And if it is not, then you can change it
+
+312
+00:15:16,190 --> 00:15:18,319
+through other techniques that we'll demonstrate later on
+
+313
+00:15:18,320 --> 00:15:20,289
+in this series.
+
+314
+00:15:20,290 --> 00:15:22,749
+So let us recap what we have talked about so far.
+
+315
+00:15:22,750 --> 00:15:25,129
+In this lesson, we've talked about layout controls
+
+316
+00:15:25,130 --> 00:15:28,349
+and how they allow you to define areas of your application
+
+317
+00:15:28,350 --> 00:15:32,149
+where other visual XAML controls will be hosted.
+
+318
+00:15:32,150 --> 00:15:35,319
+In this lesson, we specifically learned about the grid
+
+319
+00:15:35,320 --> 00:15:38,989
+and how to define columns and rows,
+
+320
+00:15:38,990 --> 00:15:42,689
+how to define their relative sizes using star and auto,
+
+321
+00:15:42,690 --> 00:15:45,919
+and then how to specify which row and column
+
+322
+00:15:45,920 --> 00:15:49,319
+a given control would request to be inside of
+
+323
+00:15:49,320 --> 00:15:52,889
+by setting Attached Properties, Grid.Row, Grid.Column,
+
+324
+00:15:52,890 --> 00:15:56,619
+on that given item like a Rectangle in this particular case
+
+325
+00:15:56,620 --> 00:15:58,319
+or whatever it might be.
+
+326
+00:15:58,320 --> 00:16:00,619
+We also talked about how to set the alignment
+
+327
+00:16:00,620 --> 00:16:03,689
+and the margins of those controls inside of a given cell
+
+328
+00:16:03,690 --> 00:16:04,619
+and more.
+
+329
+00:16:04,620 --> 00:16:07,849
+So grids are great, but they're really just one tool.
+
+330
+00:16:07,850 --> 00:16:09,519
+You're going to likely use them
+
+331
+00:16:09,520 --> 00:16:12,589
+along with other layout controls like the StackPanel,
+
+332
+00:16:12,590 --> 00:16:14,319
+which we're going to learn about in the very next lesson.
+
+333
+00:16:14,320 --> 00:16:15,619
+So we'll see you there.
+
+334
+00:16:15,620 --> 00:16:17,169
+Thank you.  
+

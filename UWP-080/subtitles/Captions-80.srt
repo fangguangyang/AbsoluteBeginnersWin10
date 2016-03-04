@@ -1,0 +1,848 @@
+1
+00:00:05,530 --> 00:00:07,129
+<v ->Wow, can you believe that this</v>
+
+2
+00:00:07,130 --> 00:00:09,509
+is the 80th video, it's crazy!
+
+3
+00:00:09,510 --> 00:00:11,369
+This is the largest single video series
+
+4
+00:00:11,370 --> 00:00:13,029
+that I've ever created for Microsoft,
+
+5
+00:00:13,030 --> 00:00:15,529
+and I don't know about you, but I am worn out.
+
+6
+00:00:15,530 --> 00:00:16,869
+I hope you enjoyed it.
+
+7
+00:00:16,870 --> 00:00:18,589
+The fact that you got to this point means
+
+8
+00:00:18,590 --> 00:00:20,829
+that you're probably pretty good at sticking with things,
+
+9
+00:00:20,830 --> 00:00:22,509
+and that quality will serve you well,
+
+10
+00:00:22,510 --> 00:00:24,989
+because it takes time and patience
+
+11
+00:00:24,990 --> 00:00:27,149
+to create a successful app.
+
+12
+00:00:27,150 --> 00:00:30,649
+I mean, I created these tiny little apps in about an hour,
+
+13
+00:00:30,650 --> 00:00:31,989
+maybe an hour and a half.
+
+14
+00:00:31,990 --> 00:00:34,669
+However, you're going to likely spend a couple of days,
+
+15
+00:00:34,670 --> 00:00:37,569
+at a minimum, and maybe a couple of weeks,
+
+16
+00:00:37,570 --> 00:00:38,989
+really testing and tweaking
+
+17
+00:00:38,990 --> 00:00:41,730
+and asking beta testers for suggestions,
+
+18
+00:00:41,731 --> 00:00:43,509
+and making sure it's just polished,
+
+19
+00:00:43,510 --> 00:00:47,609
+and it's not going to throw an exception at any circumstance.
+
+20
+00:00:47,610 --> 00:00:49,269
+And you really want to do that,
+
+21
+00:00:49,270 --> 00:00:51,549
+to make sure that you get a great first impression
+
+22
+00:00:51,550 --> 00:00:54,469
+and good reviews in the Microsoft Store.
+
+23
+00:00:54,470 --> 00:00:57,209
+So if you stuck with me through all 80 videos,
+
+24
+00:00:57,210 --> 00:01:00,549
+then wow, you deserve some sort of medal of honor,
+
+25
+00:01:00,550 --> 00:01:02,949
+in addition to having a pretty good idea
+
+26
+00:01:02,950 --> 00:01:05,769
+of what you're doing and how to go about creating apps
+
+27
+00:01:05,770 --> 00:01:08,729
+using the Universal Windows Platform.
+
+28
+00:01:08,730 --> 00:01:11,229
+I wouldn't blame you if you never want
+
+29
+00:01:11,230 --> 00:01:13,789
+to see my face or hear my voice again.
+
+30
+00:01:13,790 --> 00:01:17,109
+But, if you do like me, and like this style of training,
+
+31
+00:01:17,110 --> 00:01:19,289
+then make sure you let Microsoft know.
+
+32
+00:01:19,290 --> 00:01:22,649
+There are Microsoft and Channel 9 forums
+
+33
+00:01:22,650 --> 00:01:24,349
+and Twitter accounts.
+
+34
+00:01:24,350 --> 00:01:25,990
+There are plenty of ways to tell Microsoft
+
+35
+00:01:25,991 --> 00:01:27,669
+what you think about this series.
+
+36
+00:01:27,670 --> 00:01:31,189
+Now, assuming that you just can't get enough of Bob,
+
+37
+00:01:31,190 --> 00:01:32,349
+--and I don't understand that,
+
+38
+00:01:32,350 --> 00:01:34,769
+but let's just go ahead and assume that's possible--
+
+39
+00:01:34,770 --> 00:01:38,329
+Then, I'd recommend that you check out
+
+40
+00:01:38,330 --> 00:01:40,849
+the other video series that I've created.
+
+41
+00:01:40,850 --> 00:01:44,309
+Search MicrosoftVirtualAcademy.com for my name,
+
+42
+00:01:44,310 --> 00:01:45,929
+or Channel9 for my name.
+
+43
+00:01:45,930 --> 00:01:47,629
+There are several free training series
+
+44
+00:01:47,630 --> 00:01:49,289
+out there that you might like,
+
+45
+00:01:49,290 --> 00:01:52,369
+including HTML5 and CSS3 for Absolute Beginners,
+
+46
+00:01:52,370 --> 00:01:54,889
+Javascript and jQuery for Absolute Beginners,
+
+47
+00:01:54,890 --> 00:01:57,409
+there's like a hundred Azure videos
+
+48
+00:01:57,410 --> 00:01:59,669
+across four different series that I've created.
+
+49
+00:01:59,670 --> 00:02:01,009
+And a bunch of others.
+
+50
+00:02:01,010 --> 00:02:03,449
+Maybe those would point you in the right direction
+
+51
+00:02:03,450 --> 00:02:05,289
+on those technologies, as well.
+
+52
+00:02:05,290 --> 00:02:07,849
+If you're looking for additional resources on top of that,
+
+53
+00:02:07,850 --> 00:02:12,849
+then I direct you once again to this series
+
+54
+00:02:13,270 --> 00:02:17,529
+that was created by Andy Wiggly and Shen Chauhan,
+
+55
+00:02:17,530 --> 00:02:22,529
+called the Developer's Guide to Windows 10.
+
+56
+00:02:24,870 --> 00:02:29,179
+And then, furthermore, there are,
+
+57
+00:02:29,490 --> 00:02:31,269
+I know there are tons of great videos
+
+58
+00:02:31,270 --> 00:02:35,169
+from the Build Conference in the Spring of 2015,
+
+59
+00:02:35,170 --> 00:02:37,369
+Those sessions are all available on Channel9,
+
+60
+00:02:37,370 --> 00:02:39,129
+you might have to do a little peaking around,
+
+61
+00:02:39,130 --> 00:02:40,249
+but you can find them.
+
+62
+00:02:40,250 --> 00:02:43,359
+Also, one resource that I didn't tell you about,
+
+63
+00:02:43,850 --> 00:02:45,369
+and perhaps one of the best,
+
+64
+00:02:45,370 --> 00:02:49,089
+is available from the developer.windows.com site.
+
+65
+00:02:49,090 --> 00:02:51,409
+So go out to developer.windows.com site,
+
+66
+00:02:51,410 --> 00:02:56,409
+and then choose this link, "Design and UI."
+
+67
+00:02:57,110 --> 00:03:00,369
+This really helped me to start thinking
+
+68
+00:03:00,370 --> 00:03:01,829
+like a Windows 10 developer,
+
+69
+00:03:01,830 --> 00:03:06,829
+so I highly recommend the "Design UWP Apps" sections
+
+70
+00:03:08,130 --> 00:03:10,209
+in the Windows Dev Center.
+
+71
+00:03:10,210 --> 00:03:12,549
+Now, I hope you already have an app or two in mind
+
+72
+00:03:12,550 --> 00:03:13,609
+that you want to build,
+
+73
+00:03:13,610 --> 00:03:15,049
+and hopefully some of the things that you learn
+
+74
+00:03:15,050 --> 00:03:17,069
+in this series will help you get started.
+
+75
+00:03:17,070 --> 00:03:20,609
+Now, if you're looking for meaty code examples
+
+76
+00:03:20,610 --> 00:03:22,749
+that go way beyond what I was able
+
+77
+00:03:22,750 --> 00:03:24,549
+to demonstrate in this series,
+
+78
+00:03:24,550 --> 00:03:29,509
+then you'll definitely want to check out this link here.
+
+79
+00:03:29,510 --> 00:03:31,529
+That will take you to Github,
+
+80
+00:03:31,530 --> 00:03:36,409
+where there are several dozen samples
+
+81
+00:03:36,410 --> 00:03:38,309
+that were created by Microsoft.
+
+82
+00:03:38,310 --> 00:03:41,489
+And there's an exhaustive list here.
+
+83
+00:03:41,490 --> 00:03:44,229
+Just about any feature that you can possibly think of,
+
+84
+00:03:44,230 --> 00:03:45,809
+they've got an example of it.
+
+85
+00:03:45,810 --> 00:03:47,550
+And then, within those projects,
+
+86
+00:03:47,551 --> 00:03:49,389
+there are multiple examples of it there
+
+87
+00:03:49,390 --> 00:03:53,759
+of the very advanced concepts, so it's an awesome resource.
+
+88
+00:03:54,350 --> 00:03:56,749
+You know, I've been perusing the Microsoft Store a lot,
+
+89
+00:03:56,750 --> 00:03:59,329
+in the past few weeks, both just snooping around
+
+90
+00:03:59,330 --> 00:04:01,189
+and sometimes because I legitimately needed
+
+91
+00:04:01,190 --> 00:04:05,029
+to find the solution to some problem or some need that I had
+
+92
+00:04:05,030 --> 00:04:07,609
+There's a lot of low-hanging fruit
+
+93
+00:04:07,610 --> 00:04:10,529
+that needs somebody to pluck it off the opportunity tree,
+
+94
+00:04:10,530 --> 00:04:11,469
+I guess you could say.
+
+95
+00:04:11,470 --> 00:04:13,209
+In other words, I think that if you look around
+
+96
+00:04:13,210 --> 00:04:16,249
+and you think hard about the kind of apps
+
+97
+00:04:16,250 --> 00:04:18,550
+that are successful on other platforms,
+
+98
+00:04:18,551 --> 00:04:20,449
+then you take a look at the Windows store
+
+99
+00:04:20,450 --> 00:04:22,829
+and ask, "Of the apps that are available
+
+100
+00:04:22,830 --> 00:04:24,269
+"to do sort of the same thing,
+
+101
+00:04:24,270 --> 00:04:26,609
+"are there any features that they're missing?"
+
+102
+00:04:26,610 --> 00:04:28,789
+Think about how you can introduce apps
+
+103
+00:04:28,790 --> 00:04:31,609
+that work great on any Windows 10 device,
+
+104
+00:04:31,610 --> 00:04:35,309
+and the benefits to having the user of those apps
+
+105
+00:04:35,310 --> 00:04:37,969
+work across an ecosystem of Windows 10 devices.
+
+106
+00:04:37,970 --> 00:04:40,990
+Not just one specific, either desktop or phone, app.
+
+107
+00:04:40,991 --> 00:04:45,069
+Think about how you could add Cortana integration,
+
+108
+00:04:45,070 --> 00:04:47,249
+in order to enhance the experience.
+
+109
+00:04:47,250 --> 00:04:50,509
+Think about live tiles, and how you can use those,
+
+110
+00:04:50,510 --> 00:04:53,489
+periodically updating the content on those tiles,
+
+111
+00:04:53,490 --> 00:04:55,749
+in order to inform the user
+
+112
+00:04:55,750 --> 00:04:58,899
+without them having to explode the application open.
+
+113
+00:04:59,330 --> 00:05:01,289
+And just think about how you can
+
+114
+00:05:01,290 --> 00:05:03,269
+improve the user's experience.
+
+115
+00:05:03,270 --> 00:05:05,629
+In the end, you know, don't shoehorn features in
+
+116
+00:05:05,630 --> 00:05:08,459
+that you don't need, advocate for the user.
+
+117
+00:05:08,460 --> 00:05:09,929
+Make it simple, and then give them the tools
+
+118
+00:05:09,930 --> 00:05:12,599
+that they need to achieve the end result that they're after.
+
+119
+00:05:12,991 --> 00:05:14,170
+And keep in mind that you'll be
+
+120
+00:05:14,171 --> 00:05:16,369
+running a company, essentially.
+
+121
+00:05:16,370 --> 00:05:17,529
+At least, that's how it's going to look
+
+122
+00:05:17,530 --> 00:05:19,509
+to those who are actually using your apps.
+
+123
+00:05:19,510 --> 00:05:21,729
+So, you'll need to grow thick skin,
+
+124
+00:05:21,730 --> 00:05:23,230
+I'll tell you that from experience.
+
+125
+00:05:24,371 --> 00:05:26,850
+There are lots and lots of nice people out there,
+
+126
+00:05:26,851 --> 00:05:28,590
+who will give you great feedback
+
+127
+00:05:28,591 --> 00:05:30,509
+and will thank you for your work,
+
+128
+00:05:30,510 --> 00:05:32,169
+and then occasionally you're going to run into
+
+129
+00:05:32,170 --> 00:05:34,570
+someone who's a little grumpy, having a bad day, right?
+
+130
+00:05:34,571 --> 00:05:38,150
+And so, you'll want to respond politely to everybody,
+
+131
+00:05:38,151 --> 00:05:40,330
+even the people who are a little bit mean.
+
+132
+00:05:40,331 --> 00:05:42,789
+You want to fix the issues in your app,
+
+133
+00:05:42,790 --> 00:05:44,649
+and you want to get the issues fixed
+
+134
+00:05:44,650 --> 00:05:46,040
+and uploaded to the store.
+
+135
+00:05:48,012 --> 00:05:49,651
+So that the users can update
+
+136
+00:05:49,652 --> 00:05:52,850
+and get the benefit of those updates as quickly as possible.
+
+137
+00:05:52,851 --> 00:05:54,771
+From my experience, whenever I treat
+
+138
+00:05:54,772 --> 00:05:58,430
+a grumpy customer kindly, then they usually
+
+139
+00:05:58,431 --> 00:06:01,511
+become my greatest advocate and my greatest cheerleader.
+
+140
+00:06:01,512 --> 00:06:03,650
+So, I'd recommend that you do that, too,
+
+141
+00:06:03,651 --> 00:06:05,210
+Be mature about this.
+
+142
+00:06:06,491 --> 00:06:07,831
+And, kind of moving on from there,
+
+143
+00:06:07,832 --> 00:06:10,370
+as a famous motivational speaker was known to say,
+
+144
+00:06:10,371 --> 00:06:11,950
+"You can get what you want out of life
+
+145
+00:06:11,951 --> 00:06:13,991
+"if you help enough other people get what they want."
+
+146
+00:06:13,992 --> 00:06:15,230
+And I truly believe that,
+
+147
+00:06:15,231 --> 00:06:16,611
+and I think that there's great opportunities
+
+148
+00:06:16,612 --> 00:06:20,751
+for you to find your niches, to find your customers,
+
+149
+00:06:20,752 --> 00:06:23,871
+and then deliver solutions that they're looking for.
+
+150
+00:06:23,872 --> 00:06:25,751
+Alright, before I close, let me put in
+
+151
+00:06:25,752 --> 00:06:28,491
+one more plug for my website.
+
+152
+00:06:28,492 --> 00:06:30,750
+Let me show you the url here on screen,
+
+153
+00:06:30,751 --> 00:06:33,751
+http://www.LearnVisualStudio.NET
+
+154
+00:06:33,752 --> 00:06:36,111
+where I teach beginners the skills that they need
+
+155
+00:06:36,112 --> 00:06:38,531
+to get their first software development job
+
+156
+00:06:38,532 --> 00:06:39,912
+building Windows and Web Apps
+
+157
+00:06:39,913 --> 00:06:42,971
+for the world's best companies as quickly as possible.
+
+158
+00:06:42,972 --> 00:06:45,671
+There, you're going to find more comprehensive series
+
+159
+00:06:45,672 --> 00:06:47,031
+than what I've done on Channel 9
+
+160
+00:06:47,032 --> 00:06:49,411
+or Microsoft Virtual Academy.
+
+161
+00:06:49,412 --> 00:06:53,891
+On topics like C# and ASP.NET, ASP.NET MVC,
+
+162
+00:06:53,892 --> 00:06:56,331
+application architecture, data access,
+
+163
+00:06:56,332 --> 00:06:58,271
+and just about everything you're going to need
+
+164
+00:06:58,272 --> 00:07:00,852
+to get an entry level software development job
+
+165
+00:07:00,853 --> 00:07:02,891
+at a major company.
+
+166
+00:07:02,892 --> 00:07:06,252
+So, once again, I want to sincerely thank Andy Wiggly.
+
+167
+00:07:06,253 --> 00:07:08,111
+I feel sorry for him, that he actually
+
+168
+00:07:08,112 --> 00:07:10,591
+had to watch all these videos and review them,
+
+169
+00:07:10,592 --> 00:07:13,551
+but he really, really helped me fit about,
+
+170
+00:07:13,552 --> 00:07:16,871
+I don't know, maybe six months or a year's worth of effort
+
+171
+00:07:16,872 --> 00:07:18,791
+into about six weeks.
+
+172
+00:07:18,792 --> 00:07:20,871
+So, thank you very much, Andy.
+
+173
+00:07:20,872 --> 00:07:22,812
+And again, Clint, thank you, sir.
+
+174
+00:07:22,813 --> 00:07:24,411
+Thanks to Larry Lieberman,
+
+175
+00:07:24,412 --> 00:07:26,091
+and others I've worked with in the past,
+
+176
+00:07:26,092 --> 00:07:29,631
+especially Dan Fernandez, to whom I am eternally grateful.
+
+177
+00:07:29,632 --> 00:07:31,611
+And finally, I hope, if nothing else,
+
+178
+00:07:31,612 --> 00:07:34,452
+you've gained the confidence to feel like you can do this.
+
+179
+00:07:34,453 --> 00:07:36,631
+It's not out of your reach.
+
+180
+00:07:36,632 --> 00:07:39,652
+Don't get discouraged if success doesn't come easy.
+
+181
+00:07:39,653 --> 00:07:42,752
+If you hit roadblocks, just take your time
+
+182
+00:07:42,753 --> 00:07:45,731
+and work through them methodically, and be patient.
+
+183
+00:07:45,732 --> 00:07:48,732
+I try to make all this look easy,
+
+184
+00:07:48,733 --> 00:07:50,693
+and for the most part, it really is.
+
+185
+00:07:50,694 --> 00:07:53,352
+But not everything is simple at first glance.
+
+186
+00:07:53,353 --> 00:07:56,712
+I have the benefit of editing out my mistakes,
+
+187
+00:07:56,713 --> 00:07:59,532
+reshooting if something doesn't work the first time,
+
+188
+00:07:59,533 --> 00:08:01,073
+working off a script.
+
+189
+00:08:01,074 --> 00:08:04,133
+But real life software development is a little more bumpy,
+
+190
+00:08:04,134 --> 00:08:09,133
+and there's more struggle to it, no matter who you are.
+
+191
+00:08:09,274 --> 00:08:11,552
+Everybody has to go through the struggling at some point,
+
+192
+00:08:11,553 --> 00:08:13,813
+as they begin to learn software development in general,
+
+193
+00:08:13,814 --> 00:08:15,773
+and then specifically this stuff.
+
+194
+00:08:15,774 --> 00:08:18,372
+The only difference between you and I
+
+195
+00:08:18,373 --> 00:08:20,992
+is that I've been doing all of this for 20 years.
+
+196
+00:08:20,993 --> 00:08:24,772
+I just took tiny baby steps on a daily basis.
+
+197
+00:08:24,773 --> 00:08:27,933
+Frankly, you already know more about software development,
+
+198
+00:08:27,934 --> 00:08:29,373
+by watching these videos
+
+199
+00:08:29,374 --> 00:08:31,872
+or the Absolute Beginner videos on C#,
+
+200
+00:08:31,873 --> 00:08:34,472
+than I knew in the first couple years
+
+201
+00:08:34,473 --> 00:08:36,732
+that I was writing code,
+
+202
+00:08:36,733 --> 00:08:38,812
+so you've already got a great headstart.
+
+203
+00:08:38,813 --> 00:08:40,632
+But, you can do it.
+
+204
+00:08:40,633 --> 00:08:44,293
+And when you do it, when you finally finish,
+
+205
+00:08:44,294 --> 00:08:45,593
+go ahead and send me a tweet
+
+206
+00:08:45,594 --> 00:08:46,953
+and let me know what you came up with.
+
+207
+00:08:46,954 --> 00:08:49,832
+I'd love to encourage you, and to just take a look
+
+208
+00:08:49,833 --> 00:08:52,132
+at what you came up with, it would be exciting for me, too,
+
+209
+00:08:52,133 --> 00:08:53,613
+and I'd love to see it.
+
+210
+00:08:53,614 --> 00:08:55,673
+So, I sincerely wish you the best
+
+211
+00:08:55,674 --> 00:08:59,393
+as you begin your career writing apps for Windows 10.
+
+212
+00:08:59,394 --> 00:09:01,642
+Good luck, and thank you.  
+

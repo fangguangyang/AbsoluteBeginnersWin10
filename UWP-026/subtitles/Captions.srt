@@ -1,0 +1,400 @@
+1
+00:00:05,729 --> 00:00:09,428
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net.</v>
+
+2
+00:00:09,429 --> 00:00:11,728
+In this lesson we'll talk about the ScrollViewer.
+
+3
+00:00:11,729 --> 00:00:14,888
+I would probably say it's more of a Layout control
+
+4
+00:00:14,889 --> 00:00:16,588
+than it is an Input control.
+
+5
+00:00:16,589 --> 00:00:18,368
+But it's not even a Layout control, per se.
+
+6
+00:00:18,369 --> 00:00:21,448
+It'll just allow you to add a scrollable area
+
+7
+00:00:21,449 --> 00:00:23,268
+into your application.
+
+8
+00:00:23,269 --> 00:00:27,548
+Whether for the whole viewable area or just for sections.
+
+9
+00:00:27,549 --> 00:00:30,148
+We'll use it in this lesson.
+
+10
+00:00:30,149 --> 00:00:31,488
+We're just gonna add it
+
+11
+00:00:31,489 --> 00:00:34,768
+to specific Grids or Cells of a Grid.
+
+12
+00:00:34,769 --> 00:00:37,288
+As you can see, I have a new project called
+
+13
+00:00:37,289 --> 00:00:38,748
+ScrollViewerExample.
+
+14
+00:00:38,749 --> 00:00:42,188
+I'm gonna replace the open Grid tag
+
+15
+00:00:42,189 --> 00:00:46,048
+by adding some RowDefinitions and ColumnDefinitions
+
+16
+00:00:46,049 --> 00:00:48,828
+which will give us a two by two Grid.
+
+17
+00:00:48,829 --> 00:00:52,148
+In this first Cell
+
+18
+00:00:52,149 --> 00:00:55,468
+where the row is 0 and column is 0,
+
+19
+00:00:55,469 --> 00:00:58,128
+I'm gonna paste in a ScrollViewer control.
+
+20
+00:00:58,129 --> 00:00:59,678
+You can kinda see it at work here.
+
+21
+00:00:59,679 --> 00:01:03,678
+There is one little other part of a setup.
+
+22
+00:01:03,679 --> 00:01:06,588
+You can see here that I've got this Financial.png.
+
+23
+00:01:06,589 --> 00:01:08,948
+We used this in a previous example.
+
+24
+00:01:08,949 --> 00:01:12,408
+I just needed an image so I copied and pasted
+
+25
+00:01:12,409 --> 00:01:14,368
+it into my Assets folder.
+
+26
+00:01:14,369 --> 00:01:17,808
+Now I'm accessing it in an Image control,
+
+27
+00:01:17,809 --> 00:01:20,028
+setting it's Height="800"
+
+28
+00:01:20,029 --> 00:01:22,568
+and I'm setting it's Stretch="None".
+
+29
+00:01:22,569 --> 00:01:25,168
+This will give us something that we can scroll around
+
+30
+00:01:25,169 --> 00:01:26,948
+inside of our ScrollViewer.
+
+31
+00:01:26,949 --> 00:01:28,508
+A ScrollViewer is just that.
+
+32
+00:01:28,509 --> 00:01:30,508
+It's a viewable area that can be scrolled.
+
+33
+00:01:30,509 --> 00:01:32,408
+Here we're setting the Horizontal
+
+34
+00:01:32,409 --> 00:01:34,708
+and the Vertical properties.
+
+35
+00:01:34,709 --> 00:01:37,838
+The Visibility of those ScrollBars = "Auto"
+
+36
+00:01:37,839 --> 00:01:40,688
+which means if you need it, show it.
+
+37
+00:01:40,689 --> 00:01:43,708
+If you don't need it, don't show it.
+
+38
+00:01:43,709 --> 00:01:45,548
+Now let's go ahead and run the application.
+
+39
+00:01:45,549 --> 00:01:49,308
+You can see how easy it is to use a ScrollViewer.
+
+40
+00:01:49,309 --> 00:01:54,308
+(clicking)
+
+41
+00:01:54,319 --> 00:01:57,408
+This roughly takes up one quarter of the screen.
+
+42
+00:01:57,409 --> 00:01:59,428
+You can see now I have ScrollBars
+
+43
+00:01:59,429 --> 00:02:01,328
+vertically and horizontally.
+
+44
+00:02:01,329 --> 00:02:04,428
+I can move around the entire area.
+
+45
+00:02:04,429 --> 00:02:07,148
+Great.
+
+46
+00:02:07,149 --> 00:02:09,268
+That is the easiest case.
+
+47
+00:02:09,269 --> 00:02:12,688
+Now let's talk about some of the gotchas
+
+48
+00:02:12,689 --> 00:02:14,088
+with the ScrollViewer.
+
+49
+00:02:14,089 --> 00:02:16,168
+This took me a little while to figure out
+
+50
+00:02:16,169 --> 00:02:18,468
+so I want to point this out to you.
+
+51
+00:02:18,469 --> 00:02:23,468
+If you enclose a ScrollViewer with a StackPanel
+
+52
+00:02:24,489 --> 00:02:26,888
+you essentially eliminate it.
+
+53
+00:02:26,889 --> 00:02:28,968
+You can see here that I'm putting
+
+54
+00:02:28,969 --> 00:02:33,488
+a StackPanel in row two, the second row,
+
+55
+00:02:33,489 --> 00:02:36,768
+Grid.Row="1" and the first Column.
+
+56
+00:02:36,769 --> 00:02:40,528
+I have inside of that a ScrollViewer
+
+57
+00:02:40,529 --> 00:02:42,240
+with it's Horizontal and VerticalScrollBarVisibilities
+
+58
+00:02:42,241 --> 00:02:45,540
+VerticalScrollBarVisibilities both set to "Auto".
+
+59
+00:02:45,541 --> 00:02:49,160
+I have the same Image control. All that's exactly the same.
+
+60
+00:02:49,161 --> 00:02:50,740
+But notice what happens now.
+
+61
+00:02:50,741 --> 00:02:55,740
+Since we're inside of the context of a StackPanel,
+
+62
+00:02:56,941 --> 00:02:58,920
+you can see we have no ScrollBars whatsoever.
+
+63
+00:02:58,921 --> 00:03:02,000
+If I hover over the Grid cell we get something.
+
+64
+00:03:02,001 --> 00:03:03,900
+But over the bottom Grid cell
+
+65
+00:03:03,901 --> 00:03:05,860
+we get no way to scroll around.
+
+66
+00:03:05,861 --> 00:03:07,860
+That is the moral of the story.
+
+67
+00:03:07,861 --> 00:03:11,600
+The StackPanel kills a Child ScrollViewer.
+
+68
+00:03:11,601 --> 00:03:13,660
+Having said that, there's one last scenario
+
+69
+00:03:13,661 --> 00:03:15,220
+that I just wanna show you here.
+
+70
+00:03:15,221 --> 00:03:18,060
+You can put StackPanels inside
+
+71
+00:03:18,061 --> 00:03:21,540
+of a ScrollViewer like so.
+
+72
+00:03:21,541 --> 00:03:25,020
+In this case, I set the ScrollViewer inside
+
+73
+00:03:25,021 --> 00:03:29,520
+of the second Row, second Column,
+
+74
+00:03:29,521 --> 00:03:31,600
+and set it's Horizontal and VerticalScrollBarVisibility
+
+75
+00:03:31,601 --> 00:03:34,720
+VerticalScrollBarVisibility both to "Auto" if you need to use it.
+
+76
+00:03:34,721 --> 00:03:38,350
+Here I have two Image controls stacked.
+
+77
+00:03:38,351 --> 00:03:40,200
+You can see I'm using a StackPanel
+
+78
+00:03:40,201 --> 00:03:43,460
+and then adding two instances of that
+
+79
+00:03:43,461 --> 00:03:46,220
+Financial.png stacked on top of each other.
+
+80
+00:03:46,221 --> 00:03:50,200
+This time when we run the application,
+
+81
+00:03:50,201 --> 00:03:53,860
+you see that I do in fact get a ScrollBar.
+
+82
+00:03:53,861 --> 00:03:56,940
+Again, because the Parent is the ScrollBar
+
+83
+00:03:56,941 --> 00:03:59,320
+and the Child is the StackPanel.
+
+84
+00:03:59,321 --> 00:04:02,560
+In this scenario, the StackPanel is the Parent
+
+85
+00:04:02,561 --> 00:04:04,920
+and the ScrollBar is the Child,
+
+86
+00:04:04,921 --> 00:04:07,580
+so we get nothing.
+
+87
+00:04:07,581 --> 00:04:11,120
+We'll probably never use the ScrollViewer
+
+88
+00:04:11,121 --> 00:04:12,980
+quite like I did just now.
+
+89
+00:04:12,981 --> 00:04:15,950
+Typically, we'll use it in the entire viewable area
+
+90
+00:04:15,951 --> 00:04:20,649
+inside of the Chrome of the application's window
+
+91
+00:04:20,650 --> 00:04:25,179
+or the entire application itself in the case of
+
+92
+00:04:25,180 --> 00:04:29,399
+the phone form factor.
+
+93
+00:04:29,400 --> 00:04:31,259
+The ScrollViewer, very important,
+
+94
+00:04:31,260 --> 00:04:34,059
+we'll be using this increasingly as we work through
+
+95
+00:04:34,060 --> 00:04:36,679
+our applications because we'll need to be scrolling through
+
+96
+00:04:36,680 --> 00:04:39,759
+data potentially when we have lots of it.
+
+97
+00:04:39,760 --> 00:04:42,479
+Just like we saw in the News, in the Sports,
+
+98
+00:04:42,480 --> 00:04:43,959
+and the Money apps.
+
+99
+00:04:43,960 --> 00:04:46,359
+That's all I wanted to say about the ScrollViewer.
+
+100
+00:04:46,360 --> 00:04:49,309
+Let's continue on the next lesson. Thanks.  
+

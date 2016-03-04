@@ -1,0 +1,646 @@
+WEBVTT
+
+1
+00:00:04.811 --> 00:00:08.479
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net</v>
+
+2
+00:00:08.479 --> 00:00:10.131
+and in this lesson we're gonna talk about
+
+3
+00:00:10.131 --> 00:00:13.211
+the Canvas Layout Control, as well as shapes.
+
+4
+00:00:13.211 --> 00:00:15.759
+Now, they're not inextricably tied together,
+
+5
+00:00:15.759 --> 00:00:18.195
+but you'll see that they are complementary ideas.
+
+6
+00:00:18.195 --> 00:00:20.659
+We're dealing with absolute placement
+
+7
+00:00:20.659 --> 00:00:24.187
+of Controls on a design surface.
+
+8
+00:00:24.187 --> 00:00:28.919
+So, typically, in layout of Windows applications,
+
+9
+00:00:28.919 --> 00:00:33.343
+we do not want to have absolute layout
+
+10
+00:00:33.343 --> 00:00:36.899
+or absolute positioning because if we resize
+
+11
+00:00:36.899 --> 00:00:39.503
+the application we would have to either
+
+12
+00:00:39.503 --> 00:00:42.359
+do a lot of math to factor out where
+
+13
+00:00:42.359 --> 00:00:46.615
+things should be, or we really are
+
+14
+00:00:46.615 --> 00:00:49.107
+just limited the form factors that can consume
+
+15
+00:00:49.107 --> 00:00:50.591
+our application.
+
+16
+00:00:50.591 --> 00:00:53.447
+So, typically you wouldn't use this in
+
+17
+00:00:53.447 --> 00:00:56.051
+any applications that you typically would see
+
+18
+00:00:56.051 --> 00:00:58.571
+installed in Windows, but there are some
+
+19
+00:00:58.571 --> 00:01:01.091
+use cases, some scenarios where I thought
+
+20
+00:01:01.091 --> 00:01:03.583
+this would be helpful, so in the interest
+
+21
+00:01:03.583 --> 00:01:06.635
+of making sure you have a pretty broad knowledge,
+
+22
+00:01:06.635 --> 00:01:08.623
+maybe perhaps not all that deep,
+
+23
+00:01:08.623 --> 00:01:10.611
+but a broad knowledge of your options
+
+24
+00:01:10.611 --> 00:01:13.327
+with building applications, I wanted to cover
+
+25
+00:01:13.327 --> 00:01:15.847
+both the Canvas and different shapes.
+
+26
+00:01:15.847 --> 00:01:18.899
+So you might need to build apps that deal with
+
+27
+00:01:18.899 --> 00:01:21.615
+music, musical staffs, musical notation,
+
+28
+00:01:21.615 --> 00:01:25.031
+or perhaps applications that deal with math
+
+29
+00:01:25.031 --> 00:01:26.935
+and it needs symbols and you need lines
+
+30
+00:01:26.935 --> 00:01:29.175
+and you need some different places,
+
+31
+00:01:29.175 --> 00:01:31.387
+you know, math can get kind of hairy
+
+32
+00:01:31.387 --> 00:01:34.215
+with the formulas and where they're placed.
+
+33
+00:01:34.215 --> 00:01:38.499
+Analog clocks, so they can create different angles
+
+34
+00:01:38.499 --> 00:01:41.019
+for lines, and things of that nature,
+
+35
+00:01:41.019 --> 00:01:45.247
+even a diagram application, or a drawing application,
+
+36
+00:01:45.247 --> 00:01:47.347
+perhaps you want to create two symbols
+
+37
+00:01:47.347 --> 00:01:48.971
+and then draw a line between them
+
+38
+00:01:48.971 --> 00:01:50.679
+that has some meaning inside of
+
+39
+00:01:50.679 --> 00:01:54.375
+your particular industry, or even applications
+
+40
+00:01:54.375 --> 00:01:59.331
+that deal with bar readers, or create bars for scanners.
+
+41
+00:01:59.331 --> 00:02:01.935
+All of those are good scenarios for working with
+
+42
+00:02:01.935 --> 00:02:04.903
+both a Canvas and with shapes.
+
+43
+00:02:04.903 --> 00:02:07.395
+Okay, so the first thing I wanna talk about
+
+44
+00:02:07.395 --> 00:02:09.747
+is the Line shape.
+
+45
+00:02:09.747 --> 00:02:10.979
+And the Line is pretty simple.
+
+46
+00:02:10.979 --> 00:02:15.431
+It doesn't need to be put inside a Canvas at all,
+
+47
+00:02:15.431 --> 00:02:16.943
+you can put it inside of a Grid
+
+48
+00:02:16.943 --> 00:02:19.827
+and you can see here what we get as a result of that.
+
+49
+00:02:19.827 --> 00:02:22.907
+Here we're putting it inside of the default Cell,
+
+50
+00:02:22.907 --> 00:02:27.765
+we're just specifying the X and Y
+
+51
+00:02:27.765 --> 00:02:30.719
+coordinates for the beginning and the end.
+
+52
+00:02:30.719 --> 00:02:32.259
+So here's the beginning point.
+
+53
+00:02:32.259 --> 00:02:35.255
+X="10" and Y="10", so that gives it
+
+54
+00:02:35.255 --> 00:02:37.411
+this left-most corner here.
+
+55
+00:02:37.411 --> 00:02:39.315
+And then the second point would be
+
+56
+00:02:39.315 --> 00:02:43.459
+X="200", Y="10", so that's gonna give us
+
+57
+00:02:43.459 --> 00:02:47.687
+a nice vertical line because the Y's don't change,
+
+58
+00:02:47.687 --> 00:02:49.227
+only the X values.
+
+59
+00:02:49.227 --> 00:02:53.147
+That gives us that point up here on the right-hand side.
+
+60
+00:02:53.147 --> 00:02:55.499
+You can see that we've said the Stroke="Black"
+
+61
+00:02:55.499 --> 00:02:57.431
+and the StrokeThickness="5",
+
+62
+00:02:57.431 --> 00:03:00.903
+and then we also set the StrokeEndLineCap="Triangle"
+
+63
+00:03:00.903 --> 00:03:01.771
+StrokeEndLineCap="Triangle"
+
+64
+00:03:01.771 --> 00:03:03.535
+There's a couple different options here,
+
+65
+00:03:03.535 --> 00:03:06.223
+you can see that we can create a Flat, Round,
+
+66
+00:03:06.223 --> 00:03:09.415
+Square or Triangle, and let me scroll actually,
+
+67
+00:03:09.415 --> 00:03:11.179
+just go to 100 here.
+
+68
+00:03:11.179 --> 00:03:12.971
+You can see, by choosing Triangle we get
+
+69
+00:03:12.971 --> 00:03:16.191
+that little arrowhead on the end.
+
+70
+00:03:16.191 --> 00:03:18.319
+So like I said, we can actually,
+
+71
+00:03:18.319 --> 00:03:23.319
+we don't need Grids, I'm sorry a Canvas
+
+72
+00:03:23.611 --> 00:03:28.231
+in order to create various Line Objects
+
+73
+00:03:28.231 --> 00:03:29.883
+and add them to our application.
+
+74
+00:03:29.883 --> 00:03:31.927
+As you can see here, I created a triangle
+
+75
+00:03:31.927 --> 00:03:33.997
+by creating three more Lines and making sure
+
+76
+00:03:33.997 --> 00:03:36.407
+that they intersect at just the right spot,
+
+77
+00:03:36.407 --> 00:03:40.549
+making sure that their StrokeStartLineCap
+
+78
+00:03:42.369 --> 00:03:47.148
+is set to Round, and that the StrokeEndLineCap
+
+79
+00:03:47.148 --> 00:03:50.032
+is set to Round so they have a nice rounded appearance
+
+80
+00:03:50.032 --> 00:03:53.588
+on the corners and they come together nicely.
+
+81
+00:03:53.588 --> 00:03:57.872
+Now, I did want to talk about the Canvas,
+
+82
+00:03:57.872 --> 00:03:59.961
+because the Line, you can see that we're
+
+83
+00:03:59.961 --> 00:04:02.285
+doing absolute placement by choosing
+
+84
+00:04:02.285 --> 00:04:03.993
+an X,Y coordinate.
+
+85
+00:04:03.993 --> 00:04:06.093
+If we were to change this to Canvas,
+
+86
+00:04:06.093 --> 00:04:07.829
+nothing about the Line changes, but now
+
+87
+00:04:07.829 --> 00:04:10.517
+we'll be able to get that same treatment
+
+88
+00:04:10.517 --> 00:04:15.361
+to any other Control by using an Attached
+
+89
+00:04:15.361 --> 00:04:17.825
+property syntax.
+
+90
+00:04:17.825 --> 00:04:22.473
+So let's recreate, first of all, before we go further,
+
+91
+00:04:22.473 --> 00:04:26.337
+this triangle using a different type of object.
+
+92
+00:04:26.337 --> 00:04:28.241
+Instead of using three Line objects,
+
+93
+00:04:28.241 --> 00:04:31.321
+we can just create a Polyline object.
+
+94
+00:04:31.321 --> 00:04:33.673
+Here you can see that I'm setting,
+
+95
+00:04:33.673 --> 00:04:35.549
+I am using Attached properties actually,
+
+96
+00:04:35.549 --> 00:04:38.321
+to set the left and the top of the Polyline,
+
+97
+00:04:38.321 --> 00:04:40.925
+and then I start creating a series of Points,
+
+98
+00:04:40.925 --> 00:04:45.925
+so X,Y pairs that define the various Points
+
+99
+00:04:46.161 --> 00:04:49.297
+of my Triangle, and then I can even
+
+100
+00:04:49.297 --> 00:04:52.853
+set the Fill color for my Polyline,
+
+101
+00:04:52.853 --> 00:04:55.681
+if it all joins together.
+
+102
+00:04:55.681 --> 00:04:57.669
+But notice that I'm placing this entire
+
+103
+00:04:57.669 --> 00:05:02.669
+Polyline here at 150 Left, 0 Top,
+
+104
+00:05:03.073 --> 00:05:04.865
+so everything now, all these Points
+
+105
+00:05:04.865 --> 00:05:09.865
+are relative to that position that I defined.
+
+106
+00:05:09.866 --> 00:05:14.738
+Next, just to kind of emphasize the
+
+107
+00:05:14.738 --> 00:05:18.854
+absolute placement of items here,
+
+108
+00:05:18.854 --> 00:05:20.758
+I'm creating a TextBlock
+
+109
+00:05:20.758 --> 00:05:22.656
+and I'm setting it to Canvas style Left
+
+110
+00:05:22.656 --> 00:05:26.576
+and Canvas style Top to 50 and 150 respectively.
+
+111
+00:05:26.576 --> 00:05:29.516
+And so we can put anything, not just Shapes,
+
+112
+00:05:29.516 --> 00:05:34.108
+any Control inside of a Canvas for absolute placement.
+
+113
+00:05:34.108 --> 00:05:37.216
+Alright, and then we talked about,
+
+114
+00:05:37.216 --> 00:05:39.876
+I think we've used the Rectangle in the past,
+
+115
+00:05:39.876 --> 00:05:41.444
+let's go ahead and use the Rectangle here
+
+116
+00:05:41.444 --> 00:05:43.656
+and I'll add it to another example.
+
+117
+00:05:43.656 --> 00:05:46.512
+So here I have just a yellow rectangle.
+
+118
+00:05:46.512 --> 00:05:50.488
+Again, setting the Canvas.Top Attach property
+
+119
+00:05:50.488 --> 00:05:53.484
+and the Left="0", the Height and the Width,
+
+120
+00:05:53.484 --> 00:05:56.228
+and I Fill it with the color Yellow.
+
+121
+00:05:56.228 --> 00:05:58.300
+You'll notice that I have this ZIndex Property,
+
+122
+00:05:58.300 --> 00:06:00.344
+and that'll allow me to talk about
+
+123
+00:06:00.344 --> 00:06:03.564
+the last thing that we wanna discuss here
+
+124
+00:06:03.564 --> 00:06:05.860
+with regards to the Canvas.
+
+125
+00:06:05.860 --> 00:06:09.248
+And the Canvas allows you to place items
+
+126
+00:06:09.248 --> 00:06:12.776
+on top of each other, but define
+
+127
+00:06:12.776 --> 00:06:17.172
+which ones will come if you were to stack them up
+
+128
+00:06:17.172 --> 00:06:18.628
+and you were to look at them kind of
+
+129
+00:06:18.628 --> 00:06:19.972
+in a different perspective,
+
+130
+00:06:19.972 --> 00:06:21.344
+what would the stack be?
+
+131
+00:06:21.344 --> 00:06:22.604
+So which one is visible first?
+
+132
+00:06:22.604 --> 00:06:26.916
+In this case, I set the ZIndex of the Ellipse
+
+133
+00:06:26.916 --> 00:06:31.916
+to 150 and the ZIndex of the yellow Rectangle to 100.
+
+134
+00:06:32.068 --> 00:06:36.072
+If I change that, you can see that by changing
+
+135
+00:06:36.072 --> 00:06:40.216
+the ZIndex to 15, it puts the yellow Rectangle
+
+136
+00:06:41.906 --> 00:06:46.460
+on top of the Ellipse.
+
+137
+00:06:46.460 --> 00:06:49.568
+So, we are talking in terms of X and Y-Coordinates,
+
+138
+00:06:49.568 --> 00:06:51.360
+but also there's a Z-Coordinate
+
+139
+00:06:51.360 --> 00:06:54.916
+in 3-D space, and so the ZIndex will set
+
+140
+00:06:54.916 --> 00:06:58.276
+that stacking order for you.
+
+141
+00:06:58.276 --> 00:06:59.676
+So just be aware of that.
+
+142
+00:06:59.676 --> 00:07:01.692
+Okay, that's really all I wanted to say
+
+143
+00:07:01.692 --> 00:07:03.680
+about Canvas and the various Shapes
+
+144
+00:07:03.680 --> 00:07:05.640
+that are available, you can combine these
+
+145
+00:07:05.640 --> 00:07:07.600
+in interesting ways to pretty much
+
+146
+00:07:07.600 --> 00:07:11.268
+represent anything that you could imagine.
+
+147
+00:07:11.268 --> 00:07:14.264
+If you need to draw Shapes in your application.
+
+148
+00:07:14.264 --> 00:07:15.384
+So hopefully that's helpful.
+
+149
+00:07:15.384 --> 00:07:18.688
+I think they mostly have, all of them have,
+
+150
+00:07:18.688 --> 00:07:23.308
+like Click or Tapped, yeah.
+
+151
+00:07:23.308 --> 00:07:27.256
+So if you needed to respond to touch or click,
+
+152
+00:07:27.256 --> 00:07:32.100
+you would use the Tapped event to handle that event
+
+153
+00:07:32.100 --> 00:07:33.864
+if the user were to try to interact
+
+154
+00:07:33.864 --> 00:07:35.684
+with that given Shape as well.
+
+155
+00:07:35.684 --> 00:07:37.812
+So that's all I wanted to say about the Canvas
+
+156
+00:07:37.812 --> 00:07:41.984
+for absolute placement, and then the Shapes
+
+157
+00:07:41.984 --> 00:07:45.764
+for special use cases where you need to draw
+
+158
+00:07:45.764 --> 00:07:48.396
+on your application.
+
+159
+00:07:48.396 --> 00:07:49.936
+Alright, hopefully that was helpful.
+
+160
+00:07:49.936 --> 00:07:51.112
+We'll see you in the next lesson.
+
+161
+00:07:51.112 --> 00:07:52.706
+Thanks.
+

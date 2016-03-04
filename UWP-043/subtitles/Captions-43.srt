@@ -1,0 +1,860 @@
+1
+00:00:03,365 --> 00:00:06,731
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net,</v>      
+
+2
+00:00:06,732 --> 00:00:09,685
+and it's time for another cheat sheet review session.      
+
+3
+00:00:09,686 --> 00:00:12,935
+Let's start with Lesson 37      
+
+4
+00:00:12,936 --> 00:00:15,309
+where we talked about utilizing the VisualStateManager      
+
+5
+00:00:15,310 --> 00:00:18,648
+to create the AdaptiveTriggers.      
+
+6
+00:00:18,649 --> 00:00:22,492
+We said that the VisualStateManager will utilize      
+
+7
+00:00:22,493 --> 00:00:26,596
+triggers in order to manage the states      
+
+8
+00:00:26,597 --> 00:00:30,393
+of the various elements inside of our XAML      
+
+9
+00:00:30,394 --> 00:00:33,806
+and allow us to modify properties      
+
+10
+00:00:33,807 --> 00:00:36,520
+of those elements based on the screen size.      
+
+11
+00:00:36,521 --> 00:00:40,831
+Here I've given you a little cheat sheet that you can copy      
+
+12
+00:00:40,832 --> 00:00:43,227
+and paste every time you need a VisualStateManager.      
+
+13
+00:00:43,228 --> 00:00:45,845
+Yeah, you can get rid of the AdaptiveTriggers,      
+
+14
+00:00:45,846 --> 00:00:47,557
+you can rename the VisualStates,      
+
+15
+00:00:47,558 --> 00:00:51,384
+you can change the Setters to whatever you need      
+
+16
+00:00:51,385 --> 00:00:52,954
+in order to make this work for you,      
+
+17
+00:00:52,955 --> 00:00:54,375
+but essentially here you go.      
+
+18
+00:00:54,376 --> 00:00:58,161
+You've got a great little start here.      
+
+19
+00:00:58,162 --> 00:01:01,175
+Remember that we're creating a VisualStateGroup,      
+
+20
+00:01:01,176 --> 00:01:03,289
+which will contain one or more VisualStates.      
+
+21
+00:01:03,290 --> 00:01:04,990
+We can give the States any name we want.      
+
+22
+00:01:04,991 --> 00:01:07,818
+We can set the Triggers at any size, Height,      
+
+23
+00:01:07,819 --> 00:01:10,989
+and Width that we want to manage or to handle      
+
+24
+00:01:10,990 --> 00:01:13,428
+for our specific application's needs.      
+
+25
+00:01:13,429 --> 00:01:16,291
+I think I said this a couple of times already,      
+
+26
+00:01:16,292 --> 00:01:21,292
+I'm not aware of any specific break points or view      
+
+27
+00:01:22,662 --> 00:01:26,083
+port sizes that we should be using in every single app.      
+
+28
+00:01:26,084 --> 00:01:28,607
+It really is up to your specific application      
+
+29
+00:01:28,608 --> 00:01:29,812
+and what you need.      
+
+30
+00:01:29,813 --> 00:01:32,097
+So you can modify the StateTriggers      
+
+31
+00:01:32,098 --> 00:01:34,820
+and the Setters for each VisualState.      
+
+32
+00:01:34,821 --> 00:01:37,286
+You can see here I've got two States: a Narrow and a Wide.      
+
+33
+00:01:37,287 --> 00:01:40,891
+Anything lower than 600 pixels will      
+
+34
+00:01:40,892 --> 00:01:44,332
+trigger off these Setters, and anything      
+
+35
+00:01:44,333 --> 00:01:47,614
+over 600 pixels will trigger off these Setters, okay?      
+
+36
+00:01:47,615 --> 00:01:51,859
+A pretty simple concept, just need to expand on that      
+
+37
+00:01:51,860 --> 00:01:54,075
+and change things about your application      
+
+38
+00:01:54,076 --> 00:01:58,686
+by adding more Setters based on what you need      
+
+39
+00:01:58,687 --> 00:02:01,331
+for you specific application's layout.      
+
+40
+00:02:01,332 --> 00:02:04,327
+Alright, then in the very next video,      
+
+41
+00:02:04,328 --> 00:02:06,862
+in Lesson 38, all I did was just kind of show you      
+
+42
+00:02:06,863 --> 00:02:11,863
+a technique that I stole, that I credited to the guys      
+
+43
+00:02:12,389 --> 00:02:15,129
+at Wintellect, Jeff Prosise specifically,      
+
+44
+00:02:15,130 --> 00:02:18,217
+that allowed us to create adaptive triggers      
+
+45
+00:02:18,218 --> 00:02:23,218
+that listened for screen sizes and then set      
+
+46
+00:02:23,324 --> 00:02:26,543
+the Grid.Row and Grid.Column      
+
+47
+00:02:26,544 --> 00:02:30,056
+on specific StackPanels that contain the actual content,      
+
+48
+00:02:30,057 --> 00:02:32,514
+moving them over from a more wide layout      
+
+49
+00:02:32,515 --> 00:02:35,482
+to a more narrow layout that requires a ScrollViewer.      
+
+50
+00:02:35,483 --> 00:02:40,483
+And so you want to review that or even riff on that idea.      
+
+51
+00:02:40,795 --> 00:02:43,655
+That's probably a good way to go about it.      
+
+52
+00:02:43,656 --> 00:02:47,525
+Now, we said this isn't necessarily a completely      
+
+53
+00:02:47,526 --> 00:02:50,181
+different way of approaching it,      
+
+54
+00:02:50,182 --> 00:02:52,958
+but you can also create device specific views      
+
+55
+00:02:52,959 --> 00:02:57,959
+in addition to your adaptive triggers.      
+
+56
+00:02:58,075 --> 00:03:02,391
+This would allow you to create views for specific devices.      
+
+57
+00:03:02,392 --> 00:03:04,097
+In this case we can create two folders      
+
+58
+00:03:04,098 --> 00:03:08,754
+at the root of our project.      
+
+59
+00:03:08,755 --> 00:03:12,005
+One would be called DeviceFamily-Mobile.      
+
+60
+00:03:12,006 --> 00:03:15,876
+The other would be DeviceFamily-Desktop.      
+
+61
+00:03:15,877 --> 00:03:18,270
+Then we can add in a series of Pages,      
+
+62
+00:03:18,271 --> 00:03:23,271
+and at run time, it will determine which device      
+
+63
+00:03:24,053 --> 00:03:27,588
+we're running it on and use those Pages appropriately.      
+
+64
+00:03:27,589 --> 00:03:31,188
+You can also leave the Pages in the root      
+
+65
+00:03:31,189 --> 00:03:35,884
+of the Project directory, and just depend on these suffixes.      
+
+66
+00:03:35,885 --> 00:03:40,885
+.DeviceFamily-Mobile.xaml or DeviceFamily-Desktop.xaml.      
+
+67
+00:03:41,580 --> 00:03:43,289
+That might be helpful if you only really have      
+
+68
+00:03:43,290 --> 00:03:44,767
+one or two Pages and you don't want to      
+
+69
+00:03:44,768 --> 00:03:46,635
+complicate it by adding folders.      
+
+70
+00:03:46,636 --> 00:03:51,636
+Then I gave you a good resource to learn more      
+
+71
+00:03:51,898 --> 00:03:56,088
+about this approach from Igor's website.      
+
+72
+00:03:56,089 --> 00:03:59,828
+Okay, next up we talked about Data Binding.      
+
+73
+00:03:59,829 --> 00:04:04,829
+I said that basically Data Binding allows you      
+
+74
+00:04:05,264 --> 00:04:10,060
+to Bind a List of data, so a list of POCOs,      
+
+75
+00:04:10,061 --> 00:04:15,061
+into a control that knows how to render that content.      
+
+76
+00:04:19,556 --> 00:04:22,344
+Now, I just demoed the GridView and the ListView controls,      
+
+77
+00:04:22,345 --> 00:04:27,186
+but ComboBox can also be utilized this way as well,      
+
+78
+00:04:27,187 --> 00:04:28,551
+and maybe a few others.      
+
+79
+00:04:28,552 --> 00:04:31,521
+Let me paste in the code example.      
+
+80
+00:04:31,522 --> 00:04:35,525
+Here I have the XAML that would be required.      
+
+81
+00:04:35,526 --> 00:04:39,836
+First of all I'm adding a name space called Data      
+
+82
+00:04:39,837 --> 00:04:42,690
+that points to a sub-folder called Models in my project,      
+
+83
+00:04:42,691 --> 00:04:45,454
+where I'm going to keep the classes      
+
+84
+00:04:45,455 --> 00:04:50,455
+that will be utilized throughout the rest of this project.      
+
+85
+00:04:50,534 --> 00:04:53,349
+Then you can see that I've created a GridView down here,      
+
+86
+00:04:53,350 --> 00:04:55,500
+and I've set the ItemTemplate      
+
+87
+00:04:55,501 --> 00:04:58,894
+equal to a StaticResource named BookDataTemplate.      
+
+88
+00:04:58,895 --> 00:05:02,301
+Now each instance of Book in the Book's collection      
+
+89
+00:05:02,302 --> 00:05:05,258
+will be rendered using this DataTemplate      
+
+90
+00:05:05,259 --> 00:05:07,988
+that's defined here in the Page.Resources section.      
+
+91
+00:05:07,989 --> 00:05:08,990
+Here I just have a StackPanel      
+
+92
+00:05:08,991 --> 00:05:10,894
+with an Image and two TextBlocks.      
+
+93
+00:05:10,895 --> 00:05:13,423
+You can see that I referenced individual properties      
+
+94
+00:05:13,424 --> 00:05:17,070
+of a given POCO object, in this case the Book object,      
+
+95
+00:05:17,071 --> 00:05:21,915
+in order to Bind those properties to the given      
+
+96
+00:05:21,916 --> 00:05:25,049
+XAML control that I need.      
+
+97
+00:05:25,050 --> 00:05:26,498
+So in this case in Image control,      
+
+98
+00:05:26,499 --> 00:05:28,924
+I'm going to want to give the path to images,      
+
+99
+00:05:28,925 --> 00:05:30,520
+and set that equal to the source,      
+
+100
+00:05:30,521 --> 00:05:33,065
+and for the TextBlocks I would want to grab,      
+
+101
+00:05:33,066 --> 00:05:34,799
+for example, Title and Author,      
+
+102
+00:05:34,800 --> 00:05:38,099
+and set them as the Text properties for the TextBlocks.      
+
+103
+00:05:38,100 --> 00:05:38,853
+Okay.      
+
+104
+00:05:38,854 --> 00:05:40,334
+And then one other thing      
+
+105
+00:05:40,335 --> 00:05:41,561
+that I want to point out here is actually      
+
+106
+00:05:41,562 --> 00:05:43,639
+what kind of you need to do in the code behind.      
+
+107
+00:05:43,640 --> 00:05:47,193
+I wanted to show two things here.      
+
+108
+00:05:47,194 --> 00:05:49,483
+First of all, how I went about      
+
+109
+00:05:49,484 --> 00:05:51,896
+actually getting a List of Books.      
+
+110
+00:05:51,897 --> 00:05:55,478
+I created a BookManager class in that project      
+
+111
+00:05:55,479 --> 00:05:58,744
+that we looked at, and it's responsible for      
+
+112
+00:05:58,745 --> 00:06:03,745
+returning back instances of Book in a List of Book.      
+
+113
+00:06:04,043 --> 00:06:08,672
+And so then by having it as a property of my Page,      
+
+114
+00:06:08,673 --> 00:06:12,620
+I can then Bind to it here in the XAML.      
+
+115
+00:06:12,621 --> 00:06:14,520
+The other thing that I did, you'll remember,      
+
+116
+00:06:14,521 --> 00:06:16,885
+is that in the GridView itself, I wanted to handle      
+
+117
+00:06:16,886 --> 00:06:19,522
+a click event for a specific item so that when sombody      
+
+118
+00:06:19,523 --> 00:06:21,795
+clicks on an item, I want to be able to handle that event.      
+
+119
+00:06:21,796 --> 00:06:25,350
+First of all, I have to enable the click event.      
+
+120
+00:06:25,351 --> 00:06:30,128
+And then I want to set a handler for that ItemClick.      
+
+121
+00:06:30,129 --> 00:06:32,961
+Here I'm actually handling that ItemClick event.      
+
+122
+00:06:32,962 --> 00:06:36,246
+I'm going to use the ItemEventClickArgs      
+
+123
+00:06:36,247 --> 00:06:38,285
+to get that item that was clicked on      
+
+124
+00:06:38,286 --> 00:06:40,661
+and then cast it to type Book.      
+
+125
+00:06:40,662 --> 00:06:42,588
+Now that I have it as a type Book,      
+
+126
+00:06:42,589 --> 00:06:44,756
+I can grab off into the properties that I need      
+
+127
+00:06:44,757 --> 00:06:46,629
+and work with them that way.      
+
+128
+00:06:46,630 --> 00:06:49,224
+And now the final, well actually not the final lesson.      
+
+129
+00:06:49,225 --> 00:06:51,845
+Let's talk about this simple lesson first.      
+
+130
+00:06:51,846 --> 00:06:55,025
+I said that List of Book is great,      
+
+131
+00:06:55,026 --> 00:06:57,122
+but really if your contents are going to change      
+
+132
+00:06:57,123 --> 00:06:59,112
+inside of that collection, you need to use      
+
+133
+00:06:59,113 --> 00:06:59,945
+a different type of collection.      
+
+134
+00:06:59,946 --> 00:07:03,004
+You need to use the ObservableCollection, okay.      
+
+135
+00:07:03,005 --> 00:07:07,832
+Now, finally, we talked about kind of      
+
+136
+00:07:07,833 --> 00:07:09,562
+combining some of these ideas together.      
+
+137
+00:07:09,563 --> 00:07:12,497
+For example, if you intend to use Data Templates      
+
+138
+00:07:12,498 --> 00:07:17,294
+in your application, for GridView, ListView, ComboBox,      
+
+139
+00:07:17,295 --> 00:07:20,625
+whatever the case might be, and you think you're going      
+
+140
+00:07:20,626 --> 00:07:25,160
+to want to modify the sizes of items and Data Templates,      
+
+141
+00:07:25,161 --> 00:07:28,975
+then you need to break out of defining it in the Page itself      
+
+142
+00:07:28,976 --> 00:07:32,119
+and put the Data Template into its own User Control,      
+
+143
+00:07:32,120 --> 00:07:34,214
+and then inside that User Control you can create      
+
+144
+00:07:34,215 --> 00:07:37,134
+a VisualStateManager with the various States      
+
+145
+00:07:37,135 --> 00:07:39,165
+and Triggers and so on.      
+
+146
+00:07:39,166 --> 00:07:42,963
+So we demoed this, and it was I think a five step process.      
+
+147
+00:07:42,964 --> 00:07:47,046
+Let me just kind of copy and paste all of this down here.      
+
+148
+00:07:47,047 --> 00:07:48,521
+Okay, so step one is you're going to      
+
+149
+00:07:48,522 --> 00:07:50,645
+need to add a User Control to your Project      
+
+150
+00:07:50,646 --> 00:07:51,869
+and give it a good name.      
+
+151
+00:07:51,870 --> 00:07:53,666
+Then you're going to cut the content      
+
+152
+00:07:53,667 --> 00:07:56,565
+out of the Data Template in like your MainPage.xaml      
+
+153
+00:07:56,566 --> 00:07:58,574
+and paste it into that User Control.      
+
+154
+00:07:58,575 --> 00:08:00,567
+Then you want to reference that User Control      
+
+155
+00:08:00,568 --> 00:08:02,783
+from inside the Data Templates.      
+
+156
+00:08:02,784 --> 00:08:05,169
+So whatever you remove from the Data Template,      
+
+157
+00:08:05,170 --> 00:08:08,784
+now you're going to replace it with the name      
+
+158
+00:08:08,785 --> 00:08:10,633
+of the User Control that you created.      
+
+159
+00:08:10,634 --> 00:08:14,685
+In this case, I called my User Control the ContactTemplate,      
+
+160
+00:08:14,686 --> 00:08:17,061
+so I would want to reference it like so.      
+
+161
+00:08:17,062 --> 00:08:20,037
+And I added these other properties as well.      
+
+162
+00:08:20,038 --> 00:08:22,880
+I'm not sure you need them, but you can reference them      
+
+163
+00:08:22,881 --> 00:08:24,348
+in case you need to make sure that      
+
+164
+00:08:24,349 --> 00:08:27,663
+your Control stretches the entire available area.      
+
+165
+00:08:27,664 --> 00:08:31,142
+All right, next up then, in the User Control we need to      
+
+166
+00:08:31,143 --> 00:08:33,805
+make a change to all the x:Bind statements      
+
+167
+00:08:33,806 --> 00:08:35,356
+that your previously already had.      
+
+168
+00:08:35,357 --> 00:08:40,353
+You need to add on the Object.Property notation.      
+
+169
+00:08:40,354 --> 00:08:43,260
+So if it's a Contact class that you're working with,      
+
+170
+00:08:43,261 --> 00:08:47,016
+or a Book class, then you need to put Contact or Book dot,      
+
+171
+00:08:47,017 --> 00:08:48,476
+and then the name of the property      
+
+172
+00:08:48,477 --> 00:08:50,749
+that you're going to actually Bind to.      
+
+173
+00:08:50,750 --> 00:08:52,247
+Then the last thing that you need to do,      
+
+174
+00:08:52,248 --> 00:08:55,753
+back in the User Control's Code Behind,      
+
+175
+00:08:55,754 --> 00:09:00,112
+is to make a public property that you can reference      
+
+176
+00:09:00,113 --> 00:09:01,879
+from the User Control that would be      
+
+177
+00:09:01,880 --> 00:09:05,337
+an instance of the POCO itself, right?      
+
+178
+00:09:05,338 --> 00:09:10,151
+So in this case, a Contact property of type Contact      
+
+179
+00:09:10,152 --> 00:09:12,173
+from the Models folder that I created.      
+
+180
+00:09:12,174 --> 00:09:15,099
+You're going to return the DataContext.      
+
+181
+00:09:15,100 --> 00:09:16,952
+The DataContext is whatever is being passed in      
+
+182
+00:09:16,953 --> 00:09:20,233
+from MainPage.xaml to your User Control,      
+
+183
+00:09:20,234 --> 00:09:22,254
+and providing the context of data      
+
+184
+00:09:22,255 --> 00:09:24,093
+that it will actually utilize.      
+
+185
+00:09:24,094 --> 00:09:27,220
+It will be of type whatever it is that's being passed in.      
+
+186
+00:09:27,221 --> 00:09:29,431
+In this case it's the Contact.      
+
+187
+00:09:29,432 --> 00:09:31,719
+Could be a Book, whatever your POCO object is.      
+
+188
+00:09:31,720 --> 00:09:36,720
+Finally then, in the constructor for the User Control,      
+
+189
+00:09:37,082 --> 00:09:39,118
+you want to add this line of code, which will      
+
+190
+00:09:39,119 --> 00:09:43,942
+essentially handle the DataContextChanged event      
+
+191
+00:09:43,943 --> 00:09:47,454
+for the User Control and it will call,      
+
+192
+00:09:47,455 --> 00:09:49,403
+using a lamda statement to call,      
+
+193
+00:09:49,404 --> 00:09:51,840
+the Bindings.Update, which will tell it,      
+
+194
+00:09:51,841 --> 00:09:54,149
+"Hey, refresh yourself, we've got data."      
+
+195
+00:09:54,150 --> 00:09:56,021
+Okay, and you can use all of this,      
+
+196
+00:09:56,022 --> 00:10:00,156
+or most of it actually, as what I've been calling      
+
+197
+00:10:00,157 --> 00:10:03,484
+boiler plate code, and that's a great reason      
+
+198
+00:10:03,485 --> 00:10:04,953
+to have this cheat sheet laying around      
+
+199
+00:10:04,954 --> 00:10:06,225
+so you can just grab the code you need      
+
+200
+00:10:06,226 --> 00:10:07,361
+and paste it into your Project      
+
+201
+00:10:07,362 --> 00:10:09,537
+and make a few modifications to it.      
+
+202
+00:10:09,538 --> 00:10:12,126
+Okay, so that's all we talked about      
+
+203
+00:10:12,127 --> 00:10:15,314
+in the what, previous six lessons or so.      
+
+204
+00:10:15,315 --> 00:10:18,356
+Pretty meaty stuff but not terribly hard right?      
+
+205
+00:10:18,357 --> 00:10:19,993
+We took it in bite-sized pieces.      
+
+206
+00:10:19,994 --> 00:10:24,717
+You're going to use many of these concepts in the challenge,      
+
+207
+00:10:24,718 --> 00:10:25,819
+and it will be challenging.      
+
+208
+00:10:25,820 --> 00:10:28,243
+It will probably take you a couple of hours at a minimum,      
+
+209
+00:10:28,244 --> 00:10:29,328
+to pull this off.      
+
+210
+00:10:29,329 --> 00:10:32,695
+There's no excuse for not going through the challenge.      
+
+211
+00:10:32,696 --> 00:10:35,679
+You need the challenge to force you to struggle to really      
+
+212
+00:10:35,680 --> 00:10:38,381
+cement these ideas in your melon, okay.      
+
+213
+00:10:38,382 --> 00:10:41,422
+So we'll pick it back up in the next lesson.      
+
+214
+00:10:41,423 --> 00:10:42,758
+The next challenge.      
+
+215
+00:10:42,759 --> 00:10:44,471
+Thank you.      
+

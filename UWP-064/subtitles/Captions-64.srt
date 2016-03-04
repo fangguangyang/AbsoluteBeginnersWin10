@@ -1,0 +1,1908 @@
+1
+00:00:05,356 --> 00:00:06,645
+<v ->Okay, so let's get started.</v>      
+
+2
+00:00:06,646 --> 00:00:08,736
+You know that I like to tackle the most difficult      
+
+3
+00:00:08,737 --> 00:00:11,380
+part of the application first and in this particular      
+
+4
+00:00:11,381 --> 00:00:16,381
+application I think the process of retrieving all of the      
+
+5
+00:00:16,704 --> 00:00:20,202
+users files from their hard drive or their device,      
+
+6
+00:00:20,203 --> 00:00:23,316
+other music files from their Music Library and      
+
+7
+00:00:23,317 --> 00:00:26,698
+then finding random songs, like 10 random songs      
+
+8
+00:00:26,699 --> 00:00:31,699
+and their associated, the album cover and the other      
+
+9
+00:00:31,828 --> 00:00:36,031
+meta data, retrieving that off in some capacity will      
+
+10
+00:00:36,032 --> 00:00:38,654
+be the most challenging aspect of this, it's the part      
+
+11
+00:00:38,655 --> 00:00:41,033
+that has I guess you could say the biggest question mark      
+
+12
+00:00:41,034 --> 00:00:44,010
+in my mind and that's why I want to tackle that first.      
+
+13
+00:00:44,011 --> 00:00:45,770
+So in this project, what we're going to do is begin      
+
+14
+00:00:45,771 --> 00:00:47,999
+by setting up a new project and then instead of      
+
+15
+00:00:48,000 --> 00:00:51,956
+going to the user interface first, what I'm going to do      
+
+16
+00:00:51,957 --> 00:00:54,878
+is just do some nominal work in the user interface,      
+
+17
+00:00:54,879 --> 00:00:57,758
+just enough to kick off this process of searching      
+
+18
+00:00:57,759 --> 00:01:00,499
+in the Music Library, grabbing all the songs out,      
+
+19
+00:01:00,500 --> 00:01:04,649
+make sure I have access to them all, and then      
+
+20
+00:01:04,650 --> 00:01:07,943
+plucking off 10 random songs and their associated      
+
+21
+00:01:07,944 --> 00:01:11,390
+albums and then being able to access the various      
+
+22
+00:01:11,391 --> 00:01:13,863
+meta data about those songs.      
+
+23
+00:01:13,864 --> 00:01:16,211
+So let's go and get started, I"m actually going to      
+
+24
+00:01:16,212 --> 00:01:19,816
+turn off the web cam and create a new project,      
+
+25
+00:01:19,817 --> 00:01:24,093
+and I'm going to make sure to create a new      
+
+26
+00:01:24,094 --> 00:01:27,356
+Blank App universal Windows project called      
+
+27
+00:01:27,357 --> 00:01:32,357
+AlbumCoverMatchGame      
+
+28
+00:01:38,987 --> 00:01:43,987
+great and get rid of that,      
+
+29
+00:01:44,886 --> 00:01:47,135
+the frame counter, gone,      
+
+30
+00:01:47,136 --> 00:01:49,428
+and let's open up the MainPage.xaml and I just      
+
+31
+00:01:49,429 --> 00:01:52,266
+want to do one little thing in here and that is to add      
+
+32
+00:01:52,267 --> 00:01:54,836
+a Button Control and I'm going to delete this at some      
+
+33
+00:01:54,837 --> 00:01:57,576
+point, but for now this will allow me just to kick off      
+
+34
+00:01:57,577 --> 00:02:02,577
+the whole process by clicking a button that says      
+
+35
+00:02:05,072 --> 00:02:09,594
+"Click Me" and again, the only purpose of this is      
+
+36
+00:02:09,595 --> 00:02:13,796
+just so that I can have somewhere to kick this off      
+
+37
+00:02:13,797 --> 00:02:16,708
+before I give a lot of thought to the user interface.      
+
+38
+00:02:16,709 --> 00:02:19,769
+Okay, so we're only going to accomplish a couple things      
+
+39
+00:02:19,770 --> 00:02:24,750
+here, first of all I want to get access to the Music      
+
+40
+00:02:26,419 --> 00:02:30,415
+Library and then I want to      
+
+41
+00:02:30,416 --> 00:02:35,416
+choose random songs from Library      
+
+42
+00:02:36,260 --> 00:02:38,640
+and then I guess the third thing I want to do is pluck      
+
+43
+00:02:38,641 --> 00:02:43,641
+off the parts of that song that I need so the metadata      
+
+44
+00:02:46,597 --> 00:02:49,732
+from selected songs, okay and if I can accomplish      
+
+45
+00:02:49,733 --> 00:02:52,239
+that in this video I'd be pretty happy.      
+
+46
+00:02:52,240 --> 00:02:54,095
+Okay, so to get started I'm just going to put      
+
+47
+00:02:54,096 --> 00:02:56,750
+everything here and then as time moves on      
+
+48
+00:02:56,751 --> 00:02:59,140
+I'll start splitting things out on their own methods      
+
+49
+00:02:59,141 --> 00:03:02,243
+and it'll become obvious where things belong and      
+
+50
+00:03:02,244 --> 00:03:04,387
+the responsibilities that will delegate to different      
+
+51
+00:03:04,388 --> 00:03:08,941
+methods in our application, so let's begin by accessing      
+
+52
+00:03:08,942 --> 00:03:12,792
+our Music Library, now for the purpose of this, this      
+
+53
+00:03:12,793 --> 00:03:17,464
+demonstration I have a very large and eclectic music      
+
+54
+00:03:17,465 --> 00:03:20,045
+collection, however, we didn't want to pay any royaties      
+
+55
+00:03:20,046 --> 00:03:22,391
+for all that music, so I asked a friend of mine, actually      
+
+56
+00:03:22,392 --> 00:03:24,450
+I just put it out there on Facebook, "Hey, any of my friends      
+
+57
+00:03:24,451 --> 00:03:27,800
+"out there, could you help me out, I need like 15 songs      
+
+58
+00:03:27,801 --> 00:03:29,750
+"that are like 20 seconds each?"      
+
+59
+00:03:29,751 --> 00:03:33,789
+Okay, and my friend Boyd, he just did some, strummed      
+
+60
+00:03:33,790 --> 00:03:38,321
+the guitar a few times and I copied those files multiple      
+
+61
+00:03:38,322 --> 00:03:43,322
+times for each album, I, as you can see, I edited      
+
+62
+00:03:43,965 --> 00:03:47,004
+the metadata for each song to make it look like      
+
+63
+00:03:47,005 --> 00:03:49,926
+it's its own song and make sure it has the correct      
+
+64
+00:03:49,927 --> 00:03:54,927
+album and artist and the I asked a graphic designer      
+
+65
+00:03:56,125 --> 00:03:59,674
+to create some album, fake album art for all of these      
+
+66
+00:03:59,675 --> 00:04:03,046
+so actually if you go to View and Extra Large Icons      
+
+67
+00:04:03,047 --> 00:04:08,047
+you can see some of the cover art that he created      
+
+68
+00:04:08,475 --> 00:04:13,475
+for me, and so these albums will be, the cover art      
+
+69
+00:04:14,332 --> 00:04:17,626
+will be displayed for a given random song that's      
+
+70
+00:04:17,627 --> 00:04:19,599
+selected from the list of all my songs, but what I      
+
+71
+00:04:19,600 --> 00:04:23,033
+want to do is be able to iterate through all the      
+
+72
+00:04:23,034 --> 00:04:27,471
+folders inside my Music Library and grab out a list      
+
+73
+00:04:27,472 --> 00:04:32,111
+of all the individual mp3s not the pngs, that's only      
+
+74
+00:04:32,112 --> 00:04:36,185
+we're going to work with mp3 files so to get started      
+
+75
+00:04:36,186 --> 00:04:39,274
+in that process I'm going to access      
+
+76
+00:04:42,074 --> 00:04:44,030
+something called      
+
+77
+00:04:44,707 --> 00:04:47,842
+KnownFolders      
+
+78
+00:04:47,843 --> 00:04:52,088
+and it's in the Windows.Storage namespace      
+
+79
+00:04:52,089 --> 00:04:57,089
+so I added that namespace here as you can see.      
+
+80
+00:05:02,668 --> 00:05:06,154
+Windows.Storage and I want to get out a specific known      
+
+81
+00:05:06,155 --> 00:05:09,194
+folder, I want to get at the MusicLibrary so this      
+
+82
+00:05:09,195 --> 00:05:13,342
+will give us access to that special folder that and      
+
+83
+00:05:13,343 --> 00:05:15,743
+on every device and every Windows 10 desktop      
+
+84
+00:05:15,744 --> 00:05:19,689
+called Music Libary so we get a reference to that      
+
+85
+00:05:19,690 --> 00:05:24,147
+it's going to be, I can do var folder equals ... but what's      
+
+86
+00:05:24,148 --> 00:05:27,347
+going to be returned from this is actually a type      
+
+87
+00:05:27,348 --> 00:05:30,484
+called StorageFolder and I'll just type this in      
+
+88
+00:05:30,485 --> 00:05:34,494
+because it's going to be important to remember      
+
+89
+00:05:34,495 --> 00:05:38,377
+that StorageFolders are classes that give us information      
+
+90
+00:05:38,378 --> 00:05:43,378
+about a folder and then StorageFile will be classes      
+
+91
+00:05:44,116 --> 00:05:46,717
+that give us information about a given file on the file      
+
+92
+00:05:46,718 --> 00:05:51,197
+system, we'll see how these all work in a little bit and      
+
+93
+00:05:51,198 --> 00:05:55,570
+so what I want to do is get a list of all of the songs      
+
+94
+00:05:55,571 --> 00:05:58,983
+across all the subfolders inside the Music Library      
+
+95
+00:05:58,984 --> 00:06:03,984
+so I know that I'm going to need a collection and      
+
+96
+00:06:04,572 --> 00:06:07,079
+I want, that collection might change over time so      
+
+97
+00:06:07,080 --> 00:06:09,148
+I'm actually going to start off with an observable      
+
+98
+00:06:09,149 --> 00:06:14,149
+collection so let's go var allSongs equals      
+
+99
+00:06:15,948 --> 00:06:20,447
+ObservableCollection<t> so we'll add      
+
+100
+00:06:20,448 --> 00:06:22,559
+System.Collections.ObjectModel      
+
+101
+00:06:22,560 --> 00:06:27,247
+and then the type that we'll be storing off      
+
+102
+00:06:27,248 --> 00:06:31,909
+are StorageFiles, great.      
+
+103
+00:06:34,959 --> 00:06:39,086
+So we're going to create a new ObservableCollection      
+
+104
+00:06:39,087 --> 00:06:41,732
+of StorageFile, great.      
+
+105
+00:06:41,733 --> 00:06:45,678
+And now what I want to do is get all of the files      
+
+106
+00:06:45,679 --> 00:06:48,632
+in all of the folders and right now I see an opportunity      
+
+107
+00:06:48,633 --> 00:06:51,928
+probably to farm that off because we're going to need      
+
+108
+00:06:51,929 --> 00:06:54,456
+a recursive method and a recursive method is a method      
+
+109
+00:06:54,457 --> 00:06:58,845
+that can call itself as many times as it needs to to like      
+
+110
+00:06:58,846 --> 00:07:02,984
+recurse through folders, subfolders, subfolders, subfolders,      
+
+111
+00:07:02,985 --> 00:07:06,077
+subfolders until it gets everything and kind of it      
+
+112
+00:07:06,078 --> 00:07:10,236
+traverses an entire folder structure so I'm going to      
+
+113
+00:07:10,237 --> 00:07:12,332
+create a private,      
+
+114
+00:07:15,452 --> 00:07:20,133
+private void retrieveFilesInFolders      
+
+115
+00:07:20,134 --> 00:07:23,344
+something like that and I'm going to pass in an      
+
+116
+00:07:23,345 --> 00:07:28,345
+ObservableCollection of StorageFile      
+
+117
+00:07:32,430 --> 00:07:35,361
+and I realized I typed this in the wrong spot,      
+
+118
+00:07:35,362 --> 00:07:38,923
+and we'll just call this the list      
+
+119
+00:07:38,924 --> 00:07:42,496
+and then I'm also going to pass in      
+
+120
+00:07:42,497 --> 00:07:46,559
+the StorageFolder called Parent, this will be the      
+
+121
+00:07:46,560 --> 00:07:50,806
+top level storage folder so in this case for us it'll      
+
+122
+00:07:50,807 --> 00:07:55,807
+be that KnownFolder.MusicLibrary, okay, and here      
+
+123
+00:07:57,196 --> 00:08:02,196
+what I want to do is just go do a foreach      
+
+124
+00:08:04,615 --> 00:08:09,615
+so foreach item in parent.GetFilesAsync(), so this will      
+
+125
+00:08:14,727 --> 00:08:18,096
+give us all the files that are currently in the parent      
+
+126
+00:08:18,097 --> 00:08:22,501
+folder, now the first time we pass in a folder it's going to      
+
+127
+00:08:22,502 --> 00:08:26,820
+be the Music Library folder that we just looked at      
+
+128
+00:08:26,821 --> 00:08:31,811
+a moment ago here on my Windows Desktop but      
+
+129
+00:08:31,812 --> 00:08:36,812
+then we will actually pass in any subfolders and      
+
+130
+00:08:37,177 --> 00:08:39,961
+recursively call this retrieve files and folders.      
+
+131
+00:08:39,962 --> 00:08:42,724
+Now we get a red squiggly line, why?      
+
+132
+00:08:42,725 --> 00:08:46,905
+Well, because this is an async operation ...      
+
+133
+00:08:46,906 --> 00:08:50,018
+remember the formula for async operations,      
+
+134
+00:08:50,019 --> 00:08:52,782
+we can await their completion and in order for      
+
+135
+00:08:52,783 --> 00:08:55,501
+this to work we're going to have to adorn this with      
+
+136
+00:08:55,502 --> 00:08:58,423
+an async keyword and what we would expect back      
+
+137
+00:08:58,424 --> 00:09:02,861
+is a promise that whenever it's finished that it will      
+
+138
+00:09:04,629 --> 00:09:07,391
+it's basically a promise that when it's finished it will      
+
+139
+00:09:07,392 --> 00:09:10,409
+it'll continue on, so we're not going to give it a Task<T>,      
+
+140
+00:09:10,410 --> 00:09:13,523
+just a regular old task but it will still add      
+
+141
+00:09:13,524 --> 00:09:17,977
+the using System.Threading.Tasks namespace like so.      
+
+142
+00:09:18,719 --> 00:09:21,950
+Okay, great, so now what we want to do is we're looking      
+
+143
+00:09:21,951 --> 00:09:25,758
+at every single file that's currently inside the current      
+
+144
+00:09:25,759 --> 00:09:30,759
+folder, now if that item has a file type of .mp3 then      
+
+145
+00:09:33,533 --> 00:09:37,176
+we're in good shape, we want to add that one so      
+
+146
+00:09:37,177 --> 00:09:42,177
+list.Add(item) to our ObservableCollection of      
+
+147
+00:09:43,328 --> 00:09:48,328
+StorageFiles, again our goal here is just to get a list of every      
+
+148
+00:09:48,330 --> 00:09:52,948
+mp3 file in all subfolders inside of our Music Library.      
+
+149
+00:09:52,949 --> 00:09:56,500
+Now the next thing that we need to do is to actually      
+
+150
+00:09:56,501 --> 00:10:00,435
+say, "Hey, not only do we want all the files, but let's take      
+
+151
+00:10:00,436 --> 00:10:05,001
+"a look at all of the folders inside of that parent folder."      
+
+152
+00:10:05,002 --> 00:10:10,002
+So any subfolders, so we're going to call GetFoldersAsync      
+
+153
+00:10:14,036 --> 00:10:19,036
+and this, too, is awaitable so we'll add that so each      
+
+154
+00:10:19,412 --> 00:10:23,549
+item now represents a subfolder in for that we're going      
+
+155
+00:10:23,550 --> 00:10:28,028
+to call the very method that we're currently in,      
+
+156
+00:10:28,029 --> 00:10:33,029
+RetrieveFilesInFolders and pass in both the      
+
+157
+00:10:33,534 --> 00:10:37,970
+ObservableCollection of StorageFile and we're going to pass in the      
+
+158
+00:10:37,971 --> 00:10:40,962
+current parent which in this case would be item.      
+
+159
+00:10:42,591 --> 00:10:44,797
+And why are we getting the green squiggly?      
+
+160
+00:10:44,798 --> 00:10:49,064
+Because this is awaitable and that should fix that,      
+
+161
+00:10:49,065 --> 00:10:50,856
+all right, so what we've done here, just a couple      
+
+162
+00:10:50,857 --> 00:10:53,480
+of lines of code is recursively worked our way through      
+
+163
+00:10:53,481 --> 00:10:58,481
+all of the subfolders inside of my music collection      
+
+164
+00:10:59,400 --> 00:11:04,274
+and inside of any of those subfolders and then and      
+
+165
+00:11:04,275 --> 00:11:07,334
+we continue on until we can't find anymore subfolders,      
+
+166
+00:11:07,335 --> 00:11:11,196
+we'll just grab out a listing of all of the individual mp3      
+
+167
+00:11:11,197 --> 00:11:15,281
+files and add them to a list ObservableCollection      
+
+168
+00:11:15,282 --> 00:11:17,669
+of StorageFiles so each of these songs will be      
+
+169
+00:11:17,670 --> 00:11:21,157
+in our collection, great, so far so good.      
+
+170
+00:11:21,158 --> 00:11:23,429
+So the next thing that we need to do now that we have      
+
+171
+00:11:23,430 --> 00:11:26,171
+a collection of all of our songs, well actually we need      
+
+172
+00:11:26,172 --> 00:11:31,172
+to call it, so let's call and this is awaitable, right?      
+
+173
+00:11:31,206 --> 00:11:36,206
+Because it's Async so await retrieve files and folders      
+
+174
+00:11:41,169 --> 00:11:45,765
+and we're going to pass in all songs and then      
+
+175
+00:11:45,766 --> 00:11:49,845
+we're going to pass in the parent folder.      
+
+176
+00:11:51,760 --> 00:11:53,658
+Now the reason we're getting a red squiggly      
+
+177
+00:11:53,659 --> 00:11:55,822
+is because we've used the await keyword however      
+
+178
+00:11:55,823 --> 00:11:59,113
+what we need to do is add what?      
+
+179
+00:12:00,325 --> 00:12:05,325
+async, and I think that's all we need to do there,      
+
+180
+00:12:05,850 --> 00:12:10,050
+okay, good, all right, so next up what we need to      
+
+181
+00:12:10,051 --> 00:12:14,468
+do is choose random songs from the library and      
+
+182
+00:12:16,079 --> 00:12:20,162
+let's think about how this should work, let's create      
+
+183
+00:12:20,163 --> 00:12:25,163
+another private helper method to help us do this      
+
+184
+00:12:25,369 --> 00:12:28,152
+so we don't have it all there just in that one method,      
+
+185
+00:12:28,153 --> 00:12:33,153
+so private void pick random songs and I guess what      
+
+186
+00:12:34,382 --> 00:12:37,207
+I would expect back from this actually it's not going      
+
+187
+00:12:37,208 --> 00:12:41,407
+to be void at all, it's going to be a list of StorageFile,      
+
+188
+00:12:44,795 --> 00:12:48,068
+okay, so that's what we're aiming for here and we're      
+
+189
+00:12:48,069 --> 00:12:53,069
+going to pass in that ObservableCollection of      
+
+190
+00:12:53,711 --> 00:12:58,711
+StorageFile called allFiles or allSongs      
+
+191
+00:13:01,984 --> 00:13:03,573
+all right, and we get a red squiggly because      
+
+192
+00:13:03,574 --> 00:13:05,215
+we haven't returned anything just yet,      
+
+193
+00:13:05,216 --> 00:13:08,330
+we'll fix that in just a moment here.      
+
+194
+00:13:08,331 --> 00:13:11,796
+All right, so if we're talking about choosing a random      
+
+195
+00:13:11,797 --> 00:13:15,145
+list, and that means we need to use the random object      
+
+196
+00:13:15,146 --> 00:13:20,146
+so Random random equals new random, I want to,      
+
+197
+00:13:22,115 --> 00:13:26,508
+I want to make sure to find random songs      
+
+198
+00:13:26,509 --> 00:13:31,509
+but I want to make sure two things don't happen,      
+
+199
+00:13:33,337 --> 00:13:34,423
+first of all I want to make sure      
+
+200
+00:13:34,424 --> 00:13:39,424
+I don't pick the same song twice and      
+
+201
+00:13:39,470 --> 00:13:44,386
+then I want to make sure secondly that I don't pick      
+
+202
+00:13:44,387 --> 00:13:49,387
+a song from an album      
+
+203
+00:13:51,811 --> 00:13:55,394
+that I've already picked.      
+
+204
+00:13:55,395 --> 00:13:56,685
+Don't pick a song from an album      
+
+205
+00:13:56,686 --> 00:13:57,592
+that I've already picked,      
+
+206
+00:13:57,593 --> 00:13:59,704
+okay, that makes sense, all right, so, in other words,      
+
+207
+00:13:59,705 --> 00:14:01,538
+I don't want two songs from the same album because      
+
+208
+00:14:01,539 --> 00:14:04,588
+every icon that I present to the user should be a different      
+
+209
+00:14:04,589 --> 00:14:07,095
+album cover, all right, that would be counter productive      
+
+210
+00:14:07,096 --> 00:14:09,943
+if I did that so in order to do this, what I'm going to do      
+
+211
+00:14:09,944 --> 00:14:14,609
+is create a while statement and I'm going to continue      
+
+212
+00:14:14,610 --> 00:14:17,937
+looping through this until a certain condition is met,      
+
+213
+00:14:17,938 --> 00:14:22,907
+until I get the correct number of songs, until I collect      
+
+214
+00:14:22,908 --> 00:14:27,908
+the correct number of songs into a list of random songs,      
+
+215
+00:14:27,943 --> 00:14:31,493
+so here let me create var random songs, and these are      
+
+216
+00:14:31,494 --> 00:14:35,930
+the ones that I'm aiming for here and then I'll actually      
+
+217
+00:14:35,931 --> 00:14:39,664
+return at the end of this private helper method so      
+
+218
+00:14:39,665 --> 00:14:44,665
+create new list of StorageFile like so and then at      
+
+219
+00:14:45,521 --> 00:14:50,521
+the very end here, like I said we'll return random songs.      
+
+220
+00:14:50,928 --> 00:14:55,928
+Great, all right, so now what I want to do is just say      
+
+221
+00:14:58,523 --> 00:15:02,448
+I need 10 songs, so whenever we get to the point where      
+
+222
+00:15:02,449 --> 00:15:07,205
+random songs that count is 10 or more, then I want to      
+
+223
+00:15:07,206 --> 00:15:09,253
+break out of this while statement, until then we're just      
+
+224
+00:15:09,254 --> 00:15:11,685
+going to keep looping through there until we get the      
+
+225
+00:15:11,686 --> 00:15:15,525
+all the songs that we need that satisfy our criteria.      
+
+226
+00:15:15,526 --> 00:15:19,161
+So, the first thing I want to do is grab a random number      
+
+227
+00:15:19,162 --> 00:15:21,642
+out so      
+
+228
+00:15:25,615 --> 00:15:30,615
+randomNumber equals      
+
+229
+00:15:31,788 --> 00:15:33,317
+Random.Next()      
+
+230
+00:15:39,455 --> 00:15:42,099
+and then I need to give      
+
+231
+00:15:42,100 --> 00:15:45,882
+it the maximum number      
+
+232
+00:15:47,509 --> 00:15:49,321
+that I'm willing to accept here,      
+
+233
+00:15:49,322 --> 00:15:54,322
+so what I need to do is actually get the maximum      
+
+234
+00:15:54,710 --> 00:15:59,369
+number of songs or a count,      
+
+235
+00:15:59,370 --> 00:16:03,411
+so songCount = allSongs.Count      
+
+236
+00:16:03,412 --> 00:16:06,547
+and that should give me the number of songs and      
+
+237
+00:16:06,548 --> 00:16:10,675
+so I just say, "Hey, give me a random number between      
+
+238
+00:16:10,676 --> 00:16:15,609
+"zero and the song count."      
+
+239
+00:16:17,408 --> 00:16:20,169
+All right, so far so good and then go ahead and give      
+
+240
+00:16:20,170 --> 00:16:24,489
+me the random song, and the random song will be      
+
+241
+00:16:24,490 --> 00:16:29,490
+allSongs sub random number, okay.      
+
+242
+00:16:34,724 --> 00:16:37,761
+Now that would work, we would find the random      
+
+243
+00:16:37,762 --> 00:16:42,762
+song and then we would want to go randomSongs.Add      
+
+244
+00:16:44,451 --> 00:16:47,330
+and then whatever that random song is, but wait,      
+
+245
+00:16:47,331 --> 00:16:50,274
+we can't do that yet, we got to do some checks.      
+
+246
+00:16:50,275 --> 00:16:55,275
+This is where we would do all of this right here.      
+
+247
+00:16:57,870 --> 00:16:59,778
+So let's make sure that these things are not true before      
+
+248
+00:16:59,779 --> 00:17:03,212
+we get too far here, the first thing I need to do is      
+
+249
+00:17:03,213 --> 00:17:05,718
+I want to grab off all the properties of the song and      
+
+250
+00:17:05,719 --> 00:17:08,321
+I need the properties so that I can figure out which      
+
+251
+00:17:08,322 --> 00:17:13,217
+album a given mp3 belongs to, so in order to get      
+
+252
+00:17:13,218 --> 00:17:18,218
+that, I'm going to go randomSong.Properties.GetMusicPropertiesAsync()      
+
+253
+00:17:21,794 --> 00:17:25,622
+randomSong.Properties.GetMusicPropertiesAsync() ... do you see that?      
+
+254
+00:17:25,623 --> 00:17:30,623
+So depending on the StorageFile we can get at special      
+
+255
+00:17:32,824 --> 00:17:37,824
+properties, special metadata attributes of the file      
+
+256
+00:17:38,050 --> 00:17:40,513
+depending on the type of file it is, now we know that      
+
+257
+00:17:40,514 --> 00:17:42,625
+we're working with music files so that's why we're going to      
+
+258
+00:17:42,626 --> 00:17:47,626
+call this GetMusicPropertiesAsync() and it doesn't look      
+
+259
+00:17:48,097 --> 00:17:50,817
+like we need to give it anything but what we get back      
+
+260
+00:17:50,818 --> 00:17:55,818
+from this is something called MusicProperties so let's      
+
+261
+00:18:00,460 --> 00:18:05,460
+go MusicProperties randomSongMusicProperties =      
+
+262
+00:18:08,971 --> 00:18:11,711
+and this is awaitable so let's go ahead and add that      
+
+263
+00:18:11,712 --> 00:18:15,317
+equals await      
+
+264
+00:18:15,318 --> 00:18:19,305
+randomsong.Properties.GetMusicPropertiesAsync      
+
+265
+00:18:19,306 --> 00:18:23,464
+all right, now unfortunately we need to add that      
+
+266
+00:18:23,465 --> 00:18:27,935
+data type Windows.Storage.FileProperties, so far so good.      
+
+267
+00:18:27,936 --> 00:18:31,807
+And then I think we got an awaitable situation here so      
+
+268
+00:18:33,279 --> 00:18:37,555
+let's go async and then we need a task that promises      
+
+269
+00:18:37,556 --> 00:18:42,430
+to return a list of StorageFile when it's finished so you      
+
+270
+00:18:42,431 --> 00:18:46,260
+see how I just wrapped task of t around list of t where      
+
+271
+00:18:46,261 --> 00:18:50,260
+t is a StorageFile, okay, it's a tangled web but it all      
+
+272
+00:18:50,261 --> 00:18:53,641
+makes sense just let's continue on here.      
+
+273
+00:18:53,642 --> 00:18:55,197
+So now we have the MusicProperties for the random      
+
+274
+00:18:55,198 --> 00:19:00,051
+song we picked and we're going to forage our way through      
+
+275
+00:19:00,052 --> 00:19:04,808
+so for every song that we currently have in our      
+
+276
+00:19:04,809 --> 00:19:08,039
+randomSongs, these are the ones that we have already added      
+
+277
+00:19:08,040 --> 00:19:12,733
+to our collection that fit the bill, what we want to do      
+
+278
+00:19:12,734 --> 00:19:17,734
+is look at every existing song that we've added so far      
+
+279
+00:19:18,749 --> 00:19:23,749
+and compare the album name of the new random song      
+
+280
+00:19:25,032 --> 00:19:27,611
+to the ones that have already been added to the randomSongs      
+
+281
+00:19:27,612 --> 00:19:29,724
+collection, so:      
+
+282
+00:19:29,725 --> 00:19:34,725
+SongMusicProperties = song.Properties.GetMusicPropertiesAsync()      
+
+283
+00:19:45,453 --> 00:19:47,283
+and that's awaitable      
+
+284
+00:19:48,889 --> 00:19:53,229
+so now that we have that we're going to do the comparison so      
+
+285
+00:19:53,230 --> 00:19:58,230
+string is null or empty SongMusicProperties.album      
+
+286
+00:20:05,922 --> 00:20:09,003
+actually that's the wrong thing we should be checking,      
+
+287
+00:20:09,004 --> 00:20:12,746
+in this case, what I'm going to do is actually do random,      
+
+288
+00:20:12,747 --> 00:20:14,581
+that should be "random" not "ransom",      
+
+289
+00:20:14,582 --> 00:20:17,323
+muscle memory is killing me right now.      
+
+290
+00:20:17,324 --> 00:20:22,324
+All right, so if the album for the new song      
+
+291
+00:20:24,378 --> 00:20:27,003
+IsNullOrEmpty(), then we don't want      
+
+292
+00:20:27,004 --> 00:20:30,433
+it because that's going to mess up our whole plan      
+
+293
+00:20:33,126 --> 00:20:36,613
+or and this is the check we wanted to do      
+
+294
+00:20:36,614 --> 00:20:41,614
+if RandomSongMusicProperties.Album is equal to      
+
+295
+00:20:42,811 --> 00:20:47,811
+the SongMusicProperties.Album in either case      
+
+296
+00:20:48,710 --> 00:20:53,710
+we're going to flag this as a duplicate, as a duplicate      
+
+297
+00:20:54,618 --> 00:20:59,618
+and so here let me outside of that create      
+
+298
+00:20:59,824 --> 00:21:04,824
+a bool isDuplicate = false      
+
+299
+00:21:08,490 --> 00:21:11,686
+and so now if this is true, however,      
+
+300
+00:21:15,626 --> 00:21:20,559
+then we want isDuplicate equal to true,      
+
+301
+00:21:20,725 --> 00:21:22,211
+does that work?      
+
+302
+00:21:22,676 --> 00:21:26,184
+Yeah, and so then after we've looped through every      
+
+303
+00:21:26,185 --> 00:21:28,648
+song that we've determined that we've got a duplicate      
+
+304
+00:21:28,649 --> 00:21:33,649
+then if it's not duplicate then, and only then, will we      
+
+305
+00:21:34,803 --> 00:21:39,803
+add that random song to our list of random songs,      
+
+306
+00:21:40,648 --> 00:21:43,036
+phew, okay?      
+
+307
+00:21:43,037 --> 00:21:47,847
+And that should do it for that.      
+
+308
+00:21:47,848 --> 00:21:49,495
+Great.      
+
+309
+00:21:51,815 --> 00:21:56,224
+So let's call that pick random songs here,      
+
+310
+00:21:59,686 --> 00:22:03,845
+let's call pick random songs and we're passing in all songs,      
+
+311
+00:22:03,846 --> 00:22:08,846
+easy enough, and what we'll get out this are our random      
+
+312
+00:22:08,902 --> 00:22:13,902
+songs and that's awaitable so let's do await      
+
+313
+00:22:16,570 --> 00:22:21,050
+randomSongs, okay, great, so far, so good and we know how      
+
+314
+00:22:21,051 --> 00:22:23,631
+to pluck off the meta data it's just a matter of where      
+
+315
+00:22:23,632 --> 00:22:28,632
+are we going to put that and this is where some of      
+
+316
+00:22:28,858 --> 00:22:31,128
+the game logic is going to come in, I know I'm going      
+
+317
+00:22:31,129 --> 00:22:34,841
+to want to store off some additional information      
+
+318
+00:22:34,842 --> 00:22:39,215
+and I can't simply or easily add additional properties,      
+
+319
+00:22:41,497 --> 00:22:46,497
+like for example, I want to see if the      
+
+320
+00:22:48,127 --> 00:22:51,699
+given song has already      
+
+321
+00:22:51,700 --> 00:22:55,165
+been clicked on by the user or if it's currently      
+
+322
+00:22:55,166 --> 00:22:57,906
+the selected song so I know what I'm going to want      
+
+323
+00:22:57,907 --> 00:23:02,907
+to do is actually convert the random songs or actually      
+
+324
+00:23:03,389 --> 00:23:08,389
+the StorageFiles into a new class of a different type,      
+
+325
+00:23:09,469 --> 00:23:14,469
+so I'm actually going to add a new folder called "Models"      
+
+326
+00:23:15,975 --> 00:23:18,934
+and I'm going to add a new class to that so Project      
+
+327
+00:23:18,935 --> 00:23:22,443
+Add Class and we're going to call class "song" and it's going      
+
+328
+00:23:22,444 --> 00:23:24,747
+to be a simple POCO and it's only going to have just      
+
+329
+00:23:24,748 --> 00:23:28,278
+the bits of information that we really need for our app      
+
+330
+00:23:29,398 --> 00:23:32,490
+so I need the ID,      
+
+331
+00:23:33,681 --> 00:23:37,952
+I need the title of the song,      
+
+332
+00:23:38,554 --> 00:23:40,501
+I need the artist,      
+
+333
+00:23:42,319 --> 00:23:45,535
+I need the album name      
+
+334
+00:23:46,704 --> 00:23:50,139
+and I need, I'm going to go ahead      
+
+335
+00:23:50,140 --> 00:23:53,253
+and hold onto the StorageFile itself      
+
+336
+00:23:53,254 --> 00:23:58,254
+and so this'll be song file and I need      
+
+337
+00:23:59,019 --> 00:24:03,369
+some other properties that I know for example whether      
+
+338
+00:24:03,370 --> 00:24:05,694
+it's already been selected by the user and there might      
+
+339
+00:24:05,695 --> 00:24:07,988
+be one or two others that we're going to come across,      
+
+340
+00:24:07,989 --> 00:24:11,700
+let me make sure to add Windows.Storage using      
+
+341
+00:24:11,701 --> 00:24:14,559
+statement here, okay, so we're going to come back to that      
+
+342
+00:24:14,560 --> 00:24:16,692
+in just a moment but what I want to do now is pluck      
+
+343
+00:24:16,693 --> 00:24:21,693
+off all the metadata from random, from each of      
+
+344
+00:24:21,715 --> 00:24:24,339
+the songs, the randomSongs, create a new instance      
+
+345
+00:24:24,340 --> 00:24:27,837
+of the Song object that I have here and add that to      
+
+346
+00:24:27,838 --> 00:24:32,391
+a collection as well and so I'm going to create      
+
+347
+00:24:32,392 --> 00:24:36,733
+an ObservableCollection called songs here at this      
+
+348
+00:24:36,734 --> 00:24:41,734
+level so private ObservableCollection of song called      
+
+349
+00:24:44,904 --> 00:24:49,904
+songs, and song is going to be in the models      
+
+350
+00:24:52,982 --> 00:24:56,971
+namespace so I have to add a using statement for the      
+
+351
+00:24:56,972 --> 00:24:59,925
+models namespace here for our project.      
+
+352
+00:24:59,926 --> 00:25:04,223
+Okay, and so what I'm going to do is go ahead and      
+
+353
+00:25:04,224 --> 00:25:08,330
+do that conversion I guess you could call it to grab      
+
+354
+00:25:08,331 --> 00:25:10,119
+off that data      
+
+355
+00:25:12,888 --> 00:25:15,484
+so I'm going to create another      
+
+356
+00:25:15,927 --> 00:25:19,283
+private helper method      
+
+357
+00:25:25,763 --> 00:25:30,763
+and we will pass in a list of StorageFile      
+
+358
+00:25:36,497 --> 00:25:38,303
+called files.      
+
+359
+00:25:43,280 --> 00:25:47,450
+All right and so let's do this, let's go      
+
+360
+00:25:52,620 --> 00:25:55,352
+so these are all the random files, so, like the 10 files that      
+
+361
+00:25:55,353 --> 00:25:58,617
+we plucked off, so I'm going to go for each through      
+
+362
+00:25:58,618 --> 00:26:03,375
+each file in files      
+
+363
+00:26:04,704 --> 00:26:06,838
+and I want to grab off the MusicProperties      
+
+364
+00:26:06,839 --> 00:26:09,342
+for each one of those, so MusicProperties      
+
+365
+00:26:09,343 --> 00:26:09,857
+call it:      
+
+366
+00:26:09,858 --> 00:26:14,858
+songproperties = File.Properties.GetMusicPropertiesAsync      
+
+367
+00:26:17,986 --> 00:26:22,859
+and we know that's awaitable, all right, good, good.      
+
+368
+00:26:22,860 --> 00:26:27,860
+Now one of the things that I want to do is grab off      
+
+369
+00:26:28,663 --> 00:26:33,663
+the album cover so let's focus on that specificially      
+
+370
+00:26:34,927 --> 00:26:39,927
+here, what I'm going to need, I think, is something      
+
+371
+00:26:40,355 --> 00:26:45,355
+called, yeah, I'm going to need a bitmap      
+
+372
+00:26:55,939 --> 00:26:59,542
+BitmpapImage that I'm calling AlbumCovers      
+
+373
+00:26:59,543 --> 00:27:04,060
+so I can save it off, great, as a property.      
+
+374
+00:27:04,600 --> 00:27:09,148
+So, let's grab that first.      
+
+375
+00:27:10,893 --> 00:27:13,323
+So I want a thumbnail      
+
+376
+00:27:17,158 --> 00:27:18,481
+and so I'm going to go      
+
+377
+00:27:18,482 --> 00:27:23,482
+File.GetThumbnailAsync()      
+
+378
+00:27:26,256 --> 00:27:30,330
+and I have to select a thumbnail mode      
+
+379
+00:27:31,521 --> 00:27:33,204
+and this well select it based      
+
+380
+00:27:33,205 --> 00:27:36,554
+on the purpose of the thumbnail and in this      
+
+381
+00:27:36,555 --> 00:27:41,555
+case it's for the music view and then the requested      
+
+382
+00:27:42,240 --> 00:27:47,240
+size in here I guess I'll select 200 as the selected,      
+
+383
+00:27:48,608 --> 00:27:53,608
+as the preferred size, I think I'm actually only using 75,      
+
+384
+00:27:55,551 --> 00:28:00,541
+so I may change that but we also can set thumbnail      
+
+385
+00:28:00,542 --> 00:28:04,489
+options and I'm going to say use current scale, don't      
+
+386
+00:28:04,490 --> 00:28:08,414
+resize the thumbnail, just use the current scale that      
+
+387
+00:28:08,415 --> 00:28:12,941
+we have there, okay, all right, now why are you not happy?      
+
+388
+00:28:13,407 --> 00:28:16,306
+Let's see, oh yeah, here we go.      
+
+389
+00:28:16,307 --> 00:28:21,307
+async and this would be a task, great.      
+
+390
+00:28:23,764 --> 00:28:27,453
+All right, what this is going to return to me is      
+
+391
+00:28:27,454 --> 00:28:29,960
+a StorageItemThumbnail so instead of the var,      
+
+392
+00:28:29,961 --> 00:28:31,496
+I'll just go ahead and type that in, it's:      
+
+393
+00:28:31,497 --> 00:28:34,888
+StorageItemThumbnail and this is just a fancy      
+
+394
+00:28:34,889 --> 00:28:39,889
+name for an image that is associated with the file      
+
+395
+00:28:40,200 --> 00:28:45,200
+and I think this is awaitable as well, go ahead and      
+
+396
+00:28:45,896 --> 00:28:49,260
+put that and make that awaitable, great.      
+
+397
+00:28:52,743 --> 00:28:57,743
+Great, okay, so let's go var song equals new Song object      
+
+398
+00:28:59,810 --> 00:29:02,134
+and now we want to start populating things like      
+
+399
+00:29:02,135 --> 00:29:04,615
+the ID equals      
+
+400
+00:29:07,106 --> 00:29:11,859
+we need to grab an ID so let's just create      
+
+401
+00:29:12,707 --> 00:29:17,707
+int id equals zero and then we'll just increment that here      
+
+402
+00:29:17,998 --> 00:29:22,966
+at the bottom of every iteration like that so the song ID      
+
+403
+00:29:22,967 --> 00:29:27,967
+will be just that, ID, Song.Title equals SongProperties.Title      
+
+404
+00:29:31,864 --> 00:29:36,864
+song.Artist = SongProperties.Artist      
+
+405
+00:29:39,501 --> 00:29:44,501
+song.Album = SongProperties.      
+
+406
+00:29:45,282 --> 00:29:47,883
+And you can see here all the information that I can      
+
+407
+00:29:47,884 --> 00:29:52,032
+get at about a song and this is just all the type of meta      
+
+408
+00:29:52,033 --> 00:29:56,119
+data that we can get to usually from an mp3 file.      
+
+409
+00:29:56,120 --> 00:29:59,954
+I'm just going to pluck out the ones I want,      
+
+410
+00:30:00,696 --> 00:30:03,201
+.AlbumCover ... but hopefully you get the idea here      
+
+411
+00:30:03,202 --> 00:30:08,202
+and that's going to be a type BitmapImage so      
+
+412
+00:30:13,890 --> 00:30:16,832
+how am I going to do this?      
+
+413
+00:30:16,833 --> 00:30:20,765
+So let's go new Bitmap--      
+
+414
+00:30:22,702 --> 00:30:26,274
+BitmapImage, we'll add      
+
+415
+00:30:26,275 --> 00:30:30,498
+the Windows.UI.XAML.Media.Imaging and we're going to      
+
+416
+00:30:30,499 --> 00:30:35,499
+pass in URISource which will be the current thumb      
+
+417
+00:30:38,412 --> 00:30:43,143
+hopefully, no, doesn't like that, hmm.      
+
+418
+00:30:44,355 --> 00:30:47,116
+Oh, I know what I need to do here, ah bummer,      
+
+419
+00:30:47,117 --> 00:30:49,633
+okay, here, this is what we'll do:      
+
+420
+00:30:49,634 --> 00:30:54,332
+var album cover equals new BitmapImage      
+
+421
+00:30:56,675 --> 00:30:58,924
+bitmapImage.      
+
+422
+00:30:58,925 --> 00:31:00,694
+Okay, so far so good, and then you've got to      
+
+423
+00:31:00,695 --> 00:31:04,385
+do it like this, AlbumCover.SetSource then you      
+
+424
+00:31:04,386 --> 00:31:08,908
+can get it the CurrentThumbnail like that and      
+
+425
+00:31:08,909 --> 00:31:13,109
+then I can just say hey, albumcover equals albumcover,      
+
+426
+00:31:13,110 --> 00:31:17,270
+like that, okay, kind of crazy but then it works, and      
+
+427
+00:31:17,271 --> 00:31:22,038
+then finally for now at any rate, I'm going to add the      
+
+428
+00:31:22,039 --> 00:31:27,039
+SongFile as just the file itself that we're iterating      
+
+429
+00:31:28,470 --> 00:31:33,470
+through and then since this is a collection that has      
+
+430
+00:31:35,510 --> 00:31:38,090
+visibility inside this class, I'm just going to go straight      
+
+431
+00:31:38,091 --> 00:31:41,823
+to instead of passing it in so Songs.Add and then      
+
+432
+00:31:41,824 --> 00:31:45,082
+the song itself, okay.      
+
+433
+00:31:45,760 --> 00:31:47,753
+All right, so let's see how if this all works.      
+
+434
+00:31:47,754 --> 00:31:52,633
+Let's actually then call this PopulateSongLists      
+
+435
+00:31:54,143 --> 00:31:59,143
+PopulateSongList passing in randomSongs      
+
+436
+00:32:00,916 --> 00:32:05,390
+and this is awaitable, okay, great.      
+
+437
+00:32:06,740 --> 00:32:09,885
+All right, so what I'm going to do is actually set my      
+
+438
+00:32:09,886 --> 00:32:13,298
+breakpoint right there and let's see if I can build      
+
+439
+00:32:13,299 --> 00:32:16,296
+it first of all, we've been writing a lot of code.      
+
+440
+00:32:16,297 --> 00:32:20,168
+Typically what I would try to do here is break      
+
+441
+00:32:20,169 --> 00:32:22,397
+this down into smaller parts but I've already      
+
+442
+00:32:22,398 --> 00:32:23,954
+been through this once and I already know      
+
+443
+00:32:23,955 --> 00:32:28,017
+the process so I just wanted to rip through and      
+
+444
+00:32:28,018 --> 00:32:30,386
+talk through it and if I ran into problems then      
+
+445
+00:32:30,387 --> 00:32:33,991
+I would stop down and fix it, all right let's click      
+
+446
+00:32:33,992 --> 00:32:38,946
+the button, uh-oh, all right we hit a problem,      
+
+447
+00:32:40,626 --> 00:32:43,419
+let's take a look at the call stack to kind of figure out      
+
+448
+00:32:43,420 --> 00:32:47,484
+what the last thing that happened here, hmm, that's      
+
+449
+00:32:47,485 --> 00:32:49,803
+not very helpful.      
+
+450
+00:32:51,868 --> 00:32:56,374
+All right, so here's what we're going to have to do,      
+
+451
+00:32:57,745 --> 00:33:02,475
+stop, we're going to set a breakpoint      
+
+452
+00:33:08,038 --> 00:33:11,744
+here and start stepping our way through this thing.      
+
+453
+00:33:18,182 --> 00:33:21,872
+All right, so here we go, one big debugging session.      
+
+454
+00:33:21,873 --> 00:33:24,357
+Not really what I wanted to get into, I was hoping      
+
+455
+00:33:24,358 --> 00:33:27,855
+it would work on the first try but sometimes,      
+
+456
+00:33:27,856 --> 00:33:31,855
+whoa, didn't like something right off the bat,      
+
+457
+00:33:31,856 --> 00:33:36,856
+oh, ha-ha, okay, here we go, can you figure out why      
+
+458
+00:33:37,659 --> 00:33:41,258
+it may have crashed on this very first line of code?      
+
+459
+00:33:42,810 --> 00:33:46,756
+Well, there wasn't really any logic, we really didn't      
+
+460
+00:33:46,757 --> 00:33:51,151
+do much, could it be that we didn't declare a capability?      
+
+461
+00:33:51,152 --> 00:33:53,844
+I think that's what it is.      
+
+462
+00:33:54,265 --> 00:33:57,092
+So let's go to the package.appxmanifest and see      
+
+463
+00:33:57,093 --> 00:34:02,093
+if there is a capability      
+
+464
+00:34:03,435 --> 00:34:06,037
+for getting at the Music Library      
+
+465
+00:34:06,038 --> 00:34:09,376
+and there sure is, look at that.      
+
+466
+00:34:09,377 --> 00:34:12,650
+That's how one little mistake can ruin everything.      
+
+467
+00:34:12,651 --> 00:34:14,368
+Okay, hopefully that works, and we can get rid      
+
+468
+00:34:14,369 --> 00:34:19,369
+of that now, it builds, great, let's try it now.      
+
+469
+00:34:26,155 --> 00:34:28,340
+All right, we hit another issue here.      
+
+470
+00:34:28,341 --> 00:34:31,678
+I'll tell you what, let me, let's stop for now      
+
+471
+00:34:31,679 --> 00:34:34,772
+and let me dive in to see exactly, oh, it looks      
+
+472
+00:34:34,773 --> 00:34:37,257
+like an object reference not part of an object,      
+
+473
+00:34:37,258 --> 00:34:39,156
+probably I just forgot to new up something,      
+
+474
+00:34:39,157 --> 00:34:40,755
+so let me figure this out and we'll pick it back      
+
+475
+00:34:40,756 --> 00:34:42,985
+up in the next video, because this one's getting long.      
+
+476
+00:34:42,986 --> 00:34:43,934
+All right. We'll see you there.      
+
+477
+00:34:43,935 --> 00:34:45,402
+Thanks.      
+

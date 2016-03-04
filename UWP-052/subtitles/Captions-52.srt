@@ -1,0 +1,1000 @@
+1
+00:00:05,676 --> 00:00:07,296
+<v ->Okay, so now it's time to have fun.</v>
+
+2
+00:00:07,297 --> 00:00:09,078
+We're going to actually wire up the
+
+3
+00:00:09,079 --> 00:00:10,666
+MediaElement to play the Sounds.
+
+4
+00:00:10,667 --> 00:00:14,197
+I'll also do a little clean up and get the filtering to work
+
+5
+00:00:14,198 --> 00:00:16,405
+by selecting one of the categories.
+
+6
+00:00:16,406 --> 00:00:19,146
+Only show those categories in the GridView.
+
+7
+00:00:19,147 --> 00:00:20,810
+So let's go ahead and get started here.
+
+8
+00:00:21,741 --> 00:00:24,032
+And I'm going to open up the MainPage.xaml
+
+9
+00:00:25,183 --> 00:00:28,862
+and in here what I want to do is handle the,
+
+10
+00:00:28,863 --> 00:00:32,119
+I think this is it, the ListView_ItemClick Event.
+
+11
+00:00:32,120 --> 00:00:34,035
+Let me make sure that's the correct EventHandler.
+
+12
+00:00:34,036 --> 00:00:36,734
+So basically when somebody selects
+
+13
+00:00:36,735 --> 00:00:41,504
+one of the items in this SoundGridView
+
+14
+00:00:42,455 --> 00:00:45,241
+that we created, we want to play the sound
+
+15
+00:00:45,242 --> 00:00:48,121
+that's associated with the image that was clicked on.
+
+16
+00:00:48,122 --> 00:00:52,899
+So, actually, this is the EventHandler that we want.
+
+17
+00:00:52,900 --> 00:00:54,339
+SoundGridView_ItemClick.
+
+18
+00:00:54,340 --> 00:00:56,754
+Let me go ahead and,
+
+19
+00:00:58,525 --> 00:01:00,280
+I think we don't need this one anymore.
+
+20
+00:01:00,281 --> 00:01:02,349
+If we do, we'll add it back.
+
+21
+00:01:02,350 --> 00:01:05,133
+Alright, and so here it's pretty easy stuff.
+
+22
+00:01:05,134 --> 00:01:09,357
+All we need to do is grab the Item that was clicked on
+
+23
+00:01:09,358 --> 00:01:11,415
+and so that'll be given to us here
+
+24
+00:01:11,416 --> 00:01:14,519
+in this ItemClickEventArgs e.
+
+25
+00:01:14,520 --> 00:01:18,252
+And we can just choose the clicked Item and then
+
+26
+00:01:18,253 --> 00:01:21,900
+cast that to what it represents
+
+27
+00:01:21,901 --> 00:01:24,268
+which is a sound in our application.
+
+28
+00:01:24,269 --> 00:01:26,170
+So I can do something like this:
+
+29
+00:01:26,171 --> 00:01:30,230
+var sound equals ClickedItem, cast it to Sound,
+
+30
+00:01:30,231 --> 00:01:33,208
+and then we'll set, I think I called it
+
+31
+00:01:33,209 --> 00:01:37,270
+MyMediaElement.Source, and we'll just set it to
+
+32
+00:01:38,941 --> 00:01:42,774
+that Sounds audio file property.
+
+33
+00:01:42,775 --> 00:01:46,464
+Now, to do this, we actually need to give it a URI,
+
+34
+00:01:46,465 --> 00:01:48,533
+if you hover over, you can see the Source property
+
+35
+00:01:48,534 --> 00:01:51,893
+accepts a URI, which is a Uniform Resource Indicator,
+
+36
+00:01:51,894 --> 00:01:55,541
+and that's just going to be a location for the file.
+
+37
+00:01:55,542 --> 00:01:57,040
+Now, what we need to do, there's a couple
+
+38
+00:01:57,041 --> 00:01:58,566
+different ways to go about this.
+
+39
+00:01:59,307 --> 00:02:03,349
+I think the easiest way is just to specify the base URI.
+
+40
+00:02:03,350 --> 00:02:06,111
+That will give us, like, the root of the project,
+
+41
+00:02:06,112 --> 00:02:09,450
+and then we can give it the actual audio file
+
+42
+00:02:09,451 --> 00:02:14,450
+that will contain that /Assets/Audio/Category/Sound.
+
+43
+00:02:14,634 --> 00:02:17,367
+So we'll just do this.BaseUri,
+
+44
+00:02:18,991 --> 00:02:23,532
+and then we'll use the sound.AudioFile
+
+45
+00:02:32,469 --> 00:02:34,751
+and, with any luck, this will actually work,
+
+46
+00:02:34,752 --> 00:02:37,293
+so let's see what we've got so far.
+
+47
+00:02:50,544 --> 00:02:53,180
+Alright, it's time for the moment of truth.
+
+48
+00:02:53,181 --> 00:02:55,063
+(laugh)
+
+49
+00:02:55,064 --> 00:02:56,422
+(siren)
+
+50
+00:02:56,423 --> 00:02:57,772
+(cow moos)
+
+51
+00:02:57,773 --> 00:02:59,289
+OK, so it was that easy.
+
+52
+00:03:00,183 --> 00:03:02,956
+That's all we needed to do to wire everything up, great.
+
+53
+00:03:02,957 --> 00:03:04,762
+Now, when we ran the application,
+
+54
+00:03:04,763 --> 00:03:06,964
+there were some other issues with layout,
+
+55
+00:03:06,965 --> 00:03:08,408
+with the hamburger navigation,
+
+56
+00:03:08,409 --> 00:03:09,864
+let's go ahead and fix some of those things,
+
+57
+00:03:09,865 --> 00:03:11,796
+because that's really what's holding us back now.
+
+58
+00:03:11,797 --> 00:03:13,865
+Let me take note of a few things,
+
+59
+00:03:13,866 --> 00:03:15,697
+rerunning the application here,
+
+60
+00:03:16,468 --> 00:03:18,785
+and we'll just address them little by little.
+
+61
+00:03:19,316 --> 00:03:21,224
+Alright, so you can see here that we've got some
+
+62
+00:03:21,225 --> 00:03:25,630
+issues with each of the ListView Items.
+
+63
+00:03:28,221 --> 00:03:31,011
+Well, the text needs to be moved down a little bit.
+
+64
+00:03:32,152 --> 00:03:34,160
+If we can move things to the left a bit,
+
+65
+00:03:34,161 --> 00:03:36,443
+that would be helpful, because we wanted to line up
+
+66
+00:03:36,444 --> 00:03:38,038
+with the hamburger icon.
+
+67
+00:03:38,039 --> 00:03:40,488
+So, generally, some spacing issues there.
+
+68
+00:03:42,299 --> 00:03:43,817
+As far as these items, they need to be
+
+69
+00:03:43,818 --> 00:03:46,152
+pushed off from the left hand side a bit,
+
+70
+00:03:46,153 --> 00:03:48,018
+because it's just it's just kind of running together here,
+
+71
+00:03:48,849 --> 00:03:52,399
+in that upper left-hand corner area.
+
+72
+00:03:52,400 --> 00:03:56,131
+So let's work on those two things right now.
+
+73
+00:03:56,132 --> 00:03:58,012
+Let's go over to the the MainPage.xaml.
+
+74
+00:03:59,663 --> 00:04:01,416
+Now, as far as the MediaElement is concerned,
+
+75
+00:04:01,417 --> 00:04:04,200
+we're going to use it at length for another project,
+
+76
+00:04:04,201 --> 00:04:08,691
+and we're going to learn how to manipulate the sounds,
+
+77
+00:04:08,692 --> 00:04:11,495
+and how much of the sound to play,
+
+78
+00:04:11,496 --> 00:04:13,945
+how do we manipulate the volume so that it
+
+79
+00:04:13,946 --> 00:04:16,924
+nicely fades out, instead of abruptly ends.
+
+80
+00:04:16,925 --> 00:04:18,812
+When we get to another project
+
+81
+00:04:18,813 --> 00:04:19,944
+that we're going to work on together,
+
+82
+00:04:19,945 --> 00:04:22,961
+so this is really our introduction to the MediaElement.
+
+83
+00:04:22,962 --> 00:04:24,497
+It can also play videos,
+
+84
+00:04:24,498 --> 00:04:26,842
+which I don't think we're going to demonstrate
+
+85
+00:04:26,843 --> 00:04:28,124
+in this series, but if you take a look
+
+86
+00:04:28,125 --> 00:04:30,182
+at the previous series that I created
+
+87
+00:04:30,183 --> 00:04:35,182
+for 8.1, so Windows Phone 8.1 Development
+
+88
+00:04:35,523 --> 00:04:38,698
+for Absolute Beginners, I demo how to display
+
+89
+00:04:38,699 --> 00:04:41,893
+video, using the MediaElement.
+
+90
+00:04:43,184 --> 00:04:46,127
+Ok, so let's go up here to ListView,
+
+91
+00:04:46,128 --> 00:04:49,913
+and what we want to do first of all, is,
+
+92
+00:04:49,914 --> 00:04:53,489
+I'm going to separate
+
+93
+00:04:54,855 --> 00:04:56,981
+some of these on other lines.
+
+94
+00:05:09,382 --> 00:05:10,951
+One of the first things I want to try to do is
+
+95
+00:05:10,952 --> 00:05:13,116
+set a negative Margin, because I really want
+
+96
+00:05:13,117 --> 00:05:15,568
+that image to move to the left quite a bit.
+
+97
+00:05:16,339 --> 00:05:18,358
+And we've not talked about negative Margins.
+
+98
+00:05:18,359 --> 00:05:20,907
+Let's just try, like, -15,
+
+99
+00:05:22,578 --> 00:05:27,163
+and maybe then 10 on the top, 0
+
+100
+00:05:27,164 --> 00:05:29,743
+on the right and 10 on the bottom.
+
+101
+00:05:30,644 --> 00:05:32,714
+That should make things a little more interesting there.
+
+102
+00:05:32,715 --> 00:05:35,103
+And as far as the TextBlock, I think we need to set
+
+103
+00:05:35,104 --> 00:05:40,103
+the VerticalAlignment="Center", that should
+
+104
+00:05:40,469 --> 00:05:42,068
+move things down a little bit.
+
+105
+00:05:42,069 --> 00:05:44,364
+Let's see what kind of impact that has.
+
+106
+00:05:54,595 --> 00:05:57,361
+Alright, that definitely moved things over to the left,
+
+107
+00:05:57,362 --> 00:06:00,418
+which is great, and it looks like we've centered the text.
+
+108
+00:06:00,419 --> 00:06:02,122
+That's good too. And the last thing,
+
+109
+00:06:04,163 --> 00:06:06,812
+It's a hard call, right? I think what we ultimately need
+
+110
+00:06:06,813 --> 00:06:09,344
+are these icons to be a tiny bit smaller,
+
+111
+00:06:10,615 --> 00:06:13,009
+and maybe that would fix some of the issues there.
+
+112
+00:06:13,010 --> 00:06:16,198
+So let's back off on this to a -10, and then
+
+113
+00:06:16,199 --> 00:06:17,664
+set the Height and the Width of
+
+114
+00:06:17,665 --> 00:06:19,685
+these just a tiny bit smaller there,
+
+115
+00:06:20,686 --> 00:06:23,221
+and maybe even create a little more
+
+116
+00:06:24,172 --> 00:06:29,171
+Height and more Margin between each of the items.
+
+117
+00:06:30,556 --> 00:06:32,199
+The other thing that I want to do now is
+
+118
+00:06:32,200 --> 00:06:35,728
+come over to this, in the Content area,
+
+119
+00:06:35,729 --> 00:06:39,514
+I want to, on that whole item, that whole Content area,
+
+120
+00:06:39,515 --> 00:06:41,253
+I want to push things out a little bit.
+
+121
+00:06:41,254 --> 00:06:44,207
+So I'm going to set the Margin on the left 20,
+
+122
+00:06:44,208 --> 00:06:46,479
+and then I'll just go zeros for the rest of this
+
+123
+00:06:46,480 --> 00:06:48,920
+until I get a chance to look at it a little bit.
+
+124
+00:06:49,931 --> 00:06:50,703
+See what we have there.
+
+125
+00:06:56,654 --> 00:06:59,207
+So you can see that this is a lot of tinkering,
+
+126
+00:06:59,208 --> 00:07:01,713
+just seeing 'Does that look right? What if we do this?'
+
+127
+00:07:03,204 --> 00:07:06,044
+I probably should even make those icons
+
+128
+00:07:06,045 --> 00:07:08,502
+a bit smaller, they're still pretty large.
+
+129
+00:07:10,463 --> 00:07:12,881
+So, let me do that.
+
+130
+00:07:12,882 --> 00:07:14,355
+But I like the spacing here.
+
+131
+00:07:14,356 --> 00:07:16,265
+We might even come down from the top a little bit.
+
+132
+00:07:16,266 --> 00:07:18,029
+So let's make those two adjustments.
+
+133
+00:07:18,430 --> 00:07:21,268
+Let's make the icons a tiny bit smaller,
+
+134
+00:07:21,269 --> 00:07:26,268
+so let's go, 35, and 35 here.
+
+135
+00:07:26,455 --> 00:07:28,615
+I'm going to reduce that back down to 10.
+
+136
+00:07:28,616 --> 00:07:29,862
+It was just a little bit too much
+
+137
+00:07:30,563 --> 00:07:32,160
+Margin on the top and bottom.
+
+138
+00:07:32,161 --> 00:07:35,954
+And the other thing that I wanted to do was,
+
+139
+00:07:35,955 --> 00:07:37,032
+here I'm going to set...
+
+140
+00:07:40,030 --> 00:07:41,556
+Let's try 20 from the top.
+
+141
+00:07:41,557 --> 00:07:44,892
+That should push that Grid down 20 from the top,
+
+142
+00:07:44,893 --> 00:07:46,813
+giving us a little more space there.
+
+143
+00:07:52,114 --> 00:07:53,905
+Alright, I feel a little better about that.
+
+144
+00:07:53,906 --> 00:07:56,629
+That might be a bit much, but, overall,
+
+145
+00:07:56,630 --> 00:07:58,632
+I like where we're going with this.
+
+146
+00:07:58,633 --> 00:08:02,249
+The next thing I want to do is get the menu
+
+147
+00:08:02,250 --> 00:08:04,829
+actually working, so it actually filters.
+
+148
+00:08:05,320 --> 00:08:08,101
+So let's work on that part right there.
+
+149
+00:08:08,552 --> 00:08:11,548
+And the ListView that we have
+
+150
+00:08:11,549 --> 00:08:13,930
+we're going to accept input from the
+
+151
+00:08:13,931 --> 00:08:18,044
+MenuItemsListView_ItemClick EventHandler.
+
+152
+00:08:27,495 --> 00:08:30,321
+Here again, what I want to do is grab that Event Item
+
+153
+00:08:30,322 --> 00:08:34,992
+that was clicked on from the ItemClickEventArgs e,
+
+154
+00:08:34,993 --> 00:08:38,821
+so, once again, I'm going grab the e.ClickedItem.
+
+155
+00:08:38,822 --> 00:08:41,318
+I'm going to cast it, this time on a menuItem,
+
+156
+00:08:41,319 --> 00:08:43,211
+remember that was the class that represent
+
+157
+00:08:43,212 --> 00:08:44,741
+each of the items that we're Binding to.
+
+158
+00:08:44,742 --> 00:08:48,760
+Then I'll do var menuItem equals
+
+159
+00:08:48,761 --> 00:08:50,592
+there we go. Great.
+
+160
+00:08:50,593 --> 00:08:52,821
+Now what we want to do here is
+
+161
+00:08:52,822 --> 00:08:56,564
+"Filter on", by category.
+
+162
+00:08:57,375 --> 00:08:58,057
+Great.
+
+163
+00:08:58,628 --> 00:09:00,589
+So, we'll set the Category
+
+164
+00:09:01,440 --> 00:09:04,349
+I think we have a CategoryTextBox.
+
+165
+00:09:04,350 --> 00:09:06,288
+Nah, let's see what we call that.
+
+166
+00:09:11,049 --> 00:09:13,806
+Okay, CategoryTextBlock, let's grab that.
+
+167
+00:09:16,090 --> 00:09:21,089
+CategoryTextBlock.Text = menuItem.Category,
+
+168
+00:09:21,708 --> 00:09:23,504
+and we'll just do a ToString on that.
+
+169
+00:09:23,505 --> 00:09:25,246
+That should give us what we need there.
+
+170
+00:09:26,820 --> 00:09:31,148
+In this point we want to change our Sounds Collection,
+
+171
+00:09:31,534 --> 00:09:36,533
+remember that that is a ObservableCollection<Sound>,
+
+172
+00:09:36,899 --> 00:09:39,038
+and so what we're goign to want to to is
+
+173
+00:09:39,039 --> 00:09:41,171
+filter that, so we're going to call
+
+174
+00:09:41,172 --> 00:09:44,884
+the SoundManager.GetSoundsByCategory
+
+175
+00:09:44,885 --> 00:09:48,211
+this time, passing in our ObservableCollection<Sound>,
+
+176
+00:09:48,212 --> 00:09:49,918
+and then the Sound Categories.
+
+177
+00:09:49,919 --> 00:09:52,180
+So, menuItem.Category.
+
+178
+00:09:54,011 --> 00:09:56,512
+Alright, so that should give us what we need.
+
+179
+00:09:56,513 --> 00:09:58,091
+What's wrong here?
+
+180
+00:09:59,352 --> 00:10:02,533
+Oh, I see. We can't set it equal.
+
+181
+00:10:02,534 --> 00:10:07,038
+Sorry, I forgot how I designed that method.
+
+182
+00:10:07,039 --> 00:10:11,333
+And, I'm not even sure we need to do anything else.
+
+183
+00:10:11,334 --> 00:10:13,808
+I think that's the only two things we need to do,
+
+184
+00:10:13,809 --> 00:10:15,633
+so let's go ahead and try that.
+
+185
+00:10:24,303 --> 00:10:26,112
+So, lets say I only want Animals,
+
+186
+00:10:26,113 --> 00:10:29,269
+I only want Taunts, I only want Warnings.
+
+187
+00:10:30,160 --> 00:10:31,733
+I only want Cartoons, awesome.
+
+188
+00:10:31,734 --> 00:10:32,999
+OK, that works.
+
+189
+00:10:34,414 --> 00:10:37,276
+Now we want to get the BackButton to work.
+
+190
+00:10:40,821 --> 00:10:42,857
+Really, the BackButton should only be displayed
+
+191
+00:10:42,858 --> 00:10:45,518
+whenever we click on one of the Items.
+
+192
+00:10:48,178 --> 00:10:52,958
+so, really, at this point, we should say
+
+193
+00:10:52,959 --> 00:10:56,659
+"Hey, BackButton, go ahead and set your visibility
+
+194
+00:10:56,660 --> 00:10:59,816
+"equal to Visibility.Visible,
+
+195
+00:11:01,087 --> 00:11:04,702
+"otherwise, it should be set to
+
+196
+00:11:08,873 --> 00:11:09,873
+"Collapsed."
+
+197
+00:11:12,347 --> 00:11:14,353
+Alright, when we see all of the Items.
+
+198
+00:11:17,094 --> 00:11:19,451
+Alright, so let's try that, and let's see,
+
+199
+00:11:19,452 --> 00:11:20,838
+and I may have to adjust that.
+
+200
+00:11:20,839 --> 00:11:23,223
+I've kind of forgotten what I need to do there.
+
+201
+00:11:24,243 --> 00:11:27,186
+But, whenever we hit the BackButton,
+
+202
+00:11:27,187 --> 00:11:29,639
+what we want to do is actually go back to that.
+
+203
+00:11:31,430 --> 00:11:32,403
+to All Sounds.
+
+204
+00:11:33,680 --> 00:11:35,572
+So here we'll go
+
+205
+00:11:36,639 --> 00:11:41,091
+SoundManager.GetAllSounds,
+
+206
+00:11:41,092 --> 00:11:43,522
+and we'll just pass in our Sounds,
+
+207
+00:11:45,403 --> 00:11:47,441
+and we're going to tell that MenuItemsListView
+
+208
+00:11:47,442 --> 00:11:51,575
+MenuItemsListView.SelectedItem = null
+
+209
+00:11:51,576 --> 00:11:54,813
+MenuItemsListView.SelectedItem = null,
+
+210
+00:11:54,814 --> 00:11:56,752
+so nothing will be selected then.
+
+211
+00:11:56,753 --> 00:11:59,031
+It'll just be back to its original state.
+
+212
+00:11:59,032 --> 00:12:00,992
+And that's all we should have to do.
+
+213
+00:12:00,993 --> 00:12:02,992
+So let's see if that actually works.
+
+214
+00:12:13,092 --> 00:12:16,710
+OK, so all sounds initially, then we're going to say
+
+215
+00:12:16,711 --> 00:12:18,405
+"Hey, just give me the taunts."
+
+216
+00:12:19,560 --> 00:12:21,251
+Notice that the Back Button showed up.
+
+217
+00:12:21,252 --> 00:12:23,538
+I'm going to hit the Back Button.
+
+218
+00:12:23,539 --> 00:12:27,315
+I see we have some work to do here. We're not 100%.
+
+219
+00:12:28,719 --> 00:12:30,969
+We hit the BackButton, we want to go back to All Sounds.
+
+220
+00:12:42,633 --> 00:12:46,015
+And then we would also want to make that
+
+221
+00:12:47,413 --> 00:12:52,412
+BackButton.Visibility = Visibility.Collapsed.
+
+222
+00:12:52,537 --> 00:12:55,327
+Alright, so let's pay attention to that state
+
+223
+00:12:55,328 --> 00:12:58,572
+one more time here, specifically, that BackButton.
+
+224
+00:13:03,643 --> 00:13:05,090
+OK, we don't see a Back Button,
+
+225
+00:13:05,091 --> 00:13:06,665
+and we're viewing All Sounds.
+
+226
+00:13:06,666 --> 00:13:08,674
+Now we want to go Taunts
+
+227
+00:13:08,675 --> 00:13:10,624
+and then I'll hit Back Button All Sounds.
+
+228
+00:13:10,625 --> 00:13:12,620
+And we could implement this in a
+
+229
+00:13:12,621 --> 00:13:17,160
+more robust way and keep track of the
+
+230
+00:13:17,161 --> 00:13:18,877
+various Pages that were loaded in,
+
+231
+00:13:18,878 --> 00:13:22,195
+and then just call Navigation.GoBack,
+
+232
+00:13:22,196 --> 00:13:23,774
+but I'm not doing it that way.
+
+233
+00:13:23,775 --> 00:13:25,970
+The BackButton will just take us back to All Sounds.
+
+234
+00:13:25,971 --> 00:13:27,463
+So it's really just a matter
+
+235
+00:13:27,464 --> 00:13:28,672
+of how you want to implement it.
+
+236
+00:13:28,673 --> 00:13:30,903
+But I feel comfortable with this approach.
+
+237
+00:13:32,136 --> 00:13:33,683
+(loud siren)
+
+238
+00:13:33,684 --> 00:13:34,536
+Excuse me.
+
+239
+00:13:36,477 --> 00:13:38,566
+I actually scared myself to death.
+
+240
+00:13:38,567 --> 00:13:41,660
+I didn't realize I was going to make a sound, I forgot.
+
+241
+00:13:41,661 --> 00:13:44,732
+Alright, at so any rate, that's exciting stuff, right?
+
+242
+00:13:44,733 --> 00:13:48,032
+We made a lot of progress on this one, and I think
+
+243
+00:13:48,033 --> 00:13:49,229
+the next thing we're going to do is add some
+
+244
+00:13:49,230 --> 00:13:50,422
+drag-and-drop functionality.
+
+245
+00:13:50,423 --> 00:13:51,957
+That will be interesting.
+
+246
+00:13:51,958 --> 00:13:54,363
+So we'll be able to take a sound off of our desktop,
+
+247
+00:13:54,364 --> 00:13:58,299
+and drag-and-drop it in, and then hear it.
+
+248
+00:13:58,300 --> 00:14:01,098
+And add it to the List, and then actually hear it.
+
+249
+00:14:01,099 --> 00:14:02,253
+So that'll be a big one.
+
+250
+00:14:02,254 --> 00:14:03,997
+We'll do that in the next lesson. Thanks.  
+

@@ -1,0 +1,620 @@
+1
+00:00:04,580 --> 00:00:07,963
+<v ->Hi. I'm Bob Tabor with www.learnvisualstudio.net</v>
+
+2
+00:00:07,964 --> 00:00:09,861
+and this is the solution to the challenge
+
+3
+00:00:09,862 --> 00:00:13,625
+that I call the "Legendary Layout Challenge".
+
+4
+00:00:13,626 --> 00:00:16,220
+Now, remember, don't be watching this solution
+
+5
+00:00:16,221 --> 00:00:18,453
+unless you've already cracked open Visual Studio
+
+6
+00:00:18,454 --> 00:00:20,516
+and written a line of code or two.
+
+7
+00:00:20,517 --> 00:00:23,050
+Ideally, you would only watch enough of this video
+
+8
+00:00:23,051 --> 00:00:24,053
+to get unstuck.
+
+9
+00:00:24,054 --> 00:00:25,173
+Remember? Okay.
+
+10
+00:00:25,174 --> 00:00:28,067
+Well, let's go ahead and get started then.
+
+11
+00:00:28,068 --> 00:00:29,809
+So let's create a new project.
+
+12
+00:00:29,810 --> 00:00:34,809
+I'm going to call this one LegendaryLayout
+
+13
+00:00:37,227 --> 00:00:39,526
+and click OK.
+
+14
+00:00:43,937 --> 00:00:47,695
+And we'll shut that down and open the MainPage.xaml
+
+15
+00:00:47,696 --> 00:00:50,060
+and I'm going to expose more
+
+16
+00:00:50,061 --> 00:00:53,154
+of the XAML editor than the Designer,
+
+17
+00:00:53,155 --> 00:00:57,264
+although I am going to set the Designer to that 13.3 Desktop
+
+18
+00:00:57,265 --> 00:00:58,968
+just to give myself some more space here.
+
+19
+00:00:58,969 --> 00:01:00,103
+As you can see, it gives me
+
+20
+00:01:00,104 --> 00:01:03,621
+quite a bit more horizontal space, especially at 300%.
+
+21
+00:01:03,622 --> 00:01:06,542
+Let's tone that down to 100%.
+
+22
+00:01:07,073 --> 00:01:07,954
+That's a little better.
+
+23
+00:01:07,955 --> 00:01:08,852
+Okay, great.
+
+24
+00:01:08,853 --> 00:01:12,580
+Now let's take a look at the screenshot.
+
+25
+00:01:12,581 --> 00:01:16,613
+So I have what looks to be like one row,
+
+26
+00:01:16,614 --> 00:01:18,652
+I guess you could call it, here at the very top.
+
+27
+00:01:18,653 --> 00:01:23,652
+And then I have a series of stack panels
+
+28
+00:01:24,548 --> 00:01:26,440
+that look to be going
+
+29
+00:01:26,441 --> 00:01:31,440
+in an Orientation equals Horizontal fashion.
+
+30
+00:01:31,966 --> 00:01:34,548
+And then we'll worry about this last part here
+
+31
+00:01:34,549 --> 00:01:36,748
+a little bit later, but we know this one is going to be 250.
+
+32
+00:01:36,749 --> 00:01:39,052
+This one's going to 500 wide.
+
+33
+00:01:39,053 --> 00:01:40,644
+And this is going to be 300 wide.
+
+34
+00:01:40,645 --> 00:01:42,494
+We have some margins and things like that too.
+
+35
+00:01:42,495 --> 00:01:44,189
+Okay, let's get cracking.
+
+36
+00:01:44,190 --> 00:01:45,741
+So I'm going to get rid of the Grid.
+
+37
+00:01:45,742 --> 00:01:46,727
+We don't need that.
+
+38
+00:01:46,728 --> 00:01:50,537
+And we're going to start off with StackPanel.
+
+39
+00:01:51,238 --> 00:01:55,859
+And inside that StackPanel, I'm going to add a TextBlock,
+
+40
+00:01:55,860 --> 00:01:58,048
+come back to that, and then another StackPanel
+
+41
+00:01:58,049 --> 00:02:01,706
+and we said the Orientation is going to be Horizontal.
+
+42
+00:02:01,707 --> 00:02:04,529
+All right. So far, so good.
+
+43
+00:02:04,960 --> 00:02:06,651
+Let's remove some of this,
+
+44
+00:02:06,652 --> 00:02:09,862
+so we can keep this clear in our mind.
+
+45
+00:02:09,863 --> 00:02:13,390
+I think the text was Lorem Ipsum,
+
+46
+00:02:13,391 --> 00:02:18,390
+and if I recall, the font size was going to be 48 again.
+
+47
+00:02:20,091 --> 00:02:22,193
+Okay, and there's going to be some margins and things.
+
+48
+00:02:22,194 --> 00:02:23,299
+We'll tackle those later.
+
+49
+00:02:23,300 --> 00:02:25,178
+All right, next up, we're going to need
+
+50
+00:02:25,179 --> 00:02:28,560
+three TextBlocks inside of this,
+
+51
+00:02:28,561 --> 00:02:30,940
+or two TextBlocks rather.
+
+52
+00:02:30,941 --> 00:02:32,142
+They shouldn't be self enclosing.
+
+53
+00:02:32,143 --> 00:02:34,545
+Let's go ahead and get rid of that.
+
+54
+00:02:38,566 --> 00:02:39,398
+There we go.
+
+55
+00:02:39,399 --> 00:02:43,350
+And then I know that final little flag area
+
+56
+00:02:43,351 --> 00:02:45,821
+with the blue and the red and the yellow squares,
+
+57
+00:02:45,822 --> 00:02:50,821
+that's going to be another StackPanel of Rectangles.
+
+58
+00:02:51,593 --> 00:02:53,985
+So I'm just going to add three Rectangles here
+
+59
+00:02:53,986 --> 00:02:55,718
+then I'll come back to those.
+
+60
+00:02:55,719 --> 00:02:57,486
+Okay. So that's my basic layout.
+
+61
+00:02:57,487 --> 00:02:58,655
+You can see kind of what I do.
+
+62
+00:02:58,656 --> 00:03:01,487
+I get a mental picture of the general layout.
+
+63
+00:03:01,488 --> 00:03:04,338
+And I can test this theory or this little design
+
+64
+00:03:04,339 --> 00:03:06,678
+by just looking at what I've got so far
+
+65
+00:03:06,679 --> 00:03:07,648
+inside of the Designer
+
+66
+00:03:07,649 --> 00:03:10,286
+but I'm pretty sure I'm close on this one.
+
+67
+00:03:10,287 --> 00:03:13,284
+All right. So, inside of each of the TextBlocks,
+
+68
+00:03:13,285 --> 00:03:16,320
+what I'm going to do is go and grab some Lorem Ipsum.
+
+69
+00:03:16,321 --> 00:03:17,383
+Minimize all this.
+
+70
+00:03:17,384 --> 00:03:18,690
+Open this file up.
+
+71
+00:03:18,691 --> 00:03:22,778
+And I only need the first two lines of this
+
+72
+00:03:25,309 --> 00:03:28,761
+for this first TextBlock.
+
+73
+00:03:28,762 --> 00:03:29,830
+I'll clean this up a little bit
+
+74
+00:03:29,831 --> 00:03:32,286
+so it looks better in my code.
+
+75
+00:03:33,567 --> 00:03:34,658
+Okay, I can get rid of that.
+
+76
+00:03:34,659 --> 00:03:38,096
+And then I'll put three lines
+
+77
+00:03:38,097 --> 00:03:40,546
+in this other one.
+
+78
+00:03:41,657 --> 00:03:45,032
+That's here.
+
+79
+00:03:45,033 --> 00:03:47,500
+Paste.
+
+80
+00:03:47,501 --> 00:03:50,528
+That and that.
+
+81
+00:03:55,929 --> 00:03:58,545
+All right. Good.
+
+82
+00:03:59,616 --> 00:04:04,188
+And I know that we want the width of this to be 250
+
+83
+00:04:04,189 --> 00:04:09,188
+and we want the width of this to be 500.
+
+84
+00:04:09,552 --> 00:04:11,272
+Now let's take a look at what we've got so far
+
+85
+00:04:11,273 --> 00:04:12,638
+here in the Designer,
+
+86
+00:04:12,639 --> 00:04:14,778
+and you can see that we've only got one line.
+
+87
+00:04:14,779 --> 00:04:17,356
+Remember what I said you had to do to fix this?
+
+88
+00:04:17,357 --> 00:04:22,177
+You have to set the TextWrapping equal to Wrap
+
+89
+00:04:22,178 --> 00:04:23,936
+in order to get it to kind of flow
+
+90
+00:04:23,937 --> 00:04:28,936
+through the entire space of that text block.
+
+91
+00:04:28,942 --> 00:04:31,908
+Do the same thing here.
+
+92
+00:04:31,909 --> 00:04:34,119
+All right. That should take care of that.
+
+93
+00:04:34,120 --> 00:04:36,278
+We got some margin issues to work on
+
+94
+00:04:36,279 --> 00:04:38,884
+but we'll worry about that in a moment.
+
+95
+00:04:38,885 --> 00:04:40,725
+So, let's see.
+
+96
+00:04:40,726 --> 00:04:45,259
+We want the Orientation on this to be Horizontal,
+
+97
+00:04:45,260 --> 00:04:49,542
+and so this will have a fill of blue
+
+98
+00:04:50,383 --> 00:04:53,996
+and we're going to put the width of it at...
+
+99
+00:04:53,997 --> 00:04:57,347
+I believe it was 200 by 200.
+
+100
+00:04:57,348 --> 00:05:00,527
+Height: 200.
+
+101
+00:05:02,658 --> 00:05:05,598
+And then the fill of the first one, I think, was red
+
+102
+00:05:05,599 --> 00:05:09,546
+and the fill of the second one was yellow.
+
+103
+00:05:10,427 --> 00:05:12,502
+And what we're going to need to do here
+
+104
+00:05:12,503 --> 00:05:15,605
+is actually add another StackPanel
+
+105
+00:05:15,606 --> 00:05:19,103
+to get these to kind of stack on top of each other.
+
+106
+00:05:19,104 --> 00:05:21,972
+So let's grab these,
+
+107
+00:05:21,973 --> 00:05:23,102
+and then we're going to set
+
+108
+00:05:23,103 --> 00:05:27,538
+their width and height to 100.
+
+109
+00:05:34,299 --> 00:05:35,542
+Like that.
+
+110
+00:05:35,543 --> 00:05:39,752
+All right. So now let's see what that looks like.
+
+111
+00:05:39,753 --> 00:05:42,029
+All right, something not quite right about there.
+
+112
+00:05:42,030 --> 00:05:44,769
+This, you can see
+
+113
+00:05:44,770 --> 00:05:48,779
+that the Rectangle wants to center itself
+
+114
+00:05:48,780 --> 00:05:52,183
+inside of the vertical space available.
+
+115
+00:05:52,184 --> 00:05:53,692
+So we're just going to set
+
+116
+00:05:53,693 --> 00:05:56,832
+the VerticalAlignment equal to Top
+
+117
+00:05:56,833 --> 00:05:59,830
+and that should fix that.
+
+118
+00:05:59,831 --> 00:06:01,759
+All right. We need some margins now.
+
+119
+00:06:01,760 --> 00:06:05,379
+Let's go back here and let's view the image.
+
+120
+00:06:05,380 --> 00:06:08,094
+Looks like there's 20 here, 10 here.
+
+121
+00:06:08,095 --> 00:06:10,094
+10 here, 10 here?
+
+122
+00:06:10,095 --> 00:06:12,114
+Maybe 20?
+
+123
+00:06:12,115 --> 00:06:13,695
+It should be about 10, I think.
+
+124
+00:06:13,696 --> 00:06:16,125
+So we'll go 20.
+
+125
+00:06:16,126 --> 00:06:17,182
+Maybe we should use 20.
+
+126
+00:06:17,183 --> 00:06:19,677
+That does look like a lot of space for 10.
+
+127
+00:06:19,678 --> 00:06:21,101
+Yeah, it's probably 20.
+
+128
+00:06:21,102 --> 00:06:26,101
+All right. So we'll just go, for the entire StackPanel,
+
+129
+00:06:26,137 --> 00:06:28,501
+Margin 10
+
+130
+00:06:28,502 --> 00:06:30,794
+and then...
+
+131
+00:06:30,795 --> 00:06:31,744
+Let's see the top.
+
+132
+00:06:31,745 --> 00:06:33,554
+Do we have some space at the top?
+
+133
+00:06:33,555 --> 00:06:36,570
+Let's go ahead and put just 20 at the top.
+
+134
+00:06:36,571 --> 00:06:41,570
+And then we'll put 20 underneath this one.
+
+135
+00:06:42,068 --> 00:06:47,067
+So, 0,0,0,20 margin
+
+136
+00:06:47,964 --> 00:06:52,173
+for the text block at the top.
+
+137
+00:06:52,174 --> 00:06:53,694
+All right.
+
+138
+00:06:53,695 --> 00:06:56,734
+On this first text block, we're going to set
+
+139
+00:06:56,735 --> 00:07:01,734
+the margin 0,0,20,0
+
+140
+00:07:02,449 --> 00:07:07,448
+and we'll do the same thing for the one next to it.
+
+141
+00:07:08,379 --> 00:07:12,010
+And I think we are pretty much done.
+
+142
+00:07:12,011 --> 00:07:15,225
+Let's go ahead, first of all,
+
+143
+00:07:15,226 --> 00:07:19,545
+and get rid of the frame counter.
+
+144
+00:07:21,686 --> 00:07:25,229
+Save that, and now let's run the app.
+
+145
+00:07:25,230 --> 00:07:27,927
+All right. I may have too much space here in the top
+
+146
+00:07:27,928 --> 00:07:32,927
+so I may not have needed that margin there at the top.
+
+147
+00:07:33,240 --> 00:07:38,239
+However, I think everything else looks pretty good.
+
+148
+00:07:38,826 --> 00:07:41,161
+So, I think that's the solution to the challenge.
+
+149
+00:07:41,162 --> 00:07:43,042
+Hopefully you got it.
+
+150
+00:07:43,043 --> 00:07:45,520
+If you didn't or if you struggle with this one,
+
+151
+00:07:45,521 --> 00:07:48,656
+go back and watch the video on StackPanel
+
+152
+00:07:48,657 --> 00:07:51,417
+and then maybe come back to this tomorrow.
+
+153
+00:07:51,418 --> 00:07:53,020
+All right. Let's move on. We got one more challenge
+
+154
+00:07:53,021 --> 00:07:54,625
+and it's going to be a little bit more difficult.
+
+155
+00:07:54,626 --> 00:07:57,533
+We'll see you there. Thanks!  
+

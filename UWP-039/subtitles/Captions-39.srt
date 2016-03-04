@@ -1,0 +1,644 @@
+1
+00:00:05,891 --> 00:00:09,310
+<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net.</v>
+
+2
+00:00:09,311 --> 00:00:13,740
+Previously, we saw how to use AdaptiveTriggers
+
+3
+00:00:13,741 --> 00:00:17,530
+and the VisualStateManager to change the layout
+
+4
+00:00:17,531 --> 00:00:22,360
+of your application based on the current window size.
+
+5
+00:00:22,361 --> 00:00:25,650
+We viewed, then, after that, a technique using
+
+6
+00:00:25,651 --> 00:00:28,070
+AdaptiveTriggers and the Visual State Manager to make
+
+7
+00:00:28,071 --> 00:00:31,550
+dramatic changes to the layout of an application
+
+8
+00:00:31,571 --> 00:00:34,890
+using a little creativity and a GridControl,
+
+9
+00:00:34,891 --> 00:00:36,640
+and then based on the given Trigger
+
+10
+00:00:36,641 --> 00:00:38,990
+for the different layouts
+
+11
+00:00:38,991 --> 00:00:43,310
+to put a series of StackPanels
+
+12
+00:00:43,311 --> 00:00:46,720
+in different cells of a Grid,
+
+13
+00:00:46,721 --> 00:00:50,410
+and then also change up the call spans,
+
+14
+00:00:50,411 --> 00:00:52,840
+things of that nature, and it worked great.
+
+15
+00:00:53,021 --> 00:00:55,370
+But, in this lesson, we're going to take a look
+
+16
+00:00:55,411 --> 00:00:58,649
+at a second technique that allows you to create
+
+17
+00:00:58,650 --> 00:01:02,710
+a dedicated view for a given device family
+
+18
+00:01:02,711 --> 00:01:06,290
+that your application could potentially run on,
+
+19
+00:01:06,291 --> 00:01:09,230
+and, at run time, the dedicated view,
+
+20
+00:01:09,231 --> 00:01:12,110
+or what they call the "DeviceSpecificView"
+
+21
+00:01:12,111 --> 00:01:14,930
+will be chosen based on the device
+
+22
+00:01:14,931 --> 00:01:16,970
+that your app is currently running on.
+
+23
+00:01:16,971 --> 00:01:19,030
+It's a very simple technique,
+
+24
+00:01:19,031 --> 00:01:21,931
+Microsoft has made it extremely for you easy to use this,
+
+25
+00:01:21,932 --> 00:01:23,870
+however there are a few advanced techniques
+
+26
+00:01:23,871 --> 00:01:25,851
+and I'm going to show you a great article
+
+27
+00:01:25,852 --> 00:01:27,430
+that will dive into those advanced,
+
+28
+00:01:27,431 --> 00:01:31,691
+those advanced topics related to this.
+
+29
+00:01:31,692 --> 00:01:35,391
+But let's show the demo that I created, first of all here.
+
+30
+00:01:35,392 --> 00:01:38,130
+As you can see, I have just a simple
+
+31
+00:01:38,131 --> 00:01:41,431
+"Hello World" style application
+
+32
+00:01:41,432 --> 00:01:42,950
+running on the desktop.
+
+33
+00:01:42,951 --> 00:01:46,070
+"Hello Desktop DeviceSpecificView"
+
+34
+00:01:46,071 --> 00:01:49,391
+Now, you saw that we had a Blue Background
+
+35
+00:01:49,392 --> 00:01:50,870
+and we had a fairly large Font,
+
+36
+00:01:50,871 --> 00:01:54,531
+if I were to change the device that this runs on,
+
+37
+00:01:54,532 --> 00:01:57,211
+choosing one of the mobile emulators to debug on.
+
+38
+00:01:57,212 --> 00:01:59,100
+let's go ahead and run the application again,
+
+39
+00:02:02,792 --> 00:02:05,452
+and this time you can see that the Background is Red
+
+40
+00:02:05,453 --> 00:02:09,312
+and that we have a smaller Font used for
+
+41
+00:02:09,313 --> 00:02:11,931
+"Hello Mobile DeviceSpecificView."
+
+42
+00:02:11,932 --> 00:02:14,111
+Notice that the word is changed there at the top,
+
+43
+00:02:14,112 --> 00:02:17,131
+Now, at first glance, you might say, well,
+
+44
+00:02:17,132 --> 00:02:18,771
+this doesn't look any different
+
+45
+00:02:18,772 --> 00:02:20,611
+as far as the results are concerned
+
+46
+00:02:20,612 --> 00:02:22,211
+from the techniques that we looked at previously.
+
+47
+00:02:22,212 --> 00:02:24,011
+That's absolutely correct,
+
+48
+00:02:24,012 --> 00:02:26,691
+however take a look at the implementation,
+
+49
+00:02:26,692 --> 00:02:29,212
+now keep in mind the simplest implementation
+
+50
+00:02:29,213 --> 00:02:31,651
+that I could possibly show you
+
+51
+00:02:31,652 --> 00:02:33,851
+in order to demonstrate the technique.
+
+52
+00:02:33,852 --> 00:02:36,452
+You can take this as far as you want to go.
+
+53
+00:02:36,453 --> 00:02:38,601
+So, in this case, I created two
+
+54
+00:02:38,602 --> 00:02:40,532
+additional folders in my Project.
+
+55
+00:02:40,533 --> 00:02:42,891
+One is called "DeviceFamily-Desktop"
+
+56
+00:02:42,892 --> 00:02:44,891
+and the other one is "DeviceFamily-Mobile"
+
+57
+00:02:44,892 --> 00:02:49,871
+and by creating these folders any Pages
+
+58
+00:02:49,872 --> 00:02:52,211
+that I add to those folders will be
+
+59
+00:02:52,212 --> 00:02:55,972
+utilized at run-time for your application.
+
+60
+00:02:55,973 --> 00:02:57,672
+So, you can see that I've created
+
+61
+00:02:57,673 --> 00:02:59,113
+two "MainPage.xaml"
+
+62
+00:02:59,114 --> 00:03:03,533
+In this first folder, the "DeviceFamily-Desktop" folder,
+
+63
+00:03:03,534 --> 00:03:06,613
+I've added a Grid with the Background="Blue"
+
+64
+00:03:06,614 --> 00:03:09,473
+and the TextBlock with different Text
+
+65
+00:03:09,474 --> 00:03:11,333
+and the different FontSize.
+
+66
+00:03:11,334 --> 00:03:12,673
+Now, you might say to yourself,
+
+67
+00:03:12,674 --> 00:03:15,773
+"Well, this is great, its much cleaner
+
+68
+00:03:15,774 --> 00:03:18,253
+than using the VisualStateManager
+
+69
+00:03:18,254 --> 00:03:20,913
+and the AdaptiveTriggers." and that's true,
+
+70
+00:03:20,914 --> 00:03:22,533
+and I think that's one big benefit,
+
+71
+00:03:22,534 --> 00:03:24,323
+especially if you are going to make dramatic
+
+72
+00:03:24,324 --> 00:03:28,183
+sweeping changes to your layout based on the device.
+
+73
+00:03:28,194 --> 00:03:30,418
+Here is the second "MainPage.xaml"
+
+74
+00:03:30,419 --> 00:03:33,198
+inside of the "DeviceFamily-Mobile" folder,
+
+75
+00:03:33,199 --> 00:03:35,698
+let's go ahead and take a look at the Grid now,
+
+76
+00:03:35,699 --> 00:03:36,958
+I just set it to Background="Red".
+
+77
+00:03:36,959 --> 00:03:39,298
+TextBlock, changed up the Text in the TextBlock
+
+78
+00:03:39,299 --> 00:03:40,898
+and changed the FontSize
+
+79
+00:03:40,899 --> 00:03:43,198
+Again, no VisualStateManager,
+
+80
+00:03:43,199 --> 00:03:46,508
+no AdaptiveTriggers, pretty easy stuff.
+
+81
+00:03:46,729 --> 00:03:50,098
+And, so, I think that, you know, you can
+
+82
+00:03:50,099 --> 00:03:51,958
+think about this in terms of using
+
+83
+00:03:51,959 --> 00:03:53,958
+entirely different controls for layout
+
+84
+00:03:53,959 --> 00:03:56,708
+based on whether you anticipate this will be
+
+85
+00:03:56,709 --> 00:03:58,478
+used in a desktop or a mobile.
+
+86
+00:03:58,479 --> 00:04:00,458
+Now, one of the things I want to say here is that
+
+87
+00:04:00,459 --> 00:04:04,998
+while the specific, little, tiny application that I built
+
+88
+00:04:04,999 --> 00:04:06,528
+does not utilize the
+
+89
+00:04:06,529 --> 00:04:08,538
+VisualStateManager or AdaptiveTriggers,
+
+90
+00:04:08,539 --> 00:04:12,078
+you might still hope to use that for your application
+
+91
+00:04:12,079 --> 00:04:14,698
+because there are different screen resolutions
+
+92
+00:04:14,699 --> 00:04:17,098
+even inside of these different device families.
+
+93
+00:04:17,099 --> 00:04:18,678
+So, just keep that in mind,
+
+94
+00:04:18,679 --> 00:04:21,798
+that while they do overlap in functionality,
+
+95
+00:04:21,799 --> 00:04:23,998
+its not a complete overlap.
+
+96
+00:04:23,999 --> 00:04:25,468
+You may still, you might choose
+
+97
+00:04:25,469 --> 00:04:28,118
+a combination of these two techniques,
+
+98
+00:04:28,149 --> 00:04:31,218
+just the only difference would be
+
+99
+00:04:31,219 --> 00:04:33,618
+what functionality that you would display
+
+100
+00:04:33,619 --> 00:04:38,208
+for a phone at a, you know, a 1080p screen versus
+
+101
+00:04:38,209 --> 00:04:41,678
+what you would display on the desktop at a 1080p screen.
+
+102
+00:04:41,679 --> 00:04:42,928
+You see what I'm saying?
+
+103
+00:04:42,929 --> 00:04:45,418
+Because when you' re holding a physical device,
+
+104
+00:04:45,419 --> 00:04:46,758
+like this device here,
+
+105
+00:04:46,759 --> 00:04:48,878
+your thumbs are going to be at the bottom of the device
+
+106
+00:04:48,879 --> 00:04:51,098
+and so you might change up the layout
+
+107
+00:04:51,099 --> 00:04:53,788
+based on how most users use their app,
+
+108
+00:04:53,789 --> 00:04:56,778
+or their phone, rather, with just their thumb,
+
+109
+00:04:56,779 --> 00:04:58,358
+so you'd probably leave this to just
+
+110
+00:04:58,359 --> 00:05:00,178
+purely information here at the top,
+
+111
+00:05:00,179 --> 00:05:02,059
+and then at the bottom it would be more
+
+112
+00:05:02,060 --> 00:05:03,658
+controls that would allow you to
+
+113
+00:05:03,659 --> 00:05:05,418
+type things in or make selections.
+
+114
+00:05:05,419 --> 00:05:07,978
+Whereas on a desktop, you know, you're using a mouse
+
+115
+00:05:07,979 --> 00:05:09,758
+and you're scrolling around the entire screen,
+
+116
+00:05:09,759 --> 00:05:11,578
+it doesn't really matter where you put things.
+
+117
+00:05:11,579 --> 00:05:12,858
+So, just keep that in mind,
+
+118
+00:05:12,859 --> 00:05:15,778
+these are not mutually exclusive techniques,
+
+119
+00:05:15,779 --> 00:05:17,588
+they can be used together.
+
+120
+00:05:17,599 --> 00:05:19,918
+Now, I promised you a great resource
+
+121
+00:05:19,919 --> 00:05:21,798
+to learn a little bit more about this technique.
+
+122
+00:05:21,799 --> 00:05:24,578
+So, let me show you this URL,
+
+123
+00:05:24,579 --> 00:05:26,378
+bitdo.device-specific-views,
+
+124
+00:05:26,379 --> 00:05:28,438
+this will take you to an article
+
+125
+00:05:28,439 --> 00:05:30,978
+written by a gentleman by the name of Igor Ralic,
+
+126
+00:05:30,979 --> 00:05:32,858
+I hope I pronounced his name correctly.
+
+127
+00:05:33,129 --> 00:05:34,348
+But, let's take a look at that
+
+128
+00:05:34,349 --> 00:05:36,218
+because I want to show you that
+
+129
+00:05:36,219 --> 00:05:38,958
+you can take this example two steps further.
+
+130
+00:05:38,959 --> 00:05:41,658
+First of all, we only talked about
+
+131
+00:05:41,659 --> 00:05:44,058
+using the folder called
+
+132
+00:05:44,059 --> 00:05:47,298
+"DeviceFamily.Mobile" and "DeviceFamily.Desktop,"
+
+133
+00:05:47,299 --> 00:05:50,018
+however, you can also just leave everything
+
+134
+00:05:50,019 --> 00:05:53,278
+in the same root folder
+
+135
+00:05:53,279 --> 00:05:56,178
+and then just append on this extension
+
+136
+00:05:56,179 --> 00:05:59,038
+"DeviceFamily-Mobile.xaml" or
+
+137
+00:05:59,039 --> 00:06:03,178
+"DeviceFamily-Desktop.xaml"
+
+138
+00:06:03,179 --> 00:06:04,958
+and it will work the same way.
+
+139
+00:06:04,959 --> 00:06:08,058
+Now, if you have two files with same name
+
+140
+00:06:08,059 --> 00:06:09,738
+or you have one named this way,
+
+141
+00:06:09,739 --> 00:06:13,428
+where you've actually changed the file name
+
+142
+00:06:13,429 --> 00:06:16,828
+and you have a folder that has "DeviceFamily-Mobile'
+
+143
+00:06:16,829 --> 00:06:19,549
+with the "MainPage.xaml" inside of it,
+
+144
+00:06:19,559 --> 00:06:22,218
+then you can take a look at this,
+
+145
+00:06:22,219 --> 00:06:24,468
+kind of what I would call the advanced scenario,
+
+146
+00:06:24,469 --> 00:06:27,878
+where he describes how you can use the
+
+147
+00:06:27,879 --> 00:06:30,258
+initialized ComponentEventHandler
+
+148
+00:06:30,259 --> 00:06:34,068
+to choose at runtime which version
+
+149
+00:06:34,069 --> 00:06:36,508
+of "MainPage.xaml" you'll choose from.
+
+150
+00:06:36,509 --> 00:06:38,298
+So, I'll leave you to that,
+
+151
+00:06:38,299 --> 00:06:40,608
+if this is something you're interested in.
+
+152
+00:06:40,609 --> 00:06:44,398
+But, at any rate, I hope that this makes sense
+
+153
+00:06:44,399 --> 00:06:46,118
+and that you'll find it helpful.
+
+154
+00:06:46,119 --> 00:06:47,718
+I think, again, another tool in your
+
+155
+00:06:47,719 --> 00:06:49,058
+toolbox for AdaptiveLayout
+
+156
+00:06:49,059 --> 00:06:50,758
+and it can be combined with what you
+
+157
+00:06:50,759 --> 00:06:54,458
+already know about using AdaptiveTriggers
+
+158
+00:06:54,459 --> 00:06:55,958
+and the VisualStateManager.
+
+159
+00:06:55,959 --> 00:06:58,398
+Alright, so that's all we've got to say about that,
+
+160
+00:06:58,399 --> 00:07:00,418
+we'll keep moving forward in the next video.
+
+161
+00:07:00,419 --> 00:07:01,818
+Thank you!  
+

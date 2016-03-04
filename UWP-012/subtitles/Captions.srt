@@ -1,0 +1,736 @@
+1
+00:00:04,330 --> 00:00:07,979
+<v ->Hi I'm Bob Tabor with www.LearnVisualStudio.NET</v>
+
+2
+00:00:07,980 --> 00:00:10,959
+and this is the solution for the challenge
+
+3
+00:00:10,960 --> 00:00:14,359
+that I call the Laudable Layout Challenge.
+
+4
+00:00:14,360 --> 00:00:18,799
+Now, let's stop right here before we get too far.
+
+5
+00:00:18,800 --> 00:00:21,149
+If you're watching this immediately
+
+6
+00:00:21,150 --> 00:00:24,109
+after watching the challenge video, the previous video
+
+7
+00:00:24,110 --> 00:00:26,989
+if you've not cracked open Visual Studio
+
+8
+00:00:26,990 --> 00:00:28,779
+and written a single line of code yet
+
+9
+00:00:28,780 --> 00:00:30,419
+then stop what you're doing.
+
+10
+00:00:30,420 --> 00:00:31,689
+Shame on you!
+
+11
+00:00:31,690 --> 00:00:34,139
+Open up Visual Studio, do this for yourself.
+
+12
+00:00:34,140 --> 00:00:36,719
+Nobody learns by just watching videos.
+
+13
+00:00:36,720 --> 00:00:39,519
+I mean nobody learns by just watching videos
+
+14
+00:00:39,520 --> 00:00:41,789
+they also have to get their hands dirty in the code.
+
+15
+00:00:41,790 --> 00:00:43,019
+That's how you learn.
+
+16
+00:00:43,020 --> 00:00:45,069
+So, stop the video right now.
+
+17
+00:00:45,070 --> 00:00:46,249
+Don't watch another second of this.
+
+18
+00:00:46,250 --> 00:00:47,909
+Go off and do the challenge.
+
+19
+00:00:47,910 --> 00:00:49,549
+If you get stuck, come back here
+
+20
+00:00:49,550 --> 00:00:52,459
+and watch just enough of this to get unstuck.
+
+21
+00:00:52,460 --> 00:00:53,529
+All right, we cool?
+
+22
+00:00:53,530 --> 00:00:54,719
+Let's get started.
+
+23
+00:00:54,720 --> 00:00:56,979
+So let's create a new project.
+
+24
+00:00:58,150 --> 00:01:01,259
+I'm going to call this "laudable".
+
+25
+00:01:01,260 --> 00:01:03,259
+And I spelled that incorrectly once
+
+26
+00:01:03,260 --> 00:01:05,329
+and had to redo this video, so I learned
+
+27
+00:01:05,330 --> 00:01:07,528
+how to spell "laudable", if nothing else.
+
+28
+00:01:07,529 --> 00:01:09,019
+LaudableLayout.
+
+29
+00:01:13,000 --> 00:01:16,349
+All right, and let's bring up the image
+
+30
+00:01:16,350 --> 00:01:19,039
+that we're trying to recreate here, all right.
+
+31
+00:01:19,040 --> 00:01:22,679
+So it looks like we have one, two, three, four, five rows
+
+32
+00:01:22,680 --> 00:01:25,789
+plus a row at the very bottom, which I'm going to add
+
+33
+00:01:25,790 --> 00:01:27,279
+that will just kind of
+
+34
+00:01:27,280 --> 00:01:30,769
+I'll use star sizing to take up all the available space.
+
+35
+00:01:30,770 --> 00:01:32,399
+That'll make sure everfything else gets pushed up
+
+36
+00:01:32,400 --> 00:01:34,859
+and it only takes as much as it needs.
+
+37
+00:01:34,860 --> 00:01:38,459
+Then it looks like there's one, two, three columns
+
+38
+00:01:38,460 --> 00:01:40,419
+and on my screen as I'm looking at it here
+
+39
+00:01:40,420 --> 00:01:42,919
+it looks like about an inch for
+
+40
+00:01:42,920 --> 00:01:44,519
+this last column here on the right.
+
+41
+00:01:44,520 --> 00:01:47,159
+This looks like maybe two inches here on the left-hand side
+
+42
+00:01:47,160 --> 00:01:48,959
+and in the center it looks like three inches.
+
+43
+00:01:48,960 --> 00:01:52,619
+So, this would be a great two star, three star
+
+44
+00:01:52,620 --> 00:01:55,819
+one star layout, as far as the columns are concerned.
+
+45
+00:01:56,460 --> 00:01:59,159
+It looks like the rows will just be auto for the most part
+
+46
+00:01:59,160 --> 00:02:00,359
+so this should be pretty easy.
+
+47
+00:02:00,360 --> 00:02:03,349
+Let's go and minimize that and bring Visual Studio back up.
+
+48
+00:02:03,350 --> 00:02:07,499
+And we're only going to be working with the layouts.
+
+49
+00:02:07,500 --> 00:02:10,829
+Let me open MainPage.xaml and move this over
+
+50
+00:02:10,830 --> 00:02:12,639
+so we get a good look at this.
+
+51
+00:02:12,640 --> 00:02:16,269
+And I'm going to do most of the work just here
+
+52
+00:02:16,270 --> 00:02:21,039
+from memory, in the XAML pane and not really worry
+
+53
+00:02:21,040 --> 00:02:22,789
+about what the designer looks like too much
+
+54
+00:02:22,790 --> 00:02:24,159
+we'll come back to that later.
+
+55
+00:02:24,160 --> 00:02:25,529
+So, first thing I'm going to do is lay out
+
+56
+00:02:25,530 --> 00:02:29,089
+some rows and columns, so here we go.
+
+57
+00:02:29,090 --> 00:02:32,659
+Grid.RowDefinition
+
+58
+00:02:33,420 --> 00:02:38,419
+and then below it Grid.ColumnDefinitions.
+
+59
+00:02:39,490 --> 00:02:43,199
+And so the RowDefinition
+
+60
+00:02:43,200 --> 00:02:46,329
+will have a height of "auto"
+
+61
+00:02:46,330 --> 00:02:49,690
+in almost all cases, and we need five of those.
+
+62
+00:02:49,691 --> 00:02:51,779
+Two, three, four, five.
+
+63
+00:02:51,780 --> 00:02:54,349
+And the sixth one, I'm going to set that to star sizing.
+
+64
+00:02:54,350 --> 00:02:55,259
+Okay?
+
+65
+00:02:56,140 --> 00:02:58,399
+Let's do the same thing for column definitions.
+
+66
+00:02:58,400 --> 00:03:01,019
+So we're going to create a column definition
+
+67
+00:03:01,020 --> 00:03:04,579
+and we're going to set it's width equal to...
+
+68
+00:03:04,580 --> 00:03:07,139
+I'll come back and fill that in in a moment.
+
+69
+00:03:08,060 --> 00:03:10,419
+The first one will be one star.
+
+70
+00:03:10,420 --> 00:03:12,719
+The second one, whoops, sorry, will be two stars.
+
+71
+00:03:12,720 --> 00:03:14,089
+The second one will be three stars
+
+72
+00:03:14,090 --> 00:03:15,899
+and the last one will be one star.
+
+73
+00:03:16,880 --> 00:03:17,829
+Great.
+
+74
+00:03:19,220 --> 00:03:22,069
+All right, so next up I know that I'm going to need
+
+75
+00:03:22,070 --> 00:03:25,209
+one, two, three, four text blocks.
+
+76
+00:03:25,210 --> 00:03:27,719
+So let's go ahead and TextBlock
+
+77
+00:03:27,720 --> 00:03:31,356
+and I know I'm going to set it in a row
+
+78
+00:03:31,357 --> 00:03:35,959
+and I don't think I need to change the column at all
+
+79
+00:03:35,960 --> 00:03:38,479
+in these, so we'll just leave that like that.
+
+80
+00:03:38,480 --> 00:03:41,667
+One, two, three, four.
+
+81
+00:03:41,668 --> 00:03:46,659
+This will be row zero, row one
+
+82
+00:03:47,140 --> 00:03:51,059
+row two, row three.
+
+83
+00:03:51,060 --> 00:03:52,409
+I don't even need to use this
+
+84
+00:03:52,410 --> 00:03:53,819
+so I'm just going to delete it.
+
+85
+00:03:56,870 --> 00:03:57,729
+Let's see.
+
+86
+00:03:57,730 --> 00:03:59,439
+And then I'm going to need text boxes.
+
+87
+00:03:59,440 --> 00:04:01,629
+So TextBox.
+
+88
+00:04:02,190 --> 00:04:06,149
+Grid.Row equals
+
+89
+00:04:06,150 --> 00:04:09,759
+and then Grid.Column equals
+
+90
+00:04:09,760 --> 00:04:11,699
+one, the second column.
+
+91
+00:04:12,070 --> 00:04:14,409
+Let's copy that a bunch of times.
+
+92
+00:04:15,470 --> 00:04:16,881
+And paste it.
+
+93
+00:04:16,882 --> 00:04:17,849
+Great.
+
+94
+00:04:17,850 --> 00:04:19,739
+Then this will be row one.
+
+95
+00:04:19,740 --> 00:04:22,209
+It'll just match whatever the row is
+
+96
+00:04:22,210 --> 00:04:23,789
+of the text block above it.
+
+97
+00:04:23,790 --> 00:04:26,629
+And then finally, let's go and add a button
+
+98
+00:04:27,660 --> 00:04:32,409
+and this will be in Grid.Row four
+
+99
+00:04:32,410 --> 00:04:36,800
+and Grid.Column one.
+
+100
+00:04:36,801 --> 00:04:37,689
+Okay.
+
+101
+00:04:38,940 --> 00:04:41,369
+Now, let's come up here and set
+
+102
+00:04:41,370 --> 00:04:44,209
+the Text property for each of these.
+
+103
+00:04:44,210 --> 00:04:46,499
+So this is "First Name".
+
+104
+00:04:50,380 --> 00:04:52,269
+This is "Last Name".
+
+105
+00:04:53,440 --> 00:04:55,389
+And this one's "Email".
+
+106
+00:04:56,210 --> 00:04:57,239
+Whoops.
+
+107
+00:04:59,580 --> 00:05:03,229
+Okay and then the Button's Content property
+
+108
+00:05:03,230 --> 00:05:05,819
+is going to be equal to "Save", all right.
+
+109
+00:05:05,820 --> 00:05:08,089
+Now let's worry about this top TextBlock.
+
+110
+00:05:08,090 --> 00:05:10,499
+We want its text equal to
+
+111
+00:05:10,500 --> 00:05:14,359
+"ACME Sales Corp", all right.
+
+112
+00:05:14,360 --> 00:05:17,849
+And I know that the font size is going to be 48.
+
+113
+00:05:18,560 --> 00:05:20,749
+Now, this was the tricky part.
+
+114
+00:05:20,750 --> 00:05:22,539
+If you found this, good for you.
+
+115
+00:05:22,540 --> 00:05:24,359
+Grid.ColumnSpan equals three.
+
+116
+00:05:24,360 --> 00:05:27,569
+So that should make it span and you can see barely here
+
+117
+00:05:27,570 --> 00:05:30,549
+in the little sliver of our design window
+
+118
+00:05:30,550 --> 00:05:33,059
+that we get the desired effect.
+
+119
+00:05:33,940 --> 00:05:36,589
+Okay, let me actually blow the design window up
+
+120
+00:05:36,590 --> 00:05:38,809
+so we can take a closer look at what we've done so far
+
+121
+00:05:38,810 --> 00:05:40,659
+because we're getting close to the end here.
+
+122
+00:05:41,260 --> 00:05:45,479
+Okay, we have some margin issues.
+
+123
+00:05:45,480 --> 00:05:46,999
+We need more spacing on the left.
+
+124
+00:05:47,000 --> 00:05:50,539
+We need spacing between each of the rows.
+
+125
+00:05:51,220 --> 00:05:52,699
+Otherwise we're in good shape.
+
+126
+00:05:52,700 --> 00:05:55,449
+So, let me get back here, and the first
+
+127
+00:05:55,450 --> 00:05:58,499
+thing I'm going to do is just create a margin
+
+128
+00:05:59,420 --> 00:06:01,949
+from the left for the entire grid.
+
+129
+00:06:01,950 --> 00:06:05,299
+So, we'll go 10 pixels from the left and then zeroes.
+
+130
+00:06:05,300 --> 00:06:08,375
+That should move everything over from the left.
+
+131
+00:06:08,376 --> 00:06:13,029
+Next up, we're going to want to create space
+
+132
+00:06:13,030 --> 00:06:14,999
+between each of the text boxes
+
+133
+00:06:15,000 --> 00:06:16,169
+to give them a little breathing room.
+
+134
+00:06:16,170 --> 00:06:19,939
+So, margin, zero, zero
+
+135
+00:06:19,940 --> 00:06:22,583
+zero, 10.
+
+136
+00:06:22,584 --> 00:06:23,669
+And that should do it.
+
+137
+00:06:23,670 --> 00:06:25,619
+And I'll put 10 pixels of space
+
+138
+00:06:25,620 --> 00:06:28,099
+beneath each of the text boxes
+
+139
+00:06:28,100 --> 00:06:33,099
+thus stretching out the height of each row.
+
+140
+00:06:34,780 --> 00:06:38,209
+And I think the last thing that we needed to do
+
+141
+00:06:38,210 --> 00:06:43,099
+was to ensure that the text block
+
+142
+00:06:43,100 --> 00:06:45,279
+in each of the rows is centered.
+
+143
+00:06:45,280 --> 00:06:48,009
+We can see right now it's aligned
+
+144
+00:06:48,010 --> 00:06:51,668
+to the top and left side of that cell.
+
+145
+00:06:51,669 --> 00:06:54,089
+And so this is the last thing we'll need to do.
+
+146
+00:06:54,090 --> 00:06:59,089
+We'll go VerticalAlignment equals center.
+
+147
+00:07:02,050 --> 00:07:05,388
+Let's copy that and put that in each of the text blocks.
+
+148
+00:07:05,389 --> 00:07:07,709
+And I think we're done with this.
+
+149
+00:07:07,710 --> 00:07:10,589
+Let's go ahead and save this and run the application.
+
+150
+00:07:11,110 --> 00:07:12,379
+All righty.
+
+151
+00:07:12,380 --> 00:07:14,299
+And there you go, we've got it.
+
+152
+00:07:14,300 --> 00:07:16,289
+Now, I do see one little annoying thing
+
+153
+00:07:16,290 --> 00:07:18,149
+that we never talked about.
+
+154
+00:07:18,150 --> 00:07:19,559
+Whenever you create a new project
+
+155
+00:07:19,560 --> 00:07:21,479
+you automatically get a frame counter.
+
+156
+00:07:21,480 --> 00:07:23,199
+That's great, whenever you're debugging
+
+157
+00:07:23,200 --> 00:07:24,939
+certain types of applications.
+
+158
+00:07:24,940 --> 00:07:27,069
+We won't need it in this series
+
+159
+00:07:27,070 --> 00:07:28,519
+so I'm going to get rid of that
+
+160
+00:07:28,520 --> 00:07:30,908
+and the way you do that is you go to the App.xaml
+
+161
+00:07:30,909 --> 00:07:33,209
+you go to the code behind App.xaml.cs
+
+162
+00:07:33,210 --> 00:07:36,149
+and you go down to line number 34, oh I'm sorry, 43.
+
+163
+00:07:36,150 --> 00:07:37,609
+Had that transposed.
+
+164
+00:07:37,610 --> 00:07:42,609
+And let's go ahead and delete lines 43 through 48 like so.
+
+165
+00:07:42,610 --> 00:07:44,379
+And now when we run the app
+
+166
+00:07:44,380 --> 00:07:46,539
+the frame counter will no longer be there.
+
+167
+00:07:46,540 --> 00:07:47,639
+Awesome.
+
+168
+00:07:48,310 --> 00:07:50,249
+Oops, I see one omission here.
+
+169
+00:07:50,250 --> 00:07:52,219
+There needs to be more space between
+
+170
+00:07:52,220 --> 00:07:55,759
+this text block and the first row.
+
+171
+00:07:55,760 --> 00:07:58,539
+So one last thing we'll need to do here.
+
+172
+00:07:59,740 --> 00:08:01,879
+Let's go up to the TextBlock and let's go ahead
+
+173
+00:08:01,880 --> 00:08:04,059
+and add a margin there as well.
+
+174
+00:08:05,650 --> 00:08:09,379
+Margin equals zero, zero, zero, 20.
+
+175
+00:08:09,380 --> 00:08:12,439
+That should put sufficient space below it.
+
+176
+00:08:14,580 --> 00:08:16,269
+And there we have it, great.
+
+177
+00:08:16,270 --> 00:08:18,219
+All right, hopefully you got this.
+
+178
+00:08:19,220 --> 00:08:21,439
+You know, if this is something you struggled with
+
+179
+00:08:21,440 --> 00:08:24,589
+then maybe you should come back tomorrow and try it again.
+
+180
+00:08:24,590 --> 00:08:27,249
+Just to cement these ideas in your mind, okay?
+
+181
+00:08:27,250 --> 00:08:29,409
+So if you're ready to move on to the next challenge
+
+182
+00:08:29,410 --> 00:08:31,239
+we're going to do one with StackPanels.
+
+183
+00:08:31,240 --> 00:08:32,439
+So, we'll see you there.
+
+184
+00:08:32,440 --> 00:08:33,459
+Thanks.  
+
