@@ -1,0 +1,1246 @@
+﻿1
+00:00:00,000 --> 00:00:03,000
+037 利用VisualStateManager来创建自适应的触发器 （翻译 by Elenore）
+
+2
+00:00:04,889 --> 00:00:05,822
+大家好，我是Bob Tabor
+Hi, I'm Bob Tabor with
+
+3
+00:00:05,823 --> 00:00:09,626
+来自www.LearnVisualStudio.net
+www.LearnVisualStudio.net, and I want you to take a look
+
+4
+00:00:09,627 --> 00:00:11,746
+我们先看一下屏幕
+on-screen right now because
+
+5
+00:00:13,177 --> 00:00:15,085
+因为我要展示一个效果
+I wanted to illustrate an idea,
+
+6
+00:00:15,086 --> 00:00:17,046
+这样你们更好理解
+it's easier to show you than explain it.
+
+7
+00:00:17,047 --> 00:00:19,718
+这是一个简单的app，只用了一个grid
+Here I have a simple application with a Grid,
+
+8
+00:00:19,719 --> 00:00:21,688
+把它的背景颜色设为红色
+I set the Grid's Background="Red"
+
+9
+00:00:21,689 --> 00:00:24,086
+我还写了一个简单的文本块
+and I have a simple TextBlock and I've got a,
+
+10
+00:00:24,387 --> 00:00:27,739
+字体大小大概是16pt或者18pt
+I don't know, 16 point, 18 point font there.
+
+11
+00:00:27,910 --> 00:00:31,190
+注意看，当我改变它的大小时发生了什么
+And so watch what happens though whenever I resize this.
+
+12
+00:00:31,191 --> 00:00:34,025
+当我把它改变到一定大小时
+I get to a certain point and
+
+13
+00:00:34,026 --> 00:00:37,651
+就触发了一些变化
+it triggers the change of the BackgroundColor
+
+14
+00:00:37,652 --> 00:00:41,248
+它的背景颜色变成了黄色，字体也变大了
+to Yellow, and the FontSize to a larger FontSize,
+
+15
+00:00:41,249 --> 00:00:43,218
+大概是24pt的样子
+I think like 24 or something.
+
+16
+00:00:43,219 --> 00:00:46,069
+好我们继续改变（它的大小）
+Now let's continue to resize,
+
+17
+00:00:46,145 --> 00:00:48,145
+背景颜色变成了蓝色
+and the Cackground color changes to blue
+
+18
+00:00:48,146 --> 00:00:51,620
+文本块的字体变的更大了
+and I use an even larger Font for the TextBlock.
+
+19
+00:00:51,621 --> 00:00:54,383
+这些之所以能发生呢
+And so this is made possible by an object called
+
+20
+00:00:54,384 --> 00:00:56,953
+都是因为我们用了一个叫 VisualStateManager 的对象
+the VisualStateManager and it does
+
+21
+00:00:56,954 --> 00:00:59,320
+就像它的名字那样说的
+exactly what it sounds like, it manages
+
+22
+00:00:59,321 --> 00:01:01,443
+它用来管理app的视觉状态
+the visual state of your application,
+
+23
+00:01:01,444 --> 00:01:04,450
+比如大小
+where things belong, the sizes of things,
+
+24
+00:01:04,451 --> 00:01:08,219
+颜色，这些都是通过你创建的触发器来实现的
+the colors of things based on Triggers that you create.
+
+25
+00:01:08,220 --> 00:01:11,957
+所以，基本上你可以处理任何对象的任何属性
+So, essentially you can manipulate any property
+
+26
+00:01:11,958 --> 00:01:14,355
+你可以在改变大小时
+of any object, you can resize,
+
+27
+00:01:14,356 --> 00:01:16,823
+改变位置时，来设置可见性
+reposition, set the visibility,
+
+28
+00:01:16,824 --> 00:01:20,155
+设置字体大小，设置字体样式
+you can set the FontSize, set the FontFamily.
+
+29
+00:01:20,156 --> 00:01:22,756
+任何你能想到的
+Anything that you possibly can imagine
+
+30
+00:01:22,757 --> 00:01:24,946
+（这些变化）都是基于当时的窗口大小
+based on the current size of the window,
+
+31
+00:01:24,947 --> 00:01:27,252
+或者当时的屏幕面积
+or the current available screen real estate.
+
+32
+00:01:27,253 --> 00:01:28,725
+可以想一想这么把这些
+And so think about how that applies to the
+
+33
+00:01:28,726 --> 00:01:30,381
+应用到UWP上
+Universal Windows Platform.
+
+34
+00:01:31,252 --> 00:01:33,048
+这其中一个亮点在于
+One of the selling points is that you're able
+
+35
+00:01:33,049 --> 00:01:35,151
+你可以只写一份基础的代码
+to write one code base and then use it
+
+36
+00:01:35,152 --> 00:01:37,091
+然后它就可以用在各种不同外形的场景下
+across all these different form factors.
+
+37
+00:01:37,092 --> 00:01:39,885
+这让你（的app）可以适应
+And so this allows you to accommodate different
+
+38
+00:01:39,886 --> 00:01:42,587
+不同屏幕分辨率的设备
+screen resolutions for different form factors
+
+39
+00:01:42,588 --> 00:01:44,659
+然而代码都是一样的
+with the same code base.
+
+40
+00:01:44,660 --> 00:01:47,219
+这个基本概念
+And so this is a very foundational concept
+
+41
+00:01:47,220 --> 00:01:49,708
+就是我们这节课要讲的
+and what we're going to talk about briefly in this lesson,
+
+42
+00:01:49,709 --> 00:01:53,386
+我们还会讲到这个如何应用于自适应的布局
+we'll talk about how this applies to adaptive layout,
+
+43
+00:01:53,387 --> 00:01:55,509
+换句话说，就是改变app的整个布局
+in other words, changing the entire layout
+
+44
+00:01:55,510 --> 00:01:58,221
+基于屏幕的大小
+of your application based on the screen size,
+
+45
+00:01:58,222 --> 00:01:59,420
+即外形因素
+the form factor.
+
+46
+00:01:59,421 --> 00:02:01,523
+这个我们下个视频会讲到
+We'll talk about that in the very next video.
+
+47
+00:02:01,524 --> 00:02:04,459
+再强调一遍，这个概念可以实现都是因为
+But again, this is all made possible because of
+
+48
+00:02:04,460 --> 00:02:06,886
+一个叫 VisualStateManager 的对象
+a object called the VisualStateManager,
+
+49
+00:02:06,887 --> 00:02:09,650
+你要创建一个VisualStateGroup，然后在这个里面
+You create a VisualStateGroup and inside of that group
+
+50
+00:02:09,651 --> 00:02:11,549
+你可以创建一组状态
+you create a series of States.
+
+51
+00:02:11,550 --> 00:02:13,581
+状态可以是任何，你要给它命名
+So a State can be anything, you give it a name
+
+52
+00:02:13,582 --> 00:02:15,450
+还要写一些触发器
+and you give it some Triggers.
+
+53
+00:02:15,451 --> 00:02:16,852
+那我们来看一下
+So in this case take a look at
+
+54
+00:02:16,853 --> 00:02:18,992
+刚刚那个app的代码
+the application we were just looking at.
+
+55
+00:02:19,643 --> 00:02:23,919
+这里我写了一个叫VisualStatePhone的状态
+So here I have a VisualState that I called Phone.
+
+56
+00:02:23,920 --> 00:02:25,818
+和一个叫VisualStateTablet的状态
+I have another VisualState that I called Tablet,
+
+57
+00:02:25,819 --> 00:02:27,058
+or VisualStateTablet,
+
+58
+00:02:27,059 --> 00:02:28,332
+还有一个状态
+And then another VisualState
+
+59
+00:02:28,333 --> 00:02:29,658
+叫VisualStateDesktop
+that I called VisualStateDesktop.
+
+60
+00:02:29,659 --> 00:02:31,020
+你可以按自己喜好命名
+Now you can name these things anything you want to.
+
+61
+00:02:31,021 --> 00:02:35,202
+我不知道有没有标准大小
+And I don't know if there's any standard sizes or
+
+62
+00:02:35,593 --> 00:02:36,851
+或者其它让你觉得为难的地方
+anything that you've got to stick with.
+
+63
+00:02:36,852 --> 00:02:39,086
+它都是有意义的
+It's whatever makes sense for your application,
+
+64
+00:02:39,087 --> 00:02:42,256
+这就是我觉得测试app
+and that's why I think, you know, testing your application
+
+65
+00:02:42,257 --> 00:02:45,151
+需要不停地在不同的设备上（测试）
+continually on different devices, and VisualStudio
+
+66
+00:02:45,152 --> 00:02:47,112
+而Visual Studio让这件事变得简单
+obviously makes that very simple.
+
+67
+00:02:48,623 --> 00:02:51,421
+在尽可能多的不同外形的场景下测试
+But testing it as many different form factors as possible,
+
+68
+00:02:51,422 --> 00:02:53,351
+会帮助你得到最佳的布局效果
+will help you see the optimal layout
+
+69
+00:02:53,352 --> 00:02:55,383
+在不同的外形场景下
+for that given form factor.
+
+70
+00:02:56,324 --> 00:02:58,123
+好哒我们来看看代码
+So here we go, we have a VisualState.
+
+71
+00:02:58,124 --> 00:03:00,754
+一个 VisualState 包含两个东西
+And a VisualState is comprised of two things.
+
+72
+00:03:00,755 --> 00:03:02,887
+一个是一组触发器
+First of all, a series of Triggers
+
+73
+00:03:02,888 --> 00:03:04,055
+还有一组Setters
+and then a series of Setters.
+
+74
+00:03:04,056 --> 00:03:07,621
+在这种情况下，触发器本质上是
+So when a Trigger is essentially, in this case,
+
+75
+00:03:07,622 --> 00:03:09,551
+不管是最小窗口宽度（MinWindowWidth）
+either the MinWindowWidth,
+
+76
+00:03:09,552 --> 00:03:11,156
+还是最小窗口高度（MinWindowHeight）
+or the MinWindowHeight,
+
+77
+00:03:11,157 --> 00:03:15,484
+一旦满足条件，就会触发
+that once it's achieved will Trigger
+
+78
+00:03:15,485 --> 00:03:17,587
+表现为特定的视觉状态（VisualState）
+this particular VisualState.
+
+79
+00:03:17,588 --> 00:03:19,385
+所以，一旦一个状态被触发了
+So once that State is Triggered,
+
+80
+00:03:19,386 --> 00:03:21,853
+Setters就起作用了
+then it applies these Setters.
+
+81
+00:03:21,854 --> 00:03:23,357
+这些Setters很像
+And these Setters are very similar to the Setters
+
+82
+00:03:23,358 --> 00:03:24,718
+我们在样式中使用的Setters，对吧
+that we had in Styles right?
+
+83
+00:03:24,719 --> 00:03:27,491
+有一个“Target”属性
+Where we have a Target, property,
+
+84
+00:03:27,492 --> 00:03:30,092
+这是一个叫“ColorGrid”的对象
+so here's the object, the ColorGrid object.
+
+85
+00:03:30,093 --> 00:03:32,418
+我要把它的背景颜色设为红色
+And I'm going to set the Background Value="Red".
+
+86
+00:03:32,419 --> 00:03:33,790
+对文本块也是一样的处理
+Alright, same thing with the TextBlock,
+
+87
+00:03:33,791 --> 00:03:35,151
+用MessageTextBlock
+this MessageTextBlock.
+
+88
+00:03:35,152 --> 00:03:39,316
+我用了点（.）操作符，这样我们可以访问
+And I use the dot notation just like we would to access
+
+89
+00:03:39,317 --> 00:03:41,754
+对象的成员了，这是C#的语法
+members of an object in C#.
+
+90
+00:03:41,755 --> 00:03:45,716
+所以我们用点操作符来访问FontSize属性
+So we use the dot notation to access the property FontSize
+
+91
+00:03:45,717 --> 00:03:48,841
+我们把它的值设为18，当我们处于
+and we set it's value to 18, whenever we are in that
+
+92
+00:03:48,842 --> 00:03:52,305
+窗口宽度大于0的时候，因为最小窗口宽度为0
+smallest state where the MinWindowWidth="0".
+
+93
+00:03:52,691 --> 00:03:55,159
+下一个状态的触发器
+The next State up has a Trigger
+
+94
+00:03:55,160 --> 00:03:57,912
+设置的最小窗口宽度是600
+of MinWindowWidth="600".
+
+95
+00:03:57,913 --> 00:04:01,254
+当满足最小窗口宽度时
+And at that point then we were applying,
+
+96
+00:04:02,535 --> 00:04:04,321
+我们写的Setters就会
+the Setters that we're applying are setting the
+
+97
+00:04:04,322 --> 00:04:07,247
+把 ColorGrid 的背景颜色设为黄色
+background ColorGrid to yellow,
+
+98
+00:04:07,248 --> 00:04:10,091
+同时文本块的字体设为36pt
+and the FontSize of the MessageTextBlock to 36.
+
+99
+00:04:10,092 --> 00:04:13,423
+对于桌面级的外形
+And then finally the desktop, as long as the
+
+100
+00:04:13,424 --> 00:04:15,384
+最小窗口宽度设为800
+MinWindowWidth="800",
+
+101
+00:04:15,385 --> 00:04:17,223
+一旦窗口宽度达到最小值
+once we stretch it out that far,
+
+102
+00:04:17,224 --> 00:04:19,590
+app的背景颜色就会
+then we were able to change the Background
+
+103
+00:04:19,591 --> 00:04:22,221
+变成蓝色，字体大小变为54
+to blue and the FontSize to 54.
+
+104
+00:04:23,092 --> 00:04:25,085
+所以从概念上讲，这个还蛮简单的
+So conceptually it's easy,
+
+105
+00:04:26,336 --> 00:04:27,276
+非常简单
+it's very easy.
+
+106
+00:04:28,148 --> 00:04:30,733
+它让你可以做很多创造性的事情
+It allows you to get creative
+
+107
+00:04:30,854 --> 00:04:34,581
+当你想让你的app发生一些改变时
+with how you want to make changes to your application
+
+108
+00:04:34,582 --> 00:04:36,802
+就用这个（VisualStateManager）吧
+using this tool.
+
+109
+00:04:36,979 --> 00:04:40,686
+这就是我们要讲的概念
+And that's really all there is to the notion of
+
+110
+00:04:40,687 --> 00:04:42,454
+在这个视频中
+what we were calling in the video
+
+111
+00:04:42,455 --> 00:04:44,354
+叫做自适应触发器（AdaptiveTrigger）
+an AdaptiveTrigger.
+
+112
+00:04:44,355 --> 00:04:46,223
+这是一个AdaptiveTrigger对象
+Here's an AdaptiveTrigger object,
+
+113
+00:04:46,224 --> 00:04:49,758
+我们写了一个触发器，然后
+we set the Trigger and then once that Trigger is
+
+114
+00:04:49,759 --> 00:04:52,247
+一旦这个触发器被触发，Setters就起作用了
+fired off, we apply the Setters.
+
+115
+00:04:52,248 --> 00:04:53,314
+好棒
+Ok great.
+
+116
+00:04:53,315 --> 00:04:55,518
+现在我要给你看的是
+Now I wanted to show you
+
+117
+00:04:55,519 --> 00:05:00,191
+有一个工具可以帮助你来做这些
+that there's actually a tool that will help you do this.
+
+118
+00:05:00,192 --> 00:05:02,416
+事实上我并不喜欢这个工具
+Now I don't like this tool, honestly,
+
+119
+00:05:02,417 --> 00:05:04,082
+我真的是很诚实地告诉你哦
+I'm being completely honest with you,
+
+120
+00:05:04,083 --> 00:05:05,849
+我其实更喜欢自己手写
+I would prefer to do it by hand,
+
+121
+00:05:05,850 --> 00:05:07,322
+这样感觉有更多主导权
+I feel like I have more control.
+
+122
+00:05:07,323 --> 00:05:10,492
+但是如果你更喜欢视觉化的操作
+But if you're a more visual type person
+
+123
+00:05:10,493 --> 00:05:12,453
+然后你也不记得那么多语法
+and you don't remember the syntax
+
+124
+00:05:12,454 --> 00:05:14,454
+你还不想查参考手册
+and you don't want to look up on your cheat sheet,
+
+125
+00:05:14,455 --> 00:05:16,120
+我们等会儿会把这个加到参考手册里去
+as we'll add this to our cheat sheet in a little bit,
+
+126
+00:05:16,121 --> 00:05:17,583
+你就可以用这个懒方法啦
+you can use this trick.
+
+127
+00:05:18,604 --> 00:05:20,857
+在解决方案资源管理器里，看到你的项目
+In your project, in the Solution Explorer,
+
+128
+00:05:20,858 --> 00:05:22,421
+你可以看到
+you can see here I have
+
+129
+00:05:22,422 --> 00:05:24,392
+我有一个新项目，名字叫UsingBlendForVisualStates
+a New Project called UsingBlendForVisualStates,
+
+130
+00:05:24,393 --> 00:05:26,424
+我还写了同样的“ColorGrid”和文本块
+and I have the same Color Grid and TextBlock,
+
+131
+00:05:26,425 --> 00:05:28,659
+不过还没有添加任何东西在里面
+but I haven't added anything else to it just yet.
+
+132
+00:05:28,660 --> 00:05:31,757
+在解决方案资源管理器里面，右击项目名
+Here in the Solution Explorer I'm going to right-click
+
+133
+00:05:31,758 --> 00:05:34,185
+选择在Blend中设计
+on the project and select Design in Blend.
+
+134
+00:05:34,186 --> 00:05:36,491
+Blend是一个工具
+And so Blend is a tool that should be installed
+
+135
+00:05:36,912 --> 00:05:39,037
+随Visual Studio一起下载的
+along with Visual Studio
+
+136
+00:05:40,424 --> 00:05:43,725
+它主要是做一些设计类的工作
+And it really was intended for
+
+137
+00:05:43,726 --> 00:05:46,356
+我的意思是通过设计来实现
+more design work, and by design I mean
+
+138
+00:05:46,357 --> 00:05:48,185
+美术设计之类的工作
+aesthetic design work.
+
+139
+00:05:48,186 --> 00:05:50,684
+你可以看到它和Visual Studio
+And you see that it has many of the same
+
+140
+00:05:50,685 --> 00:05:52,492
+有很多相同的功能
+features of Visual Studio.
+
+141
+00:05:52,493 --> 00:05:55,285
+右边是属性窗口
+On the right-hand side we have the properties window.
+
+142
+00:05:55,286 --> 00:05:58,882
+解决方案资源管理器默认停靠在这里
+There is also a Solution Explorer docked by default
+
+143
+00:05:58,883 --> 00:06:00,385
+这左边
+over here on the left.
+
+144
+00:06:00,386 --> 00:06:02,488
+Blend帮你做了两件事
+There are two things that Blend does for you
+
+145
+00:06:02,489 --> 00:06:04,784
+这两件事呢，你自己做起来可能不那么容易
+that you can't easily do
+
+146
+00:06:06,885 --> 00:06:08,551
+在Visual Studio
+in Visual Studio.
+
+147
+00:06:08,552 --> 00:06:10,877
+其中一件事呢
+And one of them, is it gives you this cool little
+
+148
+00:06:10,878 --> 00:06:15,038
+就是让你很cool地创建VisualState
+way of creating VisualStates and
+
+149
+00:06:15,053 --> 00:06:17,754
+并且记录状态的改变
+recording the changes in a given State.
+
+150
+00:06:17,755 --> 00:06:19,420
+另一件事呢，就是动画结合起来
+And then secondly, working with animation,
+
+151
+00:06:19,421 --> 00:06:21,655
+这个我们不打算在这系列讲到
+which we're not going to talk about in this series.
+
+152
+00:06:21,656 --> 00:06:23,250
+让我来展示给你看Blend是怎么工作的吧
+But let me show you how this works,
+
+153
+00:06:23,251 --> 00:06:24,784
+事实上它超简单
+in fact it's just easier if I go straight
+
+154
+00:06:24,785 --> 00:06:27,791
+要是我直接到设计界面的话to the design view for this.
+
+155
+00:06:27,792 --> 00:06:30,189
+让我们来看看
+And let's go down to where we can actually see
+
+156
+00:06:30,190 --> 00:06:32,704
+我们的设计区
+our design area.
+
+157
+00:06:33,258 --> 00:06:37,523
+这是对象和时间轴窗口
+So there's this Objects and Timeline window,
+
+158
+00:06:37,524 --> 00:06:39,484
+一般停靠在左边
+typically docked on the left-hand side.
+
+159
+00:06:39,485 --> 00:06:42,318
+你看我可以向下展开
+And you can see that I can drill down and see
+
+160
+00:06:42,319 --> 00:06:44,655
+看到ColorGrid和它里面包含的东西
+the ColorGrid and whatever's inside the ColorGrid,
+
+161
+00:06:44,656 --> 00:06:46,554
+一个MessageTextBlock
+in this case, the MessageTextBlock.
+
+162
+00:06:46,555 --> 00:06:48,688
+然后我要看看状态标签
+And then I'm going to go to the States tab here
+
+163
+00:06:48,689 --> 00:06:51,888
+一般停靠在左上角
+that's usually docked up on the upper left-hand corner.
+
+164
+00:06:51,889 --> 00:06:56,242
+我要添加一个状态组
+And what I'll do is, I'm going to add a state group,
+
+165
+00:06:56,257 --> 00:06:58,359
+所以我点一下这个小按钮
+so I'm going to click this little button here.
+
+166
+00:06:58,360 --> 00:07:01,589
+然后它就会创建一个VisualStateGroup
+And this will create a VisualStateGroup.
+
+167
+00:07:01,590 --> 00:07:03,814
+我要添加一个状态到这个状态组里
+I'm going to add a state to that group
+
+168
+00:07:03,815 --> 00:07:06,953
+将它命名为Phone
+d I'm going to call this state Phone,
+
+169
+00:07:06,954 --> 00:07:08,751
+我们可以按自己想法命名
+we can call it anything we want.
+
+170
+00:07:08,752 --> 00:07:10,184
+我还要添加一个状态
+I'm going to add another state
+
+171
+00:07:10,185 --> 00:07:13,059
+这个叫Tablet
+that I'm going to call Tablet.
+
+172
+00:07:13,060 --> 00:07:17,356
+我还要添加一个叫Desktop的状态
+And I'm going to add another state that I call Desktop.
+
+173
+00:07:19,967 --> 00:07:23,274
+注意到当我选择它们其中任意一个时
+And notice that whenever I select any of these,
+
+174
+00:07:23,518 --> 00:07:25,691
+这里会出现一个小红点
+that a little red light
+
+175
+00:07:25,692 --> 00:07:29,592
+在被选择的状态的左边
+is selected on the left-hand side,
+
+176
+00:07:29,593 --> 00:07:32,751
+同时在设计区会出现红色的边框
+and there's a red border all around the designer area.
+
+177
+00:07:32,752 --> 00:07:36,754
+你可能看到状态Phone就开始记录了
+You might also see that Phone state recording is on.
+
+178
+00:07:36,755 --> 00:07:40,492
+现在我选择了状态Tablet，然后状态Tablet就开始记录了
+Now I select Tablet and Tablet state recording is on
+
+179
+00:07:40,493 --> 00:07:42,879
+所以基本上你要做的就是
+So essentially what you're doing here is,
+
+180
+00:07:42,880 --> 00:07:45,592
+记录属性窗口中
+you're recording the changes in the property window
+
+181
+00:07:45,593 --> 00:07:47,085
+你想要的变化
+that you want to be made
+
+182
+00:07:47,086 --> 00:07:49,889
+在你选择的状态下
+when you're in that given state.
+
+183
+00:07:49,890 --> 00:07:50,945
+现在我们还有一些其他事需要做
+Now there's something else that we need to do
+
+184
+00:07:50,946 --> 00:07:54,653
+在我们继续下去之前
+before we actually continue on with this.
+
+185
+00:07:54,654 --> 00:07:57,051
+那就是，我们要设置触发器
+And that is, we need to set the Triggers.
+
+186
+00:07:57,052 --> 00:07:58,686
+就像你在这里看到的
+So as you can see here,
+
+187
+00:07:58,687 --> 00:08:01,957
+这有一个闪电样的标志
+there's a little lightning bolt
+
+188
+00:08:01,958 --> 00:08:03,187
+在右边
+off to the right-hand side
+
+189
+00:08:03,188 --> 00:08:05,757
+我要点击它（编辑自适应触发器）I'm going to click Edit Adaptive Triggers,
+
+190
+00:08:05,758 --> 00:08:08,071
+我要添加一个AdaptiveTrigger
+and I'm going to add an AdaptiveTrigger,
+
+191
+00:08:08,072 --> 00:08:12,437
+把它的MinWindowWidth设置成0
+and set in this case the MinWindowWidth to zero,
+
+192
+00:08:13,084 --> 00:08:14,836
+点击OK
+and click OK.
+
+193
+00:08:15,125 --> 00:08:17,376
+接下来是状态Tablet
+And then for Tablet,
+
+194
+00:08:17,452 --> 00:08:22,374
+我要把MinWindowWidth设成600
+I'm going to set it's MinWindowWidth I think to 600,
+
+195
+00:08:22,724 --> 00:08:23,922
+这其实是我随便输的数字啦
+again these are arbitrary numbers,
+
+196
+00:08:23,923 --> 00:08:26,025
+你可以为自己的app测试一下
+you would want to test this for your own application,
+
+197
+00:08:26,026 --> 00:08:28,453
+我感觉这个没有绝对的标准
+there are no standards that I'm aware of,
+
+198
+00:08:28,454 --> 00:08:30,119
+你应该要使用断点
+at certain break points you should be using
+
+199
+00:08:30,120 --> 00:08:33,055
+与之相对的是，我觉得这些应该
+this versus that, I think this is something you get
+
+200
+00:08:33,056 --> 00:08:36,123
+由你这个开发者来决定
+to determine on your own as the developer.
+
+201
+00:08:36,124 --> 00:08:38,144
+所以，当窗口宽度大于等于600，就会触发
+So the MinWindowWidth 600, that will trigger
+
+202
+00:08:38,145 --> 00:08:43,144
+状态Tablet，最后我们来设置状态Desktopt
+he Tablet state, and then finally the Desktop,
+
+203
+00:08:43,153 --> 00:08:45,637
+我们把它的最小值设为800
+we'll set it's minimum to 800.
+
+204
+00:08:47,024 --> 00:08:48,238
+在这里
+So here.
+
+205
+00:08:49,025 --> 00:08:50,270
+800，好了
+800 great.
+
+206
+00:08:51,758 --> 00:08:53,921
+当处于状态Desktop时
+Now, whenever in Desktop mode,
+
+207
+00:08:53,922 --> 00:08:56,989
+我们想做什么呢，我要选择MessageTextBlock
+what we want to do, I'm going to select the MessageTextBlock
+
+208
+00:08:56,990 --> 00:08:59,620
+在这个对象和时间轴窗口里
+here in the Objects and Timeline window.
+
+209
+00:08:59,621 --> 00:09:03,141
+我要改变它的字体
+And then I'm going to change the font
+
+210
+00:09:03,257 --> 00:09:06,869
+大小改成54，我不记得我们刚开始那个数值了
+to oh let's say 54, I forget what we chose originally.
+
+211
+00:09:08,346 --> 00:09:11,268
+接下来我要设置状态Tablet
+And then I'm going to go to the Tablet,
+
+212
+00:09:11,554 --> 00:09:14,022
+我要修改这个文本块
+and then I'm going to change the TextBlock
+
+213
+00:09:14,023 --> 00:09:16,029
+大小是36
+to let's say 36.
+
+214
+00:09:17,284 --> 00:09:18,959
+然后是状态Phone
+And then I'm going to go to the Phone
+
+215
+00:09:18,960 --> 00:09:20,804
+把它的字体大小改到16
+and change it to like 16.
+
+216
+00:09:23,227 --> 00:09:25,304
+继续
+And so now, let me go ahead
+
+217
+00:09:25,553 --> 00:09:26,838
+保存
+save what I have,
+
+218
+00:09:29,627 --> 00:09:31,369
+运行
+and then I'm going to run the application.
+
+219
+00:09:38,587 --> 00:09:40,106
+你看
+And you can see
+
+220
+00:09:40,192 --> 00:09:42,852
+这些变化就实现了
+that I was able to make those changes
+
+221
+00:09:42,853 --> 00:09:43,990
+都是用这个工具实现的
+using this tool.
+
+222
+00:09:43,991 --> 00:09:47,556
+再强调一遍，我个人是比较喜欢自己敲代码来实现的
+Now again, I would prefer to just type it in myself.
+
+223
+00:09:47,557 --> 00:09:50,492
+它确实创建了一个漂亮干净的XAML，但是有些地方
+It does create nice clean XAML, but there are some cases
+
+224
+00:09:50,493 --> 00:09:52,920
+比如处理颜色，处理笔刷
+like working with colors, and brushes,
+
+225
+00:09:52,921 --> 00:09:55,886
+我就不喜欢它生成的XAML
+I didn't like the XAML that it outputted.
+
+226
+00:09:55,887 --> 00:09:57,857
+我更愿意自己手打
+That's me just being a little snobby here.
+
+227
+00:09:58,768 --> 00:10:00,787
+当然你可以用这个工具来帮助自己
+But otherwise you can use this tool to help you
+
+228
+00:10:00,788 --> 00:10:03,083
+生成一些东西
+generate these sorts of things.
+
+229
+00:10:03,084 --> 00:10:05,084
+当你关闭Blend的时候
+Now when you close down Blend,
+
+230
+00:10:05,085 --> 00:10:06,618
+你就会返回到Visual Studio
+you're going to come back into VisualStudio,
+
+231
+00:10:06,619 --> 00:10:10,286
+它就会提示你，你是不是刚刚打开了一些窗口
+it says hey, any windows that you had open,
+
+232
+00:10:11,527 --> 00:10:14,186
+它们在Visual Studio之外的地方被改变了
+they changed out from under VisualStudio.
+
+233
+00:10:14,187 --> 00:10:16,157
+你想要重新加载吗
+Do you want to reload this?
+
+234
+00:10:16,158 --> 00:10:18,117
+当然，我要重新加载，然后你就看到
+Yes, I want to reload it and now you can see
+
+235
+00:10:18,118 --> 00:10:20,616
+所有的Visual States
+All of the visual States
+
+236
+00:10:20,617 --> 00:10:23,583
+还有触发器和Setters
+and the Triggers and the Setters
+
+237
+00:10:23,584 --> 00:10:26,941
+它们在Visual Studio都被更新了
+are all updated here in VisualStudio.
+
+238
+00:10:27,017 --> 00:10:31,253
+所以呢，这一个很简单的概念，很有用
+So again, a very simple concept, very powerful
+
+239
+00:10:31,254 --> 00:10:33,457
+在我们如何用这个
+in how we can go about using this
+
+240
+00:10:33,458 --> 00:10:35,824
+去样式化我们的app
+to style up our applications based on the
+
+241
+00:10:35,825 --> 00:10:37,785
+根据不同的外形因素和分辨率方面
+form factor and screen resolution.
+
+242
+00:10:37,786 --> 00:10:42,153
+再多说一遍，这是基本的概念
+And again, foundational concept for building real
+
+243
+00:10:42,154 --> 00:10:45,292
+在我们创建一个真正的UWP的app中
+Universal Windows Platform applications.
+
+244
+00:10:45,293 --> 00:10:46,816
+我们要用到这个
+And so we're going to use this now
+
+245
+00:10:46,817 --> 00:10:49,152
+在接下来的课程中
+in the next lesson to actually
+
+246
+00:10:49,153 --> 00:10:51,154
+来创建更多实用的app
+create a more realistic app,
+
+247
+00:10:51,155 --> 00:10:54,618
+利用这些概念来改变布局
+and utilize these concepts to change out the layout
+
+248
+00:10:54,619 --> 00:10:58,011
+基于可用的屏幕分辨率
+based on the available screen resolution.
+
+249
+00:10:58,012 --> 00:11:01,708
+好哒，我们就要进入激动人心的第二部分了
+Alright so stay tuned to exciting part two of this
+
+250
+00:11:01,709 --> 00:11:04,265
+下节课见 (￣▽￣)"
+in the very next lesson, thanks.
+
