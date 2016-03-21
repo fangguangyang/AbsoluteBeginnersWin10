@@ -1,0 +1,170 @@
+﻿[Script Info]
+;SrtEdit 6.3.2012.1001
+;Copyright(C) 2005-2012 Yuan Weiguo
+
+Title: Default Aegisub file
+Original Script: 
+Original Translation: 
+Original Timing: 
+Original Editing: 
+Script Updated By: 
+Update Details: 
+ScriptType: v4.00+
+Collisions: Reverse
+PlayResX: 640
+PlayResY: 360
+Timer: 100.0000
+Synch Point: 
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:04.78,0:00:08.52,Default,,0,0,0,,Hi, I am Bob Tabor with www.learnvisualstudio.net.
+Dialogue: 0,0:00:08.52,0:00:11.72,Default,,0,0,0,,In this lesson we will begin learning about the XAML syntax.
+Dialogue: 0,0:00:12.10,0:00:17.75,Default,,0,0,0,,Honestly it's pretty easy to figure out the absolute basis of XAML just by looking at it.
+Dialogue: 0,0:00:17.75,0:00:22.65,Default,,0,0,0,,I mean I can imagine that whatever you saw in the previous lesson
+Dialogue: 0,0:00:22.65,0:00:27.25,Default,,0,0,0,,you were able to at least figure out the correlation between the tags,
+Dialogue: 0,0:00:27.25,0:00:30.65,Default,,0,0,0,,the properties and what you saw in the visual designer, right?
+Dialogue: 0,0:00:30.65,0:00:33.65,Default,,0,0,0,,Well what I want to accomplish is to talk about
+Dialogue: 0,0:00:33.65,0:00:37.85,Default,,0,0,0,,some of the features and functions that may not be so obvious at the first glance.
+Dialogue: 0,0:00:38.20,0:00:41.70,Default,,0,0,0,,So we will take a couple of parts at this short videos
+Dialogue: 0,0:00:41.70,0:00:45.12,Default,,0,0,0,,that when combined together will give a pretty throughout understanding of XAML
+Dialogue: 0,0:00:45.12,0:00:46.32,Default,,0,0,0,,and how it all works .
+Dialogue: 0,0:00:46.32,0:00:50.72,Default,,0,0,0,,In this first lesson we are gonna talk about the purpose and the nature of XAML,
+Dialogue: 0,0:00:50.72,0:00:53.10,Default,,0,0,0,,especially in comparison to C#.
+Dialogue: 0,0:00:53.10,0:00:54.97,Default,,0,0,0,,Then the next few lessons
+Dialogue: 0,0:00:54.97,0:00:57.47,Default,,0,0,0,,we are going to talk about the special features in XAML.
+Dialogue: 0,0:00:57.60,0:01:00.15,Default,,0,0,0,,Little hidden features of the language that,
+Dialogue: 0,0:01:00.15,0:01:04.30,Default,,0,0,0,,again, may not be obvious when you first start looking at it
+Dialogue: 0,0:01:04.30,0:01:08.27,Default,,0,0,0,,So my aim is that by the end of the first several lessons
+Dialogue: 0,0:01:08.27,0:01:11.95,Default,,0,0,0,,you're going to have enough knowledge that you can look at the XAML that we write together
+Dialogue: 0,0:01:12.45,0:01:16.50,Default,,0,0,0,,and in the remainder of this series you are going to be able to take a pretty good guess of what it's trying to do
+Dialogue: 0,0:01:16.50,0:01:18.30,Default,,0,0,0,,before I even explain what it does.
+Dialogue: 0,0:01:18.30,0:01:20.80,Default,,0,0,0,,Alright, so first of all let's talk about what XAML is.
+Dialogue: 0,0:01:21.17,0:01:24.24,Default,,0,0,0,,In the previous lesson I made a passing remark about
+Dialogue: 0,0:01:24.24,0:01:27.68,Default,,0,0,0,,how XAML looks similar to HTML and that's no accidents.
+Dialogue: 0,0:01:28.24,0:01:32.68,Default,,0,0,0,,XAML is really just XML, the eXtensible Markup Language.
+Dialogue: 0,0:01:33.06,0:01:35.31,Default,,0,0,0,,I will explained that relationship in just a moment,
+Dialogue: 0,0:01:35.31,0:01:36.95,Default,,0,0,0,,but at a higher level
+Dialogue: 0,0:01:36.95,0:01:42.33,Default,,0,0,0,,XML looks a lot like HTML and so much that they share a common ancestry.
+Dialogue: 0,0:01:42.73,0:01:47.60,Default,,0,0,0,,Whereas HTML is specific to structuring a web page document
+Dialogue: 0,0:01:48.13,0:01:50.97,Default,,0,0,0,,XML a little bit more generic in nature
+Dialogue: 0,0:01:50.97,0:01:56.06,Default,,0,0,0,,and by generic I mean that you can use it for any purpose that you decide
+Dialogue: 0,0:01:56.31,0:02:01.02,Default,,0,0,0,,and you can define the names and the elements of the attributes to suit your needs
+Dialogue: 0,0:02:01.44,0:02:06.62,Default,,0,0,0,,Now the past developers have used XML for things like storing application settings
+Dialogue: 0,0:02:06.62,0:02:12.44,Default,,0,0,0,,or using it as a means of transferring data between two systems that were never intend to work together
+Dialogue: 0,0:02:13.48,0:02:18.24,Default,,0,0,0,,And to use XML you start off by defining what's called the schema
+Dialogue: 0,0:02:18.24,0:02:22.75,Default,,0,0,0,,which declares the proper names of the elements and their attributes
+Dialogue: 0,0:02:22.75,0:02:27.08,Default,,0,0,0,,and so schema is kind of like a contract that two parties agreed to,everybody agrees
+Dialogue: 0,0:02:27.08,0:02:30.80,Default,,0,0,0,,Both the producer of XML and the consumer of XML
+Dialogue: 0,0:02:30.80,0:02:37.33,Default,,0,0,0,,to write and read the XML to conform to those rules set forth in the contract,I mean, the schema.
+Dialogue: 0,0:02:37.33,0:02:40.20,Default,,0,0,0,,And now that they both agree
+Dialogue: 0,0:02:40.20,0:02:43.93,Default,,0,0,0,,that they're working in the same rule of the same contract and communicate with each other
+Dialogue: 0,0:02:43.93,0:02:47.13,Default,,0,0,0,,So, a schema is a really important part of XML
+Dialogue: 0,0:02:47.13,0:02:49.86,Default,,0,0,0,,and just keep in mind 'cuz we will come back to that in just a moment
+Dialogue: 0,0:02:50.51,0:02:55.57,Default,,0,0,0,,XAML is a special usage of XML
+Dialogue: 0,0:02:55.93,0:02:59.37,Default,,0,0,0,,Obviously we see, at least in this case
+Dialogue: 0,0:02:59.37,0:03:05.20,Default,,0,0,0,,XAML has something to do with defining a user interface for our for application
+Dialogue: 0,0:03:05.20,0:03:09.42,Default,,0,0,0,,so now we got it feels a lot like HTML but there's a big difference
+Dialogue: 0,0:03:09.42,0:03:17.40,Default,,0,0,0,,XAML is actually used to create instances of classes and set values of their properties.
+Dialogue: 0,0:03:17.40,0:03:22.28,Default,,0,0,0,,So for example in the previous lesson we created a little hello world application
+Dialogue: 0,0:03:22.28,0:03:25.62,Default,,0,0,0,,I can expand on that here just give it a little more design
+Dialogue: 0,0:03:25.62,0:03:31.35,Default,,0,0,0,,I added a button and notice that I put all the attributes on separate lines and now we can see
+Dialogue: 0,0:03:31.35,0:03:33.44,Default,,0,0,0,,hopefully the definition will look a bit better
+Dialogue: 0,0:03:33.44,0:03:35.44,Default,,0,0,0,,I'm actually getting more room here
+Dialogue: 0,0:03:35.44,0:03:38.08,Default,,0,0,0,,We are going to rely less and less on the visual designer
+Dialogue: 0,0:03:38.08,0:03:40.97,Default,,0,0,0,,In fact we may start to get rid of it completely
+Dialogue: 0,0:03:40.97,0:03:43.71,Default,,0,0,0,,but you can see here that I created a red button called "click me"
+Dialogue: 0,0:03:43.71,0:03:47.60,Default,,0,0,0,,and there's also a MessageTextBlock that will appear below
+Dialogue: 0,0:03:47.64,0:03:50.55,Default,,0,0,0,,So it's very much like what we did before,I am just starting over from scratch
+Dialogue: 0,0:03:52.91,0:03:56.62,Default,,0,0,0,,what I want to do is well first of all let's...
+Dialogue: 0,0:03:56.91,0:04:02.31,Default,,0,0,0,,let's go let's go ahead and take a look at the code behind
+Dialogue: 0,0:04:02.31,0:04:10.24,Default,,0,0,0,,and we'll set the TextBlock equal to "What is XAML?"
+Dialogue: 0,0:04:10.24,0:04:13.77,Default,,0,0,0,,the topic of this lesson, whenever you click the button
+Dialogue: 0,0:04:13.77,0:04:16.46,Default,,0,0,0,,So let's run the application briefly
+Dialogue: 0,0:04:17.46,0:04:19.95,Default,,0,0,0,,just to show that there is nothing up my sleeve
+Dialogue: 0,0:04:22.75,0:04:24.68,Default,,0,0,0,,And click it and we get the result
+Dialogue: 0,0:04:24.68,0:04:26.84,Default,,0,0,0,,Great, okay now what I want to do
+Dialogue: 0,0:04:26.84,0:04:29.53,Default,,0,0,0,,just to demonstrate how XMAL works
+Dialogue: 0,0:04:29.53,0:04:31.57,Default,,0,0,0,,is actually comment out this button control
+Dialogue: 0,0:04:32.06,0:04:38.75,Default,,0,0,0,,and I'll use the syntax that you would use if you're familiar with HTML at how to comment out things
+Dialogue: 0,0:04:38.75,0:04:40.28,Default,,0,0,0,,It's just this open bracket
+Dialogue: 0,0:04:40.28,0:04:42.35,Default,,0,0,0,,*** mark, dash, dash
+Dialogue: 0,0:04:42.51,0:04:44.40,Default,,0,0,0,,to start the comment section
+Dialogue: 0,0:04:44.40,0:04:47.71,Default,,0,0,0,,And then to end the comment section you just do dash, dash,
+Dialogue: 0,0:04:47.71,0:04:49.35,Default,,0,0,0,,closing angle bracket like so
+Dialogue: 0,0:04:49.35,0:04:55.57,Default,,0,0,0,,and you can see that in Visual Studio code editor that it appears green by default
+Dialogue: 0,0:04:56.33,0:04:58.66,Default,,0,0,0,,Okay, so now that we've got rid of it
+Dialogue: 0,0:04:58.95,0:05:01.75,Default,,0,0,0,,what I'm gonna do is actually, come back over here
+Dialogue: 0,0:05:01.80,0:05:03.60,Default,,0,0,0,,well actually a couple of things
+Dialogue: 0,0:05:03.60,0:05:05.86,Default,,0,0,0,,I already gave this a name
+Dialogue: 0,0:05:05.86,0:05:08.35,Default,,0,0,0,,but by default whenever you create a new project
+Dialogue: 0,0:05:08.35,0:05:10.02,Default,,0,0,0,,the grid does not have a name
+Dialogue: 0,0:05:10.02,0:05:14.22,Default,,0,0,0,,I gave it the name LayoutGrid Because that is *** what it is actually doing for us.
+Dialogue: 0,0:05:14.22,0:05:17.37,Default,,0,0,0,,And then the other thing I want to do is whenever the page loads
+Dialogue: 0,0:05:17.37,0:05:23.37,Default,,0,0,0,,so I'm going to find the Loaded event
+Dialogue: 0,0:05:23.37,0:05:26.35,Default,,0,0,0,,I'm gonna create a new event handler call Page_Loaded
+Dialogue: 0,0:05:26.35,0:05:30.66,Default,,0,0,0,,and use the F12 key on my keyboard to pop that open and the code behind
+Dialogue: 0,0:05:30.66,0:05:32.86,Default,,0,0,0,,And so now I'm gonna write code
+Dialogue: 0,0:05:32.86,0:05:36.46,Default,,0,0,0,,that will execute whenever the page has loaded in the memory
+Dialogue: 0,0:05:36.46,0:05:38.91,Default,,0,0,0,,And this's going to take me a little bit
+Dialogue: 0,0:05:38.91,0:05:43.82,Default,,0,0,0,,and hopefully you'll see why and it'll prove what I'm trying to explain here
+Dialogue: 0,0:05:45.26,0:05:48.17,Default,,0,0,0,,So I might even just kind of start this out
+Dialogue: 0,0:05:48.17,0:05:52.35,Default,,0,0,0,,and fast forward near the end of this typing exercise
+Dialogue: 0,0:05:53.51,0:05:55.37,Default,,0,0,0,,I don't recommend that you do this
+Dialogue: 0,0:05:59.66,0:06:02.15,Default,,0,0,0,,Okay so it took me about two mins to type all this out
+Dialogue: 0,0:06:02.15,0:06:04.15,Default,,0,0,0,,I am not the slowest typist in the world
+Dialogue: 0,0:06:04.15,0:06:06.35,Default,,0,0,0,,but this is pretty fit typing
+Dialogue: 0,0:06:06.35,0:06:09.55,Default,,0,0,0,,and tell us how to not make a few mistakes along the way
+Dialogue: 0,0:06:09.55,0:06:14.40,Default,,0,0,0,,but the point of this is if we actually run the application
+Dialogue: 0,0:06:14.40,0:06:15.75,Default,,0,0,0,,I wanna show you what it does
+Dialogue: 0,0:06:17.42,0:06:20.35,Default,,0,0,0,,Hey it created a red button
+Dialogue: 0,0:06:20.35,0:06:24.15,Default,,0,0,0,,almost identical in fact is identical to the one that we defined in XAML
+Dialogue: 0,0:06:24.15,0:06:27.40,Default,,0,0,0,,and if we click it it gives me the same results
+Dialogue: 0,0:06:27.40,0:06:29.40,Default,,0,0,0,,So the point I'm making here is that
+Dialogue: 0,0:06:29.40,0:06:34.04,Default,,0,0,0,,it took all of this C# code
+Dialogue: 0,0:06:34.04,0:06:38.71,Default,,0,0,0,,to do what I was able to do in basically just one line of code
+Dialogue: 0,0:06:38.71,0:06:41.71,Default,,0,0,0,,Now I spaced it out over several lines
+Dialogue: 0,0:06:41.71,0:06:47.75,Default,,0,0,0,,but you can see that the C# version of this is much more verbose
+Dialogue: 0,0:06:47.75,0:06:54.57,Default,,0,0,0,,And then secondly what we are really doing when we are defining elements and attribute in XAML
+Dialogue: 0,0:06:54.57,0:07:02.08,Default,,0,0,0,,is that we're creating new instances of classes in the Universal Windows Platform API
+Dialogue: 0,0:07:02.08,0:07:09.28,Default,,0,0,0,,and defining and setting their attributes and properties just like we're doing here in this code, alright
+Dialogue: 0,0:07:09.86,0:07:11.24,Default,,0,0,0,,By the way, before I forget
+Dialogue: 0,0:07:11.24,0:07:14.02,Default,,0,0,0,,if you want to follow along and do this exercise yourself
+Dialogue: 0,0:07:14.02,0:07:19.15,Default,,0,0,0,,I will add the I already have the Before where we started out
+Dialogue: 0,0:07:19.15,0:07:22.06,Default,,0,0,0,,and I'll add this code that I just typed in the After
+Dialogue: 0,0:07:22.06,0:07:25.62,Default,,0,0,0,,so you'll be able to get in this project "WhatIsXAML"
+Dialogue: 0,0:07:27.04,0:07:29.44,Default,,0,0,0,,So the important take away is this
+Dialogue: 0,0:07:29.44,0:07:33.02,Default,,0,0,0,,that XAML is simply a way to create instances of classes
+Dialogue: 0,0:07:33.02,0:07:39.66,Default,,0,0,0,,and set those objects properties in a much more simplified succinct syntax
+Dialogue: 0,0:07:39.66,0:07:44.93,Default,,0,0,0,,(It) took us 12 lines of code, 13 lines of code C#
+Dialogue: 0,0:07:44.93,0:07:46.77,Default,,0,0,0,,only took one line of XAML
+Dialogue: 0,0:07:46.77,0:07:54.37,Default,,0,0,0,,Even if I did separated it out, it's still until much shorter than would have been had I use C# to create all of my object
+Dialogue: 0,0:07:54.53,0:07:57.13,Default,,0,0,0,,Furthermore whenever I do use XAML
+Dialogue: 0,0:07:57.13,0:08:05.02,Default,,0,0,0,,I get this automatic feedback here in the visual designer in the preview pane
+Dialogue: 0,0:08:05.02,0:08:09.46,Default,,0,0,0,,So I can see the impact of my changes instantly if I choose to work like that
+Dialogue: 0,0:08:09.46,0:08:13.06,Default,,0,0,0,,So in the case of the procedure C# that I wrote
+Dialogue: 0,0:08:13.06,0:08:20.04,Default,,0,0,0,,I have to run the application each time that I wanted to see how my tweets to the code actually work
+Dialogue: 0,0:08:20.04,0:08:22.94,Default,,0,0,0,,So okay that's it, that's the point of this lesson
+Dialogue: 0,0:08:22.94,0:08:27.54,Default,,0,0,0,,Two fold, one that XAML is just a specific flavor of XML
+Dialogue: 0,0:08:27.54,0:08:29.94,Default,,0,0,0,,It follows all the rules of XML
+Dialogue: 0,0:08:29.94,0:08:31.80,Default,,0,0,0,,Somebody defines the schema
+Dialogue: 0,0:08:31.80,0:08:38.20,Default,,0,0,0,,a contract, and then both the producer and consumer of the XML agree to the contract
+Dialogue: 0,0:08:38.20,0:08:45.16,Default,,0,0,0,,and then they can begin to work together, konwing that they are pretty much on the same page
+Dialogue: 0,0:08:45.16,0:08:50.28,Default,,0,0,0,,Now in this case, the contract is XAML and it was defined by Microsoft
+Dialogue: 0,0:08:50.28,0:08:55.84,Default,,0,0,0,,the producer of the XML is you, me and visual studio
+Dialogue: 0,0:08:55.84,0:08:58.04,Default,,0,0,0,,and then the consumer of the XML
+Dialogue: 0,0:08:58.18,0:09:04.20,Default,,0,0,0,,is the compiler which will turn our code into an executable that will run in Windows 10
+Dialogue: 0,0:09:04.20,0:09:06.00,Default,,0,0,0,,And so that's the first point
+Dialogue: 0,0:09:06.00,0:09:11.52,Default,,0,0,0,,The second point of this lesson was that XAML is an easy way to create instances of classes and set the properties
+Dialogue: 0,0:09:11.52,0:09:15.40,Default,,0,0,0,,and sure you can do this all in C#, but it's much more verbose
+Dialogue: 0,0:09:15.40,0:09:23.66,Default,,0,0,0,,and you would lose the design time tooling that we've become accustom to in here, two or three short videos
+Dialogue: 0,0:09:23.66,0:09:27.66,Default,,0,0,0,,Okay so actually this example that we just created
+Dialogue: 0,0:09:27.66,0:09:32.32,Default,,0,0,0,,has a few other little interesting features of XAML that I want to explain a little bit further
+Dialogue: 0,0:09:32.32,0:09:36.06,Default,,0,0,0,,and so I'll start that process in the very next lesson.\NThank you
+
