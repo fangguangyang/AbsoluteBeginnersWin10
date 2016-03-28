@@ -10,7 +10,10 @@
 PythonGetEnglishCaptions/
 
 # ignore the capture opener
-./subtitleOpener/*
+subtitleOpener/
+
+# ignore english sub
+EngSub.srt/
 
 # ignore the proposal file
 *.docx
