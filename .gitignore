@@ -9,6 +9,9 @@
 # ignore the python capture file
 PythonGetEnglishCaptions/
 
+# ignore the capture opener
+./subtitleOpener/*
+
 # ignore the proposal file
 *.docx
 
