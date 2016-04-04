@@ -10,14 +10,14 @@ PlayResX: 1920
 PlayResY: 1080
 
 [Aegisub Project Garbage]
-Audio File: C:/Users/Shi/OneDrive/Win10 Translation/UWP-047/subtitles/uwp47AdaptiveChallengeSolutionPart3_high.mp4
-Video File: C:/Users/Shi/OneDrive/Win10 Translation/UWP-047/subtitles/uwp47AdaptiveChallengeSolutionPart3_high.mp4
+Audio File: uwp47AdaptiveChallengeSolutionPart3_high.mp4
+Video File: uwp47AdaptiveChallengeSolutionPart3_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
-Video Zoom Percent: 0.500000
-Scroll Position: 7
-Active Line: 11
-Video Position: 2549
+Video Zoom Percent: 0.375000
+Scroll Position: 47
+Active Line: 51
+Video Position: 13123
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -36,4 +36,44 @@ Dialogue: 0,0:00:55.92,0:01:05.88,yahei,,0,0,0,,将Grid这部分剪切并粘贴�
 Dialogue: 0,0:01:05.88,0:01:09.28,yahei,,0,0,0,,这是我们需要做的基础设置中的一部分
 Dialogue: 0,0:01:09.58,0:01:15.28,yahei,,0,0,0,,接下来我们要做的就是引用这个控件
 Dialogue: 0,0:01:15.28,0:01:25.04,yahei,,0,0,0,,所以我们要在这里添加: local:NewsItemControl
-Dialogue: 0,0:01:25.04,0:01:27.04,yahei,,0,0,0,,
+Dialogue: 0,0:01:25.04,0:01:39.00,yahei,,0,0,0,,为了接着利用X Bind，我们要进行一些修改\N让我先打开NewItemsControl后面的代码
+Dialogue: 0,0:01:39.00,0:01:57.22,yahei,,0,0,0,,记住我们要做的有两件事，第一件就是：添加Public Model.NewItem NewItem
+Dialogue: 0,0:01:57.22,0:02:06.68,yahei,,0,0,0,,这是一个getter，所以还需要在后面添加get
+Dialogue: 0,0:02:06.82,0:02:15.37,yahei,,0,0,0,,并设置：return this.DataContext as Model.NewItem
+Dialogue: 0,0:02:15.37,0:02:20.65,yahei,,0,0,0,,这些都是模板里有的，你可以直接从复习提纲里拿来用
+Dialogue: 0,0:02:20.65,0:02:27.11,yahei,,0,0,0,,接下来要处理的就是DataContextChanged事件
+Dialogue: 0,0:02:27.11,0:02:31.62,yahei,,0,0,0,,我们要在这里添加一个匿名函数（λ函数）
+Dialogue: 0,0:02:31.62,0:02:44.14,yahei,,0,0,0,,然后设置xaml里的binding当DataContext变化时自动更新
+Dialogue: 0,0:02:44.34,0:02:58.14,yahei,,0,0,0,,返回到NewItems Control，我们需要将X Bind设为NewsItem.Image
+Dialogue: 0,0:02:58.14,0:03:08.05,yahei,,0,0,0,,并且后面这三个x Bind也都要添加NewsItem
+Dialogue: 0,0:03:08.05,0:03:15.00,yahei,,0,0,0,,我们还要修正这里的排版对齐问题
+Dialogue: 0,0:03:15.00,0:03:25.80,yahei,,0,0,0,,在Headline（标题）这个文本框里添加RelativePanel.AlignTopWithPanel=True
+Dialogue: 0,0:03:25.80,0:03:31.34,yahei,,0,0,0,,字体也要稍微调大一点，至少要18
+Dialogue: 0,0:03:31.34,0:03:41.94,yahei,,0,0,0,,并需要设置添加TextWrapping，虽然我忘了告诉你╮(╯-╰)╭
+Dialogue: 0,0:03:41.94,0:03:48.91,yahei,,0,0,0,,先把这些都换一下行，方便看
+Dialogue: 0,0:03:48.91,0:03:50.91,yahei,,0,0,0,,在接下来的Subhead（副标题）里
+Dialogue: 0,0:03:50.91,0:04:00.08,yahei,,0,0,0,,因为它位于Headline的下方，所以要设置RelativePanel.Below=Headline
+Dialogue: 0,0:04:00.08,0:04:12.97,yahei,,0,0,0,,啊我忘记命名了(⊙o⊙)？！先回去设置\NName=HeadlineTextBox，这里应该也就没问题啦
+Dialogue: 0,0:04:12.97,0:04:21.14,yahei,,0,0,0,,这里的TextWrapping同样设置为Wrap
+Dialogue: 0,0:04:21.77,0:04:34.94,yahei,,0,0,0,,最后要改的是下面的DateLine（落款日期），\N将RelativePanel.AlignBottomWithPanel设为True
+Dialogue: 0,0:04:34.94,0:04:43.57,yahei,,0,0,0,,这里的字号设小一点，大概10左右
+Dialogue: 0,0:04:43.57,0:04:51.11,yahei,,0,0,0,,这样就应该差不多啦，至少排版差不多了
+Dialogue: 0,0:04:51.11,0:04:57.82,yahei,,0,0,0,,来看看效果怎么样，有没有什么地方遗漏了
+Dialogue: 0,0:04:57.82,0:05:10.94,yahei,,0,0,0,,哦嘿嘿我还真的忘了写分号了(●ˇ∀ˇ●)
+Dialogue: 0,0:05:10.94,0:05:20.80,yahei,,0,0,0,,哎呀这行太长了没注意也是可以原谅的嘛
+Dialogue: 0,0:05:20.80,0:05:27.17,yahei,,0,0,0,,诶嘿 效果不错呀
+Dialogue: 0,0:05:27.17,0:05:33.40,yahei,,0,0,0,,为了满足我的少女心 哦不好奇心
+Dialogue: 0,0:05:33.40,0:05:45.57,yahei,,0,0,0,,我调整一下视窗大小看看\N嗯 滚动条看起来也不错 
+Dialogue: 0,0:05:47.57,0:05:54.25,yahei,,0,0,0,,背景色设为浅灰可能会更好一点
+Dialogue: 0,0:05:54.25,0:06:04.51,yahei,,0,0,0,,在MainPage.xaml的Name格框里，设置Background=LightGray
+Dialogue: 0,0:06:05.08,0:06:10.02,yahei,,0,0,0,,来看看效果怎么样
+Dialogue: 0,0:06:10.02,0:06:21.22,yahei,,0,0,0,,嗯...这些格框里应该是出现了一些填充问题，所以我们要去设置一下
+Dialogue: 0,0:06:21.22,0:06:26.00,yahei,,0,0,0,,尤其是在RelativePanel里
+Dialogue: 0,0:06:26.00,0:06:36.57,yahei,,0,0,0,,所以到NewsItemControl里找到RelativePanel，并将Margin设为10
+Dialogue: 0,0:06:36.57,0:06:40.14,yahei,,0,0,0,,这样应该差不多
+Dialogue: 0,0:06:42.14,0:06:52.08,yahei,,0,0,0,,嗯 看起来好多啦！ 我觉得这样挺好的
+Dialogue: 0,0:06:52.08,0:07:02.91,yahei,,0,0,0,,这节课的内容就差不多到这儿了，我们学习了怎样创建用户控制，以数据模板的方式使用，并设置外观
+Dialogue: 0,0:07:02.91,0:07:13.40,yahei,,0,0,0,,除了添加状态管理（state management）这一环节其他的看起来都还不错
+Dialogue: 0,0:07:13.40,0:07:17.88,yahei,,0,0,0,,我们需要这一部分来管理各种状态触发器和自适应触发器
+Dialogue: 0,0:07:17.88,0:07:24.34,yahei,,0,0,0,,下一个作业解析视频我会讲这部分\N下节课见咯！o(*￣▽￣*)ブ
+Dialogue: 0,0:07:24.34,0:07:26.34,yahei,,0,0,0,,巨硬大法好！

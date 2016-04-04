@@ -1,4 +1,4 @@
-1
+﻿1
 00:00:06,161 --> 00:00:07,600
 <v Voiceover>Okay, so as we get started,</v>
 
@@ -120,7 +120,7 @@ And these are logo icons,
 
 31
 00:01:55,279 --> 00:01:59,662
-icons that are used for splash screen. 
+icons that are used for splash screen.
 
 32
 00:01:59,663 --> 00:02:01,315
@@ -1032,5 +1032,5 @@ and we'll come back and we'll fill in a lot of this stuff.
 
 259
 00:17:10,676 --> 00:17:13,594
-Okay, pick it up in the next lesson, thanks.  
+Okay, pick it up in the next lesson, thanks.
 
