@@ -10,12 +10,13 @@ PlayResX: 1920
 PlayResY: 1080
 
 [Aegisub Project Garbage]
-Audio File: C:/Users/thinkpad/OneDrive/Win10 Translation/UWP-053/subtitles/uwp53SoundBoardDragAndDrop_high.mp4
-Video File: C:/Users/thinkpad/OneDrive/Win10 Translation/UWP-053/subtitles/uwp53SoundBoardDragAndDrop_high.mp4
+Audio File: uwp53SoundBoardDragAndDrop_high.mp4
+Video File: uwp53SoundBoardDragAndDrop_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.375000
-Active Line: 2
+Active Line: 5
+Video Position: 779
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -24,6 +25,10 @@ Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:00:05.00,yahei,,0,0,0,,UWP 音版- 添加拖拽
+Dialogue: 0,0:00:00.00,0:00:05.00,yahei,,0,0,0,,UWP 音板- 添加拖拽
 Dialogue: 0,0:00:05.00,0:00:14.31,yahei,,0,0,0,,接下来要添加的一个特性就是从桌面上拖拽一个音效到设计平台上
-Dialogue: 0,0:00:14.31,0:00:16.31,yahei,,0,0,0,,
+Dialogue: 0,0:00:14.31,0:00:19.28,yahei,,0,0,0,,或者是软件中的网格视图，并播放音效
+Dialogue: 0,0:00:19.65,0:00:26.02,yahei,,0,0,0,,我经常从创建一个小的便笺应用(scratch pad application）开始
+Dialogue: 0,0:00:26.14,0:00:30.91,yahei,,0,0,0,,它能帮助我更好的理解怎样去应用拖拽
+Dialogue: 0,0:00:30.91,0:00:39.25,yahei,,0,0,0,,当我理解了之后，我就可以把它应用到
+Dialogue: 0,0:00:39.25,0:00:41.25,yahei,,0,0,0,,

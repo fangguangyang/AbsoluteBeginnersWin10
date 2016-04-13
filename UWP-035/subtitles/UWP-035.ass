@@ -15,8 +15,6 @@ Video File: C:/Users/thinkpad/OneDrive/Win10 Translation/UWP-035/subtitles/uwp35
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.375000
-Scroll Position: 16
-Active Line: 23
 Video Position: 6976
 
 [V4+ Styles]
@@ -26,13 +24,13 @@ Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:00:05.00,yahei,,0,0,0,,作业第四部分-Schedule页面
-Dialogue: 0,0:00:06.24,0:00:16.71,yahei,,0,0,0,,好哒 这是xx作业的第四部分，其中包含了接载（？）的时间
+Dialogue: 0,0:00:00.00,0:00:05.00,yahei,,0,0,0,,翻译：shi  审核：scripter  压制：angiin
+Dialogue: 0,0:00:06.24,0:00:16.71,yahei,,0,0,0,,在这节上，我们将讲解Schedule页面挑战
 Dialogue: 0,0:00:16.91,0:00:23.46,yahei,,0,0,0,,就像你在这张截图上看到的，我们还需要这个图标，\N但是我们之前已经设置好了这个风格，所以应该还是挺简单的
-Dialogue: 0,0:00:23.84,0:00:32.53,yahei,,0,0,0,,看起来我们需要里面包含了两个column的row
+Dialogue: 0,0:00:23.84,0:00:32.53,yahei,,0,0,0,,看起来我们需要里面包含了两个column的row（两列一行）
 Dialogue: 0,0:00:32.53,0:00:38.06,yahei,,0,0,0,,然后还需要日期和时间选择器
 Dialogue: 0,0:00:38.06,0:00:45.14,yahei,,0,0,0,,那我们就开始吧！\N（截图就这么打开着吧）
-Dialogue: 0,0:00:45.14,0:00:50.82,yahei,,0,0,0,,首先打开SchedulePage
+Dialogue: 0,0:00:45.14,0:00:50.82,yahei,,0,0,0,,首先我们来打开SchedulePage
 Dialogue: 0,0:00:51.08,0:01:03.91,yahei,,0,0,0,,我们第一件要做的是就是设置背景为绿色，然后我要打开DonutPage
 Dialogue: 0,0:01:03.91,0:01:14.85,yahei,,0,0,0,,我要把这几部分复制了
 Dialogue: 0,0:01:14.85,0:01:27.40,yahei,,0,0,0,,然后粘贴，然后再添加一个Grid\N（啊我刚才忘记自己要粘贴的是什么了）

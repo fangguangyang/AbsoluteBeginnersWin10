@@ -12,7 +12,7 @@ And now we're going to work on the CompletePage.
 
 4
 00:00:14,179 --> 00:00:15,405
-I'm going to show you a little something
+I'm going to show you something
 
 5
 00:00:15,406 --> 00:00:17,900
@@ -24,7 +24,7 @@ and you're going to see this at work.
 
 7
 00:00:20,136 --> 00:00:23,904
-It's a pretty cool feature of Styles.
+So, it's a pretty cool feature of Styles.
 
 8
 00:00:23,905 --> 00:00:26,580
@@ -380,7 +380,7 @@ Oh, you know what?
 
 96
 00:05:06,272 --> 00:05:08,436
-I'm a knuclehead, we don't need these Columns.
+I'm a knucklehead, we don't need these Columns.
 
 97
 00:05:08,437 --> 00:05:10,408
@@ -432,7 +432,7 @@ If you were able to use them more than I was,
 
 109
 00:05:46,877 --> 00:05:50,988
-then you get bonus points for that, that's aweome.
+then you get bonus points for that, that's awesome.
 
 110
 00:05:50,989 --> 00:05:53,286
