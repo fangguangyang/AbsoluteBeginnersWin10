@@ -15,9 +15,9 @@ Video File: uwp53SoundBoardDragAndDrop_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.375000
-Scroll Position: 2
-Active Line: 20
-Video Position: 3393
+Scroll Position: 50
+Active Line: 67
+Video Position: 14330
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -45,5 +45,53 @@ Dialogue: 0,0:01:25.36,0:01:31.92,yahei,,0,0,0,,还可以让我从桌面复制�
 Dialogue: 0,0:01:31.92,0:01:38.82,yahei,,0,0,0,,客户端里的app可用的工作文件夹中
 Dialogue: 0,0:01:38.82,0:01:40.82,yahei,,0,0,0,,一般命名为working folder(工作文件夹)或者local folder(本地文件夹)
 Dialogue: 0,0:01:40.82,0:01:46.68,yahei,,0,0,0,,举个例子，比如我要将这个图像控制拖拽到红色区域
-Dialogue: 0,0:01:46.68,0:01:53.20,yahei,,0,0,0,,可以看到现在我在app的图像控制中显示了
-Dialogue: 0,0:01:53.20,0:01:55.20,yahei,,0,0,0,,
+Dialogue: 0,0:01:46.68,0:01:53.20,yahei,,0,0,0,,它就像现在这样在app的图像控件中显示了
+Dialogue: 0,0:01:53.20,0:01:59.94,yahei,,0,0,0,,还有一点要注意的就是我复制粘贴这个文件到的位置
+Dialogue: 0,0:01:59.94,0:02:04.70,yahei,,0,0,0,,也就是app中的本地存储器
+Dialogue: 0,0:02:04.70,0:02:13.18,yahei,,0,0,0,,需要做的就是全选并复制这个位置链接并在文件管理器中粘贴
+Dialogue: 0,0:02:13.36,0:02:21.76,yahei,,0,0,0,,可以看到这个过程中通过了许多文件夹
+Dialogue: 0,0:02:21.76,0:02:27.52,yahei,,0,0,0,,因为我做了多次这一过程，所以它复制了图片好几次
+Dialogue: 0,0:02:27.52,0:02:29.52,yahei,,0,0,0,,我还是先把这些都删掉吧
+Dialogue: 0,0:02:29.52,0:02:34.54,yahei,,0,0,0,,然后再重新做一次
+Dialogue: 0,0:02:34.54,0:02:41.74,yahei,,0,0,0,,我先将图片拖拽到app中，与此同时它也复制到了本地存储区域
+Dialogue: 0,0:02:41.74,0:02:46.64,yahei,,0,0,0,,然后将这个本地副本显示在图像控件中
+Dialogue: 0,0:02:46.64,0:02:54.94,yahei,,0,0,0,,我们可以这样添加音效，比如这个mp3文件，当我拖拽过来的时候它就会开始播放
+Dialogue: 0,0:02:54.94,0:03:00.64,yahei,,0,0,0,,只播放了9秒，然后就逐渐淡出了
+Dialogue: 0,0:03:00.64,0:03:05.28,yahei,,0,0,0,,我也会在接下来的例子中展示如何设置这个
+Dialogue: 0,0:03:05.28,0:03:12.62,yahei,,0,0,0,,开始之前我们需要先注意几件事\N首先看一下这个xaml里有一个stackpanel
+Dialogue: 0,0:03:12.62,0:03:18.82,yahei,,0,0,0,,还有用来显示拖拽图像的Image，和播放音效的MediaElement
+Dialogue: 0,0:03:18.82,0:03:36.54,yahei,,0,0,0,,还有下面用来显示私有本地存储空间的完整URI的TextBox
+Dialogue: 0,0:03:36.76,0:03:46.64,yahei,,0,0,0,,在里面的stackpanel中，我添加了两个特性：
+Dialogue: 0,0:03:46.64,0:03:55.52,yahei,,0,0,0,,（啊是三个）\N第一个非常的重要！如果没有AllowDrop的话，\N即使其他的都有效，拖拽也是无效的
+Dialogue: 0,0:03:55.52,0:03:58.56,yahei,,0,0,0,,将它设为“True”
+Dialogue: 0,0:03:58.56,0:04:09.12,yahei,,0,0,0,,接着将Drop设为StackPanel_Drop，将DragOver设为StackPanel_DragOver
+Dialogue: 0,0:04:09.12,0:04:15.64,yahei,,0,0,0,,这两部分很关键，像DragOver直接影响到了我们拖拽文件的过程
+Dialogue: 0,0:04:15.84,0:04:23.28,yahei,,0,0,0,,当我们进行拖拽的时候\N可以在下方显示像“拖拽至此播放音效”这样的提示\N
+Dialogue: 0,0:04:23.40,0:04:29.04,yahei,,0,0,0,,接着Drop会执行指令，它会抓取文件，并复制粘贴到本地存储
+Dialogue: 0,0:04:29.04,0:04:32.48,yahei,,0,0,0,,显示或播放这一副本
+Dialogue: 0,0:04:32.56,0:04:36.12,yahei,,0,0,0,,通过代码，我们来看看这是怎么运作的
+Dialogue: 0,0:04:36.12,0:04:43.60,yahei,,0,0,0,,打开MainPage.xaml.cs，先来看这个DragOver
+Dialogue: 0,0:04:43.60,0:04:56.24,yahei,,0,0,0,,当我复制文件时，其实只需要把它看成一个复制操作（copy operation）
+Dialogue: 0,0:04:56.36,0:04:58.64,yahei,,0,0,0,,这也是比较常用的一种方法
+Dialogue: 0,0:04:58.64,0:05:06.20,yahei,,0,0,0,,接下来我在DragEventArgs e上设置关于DragUIOverride的特性
+Dialogue: 0,0:05:06.20,0:05:11.00,yahei,,0,0,0,,还可以设置提示字幕，并让它可见
+Dialogue: 0,0:05:11.00,0:05:17.24,yahei,,0,0,0,,使文件内容可见，这样可以直接看到图片文件 
+Dialogue: 0,0:05:17.24,0:05:29.92,yahei,,0,0,0,,还有IsGlyphVisible=true\N我记得Glyph是说小图标，也就是这里面的复制操作
+Dialogue: 0,0:05:29.92,0:05:40.72,yahei,,0,0,0,,这里面包含了两个叠放的文件，\N这个例子中将文件拖拽到红色堆叠面板时也要注意这点
+Dialogue: 0,0:05:40.72,0:05:53.84,yahei,,0,0,0,,图片仍然可见，同时还可以看到提示\N“拖拽以创建自定义音效”和一个小符号
+Dialogue: 0,0:05:53.84,0:05:58.56,yahei,,0,0,0,,拖拽进来后，整体都是能正常运行的\N这就是DragOver这部分啦o(*￣▽￣*)ブ
+Dialogue: 0,0:05:58.56,0:06:01.60,yahei,,0,0,0,,接下来我们来看Drop这一部分
+Dialogue: 0,0:06:01.60,0:06:08.80,yahei,,0,0,0,,我们首先要确认进行拖拽的是一个文件
+Dialogue: 0,0:06:08.80,0:06:17.96,yahei,,0,0,0,,这些都是存储条目，而不是文字片段或一些从其他app中拖拽的东西
+Dialogue: 0,0:06:17.96,0:06:31.84,yahei,,0,0,0,,只有当拖拽进堆叠面板的数据视图是一个存储条目，\N或者说是文件库的复制操作时，我们才可以继续调试
+Dialogue: 0,0:06:32.12,0:06:39.44,yahei,,0,0,0,,然后我们需要拿到一个全部条目的引用列表\N（如果不止一个条目的话）
+Dialogue: 0,0:06:39.44,0:06:53.04,yahei,,0,0,0,,在这里我们只有一个条目，所以我们需要\N确认这个拖拽操作中存在条目是存储用
+Dialogue: 0,0:06:53.12,0:07:07.76,yahei,,0,0,0,,这样我们就可以提取第一个条目（item[0]），并确认它的内容类型\N图片，音效，文档，或者其他的什么
+Dialogue: 0,0:07:07.92,0:07:16.92,yahei,,0,0,0,,这里有一个本地文件夹的引用 (reference)\N所以当下载软件时这个文件夹也会一同放进设备存储中
+Dialogue: 0,0:07:16.92,0:07:20.40,yahei,,0,0,0,,接着在路径文本框（PathTextBox）中显示它
+Dialogue: 0,0:07:20.64,0:07:29.88,yahei,,0,0,0,,然后需要确认文件类型，如果是png或者jpeg格式的话\N我们需要在图像控件中显示这张图片 
+Dialogue: 0,0:07:29.88,0:07:39.68,yahei,,0,0,0,,或者如果是wav或者mpeg格式的话\N我们需要通过媒体播放器来播放
+Dialogue: 0,0:07:39.68,0:07:49.12,yahei,,0,0,0,,我们首先要将这个文件复制到本地存储区域，也就是代码的50行
+Dialogue: 0,0:07:49.12,0:07:58.12,yahei,,0,0,0,,这是文件夹以及文件名，然后我们就有了这个文件的reference\N（如果文件名已经存在，新建一个特殊名字）
+Dialogue: 0,0:07:58.12,0:08:08.00,yahei,,0,0,0,,
+Dialogue: 0,0:08:08.00,0:08:10.00,yahei,,0,0,0,,
