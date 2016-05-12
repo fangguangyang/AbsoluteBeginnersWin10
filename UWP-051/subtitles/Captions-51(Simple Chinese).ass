@@ -15,9 +15,9 @@ Video File: uwp51SoundBoardCreateDataModel_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.500000
-Scroll Position: 195
-Active Line: 212
-Video Position: 25365
+Scroll Position: 27
+Active Line: 317
+Video Position: 39081
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -237,112 +237,109 @@ Dialogue: 0,0:13:51.08,0:13:54.24,Default,,0,0,0,,为什么会有这种奇怪的
 Dialogue: 0,0:13:54.24,0:13:56.20,Default,,0,0,0,,我认为基本的问题出在
 Dialogue: 0,0:13:56.20,0:14:00.21,Default,,0,0,0,, SplitView 应该设置成 Grid.Row="1".
 Dialogue: 0,0:14:00.21,0:14:03.52,Default,,0,0,0,,我觉得这就是最大的问题
-Dialogue: 0,0:14:06.33,0:14:09.21,Default,,0,0,0,,So let's try that again, that should at least push that
-Dialogue: 0,0:14:09.21,0:14:11.19,Default,,0,0,0,,grey little area down a little bit.
-Dialogue: 0,0:14:16.44,0:14:18.83,Default,,0,0,0,,Okay, got that going for us now.
-Dialogue: 0,0:14:18.83,0:14:21.55,Default,,0,0,0,,And while we're here and while I'm thinking about it,
-Dialogue: 0,0:14:21.55,0:14:25.39,Default,,0,0,0,,let's go ahead and get the...
-Dialogue: 0,0:14:30.09,0:14:32.68,Default,,0,0,0,,The HamburgerButton_Click working.
-Dialogue: 0,0:14:33.64,0:14:36.85,Default,,0,0,0,,So we'll go MySplitView.IsOpen
+Dialogue: 0,0:14:06.33,0:14:10.54,Default,,0,0,0,,所以让我们再试一遍吧，这至少可以让那个灰色小区域再降一点
+Dialogue: 0,0:14:16.44,0:14:18.83,Default,,0,0,0,,好的，没有什么问题
+Dialogue: 0,0:14:18.83,0:14:21.55,Default,,0,0,0,,这里我在想...
+Dialogue: 0,0:14:21.55,0:14:25.39,Default,,0,0,0,,让我们继续然后...
+Dialogue: 0,0:14:30.09,0:14:32.68,Default,,0,0,0,,搞定汉堡按钮
+Dialogue: 0,0:14:33.64,0:14:36.85,Default,,0,0,0,,所以我们写 MySplitView.IsOpen
 Dialogue: 0,0:14:36.85,0:14:39.89,Default,,0,0,0,,MySplitView.IsOpen = !MySplitView.IsPaneOpen
 Dialogue: 0,0:14:39.89,0:14:44.52,Default,,0,0,0,,MySplitView.IsOpen = !MySplitView.IsPaneOpen
-Dialogue: 0,0:14:44.52,0:14:49.24,Default,,0,0,0,,Like so, and at least that'll open that up.
-Dialogue: 0,0:14:49.24,0:14:52.46,Default,,0,0,0,,Now the other thing that I need to do here,
-Dialogue: 0,0:14:52.46,0:14:54.36,Default,,0,0,0,,I'm going to need one more,
-Dialogue: 0,0:14:54.36,0:14:56.03,Default,,0,0,0,,I'm going to take a different tact,
-Dialogue: 0,0:14:56.03,0:14:59.59,Default,,0,0,0,,I think I said with regards to the,
-Dialogue: 0,0:14:59.59,0:15:03.03,Default,,0,0,0,,Pane of our SplitView,
-Dialogue: 0,0:15:03.03,0:15:05.52,Default,,0,0,0,,I was going to use a ListView Control instead.
-Dialogue: 0,0:15:05.53,0:15:09.69,Default,,0,0,0,,And so what I need to do is make another Model class,
-Dialogue: 0,0:15:09.69,0:15:13.39,Default,,0,0,0,,a View Model class called MenuItem.
-Dialogue: 0,0:15:13.39,0:15:15.29,Default,,0,0,0,,So let me go ahead and just do that real quick.
-Dialogue: 0,0:15:15.29,0:15:16.77,Default,,0,0,0,,It's pretty easy, it'll only take
-Dialogue: 0,0:15:16.77,0:15:18.68,Default,,0,0,0,,a minute or two to do this.
-Dialogue: 0,0:15:18.68,0:15:20.86,Default,,0,0,0,,So let's go MenuItem.
-Dialogue: 0,0:15:26.11,0:15:30.00,Default,,0,0,0,,And let's go public class MenuItem,
-Dialogue: 0,0:15:30.00,0:15:32.70,Default,,0,0,0,,and we'll go...
-Dialogue: 0,0:15:35.83,0:15:40.70,Default,,0,0,0,,IconFile, and then SoundCategory,
-Dialogue: 0,0:15:40.70,0:15:44.20,Default,,0,0,0,,so what Category does that icon represent?
-Dialogue: 0,0:15:44.20,0:15:46.89,Default,,0,0,0,,And that'll help us to filter.
-Dialogue: 0,0:15:46.89,0:15:50.76,Default,,0,0,0,,And filter the sounds based on the selected menu item
-Dialogue: 0,0:15:50.76,0:15:53.10,Default,,0,0,0,,in the SplitView Pane.
-Dialogue: 0,0:15:53.10,0:15:57.04,Default,,0,0,0,,So back here in the MainPage.XAML then,
-Dialogue: 0,0:15:57.04,0:15:59.85,Default,,0,0,0,,what we'll do is...
-Dialogue: 0,0:16:02.61,0:16:04.68,Default,,0,0,0,,Do it right here I guess.
-Dialogue: 0,0:16:04.68,0:16:08.69,Default,,0,0,0,,I'm going to create a private
-Dialogue: 0,0:16:08.69,0:16:11.41,Default,,0,0,0,,List<MenuItem>.
-Dialogue: 0,0:16:14.06,0:16:17.18,Default,,0,0,0,,Called MenuItems.
-Dialogue: 0,0:16:30.01,0:16:33.28,Default,,0,0,0,,And so we'll set that, and then we'll set the Category
-Dialogue: 0,0:16:33.28,0:16:37.35,Default,,0,0,0,,equal to SoundCategory.Animals.
-Dialogue: 0,0:16:40.64,0:16:44.77,Default,,0,0,0,,Now the IconFile will be at
+Dialogue: 0,0:14:44.52,0:14:49.24,Default,,0,0,0,,像这样，至少它会打开
+Dialogue: 0,0:14:49.24,0:14:52.46,Default,,0,0,0,,现在我要做的另一件事是
+Dialogue: 0,0:14:52.46,0:14:54.36,Default,,0,0,0,,我需要另一个
+Dialogue: 0,0:14:54.36,0:14:56.03,Default,,0,0,0,,我需要另一个方案
+Dialogue: 0,0:14:56.03,0:14:59.59,Default,,0,0,0,,除了这个
+Dialogue: 0,0:14:59.59,0:15:03.03,Default,,0,0,0,,SplitView的面板
+Dialogue: 0,0:15:03.03,0:15:05.52,Default,,0,0,0,,我要用个LIstView来代替它
+Dialogue: 0,0:15:05.53,0:15:09.69,Default,,0,0,0,,所以我要新造一个模型类
+Dialogue: 0,0:15:09.69,0:15:13.39,Default,,0,0,0,,一个叫做MenuItem的新的视图模型
+Dialogue: 0,0:15:13.39,0:15:15.29,Default,,0,0,0,,让我们继续快点搞定他
+Dialogue: 0,0:15:15.29,0:15:16.77,Default,,0,0,0,,非常简单
+Dialogue: 0,0:15:16.77,0:15:18.68,Default,,0,0,0,,我们只需要一到两分钟就能完成它
+Dialogue: 0,0:15:18.68,0:15:20.86,Default,,0,0,0,,所以现在我们来处理MenuItem.
+Dialogue: 0,0:15:26.11,0:15:30.00,Default,,0,0,0,,写一个public class MenuItem,
+Dialogue: 0,0:15:30.00,0:15:32.70,Default,,0,0,0,,然后写个...
+Dialogue: 0,0:15:35.83,0:15:40.70,Default,,0,0,0,,IconFile, 然后是 SoundCategory,
+Dialogue: 0,0:15:40.70,0:15:44.20,Default,,0,0,0,,所以这个图标代表哪个类呢
+Dialogue: 0,0:15:44.20,0:15:46.89,Default,,0,0,0,,这会帮我们过滤
+Dialogue: 0,0:15:46.89,0:15:52.04,Default,,0,0,0,,在SplitView里根据选择的菜单条目来筛选声音
+Dialogue: 0,0:15:53.10,0:15:57.04,Default,,0,0,0,,现在回到这个MainPage.XAML
+Dialogue: 0,0:15:57.04,0:15:59.85,Default,,0,0,0,,我们要做的是
+Dialogue: 0,0:16:02.61,0:16:04.68,Default,,0,0,0,,在这里搞点事情
+Dialogue: 0,0:16:04.68,0:16:08.69,Default,,0,0,0,,我要创建一个私有的
+Dialogue: 0,0:16:08.69,0:16:11.41,Default,,0,0,0,,List<Menu Item>.
+Dialogue: 0,0:16:14.06,0:16:17.18,Default,,0,0,0,,叫做MenuItems.
+Dialogue: 0,0:16:30.01,0:16:33.28,Default,,0,0,0,,所以我们会设置这个...设置这个类型为
+Dialogue: 0,0:16:33.28,0:16:37.35,Default,,0,0,0,, SoundCategory.Animals.
+Dialogue: 0,0:16:40.64,0:16:44.77,Default,,0,0,0,,现在 IconFile 的路径在
 Dialogue: 0,0:16:44.77,0:16:48.56,Default,,0,0,0,,Assets/Icons/animals.png
-Dialogue: 0,0:16:48.56,0:16:52.16,Default,,0,0,0,,Assets/Icons/animals.png, like that.
-Dialogue: 0,0:16:52.16,0:16:54.55,Default,,0,0,0,,So let me go.
-Dialogue: 0,0:16:54.55,0:16:58.34,Default,,0,0,0,,And let's go cartoon.
-Dialogue: 0,0:17:01.59,0:17:03.77,Default,,0,0,0,,And taunt.
-Dialogue: 0,0:17:04.75,0:17:06.70,Default,,0,0,0,,And warning.
-Dialogue: 0,0:17:13.03,0:17:15.20,Default,,0,0,0,,So cartoons.
+Dialogue: 0,0:16:48.56,0:16:52.16,Default,,0,0,0,,Assets/Icons/animals.png, 嗯没错.
+Dialogue: 0,0:16:52.16,0:16:54.55,Default,,0,0,0,,现在我们继续
+Dialogue: 0,0:16:54.55,0:16:58.34,Default,,0,0,0,,换上 cartoon.
+Dialogue: 0,0:17:01.59,0:17:03.77,Default,,0,0,0,,还有 taunt.
+Dialogue: 0,0:17:04.75,0:17:06.70,Default,,0,0,0,,还有 warning.
+Dialogue: 0,0:17:13.03,0:17:15.20,Default,,0,0,0,, cartoons.
 Dialogue: 0,0:17:18.73,0:17:20.21,Default,,0,0,0,,Taunts.
 Dialogue: 0,0:17:21.04,0:17:23.31,Default,,0,0,0,,Warnings.
-Dialogue: 0,0:17:23.31,0:17:24.73,Default,,0,0,0,,Great.
-Dialogue: 0,0:17:24.73,0:17:27.80,Default,,0,0,0,,Now let's Bind those here
-Dialogue: 0,0:17:27.80,0:17:30.98,Default,,0,0,0,,on our ListView.
-Dialogue: 0,0:17:32.44,0:17:33.85,Default,,0,0,0,,So...
-Dialogue: 0,0:17:36.23,0:17:37.61,Default,,0,0,0,,Let me go ahead...
-Dialogue: 0,0:17:46.30,0:17:49.71,Default,,0,0,0,,And I'm going to add a StackPanel.
-Dialogue: 0,0:17:51.54,0:17:54.95,Default,,0,0,0,,With the Orientation="Horizontal".
-Dialogue: 0,0:17:56.92,0:17:59.99,Default,,0,0,0,,And here I'm going to add an Image,
-Dialogue: 0,0:17:59.99,0:18:02.95,Default,,0,0,0,,and I'm going to set its Source
-Dialogue: 0,0:18:02.95,0:18:06.89,Default,,0,0,0,,equal to the IconFile.
-Dialogue: 0,0:18:10.39,0:18:13.92,Default,,0,0,0,,And I think I need to set the
+Dialogue: 0,0:17:23.31,0:17:24.73,Default,,0,0,0,,好！
+Dialogue: 0,0:17:24.73,0:17:27.80,Default,,0,0,0,,现在我们把这些绑定到
+Dialogue: 0,0:17:27.80,0:17:30.98,Default,,0,0,0,,我们的ListView.
+Dialogue: 0,0:17:32.44,0:17:33.85,Default,,0,0,0,,嗯...
+Dialogue: 0,0:17:36.23,0:17:37.61,Default,,0,0,0,,让我们继续...
+Dialogue: 0,0:17:46.30,0:17:49.71,Default,,0,0,0,,然后我们要添加一个StackPanel.
+Dialogue: 0,0:17:51.54,0:17:54.95,Default,,0,0,0,,加上Orientation="Horizontal".
+Dialogue: 0,0:17:56.92,0:17:59.99,Default,,0,0,0,,这里我们添加一个图片
+Dialogue: 0,0:17:59.99,0:18:02.95,Default,,0,0,0,,然后设置它的路径
+Dialogue: 0,0:18:02.95,0:18:06.89,Default,,0,0,0,,让他等于IconFile.
+Dialogue: 0,0:18:10.39,0:18:13.92,Default,,0,0,0,,然后我想应该设置
 Dialogue: 0,0:18:13.93,0:18:17.19,Default,,0,0,0,,Height="0.5", Width="45".
-Dialogue: 0,0:18:17.19,0:18:20.69,Default,,0,0,0,,I may have to reduce that, but let's start with that.
-Dialogue: 0,0:18:20.69,0:18:24.89,Default,,0,0,0,,And then the TextBlock next to it, it'll have the Text,
+Dialogue: 0,0:18:17.19,0:18:20.69,Default,,0,0,0,,我可能要减小一点，但是我们先这样吧
+Dialogue: 0,0:18:20.69,0:18:24.89,Default,,0,0,0,,然后就是旁边的TextBlock，这里面会有文字
 Dialogue: 0,0:18:24.89,0:18:28.45,Default,,0,0,0,,{x:Bind Category}
 Dialogue: 0,0:18:28.46,0:18:31.17,Default,,0,0,0,,{x:Bind Category}.
-Dialogue: 0,0:18:35.37,0:18:37.07,Default,,0,0,0,,Like that.
+Dialogue: 0,0:18:35.37,0:18:37.07,Default,,0,0,0,,酱紫
 Dialogue: 0,0:18:37.93,0:18:40.64,Default,,0,0,0,,FontSize="18".
-Dialogue: 0,0:18:41.80,0:18:44.17,Default,,0,0,0,,And I know I'm going to need some padding on the left.
-Dialogue: 0,0:18:44.18,0:18:47.18,Default,,0,0,0,,Actually let's go Margin on the left,
+Dialogue: 0,0:18:41.80,0:18:44.17,Default,,0,0,0,,然后我知道我左边需要一点内边距
+Dialogue: 0,0:18:44.18,0:18:47.18,Default,,0,0,0,,事实上我们还是在左边加点外边距吧
 Dialogue: 0,0:18:47.18,0:18:49.85,Default,,0,0,0,,"10,0,0,0".
-Dialogue: 0,0:18:51.72,0:18:55.39,Default,,0,0,0,,And then on the ListView, I'm going to set the ItemsSource
+Dialogue: 0,0:18:51.72,0:18:55.39,Default,,0,0,0,,然后在这个LIstView我要设置一下源
 Dialogue: 0,0:18:55.39,0:18:59.36,Default,,0,0,0,,ItemsSource="{x:Bind MenuItems}"
 Dialogue: 0,0:18:59.36,0:19:02.26,Default,,0,0,0,,ItemsSource="{x:Bind MenuItems}".
-Dialogue: 0,0:19:02.27,0:19:04.88,Default,,0,0,0,,Alright, let's see if that works.
-Dialogue: 0,0:19:04.88,0:19:06.80,Default,,0,0,0,,It may not look pretty, but let's just
-Dialogue: 0,0:19:06.81,0:19:09.61,Default,,0,0,0,,make sure it even works here.
-Dialogue: 0,0:19:11.26,0:19:13.37,Default,,0,0,0,,Oh.
-Dialogue: 0,0:19:13.38,0:19:15.42,Default,,0,0,0,,Where do I have,
-Dialogue: 0,0:19:15.42,0:19:18.68,Default,,0,0,0,,MenuItems being paged cannot be found on it.
-Dialogue: 0,0:19:22.70,0:19:26.42,Default,,0,0,0,,IconFile, Category, wait, what?
+Dialogue: 0,0:19:02.27,0:19:04.88,Default,,0,0,0,,好的，我们来看看有没有用、
+Dialogue: 0,0:19:04.88,0:19:06.80,Default,,0,0,0,,也许看起来不好看，但我们先确保它工作正常
+Dialogue: 0,0:19:06.81,0:19:09.61,Default,,0,0,0,,
+Dialogue: 0,0:19:11.26,0:19:13.37,Default,,0,0,0,,啊.
+Dialogue: 0,0:19:13.38,0:19:15.42,Default,,0,0,0,,我哪里有问题
+Dialogue: 0,0:19:15.42,0:19:18.68,Default,,0,0,0,,MenuItems不能被搜寻到
+Dialogue: 0,0:19:22.70,0:19:26.42,Default,,0,0,0,,IconFile, Category, 等等，啥?
 Dialogue: 0,0:19:28.95,0:19:31.12,Default,,0,0,0,,MenuItems.
-Dialogue: 0,0:19:31.12,0:19:34.99,Default,,0,0,0,,Uh, whoops, whoops.
-Dialogue: 0,0:19:34.99,0:19:38.70,Default,,0,0,0,,ListView, I'm going to need a template here.
-Dialogue: 0,0:19:38.70,0:19:41.69,Default,,0,0,0,,Kind of got ahead of myself there, didn't I?
-Dialogue: 0,0:19:44.36,0:19:49.36,Default,,0,0,0,,And let's go x:DataType="data:MenuItem".
+Dialogue: 0,0:19:31.12,0:19:34.99,Default,,0,0,0,,哦哦
+Dialogue: 0,0:19:34.99,0:19:38.70,Default,,0,0,0,,LIstView需要一个模板
+Dialogue: 0,0:19:38.70,0:19:41.69,Default,,0,0,0,,我真有点提前庆祝胜利了呢
+Dialogue: 0,0:19:44.36,0:19:49.36,Default,,0,0,0,,我们写上x:DataType="data:MenuItem".
 Dialogue: 0,0:19:52.81,0:19:55.87,Default,,0,0,0,,x:DataType="data:MenuItem".
-Dialogue: 0,0:19:55.87,0:19:59.69,Default,,0,0,0,,That should work, let's build it.
-Dialogue: 0,0:19:59.69,0:20:02.91,Default,,0,0,0,,Okay.
-Dialogue: 0,0:20:12.29,0:20:14.15,Default,,0,0,0,,What did I do this time?
-Dialogue: 0,0:20:14.15,0:20:17.53,Default,,0,0,0,,Oh, here again, same issue as before.
+Dialogue: 0,0:19:55.87,0:19:59.69,Default,,0,0,0,,这样应该没问题了，我们生成他
+Dialogue: 0,0:19:59.69,0:20:02.91,Default,,0,0,0,,好的
+Dialogue: 0,0:20:12.29,0:20:14.15,Default,,0,0,0,,这次又是什么问题。。。
+Dialogue: 0,0:20:14.15,0:20:17.53,Default,,0,0,0,,哦，和之前同样的问题
 Dialogue: 0,0:20:19.61,0:20:23.84,Default,,0,0,0,,MenuItems = new List<MenuItem>.
-Dialogue: 0,0:20:23.84,0:20:25.99,Default,,0,0,0,,And go.
-Dialogue: 0,0:20:34.73,0:20:37.38,Default,,0,0,0,,That is not what I had in mind.
-Dialogue: 0,0:20:37.38,0:20:41.25,Default,,0,0,0,,Somewhere I have erred.
-Dialogue: 0,0:20:44.01,0:20:45.96,Default,,0,0,0,,What did I do wrong?
-Dialogue: 0,0:20:59.48,0:21:02.65,Default,,0,0,0,,All right, I think I just lost my mind, that's all.
-Dialogue: 0,0:21:03.77,0:21:06.63,Default,,0,0,0,,Let's see if that works, fixes it.
-Dialogue: 0,0:21:06.64,0:21:09.31,Default,,0,0,0,,There we go.
-Dialogue: 0,0:21:09.31,0:21:12.83,Default,,0,0,0,,Alright, this, the margins and everything are off,
-Dialogue: 0,0:21:12.83,0:21:14.62,Default,,0,0,0,,but we can fix that pretty easily.
-Dialogue: 0,0:21:14.62,0:21:16.33,Default,,0,0,0,,I'm going to actually do that in the next video,
-Dialogue: 0,0:21:16.33,0:21:17.88,Default,,0,0,0,,this one's getting kind of long.
-Dialogue: 0,0:21:17.88,0:21:22.08,Default,,0,0,0,,Okay, so we created two Data Sources,
-Dialogue: 0,0:21:22.08,0:21:25.65,Default,,0,0,0,,one for Menu, but the main one is for the Sounds,
-Dialogue: 0,0:21:25.65,0:21:27.81,Default,,0,0,0,,and we also created a SoundManager that lets us
-Dialogue: 0,0:21:27.81,0:21:31.16,Default,,0,0,0,,get at those sounds and split them up by category.
-Dialogue: 0,0:21:31.16,0:21:33.41,Default,,0,0,0,,And we'll continue working on this
-Dialogue: 0,0:21:33.41,0:21:36.31,Default,,0,0,0,,in the next lesson when we actually now
-Dialogue: 0,0:21:36.31,0:21:38.96,Default,,0,0,0,,hook up the sounds to the media element
-Dialogue: 0,0:21:38.96,0:21:41.36,Default,,0,0,0,,and start playing things, that'll be exciting.
-Dialogue: 0,0:21:41.36,0:21:43.99,Default,,0,0,0,,Okay, we'll see you in the next video, thanks.
+Dialogue: 0,0:20:23.84,0:20:25.99,Default,,0,0,0,,走你.
+Dialogue: 0,0:20:34.73,0:20:37.38,Default,,0,0,0,,这不是我想要的呢。。。
+Dialogue: 0,0:20:37.38,0:20:41.25,Default,,0,0,0,,我哪里弄错了。。。
+Dialogue: 0,0:20:44.01,0:20:45.96,Default,,0,0,0,,哪里错了啊。。。
+Dialogue: 0,0:20:59.48,0:21:02.65,Default,,0,0,0,,好吧，我觉得我肯定是混乱了
+Dialogue: 0,0:21:03.77,0:21:06.63,Default,,0,0,0,,这样看他怎么样
+Dialogue: 0,0:21:06.64,0:21:09.31,Default,,0,0,0,,走你
+Dialogue: 0,0:21:09.31,0:21:12.83,Default,,0,0,0,,好的，现在所有外边距有点问题
+Dialogue: 0,0:21:12.83,0:21:14.62,Default,,0,0,0,,但很容易搞定的
+Dialogue: 0,0:21:14.62,0:21:16.33,Default,,0,0,0,,我会在下个视频搞定它
+Dialogue: 0,0:21:16.33,0:21:17.88,Default,,0,0,0,,这可能要花点时间了
+Dialogue: 0,0:21:17.88,0:21:22.08,Default,,0,0,0,,好的，所以我们创建了两个数据源
+Dialogue: 0,0:21:22.08,0:21:25.65,Default,,0,0,0,,一个是给菜单的，但主要的是给声音的
+Dialogue: 0,0:21:25.65,0:21:27.81,Default,,0,0,0,,同时我们也创建了SoundManager
+Dialogue: 0,0:21:27.81,0:21:31.16,Default,,0,0,0,,让我们能够获取那些声音并通过类别筛选他们
+Dialogue: 0,0:21:31.16,0:21:37.44,Default,,0,0,0,,下期视频我们会真正地把声音和媒体文件相连接
+Dialogue: 0,0:21:38.96,0:21:41.36,Default,,0,0,0,,然后开始播放他们，令人激动啊
+Dialogue: 0,0:21:41.36,0:21:43.99,Default,,0,0,0,,好那我们下个课程再见，谢谢
+Dialogue: 0,0:21:43.99,0:21:45.99,Default,,0,0,0,,
