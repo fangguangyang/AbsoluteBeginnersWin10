@@ -15,9 +15,9 @@ Video File: uwp53SoundBoardDragAndDrop_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.375000
-Scroll Position: 50
-Active Line: 67
-Video Position: 14330
+Scroll Position: 73
+Active Line: 91
+Video Position: 21440
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -75,7 +75,7 @@ Dialogue: 0,0:04:43.60,0:04:56.24,yahei,,0,0,0,,当我复制文件时，其实�
 Dialogue: 0,0:04:56.36,0:04:58.64,yahei,,0,0,0,,这也是比较常用的一种方法
 Dialogue: 0,0:04:58.64,0:05:06.20,yahei,,0,0,0,,接下来我在DragEventArgs e上设置关于DragUIOverride的特性
 Dialogue: 0,0:05:06.20,0:05:11.00,yahei,,0,0,0,,还可以设置提示字幕，并让它可见
-Dialogue: 0,0:05:11.00,0:05:17.24,yahei,,0,0,0,,使文件内容可见，这样可以直接看到图片文件 
+Dialogue: 0,0:05:11.00,0:05:17.24,yahei,,0,0,0,,使文件内容可见，这样可以直接看到图片文件
 Dialogue: 0,0:05:17.24,0:05:29.92,yahei,,0,0,0,,还有IsGlyphVisible=true\N我记得Glyph是说小图标，也就是这里面的复制操作
 Dialogue: 0,0:05:29.92,0:05:40.72,yahei,,0,0,0,,这里面包含了两个叠放的文件，\N这个例子中将文件拖拽到红色堆叠面板时也要注意这点
 Dialogue: 0,0:05:40.72,0:05:53.84,yahei,,0,0,0,,图片仍然可见，同时还可以看到提示\N“拖拽以创建自定义音效”和一个小符号
@@ -89,9 +89,32 @@ Dialogue: 0,0:06:39.44,0:06:53.04,yahei,,0,0,0,,在这里我们只有一个条�
 Dialogue: 0,0:06:53.12,0:07:07.76,yahei,,0,0,0,,这样我们就可以提取第一个条目（item[0]），并确认它的内容类型\N图片，音效，文档，或者其他的什么
 Dialogue: 0,0:07:07.92,0:07:16.92,yahei,,0,0,0,,这里有一个本地文件夹的引用 (reference)\N所以当下载软件时这个文件夹也会一同放进设备存储中
 Dialogue: 0,0:07:16.92,0:07:20.40,yahei,,0,0,0,,接着在路径文本框（PathTextBox）中显示它
-Dialogue: 0,0:07:20.64,0:07:29.88,yahei,,0,0,0,,然后需要确认文件类型，如果是png或者jpeg格式的话\N我们需要在图像控件中显示这张图片 
+Dialogue: 0,0:07:20.64,0:07:29.88,yahei,,0,0,0,,然后需要确认文件类型，如果是png或者jpeg格式的话\N我们需要在图像控件中显示这张图片
 Dialogue: 0,0:07:29.88,0:07:39.68,yahei,,0,0,0,,或者如果是wav或者mpeg格式的话\N我们需要通过媒体播放器来播放
 Dialogue: 0,0:07:39.68,0:07:49.12,yahei,,0,0,0,,我们首先要将这个文件复制到本地存储区域，也就是代码的50行
 Dialogue: 0,0:07:49.12,0:07:58.12,yahei,,0,0,0,,这是文件夹以及文件名，然后我们就有了这个文件的reference\N（如果文件名已经存在，新建一个特殊名字）
-Dialogue: 0,0:07:58.12,0:08:08.00,yahei,,0,0,0,,
-Dialogue: 0,0:08:08.00,0:08:10.00,yahei,,0,0,0,,
+Dialogue: 0,0:07:58.12,0:08:08.00,yahei,,0,0,0,,然后我们要创建一个bitmapImage，将它的source设为这个新的文件，\N并将图像控件的source设为这个bitmapImage
+Dialogue: 0,0:08:08.00,0:08:16.32,yahei,,0,0,0,,接下来设置音频这部分。其实和上一\N部分差不多，比如这里的50行和58行
+Dialogue: 0,0:08:16.32,0:08:26.68,yahei,,0,0,0,,将拖拽的文档放进stackpanel（堆叠面板）中，\N并本地储存，就像57行这里表示的一样
+Dialogue: 0,0:08:26.68,0:08:36.76,yahei,,0,0,0,,接着需要将媒体播放器的资源设为这个复制保存的本地的文件
+Dialogue: 0,0:08:36.76,0:08:47.44,yahei,,0,0,0,,然后就出现一点不同啦(●'◡'●)\N虽然我这里写的和真正的app中有一点不同，我只是想试试而已
+Dialogue: 0,0:08:47.44,0:08:57.60,yahei,,0,0,0,,可以看到这里将mdeiaPlayerStoryborad设为开始，而在MainPage.xaml中， \N我之前创建了一个storyboard，它则能定义一个animation
+Dialogue: 0,0:08:57.60,0:09:03.28,yahei,,0,0,0,,你觉得你知道，但其实你有可能对animation\N一无所知，毕竟它在xaml中不尽相同
+Dialogue: 0,0:09:03.40,0:09:08.36,yahei,,0,0,0,,animation就是任何我们可能会在过程中改变赋值的东西
+Dialogue: 0,0:09:08.36,0:09:15.60,yahei,,0,0,0,,比如改变这个部件的特性，我可以续半秒也可以续五个一秒\N（一言不发就暴力膜）
+Dialogue: 0,0:09:15.60,0:09:23.88,yahei,,0,0,0,,或者先改变一次特性，三秒后再一次改变，十秒后最后改变一次
+Dialogue: 0,0:09:23.88,0:09:35.28,yahei,,0,0,0,,在这个例子，我们不会做普通的改变xy位置的animation，而是要改变音量
+Dialogue: 0,0:09:35.28,0:09:39.48,yahei,,0,0,0,,而这个需要用到创建的这个storyboard（命名为mediaPlayerStoryboard）
+Dialogue: 0,0:09:39.48,0:09:49.84,yahei,,0,0,0,,在这之中我们需要改变的特性就是MediaPlayer中的MediaElement.Volume
+Dialogue: 0,0:09:49.84,0:09:54.20,yahei,,0,0,0,,就是这里定义过的这个MediaPlayer
+Dialogue: 0,0:09:54.20,0:10:11.04,yahei,,0,0,0,,所以我们需要做的就是添加时间点，比如0秒，3秒或者10秒，\N然后将里面的音量修改为不同的值
+Dialogue: 0,0:10:11.04,0:10:20.32,yahei,,0,0,0,,实际上，在这里需要做的就是将这里的时间点设为1.0至6.0秒
+Dialogue: 0,0:10:20.32,0:10:44.72,yahei,,0,0,0,,然后在第七秒时...啊不对这里搞混了（无奈脸\N第二秒到第六秒音量为1，第六秒后到第九秒音量变为0
+Dialogue: 0,0:10:44.72,0:11:00.08,yahei,,0,0,0,,然后我们来看看效果怎么样吧！\N可能在视频中效果不是很明显，但是你可以\N稍后在自己的电脑上用一个超过九秒的音频试试
+Dialogue: 0,0:11:00.08,0:11:08.60,yahei,,0,0,0,,重申一下，这个特性在这节课中不是必要的，但在以后的课程中
+Dialogue: 0,0:11:08.60,0:11:20.60,yahei,,0,0,0,,当我们需要
+Dialogue: 0,0:11:20.60,0:11:29.08,yahei,,0,0,0,,我先将音效拖拽进来，当开始播放后，它会在两秒后从一半音量增加到全音量
+Dialogue: 0,0:11:29.08,0:11:40.32,yahei,,0,0,0,,它会持续播放六秒，然后到第九秒之前，这段音频将会逐渐淡出
+Dialogue: 0,0:11:40.32,0:11:42.36,yahei,,0,0,0,,就是这样的magic！o(*￣▽￣*)ブ
+Dialogue: 0,0:11:42.36,0:11:55.36,yahei,,0,0,0,,现在我们大概知道了它的原理和用法，接下来要做的就是将\N它应用到更大规模的项目中去了（通过引用的方法）
+Dialogue: 0,0:11:55.36,0:11:57.36,yahei,,0,0,0,,

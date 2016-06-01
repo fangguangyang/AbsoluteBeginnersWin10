@@ -1,816 +1,816 @@
-1
+﻿1
 00:00:04,405 --> 00:00:07,945
-<v ->Hi, I'm Bob Tabor with www.learnvisualstudio.net,</v>      
+大家好~又是我~Bob萌神
 
 2
 00:00:07,946 --> 00:00:10,120
-and in this lesson, I want to talk about a challenge      
+这节课我打算讲一个你要进行的挑战
 
 3
 00:00:10,121 --> 00:00:13,410
-you're going to run in into if you attempt to      
+如果你打算
 
 4
 00:00:15,036 --> 00:00:18,064
-use VisualStateManager and AdaptiveTriggers to      
+使用VisualStateManager（视觉管理器）以及AdaptiveTriggers （自适应触发器）来
 
 5
 00:00:18,065 --> 00:00:22,586
-resize items inside of your DataTemplate for      
+调整你的数据模板中的控件
 
 6
 00:00:22,587 --> 00:00:24,260
-your GridView, List View Control,      
+你的GridView, List View Control（网格视图，列表视图控制）
 
 7
 00:00:24,261 --> 00:00:27,260
-anything that needs an item template.      
+所有需要控件模板的东西
 
 8
 00:00:27,261 --> 00:00:29,128
-So, you can see here that I have another version      
+所以，你可以看见这里有另一个版本的
 
 9
 00:00:29,129 --> 00:00:33,375
-of my little contact manager application.      
+通讯录管理器应用
 
 10
 00:00:33,376 --> 00:00:35,198
-And, ideally, what would happen is whenever      
+还有，理想的情况下是，无论什么时候
 
 11
 00:00:35,199 --> 00:00:37,851
-we have more screen real estate, those avatar      
+当我们拉伸这个窗体的时候，这些头像
 
 12
 00:00:37,852 --> 00:00:42,117
-images would grow larger, and I tried a few things,      
+图片会变得更大。我试了一下
 
 13
 00:00:42,118 --> 00:00:44,466
-but I can't quite get it to work right now.      
+但现在它还不能正常工作
 
 14
 00:00:44,467 --> 00:00:48,070
-You see, they stay the same size no matter what.      
+你可以看见，无论我怎么操作，它们还是保持原来的大小
 
 15
 00:00:48,071 --> 00:00:49,640
-Now, if you take a look at the code that I've      
+现在，如果你看过这些代码
 
 16
 00:00:49,641 --> 00:00:52,000
-actually written here, you can see that I've added      
+你可以看见我添加了一个
 
 17
 00:00:52,001 --> 00:00:54,602
-a VisualStateManager with VisualStateGroups.      
+一个视觉管理器，里面包含一个视觉状态组
 
 18
 00:00:54,603 --> 00:00:57,770
-I've got two VisualStates, a Narrow and a WideLayout.      
+这里有两个视觉状态，一个窄布局以及一个宽布局
 
 19
 00:00:57,771 --> 00:01:00,661
-When we're in the NarrowLayout, I want the      
+当在窄布局的时候，我希望
 
 20
 00:01:00,662 --> 00:01:03,476
-AvatarImage's Width and Height to be 100, and      
+这些头像的高度和宽度都是100
 
 21
 00:01:03,477 --> 00:01:05,738
-when we're in the WideLayout, I want the Width      
+当处在宽布局的时候，我希望宽度
 
 22
 00:01:05,739 --> 00:01:07,337
-and Height to be 200.      
+和高度都是200
 
 23
 00:01:07,338 --> 00:01:08,841
-So, why isn't this working?      
+那么？为什么它没有正常工作呢？
 
 24
 00:01:08,842 --> 00:01:12,875
-Well, unfortunately, this will not work using      
+实际上，它现在是不能正常工作的
 
 25
 00:01:12,876 --> 00:01:16,061
-the technique that we've used here where      
+我们在这里使用到的技术
 
 26
 00:01:16,062 --> 00:01:20,124
-we're defining that DataTemplate here inline.      
+这几行我们定义了一个数据模板
 
 27
 00:01:20,125 --> 00:01:22,781
-What I'm going to need to do is actually breakout      
+实际上我需要做的事是
 
 28
 00:01:22,782 --> 00:01:25,223
-this StackPanel that forms the body of my      
+把这个StackPanel 从数据模板主体中抽离出来
 
 29
 00:01:25,224 --> 00:01:28,988
-DataTemplate into its own code file, and then      
+把它放到一个独立的文件中，然后
 
 30
 00:01:28,989 --> 00:01:32,732
-I can inside of that code file, I can use a      
+在这个独立的文件中，我可以使用
 
 31
 00:01:32,733 --> 00:01:35,107
-VisualStateManager and AdaptiveTriggers, and      
+视觉管理器和自适应触发器
 
 32
 00:01:35,108 --> 00:01:39,375
-all that good stuff to re-size on demand.      
+这些东西根据我的需要去缩放
 
 33
 00:01:39,388 --> 00:01:43,145
-So, that's what I'm going to attempt to do in this lesson.      
+所以，这就是我这节课要做的东西
 
 34
 00:01:43,146 --> 00:01:46,105
-So, to begin with I'm going to add a new SserControl to      
+首先，让我先添加一个UserControl（用户控制）到
 
 35
 00:01:46,106 --> 00:01:46,723
-my Project.      
+我的项目中
 
 36
 00:01:46,724 --> 00:01:48,333
-A UserControl, it's just like a Page.      
+一个UserControl就像一个页面那样
 
 37
 00:01:48,334 --> 00:01:49,346
-It's just smaller.      
+它只是更小
 
 38
 00:01:49,347 --> 00:01:51,368
-It can be reused multiple times.      
+它可以被重复使用
 
 39
 00:01:51,369 --> 00:01:53,527
-Usually it just has a snippet, as opposed to an      
+通常只需要一个代码片段
 
 40
 00:01:53,528 --> 00:01:55,888
-entire Page Layout.      
+在这里应该就是页面的布局
 
 41
 00:01:56,193 --> 00:01:58,483
-In this case I'm going to add a New Item, and      
+在这里我要添加一个新的项目
 
 42
 00:01:58,484 --> 00:02:00,820
-in the Add New Item dialogue, I'm going to make sure      
+在添加新项目对话框中，我要确保
 
 43
 00:02:00,821 --> 00:02:02,602
-to choose User Control, and I'm going to give it      
+选择了User Control，然后我要起一个名字
 
 44
 00:02:02,603 --> 00:02:06,303
-the name ContactTemplate, because that's what      
+叫做 ContactTemplate，因为这个是
 
 45
 00:02:06,304 --> 00:02:10,327
-I'm using it for, a template for individual contacts.      
+我用来做各个通讯录的模板
 
 46
 00:02:11,758 --> 00:02:12,793
-Great.      
+好了！
 
 47
 00:02:12,794 --> 00:02:16,408
-Let me go ahead and just get to that point right there.      
+先转到这里，把光标移到这里
 
 48
 00:02:16,745 --> 00:02:18,400
-And now what I want to do is come back over here,      
+现在我要做的是回到MainPage.xaml
 
 49
 00:02:18,401 --> 00:02:21,565
-and in my main MainPage.xaml, I'm going to just      
+然后在MainPage.xaml,我打算
 
 50
 00:02:21,566 --> 00:02:25,117
-rip out everything right there, between the open      
+把这里的这些剪切 ，在数据模板开始标签
 
 51
 00:02:25,118 --> 00:02:27,356
-and close DataTemplate, and I go to the      
+和数据模板关闭标签之间，然后回到
 
 52
 00:02:27,357 --> 00:02:29,671
-new ContactTemplate Page, and then get rid of      
+新的ContactTemplate Page, 然后
 
 53
 00:02:29,672 --> 00:02:33,760
-the Grid and just paste in that same StackPanel there.      
+删除Grid标签，把刚才复制的StackPanel粘贴进来
 
 54
 00:02:33,761 --> 00:02:34,740
-Okay?      
+Okay?
 
 55
 00:02:34,741 --> 00:02:37,350
-So, we're off to a great start.      
+所以现在我们有了一个好的开始
 
 56
 00:02:37,351 --> 00:02:39,801
-What I'm going to need to do to reference that      
+现在我需要引用一些东西
 
 57
 00:02:39,802 --> 00:02:42,649
-UserControl now is, inside of my DataTemplate,      
+在数据模板里面引用一些东西
 
 58
 00:02:42,650 --> 00:02:46,345
-I'm going to need to reference the local namespace.      
+我需要引用本地的命名空间
 
 59
 00:02:46,346 --> 00:02:50,443
-Local, as defined earlier, will just be the local      
+本地，就像之前定义的那样，
 
 60
 00:02:50,444 --> 00:02:52,556
-namespace, whatever the Project name is,      
+本地的命名空间，无论你的项目名是什么
 
 61
 00:02:52,557 --> 00:02:54,397
-UserControlDataTemplate, as long as your      
+UserControlDataTemplate，就像你的
 
 62
 00:02:54,398 --> 00:02:58,467
-UserControl is in the same root directory as      
+UserControl is in the same root directory as
 
 63
 00:02:58,468 --> 00:03:00,754
-everything else in your Project, you'll be just fine.      
+everything else in your Project, you'll be just fine.
 
 64
 00:03:00,755 --> 00:03:02,298
-If you want to put it in a sub-folder, you're going to      
+如果你打算把这些都放进一个文件夹里，那么
 
 65
 00:03:02,299 --> 00:03:04,905
-need to reference a different namespace up in      
+你需要引用一个不同的命名空间
 
 66
 00:03:04,906 --> 00:03:06,722
-your XAML header.      
+在你的xaml页面头部
 
 67
 00:03:06,723 --> 00:03:08,091
-Alright, so here we go.      
+好了，让我们继续吧
 
 68
 00:03:08,092 --> 00:03:12,049
-ContactTemplate, and I'm not sure that I need      
+ContactTemplate,我不确定需要这样做
 
 69
 00:03:12,050 --> 00:03:14,470
-to do this, but I am going to just set HorizontalAlignment      
+但我还是要设置 HorizontalAlignment
 
 70
 00:03:14,471 --> 00:03:16,505
-HorizontalAlignment="Stretch" and VerticalAlignment      
+HorizontalAlignment="Stretch" 还有VerticalAlignment
 
 71
 00:03:16,506 --> 00:03:17,645
-VerticalAlignment="Stretch".      
+VerticalAlignment="Stretch".
 
 72
 00:03:17,646 --> 00:03:20,120
-Just say, hey, take up everything you give me as      
+（萌神吐槽模式）就像再说,
 
 73
 00:03:20,121 --> 00:03:23,035
-far as the space is concerned.      
+把所有能占的空间都占了把！
 
 74
 00:03:23,036 --> 00:03:27,326
-And that's all that I should need to do there.      
+然后这就是我所有需要做的事了
 
 75
 00:03:27,330 --> 00:03:28,212
-Great.      
+好了
 
 76
 00:03:28,213 --> 00:03:30,558
-Now, back in the ContactTemplate, if we were to      
+现在回到ContactTemplate页面，如果我们打算
 
 77
 00:03:30,559 --> 00:03:32,670
-try to run the application now, it wouldn't work.      
+运行这个应用，它不会成功工作
 
 78
 00:03:32,671 --> 00:03:33,812
-It might even give us errors.      
+它甚至会报错
 
 79
 00:03:33,813 --> 00:03:34,882
-There's a couple of changes that we're going to      
+我们还需要
 
 80
 00:03:34,883 --> 00:03:36,219
-need to make first.      
+做一些更改
 
 81
 00:03:36,220 --> 00:03:38,352
-First of all, let's try to get this all running,      
+不过首先，还是试着运行一下
 
 82
 00:03:38,353 --> 00:03:40,016
-and then we'll come back and add the      
+然后我们回来添加
 
 83
 00:03:40,017 --> 00:03:44,325
-VisualStateManager and the different AdaptiveTriggers.      
+视觉管理器和自适应触发器
 
 84
 00:03:44,326 --> 00:03:48,126
-So, the first thing that I want to do is actually      
+所以，我要做的第一件事是
 
 85
 00:03:49,256 --> 00:03:51,230
-use the name of the object that we're going to      
+使用这个对象的名字
 
 86
 00:03:51,231 --> 00:03:51,981
-be binding to.      
+那个我们用来绑定的
 
 87
 00:03:51,982 --> 00:03:55,069
-So, in this case we're going to do Contact.AvatarPath      
+所以，这里是Contact.AvatarPath
 
 88
 00:03:55,070 --> 00:03:59,551
-Contact.AvatarPath, Contact.FirstName      
+Contact.AvatarPath, Contact.FirstName
 
 89
 00:03:59,552 --> 00:04:01,871
-Contact.LastName.      
+Contact.LastName.
 
 90
 00:04:01,872 --> 00:04:03,096
-Okay.      
+好了
 
 91
 00:04:03,097 --> 00:04:07,271
-And then in the code behind for this ContactTemplate,      
+然后在ContactTemplate的代码背后
 
 92
 00:04:08,004 --> 00:04:10,360
-I'm going to need to add two different things.      
+我需要添加两个不同的东西
 
 93
 00:04:10,361 --> 00:04:12,632
-The first thing that I'm going to need to add is      
+第一个我需要添加的东西是
 
 94
 00:04:12,633 --> 00:04:15,904
-I'm going to need to make a...      
+我需要创建一个属性
 
 95
 00:04:17,344 --> 00:04:20,148
-property, so I'm going to go Models.Contact,      
+Models.Contact,
 
 96
 00:04:20,149 --> 00:04:22,463
-just the Models.      
+只是 Models.
 
 97
 00:04:22,464 --> 00:04:25,788
-I could define that in a "Using" statement, but      
+我可以用一个Using语句来定义它，但是
 
 98
 00:04:25,789 --> 00:04:29,424
-essentially, I'm just going to reference it like this,      
+实际上，我只打算引用一下它
 
 99
 00:04:29,425 --> 00:04:32,986
-Models.Contact, and then...      
+Models.Contact, 然后
 
 100
 00:04:33,252 --> 00:04:37,408
-we want to expose a new property called Contact      
+我想给UserControl导出一个新的属性叫做Contact
 
 101
 00:04:39,118 --> 00:04:43,709
-for our UserControl, and we're just going to add a getter.      
+然后添加一个get访问器
 
 102
 00:04:43,710 --> 00:04:45,761
-So, this is just a getter of a full-blown      
+所以，这只是定义了一个
 
 103
 00:04:45,762 --> 00:04:48,556
-property definition.      
+只读属性
 
 104
 00:04:48,557 --> 00:04:50,725
-So, we're going to return...      
+然后，访问一个
 
 105
 00:04:51,116 --> 00:04:55,686
-this.DataContext as Models.Contact.      
+this.DataContext as Models.Contact.
 
 106
 00:04:56,233 --> 00:04:59,840
-So, essentially what this is going to do is, whenever you are,      
+所以，实际上，这里要做的事，就是无论你什么时候
 
 107
 00:05:01,610 --> 00:05:04,455
-whenever one of the Controls on the      
+无论是哪个控制
 
 108
 00:05:04,456 --> 00:05:08,574
-ContactTemplate.xaml Page, whenever it needs to      
+ContactTemplate.xaml页面，当它需要
 
 109
 00:05:08,575 --> 00:05:13,107
-get data, it's going to get data of type Contact,      
+获取数据，它会得到一个Contact类型的数据
 
 110
 00:05:14,007 --> 00:05:16,526
-and it's going to get that data from the data      
+然后它会从
 
 111
 00:05:16,527 --> 00:05:18,910
-context for this UserControl.      
+会从UserControl的DataContext中获取数据
 
 112
 00:05:18,911 --> 00:05:21,069
-The DataContext for the UserControl will be      
+UserControl中的DataContext
 
 113
 00:05:21,070 --> 00:05:24,056
-passed in from the MainPage.xaml.      
+会从 MainPage.xaml传递到
 
 114
 00:05:24,057 --> 00:05:27,853
-It will be whatever gets, basically, passed in      
+无论在哪获取数据, 基本上会传递到
 
 115
 00:05:27,854 --> 00:05:29,648
-in the DataTemplate.      
+数据模板中
 
 116
 00:05:29,649 --> 00:05:31,282
-So, for the most part, what you can do with this      
+所以，你能做的事是
 
 117
 00:05:31,283 --> 00:05:34,538
-is just treat this as templated code, copy and paste it.      
+把这个当成代码模板，复制粘贴下来
 
 118
 00:05:34,539 --> 00:05:36,266
-We're going to add it to our cheat sheet.      
+我们会把它添加到cheat sheet里的
 
 119
 00:05:36,267 --> 00:05:37,824
-You don't need to really understand too much      
+你不需要知道它实际的原理
 
 120
 00:05:37,825 --> 00:05:38,901
-about what it's doing.      
+或者是怎么工作的
 
 121
 00:05:38,902 --> 00:05:41,343
-Just understand that you have to have this      
+只需要知道你必须有这段代码
 
 122
 00:05:41,344 --> 00:05:45,098
-line of code and then also in this constructor      
+同样的，在UserControl的
 
 123
 00:05:45,099 --> 00:05:47,050
-for our UserControl, you're going to have to      
+构造函数里，你也需要
 
 124
 00:05:47,051 --> 00:05:50,152
-do one more thing, and that is whenever the      
+做多一个更改
 
 125
 00:05:50,153 --> 00:05:52,712
-DataContext is changed, there will be a      
+当DataContext发生变化的时候
 
 126
 00:05:52,713 --> 00:05:55,271
-DataContextChanged event, and what we want      
+会有一个对应的DataContextChanged事件, 我们需要
 
 127
 00:05:55,272 --> 00:05:59,723
-to happen is write this landis expression      
+写的东西就是这个lambda表达式
 
 128
 00:06:02,229 --> 00:06:05,834
-that will call the Bindings.Update().      
+这会调用Bindings.Update()函数
 
 129
 00:06:05,835 --> 00:06:07,965
-Now this Update is actually being generated      
+现在这个Update就已经
 
 130
 00:06:07,966 --> 00:06:11,475
-for us again inside.      
+在内部为我们再一次的生成了
 
 131
 00:06:11,476 --> 00:06:13,670
-Because we use the x:Bind statement, like we      
+因为x:Bind语句, 就像
 
 132
 00:06:13,671 --> 00:06:16,507
-talked about previously, this will essentially      
+我们之前说到的那样，本质上
 
 133
 00:06:16,508 --> 00:06:19,162
-say, "Hey, go off and update the data that you're      
+它会说"嘿，去把你相关联的数据
 
 134
 00:06:19,163 --> 00:06:20,857
-being bound to."      
+更新了吧"
 
 135
 00:06:20,858 --> 00:06:23,940
-Again, this can be treated as boiler plate code, as well.      
+再一次的，这些可以看成是代码模板
 
 136
 00:06:23,941 --> 00:06:25,732
-We're going to add it to our cheat sheet.      
+我们会把它们添加到cheat sheet里的.
 
 137
 00:06:25,733 --> 00:06:27,438
-You don't have to understand too much about how      
+你不需要知道太多它
 
 138
 00:06:27,439 --> 00:06:28,963
-it works in order to use it.      
+是怎么工作就能使用它
 
 139
 00:06:28,964 --> 00:06:30,479
-I think that's the key idea here.      
+我想这就是关键的地方了
 
 140
 00:06:30,480 --> 00:06:34,257
-But now that we've added these two lines of code,      
+但是现在我们已经添加了这两行代码
 
 141
 00:06:34,258 --> 00:06:37,587
-and we've made the modification to our      
+现在我们需要对
 
 142
 00:06:37,588 --> 00:06:40,217
-x:Bind statement for each of the items that      
+x:Bind 语句进行对应的修改
 
 143
 00:06:40,218 --> 00:06:42,965
-we're binding to here by adding the actual      
+在这里我们需要绑定一个实际
 
 144
 00:06:42,966 --> 00:06:46,037
-data type for the given property, now we should      
+数据类型到对应的property, 现在我们需要
 
 145
 00:06:46,038 --> 00:06:48,262
-be able to, at least, see it working again,      
+再次尝试运行这个应用，看看是否正常
 
 146
 00:06:48,263 --> 00:06:50,548
-even though we've made no significant changes      
+即使我们并没有做很大的改变
 
 147
 00:06:50,549 --> 00:06:52,057
-to the functionality.      
+在功能上
 
 148
 00:06:52,058 --> 00:06:53,779
-We'll get to that next.      
+那个我们稍后会进行
 
 149
 00:06:53,780 --> 00:06:55,356
-Okay, so it still works.      
+Ok，一切正常
 
 150
 00:06:55,357 --> 00:06:59,135
-We're still binding to our same ObservableCollection.      
+我们会把它绑定到同样的ObservableCollection
 
 151
 00:06:59,136 --> 00:07:02,696
-We're just defining that DataTemplate here      
+还是在这里定义这个DataTemplate
 
 152
 00:07:02,697 --> 00:07:03,912
-in the UserControl.      
+在我们的UserControl里
 
 153
 00:07:03,913 --> 00:07:05,523
-Now we want to take it to the next step, and that is      
+然后下一步呢，就是
 
 154
 00:07:05,524 --> 00:07:08,807
-to define a VisualStateManager, so that whenever      
+去定义一个视觉管理器，以便
 
 155
 00:07:08,808 --> 00:07:13,597
-we re-size the window, that the Image,      
+当我们缩放窗体，
 
 156
 00:07:16,451 --> 00:07:18,201
-that Avatar Image, will grow from      
+头像的图片尺寸会从
 
 157
 00:07:18,202 --> 00:07:21,414
-100, 100 to 200, 200.      
+100, 100 变成200, 200.
 
 158
 00:07:21,836 --> 00:07:24,086
-So, I'm just going to actually paste in a bunch      
+现在需要做的就是粘贴一下
 
 159
 00:07:24,087 --> 00:07:24,928
-of code here.      
+代码到这里进来
 
 160
 00:07:24,929 --> 00:07:28,165
-It's pretty much the same code that we had that I,      
+这跟我们已经有的一段代码很像
 
 161
 00:07:28,166 --> 00:07:30,446
-well let me look here.      
+看看这里
 
 162
 00:07:31,468 --> 00:07:34,145
-Yeah, let me just actually do this.      
+耶~就让我这样做吧！
 
 163
 00:07:34,146 --> 00:07:35,664
-I'll just grab it from here.      
+面向复制粘贴编程~
 
 164
 00:07:35,665 --> 00:07:37,537
-Grab all that.      
+复制~
 
 165
 00:07:39,100 --> 00:07:40,698
-And then hit Control+X to get it out of my      
+ctrl+x剪切
 
 166
 00:07:40,699 --> 00:07:42,309
-MainPage.xaml, and then I'm going to take it      
+从MainPage.xaml,然后
 
 167
 00:07:42,310 --> 00:07:44,805
-over here to the ContactTemplate.xaml,      
+粘贴到ContactTemplate.xaml,
 
 168
 00:07:44,806 --> 00:07:48,496
-and put it right here underneath the StackPanel,      
+放到这个StackPanel里面
 
 169
 00:07:48,497 --> 00:07:49,523
-like so.      
+就像这样
 
 170
 00:07:49,524 --> 00:07:52,400
-Alright, let's see if that works.      
+好了，让我们看看他能不能正常工作把
 
 171
 00:07:59,798 --> 00:08:01,301
-Alright, so this should be pretty small.      
+好，现在应该看起来还很小
 
 172
 00:08:01,302 --> 00:08:02,474
-What happens when we make it larger?      
+当我们拉伸窗体会发生什么？
 
 173
 00:08:02,475 --> 00:08:06,196
-Oh, hey, it doubled the size of      
+Oh！两倍大小的
 
 174
 00:08:06,197 --> 00:08:08,788
-our avatar icon.      
+头像图标（注：好萌。。。）
 
 175
 00:08:08,789 --> 00:08:10,356
-Alright, very proud of this.      
+好了，我好开心~~~（容易满足的程序员~）
 
 176
 00:08:10,357 --> 00:08:13,033
-So, we're going to use this technique for      
+现在我们需要用这个技术
 
 177
 00:08:13,034 --> 00:08:14,846
-our upcoming challenge.      
+对于我们即将到来的挑战~
 
 178
 00:08:14,847 --> 00:08:17,342
-Whenever we want to re-size the window,      
+当我们改变窗体大小的时候
 
 179
 00:08:17,343 --> 00:08:20,392
-not only are we going to re-size, or change      
+不止是改变窗体大小，还有改变
 
 180
 00:08:20,393 --> 00:08:22,141
-the layout, but we may want to re-size      
+布局, 但是我们可能想要改变
 
 181
 00:08:22,142 --> 00:08:26,781
-the actual DataTemplate for our GridView Control.      
+在GridView Control里的实际的数据模板
 
 182
 00:08:26,782 --> 00:08:28,820
-Since we'll be working in a larger form factor,      
+当我们在一个更大的场景下运行
 
 183
 00:08:28,821 --> 00:08:32,439
-we would want to make it possible for the Fonts      
+我们会希望字体变得更大
 
 184
 00:08:32,440 --> 00:08:35,461
-and the Images to be larger on a larger screen.      
+还有图像的变大
 
 185
 00:08:35,462 --> 00:08:36,221
-Okay?      
+Okay?
 
 186
 00:08:36,222 --> 00:08:38,151
-So, that's all I wanted to say about this.      
+所以这就是我想要说的了
 
 187
 00:08:38,152 --> 00:08:42,787
-This addresses the issue of how do I use      
+这节课讲的是我如何使用
 
 188
 00:08:42,788 --> 00:08:45,223
-the VisualStateManager and AdaptiveTriggers      
+视觉管理器和自适应触发器
 
 189
 00:08:45,224 --> 00:08:46,727
-inside of a DataTemplate?      
+在数据模板里
 
 190
 00:08:46,728 --> 00:08:49,020
-Well, you add a UserControl, you make a few      
+你需要添加一个用户控制，你需要
 
 191
 00:08:49,021 --> 00:08:51,528
-tiny modifications in the code behind, and then      
+在代码里做一些小的更改
 
 192
 00:08:51,529 --> 00:08:53,713
-you go ahead and you add your VisualStateManager,      
+然后你就可以添加你的视觉管理器
 
 193
 00:08:53,714 --> 00:08:57,286
-State Triggers, and your setters, and they'll      
+触发器，你的设置
 
 194
 00:08:57,287 --> 00:08:59,578
-be applied to each item in your collection.      
+然后它们就能顺利的在应用里工作了
 
 195
 00:08:59,579 --> 00:09:02,873
-So, just to prove that this works, let's go ahead      
+所以，这只是为了证明这一点，让我们继续吧！
 
 196
 00:09:02,874 --> 00:09:06,083
-and add Beth, as well, and you can see      
+然后添加Beth,你可以看见
 
 197
 00:09:06,084 --> 00:09:09,293
-she's large and now she is small.      
+她很大~~她又变小了
 
 198
 00:09:09,294 --> 00:09:09,870
-Great.      
+棒极了~
 
 199
 00:09:09,871 --> 00:09:11,182
-Okay?      
+Okay?
 
 200
 00:09:11,183 --> 00:09:13,131
-So, I think that's pretty much all we're going to      
+所以这就是这节课我想说的内容了
 
 201
 00:09:13,132 --> 00:09:15,809
-cover in this little round, and now it's time for      
+然后接下来就是一个
 
 202
 00:09:15,810 --> 00:09:18,560
-a cheat sheet review and to move on to our next challenge.      
+复习cheat sheet然后继续我们下一个挑战了~
 
 203
 00:09:18,561 --> 00:09:19,390
-See you there.      
+See you there.
 
 204
 00:09:19,391 --> 00:09:20,851
-Thanks.      
+Thanks.
 
