@@ -15,10 +15,9 @@ Audio File: uwp55SoundBoardPackageAppXManifest_high.mp4
 Video File: uwp55SoundBoardPackageAppXManifest_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
-Video Zoom Percent: 0.500000
-Scroll Position: 211
-Active Line: 222
-Video Position: 19633
+Video Zoom Percent: 0.375000
+Active Line: 263
+Video Position: 24100
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -249,49 +248,49 @@ Dialogue: 0,0:10:44.44,0:10:46.91,Default,,0,0,0,,现在它说它不喜欢我的
 Dialogue: 0,0:10:46.91,0:10:50.68,Default,,0,0,0,,名称中要提供尺寸信息\Nand that it has to provide some scaling
 Dialogue: 0,0:10:50.68,0:10:55.08,Default,,0,0,0,,像是要在71*71和扩展名中夹一层\Ninformation, kind of, sandwiched between the 71x71
 Dialogue: 0,0:10:55.08,0:10:56.79,Default,,0,0,0,,你想要处理吗？\Nand the .png, do you want to proceed?
-Dialogue: 0,0:10:56.79,0:10:59.33,Default,,0,0,0,,Absolutely, go right ahead.
-Dialogue: 0,0:10:59.33,0:11:03.49,Default,,0,0,0,,Okay and, so you can see that it puts it there now.
-Dialogue: 0,0:11:03.49,0:11:06.55,Default,,0,0,0,,I can also add a background color.
-Dialogue: 0,0:11:06.55,0:11:11.21,Default,,0,0,0,,I think we'll just add a background color of,
-Dialogue: 0,0:11:11.21,0:11:13.15,Default,,0,0,0,,well, in the case of the tiles,
-Dialogue: 0,0:11:13.15,0:11:15.28,Default,,0,0,0,,we want the background color to be transparent
-Dialogue: 0,0:11:15.28,0:11:17.84,Default,,0,0,0,,because we want to use whatever the system colors are,
-Dialogue: 0,0:11:17.84,0:11:19.74,Default,,0,0,0,,but for the splash screen, let's use red.
-Dialogue: 0,0:11:19.75,0:11:21.78,Default,,0,0,0,,Let's see if it'll accept that.
-Dialogue: 0,0:11:21.78,0:11:24.32,Default,,0,0,0,,We'll come back to that in a little bit.
-Dialogue: 0,0:11:24.33,0:11:27.66,Default,,0,0,0,,All right, so let's go ahead and continue on here.
-Dialogue: 0,0:11:27.66,0:11:30.45,Default,,0,0,0,,I'll choose a 300x300.
-Dialogue: 0,0:11:36.77,0:11:39.60,Default,,0,0,0,,Okay so, I think that's pretty much everything
-Dialogue: 0,0:11:39.60,0:11:43.52,Default,,0,0,0,,that I want to change about this.
-Dialogue: 0,0:11:43.53,0:11:45.88,Default,,0,0,0,,So let's close this now and what I want to do
-Dialogue: 0,0:11:45.88,0:11:48.07,Default,,0,0,0,,before we leave this topic,
-Dialogue: 0,0:11:48.07,0:11:52.23,Default,,0,0,0,,is actually right-click the Package.AppXManifest file
-Dialogue: 0,0:11:52.23,0:11:54.72,Default,,0,0,0,,and just say, Open With,
-Dialogue: 0,0:11:54.73,0:11:57.75,Default,,0,0,0,,and I'm just going to open with the Text Editor,
-Dialogue: 0,0:11:57.76,0:12:00.95,Default,,0,0,0,,or maybe just the XML Text Editor and click OK.
-Dialogue: 0,0:12:00.96,0:12:05.06,Default,,0,0,0,,And then you can see all of the settings that we made
-Dialogue: 0,0:12:05.06,0:12:09.23,Default,,0,0,0,,in that designer and you can see how they're manifest here
-Dialogue: 0,0:12:09.23,0:12:11.87,Default,,0,0,0,,in the XML, alright?
-Dialogue: 0,0:12:11.88,0:12:14.65,Default,,0,0,0,,And so, that's really all that I wanted to do.
-Dialogue: 0,0:12:14.65,0:12:15.99,Default,,0,0,0,,Let me do this, though.
-Dialogue: 0,0:12:15.99,0:12:17.79,Default,,0,0,0,,Let me save this and now let me run it.
-Dialogue: 0,0:12:17.79,0:12:21.39,Default,,0,0,0,,I'd like to see if the splash screen pops up.
-Dialogue: 0,0:12:27.15,0:12:29.50,Default,,0,0,0,,All right, and you saw the splash screen briefly there.
-Dialogue: 0,0:12:29.50,0:12:31.77,Default,,0,0,0,,That's really cool.
-Dialogue: 0,0:12:31.77,0:12:34.85,Default,,0,0,0,,Looks like I'm going to need to also add a little space there.
-Dialogue: 0,0:12:34.85,0:12:36.50,Default,,0,0,0,,I forgot about, let me do that real quick
-Dialogue: 0,0:12:36.50,0:12:38.71,Default,,0,0,0,,before we conclude this video.
-Dialogue: 0,0:12:41.86,0:12:44.28,Default,,0,0,0,,And if you recall, I said this several times
-Dialogue: 0,0:12:44.28,0:12:46.82,Default,,0,0,0,,how I wanted to put a Margin around this thing,
-Dialogue: 0,0:12:46.82,0:12:51.82,Default,,0,0,0,,maybe: "0,5,10,0".
-Dialogue: 0,0:12:52.94,0:12:56.21,Default,,0,0,0,,Now let's run it one more time.
-Dialogue: 0,0:12:56.21,0:12:58.13,Default,,0,0,0,,There's our cool splash screen,
-Dialogue: 0,0:12:58.13,0:13:01.84,Default,,0,0,0,,and that looks pretty nice, okay.
-Dialogue: 0,0:13:01.84,0:13:04.51,Default,,0,0,0,,Alright, so ideally we would test this a little bit more,
-Dialogue: 0,0:13:04.51,0:13:08.25,Default,,0,0,0,,maybe run it on some friends' computers,
-Dialogue: 0,0:13:08.26,0:13:11.47,Default,,0,0,0,,other devices, test with the various mobile emulators
-Dialogue: 0,0:13:11.48,0:13:12.82,Default,,0,0,0,,that are available.
-Dialogue: 0,0:13:12.83,0:13:13.70,Default,,0,0,0,,But I'm going to wing it
-Dialogue: 0,0:13:13.70,0:13:15.24,Default,,0,0,0,,and I'm actually going to try and submit this
-Dialogue: 0,0:13:15.24,0:13:17.83,Default,,0,0,0,,in the next video to the Store, so we'll see you there.
-Dialogue: 0,0:13:17.83,0:13:19.44,Default,,0,0,0,,Thanks.
+Dialogue: 0,0:10:56.79,0:10:59.33,Default,,0,0,0,,显然，确认继续\NAbsolutely, go right ahead.
+Dialogue: 0,0:10:59.33,0:11:03.49,Default,,0,0,0,,好，现在你看到它被放进去了\NOkay and, so you can see that it puts it there now.
+Dialogue: 0,0:11:03.49,0:11:06.55,Default,,0,0,0,,我还可以添加一个背景色\NI can also add a background color.
+Dialogue: 0,0:11:06.55,0:11:11.21,Default,,0,0,0,,我想添加这么一个颜色\NI think we'll just add a background color of,
+Dialogue: 0,0:11:11.21,0:11:13.15,Default,,0,0,0,,考虑到磁贴的话\Nwell, in the case of the tiles,
+Dialogue: 0,0:11:13.15,0:11:15.28,Default,,0,0,0,,我想要它是透明的\Nwe want the background color to be transparent
+Dialogue: 0,0:11:15.28,0:11:17.84,Default,,0,0,0,,因为我想要它和系统颜色一致\Nbecause we want to use whatever the system colors are,
+Dialogue: 0,0:11:17.84,0:11:19.74,Default,,0,0,0,,但是对于启动界面，我们用红色\Nbut for the splash screen, let's use red.
+Dialogue: 0,0:11:19.75,0:11:21.78,Default,,0,0,0,,看它能不能接受\NLet's see if it'll accept that.
+Dialogue: 0,0:11:21.78,0:11:24.32,Default,,0,0,0,,稍后我们再回顾这里\NWe'll come back to that in a little bit.
+Dialogue: 0,0:11:24.33,0:11:27.66,Default,,0,0,0,,好滴，我们继续向前，从这里开始\NAll right, so let's go ahead and continue on here.
+Dialogue: 0,0:11:27.66,0:11:30.45,Default,,0,0,0,,我要选择一个300*300大小的图片\NI'll choose a 300x300.
+Dialogue: 0,0:11:36.77,0:11:39.60,Default,,0,0,0,,基本上，这就是我所有\NOkay so, I think that's pretty much everything
+Dialogue: 0,0:11:39.60,0:11:43.52,Default,,0,0,0,,想要修改的部分了\Nthat I want to change about this.
+Dialogue: 0,0:11:43.53,0:11:45.88,Default,,0,0,0,,先关闭这个标签，在离开这个主题之前\NSo let's close this now and what I want to do
+Dialogue: 0,0:11:45.88,0:11:48.07,Default,,0,0,0,,我还有件事要做\Nbefore we leave this topic,
+Dialogue: 0,0:11:48.07,0:11:52.23,Default,,0,0,0,,就是右击Package.AppXManifest这个文件\Nis actually right-click the Package.AppXManifest file
+Dialogue: 0,0:11:52.23,0:11:54.72,Default,,0,0,0,,然后选择用其他方式打开\Nand just say, Open With,
+Dialogue: 0,0:11:54.73,0:11:57.75,Default,,0,0,0,,我要选择使用文本编辑器打开\Nand I'm just going to open with the Text Editor,
+Dialogue: 0,0:11:57.76,0:12:00.95,Default,,0,0,0,,或者是xml编辑器，点击确认\Nor maybe just the XML Text Editor and click OK.
+Dialogue: 0,0:12:00.96,0:12:05.06,Default,,0,0,0,,然后你可以看到所有我们在设计器里面做出的修改\NAnd then you can see all of the settings that we made
+Dialogue: 0,0:12:05.06,0:12:09.23,Default,,0,0,0,,并且他们表示成了xml格式\Nin that designer and you can see how they're manifest here
+Dialogue: 0,0:12:09.23,0:12:11.87,Default,,0,0,0,,懂了吧？\Nin the XML, alright?
+Dialogue: 0,0:12:11.88,0:12:14.65,Default,,0,0,0,,这些就是我早想做的事情\NAnd so, that's really all that I wanted to do.
+Dialogue: 0,0:12:14.65,0:12:15.99,Default,,0,0,0,,这里让我先做这个\NLet me do this, though.
+Dialogue: 0,0:12:15.99,0:12:17.79,Default,,0,0,0,,保存一下，然后运行它\NLet me save this and now let me run it.
+Dialogue: 0,0:12:17.79,0:12:21.39,Default,,0,0,0,,我想看一下启动界面是否弹出来\NI'd like to see if the splash screen pops up.
+Dialogue: 0,0:12:27.15,0:12:29.50,Default,,0,0,0,,好滴，这里可以简要看一下启动界面\NAll right, and you saw the splash screen briefly there.
+Dialogue: 0,0:12:29.50,0:12:31.77,Default,,0,0,0,,这非常有意思\NThat's really cool.
+Dialogue: 0,0:12:31.77,0:12:34.85,Default,,0,0,0,,这里似乎我还要添加一些空白\NLooks like I'm going to need to also add a little space there.
+Dialogue: 0,0:12:34.85,0:12:36.50,Default,,0,0,0,,之前忘了，在总结之前\NI forgot about, let me do that real quick
+Dialogue: 0,0:12:36.50,0:12:38.71,Default,,0,0,0,,快速地完成它\Nbefore we conclude this video.
+Dialogue: 0,0:12:41.86,0:12:44.28,Default,,0,0,0,,如果你回忆一下，这里我已经\NAnd if you recall, I said this several times
+Dialogue: 0,0:12:44.28,0:12:46.82,Default,,0,0,0,,说过很多次了如何去添加一个边缘\Nhow I wanted to put a Margin around this thing,
+Dialogue: 0,0:12:46.82,0:12:51.82,Default,,0,0,0,,应该是"0,5,10,0"\Nmaybe: "0,5,10,0".
+Dialogue: 0,0:12:52.94,0:12:56.21,Default,,0,0,0,,好，让它再运行一下\NNow let's run it one more time.
+Dialogue: 0,0:12:56.21,0:12:58.13,Default,,0,0,0,,这是我们很炫的启动界面\NThere's our cool splash screen,
+Dialogue: 0,0:12:58.13,0:13:01.84,Default,,0,0,0,,他们看起来好多了\Nand that looks pretty nice, okay.
+Dialogue: 0,0:13:01.84,0:13:04.51,Default,,0,0,0,,理想情况，我们应该再多测试一下\NAlright, so ideally we would test this a little bit more,
+Dialogue: 0,0:13:04.51,0:13:08.25,Default,,0,0,0,,比如在朋友的电脑上跑一下\Nmaybe run it on some friends' computers,
+Dialogue: 0,0:13:08.26,0:13:11.47,Default,,0,0,0,,或者其他设备上，用能用的手机模拟器\Nother devices, test with the various mobile emulators
+Dialogue: 0,0:13:11.48,0:13:12.82,Default,,0,0,0,,测试一下\Nthat are available.
+Dialogue: 0,0:13:12.83,0:13:13.70,Default,,0,0,0,,但这里略过\NBut I'm going to wing it
+Dialogue: 0,0:13:13.70,0:13:15.24,Default,,0,0,0,,下节课我会尝试\Nand I'm actually going to try and submit this
+Dialogue: 0,0:13:15.24,0:13:17.83,Default,,0,0,0,,并且把他提交到商店里面,下节课见~\Nin the next video to the Store, so we'll see you there.
+Dialogue: 0,0:13:17.83,0:13:19.44,Default,,0,0,0,,谢谢观看\NThanks.
