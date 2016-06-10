@@ -15,9 +15,6 @@ Video File: uwp56SoundBoardSubmittingToWindowsStore_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.500000
-Scroll Position: 39
-Active Line: 49
-Video Position: 12173
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -25,7 +22,7 @@ Style: yahei,Microsoft YaHei,50,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:00:05.00,yahei,,0,0,0,,UWP音版-微软商店上传
+Dialogue: 0,0:00:00.00,0:00:05.00,yahei,,0,0,0,,UWP音版-微软商店上传\N翻译：Shi
 Dialogue: 0,0:00:05.00,0:00:11.04,yahei,,0,0,0,,终于到了最后一步，我要将程序上传至微软商店了
 Dialogue: 0,0:00:11.20,0:00:17.48,yahei,,0,0,0,,那我们就开始吧\N首先去网页：dev.windows.com
 Dialogue: 0,0:00:17.56,0:00:22.32,yahei,,0,0,0,,可以看到后面跟了en-us，也就是说明我在美国区
@@ -73,5 +70,36 @@ Dialogue: 0,0:05:51.84,0:06:01.88,yahei,,0,0,0,,如果你用的是visual studio�
 Dialogue: 0,0:06:01.88,0:06:08.16,yahei,,0,0,0,,将软件包拖拽过来（格式列表偷懒不打）\N或者选择你的文档进行上传
 Dialogue: 0,0:06:08.16,0:06:23.68,yahei,,0,0,0,,先将配置处理器换为发布（release）\N然后选择生成解决方案（build solution）
 Dialogue: 0,0:06:23.84,0:06:38.56,yahei,,0,0,0,,在solution explorer中选定我的项目\N然后在项目菜单中选择商店并选中创建软件包
-Dialogue: 0,0:06:38.56,0:06:46.16,yahei,,0,0,0,,然后会弹出对话框\N”是否要创建上传至微软商店的软件包？” 选择是 
-Dialogue: 0,0:06:46.16,0:06:48.16,yahei,,0,0,0,,
+Dialogue: 0,0:06:38.56,0:06:46.16,yahei,,0,0,0,,然后会弹出对话框\N”是否要创建上传至微软商店的软件包？” 选择是
+Dialogue: 0,0:06:46.16,0:07:01.40,yahei,,0,0,0,,这里需要登录 
+Dialogue: 0,0:07:01.40,0:07:15.88,yahei,,0,0,0,,然后需要输入验证软件中的验证码\N我手边没有，发个短信验证好了
+Dialogue: 0,0:07:15.88,0:07:36.24,yahei,,0,0,0,,我把这里打码了，你看不到哦｡◕‿◕｡
+Dialogue: 0,0:07:36.24,0:07:41.48,yahei,,0,0,0,,在这里选择上传app的名字
+Dialogue: 0,0:07:41.88,0:07:48.88,yahei,,0,0,0,,然后所有的选项我都不改了，就这样放着就行
+Dialogue: 0,0:07:52.64,0:08:02.12,yahei,,0,0,0,,等几秒之后，创建软件包的过程就完成了
+Dialogue: 0,0:08:02.12,0:08:14.84,yahei,,0,0,0,,这部分完成之后，就该回到网页继续上传咯
+Dialogue: 0,0:08:14.84,0:08:28.08,yahei,,0,0,0,,会有两个上传的版本，一个是x64 Architecture，另一个是ARM Architecture
+Dialogue: 0,0:08:28.08,0:08:38.80,yahei,,0,0,0,,先找到需要上传的文件位置，这里其实有两个可以选择的文件
+Dialogue: 0,0:08:38.80,0:08:44.32,yahei,,0,0,0,,这个就是x64 Architecture
+Dialogue: 0,0:08:44.44,0:08:49.40,yahei,,0,0,0,,ARM Architecture这个也需要添加
+Dialogue: 0,0:08:56.76,0:09:01.48,yahei,,0,0,0,,正在上传中...
+Dialogue: 0,0:09:03.48,0:09:14.00,yahei,,0,0,0,,好哒，Intel Architecture和ARM Architecture两个版本都上传完了
+Dialogue: 0,0:09:16.00,0:09:27.08,yahei,,0,0,0,,然后我要添加一些描述：
+Dialogue: 0,0:09:27.08,0:09:44.32,yahei,,0,0,0,,“一个有趣的音板程序，可以用来干扰基友”
+Dialogue: 0,0:09:44.32,0:09:48.40,yahei,,0,0,0,,还可以加app发布注释
+Dialogue: 0,0:09:48.40,0:10:01.24,yahei,,0,0,0,,桌面截图，还有...\N啊其实比如这里的程序磁贴只在win8.1及以前的版本中使用，所以我根本不需要
+Dialogue: 0,0:10:01.24,0:10:06.08,yahei,,0,0,0,,啊应该加一些广告图...
+Dialogue: 0,0:10:06.08,0:10:15.64,yahei,,0,0,0,,其实很多这里面的东西都会自动添加
+Dialogue: 0,0:10:15.64,0:10:21.68,yahei,,0,0,0,,所以我就继续添加别的就好了
+Dialogue: 0,0:10:23.68,0:10:43.12,yahei,,0,0,0,,（打字打字打字...）\N【程序特点： 播放拖拽自定义声效】
+Dialogue: 0,0:10:43.32,0:11:02.24,yahei,,0,0,0,,【关键词：声效，板，mp3，wav】\N【版权所有：2015Bob】
+Dialogue: 0,0:11:02.24,0:11:10.44,yahei,,0,0,0,,基本上这些东西还是比较清楚明了的，我就不解释了，很多也不需要填
+Dialogue: 0,0:11:10.44,0:11:21.52,yahei,,0,0,0,,这里可以添加认证注释，我觉得我需要写一下他们\N可以拖拽播放音效，毕竟这个功能不大明显
+Dialogue: 0,0:11:21.76,0:12:05.08,yahei,,0,0,0,,【支持从桌面拖拽MP3或wav文件到音板并播放】
+Dialogue: 0,0:12:05.08,0:12:08.88,yahei,,0,0,0,,ok差不多完成了，终于可以提交啦
+Dialogue: 0,0:12:12.80,0:12:38.56,yahei,,0,0,0,,就这样完成啦，这就是提交app到微软商店的全部过程啦\N可能要过一会才能知道结果， 之后我会在其它视频中告诉大家\N如果没有通过审核也会进行分析
+Dialogue: 0,0:12:38.56,0:12:49.04,yahei,,0,0,0,,这就是全部你需要做的了，其实还挺简单的吧o(*￣▽￣*)ブ\N（简直畅通无阻！）
+Dialogue: 0,0:12:49.04,0:12:57.28,yahei,,0,0,0,,其实还可以更复杂\N比如加上价格，商品区，是否遵守法规
+Dialogue: 0,0:12:57.28,0:13:06.20,yahei,,0,0,0,,不同的市场营销，文本和图片等等
+Dialogue: 0,0:13:06.20,0:13:11.72,yahei,,0,0,0,,这一部分顺利完成了，从下一节课开始我们要再做一个app啦
+Dialogue: 0,0:13:11.72,0:13:13.72,yahei,,0,0,0,,巨硬大法好！
