@@ -15,9 +15,9 @@ Video File: uwp58WeatherSetup_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.500000
-Scroll Position: 339
-Active Line: 348
-Video Position: 32368
+Scroll Position: 174
+Active Line: 191
+Video Position: 16624
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -26,7 +26,7 @@ Style: Default,微软雅黑,50,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 0,0:00:04.73,0:00:06.85,Default,,0,0,0,,好滴，我们开始了，我们先\NAlright, so to get started, we're going to do
-Dialogue: 0,0:00:06.85,0:00:08.93,Default,,0,0,0,,把项目建起来，然后我们some basic Project setup, and then we're going to
+Dialogue: 0,0:00:06.85,0:00:08.93,Default,,0,0,0,,把项目建起来，然后我们\Nsome basic Project setup, and then we're going to
 Dialogue: 0,0:00:08.93,0:00:12.69,Default,,0,0,0,,立即讲一些如何处理\Ntalk immediately about our approach
 Dialogue: 0,0:00:12.69,0:00:15.17,Default,,0,0,0,,天气API\Nworking with the Weather API.
 Dialogue: 0,0:00:15.17,0:00:16.63,Default,,0,0,0,,好，让我们继续，开始创建\NSo let's go ahead and get started by just
@@ -48,13 +48,13 @@ Dialogue: 0,0:00:57.92,0:01:00.38,Default,,0,0,0,,无论你想让它有多复杂
 Dialogue: 0,0:01:00.38,0:01:02.85,Default,,0,0,0,,都能做到\Nand as feature-rich as you want.
 Dialogue: 0,0:01:02.86,0:01:04.65,Default,,0,0,0,,这些内容是很相似的\NIt's just pretty much more of the same
 Dialogue: 0,0:01:04.66,0:01:06.59,Default,,0,0,0,,都是我在这节课，这系列课程中\Nof what I'm going to show you here
-Dialogue: 0,0:01:06.60,0:01:10.18,Default,,0,0,0,,反复讲诉的内容\Nin this lesson, in these lessons.
+Dialogue: 0,0:01:06.60,0:01:10.18,Default,,0,0,0,,反复讲述的内容\Nin this lesson, in these lessons.
 Dialogue: 0,0:01:10.18,0:01:12.68,Default,,0,0,0,,我们现在准备就绪\NNow that we have that in place,
 Dialogue: 0,0:01:12.68,0:01:15.08,Default,,0,0,0,,让我们前进，先最小化项目窗口\NI'm going to go ahead and minimize this.
 Dialogue: 0,0:01:15.08,0:01:17.46,Default,,0,0,0,,我们将要从一个网站上拉取数据\NWe're going to pull our data from
 Dialogue: 0,0:01:17.46,0:01:21.42,Default,,0,0,0,,这个网站叫 openweathermap.org\N a website called openweathermap.org.
-Dialogue: 0,0:01:21.42,0:01:23.37,Default,,0,0,0,,顺便一提，如果你要使用它\NBy all rights, if you're going to use this
-Dialogue: 0,0:01:23.37,0:01:25.77,Default,,0,0,0,,在一个商业产品中，你需要登录\Nin a commercial product, you need to sign up
+Dialogue: 0,0:01:21.42,0:01:23.37,Default,,0,0,0,,顺便一提，如果你要在一个\NBy all rights, if you're going to use this
+Dialogue: 0,0:01:23.37,0:01:25.77,Default,,0,0,0,,商业产品中使用它，你需要登录\Nin a commercial product, you need to sign up
 Dialogue: 0,0:01:25.77,0:01:29.51,Default,,0,0,0,,来获取接口,，如果你每月的请求\Nfor an API, and then if your requests
 Dialogue: 0,0:01:30.55,0:01:34.17,Default,,0,0,0,,超出一定数量\Nare in excess of a certain number per month,
 Dialogue: 0,0:01:36.26,0:01:37.94,Default,,0,0,0,,你需要获取一个付费后的\Nyou'll need to get a      ---------------NOT SURE
@@ -73,8 +73,8 @@ Dialogue: 0,0:02:07.03,0:02:09.39,Default,,0,0,0,,去调用一下Web服务\Na ca
 Dialogue: 0,0:02:09.39,0:02:11.43,Default,,0,0,0,,我先不管这可能存在于\NSo I'm going to leave that part of it
 Dialogue: 0,0:02:11.44,0:02:13.17,Default,,0,0,0,,你以及网站之间的问题了\Nbetween you and OpenWeatherMap,
 Dialogue: 0,0:02:13.18,0:02:15.00,Default,,0,0,0,,先来看一下API\Nbut I'm going to look at the API.
-Dialogue: 0,0:02:15.00,0:02:16.76,Default,,0,0,0,,这有可供我们使用There's several different weather APIs
-Dialogue: 0,0:02:16.76,0:02:17.94,Default,,0,0,0,,多种不同的天气接口\Nthat we can call.
+Dialogue: 0,0:02:15.00,0:02:16.76,Default,,0,0,0,,这有多种不同的可供\NThere's several different weather APIs
+Dialogue: 0,0:02:16.76,0:02:17.94,Default,,0,0,0,,我们使用的天气接口\Nthat we can call.
 Dialogue: 0,0:02:17.94,0:02:20.42,Default,,0,0,0,,这里API接口\NAPI will be
 Dialogue: 0,0:02:21.49,0:02:24.64,Default,,0,0,0,,基本指的是Web调用的API接口\Nbasically a web-callable API.
 Dialogue: 0,0:02:24.65,0:02:27.55,Default,,0,0,0,,意思是我们通过访问URL来完成一次调用\NThat means we use a URL to make a call,
@@ -356,7 +356,7 @@ Dialogue: 0,0:16:37.89,0:16:40.99,Default,,0,0,0,,这些技术像是 序列化�
 Dialogue: 0,0:16:41.00,0:16:44.21,Default,,0,0,0,,或者任意其他惯用的数据类型\Nand JSON format, and maybe other custom formats,
 Dialogue: 0,0:16:44.22,0:16:47.10,Default,,0,0,0,,像是一些二进制的格式\Ntoo, like some binary format.
 Dialogue: 0,0:16:47.10,0:16:50.76,Default,,0,0,0,,这都是应该藏到你腰包里面的重要技能\NIt's a pretty crucial skill to have in your toolbelt.
-Dialogue: 0,0:16:50.76,0:16:53.48,Default,,0,0,0,,这只是一种\NThis is just one 
+Dialogue: 0,0:16:50.76,0:16:53.48,Default,,0,0,0,,这只是一种\NThis is just one
 Dialogue: 0,0:16:53.48,0:16:55.71,Default,,0,0,0,,能够解决问题的方法\Npossible way to go about this.
 Dialogue: 0,0:16:57.46,0:16:58.96,Default,,0,0,0,,不久之前，我见过一个\NI see something that caught my eye
 Dialogue: 0,0:16:58.96,0:17:00.63,Default,,0,0,0,,引人注目的东西\Njust a moment ago.
@@ -373,255 +373,231 @@ Dialogue: 0,0:17:32.22,0:17:33.44,Default,,0,0,0,,有一个非法的命名\Nhas 
 Dialogue: 0,0:17:33.44,0:17:35.44,Default,,0,0,0,,事实上，我要做到就是\NIn fact, what I'm going to do is just
 Dialogue: 0,0:17:35.44,0:17:37.40,Default,,0,0,0,,把它完整的注释掉\Ncomment this out completely.
 Dialogue: 0,0:17:37.40,0:17:39.64,Default,,0,0,0,,我不总会这样做的\NI'm not going to even use this at all.
-Dialogue: 0,0:17:41.68,0:17:45.09,Default,,0,0,0,,Hopefully, the deserializer,
+Dialogue: 0,0:17:41.68,0:17:45.09,Default,,0,0,0,,幸好，这个反序列化器\NHopefully, the deserializer,
 Dialogue: 0,0:17:45.09,0:17:47.67,Default,,0,0,0,,the DataContractJsonSerializer
-Dialogue: 0,0:17:47.67,0:17:50.19,Default,,0,0,0,,will just say, "Oh, okay, they don't have a class for that.
-Dialogue: 0,0:17:50.19,0:17:53.49,Default,,0,0,0,,"We'll just ignore that," as it tries to pair up
-Dialogue: 0,0:17:53.49,0:17:55.65,Default,,0,0,0,,all of the data
-Dialogue: 0,0:17:55.65,0:17:58.25,Default,,0,0,0,,that it has with all the class
-Dialogue: 0,0:17:58.25,0:18:00.63,Default,,0,0,0,,and property names.
-Dialogue: 0,0:18:00.63,0:18:02.43,Default,,0,0,0,,So that's the only thing that I think
-Dialogue: 0,0:18:02.43,0:18:03.65,Default,,0,0,0,,I was concerned about.
-Dialogue: 0,0:18:03.65,0:18:05.86,Default,,0,0,0,,Let's go ahead and continue on here.
-Dialogue: 0,0:18:07.73,0:18:09.17,Default,,0,0,0,,Now what we're going to need to do is get
-Dialogue: 0,0:18:09.17,0:18:11.93,Default,,0,0,0,,a MemoryStream.
-Dialogue: 0,0:18:11.93,0:18:13.98,Default,,0,0,0,,New MemoryStream.
-Dialogue: 0,0:18:17.60,0:18:19.52,Default,,0,0,0,,Let me go ahead and hit Control+"."
-Dialogue: 0,0:18:19.52,0:18:21.22,Default,,0,0,0,,on my keyboard
-Dialogue: 0,0:18:23.96,0:18:26.66,Default,,0,0,0,,and add the System.IO namespace.
-Dialogue: 0,0:18:30.45,0:18:32.55,Default,,0,0,0,,I want to tell it that we're working
-Dialogue: 0,0:18:32.55,0:18:35.06,Default,,0,0,0,,with a certain type of Encoding,
-Dialogue: 0,0:18:36.97,0:18:40.98,Default,,0,0,0,,specifically, the UTF-8 Encoding.
-Dialogue: 0,0:18:42.26,0:18:44.27,Default,,0,0,0,,We're going to call GetBytes.
-Dialogue: 0,0:18:44.27,0:18:45.49,Default,,0,0,0,,The reason why we're doing this
-Dialogue: 0,0:18:45.50,0:18:48.01,Default,,0,0,0,,is kind of a long story.
-Dialogue: 0,0:18:49.36,0:18:51.34,Default,,0,0,0,,I don't really want to talk about it
-Dialogue: 0,0:18:51.34,0:18:52.56,Default,,0,0,0,,at the moment.
-Dialogue: 0,0:18:52.56,0:18:54.58,Default,,0,0,0,,Most of the time, whenever you're grabbing JSON
-Dialogue: 0,0:18:54.58,0:18:56.24,Default,,0,0,0,,and you're working with it, you're going to need
-Dialogue: 0,0:18:56.24,0:18:59.10,Default,,0,0,0,,to work with the,
-Dialogue: 0,0:18:59.10,0:19:02.04,Default,,0,0,0,,the way that the text is encoded is just UTF-8,
-Dialogue: 0,0:19:02.04,0:19:06.01,Default,,0,0,0,,so you'll often use this similar line of code to this.
-Dialogue: 0,0:19:06.01,0:19:08.18,Default,,0,0,0,,Just keep that in mind.
-Dialogue: 0,0:19:08.18,0:19:11.22,Default,,0,0,0,,Finally, now that we're ready to accept
-Dialogue: 0,0:19:11.22,0:19:13.76,Default,,0,0,0,,a MemoryStream, and a Stream
-Dialogue: 0,0:19:13.76,0:19:15.87,Default,,0,0,0,,is just a
-Dialogue: 0,0:19:17.74,0:19:18.70,Default,,0,0,0,,straw.
-Dialogue: 0,0:19:18.70,0:19:21.16,Default,,0,0,0,,It allows us to just have data come in and go out.
-Dialogue: 0,0:19:21.16,0:19:22.80,Default,,0,0,0,,Whenever you have things that are happening
-Dialogue: 0,0:19:22.80,0:19:24.50,Default,,0,0,0,,at two different speeds, you have something
-Dialogue: 0,0:19:24.50,0:19:26.78,Default,,0,0,0,,sending data at a different rate of speed
-Dialogue: 0,0:19:26.78,0:19:29.56,Default,,0,0,0,,than something accepting data, you use a Stream.
-Dialogue: 0,0:19:30.90,0:19:32.17,Default,,0,0,0,,Here we're going to use a MemoryStream.
-Dialogue: 0,0:19:32.17,0:19:34.67,Default,,0,0,0,,We're just going to keep everything in memory
-Dialogue: 0,0:19:34.67,0:19:37.11,Default,,0,0,0,,until it all gets sorted out.
-Dialogue: 0,0:19:37.11,0:19:40.26,Default,,0,0,0,,Data will go in one end, and then it'll be taken out
-Dialogue: 0,0:19:40.26,0:19:42.70,Default,,0,0,0,,as it's needed on the other end.
-Dialogue: 0,0:19:42.70,0:19:46.50,Default,,0,0,0,,Finally, we're going to go ahead and do,
-Dialogue: 0,0:19:48.29,0:19:51.08,Default,,0,0,0,,get the actual data out of the serializer.
-Dialogue: 0,0:19:53.96,0:19:55.90,Default,,0,0,0,,ReadObject
-Dialogue: 0,0:19:57.65,0:19:59.91,Default,,0,0,0,,and
-Dialogue: 0,0:19:59.91,0:20:02.83,Default,,0,0,0,,let's also then cast that
-Dialogue: 0,0:20:02.84,0:20:04.87,Default,,0,0,0,,to a RootObject.
-Dialogue: 0,0:20:04.88,0:20:07.30,Default,,0,0,0,,Then we're going to return the data.
-Dialogue: 0,0:20:08.74,0:20:11.62,Default,,0,0,0,,So I realize this is pretty meaty stuff here.
-Dialogue: 0,0:20:11.62,0:20:13.69,Default,,0,0,0,,It looks like there's one last thing that I need to do.
-Dialogue: 0,0:20:13.70,0:20:15.93,Default,,0,0,0,,If I hover my mouse cursor over this,
-Dialogue: 0,0:20:15.94,0:20:19.28,Default,,0,0,0,,we've created an async method,
-Dialogue: 0,0:20:19.28,0:20:21.99,Default,,0,0,0,,but we've not adorned
-Dialogue: 0,0:20:21.99,0:20:24.79,Default,,0,0,0,,the return object as a Task.
-Dialogue: 0,0:20:24.79,0:20:26.77,Default,,0,0,0,,So we need to say, actually, what we're going to
-Dialogue: 0,0:20:26.77,0:20:29.15,Default,,0,0,0,,be returning is not a RootObject,
-Dialogue: 0,0:20:29.15,0:20:32.87,Default,,0,0,0,,but a promise that when this is completed,
-Dialogue: 0,0:20:32.87,0:20:35.45,Default,,0,0,0,,it will give us the type RootObject.
-Dialogue: 0,0:20:35.45,0:20:37.59,Default,,0,0,0,,That's what a Task object is.
-Dialogue: 0,0:20:41.03,0:20:43.96,Default,,0,0,0,,That should work, hopefully.
-Dialogue: 0,0:20:43.96,0:20:46.66,Default,,0,0,0,,We'll test that out in just a moment here.
-Dialogue: 0,0:20:46.66,0:20:49.64,Default,,0,0,0,,So let's go over here to our MainPage.xaml
-Dialogue: 0,0:20:49.64,0:20:52.88,Default,,0,0,0,,and make a call into
-Dialogue: 0,0:20:52.88,0:20:53.84,Default,,0,0,0,,that.
-Dialogue: 0,0:20:53.84,0:20:55.26,Default,,0,0,0,,So let's go
-Dialogue: 0,0:20:57.03,0:21:00.37,Default,,0,0,0,,var weather equals
-Dialogue: 0,0:21:03.44,0:21:05.94,Default,,0,0,0,,new, well, actually, let's not do it that way.
-Dialogue: 0,0:21:05.94,0:21:09.46,Default,,0,0,0,,Let's go RootObject myWeather
-Dialogue: 0,0:21:09.46,0:21:11.37,Default,,0,0,0,,RootObject myWeather = OpenWeatherMapProxy.GetWeather()
-Dialogue: 0,0:21:13.38,0:21:16.33,Default,,0,0,0,,RootObject myWeather = OpenWeatherMapProxy.GetWeather()
-Dialogue: 0,0:21:20.84,0:21:24.57,Default,,0,0,0,,RootObject myWeather = OpenWeatherMapProxy.GetWeather().
-Dialogue: 0,0:21:24.57,0:21:27.20,Default,,0,0,0,,We'll give it just
-Dialogue: 0,0:21:32.92,0:21:34.62,Default,,0,0,0,,a fake
-Dialogue: 0,0:21:39.72,0:21:42.59,Default,,0,0,0,,latitude and longitude because I know
-Dialogue: 0,0:21:42.59,0:21:45.54,Default,,0,0,0,,we're going to be hard coding that.
-Dialogue: 0,0:21:49.61,0:21:53.21,Default,,0,0,0,,This has to be awaited, right?
-Dialogue: 0,0:21:53.21,0:21:55.76,Default,,0,0,0,,That means this has to be async, right?
-Dialogue: 0,0:22:00.77,0:22:02.81,Default,,0,0,0,,So that looks like that works, great.
-Dialogue: 0,0:22:02.81,0:22:04.83,Default,,0,0,0,,Let's move that over a little bit.
-Dialogue: 0,0:22:06.85,0:22:08.43,Default,,0,0,0,,Now that we have the weather, we should
-Dialogue: 0,0:22:08.43,0:22:12.62,Default,,0,0,0,,be able to, for example, in the ResultTextBlock.Text,
-Dialogue: 0,0:22:13.83,0:22:16.23,Default,,0,0,0,,we should be able to go
+Dialogue: 0,0:17:47.67,0:17:50.19,Default,,0,0,0,,会在他尝试匹配所获得数据中\Nwill just say, "Oh, okay, they don't have a class for that.
+Dialogue: 0,0:17:50.19,0:17:55.65,Default,,0,0,0,,所有与类和属性相关的字段时，会说\N"We'll just ignore that," as it tries to pair up all of the data
+Dialogue: 0,0:17:55.65,0:17:58.25,Default,,0,0,0,,“哦，好吧，它这个字段没有对应的类"\Nthat it has with all the class
+Dialogue: 0,0:17:58.25,0:18:00.63,Default,,0,0,0,,”我们把他忽略掉吧“\Nand property names.
+Dialogue: 0,0:18:00.63,0:18:02.43,Default,,0,0,0,,所以这就是刚刚我\NSo that's the only thing that I think
+Dialogue: 0,0:18:02.43,0:18:03.65,Default,,0,0,0,,唯一所担心的事了\NI was concerned about.
+Dialogue: 0,0:18:03.65,0:18:05.86,Default,,0,0,0,,让我们继续，从这里开始\NLet's go ahead and continue on here.
+Dialogue: 0,0:18:07.73,0:18:11.93,Default,,0,0,0,,现在我们要做的是获得一个MemoryStream\NNow what we're going to need to do is get a MemoryStream.
+Dialogue: 0,0:18:11.93,0:18:13.98,Default,,0,0,0,,new 一个 MemoryStream\NNew MemoryStream.
+Dialogue: 0,0:18:17.60,0:18:19.52,Default,,0,0,0,,继续，使用键盘上的Ctrl+”.“\NLet me go ahead and hit Control+"."
+Dialogue: 0,0:18:19.52,0:18:21.22,Default,,0,0,0,,进行补全\Non my keyboard
+Dialogue: 0,0:18:23.96,0:18:26.66,Default,,0,0,0,,添加System.IO这个命名空间\Nand add the System.IO namespace.
+Dialogue: 0,0:18:30.45,0:18:32.55,Default,,0,0,0,,我要说它需要在\NI want to tell it that we're working
+Dialogue: 0,0:18:32.55,0:18:35.06,Default,,0,0,0,,特定的编码下才能工作\Nwith a certain type of Encoding,
+Dialogue: 0,0:18:36.97,0:18:40.98,Default,,0,0,0,,这里就是指代 UTF-8编码\Nspecifically, the UTF-8 Encoding.
+Dialogue: 0,0:18:42.26,0:18:44.27,Default,,0,0,0,,然后调用GetBytes\NWe're going to call GetBytes.
+Dialogue: 0,0:18:44.27,0:18:48.01,Default,,0,0,0,,这里的理由三言两语讲不清楚\NThe reason why we're doing this is kind of a long story.
+Dialogue: 0,0:18:49.36,0:18:52.56,Default,,0,0,0,,我现在实在不想讨论这个\NI don't really want to talk about it at the moment.
+Dialogue: 0,0:18:52.56,0:18:54.58,Default,,0,0,0,,大多数时间，当你获取JSON串\NMost of the time, whenever you're grabbing JSON
+Dialogue: 0,0:18:54.58,0:18:59.10,Default,,0,0,0,,你使用它，而你使用它的一个前提就是\Nand you're working with it, you're going to need to work with the
+Dialogue: 0,0:18:59.10,0:19:02.04,Default,,0,0,0,,它是使用UTF-8编码表示的\Nthe way that the text is encoded is just UTF-8,
+Dialogue: 0,0:19:02.04,0:19:06.01,Default,,0,0,0,,所有你以后会经常使用到这几段重复的代码\Nso you'll often use this similar line of code to this.
+Dialogue: 0,0:19:06.01,0:19:08.18,Default,,0,0,0,,牢记他们吧\NJust keep that in mind.
+Dialogue: 0,0:19:08.18,0:19:11.22,Default,,0,0,0,,最后，我们已经准备好去接受\NFinally, now that we're ready to accept
+Dialogue: 0,0:19:11.22,0:19:13.76,Default,,0,0,0,,一个MemoryStream，一个stream（流）\Na MemoryStream, and a Stream
+Dialogue: 0,0:19:13.76,0:19:15.87,Default,,0,0,0,,就是\Nis just a
+Dialogue: 0,0:19:17.74,0:19:18.70,Default,,0,0,0,,管道\Nstraw.
+Dialogue: 0,0:19:18.70,0:19:21.16,Default,,0,0,0,,它允许数据的进入和到处\NIt allows us to just have data come in and go out.
+Dialogue: 0,0:19:21.16,0:19:22.80,Default,,0,0,0,,当你处理的事物以两个\NWhenever you have things that are happening
+Dialogue: 0,0:19:22.80,0:19:24.50,Default,,0,0,0,,不同的速率进行时\Nat two different speeds, you have something
+Dialogue: 0,0:19:24.50,0:19:26.78,Default,,0,0,0,,发送方速率不同于接收方速率\Nsending data at a different rate of speed
+Dialogue: 0,0:19:26.78,0:19:29.56,Default,,0,0,0,,这时候你使用stream(流)\Nthan something accepting data, you use a Stream.
+Dialogue: 0,0:19:29.56,0:19:32.17,Default,,0,0,0,,这里我们准备使用的是MemoryStream.\NHere we're going to use a MemoryStream.
+Dialogue: 0,0:19:32.17,0:19:34.67,Default,,0,0,0,,我们把所有东西放进内存中\NWe're just going to keep everything in memory
+Dialogue: 0,0:19:34.67,0:19:37.11,Default,,0,0,0,,直到他们都整理好了\Nuntil it all gets sorted out.
+Dialogue: 0,0:19:37.11,0:19:40.26,Default,,0,0,0,,数据从一端进去，当被需要时\NData will go in one end, and then it'll be taken out
+Dialogue: 0,0:19:40.26,0:19:42.70,Default,,0,0,0,,再从另一端取出来\Nas it's needed on the other end.
+Dialogue: 0,0:19:42.70,0:19:46.50,Default,,0,0,0,,最后，我们继续\NFinally, we're going to go ahead and do,
+Dialogue: 0,0:19:48.29,0:19:51.08,Default,,0,0,0,,从serializer从取得实际的数据\Nget the actual data out of the serializer.
+Dialogue: 0,0:19:53.96,0:19:59.91,Default,,0,0,0,,ReadObject and
+Dialogue: 0,0:19:59.91,0:20:02.83,Default,,0,0,0,,将他映射为\Nlet's also then cast that
+Dialogue: 0,0:20:02.84,0:20:04.87,Default,,0,0,0,,RootOject类\Nto a RootObject.
+Dialogue: 0,0:20:04.88,0:20:07.30,Default,,0,0,0,,然后返回这个数据\NThen we're going to return the data.
+Dialogue: 0,0:20:08.74,0:20:11.62,Default,,0,0,0,,我意识到这些都是干货\NSo I realize this is pretty meaty stuff here.
+Dialogue: 0,0:20:11.62,0:20:13.69,Default,,0,0,0,,这里还有一个东西需要修改一下\NIt looks like there's one last thing that I need to do.
+Dialogue: 0,0:20:13.70,0:20:15.93,Default,,0,0,0,,把鼠标停悬在这里\NIf I hover my mouse cursor over this,
+Dialogue: 0,0:20:15.94,0:20:19.28,Default,,0,0,0,,我们已经创建了一个async方法\Nwe've created an async method,
+Dialogue: 0,0:20:19.28,0:20:21.99,Default,,0,0,0,,但是我们没有用Task\Nbut we've not adorned
+Dialogue: 0,0:20:21.99,0:20:24.79,Default,,0,0,0,,来修饰一下返回的对象\Nthe return object as a Task.
+Dialogue: 0,0:20:24.79,0:20:26.77,Default,,0,0,0,,实际上，我们需要说，我们返回的\NSo we need to say, actually, what we're going to
+Dialogue: 0,0:20:26.77,0:20:29.15,Default,,0,0,0,,并不一定是一个RootObject类型\Nbe returning is not a RootObject,
+Dialogue: 0,0:20:29.15,0:20:32.87,Default,,0,0,0,,但是保证当任务完成时\Nbut a promise that when this is completed,
+Dialogue: 0,0:20:32.87,0:20:35.45,Default,,0,0,0,,它会给我们一个RootObject类型的数据\Nit will give us the type RootObject.
+Dialogue: 0,0:20:35.45,0:20:37.59,Default,,0,0,0,,这就是Task对象的功能\NThat's what a Task object is.
+Dialogue: 0,0:20:41.03,0:20:43.96,Default,,0,0,0,,这应该可以了，希望如此\NThat should work, hopefully.
+Dialogue: 0,0:20:43.96,0:20:46.66,Default,,0,0,0,,我们马上就去测试一下\NWe'll test that out in just a moment here.
+Dialogue: 0,0:20:46.66,0:20:49.64,Default,,0,0,0,,我们先跳转到我们的MainPage.xaml\NSo let's go over here to our MainPage.xaml
+Dialogue: 0,0:20:49.64,0:20:53.84,Default,,0,0,0,,去调用一下方法\Nand make a call into that.
+Dialogue: 0,0:20:53.84,0:20:55.26,Default,,0,0,0,,开始吧\NSo let's go
+Dialogue: 0,0:20:57.03,0:21:00.37,Default,,0,0,0,,定义weather等于\Nvar weather equals
+Dialogue: 0,0:21:03.44,0:21:05.94,Default,,0,0,0,,初始化，好吧，我们不这样做\Nnew, well, actually, let's not do it that way.
+Dialogue: 0,0:21:05.94,0:21:09.46,Default,,0,0,0,,直接定义RootObject myWeather\NLet's go RootObject myWeather
+Dialogue: 0,0:21:09.46,0:21:24.57,Default,,0,0,0,,RootObject myWeather = OpenWeatherMapProxy.GetWeather() 
+Dialogue: 0,0:21:24.57,0:21:34.62,Default,,0,0,0,,我们编造一个数据给它\NWe'll give it just a fake
+Dialogue: 0,0:21:39.72,0:21:42.59,Default,,0,0,0,,经度和纬度，因为我知道\Nlatitude and longitude because I know
+Dialogue: 0,0:21:42.59,0:21:45.54,Default,,0,0,0,,真实的代码实现有难度\Nwe're going to be hard coding that.
+Dialogue: 0,0:21:49.61,0:21:53.21,Default,,0,0,0,,这句话需要等待，是吧？\NThis has to be awaited, right?
+Dialogue: 0,0:21:53.21,0:21:55.76,Default,,0,0,0,,意味着这里需要添加async，是吧？\NThat means this has to be async, right?
+Dialogue: 0,0:22:00.77,0:22:02.81,Default,,0,0,0,,看起来行得通了，哦耶\NSo that looks like that works, great.
+Dialogue: 0,0:22:02.81,0:22:04.83,Default,,0,0,0,,边框稍微移动一下\NLet's move that over a little bit.
+Dialogue: 0,0:22:06.85,0:22:08.43,Default,,0,0,0,,现在我们有了天气数据，我们应该\NNow that we have the weather, we should
+Dialogue: 0,0:22:08.43,0:22:12.62,Default,,0,0,0,,能够，比如，在 ResultTextBlock.Text中,\Nable to, for example, in the ResultTextBlock.Text,
+Dialogue: 0,0:22:13.83,0:22:16.23,Default,,0,0,0,,我们应该能够得到\Nwe should be able to go
 Dialogue: 0,0:22:17.48,0:22:20.80,Default,,0,0,0,,myWeather.name,
-Dialogue: 0,0:22:23.15,0:22:26.56,Default,,0,0,0,,and then let's concatenate that to
+Dialogue: 0,0:22:23.15,0:22:26.56,Default,,0,0,0,,加一个连接符\N\Nand then let's concatenate that to
 Dialogue: 0,0:22:28.03,0:22:30.05,Default,,0,0,0,,myWeather.
-Dialogue: 0,0:22:30.05,0:22:32.32,Default,,0,0,0,,What else can we get here?
-Dialogue: 0,0:22:35.93,0:22:38.26,Default,,0,0,0,,I think if we do, if we want to get to the temperature,
-Dialogue: 0,0:22:38.26,0:22:40.50,Default,,0,0,0,,we go to myWeather.main.temp
-Dialogue: 0,0:22:42.42,0:22:43.55,Default,,0,0,0,,myWeather.main.temp.
-Dialogue: 0,0:22:43.55,0:22:45.01,Default,,0,0,0,,There we go.
-Dialogue: 0,0:22:45.01,0:22:48.42,Default,,0,0,0,,Then I think, also,
-Dialogue: 0,0:22:48.42,0:22:50.14,Default,,0,0,0,,we can do this,
+Dialogue: 0,0:22:30.05,0:22:32.32,Default,,0,0,0,,我们还能得到什么？\NWhat else can we get here?
+Dialogue: 0,0:22:35.93,0:22:38.26,Default,,0,0,0,,我想我们需要获取一下温度\NI think if we do, if we want to get to the temperature,
+Dialogue: 0,0:22:38.26,0:22:43.55,Default,,0,0,0,,输入 myWeather.main.temp\Nwe go to myWeather.main.temp 
+Dialogue: 0,0:22:43.55,0:22:45.01,Default,,0,0,0,,找到了\NThere we go.
+Dialogue: 0,0:22:45.01,0:22:48.42,Default,,0,0,0,,我还想要 ... \NThen I think, also,
+Dialogue: 0,0:22:48.42,0:22:50.14,Default,,0,0,0,,我们可以这样做\Nwe can do this,
 Dialogue: 0,0:22:50.14,0:22:52.78,Default,,0,0,0,,my... plus
 Dialogue: 0,0:22:52.78,0:22:56.03,Default,,0,0,0,,myWeather dot...
-Dialogue: 0,0:22:59.90,0:23:01.64,Default,,0,0,0,,What we'll get back with this weather
-Dialogue: 0,0:23:01.64,0:23:04.12,Default,,0,0,0,,is it'll be a list of weather items.
-Dialogue: 0,0:23:04.12,0:23:06.58,Default,,0,0,0,,We want the first weather item.
-Dialogue: 0,0:23:06.58,0:23:08.18,Default,,0,0,0,,I think the other weather items are for
-Dialogue: 0,0:23:08.18,0:23:10.66,Default,,0,0,0,,different hours or different days.
-Dialogue: 0,0:23:10.66,0:23:12.56,Default,,0,0,0,,Then we'll say, "Give me a description
-Dialogue: 0,0:23:12.56,0:23:16.16,Default,,0,0,0,,"of what the weather is."
-Dialogue: 0,0:23:18.24,0:23:19.19,Default,,0,0,0,,So let's go ahead and run it.
-Dialogue: 0,0:23:19.19,0:23:21.07,Default,,0,0,0,,I'm sure we'll hit some bugs
-Dialogue: 0,0:23:21.07,0:23:22.88,Default,,0,0,0,,in just a moment.
+Dialogue: 0,0:22:59.90,0:23:01.64,Default,,0,0,0,,我们获取的这个weather对象是\NWhat we'll get back with this weather
+Dialogue: 0,0:23:01.64,0:23:04.12,Default,,0,0,0,,一个天气状况的列表\Nis it'll be a list of weather items.
+Dialogue: 0,0:23:04.12,0:23:06.58,Default,,0,0,0,,我们需要第一个元素\NWe want the first weather item.
+Dialogue: 0,0:23:06.58,0:23:08.18,Default,,0,0,0,,我认为其他元素是对应\NI think the other weather items are for
+Dialogue: 0,0:23:08.18,0:23:10.66,Default,,0,0,0,,不同时间和不同日期下的数据\Ndifferent hours or different days.
+Dialogue: 0,0:23:10.66,0:23:12.56,Default,,0,0,0,,然后，再给我们一条描述\NThen we'll say, "Give me a description
+Dialogue: 0,0:23:12.56,0:23:16.16,Default,,0,0,0,,告诉我们天气是怎么样的\N"of what the weather is."
+Dialogue: 0,0:23:18.24,0:23:19.19,Default,,0,0,0,,完成，来运行一下\NSo let's go ahead and run it.
+Dialogue: 0,0:23:19.19,0:23:21.07,Default,,0,0,0,,相信马上我们还要\NI'm sure we'll hit some bugs
+Dialogue: 0,0:23:21.07,0:23:22.88,Default,,0,0,0,,碰到一些bug\Nin just a moment.
 Dialogue: 0,0:23:26.43,0:23:27.54,Default,,0,0,0,,Yeah.
-Dialogue: 0,0:23:28.97,0:23:30.03,Default,,0,0,0,,Oh, here we go.
-Dialogue: 0,0:23:30.03,0:23:31.87,Default,,0,0,0,,That's easy to fix.
-Dialogue: 0,0:23:31.87,0:23:34.01,Default,,0,0,0,,I got rid of the class, so I have
-Dialogue: 0,0:23:34.01,0:23:35.39,Default,,0,0,0,,to get rid of that as well.
-Dialogue: 0,0:23:35.39,0:23:37.35,Default,,0,0,0,,Let's try it now.
-Dialogue: 0,0:23:43.63,0:23:45.20,Default,,0,0,0,,Alright, well, we got our hot pink.
-Dialogue: 0,0:23:45.20,0:23:48.01,Default,,0,0,0,,At least that's going for us.
-Dialogue: 0,0:23:48.01,0:23:50.33,Default,,0,0,0,,I'll click Get Weather, and awesome.
-Dialogue: 0,0:23:50.33,0:23:52.43,Default,,0,0,0,,Look, we got Dallas County.
-Dialogue: 0,0:23:52.43,0:23:55.17,Default,,0,0,0,,We get the temperature is 299,
-Dialogue: 0,0:23:55.17,0:23:57.07,Default,,0,0,0,,so that's Kelvin degrees.
-Dialogue: 0,0:23:57.07,0:23:59.99,Default,,0,0,0,,We need to use, we can use Celsius
-Dialogue: 0,0:24:01.95,0:24:04.45,Default,,0,0,0,,for those who live in the Metric System,
-Dialogue: 0,0:24:04.46,0:24:07.44,Default,,0,0,0,,or Fahrenheit for those who live
-Dialogue: 0,0:24:07.44,0:24:09.60,Default,,0,0,0,,in the Imperial System.
-Dialogue: 0,0:24:10.98,0:24:12.64,Default,,0,0,0,,But at any rate, I was able to grab out
-Dialogue: 0,0:24:12.64,0:24:14.50,Default,,0,0,0,,where I'm at currently.
-Dialogue: 0,0:24:14.50,0:24:16.70,Default,,0,0,0,,So I'm in Dallas County.
-Dialogue: 0,0:24:16.70,0:24:19.14,Default,,0,0,0,,This is on my local desktop.
-Dialogue: 0,0:24:19.14,0:24:21.38,Default,,0,0,0,,I don't have a GPS, but it's able to triangulate
-Dialogue: 0,0:24:21.38,0:24:24.74,Default,,0,0,0,,based on where my IP Address is to determine
-Dialogue: 0,0:24:24.74,0:24:26.84,Default,,0,0,0,,where I'm coming from,
-Dialogue: 0,0:24:26.84,0:24:29.24,Default,,0,0,0,,and it can determine that.
-Dialogue: 0,0:24:29.24,0:24:31.96,Default,,0,0,0,,Then you can see here, it's light raining,
-Dialogue: 0,0:24:31.96,0:24:33.62,Default,,0,0,0,,which is true.
-Dialogue: 0,0:24:33.62,0:24:36.01,Default,,0,0,0,,I think it's in the mid 70s, high 70s.
-Dialogue: 0,0:24:36.01,0:24:37.39,Default,,0,0,0,,We'll have to change that.
-Dialogue: 0,0:24:37.39,0:24:39.53,Default,,0,0,0,,In fact, I think what I can do here,
-Dialogue: 0,0:24:39.53,0:24:41.01,Default,,0,0,0,,let's go ahead and play around with this
-Dialogue: 0,0:24:41.01,0:24:43.05,Default,,0,0,0,,a little bit.
-Dialogue: 0,0:24:43.05,0:24:45.72,Default,,0,0,0,,We make our call out,
-Dialogue: 0,0:24:45.72,0:24:48.88,Default,,0,0,0,,I think I can hit,
-Dialogue: 0,0:24:48.88,0:24:51.81,Default,,0,0,0,,do this: units=imperial
-Dialogue: 0,0:24:53.45,0:24:56.03,Default,,0,0,0,,units=imperial.
-Dialogue: 0,0:24:56.03,0:24:58.06,Default,,0,0,0,,See if that's correct.
-Dialogue: 0,0:25:03.47,0:25:05.99,Default,,0,0,0,,Yeah, so 78 degrees.
-Dialogue: 0,0:25:05.99,0:25:10.32,Default,,0,0,0,,In fact, let me do one thing here with that,
-Dialogue: 0,0:25:11.51,0:25:12.94,Default,,0,0,0,,with the temperature.
-Dialogue: 0,0:25:12.94,0:25:15.44,Default,,0,0,0,,I'm just going to go ahead and go
-Dialogue: 0,0:25:15.44,0:25:17.26,Default,,0,0,0,,convert that to an integer, and then take
-Dialogue: 0,0:25:17.26,0:25:19.52,Default,,0,0,0,,the whole thing and convert it ToString,
-Dialogue: 0,0:25:21.32,0:25:22.94,Default,,0,0,0,,like that.
-Dialogue: 0,0:25:25.76,0:25:28.91,Default,,0,0,0,,That will get rid of the decimal.
-Dialogue: 0,0:25:28.91,0:25:30.12,Default,,0,0,0,,Great.
-Dialogue: 0,0:25:30.12,0:25:32.14,Default,,0,0,0,,One other thing that I want to talk about here
-Dialogue: 0,0:25:32.14,0:25:36.04,Default,,0,0,0,,before we go any further, and that is
-Dialogue: 0,0:25:36.04,0:25:37.95,Default,,0,0,0,,if you look at
-Dialogue: 0,0:25:40.50,0:25:43.22,Default,,0,0,0,,this, you can also get to icons.
-Dialogue: 0,0:25:43.22,0:25:46.46,Default,,0,0,0,,If we scroll down, there are some icons
-Dialogue: 0,0:25:46.46,0:25:48.86,Default,,0,0,0,,that are associated
-Dialogue: 0,0:25:48.86,0:25:50.41,Default,,0,0,0,,with.
-Dialogue: 0,0:25:51.86,0:25:54.47,Default,,0,0,0,,Let me see if I search this, icon.
-Dialogue: 0,0:26:00.30,0:26:02.74,Default,,0,0,0,,Yeah, you can see that it will return back
-Dialogue: 0,0:26:02.74,0:26:04.90,Default,,0,0,0,,an icon as well.
-Dialogue: 0,0:26:04.90,0:26:06.62,Default,,0,0,0,,So let's just,
-Dialogue: 0,0:26:08.18,0:26:11.00,Default,,0,0,0,,let's have a little fun with this, actually.
-Dialogue: 0,0:26:14.51,0:26:17.22,Default,,0,0,0,,Let's add an Image control.
-Dialogue: 0,0:26:22.89,0:26:24.24,Default,,0,0,0,,Let's set its Name="ResultsImage"
-Dialogue: 0,0:26:24.24,0:26:28.40,Default,,0,0,0,,Name="ResultsImage".
-Dialogue: 0,0:26:28.40,0:26:31.48,Default,,0,0,0,,I'll just do Width="200"
-Dialogue: 0,0:26:31.48,0:26:33.45,Default,,0,0,0,,Height="200".
-Dialogue: 0,0:26:36.08,0:26:39.98,Default,,0,0,0,,Then what we'll do inside of here is set the
-Dialogue: 0,0:26:41.44,0:26:43.57,Default,,0,0,0,,ResultImage.Source = myWeather
-Dialogue: 0,0:26:45.50,0:26:48.47,Default,,0,0,0,,ResultImage.Source = myWeather
-Dialogue: 0,0:26:48.47,0:26:50.90,Default,,0,0,0,,ResultImage.Source = myWeather
-Dialogue: 0,0:26:57.83,0:27:00.01,Default,,0,0,0,,I think in order to get this work,
-Dialogue: 0,0:27:00.01,0:27:02.54,Default,,0,0,0,,I'm going to have to act on this a little bit.
-Dialogue: 0,0:27:02.54,0:27:04.94,Default,,0,0,0,,I don't think it's going to give me back,
-Dialogue: 0,0:27:04.94,0:27:07.26,Default,,0,0,0,,the data that it gives us back, if we take a look
-Dialogue: 0,0:27:07.26,0:27:10.64,Default,,0,0,0,,at this, like an example,
-Dialogue: 0,0:27:10.64,0:27:13.93,Default,,0,0,0,,it gives us just '04n'
-Dialogue: 0,0:27:13.93,0:27:15.33,Default,,0,0,0,,as the icon.
-Dialogue: 0,0:27:15.33,0:27:17.14,Default,,0,0,0,,If we take a look at
-Dialogue: 0,0:27:18.85,0:27:20.50,Default,,0,0,0,,this URL,
+Dialogue: 0,0:23:28.97,0:23:30.03,Default,,0,0,0,,果然\NOh, here we go.
+Dialogue: 0,0:23:30.03,0:23:31.87,Default,,0,0,0,,这很好解决\NThat's easy to fix.
+Dialogue: 0,0:23:31.87,0:23:34.01,Default,,0,0,0,,我注释了一个类，所有\NI got rid of the class, so I have
+Dialogue: 0,0:23:34.01,0:23:35.39,Default,,0,0,0,,要把他引用也注释掉\Nto get rid of that as well.
+Dialogue: 0,0:23:35.39,0:23:37.35,Default,,0,0,0,,再试一下\NLet's try it now.
+Dialogue: 0,0:23:43.63,0:23:45.20,Default,,0,0,0,,好滴，看到了我们娇艳的桃红色\NAlright, well, we got our hot pink.
+Dialogue: 0,0:23:45.20,0:23:48.01,Default,,0,0,0,,至少还算适合\NAt least that's going for us.
+Dialogue: 0,0:23:48.01,0:23:50.33,Default,,0,0,0,,点击一下按钮,diao爆了\NI'll click Get Weather, and awesome.
+Dialogue: 0,0:23:50.33,0:23:52.43,Default,,0,0,0,,我们得到了达拉斯\NLook, we got Dallas County.
+Dialogue: 0,0:23:52.43,0:23:55.17,Default,,0,0,0,,天气是299°\NWe get the temperature is 299,
+Dialogue: 0,0:23:55.17,0:23:57.07,Default,,0,0,0,,这是开氏度数\Bso that's Kelvin degrees.
+Dialogue: 0,0:23:57.07,0:23:59.99,Default,,0,0,0,,对于使用公制的国家\NWe need to use, we can use Celsius
+Dialogue: 0,0:24:01.95,0:24:04.45,Default,,0,0,0,,我们需要使用摄氏度\Nfor those who live in the Metric System,
+Dialogue: 0,0:24:04.46,0:24:07.44,Default,,0,0,0,,而对于使用英制的国家\Nor Fahrenheit for those who live
+Dialogue: 0,0:24:07.44,0:24:09.60,Default,,0,0,0,,我们使用华氏度\Nin the Imperial System.
+Dialogue: 0,0:24:10.98,0:24:12.64,Default,,0,0,0,,但是至少，我们能够获取\NBut at any rate, I was able to grab out
+Dialogue: 0,0:24:12.64,0:24:14.50,Default,,0,0,0,,我所处的位置了\Nwhere I'm at currently.
+Dialogue: 0,0:24:14.50,0:24:16.70,Default,,0,0,0,,我现在在达拉斯\NSo I'm in Dallas County.
+Dialogue: 0,0:24:16.70,0:24:19.14,Default,,0,0,0,,我是在我本地的台式机上\NThis is on my local desktop.
+Dialogue: 0,0:24:19.14,0:24:21.38,Default,,0,0,0,,没有GPS，但他基本能够\NI don't have a GPS, but it's able to triangulate
+Dialogue: 0,0:24:21.38,0:24:24.74,Default,,0,0,0,,根据我的IP地址推测出\Nbased on where my IP Address is to determine
+Dialogue: 0,0:24:24.74,0:24:26.84,Default,,0,0,0,,我在哪里\Nwhere I'm coming from,
+Dialogue: 0,0:24:26.84,0:24:29.24,Default,,0,0,0,,它还指出了\Nand it can determine that.
+Dialogue: 0,0:24:29.24,0:24:31.96,Default,,0,0,0,,这你可以看到，下着小雨\NThen you can see here, it's light raining,
+Dialogue: 0,0:24:31.96,0:24:33.62,Default,,0,0,0,,这确实如此\Nwhich is true.
+Dialogue: 0,0:24:33.62,0:24:36.01,Default,,0,0,0,,我想它大概70华氏度的样子\NI think it's in the mid 70s, high 70s.
+Dialogue: 0,0:24:36.01,0:24:37.39,Default,,0,0,0,,马上我们还要修改它\NWe'll have to change that.
+Dialogue: 0,0:24:37.39,0:24:39.53,Default,,0,0,0,,事实上，我想我还可以修改\N In fact, I think what I can do here,
+Dialogue: 0,0:24:39.53,0:24:43.05,Default,,0,0,0,,让我们在这部分多折腾一下吧\Nlet's go ahead and play around with this a little bit.
+Dialogue: 0,0:24:43.05,0:24:45.72,Default,,0,0,0,,修改一下我们的调用\NWe make our call out,
+Dialogue: 0,0:24:45.72,0:24:48.88,Default,,0,0,0,,我想我们点击一下\NI think I can hit,
+Dialogue: 0,0:24:48.88,0:24:56.03,Default,,0,0,0,,这样子：units=imperial\Ndo this: units=imperial 
+Dialogue: 0,0:24:56.03,0:24:58.06,Default,,0,0,0,,看看是否正确\NSee if that's correct.
+Dialogue: 0,0:25:03.47,0:25:05.99,Default,,0,0,0,,好滴，78度\NYeah, so 78 degrees.
+Dialogue: 0,0:25:05.99,0:25:10.32,Default,,0,0,0,,事实上，让我再对天气\NIn fact, let me do one thing here with that,
+Dialogue: 0,0:25:11.51,0:25:12.94,Default,,0,0,0,,做一些修改\Nwith the temperature.
+Dialogue: 0,0:25:12.94,0:25:15.44,Default,,0,0,0,,在这里继续，添加\NI'm just going to go ahead and go
+Dialogue: 0,0:25:15.44,0:25:17.26,Default,,0,0,0,,转化成整形\Nconvert that to an integer, and then take
+Dialogue: 0,0:25:17.26,0:25:19.52,Default,,0,0,0,,然后把整段包裹起来，转成字符串\Nthe whole thing and convert it ToString,
+Dialogue: 0,0:25:21.32,0:25:22.94,Default,,0,0,0,,想这样\Nlike that.
+Dialogue: 0,0:25:25.76,0:25:28.91,Default,,0,0,0,,这样就去掉了小数部分\NThat will get rid of the decimal.
+Dialogue: 0,0:25:28.91,0:25:30.12,Default,,0,0,0,,好极了\NGreat.
+Dialogue: 0,0:25:30.12,0:25:32.14,Default,,0,0,0,,在我们没走远之前\NOne other thing that I want to talk about here
+Dialogue: 0,0:25:32.14,0:25:36.04,Default,,0,0,0,,我还要说的一件事是\Nbefore we go any further, and that is
+Dialogue: 0,0:25:36.04,0:25:37.95,Default,,0,0,0,,你看这里\Nif you look at
+Dialogue: 0,0:25:40.50,0:25:43.22,Default,,0,0,0,,你可以获得图标\Nthis, you can also get to icons.
+Dialogue: 0,0:25:43.22,0:25:46.46,Default,,0,0,0,,如果我们向下滚动，这有些\NIf we scroll down, there are some icons
+Dialogue: 0,0:25:46.46,0:25:50.41,Default,,0,0,0,,天气关联的图标\Nthat are associated with.
+Dialogue: 0,0:25:51.86,0:25:54.47,Default,,0,0,0,,让我看看能否搜索到\NLet me see if I search this, icon.
+Dialogue: 0,0:26:00.30,0:26:04.90,Default,,0,0,0,,你看，它会返回一个图标\NYeah, you can see that it will return back an icon as well.
+Dialogue: 0,0:26:04.90,0:26:06.62,Default,,0,0,0,,所以就\NSo let's just,
+Dialogue: 0,0:26:08.18,0:26:11.00,Default,,0,0,0,,抱着轻松的态度来多玩玩吧\Nlet's have a little fun with this, actually.
+Dialogue: 0,0:26:14.51,0:26:17.22,Default,,0,0,0,,让我们添加一些图片控件\NLet's add an Image control.
+Dialogue: 0,0:26:22.89,0:26:28.40,Default,,0,0,0,,名字设为”ResultsImage“\NLet's set its Name="ResultsImage" 
+Dialogue: 0,0:26:28.40,0:26:31.48,Default,,0,0,0,,宽度就设为200\NI'll just do Width="200"
+Dialogue: 0,0:26:31.48,0:26:33.45,Default,,0,0,0,,高也为200\NHeight="200".
+Dialogue: 0,0:26:36.08,0:26:39.98,Default,,0,0,0,,然后再代码里面我们要做的是设置\NThen what we'll do inside of here is set the
+Dialogue: 0,0:26:41.44,0:26:50.90,Default,,0,0,0,,ResultImage.Source = myWeather
+Dialogue: 0,0:26:57.83,0:27:00.01,Default,,0,0,0,,我想要实现这个功能\NI think in order to get this work,
+Dialogue: 0,0:27:00.01,0:27:02.54,Default,,0,0,0,,我想还需要再下点功夫\NI'm going to have to act on this a little bit.
+Dialogue: 0,0:27:02.54,0:27:04.94,Default,,0,0,0,,我不认为它会直接给我们图像\NI don't think it's going to give me back,
+Dialogue: 0,0:27:04.94,0:27:07.26,Default,,0,0,0,,它返回的数据，我们仔细看的话\Nthe data that it gives us back, if we take a look
+Dialogue: 0,0:27:07.26,0:27:10.64,Default,,0,0,0,,像这个例子里面\Nat this, like an example,
+Dialogue: 0,0:27:10.64,0:27:15.33,Default,,0,0,0,,图标数据它只给了'04n'\Nit gives us just '04n' as the icon.
+Dialogue: 0,0:27:15.33,0:27:20.50,Default,,0,0,0,,我们再看一下这个链接\NIf we take a look at this URL,
 Dialogue: 0,0:27:22.83,0:27:25.67,Default,,0,0,0,,weather conditions.
 Dialogue: 0,0:27:25.68,0:27:29.01,Default,,0,0,0,,Openweathermap.org/weather-conditions.
-Dialogue: 0,0:27:29.02,0:27:31.39,Default,,0,0,0,,You can see that there are a bunch
-Dialogue: 0,0:27:31.40,0:27:34.61,Default,,0,0,0,,of weather icons with specific names.
-Dialogue: 0,0:27:34.62,0:27:38.33,Default,,0,0,0,,'01d' for daytime, '01n' for nighttime,
-Dialogue: 0,0:27:38.34,0:27:41.39,Default,,0,0,0,,'02d' for daytime, so this is sunny,
-Dialogue: 0,0:27:41.40,0:27:44.48,Default,,0,0,0,,partly sunny, cloudy, overcast.
-Dialogue: 0,0:27:45.84,0:27:47.89,Default,,0,0,0,,It looks like they have the descriptions, too, here,
-Dialogue: 0,0:27:47.89,0:27:49.29,Default,,0,0,0,,clear sky, rain, mist.
-Dialogue: 0,0:27:49.29,0:27:51.39,Default,,0,0,0,,There's nine or ten of these things
-Dialogue: 0,0:27:51.39,0:27:53.13,Default,,0,0,0,,with specific names.
-Dialogue: 0,0:27:53.13,0:27:55.79,Default,,0,0,0,,So what my thought process is, is we can
-Dialogue: 0,0:27:55.79,0:27:57.57,Default,,0,0,0,,access these
-Dialogue: 0,0:27:58.86,0:28:01.27,Default,,0,0,0,,by going to
-Dialogue: 0,0:28:02.36,0:28:04.08,Default,,0,0,0,,this URL, for example,
-Dialogue: 0,0:28:04.08,0:28:07.71,Default,,0,0,0,,openweathermap.org/image/w/10d.png
-Dialogue: 0,0:28:07.71,0:28:10.23,Default,,0,0,0,,openweathermap.org/image/w/10d.png.
-Dialogue: 0,0:28:10.23,0:28:11.73,Default,,0,0,0,,Let's open that up in a new tab,
-Dialogue: 0,0:28:11.73,0:28:14.87,Default,,0,0,0,,and you can see that we get that new image there.
-Dialogue: 0,0:28:14.87,0:28:17.69,Default,,0,0,0,,So let's do this.
-Dialogue: 0,0:28:17.69,0:28:20.37,Default,,0,0,0,,Let's grab that URL.
-Dialogue: 0,0:28:20.37,0:28:22.56,Default,,0,0,0,,I copied it to my clipboard.
-Dialogue: 0,0:28:24.17,0:28:26.36,Default,,0,0,0,,Let's go string icon = String.Format
+Dialogue: 0,0:27:29.02,0:27:31.39,Default,,0,0,0,,你可以看到这有一堆\NYou can see that there are a bunch
+Dialogue: 0,0:27:31.40,0:27:34.61,Default,,0,0,0,,带着特定名称的天气图标\Nof weather icons with specific names.
+Dialogue: 0,0:27:34.62,0:27:38.33,Default,,0,0,0,,'01d'表示白天，‘01n'表示夜晚\N'01d' for daytime, '01n' for nighttime,
+Dialogue: 0,0:27:38.34,0:27:41.39,Default,,0,0,0,,'02d'表示白天，所有这表示晴天\N'02d' for daytime, so this is sunny,
+Dialogue: 0,0:27:41.40,0:27:44.48,Default,,0,0,0,,局部晴天，多云，阴天\Npartly sunny, cloudy, overcast.
+Dialogue: 0,0:27:45.84,0:27:47.89,Default,,0,0,0,,看起来他们还有对应的描述\NIt looks like they have the descriptions, too, here,
+Dialogue: 0,0:27:47.89,0:27:49.29,Default,,0,0,0,,晴空，雨，雾\Nclear sky, rain, mist.
+Dialogue: 0,0:27:49.29,0:27:51.39,Default,,0,0,0,,有9，10种不同名称\NThere's nine or ten of these things
+Dialogue: 0,0:27:51.39,0:27:53.13,Default,,0,0,0,,对应的天气状况\Nwith specific names.
+Dialogue: 0,0:27:53.13,0:27:55.79,Default,,0,0,0,,所有我的想法是\NSo what my thought process is, is we can
+Dialogue: 0,0:27:55.79,0:28:04.08,Default,,0,0,0,,我们可以通过链接来获取他们,比如\Naccess these by going to this URL, for example,
+Dialogue: 0,0:28:04.08,0:28:10.23,Default,,0,0,0,,openweathermap.org/image/w/10d.png
+Dialogue: 0,0:28:10.23,0:28:11.73,Default,,0,0,0,,让我们在一个新的标签页中打开它\NLet's open that up in a new tab,
+Dialogue: 0,0:28:11.73,0:28:14.87,Default,,0,0,0,,你看到我们得到了一个新的图标\Nand you can see that we get that new image there.
+Dialogue: 0,0:28:14.87,0:28:17.69,Default,,0,0,0,,开始干吧\NSo let's do this.
+Dialogue: 0,0:28:17.69,0:28:20.37,Default,,0,0,0,,抓取一下URL链接\NLet's grab that URL.
+Dialogue: 0,0:28:20.37,0:28:22.56,Default,,0,0,0,,复制到剪贴板上\NI copied it to my clipboard.
+Dialogue: 0,0:28:24.17,0:28:26.36,Default,,0,0,0,,然后输入\NLet's go string icon = String.Format
 Dialogue: 0,0:28:26.37,0:28:29.12,Default,,0,0,0,,string icon = String.Format
-Dialogue: 0,0:28:29.13,0:28:32.68,Default,,0,0,0,,Then we'll use that for the most part,
-Dialogue: 0,0:28:32.68,0:28:34.50,Default,,0,0,0,,but I know we're only going to get that little bit
-Dialogue: 0,0:28:34.51,0:28:37.06,Default,,0,0,0,,right there from the
-Dialogue: 0,0:28:37.06,0:28:38.94,Default,,0,0,0,,myWeather object.
-Dialogue: 0,0:28:38.94,0:28:41.63,Default,,0,0,0,,So let's go myWeather dot...
-Dialogue: 0,0:28:43.28,0:28:44.52,Default,,0,0,0,,There should be an icon here.
-Dialogue: 0,0:28:44.52,0:28:46.46,Default,,0,0,0,,How do I get to the icon?
-Dialogue: 0,0:28:46.46,0:28:48.02,Default,,0,0,0,,Oh, yeah, it's part of weather.
-Dialogue: 0,0:28:48.02,0:28:52.34,Default,,0,0,0,,So weather.icon, great.
-Dialogue: 0,0:28:53.48,0:28:55.29,Default,,0,0,0,,Now that we have it, we're going to set
+Dialogue: 0,0:28:29.13,0:28:32.68,Default,,0,0,0,,这个字符串大部分要被重用\NThen we'll use that for the most part,
+Dialogue: 0,0:28:32.68,0:28:34.50,Default,,0,0,0,,但是我知道还有一小部分\Nbut I know we're only going to get that little bit
+Dialogue: 0,0:28:34.51,0:28:37.06,Default,,0,0,0,,要通过myweather对象\Nright there from the
+Dialogue: 0,0:28:37.06,0:28:38.94,Default,,0,0,0,,来获取\NmyWeather object.
+Dialogue: 0,0:28:38.94,0:28:41.63,Default,,0,0,0,,输入myweather... 点... \NSo let's go myWeather dot...
+Dialogue: 0,0:28:43.28,0:28:44.52,Default,,0,0,0,,这应当有一个icon元素\NThere should be an icon here.
+Dialogue: 0,0:28:44.52,0:28:46.46,Default,,0,0,0,,怎么去获取icon？\NHow do I get to the icon?
+Dialogue: 0,0:28:46.46,0:28:48.02,Default,,0,0,0,,哦，对了，在weather中\NOh, yeah, it's part of weather.
+Dialogue: 0,0:28:48.02,0:28:52.34,Default,,0,0,0,,所以，weather.icon，好了\NSo weather.icon, great.
+Dialogue: 0,0:28:53.48,0:28:55.29,Default,,0,0,0,,现在我们有了图标的链接，去设置\\NNow that we have it, we're going to set
 Dialogue: 0,0:28:55.29,0:28:59.20,Default,,0,0,0,,the Source = new BitmapImage.
-Dialogue: 0,0:29:01.35,0:29:03.98,Default,,0,0,0,,Yeah, and I don't have that correct,
-Dialogue: 0,0:29:05.29,0:29:07.95,Default,,0,0,0,,so I'll have to add the using statement for
+Dialogue: 0,0:29:01.35,0:29:03.98,Default,,0,0,0,,对了，我还没去引用\NYeah, and I don't have that correct,
+Dialogue: 0,0:29:05.29,0:29:07.95,Default,,0,0,0,,这里添加一下using语句声明\Nso I'll have to add the using statement for
 Dialogue: 0,0:29:07.95,0:29:11.38,Default,,0,0,0,,Windows.UI.Xaml.Media.Imaging.
-Dialogue: 0,0:29:11.39,0:29:13.34,Default,,0,0,0,,So we've added that, and now I'm going to create
-Dialogue: 0,0:29:13.35,0:29:15.20,Default,,0,0,0,,a new URI.
-Dialogue: 0,0:29:15.21,0:29:17.08,Default,,0,0,0,,The URI will be
-Dialogue: 0,0:29:18.97,0:29:20.54,Default,,0,0,0,,the string that we just formatted.
-Dialogue: 0,0:29:20.55,0:29:24.38,Default,,0,0,0,,I have to tell it what kind of URI I want there.
-Dialogue: 0,0:29:24.39,0:29:28.06,Default,,0,0,0,,So URIKind.Absolute.
-Dialogue: 0,0:29:29.55,0:29:32.20,Default,,0,0,0,,So let's see if that works now, and let's
-Dialogue: 0,0:29:32.21,0:29:34.09,Default,,0,0,0,,run the app.
-Dialogue: 0,0:29:37.51,0:29:38.77,Default,,0,0,0,,Awesome.
-Dialogue: 0,0:29:38.77,0:29:40.51,Default,,0,0,0,,So here's my thought.
-Dialogue: 0,0:29:40.51,0:29:42.37,Default,,0,0,0,,I don't like their icons.
-Dialogue: 0,0:29:42.37,0:29:44.53,Default,,0,0,0,,It makes the app look too generic.
-Dialogue: 0,0:29:44.53,0:29:47.29,Default,,0,0,0,,What if supplied my own version of the icons,
-Dialogue: 0,0:29:47.29,0:29:49.51,Default,,0,0,0,,and I just change wherever
-Dialogue: 0,0:29:49.51,0:29:51.15,Default,,0,0,0,,we're actually accessing them?
-Dialogue: 0,0:29:51.15,0:29:52.42,Default,,0,0,0,,I won't go out to
-Dialogue: 0,0:29:52.42,0:29:55.54,Default,,0,0,0,,opwenweathermap.org/image/w.
-Dialogue: 0,0:29:55.54,0:29:57.80,Default,,0,0,0,,I'll just go to my Assets folder here.
-Dialogue: 0,0:29:57.80,0:30:00.29,Default,,0,0,0,,We'll do that, I think, in the next video.
-Dialogue: 0,0:30:02.70,0:30:04.34,Default,,0,0,0,,I think that's the next thing that we'll talk about.
-Dialogue: 0,0:30:04.34,0:30:06.92,Default,,0,0,0,,If not, it'll be the video after that.
-Dialogue: 0,0:30:06.92,0:30:08.38,Default,,0,0,0,,We'll add that in.
-Dialogue: 0,0:30:08.38,0:30:10.38,Default,,0,0,0,,At least we'll have our own icons,
-Dialogue: 0,0:30:10.38,0:30:12.66,Default,,0,0,0,,and it'll look very distinctive
-Dialogue: 0,0:30:12.66,0:30:15.22,Default,,0,0,0,,for the style that we're trying to achieve.
-Dialogue: 0,0:30:15.22,0:30:16.92,Default,,0,0,0,,We covered a lot of ground in this video,
-Dialogue: 0,0:30:16.92,0:30:19.44,Default,,0,0,0,,but we talked about a little bit of setup,
-Dialogue: 0,0:30:19.44,0:30:21.80,Default,,0,0,0,,but mostly about how to get at the data.
-Dialogue: 0,0:30:21.80,0:30:23.58,Default,,0,0,0,,So we've made huge strides just in this
-Dialogue: 0,0:30:23.58,0:30:25.08,Default,,0,0,0,,very first video.
-Dialogue: 0,0:30:25.08,0:30:26.13,Default,,0,0,0,,We'll pick it up in the next one.
-Dialogue: 0,0:30:26.13,0:30:27.90,Default,,0,0,0,,Thanks.
+Dialogue: 0,0:29:11.39,0:29:15.20,Default,,0,0,0,,我们已经添加好了，现在去创建一个新的URI\NSo we've added that, and now I'm going to create a new URI.
+Dialogue: 0,0:29:15.21,0:29:17.08,Default,,0,0,0,,这个URI就是\NThe URI will be
+Dialogue: 0,0:29:18.97,0:29:20.54,Default,,0,0,0,,刚刚格式化的那个字符串\Nthe string that we just formatted.
+Dialogue: 0,0:29:20.55,0:29:24.38,Default,,0,0,0,,我们还要告诉它我们想要什么样类型的URI\NI have to tell it what kind of URI I want there.
+Dialogue: 0,0:29:24.39,0:29:28.06,Default,,0,0,0,,设置为URIKind.Absolute.\NSo URIKind.Absolute.
+Dialogue: 0,0:29:29.55,0:29:32.20,Default,,0,0,0,,看看现在是否可行了\NSo let's see if that works now, and let's
+Dialogue: 0,0:29:32.21,0:29:34.09,Default,,0,0,0,,运行一下\Nrun the app.
+Dialogue: 0,0:29:37.51,0:29:38.77,Default,,0,0,0,,棒棒哒\NAwesome.
+Dialogue: 0,0:29:38.77,0:29:40.51,Default,,0,0,0,,这是我的想法\NSo here's my thought.
+Dialogue: 0,0:29:40.51,0:29:42.37,Default,,0,0,0,,我不喜欢他们的图标\NI don't like their icons.
+Dialogue: 0,0:29:42.37,0:29:44.53,Default,,0,0,0,,它让这个应用看起来一点都不萌\NIt makes the app look too generic.
+Dialogue: 0,0:29:44.53,0:29:47.29,Default,,0,0,0,,如果我能提供我自己的图标\NWhat if supplied my own version of the icons,
+Dialogue: 0,0:29:47.29,0:29:49.51,Default,,0,0,0,,每当我们实际请求他们时\Nand I just change wherever
+Dialogue: 0,0:29:49.51,0:29:51.15,Default,,0,0,0,,都能轻松的修改\Nwe're actually accessing them?
+Dialogue: 0,0:29:51.15,0:29:52.42,Default,,0,0,0,,我不会再从\NI won't go out to
+Dialogue: 0,0:29:52.42,0:29:55.54,Default,,0,0,0,,下面这个地址请求图标\N opwenweathermap.org/image/w.
+Dialogue: 0,0:29:55.54,0:29:57.80,Default,,0,0,0,,我直接使用我本地的Assets文件夹\NI'll just go to my Assets folder here.
+Dialogue: 0,0:29:57.80,0:30:00.29,Default,,0,0,0,,我想，下节课，我们会完成这部分\NWe'll do that, I think, in the next video.
+Dialogue: 0,0:30:02.70,0:30:04.34,Default,,0,0,0,,这想这也是下节课我们讨论的内容\NI think that's the next thing that we'll talk about.
+Dialogue: 0,0:30:04.34,0:30:06.92,Default,,0,0,0,,如果不是的话，之后也会有相应的视频\NIf not, it'll be the video after that.
+Dialogue: 0,0:30:06.92,0:30:08.38,Default,,0,0,0,,我会把内容添加进去\NWe'll add that in.
+Dialogue: 0,0:30:08.38,0:30:10.38,Default,,0,0,0,,至少，我们会有我们自己的图标\NAt least we'll have our own icons,
+Dialogue: 0,0:30:10.38,0:30:12.66,Default,,0,0,0,,为了我们追求的效果\Nand it'll look very distinctive
+Dialogue: 0,0:30:12.66,0:30:15.22,Default,,0,0,0,,它会相当的夺目\Nfor the style that we're trying to achieve.
+Dialogue: 0,0:30:15.22,0:30:16.92,Default,,0,0,0,,我们这节视频覆盖了很多基础知识\NWe covered a lot of ground in this video,
+Dialogue: 0,0:30:16.92,0:30:19.44,Default,,0,0,0,,对结构的讨论较少\Nbut we talked about a little bit of setup,
+Dialogue: 0,0:30:19.44,0:30:21.80,Default,,0,0,0,,大部分在讨论如何获取数据\Nbut mostly about how to get at the data.
+Dialogue: 0,0:30:21.80,0:30:23.58,Default,,0,0,0,,我们已经在这节视频中\NSo we've made huge strides just in this
+Dialogue: 0,0:30:23.58,0:30:25.08,Default,,0,0,0,,迈出巨大的一步\Nvery first video.
+Dialogue: 0,0:30:25.08,0:30:26.13,Default,,0,0,0,,其他内容下节课再讲\NWe'll pick it up in the next one.
+Dialogue: 0,0:30:26.13,0:30:27.90,Default,,0,0,0,,谢谢收看\NThanks.

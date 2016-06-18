@@ -1,1036 +1,1040 @@
 ﻿1
-00:00:06,161 --> 00:00:07,600
-<v Voiceover>Okay, so as we get started,</v>
+00:00:02,160 --> 00:00:06,161
+翻译：陈继民
 
 2
-00:00:07,601 --> 00:00:11,781
-let's focus on creating the Project, copying the assets
+00:00:06,161 --> 00:00:07,600
+在我们开始之前
 
 3
-00:00:11,782 --> 00:00:15,269
-and then focus the majority of our time
+00:00:07,601 --> 00:00:11,781
+让我们创建一个项目，添加一些引用
 
 4
-00:00:15,270 --> 00:00:17,620
-laying out our application.
+00:00:11,782 --> 00:00:15,269
+然后集中我们的时候
 
 5
-00:00:17,621 --> 00:00:19,396
-We're going to take a slightly different layout approach
+00:00:15,270 --> 00:00:17,620
+用来设计我们的应用
 
 6
-00:00:19,397 --> 00:00:20,749
-than we've taken before,
+00:00:17,621 --> 00:00:19,396
+我们要采用一些稍微有些不同的布局方式
 
 7
-00:00:20,750 --> 00:00:22,818
-maybe use a couple different techniques as well.
+00:00:19,397 --> 00:00:20,749
+相比我们之前课程所用到的
 
 8
-00:00:22,819 --> 00:00:26,274
-So without any further ado let me turn off the webcam
+00:00:20,750 --> 00:00:22,818
+可能会用到一些不同的新技术
 
 9
-00:00:26,275 --> 00:00:27,985
-so I can focus.
+00:00:22,819 --> 00:00:26,274
+不说其他的了，让我先把摄像头关了
 
 10
-00:00:28,462 --> 00:00:30,801
-We're going to create New Project.
+00:00:26,275 --> 00:00:27,985
+以便我能集中注意力
 
 11
-00:00:32,195 --> 00:00:36,369
-And I'm just going to call this UWPSoundBoard.
+00:00:28,462 --> 00:00:30,801
+我们要创建一个新的项目
 
 12
-00:00:43,618 --> 00:00:45,921
-We'll do what we always do here,
+00:00:32,195 --> 00:00:36,369
+把它命名为UWPSoundBoard.
 
 13
-00:00:45,922 --> 00:00:49,509
-we'll remove the Frame Counter completely.
+00:00:43,618 --> 00:00:45,921
+然后像往常一样
 
 14
-00:00:51,426 --> 00:00:53,952
-And then what I'm going to do is add assets,
+00:00:45,922 --> 00:00:49,509
+删掉整个帧数计数器
 
 15
-00:00:53,953 --> 00:00:55,595
-and there's a couple different types of Assets
+00:00:51,426 --> 00:00:53,952
+然后我要做的是添加一些引用
 
 16
-00:00:55,596 --> 00:00:57,907
-for this project. You can download these
+00:00:53,953 --> 00:00:55,595
+这里有几种不一样的引用
 
 17
-00:00:57,908 --> 00:01:01,568
-from the previous video or this video.
+00:00:55,596 --> 00:00:57,907
+对于这个项目，你可以下载这些
 
 18
-00:01:01,569 --> 00:01:05,610
-Look for the download associated with one of those videos.
+00:00:57,908 --> 00:01:01,568
+从之前的视频或者当前的视频
 
 19
-00:01:05,611 --> 00:01:07,231
-Now you'll notice a pattern here,
+00:01:01,569 --> 00:01:05,610
+在那些视频下面有下载链接
 
 20
-00:01:07,232 --> 00:01:09,759
-that there are categories of Audio
+00:01:05,611 --> 00:01:07,231
+回过头来，你会发现这里存在着一些模式
 
 21
-00:01:09,760 --> 00:01:14,388
-and then Icons that belong with those Audio .wav files.
+00:01:07,232 --> 00:01:09,759
+这里这些全部都是音频
 
 22
-00:01:14,389 --> 00:01:17,748
-So each of those subfolders have two .wav files
+00:01:09,760 --> 00:01:14,388
+然后这些icon图标文件与这些wav音频文件相对应
 
 23
-00:01:21,859 --> 00:01:26,644
-and if we go back to the Images, they'll match.
+00:01:14,389 --> 00:01:17,748
+所以每个子文件夹都有两个这样的wav音频文件
 
 24
-00:01:27,696 --> 00:01:31,343
-Just with a .png extension instead of a .wav extension.
+00:01:21,859 --> 00:01:26,644
+如果我们回到image文件夹，这里也是一样的
 
 25
-00:01:31,344 --> 00:01:34,564
-The next type of folder we have here are Icons.
+00:01:27,696 --> 00:01:31,343
+只不过这里是png而不是wav文件
 
 26
-00:01:34,565 --> 00:01:39,564
-These will be used in the SplitView in the Pane
+00:01:31,344 --> 00:01:34,564
+下一个类型的文件夹里面是我们的图标文件
 
 27
-00:01:40,048 --> 00:01:45,047
-where we display usually a ListView of options.
+00:01:34,565 --> 00:01:39,564
+这些会用在分割视图里的窗格里
 
 28
-00:01:47,386 --> 00:01:49,454
-Each of those represent a category.
+00:01:40,048 --> 00:01:45,047
+我们通常用来显示一系列的选项
 
 29
-00:01:49,455 --> 00:01:51,566
-Finally, here's the PackageAppXManifest.
+00:01:47,386 --> 00:01:49,454
+每个都代表着不同种类的东西
 
 30
-00:01:51,567 --> 00:01:55,278
-And these are logo icons,
+00:01:49,455 --> 00:01:51,566
+最后，这里有一个PackageAppXManifest文件夹
 
 31
-00:01:55,279 --> 00:01:59,662
-icons that are used for splash screen.
+00:01:51,567 --> 00:01:55,278
+还有这些logo图标
 
 32
-00:01:59,663 --> 00:02:01,315
-Things that are going to be required
+00:01:55,279 --> 00:01:59,662
+用于启动画面的图标
 
 33
-00:02:01,316 --> 00:02:05,789
-as we submit our app to the Windows Store.
+00:01:59,663 --> 00:02:01,315
+这些东西会被要求提供
 
 34
-00:02:06,212 --> 00:02:10,210
-Okay, so unfortunately, the way that you copy these in,
+00:02:01,316 --> 00:02:05,789
+当我们准备把这个app提交的应用商店的时候
 
 35
-00:02:10,211 --> 00:02:14,018
-not as easy as, personally, I would like.
+00:02:06,212 --> 00:02:10,210
+但是不凑巧的是，你把这些东西复制进去的办法
 
 36
-00:02:14,019 --> 00:02:17,375
-You'll see that there's a little bit of a weirdness here.
+00:02:10,211 --> 00:02:14,018
+并不是那么简单
 
 37
-00:02:17,376 --> 00:02:20,599
-So Audio has a subfolder and inside of there you have files.
+00:02:14,019 --> 00:02:17,375
+你会发现这里会有一些奇怪的地方
 
 38
-00:02:20,600 --> 00:02:24,130
-So when you drag and drop, for example this,
+00:02:17,376 --> 00:02:20,599
+Audio有一个子文件夹，然后里面会有相应的文件
 
 39
-00:02:24,131 --> 00:02:26,828
-into your Assets folder, you'll notice
+00:02:20,600 --> 00:02:24,130
+所以当你拖拽这个文件夹
 
 40
-00:02:26,829 --> 00:02:30,167
-that there's no subfolders in there
+00:02:24,131 --> 00:02:26,828
+到你的引用文件夹里，你会发现
 
 41
-00:02:30,168 --> 00:02:31,702
-and there's supposed to be.
+00:02:26,829 --> 00:02:30,167
+里面并没有子文件夹！
 
 42
-00:02:31,703 --> 00:02:33,974
-Huh, okay well I guess it didn't copy them in.
+00:02:30,168 --> 00:02:31,702
+然而它本来应该有的！
 
 43
-00:02:33,975 --> 00:02:38,273
-So you go to those subfolders and you drag and drop those
+00:02:31,703 --> 00:02:33,974
+所以我想我们并没有把他们复制进去
 
 44
-00:02:38,274 --> 00:02:40,545
-and it'll say, wait a second, they're already there.
+00:02:33,975 --> 00:02:38,273
+所以你需要进到子文件里，然后拖拽它们到vs里
 
 45
-00:02:40,546 --> 00:02:42,294
-Like, what? (laughs)
+00:02:38,274 --> 00:02:40,545
+然后vs会提示！它们已经存在？！（萌叔魔性笑声）
 
 46
-00:02:42,295 --> 00:02:43,915
-So let's go ahead and just hit Apply to all items.
+00:02:40,546 --> 00:02:42,294
+就像这样
 
 47
-00:02:43,916 --> 00:02:45,846
-Yes, and it'll stick them all in there.
+00:02:42,295 --> 00:02:43,915
+只需要点击“应用于所有项”
 
 48
-00:02:45,847 --> 00:02:47,307
-So we should have four categories
+00:02:43,916 --> 00:02:45,846
+然后就好了~
 
 49
-00:02:47,308 --> 00:02:50,581
-with two .wav files per category in the Audio subfolder.
+00:02:45,847 --> 00:02:47,307
+所以我们应该有四个文件夹
 
 50
-00:02:50,582 --> 00:02:54,709
-We'll take that same approach here in the Icons folder.
+00:02:47,308 --> 00:02:50,581
+然后再Audio子文件夹里每一个子文件应该有两个音频文件
 
 51
-00:02:54,710 --> 00:02:57,504
-I'll just drag and drop that Icon folder,
+00:02:50,582 --> 00:02:54,709
+用同样的方法处理Icon文件夹
 
 52
-00:02:57,505 --> 00:02:59,562
-says it doesn't have anything in there.
+00:02:54,710 --> 00:02:57,504
+拖拽大法好！
 
 53
-00:02:59,563 --> 00:03:02,325
-We know better, it just didn't add them to the Project.
+00:02:57,505 --> 00:02:59,562
+什么都没有~
 
 54
-00:03:02,326 --> 00:03:06,165
-So let's go and grab, drag and drop, it'll say,
+00:02:59,563 --> 00:03:02,325
+只是我们把它们添加到当前的项目里
 
 55
-00:03:06,166 --> 00:03:09,919
-are you sure? We already have them in there. No you don't.
+00:03:02,326 --> 00:03:06,165
+所以全选它们，拖拽进去~
 
 56
-00:03:09,920 --> 00:03:14,919
-Add them. And we'll do this again for the images,
+00:03:06,166 --> 00:03:09,919
+你确定吗？已经存在这些文件里！不，并没有（萌叔吐槽时间）
 
 57
-00:03:15,631 --> 00:03:18,720
-for each of the audio files.
+00:03:09,920 --> 00:03:14,919
+再次添加，然后用同样的办法处理Image文件夹
 
 58
-00:03:20,555 --> 00:03:23,402
-No subfolders, but we know they're there.
+00:03:15,631 --> 00:03:18,720
+对于每个音频文件
 
 59
-00:03:23,409 --> 00:03:25,414
-We'll drag and drop, stick them in.
+00:03:20,555 --> 00:03:23,402
+没有子文件夹，但是我们知道它们在那
 
 60
-00:03:25,415 --> 00:03:27,387
-"Are you sure?" Yes, do it.
+00:03:23,409 --> 00:03:25,414
+拖拽大法！
 
 61
-00:03:30,188 --> 00:03:32,816
-Then finally let's go
+00:03:25,415 --> 00:03:27,387
+你确定吗？？？是的！
 
 62
-00:03:32,817 --> 00:03:37,019
-to the PackageAppXManifest folder
+00:03:30,188 --> 00:03:32,816
+然后就好了
 
 63
-00:03:37,020 --> 00:03:41,872
-that I created, and go through this little dance again.
+00:03:32,817 --> 00:03:37,019
+最后到PackageAppXManifest文件夹
 
 64
-00:03:48,903 --> 00:03:50,565
-Alright, so that's out of the way.
+00:03:37,020 --> 00:03:41,872
+完成这最后的一小块工作
 
 65
-00:03:50,566 --> 00:03:52,745
-We'll come back and we'll use those a little bit later.
+00:03:48,903 --> 00:03:50,565
+这样就完成了！
 
 66
-00:03:52,891 --> 00:03:55,999
-I'll go ahead and pull this out, there.
+00:03:50,566 --> 00:03:52,745
+稍后我们会用到它们
 
 67
-00:03:57,051 --> 00:04:00,154
-Close up assets, and pop open MainPage.xaml.
+00:03:52,891 --> 00:03:55,999
+全屏一下~
 
 68
-00:04:00,155 --> 00:04:02,692
-So I'm going to take a slightly different layout approach
+00:03:57,051 --> 00:04:00,154
+把引用文件夹关闭，打开MainPage.xaml
 
 69
-00:04:02,693 --> 00:04:06,521
-this time, we will have a Layout Grid
+00:04:00,155 --> 00:04:02,692
+所以这次我打算采用一种稍微不同的布局方式
 
 70
-00:04:06,522 --> 00:04:11,521
-and that'll give us the topmost row,
+00:04:02,693 --> 00:04:06,521
+我们会有一个网格布局
 
 71
-00:04:11,887 --> 00:04:13,465
-which will contain a RelativePanel
+00:04:06,522 --> 00:04:11,521
+它会提供最上面的一行
 
 72
-00:04:13,466 --> 00:04:18,105
-with the HamburgerButton, back button, and the search,
+00:04:11,887 --> 00:04:13,465
+里面包含了一个相对布局
 
 73
-00:04:18,106 --> 00:04:21,810
-whatever it is, the AutoSuggestBox.
+00:04:13,466 --> 00:04:18,105
+包含一个汉堡菜单按钮，后退按钮和一个..
 
 74
-00:04:23,055 --> 00:04:26,552
-And then in that second row, we'll put a SplitPanel.
+00:04:18,106 --> 00:04:21,810
+大概是一个自动建议列表
 
 75
-00:04:26,553 --> 00:04:28,946
-So let's start that process.
+00:04:23,055 --> 00:04:26,552
+然后再第二行，我们会放置一个分割布局
 
 76
-00:04:30,041 --> 00:04:35,040
-So here we go, RowDefinitions, Grid.RowDefinitions.
+00:04:26,553 --> 00:04:28,946
+开始干活吧！
 
 77
+00:04:30,041 --> 00:04:35,040
+打码打码打码Grid.RowDefinitions.
+
+78
 00:04:37,838 --> 00:04:41,735
 RowDefinition Height="Auto".
 
-78
-00:04:42,552 --> 00:04:45,058
-And we've done this at least a dozen times already
-
 79
-00:04:45,059 --> 00:04:47,964
-so this shouldn't be too hard.
+00:04:42,552 --> 00:04:45,058
+我们已经做过这一步很多次了
 
 80
-00:04:49,101 --> 00:04:50,519
-Here we're going to put a RelativePanel.
+00:04:45,059 --> 00:04:47,964
+所以这一步应该不是那么难
 
 81
-00:04:50,520 --> 00:04:52,791
-And this, again, will contain that top matter.
+00:04:49,101 --> 00:04:50,519
+然后放置一个相对布局
 
 82
-00:04:54,202 --> 00:04:56,998
-And then below that we'll put a SplitView.
+00:04:50,520 --> 00:04:52,791
+里面包含顶部的对象
 
 83
-00:04:57,560 --> 00:05:00,134
-That'll contain everything in the main body.
+00:04:54,202 --> 00:04:56,998
+再下面放置一个分割布局
 
 84
-00:05:00,482 --> 00:05:04,150
-So in this RelativePanel, I'm going to want to put,
+00:04:57,560 --> 00:05:00,134
+里面包含其他的主体对象
 
 85
-00:05:04,151 --> 00:05:05,985
-first of all, the HamburgerButton.
+00:05:00,482 --> 00:05:04,150
+在相对布局里，我打算放置
 
 86
-00:05:05,986 --> 00:05:08,747
-I'm going to add a back button
+00:05:04,151 --> 00:05:05,985
+首先，是一个汉堡菜单按钮
 
 87
-00:05:08,748 --> 00:05:12,651
-and then I'm going to add an AutoSuggestBox.
+00:05:05,986 --> 00:05:08,747
+然后添加一个后退按钮
 
 88
-00:05:15,022 --> 00:05:19,917
-Let's just put RelativePanel.AlignRightWithPanel = "True".
+00:05:08,748 --> 00:05:12,651
+然后是一个自动建议列表
 
 89
-00:05:19,918 --> 00:05:23,191
-Here I'm going to give this one a name
+00:05:15,022 --> 00:05:19,917
+ RelativePanel.AlignRightWithPanel = "True".
 
 90
-00:05:23,192 --> 00:05:27,345
-of HamburgerButton.
+00:05:19,918 --> 00:05:23,191
+添加一个名字
 
 91
-00:05:27,630 --> 00:05:32,629
-And then this one would be RelativePanel.AlignLeftWith...
+00:05:23,192 --> 00:05:27,345
+给汉堡菜单按钮
 
 92
-00:05:45,777 --> 00:05:50,314
-I'm sorry, AlignRight of the HamburgerButton.
+00:05:27,630 --> 00:05:32,629
+后退按钮应该设置为 RelativePanel.AlignLeftWith...
 
 93
-00:05:57,293 --> 00:06:02,292
-And this one would be RelativePanelAlignLeftWithPanel.
+00:05:45,777 --> 00:05:50,314
+抱歉！, 应该是RelativePanel.Rightof=“HamburgerButton”.
 
 94
+00:05:57,293 --> 00:06:02,292
+汉堡菜单按钮应该是RelativePanelAlignLeftWithPanel.
+
+95
 00:06:03,321 --> 00:06:04,878
 That should be pretty much self-evident,
 
-95
+96
 00:06:04,879 --> 00:06:06,962
 but I'll put it there anyway.
 
-96
+97
 00:06:10,564 --> 00:06:12,077
 I'm going to add a Click Event here
 
-97
+98
 00:06:12,078 --> 00:06:13,596
 because I know I'm going to need it.
 
-98
+99
 00:06:15,555 --> 00:06:17,244
 Go ahead and space these guys out.
 
-99
+100
 00:06:18,062 --> 00:06:19,128
 I also know I'm going to need to put
 
-100
+101
 00:06:33,849 --> 00:06:38,848
 for example, FontFamily is going to be Segoe MDL2 Assets
 
-101
+102
 00:06:38,961 --> 00:06:43,892
 and then the Content will be, let's see if I remember,
 
-102
+103
 00:06:50,960 --> 00:06:55,945
 "&xE700;"
 
-103
+104
 00:07:00,805 --> 00:07:02,361
 If I got that right from memory,
 
-104
+105
 00:07:02,362 --> 00:07:04,211
 I will be impressed with myself.
 
-105
+106
 00:07:06,885 --> 00:07:09,678
 Which just goes to show, I don't memorize this.
 
-106
+107
 00:07:09,679 --> 00:07:12,622
 Most people don't memorize these obscure little things.
 
-107
+108
 00:07:12,623 --> 00:07:14,137
 That's why you have a cheat sheet.
 
-108
+109
 00:07:14,138 --> 00:07:17,315
 Or you have the cheat sheet called the Internet
 
-109
+110
 00:07:17,316 --> 00:07:19,677
 you can always reference.
 
-110
+111
 00:07:19,940 --> 00:07:22,226
 Yep, I got it right. Wow, I'm impressed.
 
-111
+112
 00:07:23,226 --> 00:07:24,970
 With myself. (laughs)
 
-112
+113
 00:07:24,971 --> 00:07:26,463
 It's the little things, right?
 
-113
+114
 00:07:26,464 --> 00:07:29,663
 Okay, so next up I need a name for this Button
 
-114
+115
 00:07:29,664 --> 00:07:34,510
 so let's give it the name of BackButton.
 
-115
+116
 00:07:36,545 --> 00:07:39,538
 That's necessary because I'm going to give it the
 
-116
+117
 00:07:39,539 --> 00:07:41,607
 Click equals NewEventHandler.
 
-117
+118
 00:07:42,528 --> 00:07:47,527
 Here again, I want FontFamily equals Segoe MDL2 Assets.
 
-118
+119
 00:07:50,026 --> 00:07:54,957
 And then Content="&#xE"... something or other.
 
-119
+120
 00:08:01,124 --> 00:08:02,751
 You know I got to the point where I decided
 
-120
+121
 00:08:02,752 --> 00:08:04,404
 I'm going to put the Character Map right here
 
-121
+122
 00:08:04,405 --> 00:08:08,921
 on my task bar. And I think this is the one I want.
 
-122
+123
 00:08:10,186 --> 00:08:14,825
 There's a bunch of these back arrows that have various uses.
 
-123
+124
 00:08:14,826 --> 00:08:18,264
 But I'll use this one, 0A6.
 
-124
+125
 00:08:20,127 --> 00:08:24,525
 That should be sufficient. 0A6.
 
-125
+126
 00:08:26,580 --> 00:08:28,616
 And then the AutoSuggestBox,
 
-126
+127
 00:08:28,617 --> 00:08:30,014
 there's really not much I need to do here,
 
-127
+128
 00:08:30,015 --> 00:08:31,571
 I would need to give it a Name though.
 
-128
+129
 00:08:31,572 --> 00:08:36,354
 So let's give it the name of search AutoSuggestBox.
 
-129
+130
 00:08:40,679 --> 00:08:42,760
 And I'm going to put PlaceholderText equal to
 
-130
+131
 00:08:42,761 --> 00:08:45,298
 to "Search for sounds".
 
-131
+132
 00:08:47,939 --> 00:08:49,437
 I know I want the Width to be 200
 
-132
+133
 00:08:49,438 --> 00:08:52,402
 from that previous exercise that we did together.
 
-133
+134
 00:08:54,183 --> 00:08:59,182
 And I know the QueryIcon I want defined QueryIcon.
 
-134
+135
 00:09:00,797 --> 00:09:04,561
 Then I know that I'm going to handle the TextChanged Event
 
-135
+136
 00:09:04,562 --> 00:09:07,904
 because we're going to filter the list based on that.
 
-136
+137
 00:09:09,881 --> 00:09:13,772
 I also know that I want the QuerySubmitted Event
 
-137
+138
 00:09:13,773 --> 00:09:16,550
 to handle that one as well.
 
-138
+139
 00:09:20,192 --> 00:09:22,550
 Everything else though, I'm going to leave for now.
 
-139
+140
 00:09:22,551 --> 00:09:24,421
 We'll come back to that in a while
 
-140
+141
 00:09:24,422 --> 00:09:27,807
 when we try to actually get that functionality working.
 
-141
+142
 00:09:30,651 --> 00:09:32,943
 Let's see now, that's the RelativePanel.
 
-142
+143
 00:09:32,944 --> 00:09:34,831
 Now we haven't touched the SplitView yet
 
-143
+144
 00:09:34,832 --> 00:09:38,697
 so let's see what we have first before we move on here.
 
-144
+145
 00:09:40,421 --> 00:09:42,511
 See if there's anything glaringly wrong
 
-145
+146
 00:09:42,512 --> 00:09:44,713
 with anything I've done up to this point.
 
-146
+147
 00:09:48,688 --> 00:09:52,100
 These look awfully small, I'll probably change the Height
 
-147
+148
 00:09:52,101 --> 00:09:53,892
 and the Width of Buttons themselves
 
-148
+149
 00:09:53,893 --> 00:09:55,720
 and then change the Font.
 
-149
+150
 00:09:55,844 --> 00:09:58,115
 So I'm going to use Height and Width of 45
 
-150
+151
 00:09:58,116 --> 00:10:01,245
 like we did in the previous exercise for these Buttons.
 
-151
+152
 00:10:02,393 --> 00:10:06,653
 So Height="45", Width="45"
 
-152
+153
 00:10:07,193 --> 00:10:10,141
 I like that, that feels good to me.
 
-153
+154
 00:10:11,214 --> 00:10:16,213
 And then also I want to set the FontSize="20".
 
-154
+155
 00:10:22,051 --> 00:10:25,325
 Alright, so that should be good enough for now
 
-155
+156
 00:10:25,326 --> 00:10:27,366
 with that RelativePanel area.
 
-156
+157
 00:10:34,264 --> 00:10:37,217
 Okay great. Need some padding,
 
-157
+158
 00:10:37,218 --> 00:10:40,347
 but we'll come back for that later.
 
-158
+159
 00:10:41,485 --> 00:10:45,921
 Alright next up, SplitView. Let's give it a name
 
-159
+160
 00:10:45,922 --> 00:10:48,065
 because we're going to have to reference it programatically.
 
-160
+161
 00:10:48,066 --> 00:10:52,005
 So MySplitView, DisplayMode,
 
-161
+162
 00:10:54,188 --> 00:10:56,576
 I know I want that to be CompactOverlay,
 
-162
+163
 00:10:56,577 --> 00:11:01,576
 I also know that I want the CompactPaneLength equal
 
-163
+164
 00:11:03,728 --> 00:11:08,202
 to be 45, that would be the Width of the buttons
 
-164
+165
 00:11:08,203 --> 00:11:10,783
 that I have above it, so I like that.
 
-165
+166
 00:11:10,784 --> 00:11:15,783
 Then the OpenPaneLength, I don't know, 150 should be fine
 
-166
+167
 00:11:15,915 --> 00:11:18,282
 but let me just put 200 here.
 
-167
+168
 00:11:18,283 --> 00:11:21,300
 I seem to remember it's going to be a little bit larger
 
-168
+169
 00:11:21,301 --> 00:11:22,740
 for some reason
 
-169
+170
 00:11:22,741 --> 00:11:26,062
 having gone through this once already.
 
-170
+171
 00:11:27,903 --> 00:11:29,950
 So that's good, so we got that.
 
-171
+172
 00:11:29,951 --> 00:11:33,172
 And now inside of this I need the SplitView.Pane
 
-172
+173
 00:11:35,293 --> 00:11:39,587
 and I then need the SplitView.Content.
 
-173
+174
 00:11:40,809 --> 00:11:43,496
 In the Pane, we're going to have a ListBox
 
-174
+175
 00:11:43,497 --> 00:11:46,771
 like we've always had, or actually, I'm sorry.
 
-175
+176
 00:11:46,772 --> 00:11:49,469
 I'm going to do things a little bit different this time.
 
-176
+177
 00:11:49,470 --> 00:11:51,720
 I'll use a ListView this time.
 
-177
+178
 00:11:51,721 --> 00:11:55,250
 I'm going to Bind to the items and just use Data Binding
 
-178
+179
 00:11:55,251 --> 00:11:58,429
 and Bind to a List that I'll create in the code behind
 
-179
+180
 00:11:58,430 --> 00:12:00,359
 for the MainPage.xaml.
 
-180
+181
 00:12:00,360 --> 00:12:05,351
 I guess I will work on that in this lesson.
 
-181
+182
 00:12:09,952 --> 00:12:13,565
 Anyway, I know that we want the is ItemClickEnabled
 
-182
+183
 00:12:13,566 --> 00:12:17,217
 equal true on this, I know I'm going
 
-183
+184
 00:12:17,218 --> 00:12:20,268
 to handle the ItemClick event on this as well.
 
-184
+185
 00:12:22,289 --> 00:12:25,680
 Probably should give it a name. Bummer.
 
-185
+186
 00:12:26,167 --> 00:12:31,166
 So Name="MenuItemsListView".
 
-186
+187
 00:12:34,945 --> 00:12:38,703
 And so, let me regenerate that.
 
-187
+188
 00:12:52,171 --> 00:12:55,935
 And I know I need a Template, and I know I need a Source.
 
-188
+189
 00:12:55,936 --> 00:12:58,020
 I'll come back to that in a minute.
 
-189
+190
 00:12:59,051 --> 00:13:01,556
 Now, in this area, I'm actually going to add,
 
-190
+191
 00:13:01,557 --> 00:13:03,337
 in the Content area I'm going to add a Grid
 
-191
+192
 00:13:03,338 --> 00:13:05,759
 because I'm going to actually split this into two Rows.
 
-192
+193
 00:13:05,760 --> 00:13:07,966
 There will be a top Row that'll contain
 
-193
+194
 00:13:07,967 --> 00:13:12,295
 what's being displayed in the main area
 
-194
+195
 00:13:12,296 --> 00:13:15,934
 and then below that I'll have the items
 
-195
+196
 00:13:15,935 --> 00:13:18,160
 that will be displayed.
 
-196
+197
 00:13:18,161 --> 00:13:22,933
 So I'm going to need some RowDefinitions.
 
-197
+198
 00:13:25,170 --> 00:13:29,685
 So RowDefinitionHeight="Auto".
 
-198
+199
 00:13:39,910 --> 00:13:44,410
 So I know, whoops, let's not get here in the wrong spot.
 
-199
+200
 00:13:44,411 --> 00:13:46,042
 Okay, there we go.
 
-200
+201
 00:13:46,043 --> 00:13:48,058
 In this top Row I'm going to add a StackPanel
 
-201
+202
 00:13:48,059 --> 00:13:51,781
 and it's just going to contain TextBlock.
 
-202
+203
 00:13:51,782 --> 00:13:54,607
 I don't even know that I need the StackPanel, honestly.
 
-203
+204
 00:13:54,608 --> 00:13:56,164
 I could probably do without it, in fact,
 
-204
+205
 00:13:56,165 --> 00:13:59,038
 I will do without it. Just get rid of it.
 
-205
+206
 00:14:00,602 --> 00:14:03,599
 Let's just go straight with the TextBlock.
 
-206
+207
 00:14:03,600 --> 00:14:08,599
 And we'll set Name="CategoryTextBlock".
 
-207
+208
 00:14:13,412 --> 00:14:15,811
 Text="All Sounds".
 
-208
+209
 00:14:15,812 --> 00:14:17,646
 That will be the default text in there.
 
-209
+210
 00:14:17,647 --> 00:14:20,195
 I'm going to make this kind of like a header,
 
-210
+211
 00:14:20,196 --> 00:14:22,875
 so we'll set the FontSize="24".
 
-211
+212
 00:14:26,946 --> 00:14:29,400
 Okay. And then in the lower area I'll add the GridView
 
-212
+213
 00:14:29,401 --> 00:14:32,274
 beneath that and that'll contain all of our items.
 
-213
+214
 00:14:32,275 --> 00:14:35,271
 And we'll set that Grid.Row="1".
 
-214
+215
 00:14:36,280 --> 00:14:40,732
 And I'll call this Name="SoundGridView".
 
-215
+216
 00:14:42,360 --> 00:14:46,274
 Alright, this is really the key one we want to focus on.
 
-216
+217
 00:14:51,825 --> 00:14:56,333
 We want to set the SelectionMode="None".
 
-217
+218
 00:14:56,334 --> 00:14:58,386
 All I want someone to be able to do is click on a sound
 
-218
+219
 00:14:58,387 --> 00:15:01,842
 and it play the sound, I don't need selection.
 
-219
+220
 00:15:01,843 --> 00:15:05,233
 I do want to set the is ItemClickEnabled that goes true
 
-220
+221
 00:15:05,234 --> 00:15:07,463
 because I do want it to be clickable.
 
-221
+222
 00:15:07,464 --> 00:15:12,011
 So then the ItemClick Event should be handled.
 
-222
+223
 00:15:16,317 --> 00:15:18,235
 Now I know I'm going to need an Item Source
 
-223
+224
 00:15:18,236 --> 00:15:21,849
 and all that business and I'll come back to that.
 
-224
+225
 00:15:21,850 --> 00:15:26,278
 So let's go GridView.ItemTemplate
 
-225
+226
 00:15:26,279 --> 00:15:30,832
 and then set the DataTemplate
 
-226
+227
 00:15:30,833 --> 00:15:35,466
 and then let's put an Image inside of there.
 
-227
+228
 00:15:39,393 --> 00:15:41,359
 And I happen to know that the Height
 
-228
+229
 00:15:41,360 --> 00:15:43,482
 and the Widths are kind of weird
 
-229
+230
 00:15:43,483 --> 00:15:45,423
 because when gave the specifications
 
-230
+231
 00:15:45,424 --> 00:15:48,442
 to the guy who was working on it,
 
-231
+232
 00:15:48,443 --> 00:15:50,650
 I just gave some arbitrary number
 
-232
+233
 00:15:50,651 --> 00:15:52,932
 based on a mock-up that I'd created.
 
-233
+234
 00:15:57,163 --> 00:15:59,982
 As I look at my notes here, I see is it 101 Width.
 
-234
+235
 00:15:59,983 --> 00:16:01,998
 And we'll have to set the Source on that as well,
 
-235
+236
 00:16:01,999 --> 00:16:03,001
 we'll come back to that later
 
-236
+237
 00:16:03,002 --> 00:16:05,230
 whenever we do the Data Binding
 
-237
+238
 00:16:05,231 --> 00:16:07,336
 in the next lesson.
 
-238
+239
 00:16:08,783 --> 00:16:11,331
 But there's one other interesting little thing
 
-239
+240
 00:16:11,332 --> 00:16:14,717
 that I want to stick here as well in this area.
 
-240
+241
 00:16:15,471 --> 00:16:16,974
 And that is the MediaElement.
 
-241
+242
 00:16:16,975 --> 00:16:18,787
 The media element allows you to play sounds
 
-242
+243
 00:16:18,788 --> 00:16:20,835
 and we'll become very familiar
 
-243
+244
 00:16:20,836 --> 00:16:22,947
 with that two videos from now.
 
-244
+245
 00:16:22,948 --> 00:16:26,834
 Let me go ahead and give it the Name MyMediaElement.
 
-245
+246
 00:16:27,193 --> 00:16:30,679
 And I'm going to set a property called AutoPlay="True".
 
-246
+247
 00:16:30,680 --> 00:16:35,679
 And that just says, whenever I give you a Source,
 
-247
+248
 00:16:38,793 --> 00:16:42,273
 so Assets/Sounds/Cow, whatever,
 
-248
+249
 00:16:42,274 --> 00:16:43,649
 just go ahead and play it,
 
-249
+250
 00:16:43,650 --> 00:16:45,687
 I'm not going to programatically tell you
 
-250
+251
 00:16:45,688 --> 00:16:48,560
 to start and stop playing, just play, auto play.
 
-251
+252
 00:16:50,285 --> 00:16:53,185
 Alright, I think that's all that I'm going to do here
 
-252
+253
 00:16:53,186 --> 00:16:55,275
 in this first video. We covered a lot of ground.
 
-253
+254
 00:16:55,276 --> 00:16:58,721
 There's a lot left to do.
 
-254
+255
 00:16:58,722 --> 00:17:00,896
 But we'll come back and get them
 
-255
+256
 00:17:00,897 --> 00:17:02,592
 on subsequent passes at this.
 
-256
+257
 00:17:02,593 --> 00:17:04,982
 So at this point there's really not a lot to this app,
 
-257
+258
 00:17:04,983 --> 00:17:06,496
 it's just kind of the shell
 
-258
+259
 00:17:06,497 --> 00:17:10,675
 and we'll come back and we'll fill in a lot of this stuff.
 
-259
+260
 00:17:10,676 --> 00:17:13,594
 Okay, pick it up in the next lesson, thanks.
 
