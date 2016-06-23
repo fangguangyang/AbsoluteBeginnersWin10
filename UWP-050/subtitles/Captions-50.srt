@@ -352,7 +352,7 @@ RowDefinition Height="Auto".
 
 89
 00:05:15,022 --> 00:05:19,917
- RelativePanel.AlignRightWithPanel = "True".
+RelativePanel.AlignRightWithPanel = "True".
 
 90
 00:05:19,918 --> 00:05:23,191
@@ -376,35 +376,35 @@ RowDefinition Height="Auto".
 
 95
 00:06:03,321 --> 00:06:04,878
-That should be pretty much self-evident,
+这应该是显而易见的
 
 96
 00:06:04,879 --> 00:06:06,962
-but I'll put it there anyway.
+但我还是要提一下
 
 97
 00:06:10,564 --> 00:06:12,077
-I'm going to add a Click Event here
+我要在这里添加一个点击事件
 
 98
 00:06:12,078 --> 00:06:13,596
-because I know I'm going to need it.
+因为我知道我需要它
 
 99
 00:06:15,555 --> 00:06:17,244
-Go ahead and space these guys out.
+论一个程序员对对齐的执着
 
 100
 00:06:18,062 --> 00:06:19,128
-I also know I'm going to need to put
+我还知道我需要放置一些
 
 101
 00:06:33,849 --> 00:06:38,848
-for example, FontFamily is going to be Segoe MDL2 Assets
+比如说字体应该是Segoe MDL2 Assets
 
 102
 00:06:38,961 --> 00:06:43,892
-and then the Content will be, let's see if I remember,
+设置Content属性......我看看我还能不能想起来
 
 103
 00:06:50,960 --> 00:06:55,945
@@ -412,629 +412,629 @@ and then the Content will be, let's see if I remember,
 
 104
 00:07:00,805 --> 00:07:02,361
-If I got that right from memory,
+如果我没记错的话
 
 105
 00:07:02,362 --> 00:07:04,211
-I will be impressed with myself.
+我会给我自己留下深刻的印象的（无敌是多么寂寞）
 
 106
 00:07:06,885 --> 00:07:09,678
-Which just goes to show, I don't memorize this.
+这意味着我可能是忘记了
 
 107
 00:07:09,679 --> 00:07:12,622
-Most people don't memorize these obscure little things.
+大多数人应该不会记住这些隐秘的小东西
 
 108
 00:07:12,623 --> 00:07:14,137
-That's why you have a cheat sheet.
+这就是为什么我们会有cheat sheet.
 
 109
 00:07:14,138 --> 00:07:17,315
-Or you have the cheat sheet called the Internet
+或者你也可以上网搜索一下
 
 110
 00:07:17,316 --> 00:07:19,677
-you can always reference.
+如果你需要一个参考
 
 111
 00:07:19,940 --> 00:07:22,226
-Yep, I got it right. Wow, I'm impressed.
+yeah ，没错，我又爱上我自己了
 
 112
 00:07:23,226 --> 00:07:24,970
-With myself. (laughs)
+魔性笑声ing
 
 113
 00:07:24,971 --> 00:07:26,463
-It's the little things, right?
+这些都是小事！没错吧
 
 114
 00:07:26,464 --> 00:07:29,663
-Okay, so next up I need a name for this Button
+下一步需要给这个按钮命名
 
 115
 00:07:29,664 --> 00:07:34,510
-so let's give it the name of BackButton.
+把名字设置为BackButton.
 
 116
 00:07:36,545 --> 00:07:39,538
-That's necessary because I'm going to give it the
+这很有必要，因为我需要把这个
 
 117
 00:07:39,539 --> 00:07:41,607
-Click equals NewEventHandler.
+点击事件绑定到一个事件处理程序上
 
 118
 00:07:42,528 --> 00:07:47,527
-Here again, I want FontFamily equals Segoe MDL2 Assets.
+再一次的，字体设置为Segoe MDL2 Assets.
 
 119
 00:07:50,026 --> 00:07:54,957
-And then Content="&#xE"... something or other.
+设置Content="&#xE"... 这次设置成其他的
 
 120
 00:08:01,124 --> 00:08:02,751
-You know I got to the point where I decided
+我想我需要做的是
 
 121
 00:08:02,752 --> 00:08:04,404
-I'm going to put the Character Map right here
+我要在放置一个Character Map
 
 122
 00:08:04,405 --> 00:08:08,921
-on my task bar. And I think this is the one I want.
+在我们的任务栏上，我想这个就是我需要的
 
 123
 00:08:10,186 --> 00:08:14,825
-There's a bunch of these back arrows that have various uses.
+这里有很多不同的后退箭头，我想它们有各自不同的用处
 
 124
 00:08:14,826 --> 00:08:18,264
-But I'll use this one, 0A6.
+但是我打算使用这一个，0A6
 
 125
 00:08:20,127 --> 00:08:24,525
-That should be sufficient. 0A6.
+这应该会有用. 0A6.
 
 126
 00:08:26,580 --> 00:08:28,616
-And then the AutoSuggestBox,
+然后就是自动建议列表
 
 127
 00:08:28,617 --> 00:08:30,014
-there's really not much I need to do here,
+这个就不需要太复杂的工作了
 
 128
 00:08:30,015 --> 00:08:31,571
-I would need to give it a Name though.
+即使这样还是需要给它起一个名字
 
 129
 00:08:31,572 --> 00:08:36,354
-So let's give it the name of search AutoSuggestBox.
+命名为SearchAutoSuggestBox.
 
 130
 00:08:40,679 --> 00:08:42,760
-And I'm going to put PlaceholderText equal to
+然后设置占位文本为
 
 131
 00:08:42,761 --> 00:08:45,298
-to "Search for sounds".
+"Search for sounds".
 
 132
 00:08:47,939 --> 00:08:49,437
-I know I want the Width to be 200
+宽度设置为200
 
 133
 00:08:49,438 --> 00:08:52,402
-from that previous exercise that we did together.
+就像之前的练习做的那样
 
 134
 00:08:54,183 --> 00:08:59,182
-And I know the QueryIcon I want defined QueryIcon.
+设置QueryIcon属性
 
 135
 00:09:00,797 --> 00:09:04,561
-Then I know that I'm going to handle the TextChanged Event
+然后还需要添加一个TextChanged 文字改变事件
 
 136
 00:09:04,562 --> 00:09:07,904
-because we're going to filter the list based on that.
+因为我们需要在这个基础上过滤列表
 
 137
 00:09:09,881 --> 00:09:13,772
-I also know that I want the QuerySubmitted Event
+还有一个查询提交事件
 
 138
 00:09:13,773 --> 00:09:16,550
-to handle that one as well.
+去控制这个
 
 139
 00:09:20,192 --> 00:09:22,550
-Everything else though, I'm going to leave for now.
+大概就是这样,现在先不管这些了
 
 140
 00:09:22,551 --> 00:09:24,421
-We'll come back to that in a while
+待会再回来继续
 
 141
 00:09:24,422 --> 00:09:27,807
-when we try to actually get that functionality working.
+如果真的要让这个功能成功运行
 
 142
 00:09:30,651 --> 00:09:32,943
-Let's see now, that's the RelativePanel.
+让我看看，这个相对布局
 
 143
 00:09:32,944 --> 00:09:34,831
-Now we haven't touched the SplitView yet
+这个分割视图还没开始写呢
 
 144
 00:09:34,832 --> 00:09:38,697
-so let's see what we have first before we move on here.
+现在先运行调试看看效果如何
 
 145
 00:09:40,421 --> 00:09:42,511
-See if there's anything glaringly wrong
+看看有没有什么明显的错误
 
 146
 00:09:42,512 --> 00:09:44,713
-with anything I've done up to this point.
+毕竟已经写了挺多了
 
 147
 00:09:48,688 --> 00:09:52,100
-These look awfully small, I'll probably change the Height
+这些看起来好像，我应该要调整一下高度
 
 148
 00:09:52,101 --> 00:09:53,892
-and the Width of Buttons themselves
+和宽度的属性值
 
 149
 00:09:53,893 --> 00:09:55,720
-and then change the Font.
+还有改变一下字体
 
 150
 00:09:55,844 --> 00:09:58,115
-So I'm going to use Height and Width of 45
+设置高度和宽度都等于45
 
 151
 00:09:58,116 --> 00:10:01,245
-like we did in the previous exercise for these Buttons.
+就像之前的练习中做的按钮一样
 
 152
 00:10:02,393 --> 00:10:06,653
-So Height="45", Width="45"
+Height="45", Width="45"
 
 153
 00:10:07,193 --> 00:10:10,141
-I like that, that feels good to me.
+我喜欢这样，让我觉得很爽（容易满足的程序员 哈哈哈）
 
 154
 00:10:11,214 --> 00:10:16,213
-And then also I want to set the FontSize="20".
+然后是设置字号大小FontSize="20".
 
 155
 00:10:22,051 --> 00:10:25,325
-Alright, so that should be good enough for now
+现在应该就比较好了
 
 156
 00:10:25,326 --> 00:10:27,366
-with that RelativePanel area.
+在这个相对布局里
 
 157
 00:10:34,264 --> 00:10:37,217
-Okay great. Need some padding,
+挺好的，还需要一些内边距
 
 158
 00:10:37,218 --> 00:10:40,347
-but we'll come back for that later.
+不过这个稍后再来
 
 159
 00:10:41,485 --> 00:10:45,921
-Alright next up, SplitView. Let's give it a name
+下一步，分割视图，先起个名~
 
 160
 00:10:45,922 --> 00:10:48,065
-because we're going to have to reference it programatically.
+因为后面会有引用它的时候
 
 161
 00:10:48,066 --> 00:10:52,005
-So MySplitView, DisplayMode,
+命名为MySplitView, 设置DisplayMode,
 
 162
 00:10:54,188 --> 00:10:56,576
-I know I want that to be CompactOverlay,
+为CompactOverlay,
 
 163
 00:10:56,577 --> 00:11:01,576
-I also know that I want the CompactPaneLength equal
+还有就是CompactPaneLength等于
 
 164
 00:11:03,728 --> 00:11:08,202
-to be 45, that would be the Width of the buttons
+45, 就和按钮的宽度一样
 
 165
 00:11:08,203 --> 00:11:10,783
-that I have above it, so I like that.
+我喜欢这样！
 
 166
 00:11:10,784 --> 00:11:15,783
-Then the OpenPaneLength, I don't know, 150 should be fine
+然后是OpenPaneLength, 我不清楚, 设置成150应该差不多
 
 167
 00:11:15,915 --> 00:11:18,282
-but let me just put 200 here.
+不过还是设置为200把
 
 168
 00:11:18,283 --> 00:11:21,300
-I seem to remember it's going to be a little bit larger
+我想我记得它会变得比较大一点
 
 169
 00:11:21,301 --> 00:11:22,740
-for some reason
+因为一些特殊原因
 
 170
 00:11:22,741 --> 00:11:26,062
-having gone through this once already.
+这些我们已经练习过了
 
 171
 00:11:27,903 --> 00:11:29,950
-So that's good, so we got that.
+很好，就是这样
 
 172
 00:11:29,951 --> 00:11:33,172
-And now inside of this I need the SplitView.Pane
+然后在这里面我还需要一个SplitView.Pane
 
 173
 00:11:35,293 --> 00:11:39,587
-and I then need the SplitView.Content.
+还有就是一个 SplitView.Content.
 
 174
 00:11:40,809 --> 00:11:43,496
-In the Pane, we're going to have a ListBox
+在Pane里面, 还需要添加一个ListBox
 
 175
 00:11:43,497 --> 00:11:46,771
-like we've always had, or actually, I'm sorry.
+就像我们平常做的那样，实际上，对不起
 
 176
 00:11:46,772 --> 00:11:49,469
-I'm going to do things a little bit different this time.
+这一次我想做一点不一样的东西
 
 177
 00:11:49,470 --> 00:11:51,720
-I'll use a ListView this time.
+这一次我要使用列表视图
 
 178
 00:11:51,721 --> 00:11:55,250
-I'm going to Bind to the items and just use Data Binding
+我要绑定这些项目，并且只是用数据绑定
 
 179
 00:11:55,251 --> 00:11:58,429
-and Bind to a List that I'll create in the code behind
+绑定到这个之前创建的列表里
 
 180
 00:11:58,430 --> 00:12:00,359
-for the MainPage.xaml.
+在MainPage.xaml中.
 
 181
 00:12:00,360 --> 00:12:05,351
-I guess I will work on that in this lesson.
+我想这节课我要使用这个
 
 182
 00:12:09,952 --> 00:12:13,565
-Anyway, I know that we want the is ItemClickEnabled
+无论如何，我知道我们希望它是可点击的
 
 183
 00:12:13,566 --> 00:12:17,217
-equal true on this, I know I'm going
+我还知道我需要去
 
 184
 00:12:17,218 --> 00:12:20,268
-to handle the ItemClick event on this as well.
+控制这个项目单击事件
 
 185
 00:12:22,289 --> 00:12:25,680
-Probably should give it a name. Bummer.
+或许应该给它起一个名字 
 
 186
 00:12:26,167 --> 00:12:31,166
-So Name="MenuItemsListView".
+所以 Name="MenuItemsListView".
 
 187
 00:12:34,945 --> 00:12:38,703
-And so, let me regenerate that.
+让我重新生成一次
 
 188
 00:12:52,171 --> 00:12:55,935
-And I know I need a Template, and I know I need a Source.
+我还需要一个Template,以及一个Source.
 
 189
 00:12:55,936 --> 00:12:58,020
-I'll come back to that in a minute.
+稍后再来写这个
 
 190
 00:12:59,051 --> 00:13:01,556
-Now, in this area, I'm actually going to add,
+现在，在这里我想要添加的东西是
 
 191
 00:13:01,557 --> 00:13:03,337
-in the Content area I'm going to add a Grid
+在Content里面添加一个Grid
 
 192
 00:13:03,338 --> 00:13:05,759
-because I'm going to actually split this into two Rows.
+因为我打算将它真的分成两行
 
 193
 00:13:05,760 --> 00:13:07,966
-There will be a top Row that'll contain
+顶部一行会包括
 
 194
 00:13:07,967 --> 00:13:12,295
-what's being displayed in the main area
+将会在主区域进行显示的东西
 
 195
 00:13:12,296 --> 00:13:15,934
-and then below that I'll have the items
+在下方会是一个
 
 196
 00:13:15,935 --> 00:13:18,160
-that will be displayed.
+将会被显示的对象
 
 197
 00:13:18,161 --> 00:13:22,933
-So I'm going to need some RowDefinitions.
+所以我需要定义一下行
 
 198
 00:13:25,170 --> 00:13:29,685
-So RowDefinitionHeight="Auto".
+所以RowDefinitionHeight="Auto".
 
 199
 00:13:39,910 --> 00:13:44,410
-So I know, whoops, let's not get here in the wrong spot.
+所以我知道，在这里不要犯错
 
 200
 00:13:44,411 --> 00:13:46,042
-Okay, there we go.
+让我们继续
 
 201
 00:13:46,043 --> 00:13:48,058
-In this top Row I'm going to add a StackPanel
+在顶部这一栏需要添加一个StackPanel
 
 202
 00:13:48,059 --> 00:13:51,781
-and it's just going to contain TextBlock.
+然后我打算添加一个文本框
 
 203
 00:13:51,782 --> 00:13:54,607
-I don't even know that I need the StackPanel, honestly.
+说实话我都不知道我需要一个StackPanel
 
 204
 00:13:54,608 --> 00:13:56,164
-I could probably do without it, in fact,
+实际上，不要它我也可以做到
 
 205
 00:13:56,165 --> 00:13:59,038
-I will do without it. Just get rid of it.
+我可以不用它，所以还是把它删了吧！
 
 206
 00:14:00,602 --> 00:14:03,599
-Let's just go straight with the TextBlock.
+直接使用文本框
 
 207
 00:14:03,600 --> 00:14:08,599
-And we'll set Name="CategoryTextBlock".
+设置名字为"CategoryTextBlock".
 
 208
 00:14:13,412 --> 00:14:15,811
-Text="All Sounds".
+设置文本Text="All Sounds".
 
 209
 00:14:15,812 --> 00:14:17,646
-That will be the default text in there.
+这个就会是默认文本了
 
 210
 00:14:17,647 --> 00:14:20,195
-I'm going to make this kind of like a header,
+我打算把这个弄得比较像一个标题
 
 211
 00:14:20,196 --> 00:14:22,875
-so we'll set the FontSize="24".
+所以设置字号为FontSize="24".
 
 212
 00:14:26,946 --> 00:14:29,400
-Okay. And then in the lower area I'll add the GridView
+然后再下面的一行添加一个GridView
 
 213
 00:14:29,401 --> 00:14:32,274
-beneath that and that'll contain all of our items.
+再下面会包含其他全部的对象
 
 214
 00:14:32,275 --> 00:14:35,271
-And we'll set that Grid.Row="1".
+然后设置Grid.Row="1".
 
 215
 00:14:36,280 --> 00:14:40,732
-And I'll call this Name="SoundGridView".
+命名为 Name="SoundGridView".
 
 216
 00:14:42,360 --> 00:14:46,274
-Alright, this is really the key one we want to focus on.
+这就是我们需要注意的
 
 217
 00:14:51,825 --> 00:14:56,333
-We want to set the SelectionMode="None".
+设置SelectionMode="None".
 
 218
 00:14:56,334 --> 00:14:58,386
-All I want someone to be able to do is click on a sound
+我想要实现的是有人单击这个音频
 
 219
 00:14:58,387 --> 00:15:01,842
-and it play the sound, I don't need selection.
+然后播放音频，并不需要选择
 
 220
 00:15:01,843 --> 00:15:05,233
-I do want to set the is ItemClickEnabled that goes true
+还需要设置IsItemClickEnabled等于true
 
 221
 00:15:05,234 --> 00:15:07,463
-because I do want it to be clickable.
+因为我确实需要它能点击
 
 222
 00:15:07,464 --> 00:15:12,011
-So then the ItemClick Event should be handled.
+这样对象单击事件可以被控制
 
 223
 00:15:16,317 --> 00:15:18,235
-Now I know I'm going to need an Item Source
+现在我知道我需要一个Item Source
 
 224
 00:15:18,236 --> 00:15:21,849
-and all that business and I'll come back to that.
+这些稍后再弄！
 
 225
 00:15:21,850 --> 00:15:26,278
-So let's go GridView.ItemTemplate
+（打代码~）GridView.ItemTemplate
 
 226
 00:15:26,279 --> 00:15:30,832
-and then set the DataTemplate
+然后设置DataTemplate
 
 227
 00:15:30,833 --> 00:15:35,466
-and then let's put an Image inside of there.
+然后放一个图片在这里
 
 228
 00:15:39,393 --> 00:15:41,359
-And I happen to know that the Height
+我大概猜到高度
 
 229
 00:15:41,360 --> 00:15:43,482
-and the Widths are kind of weird
+和宽度会有点怪
 
 230
 00:15:43,483 --> 00:15:45,423
-because when gave the specifications
+因为当我给定了这些规格（讲故事ing）
 
 231
 00:15:45,424 --> 00:15:48,442
-to the guy who was working on it,
+给了一个做这方面工作的人
 
 232
 00:15:48,443 --> 00:15:50,650
-I just gave some arbitrary number
+我只是给了一些大概的数字
 
 233
 00:15:50,651 --> 00:15:52,932
-based on a mock-up that I'd created.
+基于我创建的模型
 
 234
 00:15:57,163 --> 00:15:59,982
-As I look at my notes here, I see is it 101 Width.
+看一下我的笔记, 宽度应该是101
 
 235
 00:15:59,983 --> 00:16:01,998
-And we'll have to set the Source on that as well,
+在这里还需要设置好source
 
 236
 00:16:01,999 --> 00:16:03,001
-we'll come back to that later
+不过我们等到后面
 
 237
 00:16:03,002 --> 00:16:05,230
-whenever we do the Data Binding
+当我们做数据绑定的时候
 
 238
 00:16:05,231 --> 00:16:07,336
-in the next lesson.
+在下一节课
 
 239
 00:16:08,783 --> 00:16:11,331
-But there's one other interesting little thing
+但是这里还有一个值得注意的小东西
 
 240
 00:16:11,332 --> 00:16:14,717
-that I want to stick here as well in this area.
+我想放到这个区域里
 
 241
 00:16:15,471 --> 00:16:16,974
-And that is the MediaElement.
+也就是媒体元素MediaElement.
 
 242
 00:16:16,975 --> 00:16:18,787
-The media element allows you to play sounds
+媒体元素允许播放音频
 
 243
 00:16:18,788 --> 00:16:20,835
-and we'll become very familiar
+这将会是我们非常熟悉的
 
 244
 00:16:20,836 --> 00:16:22,947
-with that two videos from now.
+从现在这个视频开始
 
 245
 00:16:22,948 --> 00:16:26,834
-Let me go ahead and give it the Name MyMediaElement.
+首先先给它命名为MyMediaElement.
 
 246
 00:16:27,193 --> 00:16:30,679
-And I'm going to set a property called AutoPlay="True".
+然后设置属性AutoPlay="True".
 
 247
 00:16:30,680 --> 00:16:35,679
-And that just says, whenever I give you a Source,
+这也就意味着，当我提供了一个资源
 
 248
 00:16:38,793 --> 00:16:42,273
-so Assets/Sounds/Cow, whatever,
+比如Assets/Sounds/Cow之类的
 
 249
 00:16:42,274 --> 00:16:43,649
-just go ahead and play it,
+它就会自动播放
 
 250
 00:16:43,650 --> 00:16:45,687
-I'm not going to programatically tell you
+我不会程序性的告诉你
 
 251
 00:16:45,688 --> 00:16:48,560
-to start and stop playing, just play, auto play.
+去开始或者结束播放，就是自动播放
 
 252
 00:16:50,285 --> 00:16:53,185
-Alright, I think that's all that I'm going to do here
+好，我想这就是这节课所要讲的东西了
 
 253
 00:16:53,186 --> 00:16:55,275
-in this first video. We covered a lot of ground.
+在这第一个视频里，我们提到了很多东西
 
 254
 00:16:55,276 --> 00:16:58,721
-There's a lot left to do.
+这就留下了很多东西去做
 
 255
 00:16:58,722 --> 00:17:00,896
-But we'll come back and get them
+我们很快会回来
 
 256
 00:17:00,897 --> 00:17:02,592
-on subsequent passes at this.
+在后面的课程完成它
 
 257
 00:17:02,593 --> 00:17:04,982
-So at this point there's really not a lot to this app,
+所以现在这个app还尚未成型
 
 258
 00:17:04,983 --> 00:17:06,496
-it's just kind of the shell
+这就像是设定好了
 
 259
 00:17:06,497 --> 00:17:10,675
-and we'll come back and we'll fill in a lot of this stuff.
+后面我们会回来补充很多东西
 
 260
 00:17:10,676 --> 00:17:13,594
-Okay, pick it up in the next lesson, thanks.
+下一节课见！再见
 
