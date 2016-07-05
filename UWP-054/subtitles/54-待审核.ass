@@ -23,7 +23,7 @@ Style: UWP,Microsoft YaHei UI,50,&H00FFFFFF,&H004AA657,&H00000000,&H00000000,0,0
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:00:06.07,UWP,,0,0,0,,UWP 音板 - 完成触控 \N听译@4770K
+Dialogue: 0,0:00:00.00,0:00:06.07,UWP,,0,0,0,,UWP 音板 - 收尾 \N听译@4770K
 Dialogue: 0,0:00:06.07,0:00:08.62,UWP,,0,0,0,,我想大部分功能已经完成了
 Dialogue: 0,0:00:08.62,0:00:10.92,UWP,,0,0,0,,除了一个我想加入的功能
 Dialogue: 0,0:00:11.26,0:00:21.03,UWP,,0,0,0,,着手去做 auto complete box （口胡技能Max）
