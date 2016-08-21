@@ -1,14 +1,14 @@
 1
 00:00:06,071 --> 00:00:11,118
-All right so I think we're pretty much done here except for      
+All right so I think we'repretty much done here except for      
 
 2
 00:00:11,119 --> 00:00:15,238
-one little piece of functionality that I wanted      
+one little piece offunctionality that I wanted      
 
 3
 00:00:15,239 --> 00:00:19,470
-to implement and that was the auto complete box.      
+to implement andthat was the auto complete box.      
 
 4
 00:00:19,471 --> 00:00:22,110
@@ -20,19 +20,19 @@ AutoSuggestBox, okay.
 
 6
 00:00:23,497 --> 00:00:28,020
-And I wanted to be able to do searches and      
+And I wanted to beable to do searches and      
 
 7
 00:00:28,021 --> 00:00:32,750
-then also, when somebody submits the actual search it would      
+then also, when somebody submitsthe actual search it would      
 
 8
 00:00:32,751 --> 00:00:36,890
-perform the query and refine down the items      
+perform the query andrefine down the items      
 
 9
 00:00:36,891 --> 00:00:40,180
-in the results to just those that match the other criteria.      
+in the results to just thosethat match the other criteria.      
 
 10
 00:00:40,181 --> 00:00:41,710
@@ -40,27 +40,27 @@ So really just the name.
 
 11
 00:00:41,711 --> 00:00:46,280
-All right so to implement this we have two methods, or      
+All right so to implementthis we have two methods, or      
 
 12
 00:00:46,281 --> 00:00:50,155
-two events, to handle the text change and the query submitted.      
+two events, to handle the textchange and the query submitted.      
 
 13
 00:00:50,156 --> 00:00:52,715
-So let's go ahead and get started in there.      
+So let's go ahead andget started in there.      
 
 14
 00:00:52,716 --> 00:00:56,705
-And what we're gonna need is another,      
+And what we're gonnaneed is another,      
 
 15
 00:00:56,706 --> 00:00:59,335
-let's stick a null here between these two.      
+let's stick a nullhere between these two.      
 
 16
 00:01:00,385 --> 00:01:04,937
-Another, I think this time it's gonna be a list of string called      
+Another, I think this time it'sgonna be a list of string called      
 
 17
 00:01:04,938 --> 00:01:09,509
@@ -72,19 +72,19 @@ I'll populate the suggestions
 
 19
 00:01:14,532 --> 00:01:21,977
-with whatever we get back from, so let's see.      
+with whatever we get back from,so let's see.      
 
 20
 00:01:24,577 --> 00:01:31,059
-So what we're gonna do here is actually just set      
+So what we're gonna dohere is actually just set      
 
 21
 00:01:31,060 --> 00:01:37,740
-suggestions = SoundManager.GetAllSounds.      
+suggestions =SoundManager.GetAllSounds.      
 
 22
 00:01:37,741 --> 00:01:40,980
-I see that it's not really implemented quite that way.      
+I see that it's not reallyimplemented quite that way.      
 
 23
 00:01:40,981 --> 00:01:43,540
@@ -92,7 +92,7 @@ So what I'll need to do here
 
 24
 00:01:44,640 --> 00:01:49,400
-is actually change up how I was thinking about doing this.      
+is actually change up how Iwas thinking about doing this.      
 
 25
 00:01:49,401 --> 00:01:50,490
@@ -100,7 +100,7 @@ Let's GetAllSounds and
 
 26
 00:01:50,491 --> 00:01:52,870
-let's pass in just Sounds like that, right.      
+let's pass in justSounds like that, right.      
 
 27
 00:01:54,150 --> 00:01:57,709
@@ -116,27 +116,27 @@ p.Name.StartsWith) and
 
 30
 00:02:13,311 --> 00:02:16,310
-then whatever they have passed in.      
+then whatever theyhave passed in.      
 
 31
 00:02:16,311 --> 00:02:20,140
-So I think at this point we can get      
+So I think at thispoint we can get      
 
 32
 00:02:20,141 --> 00:02:25,114
-text that has been typed in from sender.Text.      
+text that has been typedin from sender.Text.      
 
 33
 00:02:25,115 --> 00:02:29,100
-All right, so once we have this, all we really want is      
+All right, so once we have this,all we really want is      
 
 34
 00:02:29,101 --> 00:02:32,970
-just the name itself, not the entire sound object.      
+just the name itself,not the entire sound object.      
 
 35
 00:02:32,971 --> 00:02:37,857
-So I'm just gonna project out just the name      
+So I'm just gonna projectout just the name      
 
 36
 00:02:37,858 --> 00:02:40,310
@@ -144,7 +144,7 @@ property like that.
 
 37
 00:02:42,946 --> 00:02:45,860
-And it doesn't like something that I've done here.      
+And it doesn't like somethingthat I've done here.      
 
 38
 00:02:45,861 --> 00:02:48,484
@@ -152,15 +152,15 @@ And I think I know why.
 
 39
 00:02:48,485 --> 00:02:52,663
-So let me change this, I can do this one of two ways.      
+So let me change this,I can do this one of two ways.      
 
 40
 00:02:52,664 --> 00:02:57,980
-I can keep list and just go, I think to list here.      
+I can keep list and just go,I think to list here.      
 
 41
 00:03:00,418 --> 00:03:04,579
-Yeah, to list, or I could just change this to I enumerable      
+Yeah, to list, or I could justchange this to I numerable      
 
 42
 00:03:04,580 --> 00:03:06,640
@@ -172,7 +172,7 @@ But we'll just do it this way.
 
 44
 00:03:08,241 --> 00:03:15,371
-So now that I have suggestions, I'm gonna set the. The      
+So now that I have suggestions,I'm gonna set the. The      
 
 45
 00:03:15,372 --> 00:03:22,041
@@ -188,11 +188,11 @@ All right, yeah, this will work.
 
 48
 00:03:40,203 --> 00:03:44,333
-All right, so now that we've typed in the word and I've hit      
+All right, so now that we'vetyped in the word and I've hit      
 
 49
 00:03:44,334 --> 00:03:48,720
-entered on my keyboard, I need to handle the query submitted.      
+entered on my keyboard, I needto handle the query submitted.      
 
 50
 00:03:49,730 --> 00:03:52,170
@@ -200,11 +200,11 @@ So this will allow us
 
 51
 00:03:54,900 --> 00:03:58,660
-to actually filter the items that we're binding to.      
+to actually filter the itemsthat we're binding to.      
 
 52
 00:03:58,661 --> 00:04:03,641
-So that list of suggestions should be filtered all the way      
+So that list of suggestionsshould be filtered all the way      
 
 53
 00:04:03,642 --> 00:04:04,689
@@ -220,7 +220,7 @@ is make another method on sound
 
 56
 00:04:16,645 --> 00:04:21,430
-manager to do some line certain public static      
+manager to do some public static      
 
 57
 00:04:21,431 --> 00:04:26,070
@@ -228,15 +228,15 @@ void getsoundsByName maybe.
 
 58
 00:04:26,071 --> 00:04:29,210
-And then just type in a string name, something like that.      
+And then just type in a stringname, something like that.      
 
 59
 00:04:30,270 --> 00:04:33,410
-We can do almost everything that we've done before.      
+We can do almost everythingthat we've done before.      
 
 60
 00:04:36,813 --> 00:04:40,911
-And then we'll gear up a filtered set of sounds.      
+And then we'll gear upa filtered set of sounds.      
 
 61
 00:04:45,054 --> 00:04:51,414
@@ -248,31 +248,31 @@ Where(p => p.Name
 
 63
 00:05:00,630 --> 00:05:05,064
-And then, I guess what I probably should do      
+And then, I guess whatI probably should do      
 
 64
 00:05:05,065 --> 00:05:10,480
-is do an observable collection.      
+is Do an observable collection.      
 
 65
 00:05:10,481 --> 00:05:16,120
-So, ObservableCollection<Sound>, sounds.      
+So, ObservableCollectionSound,sounds.      
 
 66
 00:05:16,121 --> 00:05:20,500
-I know this isn't pretty, but sometimes when you're in      
+I know this isn't pretty,but sometimes when you're in      
 
 67
 00:05:20,501 --> 00:05:24,090
-development you have to think through things on the fly here.      
+development you have to thinkthrough things on the fly here.      
 
 68
 00:05:24,091 --> 00:05:28,523
-So, I guess the last step would be then to go filter      
+So, I guess the last stepwould be then to go filter      
 
 69
 00:05:28,524 --> 00:05:32,758
-sounds. do that whole foreach thing, right.      
+sounds.do that whole foreach thing, right.      
 
 70
 00:05:32,759 --> 00:05:37,130
@@ -284,7 +284,7 @@ See if that works.
 
 72
 00:05:40,011 --> 00:05:44,798
-So then, back here in MainPage.xaml.cs.      
+So then,back here in MainPage.xaml.cs.      
 
 73
 00:05:44,799 --> 00:05:50,666
@@ -300,31 +300,31 @@ then the sender.Text should
 
 76
 00:05:58,869 --> 00:06:03,331
-give me what was typed in to that auto suggest box.      
+give me what was typed intothat auto suggest box.      
 
 77
 00:06:05,317 --> 00:06:08,892
-And I think that's all I need to do.      
+And I think that'sall I need to do.      
 
 78
 00:06:12,897 --> 00:06:17,749
-Yeah, I might do some of this stuff though here.      
+Yeah, I might do some ofthis stuff though here.      
 
 79
 00:06:20,129 --> 00:06:25,380
-So I'm gonna set all sounds to whatever sender.Text is.      
+So I'm gonna set all soundsto whatever sender.Text is.      
 
 80
 00:06:26,700 --> 00:06:30,545
-MenuItemsListView.SelectedItem = null, that's correct.      
+MenuItemsListView.SelectedItem =null, that's correct.      
 
 81
 00:06:30,546 --> 00:06:35,043
-BackButton.Visibility should be visible, like that.      
+BackButton.Visibility shouldbe visible, like that.      
 
 82
 00:06:35,044 --> 00:06:38,365
-Okay, so let's see if this works the way that I had in mind.      
+Okay, so let's see if this worksthe way that I had in mind.      
 
 83
 00:06:42,403 --> 00:06:43,924
@@ -360,11 +360,11 @@ You know what I forgot to do?
 
 91
 00:07:05,541 --> 00:07:07,317
-I forgot to take that step right there.      
+I forgot to take thatstep right there.      
 
 92
 00:07:07,318 --> 00:07:08,741
-I'll bet you, that's the problem.      
+I'll bet you,that's the problem.      
 
 93
 00:07:10,168 --> 00:07:14,808
@@ -376,7 +376,7 @@ and then let's try this again.
 
 95
 00:07:19,631 --> 00:07:23,466
-All right Cow, and I'm just gonna blow through it and      
+All right Cow, and I'm justgonna blow through it and      
 
 96
 00:07:23,467 --> 00:07:24,668
@@ -400,11 +400,11 @@ Let's go Gun.
 
 101
 00:07:32,188 --> 00:07:36,968
-You know, the one thing I would like to do is clear      
+You know, the one thing Iwould like to do is clear      
 
 102
 00:07:36,969 --> 00:07:40,478
-out the box after I'm done with it.      
+out the box afterI'm done with it.      
 
 103
 00:07:40,479 --> 00:07:43,763
@@ -416,11 +416,11 @@ It's the query submitted.
 
 105
 00:07:46,562 --> 00:07:49,381
-All right, so then I should be able      
+All right, sothen I should be able      
 
 106
 00:07:49,382 --> 00:07:54,130
-to go SearchAutoSuggestBox.Text = "".      
+to go SearchAutoSuggestBox.Text= nothing.      
 
 107
 00:07:54,131 --> 00:07:55,680
@@ -428,23 +428,23 @@ See if that works.
 
 108
 00:07:55,681 --> 00:07:56,893
-I'm wanna get rid of the break point.      
+I'm wanna get ridof the break point.      
 
 109
 00:07:58,797 --> 00:08:02,878
-Now ideally, before we move into the next part of getting ready      
+Now ideally, before we move intothe next part of getting ready      
 
 110
 00:08:02,879 --> 00:08:05,960
-to submit, I would do a lot of testing.      
+to submit,I would do a lot of testing.      
 
 111
 00:08:05,961 --> 00:08:08,710
-Test on physical devices, test on different desktops,      
+Test on physical devices,test on different desktops,      
 
 112
 00:08:08,711 --> 00:08:10,170
-just whoever I could get, to help me out here.      
+just whoever I could get,to help me out here.      
 
 113
 00:08:11,170 --> 00:08:14,400
@@ -452,11 +452,11 @@ Let's go Ship, Enter.
 
 114
 00:08:14,401 --> 00:08:19,020
-See the problem here is that the order of events,      
+See the problem here isthat the order of events,      
 
 115
 00:08:19,021 --> 00:08:24,235
-right, it will, by making that change,      
+right, it will,by making that change,      
 
 116
 00:08:24,236 --> 00:08:29,647
@@ -464,15 +464,15 @@ it will actually,
 
 117
 00:08:29,648 --> 00:08:33,970
-it will rerun the query submitted a second time.      
+it will rerun the querysubmitted a second time.      
 
 118
 00:08:33,971 --> 00:08:37,740
-So I can't put that in this line of code, I can't put it there.      
+So I can't put that in this lineof code, I can't put it there.      
 
 119
 00:08:38,890 --> 00:08:42,738
-What I can do however is maybe put it there when we hit      
+What I can do however is maybeput it there when we hit      
 
 120
 00:08:42,739 --> 00:08:44,080
@@ -484,27 +484,27 @@ whenever we make a differentselection on the menu list.
 
 122
 00:08:48,391 --> 00:08:51,290
-[SOUND] Let me put that there as well.      
+[SOUND] Let me putthat there as well.      
 
 123
 00:08:52,620 --> 00:08:55,402
-So those two spots, this is what happens.      
+So those two spots,this is what happens.      
 
 124
 00:08:55,403 --> 00:08:58,640
-State management's usually tricky,      
+State management'susually tricky,      
 
 125
 00:08:58,641 --> 00:09:01,890
-you gotta think okay, what needs to be where and when.      
+you gotta think okay,what needs to be where and when.      
 
 126
 00:09:01,891 --> 00:09:03,620
-Also it looks like I need a little paddling      
+Also it looks like Ineed a little paddling      
 
 127
 00:09:03,621 --> 00:09:05,840
-on the right there or margin on the right.      
+on the right there ormargin on the right.      
 
 128
 00:09:05,841 --> 00:09:06,770
@@ -512,7 +512,7 @@ Okay.
 
 129
 00:09:06,771 --> 00:09:08,379
-Here we go. Cow.      
+Here we go.Cow.      
 
 130
 00:09:08,380 --> 00:09:10,500
@@ -524,7 +524,7 @@ I use Back button.
 
 132
 00:09:12,780 --> 00:09:16,340
-See I can see it flicker which tells me that it's running it      
+See I can see it flicker whichtells me that it's running it      
 
 133
 00:09:16,341 --> 00:09:16,850
@@ -532,7 +532,7 @@ twice.
 
 134
 00:09:19,780 --> 00:09:21,860
-I'm not sure with the right answer to this is.      
+I'm not sure with the rightanswer to this is.      
 
 135
 00:09:24,930 --> 00:09:28,350
@@ -548,11 +548,11 @@ Now when I click something else,
 
 138
 00:09:30,788 --> 00:09:32,475
-you'll notice that there is a brief,      
+you'll notice thatthere is a brief,      
 
 139
 00:09:32,476 --> 00:09:35,008
-it will display everything then there's a flicker, and      
+it will display everythingthen there's a flicker, and      
 
 140
 00:09:35,009 --> 00:09:36,557
@@ -560,27 +560,27 @@ then it will display everything.
 
 141
 00:09:39,459 --> 00:09:43,231
-It goes [SOUND] before it hit taunts and      
+It goes [SOUND] beforeit hit taunts and      
 
 142
 00:09:43,232 --> 00:09:48,536
-it does even all taunts because, again, we've by setting the text      
+it does even all taunts because,again, we've by setting the text      
 
 143
 00:09:48,537 --> 00:09:53,290
-like that we're actually changing the logic of the code.      
+like that we're actuallychanging the logic of the code.      
 
 144
 00:09:53,291 --> 00:09:58,576
-So I might just need to do this, like that and just forget it.      
+So I might just need to do this,like that and just forget it.      
 
 145
 00:10:01,990 --> 00:10:06,308
-There probably is a way to suppress that event.      
+There probably is a wayto suppress that event.      
 
 146
 00:10:06,309 --> 00:10:09,301
-And I tell you what, off camera I'll try to figure out if I can      
+And I tell you what, off cameraI'll try to figure out if I can      
 
 147
 00:10:09,302 --> 00:10:10,731
@@ -588,7 +588,7 @@ figure out a way to fix that.
 
 148
 00:10:12,913 --> 00:10:15,467
-So, if I were to hit x there, everything, but      
+So, if I were to hit x there,everything, but      
 
 149
 00:10:15,468 --> 00:10:17,310
@@ -596,7 +596,7 @@ it doesn't change that either.
 
 150
 00:10:17,311 --> 00:10:19,230
-So there's a couple a little issues surrounding      
+So there's a couplea little issues surrounding      
 
 151
 00:10:19,231 --> 00:10:20,640
@@ -604,11 +604,11 @@ this that I need to figure out.
 
 152
 00:10:20,641 --> 00:10:22,680
-So I'm gonna stop right here, and      
+So I'm gonna stop right here,and      
 
 153
 00:10:22,681 --> 00:10:26,010
-I'm actually going to play around with this a little      
+I'm actually going to playaround with this a little      
 
 154
 00:10:26,011 --> 00:10:27,870
@@ -616,7 +616,7 @@ bit more before we goto the next video and
 
 155
 00:10:27,871 --> 00:10:31,900
-maybe fix some things about it, but overall it kind of works.      
+maybe fix some things about it,but overall it kind of works.      
 
 156
 00:10:31,901 --> 00:10:32,940
@@ -624,11 +624,11 @@ Okay.
 
 157
 00:10:32,941 --> 00:10:35,960
-All right, we'll pick it up in the next video and we'll start      
+All right, we'll pick it up inthe next video and we'll start      
 
 158
 00:10:35,961 --> 00:10:39,030
-working with assets and talk about the package apex manifest.      
+working with assets and talkabout the package apex manifest.      
 
 159
 00:10:40,620 --> 00:10:41,614
