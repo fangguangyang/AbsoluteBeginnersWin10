@@ -153,6 +153,8 @@ null
 | pages/Pages | 页面/Page | | 前者是普通词汇，后者 Page 类的名称的复数，表示很多个 Page 实例，鉴于汉语表达习惯，对 Page 不变复数。（这其实有待商榷，例如“贝勒”的复数是“贝子”。） |
 | margin | 外边距 | 边距 | “边距”不准确。 |
 | padding | 内边距 | 边距 | “边距”不准确。 |
+| solution | 解决方案 | 项目、工程 | 工程或者项目指的是 project，不是 solution |
+| build | 生成 | 编译 | 编译指的是 compile，build 不是 compile，更类似于 make |
 
 ### 关于翻译选择
 对于一段英文，它可能是下列三种可能
