@@ -3,7 +3,7 @@
 ## 原 README
 windows 10 开发者教程 （XAML/c#）
 
-这是 windows 10 入门者开发教程， 不管你是有经验的开发者还是初学者，你都能够在这个课程中学到东西。如果你希望看一些更快速的教程可以看[面向 IT 专业人员的 Windows 10 入门指南](https://mva.microsoft.com/zh-cn/training-courses/-it-windows-10--10629)。这个教程只需要你了解基本的 c# ，如果你没有的的话，可以看这里：[C# Fundamentals for Absolute Beginners](https://mva.microsoft.com/en-us/training-courses/c-fundamentals-for-absolute-beginners-8295?l=lQifIGYy_5004984382)（没有中文版）
+这是 windows 10 入门者开发教程， 不管你是有经验的开发者还是初学者，你都能够在这个课程中学到东西。如果你希望看一些更快速的教程可以看[面向 IT 专业人员的 Windows 10 入门指南](https://mva.microsoft.com/zh-cn/training-courses/-it-windows-10--10629)。这个教程只需要你了解基本的 c# ，如果你没有的的话，可以看这里：[了解面向初学者的 C#](https://mva.microsoft.com/zh-cn/training-courses/-c--16169)
 
 这个课程可以分成两个重要的部分，第一部分会教你构建一些基本的 app 的技巧。第二个部分你将会做四个完整的 app：发声卡（soundboard），天气（weather），一个唱片封面连连看（album cover matching game），还有一个探索英雄（hero explore） app。我们推荐刚开始的同学从头开始学。如果你已经有基础了，我们推荐你直接开始看下面的这些课程：
 
