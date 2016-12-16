@@ -1,1632 +1,1630 @@
-1
-00:00:04,610 --> 00:00:08,258
-My goal in this video isto display characters in      
+﻿1
+00:00:02,610 --> 00:00:04,610
+Windows 10 新手开发系列
+探索英雄——数据绑定和通过对象图导航
+翻译：@陈继民 校对：【】
 
 2
-00:00:08,259 --> 00:00:11,540
-a list view, and so,to get to that point,      
+00:00:04,610 --> 00:00:08,258
+这一次的视频中，我的目标是把角色
 
 3
-00:00:11,541 --> 00:00:14,110
-there's gonna be a lot of steps.      
+00:00:08,259 --> 00:00:11,540
+在一个列表视图里面显示，为了做到这一步
 
 4
-00:00:14,111 --> 00:00:18,510
-Honestly, we're not really allthat close, even though we have      
+00:00:11,541 --> 00:00:14,110
+我们还需要做很多工作！！（小伙伴们加油！！）
 
 5
-00:00:18,511 --> 00:00:22,040
-data from the Marvel API andwe deserialized it.      
+00:00:14,111 --> 00:00:18,510
+说句实话，我们现在做的其实离我们想实现的效果还挺远的
 
 6
-00:00:22,041 --> 00:00:23,710
-But let's go ahead andget started.      
+00:00:18,511 --> 00:00:22,040
+即使我们已经有了从 marvel api 获取到的角色数据并且反序列化了
 
 7
-00:00:23,711 --> 00:00:26,880
-I wanna start by talking aboutthis method we were working with      
+00:00:22,041 --> 00:00:23,710
+额，我们还是直接开始把！
 
 8
-00:00:26,881 --> 00:00:30,100
-in a previous video,this GetCharacterList.      
+00:00:23,711 --> 00:00:26,880
+我想先来说一下这个上一个视频中我们实现的方法
 
 9
-00:00:30,101 --> 00:00:31,328
-There's a couple ofproblems with it.      
+00:00:26,881 --> 00:00:30,100
+这个GetCharacterList方法（获取角色列表）
 
 10
-00:00:31,329 --> 00:00:34,040
-The first problem is thatthe name doesn't really describe      
+00:00:30,101 --> 00:00:31,328
+这个方法其实有几个小问题
 
 11
-00:00:34,041 --> 00:00:35,695
-what the what it does.      
+00:00:31,329 --> 00:00:34,040
+首先的问题是方法名并没有描述清楚
 
 12
-00:00:35,696 --> 00:00:38,370
-GetCharacterList should begiving me a list of characters.      
+00:00:34,041 --> 00:00:35,695
+我们想做什么（变量名、方法（函数）名的重要性）
 
 13
-00:00:38,371 --> 00:00:41,220
-But really what it'sdoing is returning back      
+00:00:35,696 --> 00:00:38,370
+现在我们的这个 GetCharacterList 方法应该是给我们角色的列表
 
 14
-00:00:41,221 --> 00:00:44,850
-the root object forthe entire object graph.      
+00:00:38,371 --> 00:00:41,220
+但实际上我们实现的效果是
 
 15
-00:00:44,851 --> 00:00:47,240
-So it's giving me thatcharacter data wrapper.      
+00:00:41,221 --> 00:00:44,850
+返回了整个对象图中的根对象
 
 16
-00:00:47,241 --> 00:00:48,300
-And that would have to go in and      
+00:00:44,851 --> 00:00:47,240
+也就是给了我们一个封装好的角色数据
 
 17
-00:00:48,301 --> 00:00:52,100
-find the charactersthat are associated      
+00:00:47,241 --> 00:00:48,300
+然后我需要访问到这个角色数据
 
 18
-00:00:52,101 --> 00:00:56,950
-with the character datacontainer, all right?      
+00:00:48,301 --> 00:00:52,100
+找到与这个角色相关联的
 
 19
-00:00:56,951 --> 00:00:59,115
-And sothere's a lot of traversal.      
+00:00:52,101 --> 00:00:56,950
+封装好的角色数据，好吧？
 
 20
-00:00:59,116 --> 00:01:01,820
-Furthermore, some ofthe characters that will be      
+00:00:56,951 --> 00:00:59,115
+所以这其中有一些障碍存在
 
 21
-00:01:01,821 --> 00:01:04,920
-brought back won'thave image data.      
+00:00:59,116 --> 00:01:01,820
+此外，还有一些返回的角色
 
 22
-00:01:04,921 --> 00:01:06,120
-And soI want to filter those out.      
+00:01:01,821 --> 00:01:04,920
+并没有对应的角色图片
 
 23
-00:01:06,121 --> 00:01:08,120
-And there's a couple of othersteps too that I need to take in      
+00:01:04,921 --> 00:01:06,120
+所以我想把这些过滤掉
 
 24
-00:01:08,121 --> 00:01:08,680
-between there.      
+00:01:06,121 --> 00:01:08,120
+这其中还有几个小地方
 
 25
-00:01:08,681 --> 00:01:11,673
-What I really wanna dois be able to go from      
+00:01:08,121 --> 00:01:08,680
+是我需要加以考虑的
 
 26
-00:01:11,674 --> 00:01:14,940
-the mainpage.xaml tothis Marvel facade.      
+00:01:08,681 --> 00:01:11,673
+我实际上想实现的是，连接起
 
 27
-00:01:14,941 --> 00:01:18,140
-And I want to pass inan instance of an observable      
+00:01:11,674 --> 00:01:14,940
+MainPage.xaml和MarvelFacade.cs
 
 28
-00:01:18,141 --> 00:01:19,980
-collection of character.      
+00:01:14,941 --> 00:01:18,140
+我想传递一个实例
 
 29
-00:01:19,981 --> 00:01:22,791
-So I have an observablecollection of character that I      
+00:01:18,141 --> 00:01:19,980
+一个角色的observable collection（可观察集合）的实例
 
 30
-00:01:22,792 --> 00:01:24,900
-can bind to on my main page.      
+00:01:19,981 --> 00:01:22,791
+所以我有一个关于角色的可观察集合
 
 31
-00:01:24,901 --> 00:01:27,650
-And I want to pass thatobservable collection into      
+00:01:22,792 --> 00:01:24,900
+并且绑定到我的MainPage中
 
 32
-00:01:27,651 --> 00:01:29,920
-a method here on myMarvel facade and      
+00:01:24,901 --> 00:01:27,650
+然后传递这个可观察集合
 
 33
-00:01:29,921 --> 00:01:34,880
-let it add characters to it andso as we're adding characters      
+00:01:27,651 --> 00:01:29,920
+MarvelFacade中的方法里
 
 34
-00:01:34,881 --> 00:01:38,830
-to it, then the listwill grow and grow.      
+00:01:29,921 --> 00:01:34,880
+让它添加角色进去，所以当我们添加角色
 
 35
-00:01:38,831 --> 00:01:42,420
-So to accomplish that,what I'm wanna do is change,      
+00:01:34,881 --> 00:01:38,830
+我们的界面中的列表就会不断扩展增加角色数据
 
 36
-00:01:42,421 --> 00:01:46,240
-first of all, the name of thismethod from GetCharacterList to      
+00:01:38,831 --> 00:01:42,420
+要完成这样，这里需要一些小改动
 
 37
-00:01:46,241 --> 00:01:50,600
-GetCharacterDataWrapper and      
+00:01:42,421 --> 00:01:46,240
+首先是把 GetCharacterList （获取角色列表）这个名字
 
 38
-00:01:50,601 --> 00:01:54,050
-then I'm gonna make thisa private helper method.      
+00:01:46,241 --> 00:01:50,600
+改成GetCharacterDataWrapper（获取封装后角色数据）
 
 39
-00:01:55,280 --> 00:02:00,968
-Then I'm gonna call into that      
+00:01:50,601 --> 00:01:54,050
+我要将这个方法的访问级别改为private
 
 40
-00:02:00,969 --> 00:02:05,973
-from a public static async      
+00:01:55,280 --> 00:02:00,968
+然后从一个公用静态异步方法里
 
 41
-00:02:05,974 --> 00:02:14,180
-Task calledPopulateMarvelCharacters.      
+00:02:00,969 --> 00:02:05,973
+调用它
 
 42
-00:02:14,181 --> 00:02:18,362
-And then you're gonna passin an observable collection.      
+00:02:05,974 --> 00:02:14,180
+public static async Task PopulateMarvelCharacters()
 
 43
-00:02:21,382 --> 00:02:25,326
-A character, called      
+00:02:14,181 --> 00:02:18,362
+然后传进去一个可观察集合
 
 44
-00:02:25,327 --> 00:02:31,902
-marvelCharacters, so like that.      
+00:02:21,382 --> 00:02:25,326
+character
 
 45
-00:02:35,882 --> 00:02:38,979
-All right, I'm gonna need toadd a using statement for      
+00:02:25,327 --> 00:02:31,902
+变量名起为 marvelCharacters
 
 46
-00:02:38,980 --> 00:02:41,480
-the benefit ofthe ObservableCollection.      
+00:02:35,882 --> 00:02:38,979
+然后，我需要添加一个命名空间
 
 47
-00:02:43,310 --> 00:02:48,977
-And then what I want todo is make a call into,      
+00:02:38,980 --> 00:02:41,480
+为了使用可观察集合
 
 48
-00:02:48,978 --> 00:02:53,112
-so var characters = actually,      
+00:02:43,310 --> 00:02:48,977
+然后我想做的是调用一下函数
 
 49
-00:02:53,113 --> 00:02:56,950
-let me start back over again.      
+00:02:48,978 --> 00:02:53,112
+所以 var characters = (打代码中)
 
 50
-00:02:56,951 --> 00:03:03,490
-Getcharacterdatawrapper =Getcharacterdatawrapper, okay.      
+00:02:53,113 --> 00:02:56,950
+我还是重新来过把
 
 51
-00:03:03,491 --> 00:03:08,189
-Then what I wanna dois var characters      
+00:02:56,951 --> 00:03:03,490
+characterDataWrapper =GetCharacterDataWrapper();
 
 52
-00:03:08,190 --> 00:03:12,290
-= characterdatawrapper dot.      
+00:03:03,491 --> 00:03:08,189
+然后是 var characters
 
 53
-00:03:12,291 --> 00:03:15,789
-And so I'm gonna have totraverse through the character      
+00:03:08,190 --> 00:03:12,290
+= characterDataWrapper
 
 54
-00:03:15,790 --> 00:03:16,910
-data container.      
+00:03:12,291 --> 00:03:15,789
+然后我需要通过这个封装的角色数据
 
 55
-00:03:16,911 --> 00:03:19,046
-And it has a propertycalled results,      
+00:03:15,790 --> 00:03:16,910
+传递一些数据
 
 56
-00:03:19,047 --> 00:03:20,790
-which is a list of characters.      
+00:03:16,911 --> 00:03:19,046
+它有一个results的属性
 
 57
-00:03:20,791 --> 00:03:23,050
-So let's go data.      
+00:03:19,047 --> 00:03:20,790
+这个属性是角色的列表
 
 58
-00:03:23,051 --> 00:03:26,090
-So characterwrapper.data.      
+00:03:20,791 --> 00:03:23,050
+所以这里访问下这个属性
 
 59
-00:03:29,110 --> 00:03:30,960
-And then I seewhere the issue is.      
+00:03:23,051 --> 00:03:26,090
+characterDataWrapper.data
 
 60
-00:03:30,961 --> 00:03:35,318
-It's not giving me what Iexpect in IntelliSense because      
+00:03:29,110 --> 00:03:30,960
+我来看看这里出了什么问题
 
 61
-00:03:35,319 --> 00:03:37,870
-I didn't add the await keyword.      
+00:03:30,961 --> 00:03:35,318
+智能提示里面并没有给我想要的东西
 
 62
-00:03:37,871 --> 00:03:39,950
-And now, I should be ableto use IntelliSense and      
+00:03:35,319 --> 00:03:37,870
+应该我这里忘记添加await关键字了
 
 63
-00:03:39,951 --> 00:03:41,180
-find what I'm looking for.      
+00:03:37,871 --> 00:03:39,950
+现在应该就可以使用智能提示
 
 64
-00:03:41,181 --> 00:03:43,013
-Get data.results and      
+00:03:39,951 --> 00:03:41,180
+找到我们想要的了
 
 65
-00:03:43,014 --> 00:03:46,780
-that should give me backa list of characters.      
+00:03:41,181 --> 00:03:43,013
+data.results
 
 66
-00:03:46,781 --> 00:03:53,655
-Now what I want to do is iteratethrough the list of characters,      
+00:03:43,014 --> 00:03:46,780
+这应该给我返回一个角色列表
 
 67
-00:03:53,656 --> 00:03:58,340
-so foreach var character andcharacters.      
+00:03:46,781 --> 00:03:53,655
+现在我想做的是遍历这个列表
 
 68
-00:03:58,341 --> 00:04:03,338
-And I'm gonna add each characterto the marvelcharacters      
+00:03:53,656 --> 00:03:58,340
+所以 foreach （var character in characters）
 
 69
-00:04:03,339 --> 00:04:07,418
-that I passed in,the observable collection of      
+00:03:58,341 --> 00:04:03,338
+我想把这些角色添加到我传递进来的marvelcharacters
 
 70
-00:04:07,419 --> 00:04:12,420
-character, Like so.      
+00:04:03,339 --> 00:04:07,418
+这个关于角色的
 
 71
-00:04:13,900 --> 00:04:17,040
-Whoops, character.      
+00:04:07,419 --> 00:04:12,420
+可观察集合
 
 72
-00:04:17,041 --> 00:04:17,560
-There we go.      
+00:04:13,900 --> 00:04:17,040
+打错了，233
 
 73
-00:04:18,660 --> 00:04:25,140
-Now in between here, I need tofilter out, so fIlter characters      
+00:04:17,041 --> 00:04:17,560
+好了！
 
 74
-00:04:25,141 --> 00:04:30,360
-that are missingthumbnail images.      
+00:04:18,660 --> 00:04:25,140
+在这中间我们需要做一些过滤操作！
 
 75
-00:04:31,760 --> 00:04:34,420
-And so what we'll do is this.      
+00:04:25,141 --> 00:04:30,360
+//Filter characters that are missing thumbnail images. 写注释是一个好习惯
 
 76
-00:04:34,421 --> 00:04:42,920
-If the character.thumbnailis not equal to null.      
+00:04:31,760 --> 00:04:34,420
+接下来就是我们要做的了
 
 77
-00:04:44,138 --> 00:04:53,120
-And the character.thumbnail.pathis not equal to an empty string.      
+00:04:34,421 --> 00:04:42,920
+If ( character.thumbnailis ) @ull.
 
 78
-00:04:53,121 --> 00:04:57,570
-And then from experience, I knowthere's one more situation.      
+00:04:44,138 --> 00:04:53,120
+&& character.thumbnail.path != "";
 
 79
-00:04:57,571 --> 00:05:00,920
-It's possible that a character'sthumbnail doesn't exist.      
+00:04:53,121 --> 00:04:57,570
+根据我的经验，我知道这里还有多一种情况
 
 80
-00:05:00,921 --> 00:05:03,480
-It's possible thata character thumbnail,      
+00:04:57,571 --> 00:05:00,920
+第一种是角色并没有对应的图片
 
 81
-00:05:03,481 --> 00:05:04,680
-the path is empty string.      
+00:05:00,921 --> 00:05:03,480
+第二种是角色图片返回了一个
 
 82
-00:05:04,681 --> 00:05:10,030
-But it's also possible thatthey return back this long URL      
+00:05:03,481 --> 00:05:04,680
+空字符串
 
 83
-00:05:10,031 --> 00:05:13,340
-that will actuallydisplay an image.      
+00:05:04,681 --> 00:05:10,030
+还有一种情况是它返回了一个很长的url
 
 84
-00:05:13,341 --> 00:05:15,770
-But it's an imagenot available image.      
+00:05:10,031 --> 00:05:13,340
+会显示一个图片
 
 85
-00:05:15,771 --> 00:05:21,470
-It has a little outline ofa character with not available.      
+00:05:13,341 --> 00:05:15,770
+但是是代表无对应角色图片存在的图片
 
 86
-00:05:21,471 --> 00:05:24,150
-The text inside of it sothis what we'll do.      
+00:05:15,771 --> 00:05:21,470
+It has a little outline ofa character with not available.
 
 87
-00:05:24,151 --> 00:05:29,881
-character.thumbnail.path isnot equal      
+00:05:21,471 --> 00:05:24,150
+The text inside of it sothis what we'll do.
 
 88
-00:05:29,882 --> 00:05:36,730
-to this magic string,this URL that I have, okay?      
+00:05:24,151 --> 00:05:29,881
+character.thumbnail.path !=
 
 89
-00:05:36,731 --> 00:05:39,270
-Now, before we go any further.      
+00:05:29,882 --> 00:05:36,730
+这个很长很神奇的链接
 
 90
-00:05:39,271 --> 00:05:43,128
-I'm gonna take this magicstring, I'm gonna cut it out and      
+00:05:36,731 --> 00:05:39,270
+在我们继续写前
 
 91
-00:05:43,129 --> 00:05:44,910
-I'll put it in a constant.      
+00:05:39,271 --> 00:05:43,128
+我要处理一下这个神奇的字符串，剪切掉
 
 92
-00:05:44,911 --> 00:05:51,028
-private constant stringimagenotavailablepath =,      
+00:05:43,129 --> 00:05:44,910
+把它赋给一个常量字符串
 
 93
-00:05:51,029 --> 00:05:55,949
-and then we'll pastethat string in there,      
+00:05:44,911 --> 00:05:51,028
+private const string ImageNotAvailablePath =
 
 94
-00:05:55,950 --> 00:06:00,860
-and I'll copy andpaste that here.      
+00:05:51,029 --> 00:05:55,949
+然后粘贴我们之前剪切的链接
 
 95
-00:06:00,861 --> 00:06:03,850
-So now we're pretty sure thatthe character has an image and      
+00:05:55,950 --> 00:06:00,860
+然后复制修改下面的字符串
 
 96
-00:06:03,851 --> 00:06:07,550
-we can use them in ourapplication, so at that point.      
+00:06:00,861 --> 00:06:03,850
+然后现在我们很确定已有的角色都是有对应的图片的
 
 97
-00:06:07,551 --> 00:06:10,440
-Then we're gonna addthem to the application.      
+00:06:03,851 --> 00:06:07,550
+我们就可以在我们的应用中使用他们了，所以
 
 98
-00:06:10,441 --> 00:06:13,740
-Now, let's take a lookat the documentation.      
+00:06:07,551 --> 00:06:10,440
+然后把它们添加到我们的应用中
 
 99
-00:06:13,741 --> 00:06:17,510
-Go to the How-Tos section andlook at Images.      
+00:06:10,441 --> 00:06:13,740
+现在，让我们回过头来看一下这个官方的文档说明
 
 100
-00:06:18,600 --> 00:06:22,600
-If you take a look atthe thumbnail JSON,      
+00:06:13,741 --> 00:06:17,510
+在 How-Tos 标签下查看 IMAGES选项
 
 101
-00:06:22,601 --> 00:06:25,890
-notice that there's a path andan extension property.      
+00:06:18,600 --> 00:06:22,600
+看一下这个角色缩略图的json格式
 
 102
-00:06:25,891 --> 00:06:27,210
-That's not everything you need.      
+00:06:22,601 --> 00:06:25,890
+注意有路径和扩展名两个字段
 
 103
-00:06:27,211 --> 00:06:29,080
-There's missinginformation here, and      
+00:06:25,891 --> 00:06:27,210
+这并不是我们所需要的
 
 104
-00:06:29,081 --> 00:06:31,660
-you fill in the type of image or      
+00:06:27,211 --> 00:06:29,080
+这里还有一个我们遗漏的信息
 
 105
-00:06:31,661 --> 00:06:34,240
-the size and the orientationof the image that you want.      
+00:06:29,081 --> 00:06:31,660
+你可以输入图像的类型
 
 106
-00:06:34,241 --> 00:06:37,820
-So if you scroll down, there'sthis Image Variants area here.      
+00:06:31,661 --> 00:06:34,240
+还有图片的大小和方向
 
 107
-00:06:37,821 --> 00:06:42,350
-And you can see that there'sa Portrait Aspect Ratio      
+00:06:34,241 --> 00:06:37,820
+滚动下来你就可以看到这里还有一个图像变形区域
 
 108
-00:06:42,351 --> 00:06:46,370
-where you have a portrait,square or standard, and      
+00:06:37,821 --> 00:06:42,350
+这里有肖像的长宽比
 
 109
-00:06:46,371 --> 00:06:48,610
-then the landscape right?      
+00:06:42,351 --> 00:06:46,370
+不仅有肖像、标准（方形）
 
 110
-00:06:48,611 --> 00:06:52,620
-And so then and even within thatyou had different sized images.      
+00:06:46,371 --> 00:06:48,610
+还有宽屏
 
 111
-00:06:52,621 --> 00:06:55,475
-So for our purposes, we'regonna use a portrait small,      
+00:06:48,611 --> 00:06:52,620
+而且每一分类里面也有不同尺寸的图片
 
 112
-00:06:55,476 --> 00:06:59,360
-that'll be a little image nextto the name of the character      
+00:06:52,621 --> 00:06:55,475
+对应我们的需要，我想要使用肖像图片
 
 113
-00:06:59,361 --> 00:07:02,560
-in the list of characters thatwe're working on right now.      
+00:06:55,476 --> 00:06:59,360
+会显示在我们的角色名字旁边
 
 114
-00:07:02,561 --> 00:07:04,200
-And then, once you clickon a character and      
+00:06:59,361 --> 00:07:02,560
+在一个我们现在正在做的角色列表里面
 
 115
-00:07:04,201 --> 00:07:06,360
-you see all the detailsof that character,      
+00:07:02,561 --> 00:07:04,200
+然后，但你点击列表中的某一个英雄角色
 
 116
-00:07:06,361 --> 00:07:09,740
-then we're going to displaythe standard extra large.      
+00:07:04,201 --> 00:07:06,360
+你可以看到关于这个角色的一些详细信息
 
 117
-00:07:09,741 --> 00:07:14,110
-So what we're gonna needto do then is to go      
+00:07:06,361 --> 00:07:09,740
+然后就要显示角色的标准图片
 
 118
-00:07:14,111 --> 00:07:17,690
-over to our Model's Folder, openup the CharacterDataWrapper,      
+00:07:09,741 --> 00:07:14,110
+所以我们现在要做的就是
 
 119
-00:07:17,691 --> 00:07:19,210
-and look at the Thumbnail class.      
+00:07:14,111 --> 00:07:17,690
+展开我们的Model文件夹，打开CharacterDataWrapper.cs
 
 120
-00:07:19,211 --> 00:07:22,890
-And what I want to do is add twoadditional properties that will      
+00:07:17,691 --> 00:07:19,210
+看一下这个 Thumbnail（缩略图）类
 
 121
-00:07:22,891 --> 00:07:26,340
-be ignored while we'redeserializing into the object      
+00:07:19,211 --> 00:07:22,890
+在这里需要添加两个额外的属性
 
 122
-00:07:26,341 --> 00:07:32,570
-graph but will be useful now aswe're populating a observable      
+00:07:22,891 --> 00:07:26,340
+当我们反序列化对象图的时候忽略它们
 
 123
-00:07:32,571 --> 00:07:35,390
-collection of charactersthat we intend to bind to.      
+00:07:26,341 --> 00:07:32,570
+当我们想要绑定到一个
 
 124
-00:07:35,391 --> 00:07:39,400
-So I'm gonna go prop, prop,prop tab, tab, string tab tab.      
+00:07:32,571 --> 00:07:35,390
+可观察集合的时候它们就会起作用了
 
 125
-00:07:39,401 --> 00:07:44,368
-Small enter, enter, prop,tab, tab, string tab,      
+00:07:35,391 --> 00:07:39,400
+面向快捷键编程（prob然后连按tab键两次 )
 
 126
-00:07:44,369 --> 00:07:46,960
-tab, large enter, enter.      
+00:07:39,401 --> 00:07:46,960
+面向快捷键编程
 
 127
 00:07:46,961 --> 00:07:50,695
-So we have two new properties,and I'm gonna populate those      
+现在我们有了两个新的属性，现在我们要来使用它们了
 
 128
 00:07:50,696 --> 00:07:53,340
-properties here insidethe if statement.      
+在这个if语句里面
 
 129
 00:07:53,341 --> 00:07:58,412
-So, we'll gocharacter.thumbnail.small      
+character.thumbnail.small
 
 130
 00:07:58,413 --> 00:08:01,143
-= string.format, and      
+= String.Format
 
 131
 00:08:01,144 --> 00:08:06,740
-then I'm gonna need tokinda follow that pattern.      
+然后就需要遵从一些模式了
 
 132
 00:08:06,741 --> 00:08:12,503
-Where we had the path/ then theimage that we wanted to use and      
+首先是路径/然后是我们想使用的图片
 
 133
 00:08:12,504 --> 00:08:15,554
-that's gonna be a standard, so      
+应该是标准类型
 
 134
 00:08:15,555 --> 00:08:20,413
-a square,small size dot andthen whatever the file      
+方形小格式
 
 135
 00:08:20,414 --> 00:08:25,160
-extension is that theygive us passed in, right?      
+然后是传进来的对应的后缀名
 
 136
 00:08:25,161 --> 00:08:29,726
-And sothen we'll just enter those      
+然后就把对应位置的占位符
 
 137
 00:08:29,727 --> 00:08:35,400
-replaceable values,giving it the path.      
+用对应的变量替换
 
 138
 00:08:35,401 --> 00:08:42,000
-And then also the extension,      
+然后是扩展名
 
 139
 00:08:42,001 --> 00:08:44,640
-like that.      
+像这样
 
 140
 00:08:44,641 --> 00:08:47,520
-And we're gonna dothe exact same thing for      
+然后做同样的处理
 
 141
 00:08:47,521 --> 00:08:49,840
-the large version.      
+对于大尺寸版本
 
 142
 00:08:49,841 --> 00:08:53,930
-So, character.thumbnail.small,let's go large.      
+character.thumbnail.large
 
 143
 00:08:53,931 --> 00:08:57,600
-Equals, andhere we want to go the portrait.      
+等于，改为肖像
 
 144
 00:09:00,780 --> 00:09:02,760
-And then, we want to change,they don't have a large,      
+这里需要修改一下
 
 145
 00:09:02,761 --> 00:09:04,290
-they have an extra large.      
+它们没有大尺寸（large），只有更大尺寸（xl）
 
 146
 00:09:04,291 --> 00:09:06,930
-That should be aboutthe right size for us.      
+这看起来才是合理的尺寸
 
 147
 00:09:06,931 --> 00:09:10,210
-All right, great.      
+好了！
 
 148
 00:09:10,211 --> 00:09:13,500
-Very good.      
+很棒
 
 149
 00:09:13,501 --> 00:09:16,559
-Now that we haveall this in place,      
+现在我们有了我们想要的东西了
 
 150
 00:09:16,560 --> 00:09:21,130
-I think we're ready toopen up the MainPage.xml.      
+我想我们可以开始打开MainPagel.xaml了
 
 151
 00:09:21,131 --> 00:09:23,750
-And let me get ridof my webcam here so      
+让我先关掉摄像头
 
 152
 00:09:23,751 --> 00:09:24,990
-you can see the entire screen.      
+方便你们看清楚屏幕
 
 153
 00:09:24,991 --> 00:09:25,850
-Let me go back so      
+回到这里
 
 154
 00:09:25,851 --> 00:09:28,910
-you can look at the righthand side of the code here.      
+你可以仔细的看一下右侧的这一块代码
 
 155
 00:09:28,911 --> 00:09:31,230
-You can pause it andcatch up with me.      
+你可以哦先暂停一下，仔细看完
 
 156
 00:09:31,231 --> 00:09:35,048
-And then also, you can pause ithere and take a look at this      
+同样的，暂停看一下这个神奇的url
 
 157
 00:09:35,049 --> 00:09:39,346
-URL, or you can just look at thesource code associated with this      
+或者直接去看这个快照相关联的源代码
 
 158
 00:09:39,347 --> 00:09:42,550
-snapshot, this snapshot in time,all right?      
+在时间快照里面
 
 159
 00:09:42,551 --> 00:09:44,297
-Back to the MainPage.xml.      
+回到MainPage.xaml
 
 160
 00:09:44,298 --> 00:09:48,792
-Let me rid of that,and let's open up      
+然后先关掉设计界面
 
 161
 00:09:48,793 --> 00:09:54,014
-the MainPage.xml.cs andwhat I'm gonna      
+只留下MainPage.xaml.cs
 
 162
 00:09:54,015 --> 00:10:00,265
-want to do is to createa property so prop tab, tab.      
+这里我想先创建一个属性
 
 163
 00:10:00,266 --> 00:10:06,822
-This is gonna bean ObservableCollectionCharacter      
+这里应该是 ObservableCollectionCharacter （角色的可观察集合）
 
 164
 00:10:06,823 --> 00:10:10,418
-called MarvelCharacters.      
+命名为 MarvelCharacters.
 
 165
 00:10:10,419 --> 00:10:13,300
-And I'm gonna need to adda using statement for      
+然后我需要添加一个命名空间
 
 166
 00:10:13,301 --> 00:10:17,500
-the ObservableCollection,and a using statement for      
+才能使用可观察集合 ,同样还有
 
 167
 00:10:17,501 --> 00:10:22,140
-the character,all right very good.      
+角色类的引用
 
 168
 00:10:22,141 --> 00:10:24,900
-Then I'm gonna want to, in theinitializer for the main page,      
+然后我想在MainPage构造函数里，紧接着这个初始化函数
 
 169
 00:10:24,901 --> 00:10:28,370
-I'm gonna create a newinstance of Marvel character.      
+创建一个 Marvel character 的实例
 
 170
 00:10:28,371 --> 00:10:33,729
-So MarvelCharacters = new ObservableCollection(Character-      
+打代码ing MarvelCharacters =
 
 171
 00:10:33,730 --> 00:10:34,200
->().      
+new ObservableCollection<Character>();
 
 172
 00:10:34,201 --> 00:10:34,970
-So far so good.      
+就是这样
 
 173
 00:10:35,970 --> 00:10:38,180
-Now, we're not gonna havea button click event, and      
+然后不要用按钮的单击事件了
 
 174
 00:10:38,181 --> 00:10:39,790
-we really don't need anyof this stuff anymore.      
+事实上我们不打算保留这块了
 
 175
 00:10:39,791 --> 00:10:40,867
-So, I'm gonna stripall that out, and      
+所以剪切掉这一块代码
 
 176
 00:10:40,868 --> 00:10:41,692
-we'll come back to it later.      
+然后后面回来处理它
 
 177
 00:10:41,693 --> 00:10:46,855
-In the main pages on XAML I'mgoing to get rid of the button,      
+回到MainPage.xaml中，删掉按钮元素
 
 178
 00:10:46,856 --> 00:10:50,277
-and I'm gonna removethe background.      
+同时移除背景
 
 179
 00:10:50,278 --> 00:10:56,065
-And inside of here, what Iwanna do is use that technique      
+在这里面，我想要用一个技术
 
 180
 00:10:56,066 --> 00:11:00,870
-that we learned aboutearlier in this series,      
+在我们之前系列课程中讲到的
 
 181
 00:11:00,871 --> 00:11:04,565
-where we have contenton the left and      
+在左右侧各自放置内容
 
 182
 00:11:04,566 --> 00:11:08,840
-content on the rightin a wide layout.      
+同时是一个宽布局界面
 
 183
 00:11:08,841 --> 00:11:10,650
-But when the layoutbecomes smaller,      
+然后当界面变小
 
 184
 00:11:10,651 --> 00:11:13,310
-we're gonna take the contenton the right and      
+右侧的内容
 
 185
 00:11:13,311 --> 00:11:19,580
-move it beneath the maincontent on the left.      
+就会跑到左侧内容的下面（自适应界面）
 
 186
 00:11:19,581 --> 00:11:22,550
-And so to accomplishthat what we'll do is,      
+为了完成这个效果
 
 187
 00:11:22,551 --> 00:11:25,930
-we're gonna createa four by four grid.      
+我需要创建一个四乘四的表格
 
 188
 00:11:25,931 --> 00:11:28,802
-So we'll go Grid.RowDefinitions,and      
+所以 Grid.RowDefinitions
 
 189
 00:11:28,803 --> 00:11:31,350
-we'll create tworow definitions.      
+然后创建两个行定义
 
 190
 00:11:32,870 --> 00:11:38,630
-And we'll set the heightof the first one to *,      
+设置第一个的高度为 * （按比例）
 
 191
 00:11:38,631 --> 00:11:43,530
-and the height ofthe second one to Auto.      
+第二行的高度为自动
 
 192
 00:11:46,440 --> 00:11:50,194
-And we'll modify some ofthis information, especially      
+然后我们修改一些信息，特别是
 
 193
 00:11:50,195 --> 00:11:54,584
-the column information, wheneverwe add the adaptive triggers.      
+列信息，当我们要添加一些自适应触发器的时候
 
 194
 00:11:54,585 --> 00:11:57,892
-So, ColumnDefinitions.      
+Grid.ColumnDefinitions.
 
 195
 00:12:03,571 --> 00:12:08,314
-And we're gonna make the firstcolumn definition Auto, and      
+设置第一列的宽度为自动
 
 196
 00:12:08,315 --> 00:12:12,040
-then the second columndefinition width = *.      
+第二列的宽度为 * （按比例）
 
 197
 00:12:13,840 --> 00:12:19,170
-Now, there's one last thing thatI wanna do, and that's add a row      
+然后最后一件我要做的事是添加一个行定义
 
 198
 00:12:19,171 --> 00:12:23,430
-definition that willcontain attribution text.      
+用来包含我们的文字
 
 199
 00:12:23,431 --> 00:12:25,270
-We'll talk about thatin just a little bit.      
+后面我们会详细说明
 
 200
 00:12:25,271 --> 00:12:30,900
-But I'm gonna set the heightof this last row = 30 for now.      
+设置最后一行行高为30
 
 201
 00:12:30,901 --> 00:12:31,678
-We can adjust that later.      
+后面我们还可以调整
 
 202
 00:12:31,679 --> 00:12:33,895
-All right, so, to begin with,      
+好了
 
 203
 00:12:33,896 --> 00:12:37,603
-on the left-hand side we'regonna have a ListView.      
+在左侧我们需要添加一个列表视图
 
 204
 00:12:37,604 --> 00:12:39,203
-On the right-hand side,      
+在右侧的话
 
 205
 00:12:39,204 --> 00:12:42,852
-we're gonna have a grid thatwill contain all the details.      
+我们需要一个表格用来包含所有的角色详细信息
 
 206
 00:12:42,853 --> 00:12:46,020
-So we're gonna follow thisdesign pattern called master      
+所以根据这个设计模式
 
 207
 00:12:46,021 --> 00:12:48,726
-detail where you have a listof items on the left,      
+master detail 布局，左侧有你的列表视图
 
 208
 00:12:48,727 --> 00:12:50,640
-you select an item on the left,and      
+你在左侧选择一个项目
 
 209
 00:12:50,641 --> 00:12:53,445
-it shows the details aboutthat item on the right.      
+在右侧展示选中项的细节
 
 210
 00:12:53,446 --> 00:12:57,790
-So we're going to give this thename, MasterListView, and we'll      
+添加一个名字 MasterListView,
 
 211
 00:12:57,791 --> 00:13:01,440
-refer to it like that throughoutthe remainder of the series.      
+在后面接下来的内容中也会这样命名
 
 212
 00:13:01,441 --> 00:13:01,940
-And then,      
+然后
 
 213
 00:13:01,941 --> 00:13:06,150
-we're gonna call this grid'sname DetailGrid, and there will      
+将表格命名为 DetailGrid
 
 214
 00:13:06,151 --> 00:13:08,858
-be a bunch of other stuff thatwill goes inside of this.      
+后面这里会有很多东西在这里
 
 215
 00:13:08,859 --> 00:13:10,980
-Finally, I'm gonnaadd a text block and      
+最后，我要添加一个文本框
 
 216
 00:13:10,981 --> 00:13:15,250
-I'm gonna set the name of thatto, well I don't even know if I      
+我要把名字起为，事实上，可能都不需要给它命名
 
 217
 00:13:15,251 --> 00:13:18,590
-need to set a name, let me justset the text to = Attribution,      
+就单纯设置文本 = Attribution
 
 218
 00:13:18,591 --> 00:13:21,910
-we'll come back to thatin just a little while.      
+很快我们会回来处理这里
 
 219
 00:13:21,911 --> 00:13:26,825
-And I'll makethe VerticalAlignment = Center,      
+设置 VerticalAlignment = Center
 
 220
 00:13:26,826 --> 00:13:30,928
-and the HorizontalAlignment= Center.      
+还有 HorizontalAlignment= Center
 
 221
 00:13:34,308 --> 00:13:36,080
-All right,let's get that up here, and      
+对齐一下
 
 222
 00:13:36,081 --> 00:13:38,530
-move these guys downtheir own level.      
+强迫症对齐（不过确实挺好看的）
 
 223
 00:13:38,531 --> 00:13:42,430
-And finally what I want todo is add a ProgressRing.      
+最后就是添加一个进度条了
 
 224
 00:13:42,431 --> 00:13:46,080
-And that ProgressRing, we'regoing to initialize it whenever      
+关于这个进度条，我想要初始化它
 
 225
 00:13:46,081 --> 00:13:48,560
-we're making a callinto the Marvel API.      
+当我们在调用api的时候
 
 226
 00:13:48,561 --> 00:13:52,660
-Because it could take a while,and then we will hide it      
+因为这可能会花费一点时间，然后我们再把它隐藏起来
 
 227
 00:13:52,661 --> 00:13:57,150
-whenever we've gottenthe information that we need.      
+当我们获取到我们想要的数据后
 
 228
 00:13:57,151 --> 00:14:02,353
-So what I'll do is, I'm gonnagive it a name cuz I need      
+所以现在我要做的就是给它起一个合适的名字
 
 229
 00:14:02,354 --> 00:14:07,455
-to access it programmatically,MyProgressRing.      
+便于我在后台程序中访问，起为 MyProgressRing
 
 230
 00:14:07,456 --> 00:14:09,603
-And I'll make the width 100,and the height 100.      
+设置宽度和高度都为100
 
 231
 00:14:09,604 --> 00:14:14,653
-And then I'm gonna setthe Foreground = Gray.      
+设置前景色为灰色 Foreground = Gray.
 
 232
 00:14:14,654 --> 00:14:21,464
-And we're gonna makethe ColumnSpan=2,      
+设置列跨越为2 ColumnSpan=2,
 
 233
 00:14:21,465 --> 00:14:26,840
-and the RowSpan=3, like so.      
+行跨越为3 RowSpan=3, 就像这样
 
 234
 00:14:26,841 --> 00:14:28,482
-So it's gonna bedead-center no matter what.      
+无论如何都要对齐！！！
 
 235
 00:14:28,483 --> 00:14:30,345
-In fact, I'm gonna go ahead and      
+然后还需要设置
 
 236
 00:14:30,346 --> 00:14:32,833
-set theVerticalAlignment=Center, and      
+垂直居中对齐 VerticalAlignment=Center,
 
 237
 00:14:32,834 --> 00:14:35,470
-the HorizontalAlignment=Centeras well.      
+同样的还有水平居中对齐 HorizontalAlignment=Centeras
 
 238
 00:14:35,471 --> 00:14:36,074
-Nice.      
+好了
 
 239
 00:14:36,075 --> 00:14:42,090
-Okay, so we should be able touse that whenever we start up.      
+这样应该就可以使用了
 
 240
 00:14:42,091 --> 00:14:46,512
-In fact, when we startup let's go ahead and      
+实际上，当我们启动后
 
 241
 00:14:46,513 --> 00:14:49,627
-add a loaded event to our page.      
+额，还是让我添加一个载入事件把
 
 242
 00:14:49,628 --> 00:14:53,417
-So we're gonna handle itin a Page_Loaded even,      
+这样我们就可以再页面载入事件中进行控制
 
 243
 00:14:53,418 --> 00:14:55,681
-in our MainPage.xaml.cs.      
+回到MainPage.xaml.cs.
 
 244
 00:14:55,682 --> 00:15:02,140
-And here's where we'llwind up calling into our MarvelFacade.PopulateMarvelChar-      
+在这里面调用一下
 
 245
 00:15:02,141 --> 00:15:03,050
-acters, and      
+MarvelFacade.PopulateMarvelCharacters,
 
 246
 00:15:03,051 --> 00:15:05,953
-we'll pass inthe MarvelCharacters,      
+然后将 MarvelCharacters 这个参数传入进去
 
 247
 00:15:09,091 --> 00:15:12,270
-All right, like so.      
+很好，就像这样
 
 248
 00:15:12,271 --> 00:15:16,930
-Now this is awaitable, andthere's one thing that I wanna      
+然后这个是一个异步方法，这里有一个小地方
 
 249
 00:15:16,931 --> 00:15:19,110
-do to this while I'mthinking about it right now.      
+我想需要做一些改进
 
 250
 00:15:19,111 --> 00:15:23,760
-The pattern forcreating your own awaitable      
+创建一个异步方法的模式
 
 251
 00:15:23,761 --> 00:15:28,260
-methods is to addthe suffix async.      
+是在其方法名后添加一个后缀 （微软推荐的命名规范）
 
 252
 00:15:28,261 --> 00:15:33,790
-So for example, here we have ourGetCharacterDataWrapper, and      
+举个栗子，现在我们这个异步方法是 GetCharacterDataWrapper
 
 253
 00:15:33,791 --> 00:15:39,940
-it's an async method returninga task of CharacterDataWrapper.      
+这是一个异步方法，返回一个 CharacterDataWrapper 的任务
 
 254
 00:15:39,941 --> 00:15:44,221
-It's a pattern to add thatsuffix so people know that      
+这个命名规范就是添加一个后缀名让别人知道
 
 255
 00:15:44,222 --> 00:15:47,890
-this is intended tobe an awaitable task.      
+这会是一个需要等待的任务（异步）
 
 256
 00:15:47,891 --> 00:15:52,120
-So, we're changing the name toGetCharacterDataWrapperAsync and      
+所以将方法名改为 GetCharacterDataWrapperAsync（添加后缀Async）
 
 257
 00:15:52,121 --> 00:15:54,640
-I'm gonna hit controlperiod on my keyboard to      
+按住键盘上的 CTRL+R (字幕君表示看视频是重命名快捷键，但是出来结果不一样，有知道的朋友请留意！)
 
 258
 00:15:56,660 --> 00:15:59,930
-open up the refactoringmenu in IntelliSense and      
+打开智能提示的重构菜单
 
 259
 00:15:59,931 --> 00:16:01,490
-it's going to then remain.      
+将会重命名
 
 260
 00:16:01,491 --> 00:16:04,367
-Everywhere I called in toGetCharacterDataWrapper,      
+所有我调用这个方法的地方
 
 261
 00:16:04,368 --> 00:16:07,500
-it's gonna rename it toGetCharacterDataWrapperAsync.      
+将其重命名为 GetCharacterDataWrapperAsync.
 
 262
 00:16:09,230 --> 00:16:13,110
-And notice that now every callto it, which we made the call      
+注意所有我们调用它的地方
 
 263
 00:16:13,111 --> 00:16:19,750
-right here, in our code, noticethat it has renamed it for us.      
+比如这里，现在这里的命名也已经做了更改
 
 264
 00:16:19,751 --> 00:16:22,340
-And we'll do the same thingwith PopulateMarvelCharacters.      
+然后对 PopulateMarvelCharacters 方法做同样的操作
 
 265
 00:16:22,341 --> 00:16:25,590
-I'm gonna add the Asynckeyword on the end and      
+添加Async关键字
 
 266
 00:16:25,591 --> 00:16:27,795
-then hit Ctrl+ on my keyboard,and      
+同样的方法进行重命名
 
 267
 00:16:27,796 --> 00:16:30,655
-I'm gonna choose the refactoringto rename that as well.      
+选择重构菜单中的重命名
 
 268
 00:16:30,656 --> 00:16:33,785
-And so now,in our MainPage.xaml.cs,      
+现在，在 MainPage.xaml.cs,
 
 269
 00:16:33,786 --> 00:16:37,015
-it should have the new name andit does.      
+应该有了相对应的更改
 
 270
 00:16:37,016 --> 00:16:40,045
-Of course now it's awaitable,so we're gonna have to call      
+很明显这是一个需要等待的方法
 
 271
 00:16:41,880 --> 00:16:45,820
-awaits, that means thatwe're no longer void.      
+添加一个 awaits 关键字 ，同时方法类型也不止是返回空值
 
 272
 00:16:45,821 --> 00:16:51,060
-Or actually, let's just do this,async, like that, great.      
+实际上，还需要添加一个 async 关键字
 
 273
 00:16:51,061 --> 00:16:55,260
-And the next thing that we'regonna do is, let's go ahead      
+下一件我想要做的事情是
 
 274
 00:16:55,261 --> 00:16:58,750
-while I'm thinking aboutthis and go MyProgressRing,      
+（打代码ing ！！）MyProgressRing,
 
 275
 00:16:58,751 --> 00:17:04,570
-we're going to setthe IsActive = true.      
+设置初始化激活 IsActive = true.
 
 276
 00:17:04,571 --> 00:17:08,840
-As we're loading,MyProgressRing.Visibility will      
+当我们载入的时候
 
 277
 00:17:08,841 --> 00:17:11,910
-also equal Visibility.Visible.      
+MyProgressRing.Visibility = Visibility.Visible. (打代码ing)
 
 278
 00:17:11,911 --> 00:17:14,420
-And then the oppositewill be true once we've      
+相反的情况下应该是false（这里可能是口误？说成true了）
 
 279
 00:17:14,421 --> 00:17:17,540
-successfully populatedthe Marvel characters and      
+当我们成功的载入角色的细节后
 
 280
 00:17:17,541 --> 00:17:20,010
-called into ourPopulateMarvelCharacterAsync.      
+通过我们的异步 PopulateMarvelCharacterAsync 方法
 
 281
 00:17:20,011 --> 00:17:26,703
-So we'll set IsActive = falseand then Visibility.Collapsed.      
+设置取消激活 IsActive = falseand 以及不可见（效果上） Visibility.Collapsed.
 
 282
 00:17:26,704 --> 00:17:29,930
-All right, so that should work.      
+好了，这样子应该可以了
 
 283
 00:17:29,931 --> 00:17:31,500
-Now, in the MainPage.xaml,      
+回到 MainPage.xaml,
 
 284
 00:17:31,501 --> 00:17:34,350
-I want to work primarilywith the ListView.      
+我想首先处理列表视图
 
 285
 00:17:34,351 --> 00:17:38,919
-And I'm going to DataBind,to that Marvel characters.      
+添加一个数据绑定，绑定到 Marvel characters 上
 
 286
 00:17:38,920 --> 00:17:46,930
-Let's set the ItemsSource=x:Bind      
+ItemsSource=x:Bind （打代码ing）
 
 287
 00:17:46,931 --> 00:17:53,941
-MarvelCharacters, like that?      
+MarvelCharacters, 像这样
 
 288
 00:17:53,942 --> 00:18:01,070
-And then we're gonna need toadd a ListView.ItemTemplate and      
+添加一个列表视图的项目模板 <ListView.ItemTemplate>
 
 289
 00:18:01,071 --> 00:18:04,836
-inside of thata DataTemplate and      
+内部再添加一个数据模板 <DataTemplate>
 
 290
 00:18:04,837 --> 00:18:09,690
-I'm gonna need to adda DataType, right?      
+这里还需要设置一下数据类型
 
 291
 00:18:09,691 --> 00:18:13,560
-And so at this point I need tocome back up to the top, and      
+回到代码顶部
 
 292
 00:18:13,561 --> 00:18:16,605
-I need to add a name space so      
+我需要添加一个命名空间
 
 293
-00:18:16,606 --> 00:18:24,983
-xmlns:data=using:HeroExplorer.M-      
+00:18:16,606 --> 00:18:26,710
+xmlns:data=using:HeroExplorer.Models
 
 294
-00:18:24,984 --> 00:18:26,710
-odels.      
+00:18:26,711 --> 00:18:30,710
+现在可以设置 DataType= “data:character” ，就像这样
 
 295
-00:18:26,711 --> 00:18:30,710
-So now, I can use the DataTypeCharacter, like that.      
+00:18:32,810 --> 00:18:39,610
+在这个数据模板内部，我想要添加一个StackPanel
 
 296
-00:18:32,810 --> 00:18:39,610
-And inside of my DataTemplate,I want to use a StackPanel and      
+00:18:39,611 --> 00:18:43,880
+设置方向为水平方向
 
 297
-00:18:39,611 --> 00:18:43,880
-orient the items horizontally,and      
+00:18:43,881 --> 00:18:47,534
+里面的包含的项目是一个图像和文本框
 
 298
-00:18:43,881 --> 00:18:47,534
-the items will be an Image anda TextBlock, and      
+00:18:47,535 --> 00:18:50,770
+文本框会包含角色的姓名
 
 299
-00:18:47,535 --> 00:18:50,770
-the TextBlock will containthe name of the character.      
+00:18:52,000 --> 00:18:57,190
+所有现在要做的是设置文本框的文本属性
 
 300
-00:18:52,000 --> 00:18:57,190
-So I'm going to go ahead andset the text attribute      
+00:18:57,191 --> 00:19:01,370
+用 x:Bind 语句，绑定到角色名上
 
 301
-00:18:57,191 --> 00:19:01,370
-equal to an x:Bind statement,and we'll use the name.      
+00:19:01,371 --> 00:19:03,810
+将图片绑定到
 
 302
-00:19:01,371 --> 00:19:03,810
-And the Image,we're gonna use a Source.      
+00:19:05,340 --> 00:19:08,877
+x:Bind =
 
 303
-00:19:05,340 --> 00:19:08,877
-And we'll setthe x:Bind equal to      
+00:19:08,878 --> 00:19:14,360
+thumbnail.small, 像这样
 
 304
-00:19:08,878 --> 00:19:14,360
-the thumbnail.small, like that.      
+00:19:14,361 --> 00:19:17,170
+好了，让我们生成一下
 
 305
-00:19:14,361 --> 00:19:17,170
-All right, let me build it.      
+00:19:17,171 --> 00:19:18,064
+运行一下看看实际效果
 
 306
-00:19:17,171 --> 00:19:18,064
-And we're gonna give it a whirl.      
+00:19:21,537 --> 00:19:24,320
+好了，通过数据绑定我们已经有了数据
 
 307
-00:19:21,537 --> 00:19:24,320
-Okay, great we've gotdata in a data bound.      
+00:19:24,321 --> 00:19:26,110
+我知道我并没有疯，但某些
 
 308
-00:19:24,321 --> 00:19:26,110
-Now, I'm not really crazyabout where it stuck      
+00:19:26,111 --> 00:19:27,210
+属性似乎有点问题
 
 309
-00:19:26,111 --> 00:19:27,210
-the attribution there.      
+00:19:27,211 --> 00:19:28,580
+我想我弄漏了一些东西
 
 310
-00:19:27,211 --> 00:19:28,580
-I think I missed something.      
+00:19:28,581 --> 00:19:30,606
+实际上，我想我已经知道了！（来自大牛的debug）
 
 311
-00:19:28,581 --> 00:19:30,606
-In fact,I know I missed something.      
+00:19:30,607 --> 00:19:34,881
+让我们设置细节表格
 
 312
-00:19:30,607 --> 00:19:34,881
-Let's set the details grid,      
+00:19:34,882 --> 00:19:41,038
+Grid.Column = 1,and Grid.Row = 0.
 
 313
-00:19:34,882 --> 00:19:41,038
-Grid.Column = 1,and Grid.Row = 0.      
+00:19:41,039 --> 00:19:46,462
+我们将要动态的对其进行修改
 
 314
-00:19:41,039 --> 00:19:46,462
-And we're gonnadynamically modify these      
+00:19:46,463 --> 00:19:53,280
+当我们添加了一个自适应布局到这个应用中
 
 315
-00:19:46,463 --> 00:19:53,280
-whenever we add adaptivelayout to the application.      
+00:19:53,281 --> 00:19:56,015
+同样我们也需要处理一下文本框
 
 316
-00:19:53,281 --> 00:19:56,015
-We have to do this tothe TextBlock as well.      
+00:19:56,016 --> 00:19:58,234
+这就是为什么文字会凑在中间
 
 317
-00:19:56,016 --> 00:19:58,234
-That's why it wound up kindof in the middle there.      
+00:19:58,235 --> 00:20:03,601
+Grid.ColumnSpan = 2
 
 318
-00:19:58,235 --> 00:20:03,601
-So Grid.ColumnSpan = 2 andthe Grid.Row.      
+00:20:06,178 --> 00:20:07,687
+还有 Grid.Row = “2”
 
 319
-00:20:06,178 --> 00:20:07,687
-Will equal two.      
+00:20:11,550 --> 00:20:14,450
+现在让我们保存重新生成一遍
 
 320
-00:20:11,550 --> 00:20:14,450
-Now let's save that and run it.      
+00:20:19,850 --> 00:20:22,200
+好了，然后是几个小问题
 
 321
-00:20:19,850 --> 00:20:22,200
-Okay, now a couple of things.      
+00:20:22,201 --> 00:20:24,771
+我并没有对这个帧计数器很烦（只是超级烦）
 
 322
-00:20:22,201 --> 00:20:24,771
-I'm not crazy aboutthe frame counter [LAUGH].      
+00:20:24,772 --> 00:20:26,380
+让我们把它去掉吧
 
 323
-00:20:24,772 --> 00:20:26,380
-We'll get rid of that.      
+00:20:26,381 --> 00:20:27,940
+这些小方块我倒是并不讨厌
 
 324
-00:20:26,381 --> 00:20:27,940
-Not crazy about theselittle squares.      
+00:20:27,941 --> 00:20:29,220
+只是看起来没什么活力
 
 325
-00:20:27,941 --> 00:20:29,220
-They're just not inspiring.      
+00:20:29,221 --> 00:20:31,050
+我有一个更好的点子
 
 326
-00:20:29,221 --> 00:20:31,050
-I've got a better idea there and      
+00:20:31,051 --> 00:20:33,700
+让我们处理一些属性上的问题
 
 327
-00:20:31,051 --> 00:20:33,700
-then let's tackleattribution as well.      
+00:20:33,701 --> 00:20:35,950
+如果你看了一下这个 MARVEL API
 
 328
-00:20:33,701 --> 00:20:35,950
-If you take a look atthe Marvel API and      
+00:20:35,951 --> 00:20:38,500
+在 How-To 标签下
 
 329
-00:20:35,951 --> 00:20:38,500
-you go up to the top intothe How-To section and      
+00:20:38,501 --> 00:20:41,510
+选择 Attribution& Rate Limits 标签
 
 330
-00:20:38,501 --> 00:20:41,510
-you select Attribution& Rate Limits,      
+00:20:41,511 --> 00:20:44,160
+我们会看到两个很重要的信息
 
 331
-00:20:41,511 --> 00:20:44,160
-we're gonna learn two importantpieces of information.      
+00:20:44,161 --> 00:20:46,360
+滚到最下面可以看到一个属性
 
 332
-00:20:44,161 --> 00:20:46,360
-Let's scroll down andlook at attribution.      
+00:20:46,361 --> 00:20:49,950
+当你每次显示任何信息
 
 333
-00:20:46,361 --> 00:20:49,950
-It says that every time youdisplay any information from      
+00:20:49,951 --> 00:20:50,850
+从 Marvel Comics API
 
 334
-00:20:49,951 --> 00:20:50,850
-the Marvel Comics API,      
+00:20:50,851 --> 00:20:55,440
+你需要在每个画面或者网页上
 
 335
-00:20:50,851 --> 00:20:55,440
-you need to use the texton every screen or webpage.      
+00:20:55,441 --> 00:20:59,230
+提示数据来源自漫威（版权概念）
 
 336
-00:20:55,441 --> 00:20:59,230
-So it's this data providedby Marvel, copyright.      
+00:20:59,231 --> 00:21:01,700
+虽然他们没有更新为2015（视频录制时间为2015年）
 
 337
-00:20:59,231 --> 00:21:01,700
-Now they didn't update this for2015 but      
+00:21:01,701 --> 00:21:03,760
+但我知道这是必需的（再次强调，版权很严肃）
 
 338
-00:21:01,701 --> 00:21:03,760
-I know that that's their intent.      
+00:21:03,761 --> 00:21:06,670
+复制到剪切板中
 
 339
-00:21:03,761 --> 00:21:06,670
-If you take a look at I'm justgonna copy this to my clipboard      
+00:21:06,671 --> 00:21:08,020
+很快我们会再回到这里
 
 340
-00:21:06,671 --> 00:21:08,020
-and we'll come back toyou just a moment here.      
+00:21:08,021 --> 00:21:13,020
+如果你看了 Interactive Documentation 选项
 
 341
-00:21:08,021 --> 00:21:13,020
-If we take a look at theinteractive documentation and      
+00:21:13,021 --> 00:21:16,780
+确保我已经登陆了
 
 342
-00:21:13,021 --> 00:21:16,780
-making sure I'm loggedin here and I am.      
+00:21:18,160 --> 00:21:19,950
+打开角色标签卡
 
 343
-00:21:18,160 --> 00:21:19,950
-Let's open up characters and      
+00:21:19,951 --> 00:21:24,720
+让我先简单试一下返回两个角色信息
 
 344
-00:21:19,951 --> 00:21:24,720
-let me just bring back likea two characters and try it out.      
+00:21:24,721 --> 00:21:27,890
+如果你仔细的看了一下所返回的信息
 
 345
-00:21:24,721 --> 00:21:27,890
-If you take a look atwhat's brought back,      
+00:21:27,891 --> 00:21:29,890
+这里实际上提供了一个 attributionText
 
 346
-00:21:27,891 --> 00:21:29,890
-there is attributiontext that's provided.      
+00:21:29,891 --> 00:21:31,850
+几乎和文档中的字符串是一样的，只是这里是2015
 
 347
-00:21:29,891 --> 00:21:31,850
-It's almost identical,it's just 2015.      
+00:21:31,851 --> 00:21:35,360
+所以我打算在应用中硬编码，但是
 
 348
-00:21:31,851 --> 00:21:35,360
-So, I'm going to hard codein it in my application but      
+00:21:35,361 --> 00:21:41,310
+实际上你也可以
 
 349
-00:21:35,361 --> 00:21:41,310
-ideally you would pull that fromthat top level root object,      
+00:21:41,311 --> 00:21:45,040
+从封装的角色数据中的顶层根对象中提取
 
 350
-00:21:41,311 --> 00:21:45,040
-the data character wrapper,okay?      
+00:21:45,041 --> 00:21:46,830
+所以我打算回到这里
 
 351
-00:21:45,041 --> 00:21:46,830
-So I'm gonna go back here and      
+00:21:46,831 --> 00:21:51,870
+硬编码为2015，而不是2014
 
 352
-00:21:46,831 --> 00:21:51,870
-just hard code this text andchange 2014 to 2015.      
+00:21:51,871 --> 00:21:57,410
+文本提示数据来源自漫威
 
 353
-00:21:51,871 --> 00:21:57,410
-So textblock text equals dataprovided by Marvel period and      
+00:21:57,411 --> 00:22:03,283
+然后2015的漫威版权符号
 
 354
-00:21:57,411 --> 00:22:03,283
-then the copyright symbol 2015Marvel and we might address      
+00:22:03,284 --> 00:22:09,020
+我们可能从调取返回后的数据中提取
 
 355
-00:22:03,284 --> 00:22:09,020
-the date later or just pullfrom our call-out to Marvel.      
+00:22:09,021 --> 00:22:09,870
+好了，就这样
 
 356
-00:22:09,021 --> 00:22:09,870
-All right, so far so good.      
+00:22:11,170 --> 00:22:13,390
+我说了我有一个关于图片的好点子
 
 357
-00:22:11,170 --> 00:22:13,390
-Now, I said that I hadan idea for the image.      
+00:22:13,391 --> 00:22:17,030
+我并不是真的疯掉了
 
 358
-00:22:13,391 --> 00:22:17,030
-I wasn't really crazy abouthow we went about it.      
+00:22:17,031 --> 00:22:19,540
+我实际上想做的是把每一个图片
 
 359
-00:22:17,031 --> 00:22:19,540
-What I'm gonna do isactually put every image      
+00:22:19,541 --> 00:22:20,650
+放到一个椭圆了
 
 360
-00:22:19,541 --> 00:22:20,650
-inside an ellipse.      
+00:22:20,651 --> 00:22:24,310
+所以我可能需要用椭圆来定义边框
 
 361
-00:22:20,651 --> 00:22:24,310
-So I'm gonna use the ellipse tokind of define the boundaries      
+00:22:24,311 --> 00:22:27,710
+然后在内部需要用不同的笔刷
 
 362
-00:22:24,311 --> 00:22:27,710
-and inside of that I'm gonnause a different brush.      
+00:22:27,711 --> 00:22:29,500
+而不是单纯的硬彩色笔刷
 
 363
-00:22:27,711 --> 00:22:29,500
-Not a solid colored brush.      
+00:22:29,501 --> 00:22:33,630
+并不是一个渐变颜色笔刷，而是一个图像笔刷
 
 364
-00:22:29,501 --> 00:22:33,630
-Not a gradient color brush,but rather an image brush and      
+00:22:33,631 --> 00:22:36,020
+这个颜色笔刷会有一个图片
 
 365
-00:22:33,631 --> 00:22:36,020
-the image brushwill have the image      
+00:22:36,021 --> 00:22:38,900
+绑定到我们的角色图片上
 
 366
-00:22:36,021 --> 00:22:38,900
-that will bind to fromthe character object.      
+00:22:38,901 --> 00:22:41,880
+好了，我们会从一个椭圆开始下一步，很容易对吗！
 
 367
-00:22:38,901 --> 00:22:41,880
-So we'll just start off withan ellipse, easy enough, right.      
+00:22:41,881 --> 00:22:46,221
+宽度高度都设为45
 
 368
-00:22:41,881 --> 00:22:46,221
-Width equals 45 andheight equals 45 and      
+00:22:46,222 --> 00:22:51,854
+设置填充模式为
 
 369
-00:22:46,222 --> 00:22:51,854
-then inside of that I'mgonna use <ellipse.fill> and      
+00:22:51,855 --> 00:22:55,390
+在内部放一个图像笔刷
 
 370
-00:22:51,855 --> 00:22:55,390
-I'm gonna put an <imagebrush>.      
+00:22:55,391 --> 00:22:59,872
+设置图像来源
 
 371
-00:22:55,391 --> 00:22:59,872
-I'm gonna set the ImageSource      
+00:22:59,873 --> 00:23:04,353
+用绑定语句绑定到角色图片上
 
 372
-00:22:59,873 --> 00:23:04,353
-equal to a binding statement so      
+00:23:04,354 --> 00:23:08,670
+x:Bind thumbnail.small
 
 373
-00:23:04,354 --> 00:23:08,670
-x:Bind thumbnail.small.      
+00:23:08,671 --> 00:23:11,610
+把它拼写对了
 
 374
-00:23:08,671 --> 00:23:11,610
-Spell it right.      
+00:23:11,611 --> 00:23:18,370
+我忘记了一个双引号
 
 375
-00:23:11,611 --> 00:23:18,370
-Like that andI missed a quote mark there.      
+00:23:18,371 --> 00:23:19,230
+我还漏了什么嘛
 
 376
-00:23:18,371 --> 00:23:19,230
-What am I missing?      
+00:23:19,231 --> 00:23:20,256
+还有另外一个双引号
 
 377
-00:23:19,231 --> 00:23:20,256
-And I missed a quote mark there.      
+00:23:20,257 --> 00:23:23,802
+我变得迟钝了。。。
 
 378
-00:23:20,257 --> 00:23:23,802
-Wow, I'm slipping.      
+00:23:23,803 --> 00:23:25,520
+好了，让我们再试一次
 
 379
-00:23:23,803 --> 00:23:25,520
-Okay, let's try this again.      
+00:23:28,330 --> 00:23:30,067
+提示文本效果不错
 
 380
-00:23:28,330 --> 00:23:30,067
-Attribution text looks good,      
+00:23:30,068 --> 00:23:32,480
+还是需要把帧计数器去掉（深深的怨念）
 
 381
-00:23:30,068 --> 00:23:32,480
-still gotta get rid ofthat frame counter.      
+00:23:36,080 --> 00:23:39,120
+看看我们实际的效果
 
 382
-00:23:36,080 --> 00:23:39,120
-Okay, so now look atthe effect that we get here.      
+00:23:39,121 --> 00:23:40,080
+这是一个园
 
 383
-00:23:39,121 --> 00:23:40,080
-There's a a circle.      
+00:23:40,081 --> 00:23:41,420
+很好
 
 384
-00:23:40,081 --> 00:23:41,420
-Very nice.      
+00:23:41,421 --> 00:23:43,910
+下一个我想要做的事情是
 
 385
-00:23:41,421 --> 00:23:43,910
-The next thing that I wanna do,well,      
+00:23:43,911 --> 00:23:45,020
+在做一些小工作
 
 386
-00:23:43,911 --> 00:23:45,020
-let's do a couple of things.      
+00:23:45,021 --> 00:23:51,150
+再在这里添加一些小东西
 
 387
-00:23:45,021 --> 00:23:51,150
-I'm gonna add a little bit of,let's put like,      
+00:23:51,151 --> 00:23:56,150
+比如垂直对齐设置为居中
 
 388
-00:23:51,151 --> 00:23:56,150
-for example, the verticalalignment here equals center.      
+00:23:56,151 --> 00:24:00,930
+还需要把字体大小改的稍微大一点
 
 389
-00:23:56,151 --> 00:24:00,930
-I'm gonna use font size equalssomething a little bit larger      
+00:24:00,931 --> 00:24:06,750
+大概 18 左右，同时还需要一些外边距
 
 390
-00:24:00,931 --> 00:24:06,750
-like 18 and then I'm alsogonna add a margin equal to      
+00:24:07,780 --> 00:24:13,910
+10，10太多了，额，还是10把 （笑）
 
 391
-00:24:07,780 --> 00:24:13,910
-ten pixels, well yeah, ten,no, ten pixels to the left      
+00:24:15,610 --> 00:24:20,130
+在外部我也需要添加一些外边距
 
 392
-00:24:15,610 --> 00:24:20,130
-and overall I wannaadd a little margin.      
+00:24:22,630 --> 00:24:27,360
+距左10像素、距顶5像素、距右0像素
 
 393
-00:24:22,630 --> 00:24:27,360
-Ten from the left, the five fromthe top, zero from the right,      
+00:24:27,361 --> 00:24:30,670
+距离底部5像素
 
 394
-00:24:27,361 --> 00:24:30,670
-and five from the bottombetween each item.      
+00:24:30,671 --> 00:24:32,150
+我们会看到最终效果的！
 
 395
-00:24:30,671 --> 00:24:32,150
-We'll see what that gives us.      
+00:24:37,650 --> 00:24:41,050
+好了，这样看起来好多了
 
 396
-00:24:37,650 --> 00:24:41,050
-All right,I like that a lot better.      
+00:24:41,051 --> 00:24:42,610
+很好
 
 397
-00:24:41,051 --> 00:24:42,610
-Very nice.All right and      
+00:24:42,611 --> 00:24:46,140
+在这个视频最后我想做的是
 
 398
-00:24:42,611 --> 00:24:46,140
-then the last thing I'm gonnado for this video is actually      
+00:24:46,141 --> 00:24:50,470
+一劳永逸的打败我的敌人，帧计数器
 
 399
-00:24:46,141 --> 00:24:50,470
-once and for all vanquish mynemesis, the frame counter.      
+00:24:52,230 --> 00:24:52,730
+biu biu biu
 
 400
-00:24:52,230 --> 00:24:52,730
-Bam.      
+00:24:54,260 --> 00:24:56,990
+好吧，这个视频就到这里吧
 
 401
-00:24:54,260 --> 00:24:56,990
-Okay, all right solet's stop right there.      
+00:24:56,991 --> 00:24:58,590
+我想我们已经做得够多的了
 
 402
-00:24:56,991 --> 00:24:58,590
-I think we madeplenty of progress.      
+00:24:58,591 --> 00:25:03,390
+下一个视频中我们会显示角色的细节信息
 
 403
-00:24:58,591 --> 00:25:03,390
-Let's, in the next lesson we'regoing to display the details for      
+00:25:03,391 --> 00:25:07,390
+通过在角色列表中选择一个角色
 
 404
-00:25:03,391 --> 00:25:07,390
-the character by selecting oneof the characters in the list      
+00:25:07,391 --> 00:25:08,270
+好吧？
 
 405
-00:25:07,391 --> 00:25:08,270
-view, okay?      
+00:25:08,271 --> 00:25:09,850
+下个视频再回来
 
 406
-00:25:08,271 --> 00:25:09,850
-We'll start back therein the next video.      
+00:25:09,851 --> 00:25:10,430
+再见
 
 407
-00:25:09,851 --> 00:25:10,430
-See you there.      
-
-408
 00:25:10,431 --> 00:25:11,210
-Thanks.      
+谢谢
 
