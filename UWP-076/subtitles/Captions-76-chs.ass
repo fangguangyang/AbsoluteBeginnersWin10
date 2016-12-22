@@ -15,8 +15,10 @@ Audio File: ../uwp76HeroExplorerDisplayingComics_mid.mp4
 Video File: ../uwp76HeroExplorerDisplayingComics_mid.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
-Video Zoom Percent: 0.750000
-Video Position: 187
+Video Zoom Percent: 0.375000
+Scroll Position: 237
+Active Line: 239
+Video Position: 48878
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -24,7 +26,7 @@ Style: Default,微软雅黑,50,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:00:04.50,Default,,0,0,0,,Windows 10 新手开发系列\N探索英雄——显示一个角色的漫画\N翻译：@geelaw　校对：（占位符）　压制：（占位符）
+Dialogue: 0,0:00:00.00,0:00:04.50,Default,,0,0,0,,Windows 10 新手开发系列\N探索英雄——显示一个角色的漫画\N翻译：@geelaw　校对：陈继民　压制：（占位符）
 Dialogue: 0,0:00:06.30,0:00:10.51,Default,,0,0,0,,这篇视频的目标是让程序显示漫画的列表
 Dialogue: 0,0:00:10.51,0:00:14.93,Default,,0,0,0,,比如一次最多显示十个当前选择的角色
 Dialogue: 0,0:00:14.93,0:00:19.95,Default,,0,0,0,,角色这个上一个视频已经做过了
@@ -135,7 +137,7 @@ Dialogue: 0,0:07:31.21,0:07:36.00,Default,,0,0,0,,好，我现在来修改这个
 Dialogue: 0,0:07:36.00,0:07:40.55,Default,,0,0,0,,改完这个改这个……
 Dialogue: 0,0:07:40.55,0:07:46.10,Default,,0,0,0,,改成 ComicDataContainer（漫画数据容器）\N这里也改成这样
 Dialogue: 0,0:07:47.65,0:07:50.24,Default,,0,0,0,,搞定，现在我们的类之间的结构就对了
-Dialogue: 0,0:07:51.92,0:07:58.56,Default,,0,0,0,,接下来我要进到我们的这个 Facade 里面
+Dialogue: 0,0:07:51.92,0:07:58.56,Default,,0,0,0,,接下来我要进到我们的这个 Facade（MarvelFacade.cs） 里面
 Dialogue: 0,0:07:58.56,0:08:06.86,Default,,0,0,0,,我要创建一个和这个 GetCharacterDataWrapperAsync 几乎一样的方法
 Dialogue: 0,0:08:06.86,0:08:09.57,Default,,0,0,0,,只要对漫画做相同的事情即可
 Dialogue: 0,0:08:09.57,0:08:12.93,Default,,0,0,0,,于是，我打算复制这一段代码
@@ -180,13 +182,13 @@ Dialogue: 0,0:10:57.75,0:11:01.55,Default,,0,0,0,,所以如果我们把（选中
 Dialogue: 0,0:11:08.99,0:11:15.47,Default,,0,0,0,,把这个参数命名为 url 好了
 Dialogue: 0,0:11:15.47,0:11:21.00,Default,,0,0,0,,然后我可以调用 CallMarvel，就在这里写
 Dialogue: 0,0:11:30.79,0:11:36.77,Default,,0,0,0,,就像这样，这里先这么些
-Dialogue: 0,0:11:36.77,0:11:38.12,Default,,0,0,0,,我们马上就会回来改这个
+Dialogue: 0,0:11:36.77,0:11:38.12,Default,,0,0,0,,我们马上就会回来修改这个
 Dialogue: 0,0:11:39.15,0:11:42.05,Default,,0,0,0,,先看看出了什么问题\N（指 IntelliSense 提示的红色波浪线）
 Dialogue: 0,0:11:42.05,0:11:44.11,Default,,0,0,0,,咱们得返回（return）一个什么东西
 Dialogue: 0,0:11:44.11,0:11:45.46,Default,,0,0,0,,我们就 return jsonMessage
 Dialogue: 0,0:11:50.40,0:11:53.15,Default,,0,0,0,,就是这个
 Dialogue: 0,0:12:02.66,0:12:03.96,Default,,0,0,0,,还要把这个用 async 修饰
-Dialogue: 0,0:12:07.98,0:12:10.87,Default,,0,0,0,,所以（按照习惯）我还要在方法名末尾加上 Async
+Dialogue: 0,0:12:07.98,0:12:10.87,Default,,0,0,0,,所以（按照命名规范 ）我还要在方法名末尾加上 Async
 Dialogue: 0,0:12:10.87,0:12:19.04,Default,,0,0,0,,嗯，这里这个 url 好像也有问题
 Dialogue: 0,0:12:19.04,0:12:24.34,Default,,0,0,0,,咱们把这个（保存 string.Format 返回结果的变量）\N改名为 completeUrl
 Dialogue: 0,0:12:24.34,0:12:29.48,Default,,0,0,0,,在这里（GetAync）调用的时候参数也改成 completeUrl
@@ -239,7 +241,7 @@ Dialogue: 0,0:17:02.84,0:17:07.43,Default,,0,0,0,,它现在不叫 MarvelCharacte
 Dialogue: 0,0:17:11.72,0:17:13.68,Default,,0,0,0,,这个就会是一个 ComicDataWrapper 了
 Dialogue: 0,0:17:13.68,0:17:18.38,Default,,0,0,0,,GetCharacters 应该改成 GetComic
 Dialogue: 0,0:17:18.38,0:17:24.63,Default,,0,0,0,,可能复制粘贴后修改这堆引用不值当\N（译注：何止是不值当！）
-Dialogue: 0,0:17:24.63,0:17:29.20,Default,,0,0,0,,不过至少我们可以用它保持一致性\N（译注：DRY 才是保持一致性的关键好吧！）
+Dialogue: 0,0:17:24.63,0:17:29.20,Default,,0,0,0,,不过至少我们可以用它保持一致性\N（译注：DRY 才是保持一致性的关键好吧！          审核注：Don't Repeat Yourself ，看向DRY）
 Dialogue: 0,0:17:29.20,0:17:32.34,Default,,0,0,0,,(Get)ComicDataWrapperAsync，是这个名字吧？
 Dialogue: 0,0:17:32.34,0:17:37.63,Default,,0,0,0,,GetComicDataWrapperAsync，是这个名字
 Dialogue: 0,0:17:39.41,0:17:41.12,Default,,0,0,0,,好的，现在传入我们需要的 ID
