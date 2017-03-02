@@ -29,7 +29,15 @@ namespace NavigationExample
 
     private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
     {
+            App.value = ValueTextBox.Text;
       Frame.Navigate(typeof(Page4), ValueTextBox.Text);
     }
-  }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(App.value))
+            {
+                ValueTextBox.Text = App.value;
+            }
+        }
+    }
 }

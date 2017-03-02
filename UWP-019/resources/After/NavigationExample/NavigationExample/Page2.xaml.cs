@@ -31,7 +31,8 @@ namespace NavigationExample
     {
       App.SomeImportantValue = ValueTextBox.Text;
       Frame.Navigate(typeof(Page3), ValueTextBox.Text);
-    }
+     // Frame.Navigate(typeof(Page3), "DEVIL");
+        }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
