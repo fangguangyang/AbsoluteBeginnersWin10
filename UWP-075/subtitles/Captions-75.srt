@@ -1,1116 +1,1104 @@
-1
+﻿1
 00:00:05,223 --> 00:00:08,689
-The goal of this lesson isto display details about      
+这节课的目标就是去把关于
 
 2
 00:00:08,690 --> 00:00:13,180
-the character that was selectedin the master list view.      
+我们在列表中选择的角色的相关信息显示出来
 
 3
 00:00:13,181 --> 00:00:18,880
-We want to displaythe characters larger      
+我们希望展示角色的大图像版本的
 
 4
 00:00:18,881 --> 00:00:22,790
-version of the thumbnail image,their name, a description.      
+还有他（她）们的名字、他（她）们的描述
 
 5
 00:00:22,791 --> 00:00:25,990
-And then, eventually we'lldisplay, in the next video,      
+然后，最终我们会在下一节课中展示
 
 6
 00:00:25,991 --> 00:00:29,196
-all the comic books relatedto that particular character.      
+关于这个特定角色所相关的漫画
 
 7
 00:00:29,197 --> 00:00:31,930
-At least the mostrecent comic books.      
+至少是最近的一本漫画书
 
 8
 00:00:31,931 --> 00:00:34,490
-Now, there's also another thingthat I wanna address in this      
+另外还有一件事
 
 9
 00:00:34,491 --> 00:00:35,610
-lesson, and      
+我想在这节课里讲述的是
 
 10
 00:00:35,611 --> 00:00:40,509
-that is, sometimes you're onlygonna get back a small number of      
+有时候可能只会返回几个
 
 11
 00:00:41,660 --> 00:00:45,720
-characters that satisfy theconditions that we have here.      
+满足我们这里条件的角色
 
 12
 00:00:45,721 --> 00:00:47,650
-Many of them don'thave thumbnails.      
+大部分可能并不包含thumbnails.
 
 13
 00:00:47,651 --> 00:00:50,850
-We might get an errorwhenever we're making a call      
+我们可能会得到一个错误，无论我们是什么时候调用这个方法
 
 14
 00:00:50,851 --> 00:00:53,820
-into a resourceacross the Internet.      
+穿过互联网得到资源
 
 15
 00:00:53,821 --> 00:00:57,570
-The Marvel comics APIservers could have an issue.      
+The Marvel comics（惊奇漫画） API 服务可能出了问题
 
 16
 00:00:57,571 --> 00:01:01,310
-The JSON that comesback is botched or      
+返回的JSON可能有缺陷或者
 
 17
 00:01:01,311 --> 00:01:03,540
-isn't quite formed correctly.      
+格式并不完全正确
 
 18
 00:01:03,541 --> 00:01:08,150
-The JSON that does come backwhen we try to do that step      
+当我们到这一步的时候JSON并没有返回                                   //注：这里似乎萌叔想说没有返回说成返回了
 
 19
 00:01:08,151 --> 00:01:11,690
-that I'm always nervousabout whenever we      
+而且我也总是很紧张序列化
 
 20
 00:01:11,691 --> 00:01:14,850
-deserialize that JSONinto our object graph.      
+和反序列化JSON到我们的对象图里面
 
 21
 00:01:14,851 --> 00:01:16,240
-That could go bad.      
+这可能会出问题
 
 22
 00:01:16,241 --> 00:01:19,790
-So, I need a strategy for      
+所以我需要一个策略
 
 23
 00:01:19,791 --> 00:01:24,460
-recovering whenever ourapplication simply can't      
+来恢复当应用无法成功获取
 
 24
 00:01:24,461 --> 00:01:27,730
-get on the first tryeverything it needs.      
+它所需要的一切
 
 25
 00:01:27,731 --> 00:01:28,982
-So, we'll address that as well.      
+我们也会说一下这件事
 
 26
 00:01:28,983 --> 00:01:30,386
-But let's start offwith the simple stuff.      
+但是让我们先从简单的地方开始吧
 
 27
 00:01:30,387 --> 00:01:34,620
-I'm gonna go over hereto the mainpage.xaml.      
+跳转到我们的mainpage.xaml.
 
 28
 00:01:34,621 --> 00:01:40,730
-And what I want to dois flesh out the grid.      
+ 我要做的就是补充完整这个Grid
 
 29
 00:01:40,731 --> 00:01:43,154
-The details grid orthe grid detail.      
+details grid（细节网格）grid detail（网格细节）//萌Bob卖萌了
 
 30
 00:01:44,722 --> 00:01:47,218
-The detail grid.      
+细节网格
 
 31
 00:01:47,219 --> 00:01:50,531
-All right,let me get into code mode here,      
+好，转到代码页面（这里应该是说屏幕切换到VS）
 
 32
 00:01:50,532 --> 00:01:55,424
-and what we're gonna wanna dois create some RowDefinitions.      
+我这里要做的就是创建RowDefinitions.
 
 33
 00:01:58,687 --> 00:02:06,900
-And there's gonna bethree distinct areas.      
+这里应该有三个不同的区域
 
 34
 00:02:06,901 --> 00:02:10,800
-The top row, will be      
+最顶部一行
 
 35
 00:02:14,390 --> 00:02:17,076
-where we display the detailsof the character.      
+会用于显示角色的细节
 
 36
 00:02:17,077 --> 00:02:21,312
-The second row, will be where wedisplay the list of comics that      
+第二行，会用于我们显示与角色最近相关的
 
 37
 00:02:21,313 --> 00:02:24,270
-character has been in recently,and then finally,      
+漫画，最后
 
 38
 00:02:24,271 --> 00:02:26,980
-as you click on one ofthose comics, we'll display      
+当你点击任一一本漫画，会显示
 
 39
 00:02:26,981 --> 00:02:32,120
-the details about a givencomic in the third row, okay?      
+会在第三行展示当前这本漫画的细节
 
 40
 00:02:32,121 --> 00:02:34,130
-The next thing we'regonna wanna do,      
+下一件事我们需要做的是
 
 41
 00:02:34,131 --> 00:02:37,310
-is now that we have ourrow definitions created,      
+我们已经创建了我们的行定义
 
 42
 00:02:37,311 --> 00:02:39,960
-we're gonna focus on thatfirst row definition, so      
+我们要来关注下第一个行定义
 
 43
 00:02:39,961 --> 00:02:42,390
-we're gonna create anothergrid inside of it.      
+我们要在里面创建多一个Grid（嵌套在当前Grid中）
 
 44
 00:02:42,391 --> 00:02:45,968
-So, just to make sure weremember what we're doing here,      
+所以，记住我们现在要做什么，不要看混了
 
 45
 00:02:45,969 --> 00:02:47,283
-grid.row = 0, and      
+Grid.Row = 0
 
 46
 00:02:47,284 --> 00:02:51,096
-I'm gonna make sure to set thehorizontal alignment to left.      
+我们要确保水平对齐设置为左
 
 47
 00:02:51,097 --> 00:02:52,845
-Most of these shouldbe defaults but      
+这些应该大部分都应该设置为默认
 
 48
 00:02:52,846 --> 00:02:54,776
-I'm just not takingany chances here.      
+我就不做其他改变了（默认为HorizontalAlignment="Left"  VerticalAlignment="Top"）
 
 49
 00:02:58,117 --> 00:03:02,843
-And then, inside of that gridI'm gonna create one row      
+然后，在这个新的Grid里，我要创建一行
 
 50
 00:03:02,844 --> 00:03:07,528
-that will display the Name and      
+用来展示角色名字
 
 51
 00:03:07,529 --> 00:03:12,920
-a second row, that willdisplay the description.      
+创建第二行用来展示角色的描述
 
 52
 00:03:12,921 --> 00:03:14,080
-And then, two columns,      
+同时还有两列
 
 53
 00:03:14,081 --> 00:03:17,397
-a left column that willdisplay the image and      
+左边一列用来展示图像
 
 54
 00:03:17,398 --> 00:03:21,910
-a right column that will displaythe name and the description.      
+右边一列用来展示角色名字和角色描述
 
 55
 00:03:21,911 --> 00:03:23,710
-Okay, so two by two grid.      
+所以这就是一个2x2的Grid
 
 56
 00:03:24,780 --> 00:03:27,027
-So, row definitions, and      
+所以 RowDefinitions //打代码ing
 
 57
 00:03:27,028 --> 00:03:31,240
-we'll just set the heighton each of these to star.      
+我们设置每一行高度为“*”
 
 58
 00:03:32,670 --> 00:03:36,380
-Give them equal width there.      
+这给了它们相同的宽度
 
 59
 00:03:37,760 --> 00:03:39,523
-And we'll do the samewith column definitions.      
+同样的方式处理列定义
 
 60
 00:03:46,743 --> 00:03:51,356
-The first column,I'm gonna set to auto, And      
+第一列，我要设置为列宽度为自动（“Auto”）
 
 61
 00:03:51,357 --> 00:03:54,963
-the second column widthI'm gonna set to star.      
+第二列宽度设置为“*”
 
 62
 00:03:54,964 --> 00:03:56,686
-Now, all of this issubject to change, so      
+所有这些就是我们需要补充的地方了
 
 63
 00:03:56,687 --> 00:03:58,972
-this is just where I'm starting.      
+不过这才是是个开始而已
 
 64
 00:03:58,973 --> 00:04:02,240
-All right, on the left sideI want the image to appear.      
+我希望在左侧显示我的角色图像
 
 65
 00:04:02,241 --> 00:04:07,705
-So I'm gonna set thatimage Grid.Column = "0".      
+所以设置Image Grid.Column = "0".
 
 66
 00:04:07,706 --> 00:04:12,310
-But actually,I want it to span both rows.      
+实际上，我想让它跨越两行
 
 67
 00:04:12,311 --> 00:04:17,989
-So, Grid.RowSpan="2".      
+所以Grid.RowSpan="2".
 
 68
 00:04:17,990 --> 00:04:21,748
-And then, we're gonna need to      
+我们还需要
 
 69
 00:04:21,749 --> 00:04:26,580
-populate its valueprogrmatically.      
+程序化的映射它的值
 
 70
 00:04:26,581 --> 00:04:29,940
-So, I'm gonna set the name ofthis equal to DetailImage.      
+所以我要设置它的名字为DetailImage.
 
 71
 00:04:31,480 --> 00:04:35,930
-Next up, we're gonna havethe text block that will contain      
+下一步是创建一个文本框
 
 72
 00:04:35,931 --> 00:04:38,072
-the name of the characters.      
+用来显示角色的名字
 
 73
 00:04:38,073 --> 00:04:40,150
-So, DetailNameTextBlock.      
+所以DetailNameTextBlock.
 
 74
 00:04:44,271 --> 00:04:47,491
-We're gonna setthe column equal to 1, so      
+设置所属列为“1“（第二列）
 
 75
 00:04:47,492 --> 00:04:50,443
-the second column,and I'm also gonna      
+同时
 
 76
 00:04:50,444 --> 00:04:54,300
-make the font size a littlebit larger than before.      
+将字体调的比之前稍微大一点
 
 77
 00:04:54,301 --> 00:04:56,260
-So, we'll set the fontsize at like 32.      
+所以字体设置为32
 
 78
 00:04:56,261 --> 00:05:00,511
-And then finally, we'll createanother text block that will      
+最后，创建多另外一个文本框
 
 79
 00:05:00,512 --> 00:05:03,779
-contain the description,if there is one, and      
+用来包含角色的描述
 
 80
 00:05:03,780 --> 00:05:05,577
-just like the thumbnail,      
+just like the thumbnail,
 
 81
 00:05:05,578 --> 00:05:09,029
-many of the characters donot have descriptions.      
+许多角色其实并没有关于他（她）们的角色描述
 
 82
 00:05:11,664 --> 00:05:15,420
-So, that's fine, we just want todisplay it if there's not one.      
+这问题倒不问题，不管有没有全部展示出来就可以了
 
 83
 00:05:15,421 --> 00:05:20,507
-So, we're gonna set thatin Row="1" Grid.Column="1".      
+设置Grid.Row="1" Grid.Column="1"
 
 84
 00:05:20,508 --> 00:05:23,750
-And I'm also gonna go ahead,while I'm thinking about this,      
+我在想我需要
 
 85
 00:05:23,751 --> 00:05:26,600
-and set the text wrapping.      
+设置文字的自动换行
 
 86
 00:05:26,601 --> 00:05:28,900
-Because this mightbe a paragraph, so      
+因为角色的描述可能是一个段落
 
 87
 00:05:28,901 --> 00:05:31,260
-I'm gonna set the wrappingequal to wrap.      
+所以设置TextWrapping = ”Wrap".
 
 88
 00:05:32,510 --> 00:05:34,156
-Let me put these ona separate line, so      
+让我换多一行，这样看起来好一点
 
 89
 00:05:34,157 --> 00:05:35,759
-you can see thema little bit easier.      
+这样子看起来就容易看得多了
 
 90
 00:05:43,375 --> 00:05:43,955
-Great.      
+很好
 
 91
 00:05:48,320 --> 00:05:50,034
-All right.The next thing that I wanna do      
+下一件我要做的事是
 
 92
 00:05:50,035 --> 00:05:52,194
-is go back to our list view,and I wanna make it,      
+回到我们的列表视图，我需要确保
 
 93
 00:05:52,195 --> 00:05:54,483
-so that you can actuallyclick on one of the items.      
+你确实可以点击到这些项
 
 94
 00:05:54,484 --> 00:06:00,345
-So, IsItemClickEnabled="true".      
+所以IsItemClickEnabled="true".
 
 95
 00:06:00,346 --> 00:06:07,856
-And then,ItemClick="NewEventHandler".      
+ItemClick="NewEventHandler" 创建新的事件处理程序
 
 96
 00:06:07,857 --> 00:06:13,342
-I'm gonna go to thatnew event handler      
+然后转到代码
 
 97
 00:06:13,343 --> 00:06:17,971
-using F12 on my keyboard, and      
+使用键盘上的F12快捷键哦！
 
 98
 00:06:17,972 --> 00:06:25,180
-what we wanna do is to getthe selected character.      
+我们想要做的就是选择一个角色
 
 99
 00:06:26,200 --> 00:06:29,710
-So, the item click event argswill actually give us the item      
+所以项目单击事件的参数列表会给我们提供这个项
 
 100
 00:06:29,711 --> 00:06:33,910
-that was clicked, and that willbe an instance of character.      
+这个已经单击过了，这是一个角色的实例对象
 
 101
 00:06:33,911 --> 00:06:37,937
-It's just unfortunatelysaved as an object.      
+只是很不幸的保存为了Object类型
 
 102
 00:06:37,938 --> 00:06:44,936
-So, we're gonna have toa casting back to character.      
+所以我们需要把它强转为Character.
 
 103
 00:06:44,937 --> 00:06:48,872
-So, var selectedCharacter =      
+所以var selectedCharacter =
 
 104
 00:06:53,633 --> 00:06:56,637
-Then, I'm going topopulate the easy stuff.      
+然后我就要映射一些比较简单的东西了
 
 105
 00:06:56,638 --> 00:07:03,702
-DetailNameTextBlock.Text =selectedCharacter.name.      
+DetailNameTextBlock.Text =selectedCharacter.name.
 
 106
 00:07:03,703 --> 00:07:05,978
-And we'll do the same thing forthe description.      
+对于角色描述，也是做同样的处理
 
 107
 00:07:10,540 --> 00:07:13,794
-Now, getting the image todisplay an image will be      
+现在，将角色图像用于Image来显示
 
 108
 00:07:13,795 --> 00:07:15,350
-a little bit trickier.      
+会有一定小麻烦
 
 109
 00:07:15,351 --> 00:07:19,180
-We're gonna have to createa bitmap image, and      
+我们需要创建一个位图对象
 
 110
 00:07:19,181 --> 00:07:22,650
-once we populate the bitmapimage's source, then,      
+当我们映射好了我们的位图对象资源
 
 111
 00:07:22,651 --> 00:07:26,820
-we can set it as the sourceof our XAML image control.      
+可以把它设置为XAML中图像的控制来源
 
 112
 00:07:26,821 --> 00:07:27,760
-So, this is how you do it.      
+就这样子做把
 
 113
 00:07:27,761 --> 00:07:28,930
-You might even wannasave this little snippet      
+你可能会想要把这些小窍门保存为
 
 114
 00:07:28,931 --> 00:07:29,489
-to your cheat sheet.      
+保存为你的小抄
 
 115
 00:07:35,989 --> 00:07:40,918
-Now, the bitmap image object,we're gonna have to add a using      
+现在BitmapImage对象需要我们引用一些命名空间
 
 116
 00:07:40,919 --> 00:07:45,198
-statement towindows.ui.xaml.media.imaging,      
+Windows.Ui.Xaml.Media.Imaging,
 
 117
 00:07:45,199 --> 00:07:45,949
-like so.      
+就像这样
 
 118
 00:07:45,950 --> 00:07:48,027
-And we're gonna needto create a new URI.      
+然后创建一个URI
 
 119
 00:07:52,428 --> 00:08:02,428
-And we're going to give itthe location by giving it selectedCharacter.thumbnail.la-      
+参数为selectedCharacter.thumbnail.large
 
 120
-00:08:04,283 --> 00:08:04,966
-rge.      
+00:08:04,967 --> 00:08:08,680
+设置 UriKind 为absolute.
 
 121
-00:08:04,967 --> 00:08:08,680
-And then, we're gonna giveit the URI kind of absolute.      
+00:08:09,765 --> 00:08:11,130
+这会是一个URL
 
 122
-00:08:09,765 --> 00:08:11,130
-Cuz it's gonna be a URL.      
+00:08:12,470 --> 00:08:16,000
+好了，哦等一下，我没拼对
 
 123
-00:08:12,470 --> 00:08:16,000
-All right, it doesn't like,oh I didn't spell it correctly.      
+00:08:16,001 --> 00:08:16,500
+好了
 
 124
-00:08:16,001 --> 00:08:16,500
-There we go.      
+00:08:18,530 --> 00:08:19,898
+然后呢
 
 125
-00:08:18,530 --> 00:08:19,898
-All right, so      
+00:08:19,899 --> 00:08:25,830
+很明显的largeImage.UriSource = uri
 
 126
-00:08:19,899 --> 00:08:25,830
-largeImage.uri.UriSource = uri,obviously.      
+00:08:25,831 --> 00:08:28,720
+现在，已经有足够条件去创建一个
 
 127
-00:08:25,831 --> 00:08:28,720
-And now, it should haveeverything it needs to be a real      
+00:08:28,721 --> 00:08:29,530
+真实的位图了
 
 128
-00:08:28,721 --> 00:08:29,530
-bitmap image.      
+00:08:29,531 --> 00:08:38,141
+this.DetailImage.Source = largeImage.
 
 129
-00:08:29,531 --> 00:08:38,141
-And so, we can do thisDetailImage.Source = largeImage.      
+00:08:38,142 --> 00:08:39,071
+这样子应该能跑
 
 130
-00:08:38,142 --> 00:08:39,071
-That should work.      
+00:08:42,136 --> 00:08:42,820
+让我们来试试
 
 131
-00:08:42,136 --> 00:08:42,820
-Let's go ahead and try it.      
+00:08:50,540 --> 00:08:54,070
+这是一个偶然发生的错误
 
 132
-00:08:50,540 --> 00:08:54,070
-Okay, so this is an errorI run into occasionally.      
+00:08:55,130 --> 00:08:57,056
+我还不是很确定发生的原因
 
 133
-00:08:55,130 --> 00:08:57,056
-I'm not exactlysure what happens.      
+00:08:57,057 --> 00:08:59,694
+在这里的话，我比较确定
 
 134
-00:08:57,057 --> 00:08:59,694
-In this case,I believe this to be      
+00:08:59,695 --> 00:09:03,290
+问题出在反序列化过程这里
 
 135
-00:08:59,695 --> 00:09:03,290
-an issue withthe deserialization process.      
+00:09:03,291 --> 00:09:08,428
+这是其中一个我需要在这节课后面
 
 136
-00:09:03,291 --> 00:09:08,428
-This is one of thosethings I seek to resolve      
+00:09:08,429 --> 00:09:14,294
+添加代码来修复的地方
 
 137
-00:09:08,429 --> 00:09:14,294
-by adding some some code,in the very next step.      
+00:09:14,295 --> 00:09:15,397
+让我看多试几次
 
 138
-00:09:14,295 --> 00:09:15,397
-And we hit thisa couple of times.      
+00:09:19,402 --> 00:09:22,431
+最终我们还是成功获取到了数据
 
 139
-00:09:19,402 --> 00:09:22,431
-All right, buteventually we get data.      
+00:09:22,432 --> 00:09:23,687
+好了
 
 140
-00:09:22,432 --> 00:09:23,687
-Okay, so now,      
+00:09:23,688 --> 00:09:28,140
+这会展示我们是否做对了没有
 
 141
-00:09:23,688 --> 00:09:28,140
-this will kind of show whetherwe got this right or not.      
+00:09:28,141 --> 00:09:30,880
+我单击其中任意一个项目
 
 142
-00:09:28,141 --> 00:09:30,880
-I'm going to click onone of the items and      
+00:09:30,881 --> 00:09:32,840
+你可以看到图像和名字
 
 143
-00:09:30,881 --> 00:09:32,840
-you can see the image andthe name.      
+00:09:34,220 --> 00:09:40,187
+图像和名字
 
 144
-00:09:34,220 --> 00:09:35,360
-The image and the name.      
+00:09:40,188 --> 00:09:43,805
+就像我刚才所说的，大部分角色其实并没有角色描述
 
 145
-00:09:35,361 --> 00:09:40,187
-The image and the name.      
+00:09:43,806 --> 00:09:45,949
+Pete Wisdom有他自己的描述
 
 146
-00:09:40,188 --> 00:09:43,805
-Like I said, most of these itemsdon't have descriptions, but      
+00:09:45,950 --> 00:09:47,356
+这对我们是好事
 
 147
-00:09:43,806 --> 00:09:45,949
-Pete Wisdom doeshave a description,      
+00:09:47,357 --> 00:09:51,540
+这样我们可以开始微调这一块区域了
 
 148
-00:09:45,950 --> 00:09:47,356
-which is awesome for us,      
+00:09:51,541 --> 00:09:52,340
+如果你仔细看一下
 
 149
-00:09:47,357 --> 00:09:51,540
-because now we can kind of workwith the spacing of things here.      
+00:09:52,341 --> 00:09:57,220
+首先，我给了这两行
 
 150
-00:09:51,541 --> 00:09:52,340
-If you take a look.      
+00:09:57,221 --> 00:10:00,040
+的行高度都是相等的，我想我需要
 
 151
-00:09:52,341 --> 00:09:57,220
-First of all,I gave each of these rows equal      
+00:10:00,041 --> 00:10:04,510
+把顶部这一行设置为“Auto”自动，底部这一行设置为？？
 
 152
-00:09:57,221 --> 00:10:00,040
-space by giving them both starbut I think I'm just gonna make      
+00:10:04,511 --> 00:10:06,230
+应该是“*”星号
 
 153
-00:10:00,041 --> 00:10:04,510
-this top row auto, andthe bottom row, star or auto.      
+00:10:06,231 --> 00:10:06,730
+然后
 
 154
-00:10:04,511 --> 00:10:06,230
-Probably, star.      
+00:10:06,731 --> 00:10:10,000
+我需要给这家伙添加一些外边距
 
 155
-00:10:06,231 --> 00:10:06,730
-And then,      
+00:10:10,001 --> 00:10:12,590
+把周围的东西稍微推开一点
 
 156
-00:10:06,731 --> 00:10:10,000
-I'm gonna add some marginsaround the size of this guy.      
+00:10:12,591 --> 00:10:14,550
+大概10个像素左右
 
 157
-00:10:10,001 --> 00:10:12,590
-I'm actually gonnapush everything off      
+00:10:14,551 --> 00:10:15,490
+好了
 
 158
-00:10:12,591 --> 00:10:14,550
-about 10 pixels there.      
+00:10:15,491 --> 00:10:17,140
+这里我们还有一些小工作要做
 
 159
-00:10:14,551 --> 00:10:15,490
-Okay.      
+00:10:17,141 --> 00:10:22,792
+把这个提高一点，或者把这个调低一点（就是顶部的对齐）
 
 160
-00:10:15,491 --> 00:10:17,140
-So, we've got a littlebit of work to do.      
+00:10:22,793 --> 00:10:28,132
+开始吧！先转到 MainPage.xaml.
 
 161
-00:10:17,141 --> 00:10:22,792
-I'll push that up, or that downa little bit as well, okay.      
+00:10:28,133 --> 00:10:31,223
+来到DetailImage这里
 
 162
-00:10:22,793 --> 00:10:28,132
-So let's get started in here,in the MainPage.xaml.      
+00:10:31,224 --> 00:10:35,481
+我要设置VerticalAlignment=“top”竖直对齐为顶部对齐
 
 163
-00:10:28,133 --> 00:10:31,223
-I'm gonna go to the DetailImage,and      
+00:10:35,482 --> 00:10:39,320
+我想这样子可以实现我要的效果
 
 164
-00:10:31,224 --> 00:10:35,481
-I'm gonna set its verticalalignment equal to top.      
+00:10:39,321 --> 00:10:43,146
+转到Grid这里
 
 165
-00:10:35,482 --> 00:10:39,320
-I think that have might havebeen the issue with that.      
+00:10:43,147 --> 00:10:45,398
+实际上，我想应该是转到最外围这个Grid
 
 166
-00:10:39,321 --> 00:10:43,146
-I'm gonna go to the grid,actually, I think what I'll do,      
+00:10:45,399 --> 00:10:48,791
+在左手边添加一些外边距
 
 167
-00:10:43,147 --> 00:10:45,398
-is go to the entire detail grid,and      
+00:10:48,792 --> 00:10:54,816
+所以Margin  = “10, 0, 0, 0”
 
 168
-00:10:45,399 --> 00:10:48,791
-I'm gonna add a margin thereon the left-hand side.      
+00:10:54,817 --> 00:10:57,716
+实际上，我想我需要在右侧也加上10
 
 169
-00:10:48,792 --> 00:10:54,816
-So, margin 10, 0, 0, 0.      
+00:10:57,717 --> 00:11:00,690
+确保右侧没有东西会重叠
 
 170
-00:10:54,817 --> 00:10:57,716
-Actually, I might add 10 fromthe right as well just to      
+00:11:03,177 --> 00:11:06,815
+下一件要做的事是
 
 171
-00:10:57,717 --> 00:11:00,690
-make sure that nothing bumpsup against the right there.      
+00:11:06,816 --> 00:11:10,466
+在内部这个Grid中
 
 172
-00:11:03,177 --> 00:11:06,815
-All right,the next thing I wanna do,      
+00:11:15,586 --> 00:11:17,690
+RowDefinition行高度设置为”Auto“ 自动
 
 173
-00:11:06,816 --> 00:11:10,466
-is in this inner gridI want to set the.      
+00:11:17,691 --> 00:11:20,740
+这样子应该可以修复这些问题了
 
 174
-00:11:15,586 --> 00:11:17,690
-RowDefinition ofthe top row to Auto.      
+00:11:21,920 --> 00:11:27,176
+然后是外边距
 
 175
-00:11:17,691 --> 00:11:20,740
-That should fix that issue.      
+00:11:27,177 --> 00:11:32,447
+距离右侧大概10个像素
 
 176
-00:11:21,920 --> 00:11:27,176
-And then,I also want to set the margin      
+00:11:35,106 --> 00:11:38,102
+对于另外一个文本框也是一样的
 
 177
-00:11:27,177 --> 00:11:32,447
-to the right ofthe text to maybe 10.      
+00:11:45,102 --> 00:11:49,019
+所以现在再跑一下这个应用
 
 178
-00:11:35,106 --> 00:11:38,102
-And the same would be true then,for the other text block.      
+00:11:49,020 --> 00:11:53,484
+我要重复刷新角色
 
 179
-00:11:45,102 --> 00:11:49,019
-So now I'm going to runthe application again, and      
+00:11:53,485 --> 00:11:54,865
+直到找到一个有关于他（她）自己的描述
 
 180
-00:11:49,020 --> 00:11:53,484
-I'm going to keep refreshinguntil I find a character that      
+00:12:05,069 --> 00:12:05,590
+好了
 
 181
-00:11:53,485 --> 00:11:54,865
-has a description      
+00:12:06,610 --> 00:12:08,960
+这个结果我挺满意的
 
 182
-00:12:05,069 --> 00:12:05,590
-Okay.      
+00:12:10,010 --> 00:12:13,480
+一样的问题，我觉得这个文本应该再高一点
 
 183
-00:12:06,610 --> 00:12:08,960
-So, I'm very happywith the results.      
+00:12:13,481 --> 00:12:15,510
+我想要不这样也可以了吧 //逼死强迫症系列
 
 184
-00:12:10,010 --> 00:12:13,480
-Still, wish that the textwas up a little bit higher.      
+00:12:15,511 --> 00:12:18,392
+然后就继续下面的工作了
 
 185
-00:12:13,481 --> 00:12:15,510
-I guess it's finethe way that it is.      
+00:12:18,393 --> 00:12:19,070
+但是你发现了吗？
 
 186
-00:12:15,511 --> 00:12:18,392
-We'll just go ahead andgo with that for now.      
+00:12:19,071 --> 00:12:22,830
+我们这一次运行中只得到了三个项目//注：这里应该是口误，应该是四个
 
 187
-00:12:18,393 --> 00:12:19,070
-But do you notice,      
+00:12:22,831 --> 00:12:26,730
+这也让我想顺便说一些东西
 
 188
-00:12:19,071 --> 00:12:22,830
-we only got three itemson that particularly try?      
+00:12:26,731 --> 00:12:28,370
+就是~~
 
 189
-00:12:22,831 --> 00:12:26,730
-So, that leads me to somethingI wanted to talk about here.      
+00:12:28,371 --> 00:12:34,090
+通过这个PopulateMarvelCharactersAsync异步方法的调用
 
 190
-00:12:26,731 --> 00:12:28,370
-Which is,      
+00:12:34,091 --> 00:12:39,060
+可能并不会返回那么多我们预期的结果
 
 191
-00:12:28,371 --> 00:12:34,090
-making the call into thisPopulateMarvelCharactersAsync,      
+00:12:40,090 --> 00:12:44,280
+所以，现在我想要在这个列表中至少有十个项目，或者更多
 
 192
-00:12:34,091 --> 00:12:39,060
-it just might not returnas many items as we want.      
+00:12:44,281 --> 00:12:49,837
+我所要做的就是在这里添加一个while循环
 
 193
-00:12:40,090 --> 00:12:44,280
-So, I want at least ten itemsin the list, maybe more.      
+00:12:49,838 --> 00:12:54,450
+while Tab Tab//面向快捷键编程
 
 194
-00:12:44,281 --> 00:12:49,837
-So, what I'm gonna do is adda while condition here so,      
+00:12:54,451 --> 00:12:56,580
+我们要检查的条件
 
 195
-00:12:49,838 --> 00:12:54,450
-here let's do this again,while Tab Tab, and      
+00:12:56,581 --> 00:13:01,807
+是这个里面的漫威角色数量
 
 196
-00:12:54,451 --> 00:12:56,580
-what we'll check for      
+00:13:01,808 --> 00:13:06,509
+所以MarvelCharacters.Count.
 
 197
-00:12:56,581 --> 00:13:01,807
-is the number of itemsinside of marvel characters.      
+00:13:06,510 --> 00:13:09,402
+当他小于10
 
 198
-00:13:01,808 --> 00:13:06,509
-So, MarvelCharacters.Count.      
+00:13:09,403 --> 00:13:13,800
+然后我们重复经历这个循环
 
 199
-00:13:06,510 --> 00:13:09,402
-While it's less than 10 items,      
+00:13:14,820 --> 00:13:21,785
+在这里面我们要await MarvelFacade.PopulateMarvelCharactersAsync
 
 200
-00:13:09,403 --> 00:13:13,800
-then we're gonna continueto go through this loop.      
+00:13:23,085 --> 00:13:27,193
+现在的问题是，这一个异步方法可能花费很多时间
 
 201
-00:13:14,820 --> 00:13:21,785
-And inside of herewe're gonna call await MarvelFacade.PopulateMarvelChar-      
+00:13:27,194 --> 00:13:31,224
+来返回，那么我们这个循环就需要远远更多的时间
 
 202
-00:13:21,786 --> 00:13:23,084
-actersAsync.      
+00:13:31,225 --> 00:13:35,100
+当前还在尝试着第一次
 
 203
-00:13:23,085 --> 00:13:27,193
-Now, the challenge here, is thatan asynch method might take      
+00:13:35,101 --> 00:13:40,150
+外面可能已经循环了很多次了
 
 204
-00:13:27,194 --> 00:13:31,224
-awhile to return, so we couldbe looping here a billion times      
+00:13:40,151 --> 00:13:42,150
+这就是await的工作方式
 
 205
-00:13:31,225 --> 00:13:35,100
-while this is still tryingto run the very first time.      
+00:13:42,151 --> 00:13:43,950
+It works as a promise, and then, 
 
 206
-00:13:35,101 --> 00:13:40,150
-So, it could be a lot ofcalls out to that method.      
+00:13:43,951 --> 00:13:45,610
+然后就继续运行下一行代码了
 
 207
-00:13:40,151 --> 00:13:42,150
-That's just the waythat this works.      
+00:13:45,611 --> 00:13:49,920
+But that promise may not comeback to us before we actually do
 
 208
-00:13:42,151 --> 00:13:43,950
-It works as a promise, and then,      
+00:13:49,921 --> 00:13:53,250
+开始判断漫威角色的当前数目
 
 209
-00:13:43,951 --> 00:13:45,610
-it continues on withthe next line of code.      
+00:13:53,251 --> 00:13:58,930
+为了修复这个问题，我打算确保PopulateMarvelCharactersAsynch
 
 210
-00:13:45,611 --> 00:13:49,920
-But that promise may not comeback to us before we actually do      
+00:13:58,931 --> 00:14:00,460
+返回一个task
 
 211
-00:13:49,921 --> 00:13:53,250
-an evaluation on the currentcount of Marvel Characters.      
+00:14:00,461 --> 00:14:02,680
+然后我们只需要检查这个task，或者等待这个task
 
 212
-00:13:53,251 --> 00:13:58,930
-So, to fix this, what I wantto do is make sure that PopulateMarvelCharactersAsynch      
+00:14:02,681 --> 00:14:08,510
+在我们继续下一个
 
 213
-00:13:58,931 --> 00:14:00,460
-returns a task.      
+00:14:08,511 --> 00:14:12,290
+while循环，或者检查while循环的检查表达式
 
 214
-00:14:00,461 --> 00:14:02,680
-And then, we'll just checkthe task, or we'll just wait for      
+00:14:12,291 --> 00:14:13,560
+转到MarvelFacade.cs
 
 215
-00:14:02,681 --> 00:14:08,510
-the task, before we continueon with another run of      
+00:14:13,561 --> 00:14:14,940
+看看这里是不是返回task
 
 216
-00:14:08,511 --> 00:14:12,290
-our while statement, or check onthe while statement's condition.      
+00:14:14,941 --> 00:14:17,520
+我们确实需要它返回一个task，所以这是一个好消息
 
 217
-00:14:12,291 --> 00:14:13,560
-So, let's go tothe MarvelFacade, and      
+00:14:17,521 --> 00:14:20,860
+回到MainPage.xaml.cs.
 
 218
-00:14:13,561 --> 00:14:14,940
-take a look at whatwe return here.      
+00:14:20,861 --> 00:14:24,770
+替代调这个await语句
 
 219
-00:14:14,941 --> 00:14:17,520
-We do indeed return a task,so that's great news.      
+00:14:24,771 --> 00:14:27,180
+我只需要说，嘿，给我一个Task类型的t
 
 220
-00:14:17,521 --> 00:14:20,860
-Let's go back tothe MainPage.xaml.cs.      
+00:14:28,450 --> 00:14:28,950
+~~~神马鬼
 
 221
-00:14:20,861 --> 00:14:24,770
-And instead of usingthis await statement,      
+00:14:30,340 --> 00:14:35,150
+Task   T,
 
 222
-00:14:24,771 --> 00:14:27,180
-I'm just gonna say, hey,give me a task of T.      
+00:14:35,151 --> 00:14:39,418
+引用命名空间System.Threading.Tasks,现在呢
 
 223
-00:14:28,450 --> 00:14:28,950
-Woops.      
+00:14:39,419 --> 00:14:41,020
+我们就可以使用它了
 
 224
-00:14:30,340 --> 00:14:35,150
-Task of T, I'm going toneed to add the task      
+00:14:41,021 --> 00:14:42,780
+好了，做得很好
 
 225
-00:14:35,151 --> 00:14:39,418
-by adding a using statement tosystem.threading.tasks, and now,      
+00:14:42,781 --> 00:14:44,140
+await t
 
 226
-00:14:39,419 --> 00:14:41,020
-we should see it.      
+00:14:45,240 --> 00:14:50,970
+这个会强制确保我们完成了第一次调用
 
 227
-00:14:41,021 --> 00:14:42,780
-Great, and then,we'll just do this.      
+00:14:50,971 --> 00:14:56,060
+再它重复循环，已经检查表达式之前
 
 228
-00:14:42,781 --> 00:14:44,140
-await t.      
+00:14:57,360 --> 00:15:01,862
+再次跑一下应用看看效果
 
 229
-00:14:45,240 --> 00:14:50,970
-So, this will force us to waitfor the first call to finish      
+00:15:10,569 --> 00:15:13,551
+1、2、3、4、5、6、7
 
 230
-00:14:50,971 --> 00:14:56,060
-before it loops back, and doesthe conditional check, right?      
+00:15:13,552 --> 00:15:17,985
+等待~~还在转
 
 231
-00:14:57,360 --> 00:15:01,862
-So, let's go ahead andrun the application.      
+00:15:17,986 --> 00:15:23,360
+8、9、10后面还有很多
 
 232
-00:15:10,569 --> 00:15:13,551
-One, two, three, four,five, six, seven.      
+00:15:23,361 --> 00:15:27,823
+还有最后一件事
 
 233
-00:15:13,552 --> 00:15:17,985
-And now, I'm waiting for it,it's still going, notice that.      
+00:15:27,824 --> 00:15:31,628
+可能会导致应用奔溃
 
 234
-00:15:17,986 --> 00:15:23,360
-And now, we have eight, nine,ten, and a bunch more, okay.      
+00:15:31,629 --> 00:15:37,023
+如果我们这里确实没写好
 
 235
-00:15:23,361 --> 00:15:27,823
-And then,there's one last thing that I      
+00:15:39,263 --> 00:15:42,909
+我想添加一个try-catch包裹这一块的所有
 
 236
-00:15:27,824 --> 00:15:31,628
-wanna do cuz thiscould still die,      
+00:15:42,910 --> 00:15:46,570
+我无法完全控制的独立代码
 
 237
-00:15:31,629 --> 00:15:37,023
-if we're not doing thisjust right, so let's,      
+00:15:46,571 --> 00:15:49,890
+在这个案例里，我无法控制call out to Marvel.
 
 238
-00:15:39,263 --> 00:15:42,909
-I wanna wrap try-catches aroundany code that's gonna make      
+00:15:51,010 --> 00:15:53,460
+这一块可能会导致应用奔溃
 
 239
-00:15:42,910 --> 00:15:46,570
-a call out to a dependencythat I cannot control.      
+00:15:53,461 --> 00:15:54,220
+所以呢
 
 240
-00:15:46,571 --> 00:15:49,890
-In this case, I can't controlthis call out to Marvel.      
+00:15:54,221 --> 00:15:57,110
+用try-catch把这一块包裹起来
 
 241
-00:15:51,010 --> 00:15:53,460
-A bunch of differentthings could go wrong.      
+00:15:57,111 --> 00:15:59,560
+很不幸的是，你可以看到当我尝试去做的时候
 
 242
-00:15:53,461 --> 00:15:54,220
-So, in that case,      
+00:16:00,690 --> 00:16:05,800
+我打算将其他的一并包裹进来
 
 243
-00:15:54,221 --> 00:15:57,110
-I'm going to wrap the try-catcharound this line specifically.      
+00:16:05,801 --> 00:16:08,320
+我需要做的就是复制粘贴~~
 
 244
-00:15:57,111 --> 00:15:59,560
-Now unfortunately,you can see that when I do that,      
+00:16:08,321 --> 00:16:10,500
+简单点~~说话的方式简单点~~
 
 245
-00:16:00,690 --> 00:16:05,800
-I'm going to out of scope withsome other things here so.      
+00:16:10,501 --> 00:16:13,270
+你并不总需要这样子做
 
 246
-00:16:05,801 --> 00:16:08,320
-What I'll just do is justgrab everything else,      
+00:16:13,271 --> 00:16:15,970
+唯一需要用try-catch包裹的
 
 247
-00:16:08,321 --> 00:16:10,500
-just to make thiseasy on myself.      
+00:16:15,971 --> 00:16:17,750
+其实就只有这一行代码
 
 248
-00:16:10,501 --> 00:16:13,270
-You shouldn't haveto do this always.      
+00:16:17,751 --> 00:16:19,940
+但考虑到下面的代码是基于它的
 
 249
-00:16:13,271 --> 00:16:15,970
-Really, the only thing youneed to wrap the try-catch      
+00:16:19,941 --> 00:16:22,740
+我们只能这样子做
 
 250
-00:16:15,971 --> 00:16:17,750
-around is for this line.      
+00:16:22,741 --> 00:16:24,430
+最终呢~
 
 251
-00:16:17,751 --> 00:16:19,940
-But since everything elsebelow it depends on it,      
+00:16:24,431 --> 00:16:26,400
+我们这里做的就是如果出错了
 
 252
-00:16:19,941 --> 00:16:22,740
-we'll just do that.      
+00:16:26,401 --> 00:16:28,220
+我们会说，这里有问题
 
 253
-00:16:22,741 --> 00:16:24,430
-So, essentially,      
+00:16:28,221 --> 00:16:30,690
+但是我们就忽视这个问题吧！
 
 254
-00:16:24,431 --> 00:16:26,400
-what we're doing here isswallowing the exception.      
+00:16:30,691 --> 00:16:35,080
+也就是我们会返Task类型的t并且尝试检查判断表达式
 
 255
-00:16:26,401 --> 00:16:28,220
-We're saying,if there's a problem, so      
+00:16:35,081 --> 00:16:39,360
+会说：我们还没有超过10个项目
 
 256
-00:16:28,221 --> 00:16:30,690
-let's just ignorethe problem and go on,      
+00:16:39,361 --> 00:16:41,940
+这也就意味着我们需要再次调用
 
 257
-00:16:30,691 --> 00:16:35,080
-which means that we'll return tand we'll try to evaluate and      
+00:16:41,941 --> 00:16:45,410
+我们会继续尝试直到无法尝试
 
 258
-00:16:35,081 --> 00:16:39,360
-say, oh we still don't havemore than ten or ten or      
+00:16:45,411 --> 00:16:48,651
+或许我需要添加一个计数器来确保10次之后可能我们
 
 259
-00:16:39,361 --> 00:16:41,940
-more items that means we'regonna try calling it again, and      
+00:16:48,652 --> 00:16:51,340
+就不再尝试，但是我就是不写~你打我啊
 
 260
-00:16:41,941 --> 00:16:45,410
-we'll just keep tryinguntil it can't try anymore.      
+00:16:57,552 --> 00:16:59,060
+So let's watch as thesethings filter in.
 
 261
-00:16:45,411 --> 00:16:48,651
-Maybe I should add a counter andsay after ten attempts maybe we      
+00:17:02,451 --> 00:17:04,191
+Okay, so we've got one,two, three, four, five.
 
 262
-00:16:48,652 --> 00:16:51,340
-should just give it up butI won't do that just yet.      
+00:17:04,192 --> 00:17:05,840
+And then we got more.
 
 263
-00:16:57,552 --> 00:16:59,060
-So let's watch as thesethings filter in.      
+00:17:05,841 --> 00:17:08,700
+Okay, so you can see that itmade two calls because it
 
 264
-00:17:02,451 --> 00:17:04,191
-Okay, so we've got one,two, three, four, five.      
+00:17:08,701 --> 00:17:12,840
+started off with the Bs andit went off to the Fs okay.
 
 265
-00:17:04,192 --> 00:17:05,840
-And then we got more.      
+00:17:12,841 --> 00:17:15,887
+And let's just make sure thateverything is still getting
 
 266
-00:17:05,841 --> 00:17:08,700
-Okay, so you can see that itmade two calls because it      
+00:17:15,888 --> 00:17:17,073
+returned correctly.
 
 267
-00:17:08,701 --> 00:17:12,840
-started off with the Bs andit went off to the Fs okay.      
+00:17:20,303 --> 00:17:28,630
+I just wanna see an itemthat has a description.
 
 268
-00:17:12,841 --> 00:17:15,887
-And let's just make sure thateverything is still getting      
+00:17:28,631 --> 00:17:30,790
+Unfortunately, none of theseitems have descriptions.
 
 269
-00:17:15,888 --> 00:17:17,073
-returned correctly.      
+00:17:32,550 --> 00:17:34,180
+All right, well that's okay.
 
 270
-00:17:20,303 --> 00:17:28,630
-I just wanna see an itemthat has a description.      
+00:17:34,181 --> 00:17:35,340
+I'm pretty sure it works.
 
 271
-00:17:28,631 --> 00:17:30,790
-Unfortunately, none of theseitems have descriptions.      
+00:17:35,341 --> 00:17:39,000
+So we're gonna stop right hereand we're gonna move on and
 
 272
-00:17:32,550 --> 00:17:34,180
-All right, well that's okay.      
+00:17:39,001 --> 00:17:43,700
+we're gonna display a list ofcomics for every item, for
 
 273
-00:17:34,181 --> 00:17:35,340
-I'm pretty sure it works.      
+00:17:43,701 --> 00:17:45,770
+the character that was selected.
 
 274
-00:17:35,341 --> 00:17:39,000
-So we're gonna stop right hereand we're gonna move on and      
+00:17:45,771 --> 00:17:46,790
+So we'll do that next.
 
 275
-00:17:39,001 --> 00:17:43,700
-we're gonna display a list ofcomics for every item, for      
+00:17:46,791 --> 00:17:47,430
+We'll see you there.
 
 276
-00:17:43,701 --> 00:17:45,770
-the character that was selected.      
-
-277
-00:17:45,771 --> 00:17:46,790
-So we'll do that next.      
-
-278
-00:17:46,791 --> 00:17:47,430
-We'll see you there.      
-
-279
 00:17:47,431 --> 00:17:47,930
-Thanks.      
+Thanks.
 

@@ -15,8 +15,9 @@ Video File: uwp71HeroExplorerIntro_high.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.500000
-Active Line: 20
-Video Position: 1978
+Scroll Position: 75
+Active Line: 78
+Video Position: 6924
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -24,7 +25,8 @@ Style: Default,微软雅黑,50,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:00:06.51,Default,,0,0,0,,英雄图鉴 -- 介绍 （翻译：tacinight，审核：章程）
+Dialogue: 0,0:00:00.01,0:00:06.51,Default,,0,0,0,,英雄图鉴 -- 介绍 （翻译：tacinight，审核：章程）
+Dialogue: 0,0:00:00.00,0:00:00.01,Default,,0,0,0,,英雄图鉴 -- 介绍 （翻译：tacinight，审核：章程）
 Dialogue: 0,0:00:06.51,0:00:08.95,Default,,0,0,0,,我们要做的第四个项目\NOkay, so this fourth and final project
 Dialogue: 0,0:00:08.95,0:00:10.67,Default,,0,0,0,,也是我们最后一个项目\Nthat we'll work on together is
 Dialogue: 0,0:00:10.67,0:00:11.99,Default,,0,0,0,,是我心目中最酷\Nin my opinion the coolest
@@ -93,10 +95,12 @@ Dialogue: 0,0:03:21.67,0:03:25.29,Default,,0,0,0,,最后我们还要将Cortana�
 Dialogue: 0,0:03:25.29,0:03:27.39,Default,,0,0,0,,告诉Cortana，说\Nwith Cortana, and tell Cortana,
 Dialogue: 0,0:03:27.39,0:03:32.13,Default,,0,0,0,,"小娜，刷新一下我应用中的人物"\Nsay hey, Cortana, refresh the characters in our application
 Dialogue: 0,0:03:32.13,0:03:33.09,Default,,0,0,0,,然后她就照我们说的做了\Nand we'll see it work
-Dialogue: 0,0:03:33.09,0:03:35.93,Default,,0,0,0,,然后我们就会知道，区区一只小娜\Nand learn a little bit more about how easy it is
-Dialogue: 0,0:03:35.93,0:03:37.47,Default,,0,0,0,,真TM容易搞定\Nto integrate Cortana.
+Dialogue: 0,0:03:33.09,0:03:35.93,Default,,0,0,0,,然后我们就会知道，一只小娜\Nand learn a little bit more about how easy it is
+Dialogue: 0,0:03:35.93,0:03:37.47,Default,,0,0,0,,超容易搞定的容易搞定的（邪魅一笑）\Nto integrate Cortana.
 Dialogue: 0,0:03:37.47,0:03:39.95,Default,,0,0,0,,好的，相信这过程会非常有趣\NOkay, so this was so much fun,
 Dialogue: 0,0:03:39.95,0:03:41.55,Default,,0,0,0,,真是一颗赛艇\Nso exciting to work on,
 Dialogue: 0,0:03:41.55,0:03:43.09,Default,,0,0,0,,享受它吧\NI hope you enjoy this.
 Dialogue: 0,0:03:43.09,0:03:44.51,Default,,0,0,0,,我们下节课正式开始\NWe'll get started in the next lesson.
 Dialogue: 0,0:03:44.51,0:03:46.02,Default,,0,0,0,,到时候见，ヾ(•ω•`)o\NSee you there, thanks.
+Dialogue: 0,0:03:46.02,0:03:51.84,Default,,0,0,0,,微软大法好
+Dialogue: 0,0:03:51.84,0:03:53.84,Default,,0,0,0,,
